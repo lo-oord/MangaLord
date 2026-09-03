@@ -16,6 +16,7 @@ import org.koitharu.kotatsu.parsers.model.MangaState
 import org.koitharu.kotatsu.parsers.model.RATING_UNKNOWN
 import org.koitharu.kotatsu.parsers.site.madara.MadaraParser
 import org.koitharu.kotatsu.parsers.util.generateUid
+import org.koitharu.kotatsu.parsers.util.parseHtml
 import org.koitharu.kotatsu.parsers.util.parseJson
 import org.koitharu.kotatsu.parsers.util.toAbsoluteUrl
 
@@ -59,12 +60,14 @@ internal class MovieBox(context: MangaLoaderContext) :
             url = "/detail/$detailPath?subjectId=$subjectId&se=1&ep=1", scanlator = null,
             uploadDate = 0L, branch = null, source = source,
         )
+        val tags = subject.optString("genre").split(',').map { it.trim() }.filter { it.isNotEmpty() }
+            .mapNotNull { genre ->
+                createMangaTag(Element("a").attr("href", "/genre/$genre").text(genre))
+            }.toSet()
         return manga.copy(
             title = title, publicUrl = manga.url.toAbsoluteUrl(domain), coverUrl = cover,
             largeCoverUrl = cover, description = subject.optString("description").takeIf { it.isNotBlank() },
-            chapters = listOf(chapter),
-            tags = subject.optString("genre").split(',').map { it.trim() }.filter { it.isNotEmpty() }
-                .mapNotNull(::createMangaTag).toSet(),
+            chapters = listOf(chapter), tags = tags,
         )
     }
 
