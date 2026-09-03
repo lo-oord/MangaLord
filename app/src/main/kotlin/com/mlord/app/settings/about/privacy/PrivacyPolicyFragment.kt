@@ -8,6 +8,7 @@ import androidx.core.view.WindowInsetsCompat
 import io.noties.markwon.Markwon
 import com.mlord.app.R
 import com.mlord.app.core.ui.BaseFragment
+import com.mlord.app.core.util.ext.container
 import com.mlord.app.databinding.FragmentChangelogBinding
 
 class PrivacyPolicyFragment : BaseFragment<FragmentChangelogBinding>() {
