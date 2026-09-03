@@ -3,10 +3,12 @@ package org.koitharu.kotatsu.parsers.site.madara.ar
 import org.koitharu.kotatsu.parsers.MangaLoaderContext
 import org.koitharu.kotatsu.parsers.model.AnimeStream
 import org.koitharu.kotatsu.parsers.model.ContentRating
+import org.koitharu.kotatsu.parsers.model.RATING_UNKNOWN
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.jsoup.nodes.Document
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import org.koitharu.kotatsu.parsers.site.madara.MadaraParser
+import org.koitharu.kotatsu.parsers.util.generateUid
 import org.koitharu.kotatsu.parsers.util.parseHtml
 import org.koitharu.kotatsu.parsers.util.attrAsRelativeUrlOrNull
 import org.koitharu.kotatsu.parsers.util.toAbsoluteUrl
@@ -17,6 +19,8 @@ internal abstract class ArabicVideoParser(
     domain: String,
     pageSize: Int = 12,
 ) : MadaraParser(context, source, domain, pageSize) {
+
+    override val selectTestAsync: String = ":root"
 
     override fun parseMangaList(doc: Document): List<Manga> {
         val path = if (domain == "animedar.net") "/anime-p/" else "/animes/"
@@ -31,7 +35,7 @@ internal abstract class ArabicVideoParser(
             val cover = sequenceOf(
                 image?.attr("src"), image?.attr("data-src"), image?.attr("data-lazy-src"),
                 image?.attr("data-original"),
-            ).map(String::trim).firstOrNull(String::isNotEmpty)
+            ).mapNotNull { it?.trim() }.firstOrNull(String::isNotEmpty)
             Manga(
                 id = generateUid(href),
                 title = title,
@@ -48,6 +52,39 @@ internal abstract class ArabicVideoParser(
                 contentRating = ContentRating.SAFE,
             )
         }
+    }
+
+    override suspend fun getChapters(manga: Manga, doc: Document): List<MangaChapter> {
+        val direct = doc.select("a[href*='/episodes/']")
+        val seasonPages = if (direct.isEmpty()) {
+            doc.select("a[href*='/seasons/']").mapNotNull { season ->
+                val href = season.attrAsRelativeUrlOrNull("href") ?: return@mapNotNull null
+                webClient.httpGet(href.toAbsoluteUrl(domain)).parseHtml()
+            }
+        } else {
+            emptyList()
+        }
+        val links = (direct + seasonPages.flatMap { it.select("a[href*='/episodes/']") })
+            .mapNotNull { it.attrAsRelativeUrlOrNull("href") }
+            .distinct()
+        return links.mapIndexed { index, href ->
+            val element = (direct + seasonPages.flatMap { it.select("a[href*='/episodes/']") })
+                .firstOrNull { it.attrAsRelativeUrlOrNull("href") == href }
+            val title = element?.text()?.trim().orEmpty().ifBlank { "Episode ${index + 1}" }
+            val number = Regex("(?:episode|الحلقة)[^0-9]*(\\d+)", RegexOption.IGNORE_CASE)
+                .find(title)?.groupValues?.getOrNull(1)?.toFloatOrNull() ?: (index + 1).toFloat()
+            MangaChapter(
+                id = generateUid(href),
+                title = title,
+                number = number,
+                volume = 0,
+                url = href,
+                uploadDate = null,
+                source = source,
+                scanlator = null,
+                branch = null,
+            )
+        }.sortedBy { it.number }
     }
 
     protected suspend fun extractDirectStreams(chapter: MangaChapter): List<AnimeStream> {

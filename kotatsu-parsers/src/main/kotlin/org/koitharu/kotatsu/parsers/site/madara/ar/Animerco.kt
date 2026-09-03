@@ -9,7 +9,7 @@ import org.koitharu.kotatsu.parsers.model.AnimeStream
 @MangaSourceParser("ANIMERCO", "Animerco", "ar", ContentType.ANIME)
 internal class Animerco(context: MangaLoaderContext) :
     ArabicVideoParser(context, MangaParserSource.ANIMERCO, "det.animerco.org") {
-    override val listUrl = "/animes/"
+    override val listUrl = "animes/"
 
     override suspend fun getVideoStreams(chapter: org.koitharu.kotatsu.parsers.model.MangaChapter): List<AnimeStream> =
         extractDirectStreams(chapter)
