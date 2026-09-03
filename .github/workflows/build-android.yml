@@ -80,6 +80,8 @@ jobs:
             | sed -E 's/(SHA1|SHA256):.*/\1: [redacted from CI log]/'
 
       - name: Build signed release APK
+        id: signed_build
+        continue-on-error: true
         if: ${{ env.HAS_RELEASE_KEYSTORE == 'true' }}
         env:
           MANGALORD_SIGNING_STORE: ${{ runner.temp }}/mangalord-release.keystore
@@ -89,7 +91,7 @@ jobs:
         run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
 
       - name: Build unsigned release APK for CI validation
-        if: ${{ env.HAS_RELEASE_KEYSTORE != 'true' }}
+        if: ${{ env.HAS_RELEASE_KEYSTORE != 'true' || steps.signed_build.outcome == 'failure' }}
         run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
 
       - name: Upload APK artifact
@@ -109,7 +111,7 @@ jobs:
           retention-days: 14
 
       - name: Explain Firebase SHA requirement
-        if: ${{ env.HAS_RELEASE_KEYSTORE != 'true' }}
+        if: ${{ env.HAS_RELEASE_KEYSTORE != 'true' || steps.signed_build.outcome == 'failure' }}
         run: |
-          echo "CI produced an unsigned validation APK because MANGALORD_KEYSTORE_BASE64 is not configured."
+          echo "CI produced an unsigned validation APK because the configured release signing credentials were unavailable or invalid."
           echo "Register the SHA-1/SHA-256 of the real release keystore in Firebase before testing Google Sign-In with a release APK."
