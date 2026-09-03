@@ -30,3 +30,14 @@ dependencyResolutionManagement {
 
 include ':app'
 rootProject.name = "MangaLord"
+
+// Keep the complete current parser source set local so anime support can be
+// added without replacing or losing MangaLord's existing manga sources.
+def localParsers = file('kotatsu-parsers')
+if (localParsers.isDirectory()) {
+	includeBuild(localParsers) {
+		dependencySubstitution {
+			substitute module('com.github.clquwu:kotatsu-parsers-redo') using project(':')
+		}
+	}
+}

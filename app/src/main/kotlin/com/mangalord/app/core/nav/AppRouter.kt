@@ -25,6 +25,7 @@ import dagger.hilt.android.EntryPointAccessors
 import com.mangalord.app.BuildConfig
 import com.mangalord.app.R
 import com.mangalord.app.alternatives.ui.AlternativesActivity
+import com.mangalord.app.anime.player.AnimePlayerActivity
 import com.mangalord.app.backups.ui.backup.BackupDialogFragment
 import com.mangalord.app.backups.ui.restore.RestoreDialogFragment
 import com.mangalord.app.bookmarks.ui.AllBookmarksActivity
@@ -38,6 +39,7 @@ import com.mangalord.app.core.model.appUrl
 import com.mangalord.app.core.model.getTitle
 import com.mangalord.app.core.model.isBroken
 import com.mangalord.app.core.model.isLocal
+import com.mangalord.app.core.model.isAnime
 import com.mangalord.app.core.model.parcelable.ParcelableManga
 import com.mangalord.app.core.model.parcelable.ParcelableMangaListFilter
 import com.mangalord.app.core.model.parcelable.ParcelableMangaPage
@@ -156,8 +158,12 @@ class AppRouter private constructor(
         )
     }
 
-    fun openReader(manga: Manga, anchor: View? = null) {
-        openReader(
+	fun openReader(manga: Manga, anchor: View? = null) {
+		if (manga.isAnime) {
+			AnimePlayerActivity.start(contextOrNull() ?: return, manga)
+			return
+		}
+		openReader(
             ReaderIntent.Builder(contextOrNull() ?: return)
                 .manga(manga)
                 .build(),

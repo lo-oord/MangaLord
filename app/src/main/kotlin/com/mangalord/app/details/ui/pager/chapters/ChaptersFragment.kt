@@ -17,6 +17,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import com.mangalord.app.R
+import com.mangalord.app.anime.player.AnimePlayerActivity
+import com.mangalord.app.core.model.isAnime
 import com.mangalord.app.core.nav.ReaderIntent
 import com.mangalord.app.core.nav.dismissParentDialog
 import com.mangalord.app.core.nav.router
@@ -112,13 +114,18 @@ class ChaptersFragment :
 		if (selectionController?.onItemClick(item.chapter.id) == true) {
 			return
 		}
+		val manga = viewModel.getMangaOrNull() ?: return
+		if (manga.isAnime) {
+			AnimePlayerActivity.start(view.context, manga, item.chapter)
+			return
+		}
 		val listener = findParentCallback(ReaderNavigationCallback::class.java)
 		if (listener != null && listener.onChapterSelected(item.chapter)) {
 			dismissParentDialog()
 		} else {
 			router.openReader(
 				ReaderIntent.Builder(view.context)
-					.manga(viewModel.getMangaOrNull() ?: return)
+					.manga(manga)
 					.state(ReaderState(item.chapter.id, 0, 0))
 					.build(),
 			)

@@ -174,6 +174,22 @@ class AppSettings @Inject constructor(@ApplicationContext context: Context) {
 			ReaderControl.entries.find(it)
 		} ?: ReaderControl.DEFAULT
 
+	var animePlayerSpeed: Float
+		get() = prefs.getFloat(KEY_ANIME_PLAYER_SPEED, 1f)
+		set(value) = prefs.edit { putFloat(KEY_ANIME_PLAYER_SPEED, value.coerceIn(0.25f, 4f)) }
+
+	var animePlayerResizeMode: Int
+		get() = prefs.getInt(KEY_ANIME_PLAYER_RESIZE_MODE, 0)
+		set(value) = prefs.edit { putInt(KEY_ANIME_PLAYER_RESIZE_MODE, value) }
+
+	var isAnimeAutoNextEnabled: Boolean
+		get() = prefs.getBoolean(KEY_ANIME_AUTO_NEXT, true)
+		set(value) = prefs.edit { putBoolean(KEY_ANIME_AUTO_NEXT, value) }
+
+	var animePlayerQualityHeight: Int
+		get() = prefs.getInt(KEY_ANIME_PLAYER_QUALITY_HEIGHT, -1)
+		set(value) = prefs.edit { putInt(KEY_ANIME_PLAYER_QUALITY_HEIGHT, value) }
+
 	val isOfflineCheckDisabled: Boolean
 		get() = prefs.getBoolean(KEY_OFFLINE_DISABLED, false)
 
@@ -708,6 +724,10 @@ class AppSettings @Inject constructor(@ApplicationContext context: Context) {
 		const val KEY_NOTIFICATIONS_LIGHT = "notifications_light"
 		const val KEY_NOTIFICATIONS_INFO = "tracker_notifications_info"
 		const val KEY_READER_ANIMATION = "reader_animation2"
+		const val KEY_ANIME_PLAYER_SPEED = "anime_player_speed"
+		const val KEY_ANIME_PLAYER_RESIZE_MODE = "anime_player_resize_mode"
+		const val KEY_ANIME_AUTO_NEXT = "anime_auto_next"
+		const val KEY_ANIME_PLAYER_QUALITY_HEIGHT = "anime_player_quality_height"
 		const val KEY_READER_CONTROLS = "reader_controls"
 		const val KEY_READER_MODE = "reader_mode"
 		const val KEY_READER_MODE_DETECT = "reader_mode_detect"

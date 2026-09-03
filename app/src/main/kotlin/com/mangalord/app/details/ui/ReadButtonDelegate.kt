@@ -21,7 +21,9 @@ import com.google.android.material.button.MaterialSplitButton
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.combine
 import com.mangalord.app.R
+import com.mangalord.app.anime.player.AnimePlayerActivity
 import com.mangalord.app.core.model.isLocal
+import com.mangalord.app.core.model.isAnime
 import com.mangalord.app.core.nav.AppRouter
 import com.mangalord.app.core.nav.ReaderIntent
 import com.mangalord.app.core.util.ext.getThemeColor
@@ -107,6 +109,10 @@ class ReadButtonDelegate(
 
 	private fun openReader(isIncognitoMode: Boolean) {
 		val manga = viewModel.getMangaOrNull() ?: return
+		if (manga.isAnime) {
+			AnimePlayerActivity.start(context, manga)
+			return
+		}
 		if (viewModel.historyInfo.value.isChapterMissing) {
 			Snackbar.make(buttonRead, R.string.chapter_is_missing, Snackbar.LENGTH_SHORT)
 				.show() // TODO

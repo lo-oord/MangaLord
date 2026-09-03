@@ -105,9 +105,16 @@
 				<data android:host="manga" />
 				<data android:host="mangalord.app" />
 			</intent-filter>
-		</activity>
-		<activity
-			android:name="com.mangalord.app.reader.ui.ReaderActivity"
+			</activity>
+			<activity
+				android:name="com.mangalord.app.anime.player.AnimePlayerActivity"
+				android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden"
+				android:exported="false"
+				android:hardwareAccelerated="true"
+				android:screenOrientation="fullSensor"
+				android:supportsPictureInPicture="true" />
+			<activity
+				android:name="com.mangalord.app.reader.ui.ReaderActivity"
 			android:exported="true">
 			<intent-filter>
 				<action android:name="${applicationId}.action.READ_MANGA" />

@@ -126,6 +126,13 @@ fun Manga.getPreferredBranch(history: MangaHistory?): String? {
 val Manga.isLocal: Boolean
 	get() = source == LocalMangaSource
 
+val Manga.isAnime: Boolean
+	get() = source.isAnimeSource() || isLocal && chapters.orEmpty().any { chapter ->
+		val path = chapter.url.substringAfter('#', chapter.url).substringBefore('?').lowercase()
+		path.endsWith(".mp4") || path.endsWith(".m3u8") || path.endsWith(".mkv") ||
+			path.endsWith(".webm") || path.endsWith(".m4v")
+	}
+
 val Manga.isBroken: Boolean
 	get() = source == UnknownMangaSource
 

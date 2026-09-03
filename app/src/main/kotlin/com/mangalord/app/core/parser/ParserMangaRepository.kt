@@ -3,6 +3,7 @@ package com.mangalord.app.core.parser
 import kotlinx.coroutines.Dispatchers
 import okhttp3.Interceptor
 import okhttp3.Response
+import com.mangalord.app.anime.data.AnimePlaybackRepository
 import com.mangalord.app.core.cache.MemoryContentCache
 import com.mangalord.app.core.exceptions.CloudFlareProtectedException
 import com.mangalord.app.core.exceptions.InteractiveActionRequiredException
@@ -13,6 +14,7 @@ import org.koitharu.kotatsu.parsers.MangaParserAuthProvider
 import org.koitharu.kotatsu.parsers.config.ConfigKey
 import org.koitharu.kotatsu.parsers.exception.AuthRequiredException
 import org.koitharu.kotatsu.parsers.model.Favicons
+import org.koitharu.kotatsu.parsers.model.AnimeStream
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import org.koitharu.kotatsu.parsers.model.MangaListFilter
@@ -28,7 +30,7 @@ class ParserMangaRepository(
 	private val parser: MangaParser,
 	private val mirrorSwitcher: MirrorSwitcher,
 	cache: MemoryContentCache,
-) : CachingMangaRepository(cache), Interceptor {
+) : CachingMangaRepository(cache), Interceptor, AnimePlaybackRepository {
 
 	private val filterOptionsLazy = suspendLazy(Dispatchers.Default) {
 		withMirrors {
@@ -90,6 +92,10 @@ class ParserMangaRepository(
 
 	override suspend fun getDetailsImpl(manga: Manga): Manga = withMirrors {
 		parser.getDetails(manga)
+	}
+
+	override suspend fun getAnimeStreams(episode: MangaChapter): List<AnimeStream> = withMirrors {
+		parser.getVideoStreams(episode)
 	}
 
 	fun getAuthProvider(): MangaParserAuthProvider? = parser.authorizationProvider
