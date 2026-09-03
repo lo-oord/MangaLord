@@ -59,8 +59,10 @@ android {
 			if (System.getenv('MANGALORD_SIGNING_STORE') != null) {
 				signingConfig signingConfigs.release
 			}
-			minifyEnabled true
-			shrinkResources true
+			// Keep release runtime classes/resources intact while the locally
+			// generated parser registry is being validated on devices.
+			minifyEnabled false
+			shrinkResources false
 			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 		}
 		nightly {
