@@ -22,7 +22,7 @@ import com.mlord.core.ui.BasePreferenceFragment
 import com.mlord.core.util.ext.getDisplayMessage
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.core.util.ext.viewLifecycleScope
-import com.mlord.parsers.util.await
+import org.koitharu.kotatsu.parsers.util.await
 import com.mlord.settings.utils.EditTextBindListener
 import com.mlord.settings.utils.PasswordSummaryProvider
 import com.mlord.settings.utils.validation.DomainValidator

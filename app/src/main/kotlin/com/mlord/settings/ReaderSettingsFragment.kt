@@ -18,8 +18,8 @@ import com.mlord.core.prefs.ReaderControl
 import com.mlord.core.prefs.ReaderMode
 import com.mlord.core.ui.BasePreferenceFragment
 import com.mlord.core.util.ext.setDefaultValueCompat
-import com.mlord.parsers.util.mapToSet
-import com.mlord.parsers.util.names
+import org.koitharu.kotatsu.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.util.names
 import com.mlord.settings.utils.MultiSummaryProvider
 import com.mlord.settings.utils.PercentSummaryProvider
 import com.mlord.settings.utils.SliderPreference

@@ -54,10 +54,10 @@ import com.mlord.core.util.ext.mangaSourceExtra
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.core.util.ext.processLifecycleScope
 import com.mlord.core.util.ext.toBitmapOrNull
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.network.CloudFlareHelper
-import com.mlord.parsers.util.mapToArray
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
+import org.koitharu.kotatsu.parsers.util.mapToArray
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton

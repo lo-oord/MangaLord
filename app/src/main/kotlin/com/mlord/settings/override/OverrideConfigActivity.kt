@@ -21,8 +21,8 @@ import com.mlord.core.util.ext.observe
 import com.mlord.core.util.ext.observeEvent
 import com.mlord.core.util.ext.tryLaunch
 import com.mlord.databinding.ActivityOverrideEditBinding
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 import com.mlord.picker.ui.PageImagePickContract
 import com.google.android.material.R as materialR
 

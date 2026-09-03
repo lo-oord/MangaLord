@@ -9,11 +9,11 @@ import com.mlord.core.util.ext.readEnumSet
 import com.mlord.core.util.ext.readParcelableCompat
 import com.mlord.core.util.ext.readSerializableCompat
 import com.mlord.core.util.ext.writeEnumSet
-import com.mlord.parsers.model.ContentRating
-import com.mlord.parsers.model.ContentType
-import com.mlord.parsers.model.Demographic
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaState
+import org.koitharu.kotatsu.parsers.model.ContentRating
+import org.koitharu.kotatsu.parsers.model.ContentType
+import org.koitharu.kotatsu.parsers.model.Demographic
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaState
 
 object MangaListFilterParceler : Parceler<MangaListFilter> {
 

@@ -2,7 +2,7 @@ package com.mlord.core.model
 
 import androidx.annotation.StringRes
 import com.mlord.R
-import com.mlord.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.model.SortOrder
 
 @Deprecated("")
 enum class GenericSortOrder(

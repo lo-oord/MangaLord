@@ -1,7 +1,7 @@
 package com.mlord.filter.ui.model
 
 import com.mlord.core.ui.widgets.ChipsView
-import com.mlord.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.model.SortOrder
 
 data class FilterHeaderModel(
 	val chips: Collection<ChipsView.ChipModel>,

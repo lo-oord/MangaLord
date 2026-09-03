@@ -13,7 +13,7 @@ import androidx.annotation.WorkerThread
 import androidx.preference.EditTextPreference
 import kotlinx.coroutines.runBlocking
 import com.mlord.R
-import com.mlord.parsers.util.replaceWith
+import org.koitharu.kotatsu.parsers.util.replaceWith
 
 class MultiAutoCompleteTextViewPreference @JvmOverloads constructor(
 	context: Context,

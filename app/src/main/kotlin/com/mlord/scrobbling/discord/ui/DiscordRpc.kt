@@ -27,8 +27,8 @@ import com.mlord.core.model.isNsfw
 import com.mlord.core.prefs.AppSettings
 import com.mlord.core.util.ext.lifecycleScope
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.reader.ui.pager.ReaderUiState
 import com.mlord.scrobbling.discord.data.DiscordRepository
 import java.util.Collections

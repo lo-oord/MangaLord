@@ -24,7 +24,7 @@ import com.mlord.core.prefs.TrackerDownloadStrategy
 import com.mlord.core.ui.BasePreferenceFragment
 import com.mlord.core.util.ext.observe
 import com.mlord.core.util.ext.setDefaultValueCompat
-import com.mlord.parsers.util.names
+import org.koitharu.kotatsu.parsers.util.names
 import com.mlord.settings.utils.DozeHelper
 import com.mlord.settings.utils.MultiSummaryProvider
 import com.mlord.tracker.ui.debug.TrackerDebugActivity

@@ -10,7 +10,7 @@ import com.mlord.core.db.MangaDatabase
 import com.mlord.core.prefs.AppSettings
 import com.mlord.core.util.RetainedLifecycleCoroutineScope
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.reader.ui.ReaderState
 import com.mlord.stats.data.StatsEntity
 import javax.inject.Inject

@@ -7,9 +7,9 @@ import androidx.core.net.toUri
 import com.google.android.material.search.SearchView
 import com.mlord.core.nav.AppRouter
 import com.mlord.core.parser.MangaLinkResolver
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaTag
 import com.mlord.search.domain.SearchKind
 
 class SearchSuggestionListenerImpl(

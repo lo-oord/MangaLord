@@ -4,8 +4,8 @@ import com.mlord.core.model.isLocal
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.history.data.HistoryRepository
 import com.mlord.local.data.LocalMangaRepository
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.io.IOException
 import javax.inject.Inject
 

@@ -16,9 +16,9 @@ import com.mlord.core.util.ext.toFileNameSafe
 import com.mlord.core.zip.ZipOutput
 import com.mlord.local.data.MangaIndex
 import com.mlord.local.data.input.LocalMangaParser
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.util.nullIfEmpty
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 import java.io.File
 
 class LocalMangaDirOutput(

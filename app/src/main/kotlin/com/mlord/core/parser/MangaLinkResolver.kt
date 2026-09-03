@@ -7,15 +7,15 @@ import com.mlord.core.model.MangaSource
 import com.mlord.core.model.UnknownMangaSource
 import com.mlord.core.model.isNsfw
 import com.mlord.core.util.ext.isHttpUrl
-import com.mlord.parsers.MangaLoaderContext
-import com.mlord.parsers.exception.NotFoundException
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.almostEquals
-import com.mlord.parsers.util.ifNullOrEmpty
-import com.mlord.parsers.util.levenshteinDistance
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.MangaLoaderContext
+import org.koitharu.kotatsu.parsers.exception.NotFoundException
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.almostEquals
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.util.levenshteinDistance
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import javax.inject.Inject
 
 @Reusable

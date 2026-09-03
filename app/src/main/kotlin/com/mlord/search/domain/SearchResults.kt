@@ -1,8 +1,8 @@
 package com.mlord.search.domain
 
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.SortOrder
 
 data class SearchResults(
 	val listFilter: MangaListFilter,

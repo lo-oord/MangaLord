@@ -31,7 +31,7 @@ import com.mlord.core.util.ext.toLocale
 import com.mlord.databinding.ActivitySourcesCatalogBinding
 import com.mlord.list.ui.adapter.TypedListSpacingDecoration
 import com.mlord.main.ui.owners.AppBarOwner
-import com.mlord.parsers.model.ContentType
+import org.koitharu.kotatsu.parsers.model.ContentType
 
 @AndroidEntryPoint
 class SourcesCatalogActivity : BaseActivity<ActivitySourcesCatalogBinding>(),

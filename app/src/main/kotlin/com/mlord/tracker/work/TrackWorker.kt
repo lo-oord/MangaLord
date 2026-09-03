@@ -58,8 +58,8 @@ import com.mlord.core.util.ext.trySetForeground
 import com.mlord.download.ui.worker.DownloadTask
 import com.mlord.download.ui.worker.DownloadWorker
 import com.mlord.local.data.LocalMangaRepository
-import com.mlord.parsers.util.runCatchingCancellable
-import com.mlord.parsers.util.toIntUp
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.toIntUp
 import com.mlord.settings.work.PeriodicWorkScheduler
 import com.mlord.tracker.domain.CheckNewChaptersUseCase
 import com.mlord.tracker.domain.GetTracksUseCase

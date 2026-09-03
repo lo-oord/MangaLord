@@ -1,6 +1,6 @@
 package com.mlord.core.github
 
-import com.mlord.parsers.util.digits
+import org.koitharu.kotatsu.parsers.util.digits
 import java.util.Locale
 
 data class VersionId(

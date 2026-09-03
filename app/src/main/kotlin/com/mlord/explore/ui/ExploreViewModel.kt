@@ -33,9 +33,9 @@ import com.mlord.list.ui.model.ListHeader
 import com.mlord.list.ui.model.ListModel
 import com.mlord.list.ui.model.LoadingState
 import com.mlord.list.ui.model.MangaCompactListModel
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.suggestions.domain.SuggestionRepository
 import javax.inject.Inject
 

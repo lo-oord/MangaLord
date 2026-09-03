@@ -4,8 +4,8 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonIgnoreUnknownKeys
 import com.mlord.core.model.MangaSourceSerializer
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaSource
 
 @Serializable
 @JsonIgnoreUnknownKeys

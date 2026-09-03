@@ -37,7 +37,7 @@ import com.mlord.core.util.progress.Progress
 import com.mlord.explore.data.MangaSourcesRepository
 import com.mlord.filter.data.PersistableFilter
 import com.mlord.filter.data.SavedFiltersRepository
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.reader.data.TapGridSettings
 import java.io.InputStream
 import java.io.OutputStream

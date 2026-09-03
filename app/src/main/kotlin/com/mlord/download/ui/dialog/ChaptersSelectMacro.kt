@@ -2,8 +2,8 @@ package com.mlord.download.ui.dialog
 
 import androidx.collection.ArraySet
 import androidx.collection.LongLongMap
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.util.mapNotNullToSet
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.util.mapNotNullToSet
 
 interface ChaptersSelectMacro {
 

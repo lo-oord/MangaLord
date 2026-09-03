@@ -8,11 +8,11 @@ import com.mlord.core.ui.widgets.ChipsView
 import com.mlord.filter.data.PersistableFilter
 import com.mlord.filter.ui.model.FilterHeaderModel
 import com.mlord.filter.ui.model.FilterProperty
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaListFilterCapabilities
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.model.MangaTag
-import com.mlord.parsers.util.toTitleCase
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaListFilterCapabilities
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.util.toTitleCase
 import com.mlord.search.domain.MangaSearchRepository
 import javax.inject.Inject
 import androidx.appcompat.R as appcompatR

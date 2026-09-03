@@ -24,7 +24,7 @@ import com.mlord.core.ui.util.ReversibleActionObserver
 import com.mlord.core.util.ext.observe
 import com.mlord.core.util.ext.observeEvent
 import com.mlord.core.util.ext.withArgs
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
 import java.io.File
 
 @AndroidEntryPoint

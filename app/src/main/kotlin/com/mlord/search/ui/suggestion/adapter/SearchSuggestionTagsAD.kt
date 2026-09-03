@@ -3,7 +3,7 @@ package com.mlord.search.ui.suggestion.adapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import com.mlord.core.ui.widgets.ChipsView
 import com.mlord.databinding.ItemSearchSuggestionTagsBinding
-import com.mlord.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.MangaTag
 import com.mlord.search.ui.suggestion.SearchSuggestionListener
 import com.mlord.search.ui.suggestion.model.SearchSuggestionItem
 

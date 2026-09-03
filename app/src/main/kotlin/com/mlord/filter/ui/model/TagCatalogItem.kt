@@ -2,7 +2,7 @@ package com.mlord.filter.ui.model
 
 import com.mlord.list.ui.ListModelDiffCallback
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.MangaTag
 
 data class TagCatalogItem(
 	val tag: MangaTag,

@@ -15,7 +15,7 @@ import com.mlord.core.ui.BasePreferenceFragment
 import com.mlord.core.util.ext.observe
 import com.mlord.core.util.ext.observeEvent
 import com.mlord.core.util.ext.setDefaultValueCompat
-import com.mlord.parsers.util.names
+import org.koitharu.kotatsu.parsers.util.names
 import com.mlord.settings.userdata.storage.StorageUsagePreference
 import java.net.Proxy
 

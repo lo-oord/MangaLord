@@ -2,7 +2,7 @@ package com.mlord.stats.domain
 
 import com.mlord.details.data.ReadingTime
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import java.util.concurrent.TimeUnit
 
 data class StatsRecord(

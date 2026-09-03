@@ -3,7 +3,7 @@ package com.mlord.reader.ui
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import com.mlord.core.model.MangaHistory
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 
 @Parcelize
 data class ReaderState(

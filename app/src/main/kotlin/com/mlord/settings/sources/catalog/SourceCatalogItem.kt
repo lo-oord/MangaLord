@@ -3,7 +3,7 @@ package com.mlord.settings.sources.catalog
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.model.MangaParserSource
+import org.koitharu.kotatsu.parsers.model.MangaParserSource
 
 sealed interface SourceCatalogItem : ListModel {
 

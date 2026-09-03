@@ -1,6 +1,6 @@
 package com.mlord.settings.sources.catalog
 
-import com.mlord.parsers.model.ContentType
+import org.koitharu.kotatsu.parsers.model.ContentType
 
 data class SourcesCatalogFilter(
 	val types: Set<ContentType>,

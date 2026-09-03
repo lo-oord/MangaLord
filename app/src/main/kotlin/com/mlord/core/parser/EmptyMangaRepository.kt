@@ -1,14 +1,14 @@
 package com.mlord.core.parser
 
 import com.mlord.core.exceptions.UnsupportedSourceException
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaListFilterCapabilities
-import com.mlord.parsers.model.MangaListFilterOptions
-import com.mlord.parsers.model.MangaPage
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaListFilterCapabilities
+import org.koitharu.kotatsu.parsers.model.MangaListFilterOptions
+import org.koitharu.kotatsu.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.SortOrder
 import java.util.EnumSet
 
 open class EmptyMangaRepository(override val source: MangaSource) : MangaRepository {

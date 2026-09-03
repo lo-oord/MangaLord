@@ -3,25 +3,25 @@ package com.mlord.core.ui.model
 import androidx.annotation.StringRes
 import com.mlord.R
 import com.mlord.core.model.SortDirection
-import com.mlord.parsers.model.SortOrder
-import com.mlord.parsers.model.SortOrder.ADDED
-import com.mlord.parsers.model.SortOrder.ADDED_ASC
-import com.mlord.parsers.model.SortOrder.ALPHABETICAL
-import com.mlord.parsers.model.SortOrder.ALPHABETICAL_DESC
-import com.mlord.parsers.model.SortOrder.NEWEST
-import com.mlord.parsers.model.SortOrder.NEWEST_ASC
-import com.mlord.parsers.model.SortOrder.POPULARITY
-import com.mlord.parsers.model.SortOrder.POPULARITY_ASC
-import com.mlord.parsers.model.SortOrder.POPULARITY_HOUR
-import com.mlord.parsers.model.SortOrder.POPULARITY_MONTH
-import com.mlord.parsers.model.SortOrder.POPULARITY_TODAY
-import com.mlord.parsers.model.SortOrder.POPULARITY_WEEK
-import com.mlord.parsers.model.SortOrder.POPULARITY_YEAR
-import com.mlord.parsers.model.SortOrder.RATING
-import com.mlord.parsers.model.SortOrder.RATING_ASC
-import com.mlord.parsers.model.SortOrder.RELEVANCE
-import com.mlord.parsers.model.SortOrder.UPDATED
-import com.mlord.parsers.model.SortOrder.UPDATED_ASC
+import org.koitharu.kotatsu.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.model.SortOrder.ADDED
+import org.koitharu.kotatsu.parsers.model.SortOrder.ADDED_ASC
+import org.koitharu.kotatsu.parsers.model.SortOrder.ALPHABETICAL
+import org.koitharu.kotatsu.parsers.model.SortOrder.ALPHABETICAL_DESC
+import org.koitharu.kotatsu.parsers.model.SortOrder.NEWEST
+import org.koitharu.kotatsu.parsers.model.SortOrder.NEWEST_ASC
+import org.koitharu.kotatsu.parsers.model.SortOrder.POPULARITY
+import org.koitharu.kotatsu.parsers.model.SortOrder.POPULARITY_ASC
+import org.koitharu.kotatsu.parsers.model.SortOrder.POPULARITY_HOUR
+import org.koitharu.kotatsu.parsers.model.SortOrder.POPULARITY_MONTH
+import org.koitharu.kotatsu.parsers.model.SortOrder.POPULARITY_TODAY
+import org.koitharu.kotatsu.parsers.model.SortOrder.POPULARITY_WEEK
+import org.koitharu.kotatsu.parsers.model.SortOrder.POPULARITY_YEAR
+import org.koitharu.kotatsu.parsers.model.SortOrder.RATING
+import org.koitharu.kotatsu.parsers.model.SortOrder.RATING_ASC
+import org.koitharu.kotatsu.parsers.model.SortOrder.RELEVANCE
+import org.koitharu.kotatsu.parsers.model.SortOrder.UPDATED
+import org.koitharu.kotatsu.parsers.model.SortOrder.UPDATED_ASC
 
 @get:StringRes
 val SortOrder.titleRes: Int

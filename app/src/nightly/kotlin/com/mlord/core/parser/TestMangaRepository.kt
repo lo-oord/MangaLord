@@ -2,7 +2,7 @@ package com.mlord.core.parser
 
 import com.mlord.core.cache.MemoryContentCache
 import com.mlord.core.model.TestMangaSource
-import com.mlord.parsers.MangaLoaderContext
+import org.koitharu.kotatsu.parsers.MangaLoaderContext
 
 @Suppress("unused")
 class TestMangaRepository(

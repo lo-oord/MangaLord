@@ -9,13 +9,13 @@ import com.mlord.core.parser.MangaRepository
 import com.mlord.core.prefs.AppSettings
 import com.mlord.core.util.ext.contains
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.model.SortOrder
-import com.mlord.parsers.util.almostEquals
-import com.mlord.parsers.util.levenshteinDistance
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.util.almostEquals
+import org.koitharu.kotatsu.parsers.util.levenshteinDistance
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 
 private const val MATCH_THRESHOLD_DEFAULT = 0.2f
 

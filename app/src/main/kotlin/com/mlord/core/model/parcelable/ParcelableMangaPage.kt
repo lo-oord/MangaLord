@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parceler
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.TypeParceler
 import com.mlord.core.model.MangaSource
-import com.mlord.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.model.MangaPage
 
 object MangaPageParceler : Parceler<MangaPage> {
 	override fun create(parcel: Parcel) = MangaPage(

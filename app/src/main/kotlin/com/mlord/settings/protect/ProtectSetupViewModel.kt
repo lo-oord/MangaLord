@@ -12,8 +12,8 @@ import com.mlord.core.prefs.AppSettings
 import com.mlord.core.ui.BaseViewModel
 import com.mlord.core.util.ext.MutableEventFlow
 import com.mlord.core.util.ext.call
-import com.mlord.parsers.util.isNumeric
-import com.mlord.parsers.util.md5
+import org.koitharu.kotatsu.parsers.util.isNumeric
+import org.koitharu.kotatsu.parsers.util.md5
 import javax.inject.Inject
 
 @HiltViewModel

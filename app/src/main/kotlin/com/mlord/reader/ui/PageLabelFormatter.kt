@@ -1,7 +1,7 @@
 package com.mlord.reader.ui
 
 import com.google.android.material.slider.LabelFormatter
-import com.mlord.parsers.util.format
+import org.koitharu.kotatsu.parsers.util.format
 
 class PageLabelFormatter : LabelFormatter {
 

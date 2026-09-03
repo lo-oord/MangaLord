@@ -15,7 +15,7 @@ import com.mlord.core.image.CoilImageView
 import com.mlord.core.parser.favicon.faviconUri
 import com.mlord.core.util.ext.isAnimationsEnabled
 import com.mlord.core.util.ext.mangaSourceExtra
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
 
 class FaviconView @JvmOverloads constructor(
 	context: Context,

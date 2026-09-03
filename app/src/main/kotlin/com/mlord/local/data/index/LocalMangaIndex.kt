@@ -13,7 +13,7 @@ import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.local.data.LocalMangaRepository
 import com.mlord.local.data.input.LocalMangaParser
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.io.File
 import javax.inject.Inject
 import javax.inject.Provider

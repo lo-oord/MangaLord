@@ -15,9 +15,9 @@ import com.mlord.core.util.ext.toList
 import com.mlord.core.util.ext.toLocale
 import com.mlord.explore.data.MangaSourcesRepository
 import com.mlord.filter.ui.model.FilterProperty
-import com.mlord.parsers.model.ContentType
-import com.mlord.parsers.model.MangaParserSource
-import com.mlord.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.model.ContentType
+import org.koitharu.kotatsu.parsers.model.MangaParserSource
+import org.koitharu.kotatsu.parsers.util.mapToSet
 import java.util.EnumSet
 import java.util.Locale
 import javax.inject.Inject

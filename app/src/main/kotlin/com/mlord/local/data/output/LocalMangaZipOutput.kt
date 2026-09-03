@@ -13,8 +13,8 @@ import com.mlord.core.util.ext.deleteAwait
 import com.mlord.core.util.ext.readText
 import com.mlord.core.zip.ZipOutput
 import com.mlord.local.data.MangaIndex
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
 import java.io.File
 import java.util.zip.ZipFile
 

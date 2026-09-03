@@ -1,6 +1,6 @@
 package com.mlord.tracker.domain.model
 
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import java.time.Instant
 
 data class TrackingLogItem(

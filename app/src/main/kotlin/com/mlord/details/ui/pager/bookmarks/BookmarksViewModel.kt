@@ -27,7 +27,7 @@ import com.mlord.list.ui.model.EmptyState
 import com.mlord.list.ui.model.ListHeader
 import com.mlord.list.ui.model.ListModel
 import com.mlord.list.ui.model.LoadingState
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import com.mlord.reader.ui.PageSaveHelper
 import javax.inject.Inject
 

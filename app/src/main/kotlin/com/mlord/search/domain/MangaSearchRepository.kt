@@ -16,12 +16,12 @@ import com.mlord.core.db.entity.toMangaTag
 import com.mlord.core.db.entity.toMangaTagsList
 import com.mlord.core.prefs.AppSettings
 import com.mlord.explore.data.MangaSourcesRepository
-import com.mlord.parsers.model.ContentType
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.model.MangaTag
-import com.mlord.parsers.util.levenshteinDistance
-import com.mlord.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.model.ContentType
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.util.levenshteinDistance
+import org.koitharu.kotatsu.parsers.util.mapToSet
 import com.mlord.search.ui.MangaSuggestionsProvider
 import javax.inject.Inject
 

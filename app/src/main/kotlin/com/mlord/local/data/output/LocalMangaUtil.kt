@@ -3,7 +3,7 @@ package com.mlord.local.data.output
 import androidx.core.net.toFile
 import androidx.core.net.toUri
 import com.mlord.core.model.isLocal
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 
 class LocalMangaUtil(
 	private val manga: Manga,

@@ -12,7 +12,7 @@ import com.mlord.core.util.ext.sortedByOrdinal
 import com.mlord.favourites.domain.FavouritesRepository
 import com.mlord.favourites.ui.list.FavouritesListFragment.Companion.NO_ID
 import com.mlord.list.domain.ListSortOrder
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import javax.inject.Inject
 
 @HiltViewModel

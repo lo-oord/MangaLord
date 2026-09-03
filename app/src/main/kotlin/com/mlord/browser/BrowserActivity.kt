@@ -17,7 +17,7 @@ import com.mlord.core.nav.router
 import com.mlord.core.parser.ParserMangaRepository
 import com.mlord.core.util.ext.getDisplayMessage
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
 
 @AndroidEntryPoint
 class BrowserActivity : BaseBrowserActivity() {

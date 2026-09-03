@@ -16,8 +16,8 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import com.mlord.core.util.ext.observeChanges
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaSource
 import java.io.File
 import javax.inject.Inject
 

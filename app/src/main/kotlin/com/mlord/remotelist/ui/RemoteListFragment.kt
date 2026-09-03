@@ -25,7 +25,7 @@ import com.mlord.core.util.ext.withArgs
 import com.mlord.databinding.FragmentListBinding
 import com.mlord.filter.ui.FilterCoordinator
 import com.mlord.list.ui.MangaListFragment
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
 import com.mlord.search.domain.SearchKind
 
 @AndroidEntryPoint

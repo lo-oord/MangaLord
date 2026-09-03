@@ -15,7 +15,7 @@ import com.mlord.R
 import com.mlord.core.util.ext.getThemeColorStateList
 import com.mlord.core.util.ext.measureDimension
 import com.mlord.core.util.ext.resolveDp
-import com.mlord.parsers.util.toIntUp
+import org.koitharu.kotatsu.parsers.util.toIntUp
 import com.google.android.material.R as materialR
 
 class DotsIndicator @JvmOverloads constructor(

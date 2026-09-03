@@ -32,7 +32,7 @@ import com.mlord.local.data.LocalStorageChanges
 import com.mlord.local.data.LocalStorageManager
 import com.mlord.local.domain.DeleteLocalMangaUseCase
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import com.mlord.remotelist.ui.RemoteListViewModel
 import javax.inject.Inject
 

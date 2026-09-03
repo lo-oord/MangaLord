@@ -19,8 +19,8 @@ import com.mlord.core.ui.widgets.StackLayout
 import com.mlord.core.util.ext.getThemeColor
 import com.mlord.databinding.ViewCoverStackBinding
 import com.mlord.favourites.domain.model.Cover
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaSource
 
 class CoverStackView @JvmOverloads constructor(
 	context: Context,

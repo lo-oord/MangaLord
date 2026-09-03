@@ -21,8 +21,8 @@ import com.mlord.core.parser.MangaRepository
 import com.mlord.core.parser.ParserMangaRepository
 import com.mlord.core.util.ext.configureForParser
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.lang.ref.WeakReference
 import javax.inject.Inject
 import javax.inject.Provider

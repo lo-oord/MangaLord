@@ -24,8 +24,8 @@ import com.mlord.explore.data.MangaSourcesRepository
 import com.mlord.explore.data.SourcesSortOrder
 import com.mlord.list.ui.model.ListModel
 import com.mlord.list.ui.model.LoadingState
-import com.mlord.parsers.model.ContentType
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.ContentType
+import org.koitharu.kotatsu.parsers.model.MangaSource
 import java.util.EnumSet
 import java.util.Locale
 import javax.inject.Inject

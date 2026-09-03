@@ -6,7 +6,7 @@ import com.mlord.details.ui.model.ChapterListItem.Companion.FLAG_DOWNLOADED
 import com.mlord.details.ui.model.ChapterListItem.Companion.FLAG_GRID
 import com.mlord.details.ui.model.ChapterListItem.Companion.FLAG_NEW
 import com.mlord.details.ui.model.ChapterListItem.Companion.FLAG_UNREAD
-import com.mlord.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaChapter
 import kotlin.experimental.or
 
 fun MangaChapter.toListItem(

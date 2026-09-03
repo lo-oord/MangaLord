@@ -62,7 +62,7 @@ import com.mlord.core.util.ext.toUriOrNull
 import com.mlord.core.util.ext.zipWithPrevious
 import com.mlord.databinding.ActivityReaderBinding
 import com.mlord.details.ui.pager.pages.PagesSavedObserver
-import com.mlord.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaChapter
 import com.mlord.reader.data.TapGridSettings
 import com.mlord.reader.domain.TapGridArea
 import com.mlord.reader.ui.config.ReaderConfigSheet

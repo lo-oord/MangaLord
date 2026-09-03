@@ -17,7 +17,7 @@ import com.mlord.core.util.ext.consume
 import com.mlord.core.util.ext.observe
 import com.mlord.core.util.ext.textAndVisible
 import com.mlord.databinding.SheetStatsMangaBinding
-import com.mlord.parsers.util.format
+import org.koitharu.kotatsu.parsers.util.format
 import com.mlord.stats.ui.views.BarChartView
 
 @AndroidEntryPoint

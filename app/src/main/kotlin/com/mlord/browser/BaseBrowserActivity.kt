@@ -17,8 +17,8 @@ import com.mlord.core.ui.BaseActivity
 import com.mlord.core.util.ext.configureForParser
 import com.mlord.core.util.ext.consumeAll
 import com.mlord.databinding.ActivityBrowserBinding
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.nullIfEmpty
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 import javax.inject.Inject
 
 @AndroidEntryPoint

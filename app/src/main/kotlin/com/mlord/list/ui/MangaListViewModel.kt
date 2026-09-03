@@ -23,7 +23,7 @@ import com.mlord.core.ui.util.ReversibleAction
 import com.mlord.core.util.ext.MutableEventFlow
 import com.mlord.list.domain.ListFilterOption
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import com.mlord.local.data.LocalStorageChanges
 import com.mlord.local.domain.model.LocalManga
 

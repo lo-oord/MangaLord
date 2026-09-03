@@ -22,10 +22,10 @@ import com.mlord.core.ui.BaseViewModel
 import com.mlord.core.ui.widgets.ChipsView
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.explore.data.MangaSourcesRepository
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.model.MangaTag
-import com.mlord.parsers.util.mapToSet
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.search.domain.MangaSearchRepository
 import com.mlord.search.ui.suggestion.model.SearchSuggestionItem
 import javax.inject.Inject

@@ -39,7 +39,7 @@ import com.mlord.list.ui.model.ListHeader
 import com.mlord.list.ui.model.ListModel
 import com.mlord.list.ui.model.LoadingState
 import com.mlord.list.ui.model.toErrorState
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import java.time.Instant
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject

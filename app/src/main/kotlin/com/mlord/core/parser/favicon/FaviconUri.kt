@@ -1,7 +1,7 @@
 package com.mlord.core.parser.favicon
 
 import android.net.Uri
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
 
 const val URI_SCHEME_FAVICON = "favicon"
 

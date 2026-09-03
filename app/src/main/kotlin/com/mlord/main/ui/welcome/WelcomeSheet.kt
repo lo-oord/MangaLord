@@ -26,7 +26,7 @@ import com.mlord.core.util.ext.observe
 import com.mlord.core.util.ext.tryLaunch
 import com.mlord.databinding.SheetWelcomeBinding
 import com.mlord.filter.ui.model.FilterProperty
-import com.mlord.parsers.model.ContentType
+import org.koitharu.kotatsu.parsers.model.ContentType
 import java.util.Locale
 
 @AndroidEntryPoint

@@ -1,8 +1,8 @@
 package com.mlord.core.exceptions
 
 import com.mlord.core.model.UnknownMangaSource
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.network.CloudFlareHelper
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
 
 class CloudFlareBlockedException(
 	override val url: String,

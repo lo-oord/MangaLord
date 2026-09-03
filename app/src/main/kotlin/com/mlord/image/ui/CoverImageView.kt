@@ -38,12 +38,12 @@ import com.mlord.core.util.ext.isNetworkError
 import com.mlord.core.util.ext.mangaExtra
 import com.mlord.core.util.ext.mangaSourceExtra
 import com.mlord.favourites.domain.model.Cover
-import com.mlord.parsers.exception.ContentUnavailableException
-import com.mlord.parsers.exception.ParseException
-import com.mlord.parsers.exception.TooManyRequestExceptions
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaPage
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.exception.ContentUnavailableException
+import org.koitharu.kotatsu.parsers.exception.ParseException
+import org.koitharu.kotatsu.parsers.exception.TooManyRequestExceptions
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.model.MangaSource
 import com.mlord.reader.ui.pager.ReaderPage
 import kotlin.coroutines.resume
 import androidx.appcompat.R as appcompatR

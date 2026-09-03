@@ -43,8 +43,8 @@ import com.mlord.history.data.HistoryRepository
 import com.mlord.list.domain.ListFilterOption
 import com.mlord.local.domain.DeleteLocalMangaUseCase
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaState
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaState
 import com.mlord.reader.ui.ReaderActivity
 import com.mlord.reader.ui.ReaderState
 import com.mlord.reader.ui.ReaderViewModel

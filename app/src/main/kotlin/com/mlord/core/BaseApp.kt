@@ -31,7 +31,7 @@ import com.mlord.core.util.ext.processLifecycleScope
 import com.mlord.local.data.LocalStorageChanges
 import com.mlord.local.data.index.LocalMangaIndex
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.util.suspendlazy.getOrNull
+import org.koitharu.kotatsu.parsers.util.suspendlazy.getOrNull
 import com.mlord.settings.work.WorkScheduleManager
 import java.security.Security
 import javax.inject.Inject

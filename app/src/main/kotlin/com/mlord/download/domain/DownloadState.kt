@@ -3,7 +3,7 @@ package com.mlord.download.domain
 import androidx.work.Data
 import com.mlord.list.domain.ReadingProgress.Companion.PROGRESS_NONE
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import java.time.Instant
 
 data class DownloadState(

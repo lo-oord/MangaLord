@@ -1,7 +1,7 @@
 package com.mlord.bookmarks.data
 
 import com.mlord.bookmarks.domain.Bookmark
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import java.time.Instant
 
 fun BookmarkEntity.toBookmark(manga: Manga) = Bookmark(

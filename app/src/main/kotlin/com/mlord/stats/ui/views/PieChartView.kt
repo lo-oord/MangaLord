@@ -15,7 +15,7 @@ import androidx.core.view.PointerIconCompat
 import androidx.core.view.ViewCompat
 import com.mlord.core.util.ext.getThemeColor
 import com.mlord.core.util.ext.resolveDp
-import com.mlord.parsers.util.replaceWith
+import org.koitharu.kotatsu.parsers.util.replaceWith
 import kotlin.math.atan2
 import kotlin.math.sqrt
 

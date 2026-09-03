@@ -39,7 +39,7 @@ import com.mlord.core.util.ext.toMimeTypeOrNull
 import com.mlord.local.data.FaviconCache
 import com.mlord.local.data.LocalMangaRepository
 import com.mlord.local.data.LocalStorageCache
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.io.File
 import javax.inject.Inject
 import coil3.Uri as CoilUri

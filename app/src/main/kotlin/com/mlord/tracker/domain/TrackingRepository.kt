@@ -14,8 +14,8 @@ import com.mlord.core.util.ext.mapItems
 import com.mlord.core.util.ext.toInstantOrNull
 import com.mlord.details.domain.ProgressUpdateUseCase
 import com.mlord.list.domain.ListFilterOption
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.ifZero
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.ifZero
 import com.mlord.tracker.data.TrackEntity
 import com.mlord.tracker.data.TrackLogEntity
 import com.mlord.tracker.data.toTrackingLogItem

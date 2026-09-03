@@ -20,8 +20,8 @@ import com.mlord.core.ui.util.ReversibleAction
 import com.mlord.core.util.ext.MutableEventFlow
 import com.mlord.core.util.ext.call
 import com.mlord.explore.data.MangaSourcesRepository
-import com.mlord.parsers.MangaParserAuthProvider
-import com.mlord.parsers.exception.AuthRequiredException
+import org.koitharu.kotatsu.parsers.MangaParserAuthProvider
+import org.koitharu.kotatsu.parsers.exception.AuthRequiredException
 import javax.inject.Inject
 
 @HiltViewModel

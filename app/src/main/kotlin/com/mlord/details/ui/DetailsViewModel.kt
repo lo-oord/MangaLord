@@ -46,9 +46,9 @@ import com.mlord.list.ui.model.MangaListModel
 import com.mlord.local.data.LocalStorageChanges
 import com.mlord.local.domain.DeleteLocalMangaUseCase
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.findById
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.findById
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.reader.ui.ReaderState
 import com.mlord.scrobbling.common.domain.Scrobbler
 import com.mlord.scrobbling.common.domain.model.ScrobblingInfo

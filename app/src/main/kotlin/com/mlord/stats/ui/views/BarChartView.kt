@@ -10,8 +10,8 @@ import android.view.View
 import androidx.annotation.ColorInt
 import com.mlord.core.util.ext.getThemeColor
 import com.mlord.core.util.ext.resolveDp
-import com.mlord.parsers.util.replaceWith
-import com.mlord.parsers.util.toIntUp
+import org.koitharu.kotatsu.parsers.util.replaceWith
+import org.koitharu.kotatsu.parsers.util.toIntUp
 import kotlin.math.roundToInt
 import kotlin.random.Random
 import androidx.appcompat.R as appcompatR

@@ -23,8 +23,8 @@ import com.mlord.list.ui.model.ListModel
 import com.mlord.list.ui.model.LoadingState
 import com.mlord.list.ui.model.toErrorFooter
 import com.mlord.list.ui.model.toErrorState
-import com.mlord.parsers.model.MangaParserSource
-import com.mlord.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.MangaParserSource
+import org.koitharu.kotatsu.parsers.model.MangaTag
 
 @HiltViewModel(assistedFactory = TagsCatalogViewModel.Factory::class)
 class TagsCatalogViewModel @AssistedInject constructor(

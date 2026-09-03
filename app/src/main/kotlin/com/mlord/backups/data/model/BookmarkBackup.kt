@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import com.mlord.bookmarks.data.BookmarkEntity
 import com.mlord.core.db.entity.MangaWithTags
-import com.mlord.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.util.mapToSet
 
 @Serializable
 class BookmarkBackup(

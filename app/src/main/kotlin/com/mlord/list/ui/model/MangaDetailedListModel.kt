@@ -5,7 +5,7 @@ import com.mlord.core.ui.widgets.ChipsView
 import com.mlord.list.domain.ReadingProgress
 import com.mlord.list.ui.ListModelDiffCallback.Companion.PAYLOAD_ANYTHING_CHANGED
 import com.mlord.list.ui.ListModelDiffCallback.Companion.PAYLOAD_PROGRESS_CHANGED
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 
 data class MangaDetailedListModel(
 	override val manga: Manga,

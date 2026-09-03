@@ -17,7 +17,7 @@ import com.mlord.core.util.ext.getQuantityStringSafe
 import com.mlord.core.util.ext.observe
 import com.mlord.core.util.ext.setDefaultValueCompat
 import com.mlord.explore.data.SourcesSortOrder
-import com.mlord.parsers.util.names
+import org.koitharu.kotatsu.parsers.util.names
 
 @AndroidEntryPoint
 class SourcesSettingsFragment : BasePreferenceFragment(R.string.remote_sources),

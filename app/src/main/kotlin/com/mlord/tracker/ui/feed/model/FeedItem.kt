@@ -4,8 +4,8 @@ import com.mlord.core.model.withOverride
 import com.mlord.core.ui.model.MangaOverride
 import com.mlord.list.ui.ListModelDiffCallback
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 
 data class FeedItem(
 	val id: Long,

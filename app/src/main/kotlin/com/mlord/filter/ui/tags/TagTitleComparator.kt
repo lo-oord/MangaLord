@@ -1,6 +1,6 @@
 package com.mlord.filter.ui.tags
 
-import com.mlord.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.MangaTag
 import java.text.Collator
 import java.util.Locale
 

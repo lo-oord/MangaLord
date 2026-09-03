@@ -19,9 +19,9 @@ import com.mlord.core.model.getTitle
 import com.mlord.core.nav.AppRouter
 import com.mlord.core.parser.ParserMangaRepository
 import com.mlord.core.util.ext.getDisplayMessage
-import com.mlord.parsers.MangaParserAuthProvider
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.MangaParserAuthProvider
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 
 @AndroidEntryPoint
 class SourceAuthActivity : BaseBrowserActivity(), BrowserCallback {

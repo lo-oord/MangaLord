@@ -18,7 +18,7 @@ import com.mlord.core.util.ext.call
 import com.mlord.explore.data.MangaSourcesRepository
 import com.mlord.history.data.HistoryRepository
 import com.mlord.main.domain.ReadingResumeEnabledUseCase
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import com.mlord.tracker.domain.TrackingRepository
 import javax.inject.Inject
 

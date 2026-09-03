@@ -1,6 +1,6 @@
 package com.mlord.core.model
 
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
 
 data class MangaSourceInfo(
 	val mangaSource: MangaSource,

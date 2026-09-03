@@ -54,7 +54,7 @@ import org.jsoup.internal.StringUtil.StringJoiner
 import com.mlord.BuildConfig
 import com.mlord.R
 import com.mlord.main.ui.MainActivity
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 import java.io.File

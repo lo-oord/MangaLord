@@ -70,7 +70,7 @@ import com.mlord.local.ui.LocalIndexUpdateService
 import com.mlord.local.ui.LocalStorageCleanupWorker
 import com.mlord.main.ui.owners.AppBarOwner
 import com.mlord.main.ui.owners.BottomNavOwner
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import com.mlord.remotelist.ui.MangaSearchMenuProvider
 import com.mlord.search.ui.suggestion.SearchSuggestionItemCallback
 import com.mlord.search.ui.suggestion.SearchSuggestionListenerImpl

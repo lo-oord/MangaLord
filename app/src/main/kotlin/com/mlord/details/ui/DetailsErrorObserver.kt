@@ -8,8 +8,8 @@ import com.mlord.core.exceptions.resolve.ExceptionResolver
 import com.mlord.core.util.ext.getDisplayMessage
 import com.mlord.core.util.ext.isNetworkError
 import com.mlord.core.util.ext.isSerializable
-import com.mlord.parsers.exception.NotFoundException
-import com.mlord.parsers.exception.ParseException
+import org.koitharu.kotatsu.parsers.exception.NotFoundException
+import org.koitharu.kotatsu.parsers.exception.ParseException
 
 class DetailsErrorObserver(
 	override val activity: DetailsActivity,

@@ -20,7 +20,7 @@ import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.core.util.ext.readByteBuffer
 import com.mlord.core.util.ext.toByteBuffer
 import com.mlord.core.util.ext.toMimeTypeOrNull
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.io.File
 import java.io.InputStream
 import java.nio.ByteBuffer

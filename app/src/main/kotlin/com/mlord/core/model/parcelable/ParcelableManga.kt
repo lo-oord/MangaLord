@@ -9,7 +9,7 @@ import com.mlord.core.util.ext.readParcelableCompat
 import com.mlord.core.util.ext.readSerializableCompat
 import com.mlord.core.util.ext.readStringSet
 import com.mlord.core.util.ext.writeStringSet
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 
 @Parcelize
 data class ParcelableManga(

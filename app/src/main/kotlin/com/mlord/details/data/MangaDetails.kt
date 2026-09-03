@@ -5,11 +5,11 @@ import com.mlord.core.model.isLocal
 import com.mlord.core.model.withOverride
 import com.mlord.core.ui.model.MangaOverride
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.model.MangaState
-import com.mlord.parsers.util.ifNullOrEmpty
-import com.mlord.parsers.util.nullIfEmpty
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaState
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 import com.mlord.reader.data.filterChapters
 import java.util.Locale
 

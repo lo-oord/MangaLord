@@ -6,12 +6,12 @@ import androidx.core.content.edit
 import com.mlord.core.util.ext.getEnumValue
 import com.mlord.core.util.ext.putEnumValue
 import com.mlord.core.util.ext.sanitizeHeaderValue
-import com.mlord.parsers.config.ConfigKey
-import com.mlord.parsers.config.MangaSourceConfig
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.model.SortOrder
-import com.mlord.parsers.util.ifNullOrEmpty
-import com.mlord.parsers.util.nullIfEmpty
+import org.koitharu.kotatsu.parsers.config.ConfigKey
+import org.koitharu.kotatsu.parsers.config.MangaSourceConfig
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 import com.mlord.settings.utils.validation.DomainValidator
 import java.io.File
 

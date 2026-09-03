@@ -19,9 +19,9 @@ import com.mlord.core.util.ext.observe
 import com.mlord.core.util.ext.textAndVisible
 import com.mlord.databinding.FragmentPreviewBinding
 import com.mlord.filter.ui.FilterCoordinator
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaTag
-import com.mlord.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 import com.mlord.search.ui.MangaListActivity
 
 @AndroidEntryPoint

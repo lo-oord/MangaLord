@@ -5,7 +5,7 @@ import android.text.format.DateUtils
 import org.jsoup.internal.StringUtil.StringJoiner
 import com.mlord.core.model.getLocalizedTitle
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaChapter
 import kotlin.experimental.and
 
 data class ChapterListItem(

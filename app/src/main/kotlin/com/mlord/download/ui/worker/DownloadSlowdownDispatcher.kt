@@ -5,7 +5,7 @@ import androidx.collection.MutableObjectLongMap
 import kotlinx.coroutines.delay
 import com.mlord.core.parser.MangaRepository
 import com.mlord.core.parser.ParserMangaRepository
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
 import javax.inject.Inject
 import javax.inject.Singleton
 

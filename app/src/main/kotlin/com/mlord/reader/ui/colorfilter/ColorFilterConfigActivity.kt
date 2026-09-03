@@ -26,8 +26,8 @@ import com.mlord.core.util.ext.setValueRounded
 import com.mlord.core.util.ext.systemBarsInsets
 import com.mlord.core.util.progress.ImageRequestIndicatorListener
 import com.mlord.databinding.ActivityColorFilterBinding
-import com.mlord.parsers.model.MangaPage
-import com.mlord.parsers.util.format
+import org.koitharu.kotatsu.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.util.format
 import com.mlord.reader.domain.ReaderColorFilter
 import javax.inject.Inject
 

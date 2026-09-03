@@ -24,7 +24,7 @@ import com.mlord.core.util.ext.observeEvent
 import com.mlord.databinding.ActivityPickerBinding
 import com.mlord.main.ui.owners.AppBarOwner
 import com.mlord.main.ui.owners.SnackbarOwner
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import com.mlord.picker.ui.manga.MangaPickerFragment
 import com.mlord.picker.ui.page.PagePickerFragment
 import com.mlord.reader.ui.PageSaveHelper

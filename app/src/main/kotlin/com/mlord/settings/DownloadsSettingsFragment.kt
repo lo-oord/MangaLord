@@ -28,7 +28,7 @@ import com.mlord.core.util.ext.tryLaunch
 import com.mlord.core.util.ext.viewLifecycleScope
 import com.mlord.download.ui.worker.DownloadWorker
 import com.mlord.local.data.LocalStorageManager
-import com.mlord.parsers.util.names
+import org.koitharu.kotatsu.parsers.util.names
 import com.mlord.settings.utils.DozeHelper
 import javax.inject.Inject
 

@@ -15,10 +15,10 @@ import com.mlord.R
 import com.mlord.core.nav.AppRouter
 import com.mlord.core.network.BaseHttpClient
 import com.mlord.core.prefs.AppSettings
-import com.mlord.parsers.util.await
-import com.mlord.parsers.util.json.getBooleanOrDefault
-import com.mlord.parsers.util.json.getStringOrNull
-import com.mlord.parsers.util.parseJson
+import org.koitharu.kotatsu.parsers.util.await
+import org.koitharu.kotatsu.parsers.util.json.getBooleanOrDefault
+import org.koitharu.kotatsu.parsers.util.json.getStringOrNull
+import org.koitharu.kotatsu.parsers.util.parseJson
 import java.io.File
 import javax.inject.Inject
 

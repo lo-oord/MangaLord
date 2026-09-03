@@ -1,7 +1,7 @@
 package com.mlord.core.cache
 
 import com.mlord.core.util.SynchronizedSieveCache
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
 import java.util.concurrent.TimeUnit
 import com.mlord.core.cache.MemoryContentCache.Key as CacheKey
 

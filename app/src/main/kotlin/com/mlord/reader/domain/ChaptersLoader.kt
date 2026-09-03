@@ -7,8 +7,8 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import com.mlord.core.parser.MangaRepository
 import com.mlord.details.data.MangaDetails
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaPage
 import com.mlord.reader.ui.pager.ReaderPage
 import javax.inject.Inject
 

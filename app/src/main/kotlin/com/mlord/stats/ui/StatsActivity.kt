@@ -37,7 +37,7 @@ import com.mlord.core.util.ext.start
 import com.mlord.databinding.ActivityStatsBinding
 import com.mlord.databinding.ItemEmptyStateBinding
 import com.mlord.list.ui.adapter.ListItemType
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import com.mlord.stats.domain.StatsPeriod
 import com.mlord.stats.domain.StatsRecord
 import com.mlord.stats.ui.views.PieChartView

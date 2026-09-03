@@ -18,8 +18,8 @@ import coil3.toBitmap
 import okio.buffer
 import com.mlord.bookmarks.domain.Bookmark
 import com.mlord.core.image.RegionBitmapDecoder
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaSource
 
 fun ImageRequest.Builder.enqueueWith(loader: ImageLoader) = loader.enqueue(build())
 

@@ -30,8 +30,8 @@ import com.mlord.core.util.ext.powerManager
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.core.util.ext.toBitmapOrNull
 import com.mlord.core.util.ext.withPartialWakeLock
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import javax.inject.Inject
 import androidx.appcompat.R as appcompatR
 

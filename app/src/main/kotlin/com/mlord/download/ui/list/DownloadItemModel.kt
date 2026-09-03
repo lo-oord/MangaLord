@@ -12,7 +12,7 @@ import com.mlord.core.util.ext.getThemeColor
 import com.mlord.download.ui.list.chapters.DownloadChapter
 import com.mlord.list.ui.ListModelDiffCallback
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import java.time.Instant
 import java.util.UUID
 import androidx.appcompat.R as appcompatR

@@ -24,7 +24,7 @@ import com.mlord.core.exceptions.resolve.ExceptionResolver
 import com.mlord.core.os.NetworkState
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.core.util.ext.throttle
-import com.mlord.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.model.MangaPage
 import com.mlord.reader.domain.PageLoader
 import com.mlord.reader.ui.config.ReaderSettings
 

@@ -1,7 +1,7 @@
 package com.mlord.reader.data
 
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
 
 fun Manga.filterChapters(branch: String?): Manga {
 	if (chapters.isNullOrEmpty()) return this

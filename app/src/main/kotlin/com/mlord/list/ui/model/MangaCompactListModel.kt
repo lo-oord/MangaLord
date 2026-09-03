@@ -1,7 +1,7 @@
 package com.mlord.list.ui.model
 
 import com.mlord.core.ui.model.MangaOverride
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 
 data class MangaCompactListModel(
 	override val manga: Manga,

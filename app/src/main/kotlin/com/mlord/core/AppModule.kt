@@ -61,7 +61,7 @@ import com.mlord.local.domain.model.LocalManga
 import com.mlord.main.domain.CoverRestoreInterceptor
 import com.mlord.main.ui.protect.AppProtectHelper
 import com.mlord.main.ui.protect.ScreenshotPolicyHelper
-import com.mlord.parsers.MangaLoaderContext
+import org.koitharu.kotatsu.parsers.MangaLoaderContext
 import com.mlord.search.ui.MangaSuggestionsProvider
 import com.mlord.sync.domain.SyncController
 import com.mlord.widget.WidgetUpdater

@@ -67,10 +67,10 @@ import com.mlord.core.util.progress.ProgressDeferred
 import com.mlord.download.ui.worker.DownloadSlowdownDispatcher
 import com.mlord.local.data.LocalStorageCache
 import com.mlord.local.data.PageCache
-import com.mlord.parsers.model.MangaPage
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.requireBody
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.requireBody
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.reader.ui.pager.ReaderPage
 import java.io.File
 import java.util.LinkedList

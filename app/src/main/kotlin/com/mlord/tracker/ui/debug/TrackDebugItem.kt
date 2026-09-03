@@ -1,7 +1,7 @@
 package com.mlord.tracker.ui.debug
 
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import java.time.Instant
 
 data class TrackDebugItem(

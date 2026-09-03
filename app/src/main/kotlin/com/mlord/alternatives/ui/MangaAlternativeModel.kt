@@ -3,7 +3,7 @@ package com.mlord.alternatives.ui
 import com.mlord.core.model.chaptersCount
 import com.mlord.list.ui.model.ListModel
 import com.mlord.list.ui.model.MangaGridModel
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 
 data class MangaAlternativeModel(
 	val mangaModel: MangaGridModel,

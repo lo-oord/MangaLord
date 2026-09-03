@@ -27,7 +27,7 @@ import com.mlord.core.util.ext.isReadable
 import com.mlord.core.util.ext.isWriteable
 import com.mlord.core.util.ext.resolveFile
 import com.mlord.core.util.ext.takeIfWriteable
-import com.mlord.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.util.mapToSet
 import java.io.File
 import javax.inject.Inject
 

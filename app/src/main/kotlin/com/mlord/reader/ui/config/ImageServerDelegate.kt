@@ -8,11 +8,11 @@ import kotlinx.coroutines.withContext
 import com.mlord.R
 import com.mlord.core.parser.MangaRepository
 import com.mlord.core.parser.ParserMangaRepository
-import com.mlord.parsers.config.ConfigKey
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.mapToArray
-import com.mlord.parsers.util.suspendlazy.getOrNull
-import com.mlord.parsers.util.suspendlazy.suspendLazy
+import org.koitharu.kotatsu.parsers.config.ConfigKey
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.mapToArray
+import org.koitharu.kotatsu.parsers.util.suspendlazy.getOrNull
+import org.koitharu.kotatsu.parsers.util.suspendlazy.suspendLazy
 import kotlin.coroutines.resume
 
 class ImageServerDelegate(

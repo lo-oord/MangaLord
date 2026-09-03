@@ -3,7 +3,7 @@ package com.mlord.core.model.parcelable
 import android.os.Parcel
 import kotlinx.parcelize.Parceler
 import com.mlord.core.model.MangaSource
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
 
 class MangaSourceParceler : Parceler<MangaSource> {
 

@@ -43,9 +43,9 @@ import com.mlord.list.ui.model.toErrorFooter
 import com.mlord.list.ui.model.toErrorState
 import com.mlord.local.data.LocalStorageChanges
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaParserSource
-import com.mlord.parsers.util.sizeOrZero
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaParserSource
+import org.koitharu.kotatsu.parsers.util.sizeOrZero
 import javax.inject.Inject
 
 private const val FILTER_MIN_INTERVAL = 250L

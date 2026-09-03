@@ -18,12 +18,12 @@ import com.mlord.core.util.ext.observe
 import com.mlord.databinding.FragmentFilterHeaderBinding
 import com.mlord.filter.data.PersistableFilter
 import com.mlord.filter.ui.model.FilterHeaderModel
-import com.mlord.parsers.model.ContentRating
-import com.mlord.parsers.model.ContentType
-import com.mlord.parsers.model.Demographic
-import com.mlord.parsers.model.MangaState
-import com.mlord.parsers.model.MangaTag
-import com.mlord.parsers.model.YEAR_UNKNOWN
+import org.koitharu.kotatsu.parsers.model.ContentRating
+import org.koitharu.kotatsu.parsers.model.ContentType
+import org.koitharu.kotatsu.parsers.model.Demographic
+import org.koitharu.kotatsu.parsers.model.MangaState
+import org.koitharu.kotatsu.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.YEAR_UNKNOWN
 import java.util.Locale
 import javax.inject.Inject
 

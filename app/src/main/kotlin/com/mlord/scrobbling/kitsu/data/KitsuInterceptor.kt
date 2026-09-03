@@ -6,10 +6,10 @@ import okhttp3.Response
 import okhttp3.internal.closeQuietly
 import okio.IOException
 import com.mlord.core.network.CommonHeaders
-import com.mlord.parsers.util.mimeType
-import com.mlord.parsers.util.nullIfEmpty
-import com.mlord.parsers.util.parseHtml
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.mimeType
+import org.koitharu.kotatsu.parsers.util.nullIfEmpty
+import org.koitharu.kotatsu.parsers.util.parseHtml
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.scrobbling.common.data.ScrobblerStorage
 import com.mlord.scrobbling.common.domain.ScrobblerAuthRequiredException
 import com.mlord.scrobbling.common.domain.model.ScrobblerService

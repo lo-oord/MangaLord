@@ -4,9 +4,9 @@ import android.app.Application
 import android.content.ComponentCallbacks2
 import android.content.res.Configuration
 import com.mlord.core.util.ext.isLowRamDevice
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaPage
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.model.MangaSource
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Singleton

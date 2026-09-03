@@ -21,8 +21,8 @@ import com.mlord.core.ui.image.TrimTransformation
 import com.mlord.core.util.ext.getDrawableOrThrow
 import com.mlord.core.util.ext.mangaExtra
 import com.mlord.favourites.domain.FavouritesRepository
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.replaceWith
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.replaceWith
 
 class ShelfListFactory(
 	private val context: Context,

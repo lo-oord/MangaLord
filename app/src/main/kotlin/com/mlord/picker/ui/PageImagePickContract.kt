@@ -6,7 +6,7 @@ import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContract
 import com.mlord.core.model.parcelable.ParcelableManga
 import com.mlord.core.nav.AppRouter
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 
 class PageImagePickContract : ActivityResultContract<Manga?, Uri?>() {
 

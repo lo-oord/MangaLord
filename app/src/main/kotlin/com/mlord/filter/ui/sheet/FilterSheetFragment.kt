@@ -46,15 +46,15 @@ import com.mlord.filter.data.PersistableFilter
 import com.mlord.filter.data.PersistableFilter.Companion.MAX_TITLE_LENGTH
 import com.mlord.filter.ui.FilterCoordinator
 import com.mlord.filter.ui.model.FilterProperty
-import com.mlord.parsers.model.ContentRating
-import com.mlord.parsers.model.ContentType
-import com.mlord.parsers.model.Demographic
-import com.mlord.parsers.model.MangaState
-import com.mlord.parsers.model.MangaTag
-import com.mlord.parsers.model.SortOrder
-import com.mlord.parsers.model.YEAR_UNKNOWN
-import com.mlord.parsers.util.mapToSet
-import com.mlord.parsers.util.toIntUp
+import org.koitharu.kotatsu.parsers.model.ContentRating
+import org.koitharu.kotatsu.parsers.model.ContentType
+import org.koitharu.kotatsu.parsers.model.Demographic
+import org.koitharu.kotatsu.parsers.model.MangaState
+import org.koitharu.kotatsu.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.model.YEAR_UNKNOWN
+import org.koitharu.kotatsu.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.util.toIntUp
 import java.util.Locale
 import java.util.TreeSet
 

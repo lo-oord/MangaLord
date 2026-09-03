@@ -9,9 +9,9 @@ import com.mlord.details.domain.ProgressUpdateUseCase
 import com.mlord.history.data.HistoryEntity
 import com.mlord.history.data.toMangaHistory
 import com.mlord.list.domain.ReadingProgress.Companion.PROGRESS_NONE
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.scrobbling.common.domain.Scrobbler
 import com.mlord.scrobbling.common.domain.model.ScrobblingStatus
 import com.mlord.tracker.data.TrackEntity

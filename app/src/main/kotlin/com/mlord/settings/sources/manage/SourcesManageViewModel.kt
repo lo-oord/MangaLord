@@ -13,8 +13,8 @@ import com.mlord.core.ui.util.ReversibleAction
 import com.mlord.core.util.ext.MutableEventFlow
 import com.mlord.core.util.ext.call
 import com.mlord.explore.data.MangaSourcesRepository
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.move
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.move
 import com.mlord.settings.sources.model.SourceConfigItem
 import javax.inject.Inject
 

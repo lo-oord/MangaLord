@@ -34,7 +34,7 @@ import com.mlord.core.ui.image.ChipIconTarget
 import com.mlord.core.util.ext.enqueueWith
 import com.mlord.core.util.ext.getThemeColor
 import com.mlord.core.util.ext.setProgressIcon
-import com.mlord.parsers.util.ifZero
+import org.koitharu.kotatsu.parsers.util.ifZero
 import javax.inject.Inject
 import com.google.android.material.R as materialR
 

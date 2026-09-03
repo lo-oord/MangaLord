@@ -1,6 +1,6 @@
 package com.mlord.core.ui.model
 
-import com.mlord.parsers.model.ContentRating
+import org.koitharu.kotatsu.parsers.model.ContentRating
 
 data class MangaOverride(
 	val coverUrl: String?,

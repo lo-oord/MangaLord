@@ -12,10 +12,10 @@ import com.mlord.core.parser.MangaRepository
 import com.mlord.core.util.ext.bookmarkKey
 import com.mlord.core.util.ext.mangaKey
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.findById
-import com.mlord.parsers.util.ifNullOrEmpty
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.findById
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.util.Collections
 import javax.inject.Inject
 

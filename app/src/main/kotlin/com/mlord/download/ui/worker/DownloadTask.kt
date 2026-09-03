@@ -4,7 +4,7 @@ import android.os.Parcelable
 import androidx.work.Data
 import kotlinx.parcelize.Parcelize
 import com.mlord.core.prefs.DownloadFormat
-import com.mlord.parsers.util.find
+import org.koitharu.kotatsu.parsers.util.find
 import java.io.File
 
 @Parcelize

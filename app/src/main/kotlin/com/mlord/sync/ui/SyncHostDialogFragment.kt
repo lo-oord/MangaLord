@@ -16,7 +16,7 @@ import com.mlord.core.ui.AlertDialogFragment
 import com.mlord.core.util.ext.isHttpUrl
 import com.mlord.core.util.ext.withArgs
 import com.mlord.databinding.PreferenceDialogAutocompletetextviewBinding
-import com.mlord.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 import com.mlord.settings.utils.validation.UrlValidator
 import com.mlord.sync.data.SyncSettings
 import javax.inject.Inject

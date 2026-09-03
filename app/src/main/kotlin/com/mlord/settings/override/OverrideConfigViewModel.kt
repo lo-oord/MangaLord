@@ -23,8 +23,8 @@ import com.mlord.core.util.ext.openSource
 import com.mlord.core.util.ext.require
 import com.mlord.core.util.ext.toMimeTypeOrNull
 import com.mlord.core.util.ext.toUriOrNull
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.md5
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.md5
 import java.io.File
 import javax.inject.Inject
 

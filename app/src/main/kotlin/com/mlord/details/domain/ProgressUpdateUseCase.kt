@@ -6,7 +6,7 @@ import com.mlord.core.os.NetworkState
 import com.mlord.core.parser.MangaRepository
 import com.mlord.list.domain.ReadingProgress.Companion.PROGRESS_NONE
 import com.mlord.local.data.LocalMangaRepository
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import javax.inject.Inject
 
 class ProgressUpdateUseCase @Inject constructor(

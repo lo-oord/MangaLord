@@ -5,8 +5,8 @@ import androidx.core.net.toFile
 import androidx.core.net.toUri
 import com.mlord.core.util.ext.contains
 import com.mlord.core.util.ext.creationTime
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaTag
 import java.io.File
 
 data class LocalManga(

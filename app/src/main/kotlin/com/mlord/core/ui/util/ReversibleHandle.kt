@@ -7,7 +7,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.core.util.ext.processLifecycleScope
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 
 fun interface ReversibleHandle {
 

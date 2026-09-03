@@ -10,9 +10,9 @@ import com.mlord.core.util.ext.MimeType
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.core.util.ext.toFileNameSafe
 import com.mlord.local.data.input.LocalMangaParser
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.io.File
 
 sealed class LocalMangaOutput(

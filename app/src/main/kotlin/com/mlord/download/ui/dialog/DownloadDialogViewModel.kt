@@ -27,11 +27,11 @@ import com.mlord.download.ui.worker.DownloadWorker
 import com.mlord.history.data.HistoryRepository
 import com.mlord.local.data.LocalMangaRepository
 import com.mlord.local.data.LocalStorageManager
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.mapToSet
-import com.mlord.parsers.util.runCatchingCancellable
-import com.mlord.parsers.util.sizeOrZero
-import com.mlord.parsers.util.suspendlazy.suspendLazy
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.sizeOrZero
+import org.koitharu.kotatsu.parsers.util.suspendlazy.suspendLazy
 import com.mlord.settings.storage.DirectoryModel
 import javax.inject.Inject
 

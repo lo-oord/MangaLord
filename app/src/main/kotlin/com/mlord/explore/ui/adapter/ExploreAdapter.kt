@@ -8,7 +8,7 @@ import com.mlord.list.ui.adapter.emptyHintAD
 import com.mlord.list.ui.adapter.listHeaderAD
 import com.mlord.list.ui.adapter.loadingStateAD
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 
 class ExploreAdapter(
 	listener: ExploreListEventListener,

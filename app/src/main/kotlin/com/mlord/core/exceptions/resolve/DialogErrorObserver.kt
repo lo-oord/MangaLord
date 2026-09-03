@@ -8,7 +8,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mlord.R
 import com.mlord.core.util.ext.getDisplayMessage
 import com.mlord.core.util.ext.isSerializable
-import com.mlord.parsers.exception.ParseException
+import org.koitharu.kotatsu.parsers.exception.ParseException
 
 class DialogErrorObserver(
 	host: View,

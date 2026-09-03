@@ -33,8 +33,8 @@ import com.mlord.list.ui.adapter.TypedListSpacingDecoration
 import com.mlord.list.ui.model.ListHeader
 import com.mlord.list.ui.model.MangaListModel
 import com.mlord.list.ui.size.StaticItemSizeResolver
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaTag
 import com.mlord.tracker.ui.feed.adapter.FeedAdapter
 import javax.inject.Inject
 

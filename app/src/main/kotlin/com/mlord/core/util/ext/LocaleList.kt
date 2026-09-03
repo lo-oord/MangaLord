@@ -3,8 +3,8 @@ package com.mlord.core.util.ext
 import android.content.Context
 import androidx.core.os.LocaleListCompat
 import com.mlord.R
-import com.mlord.parsers.util.Set
-import com.mlord.parsers.util.toTitleCase
+import org.koitharu.kotatsu.parsers.util.Set
+import org.koitharu.kotatsu.parsers.util.toTitleCase
 import java.util.Locale
 
 operator fun LocaleListCompat.iterator(): ListIterator<Locale> = LocaleListCompatIterator(this)

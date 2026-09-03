@@ -32,12 +32,12 @@ import com.mlord.local.data.hasZipExtension
 import com.mlord.local.data.isZipArchive
 import com.mlord.local.data.output.LocalMangaOutput.Companion.ENTRY_NAME_INDEX
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.model.MangaPage
-import com.mlord.parsers.util.longHashCode
-import com.mlord.parsers.util.runCatchingCancellable
-import com.mlord.parsers.util.toTitleCase
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.util.longHashCode
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.toTitleCase
 import java.io.File
 
 /**

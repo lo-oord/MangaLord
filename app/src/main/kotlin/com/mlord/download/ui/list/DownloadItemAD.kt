@@ -22,7 +22,7 @@ import com.mlord.download.ui.list.chapters.downloadChapterAD
 import com.mlord.list.ui.ListModelDiffCallback
 import com.mlord.list.ui.adapter.ListItemType
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.util.format
+import org.koitharu.kotatsu.parsers.util.format
 
 fun downloadItemAD(
 	lifecycleOwner: LifecycleOwner,

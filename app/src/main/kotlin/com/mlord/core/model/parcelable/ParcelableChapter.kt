@@ -5,7 +5,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parceler
 import kotlinx.parcelize.Parcelize
 import com.mlord.core.model.MangaSource
-import com.mlord.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaChapter
 
 @Parcelize
 data class ParcelableChapter(

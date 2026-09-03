@@ -34,11 +34,11 @@ import com.mlord.core.util.ext.mangaSourceExtra
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.core.util.ext.processLifecycleScope
 import com.mlord.history.data.HistoryRepository
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.ifNullOrEmpty
-import com.mlord.parsers.util.mapNotNullToSet
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.util.mapNotNullToSet
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import javax.inject.Inject
 import javax.inject.Singleton
 

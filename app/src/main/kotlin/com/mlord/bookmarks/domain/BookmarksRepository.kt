@@ -16,7 +16,7 @@ import com.mlord.core.db.entity.toManga
 import com.mlord.core.ui.util.ReversibleHandle
 import com.mlord.core.util.ext.mapItems
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import javax.inject.Inject
 
 @Reusable

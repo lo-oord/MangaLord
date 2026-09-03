@@ -4,7 +4,7 @@ import androidx.annotation.StringRes
 import com.mlord.R
 import com.mlord.core.exceptions.resolve.ExceptionResolver
 import com.mlord.core.util.ext.getDisplayIcon
-import com.mlord.parsers.util.ifZero
+import org.koitharu.kotatsu.parsers.util.ifZero
 
 fun Throwable.toErrorState(canRetry: Boolean = true, @StringRes secondaryAction: Int = 0) = ErrorState(
 	exception = this,

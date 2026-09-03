@@ -5,7 +5,7 @@ import android.content.Intent
 import com.mlord.BuildConfig
 import com.mlord.bookmarks.domain.Bookmark
 import com.mlord.core.model.parcelable.ParcelableManga
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import com.mlord.reader.ui.ReaderActivity
 import com.mlord.reader.ui.ReaderState
 

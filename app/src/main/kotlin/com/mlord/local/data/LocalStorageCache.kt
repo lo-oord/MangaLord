@@ -21,9 +21,9 @@ import com.mlord.core.util.ext.subdir
 import com.mlord.core.util.ext.takeIfReadable
 import com.mlord.core.util.ext.takeIfWriteable
 import com.mlord.core.util.ext.writeAllCancellable
-import com.mlord.parsers.util.ifNullOrEmpty
-import com.mlord.parsers.util.runCatchingCancellable
-import com.mlord.parsers.util.suspendlazy.suspendLazy
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.suspendlazy.suspendLazy
 import java.io.File
 import java.util.UUID
 

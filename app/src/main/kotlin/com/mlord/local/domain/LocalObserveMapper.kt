@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.onStart
 import com.mlord.core.model.isLocal
 import com.mlord.local.data.index.LocalMangaIndex
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 
 abstract class LocalObserveMapper<E : Any, R : Any>(
 	private val localMangaIndex: LocalMangaIndex,

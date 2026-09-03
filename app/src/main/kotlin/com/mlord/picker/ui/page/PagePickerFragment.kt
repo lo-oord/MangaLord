@@ -30,7 +30,7 @@ import com.mlord.list.ui.GridSpanResolver
 import com.mlord.list.ui.adapter.ListItemType
 import com.mlord.list.ui.adapter.TypedListSpacingDecoration
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 import com.mlord.picker.ui.PageImagePickActivity
 import javax.inject.Inject
 

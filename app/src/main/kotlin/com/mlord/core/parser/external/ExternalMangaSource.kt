@@ -1,7 +1,7 @@
 package com.mlord.core.parser.external
 
 import android.content.Context
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
 
 data class ExternalMangaSource(
 	val packageName: String,

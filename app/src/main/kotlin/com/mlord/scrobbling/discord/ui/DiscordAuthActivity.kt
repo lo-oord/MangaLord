@@ -6,7 +6,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.mlord.browser.BaseBrowserActivity
 import com.mlord.core.parser.ParserMangaRepository
 import com.mlord.core.prefs.AppSettings
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
 import javax.inject.Inject
 
 @AndroidEntryPoint

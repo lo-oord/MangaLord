@@ -7,7 +7,7 @@ import androidx.core.graphics.ColorUtils
 import com.google.android.material.R
 import com.google.android.material.color.MaterialColors
 import com.mlord.core.util.ext.getThemeColor
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import kotlin.math.absoluteValue
 
 object MlordColors {

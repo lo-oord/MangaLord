@@ -38,7 +38,7 @@ import com.mlord.list.ui.adapter.ListStateHolderListener
 import com.mlord.list.ui.adapter.TypedListSpacingDecoration
 import com.mlord.list.ui.model.ListHeader
 import com.mlord.main.ui.owners.AppBarOwner
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import com.mlord.reader.ui.PageSaveHelper
 import javax.inject.Inject
 

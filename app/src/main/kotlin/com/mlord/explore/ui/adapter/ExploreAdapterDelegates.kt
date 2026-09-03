@@ -27,7 +27,7 @@ import com.mlord.explore.ui.model.RecommendationsItem
 import com.mlord.list.ui.adapter.ListItemType
 import com.mlord.list.ui.model.ListModel
 import com.mlord.list.ui.model.MangaCompactListModel
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 
 fun exploreButtonsAD(
 	clickListener: View.OnClickListener,

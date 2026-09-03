@@ -2,8 +2,8 @@ package com.mlord.core.exceptions
 
 import okhttp3.Headers
 import com.mlord.core.model.UnknownMangaSource
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.network.CloudFlareHelper
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
 
 class CloudFlareProtectedException(
 	override val url: String,

@@ -16,8 +16,8 @@ import com.mlord.core.model.parcelable.ParcelableManga
 import com.mlord.core.parser.MangaDataRepository
 import com.mlord.core.parser.MangaRepository
 import com.mlord.core.util.ext.concat
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import kotlin.coroutines.cancellation.CancellationException

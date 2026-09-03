@@ -14,15 +14,15 @@ import com.mlord.R
 import com.mlord.core.ui.model.MangaOverride
 import com.mlord.core.util.ext.iterator
 import com.mlord.details.ui.model.ChapterListItem
-import com.mlord.parsers.model.ContentRating
-import com.mlord.parsers.model.Demographic
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaState
-import com.mlord.parsers.util.findById
-import com.mlord.parsers.util.ifNullOrEmpty
-import com.mlord.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.model.ContentRating
+import org.koitharu.kotatsu.parsers.model.Demographic
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaState
+import org.koitharu.kotatsu.parsers.util.findById
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.util.mapToSet
 import com.google.android.material.R as materialR
 
 @JvmName("mangaIds")

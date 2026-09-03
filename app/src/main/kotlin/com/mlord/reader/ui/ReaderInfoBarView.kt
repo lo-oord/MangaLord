@@ -29,7 +29,7 @@ import com.mlord.core.util.ext.getThemeColorStateList
 import com.mlord.core.util.ext.isNightMode
 import com.mlord.core.util.ext.measureDimension
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.util.format
+import org.koitharu.kotatsu.parsers.util.format
 import com.mlord.reader.ui.pager.ReaderUiState
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter

@@ -34,9 +34,9 @@ import com.mlord.core.util.ext.mangaSourceExtra
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.download.domain.DownloadState
 import com.mlord.download.ui.list.DownloadsActivity
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.format
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.format
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.util.UUID
 import androidx.appcompat.R as appcompatR
 

@@ -3,7 +3,7 @@ package com.mlord.settings.utils
 import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import com.mlord.R
-import com.mlord.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 
 class EditTextDefaultSummaryProvider(
 	private val defaultValue: String,

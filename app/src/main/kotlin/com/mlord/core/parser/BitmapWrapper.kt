@@ -2,8 +2,8 @@ package com.mlord.core.parser
 
 import android.graphics.Canvas
 import androidx.core.graphics.createBitmap
-import com.mlord.parsers.bitmap.Bitmap
-import com.mlord.parsers.bitmap.Rect
+import org.koitharu.kotatsu.parsers.bitmap.Bitmap
+import org.koitharu.kotatsu.parsers.bitmap.Rect
 import java.io.OutputStream
 import android.graphics.Bitmap as AndroidBitmap
 import android.graphics.Rect as AndroidRect

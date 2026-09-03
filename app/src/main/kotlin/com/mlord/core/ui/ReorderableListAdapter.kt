@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.withContext
 import com.mlord.list.ui.adapter.ListItemType
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.util.move
+import org.koitharu.kotatsu.parsers.util.move
 import java.util.LinkedList
 
 open class ReorderableListAdapter<T : ListModel> : ListDelegationAdapter<List<T>>(), FlowCollector<List<T>?> {

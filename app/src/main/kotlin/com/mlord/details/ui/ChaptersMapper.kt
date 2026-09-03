@@ -8,7 +8,7 @@ import com.mlord.details.ui.model.ChapterListItem
 import com.mlord.details.ui.model.toListItem
 import com.mlord.list.ui.model.ListHeader
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.util.mapToSet
 
 fun MangaDetails.mapChapters(
 	currentChapterId: Long,

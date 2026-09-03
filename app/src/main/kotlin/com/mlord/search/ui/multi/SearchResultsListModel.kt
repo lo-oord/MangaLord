@@ -6,9 +6,9 @@ import com.mlord.core.model.getTitle
 import com.mlord.list.ui.ListModelDiffCallback
 import com.mlord.list.ui.model.ListModel
 import com.mlord.list.ui.model.MangaListModel
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.SortOrder
 
 data class SearchResultsListModel(
 	@StringRes val titleResId: Int,

@@ -7,9 +7,9 @@ import com.mlord.core.model.getTitle
 import com.mlord.core.model.withOverride
 import com.mlord.core.ui.model.MangaOverride
 import com.mlord.list.ui.ListModelDiffCallback.Companion.PAYLOAD_ANYTHING_CHANGED
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 
 sealed class MangaListModel : ListModel {
 

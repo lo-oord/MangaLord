@@ -16,8 +16,8 @@ import com.mlord.favourites.domain.FavouritesRepository
 import com.mlord.history.data.HistoryRepository
 import com.mlord.local.data.LocalMangaRepository
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.scrobbling.common.domain.Scrobbler
 import com.mlord.scrobbling.common.domain.model.ScrobblingInfo
 import com.mlord.tracker.domain.TrackingRepository

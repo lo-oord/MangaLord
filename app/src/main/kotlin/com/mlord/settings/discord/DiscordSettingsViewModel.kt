@@ -13,7 +13,7 @@ import kotlinx.coroutines.plus
 import com.mlord.core.prefs.AppSettings
 import com.mlord.core.ui.BaseViewModel
 import com.mlord.core.util.ext.isNetworkError
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.scrobbling.discord.data.DiscordRepository
 import javax.inject.Inject
 

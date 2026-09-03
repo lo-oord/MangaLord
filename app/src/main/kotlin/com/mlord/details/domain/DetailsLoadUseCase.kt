@@ -28,11 +28,11 @@ import com.mlord.details.data.MangaDetails
 import com.mlord.explore.domain.RecoverMangaUseCase
 import com.mlord.local.data.LocalMangaRepository
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.exception.NotFoundException
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.nullIfEmpty
-import com.mlord.parsers.util.recoverNotNull
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.exception.NotFoundException
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.nullIfEmpty
+import org.koitharu.kotatsu.parsers.util.recoverNotNull
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import javax.inject.Inject
 
 class DetailsLoadUseCase @Inject constructor(

@@ -15,11 +15,11 @@ import com.mlord.core.util.ext.getParcelableExtraCompat
 import com.mlord.core.util.ext.isPowerSaveMode
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.history.data.HistoryRepository
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.findById
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.findById
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import javax.inject.Inject
 
 @AndroidEntryPoint

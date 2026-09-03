@@ -6,7 +6,7 @@ import com.mlord.R
 import com.mlord.core.ui.list.OnListItemClickListener
 import com.mlord.core.util.MlordColors
 import com.mlord.databinding.ItemStatsBinding
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import com.mlord.stats.domain.StatsRecord
 
 fun statsAD(

@@ -11,7 +11,7 @@ import com.mlord.core.ui.list.decor.SpacingItemDecoration
 import com.mlord.core.util.RecyclerViewScrollCallback
 import com.mlord.core.util.ext.setTooltipCompat
 import com.mlord.databinding.ItemSearchSuggestionMangaGridBinding
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import com.mlord.search.ui.suggestion.SearchSuggestionListener
 import com.mlord.search.ui.suggestion.model.SearchSuggestionItem
 

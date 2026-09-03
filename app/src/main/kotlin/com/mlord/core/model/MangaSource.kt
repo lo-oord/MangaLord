@@ -14,10 +14,10 @@ import com.mlord.core.parser.external.ExternalMangaSource
 import com.mlord.core.util.ext.getDisplayName
 import com.mlord.core.util.ext.toLocale
 import com.mlord.core.util.ext.toLocaleOrNull
-import com.mlord.parsers.model.ContentType
-import com.mlord.parsers.model.MangaParserSource
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.splitTwoParts
+import org.koitharu.kotatsu.parsers.model.ContentType
+import org.koitharu.kotatsu.parsers.model.MangaParserSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.splitTwoParts
 import java.util.Locale
 
 data object LocalMangaSource : MangaSource {

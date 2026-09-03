@@ -29,9 +29,9 @@ import com.mlord.core.util.ext.postDelayed
 import com.mlord.core.util.ext.setDefaultValueCompat
 import com.mlord.core.util.ext.sortedWithSafe
 import com.mlord.core.util.ext.toList
-import com.mlord.parsers.util.mapToSet
-import com.mlord.parsers.util.names
-import com.mlord.parsers.util.toTitleCase
+import org.koitharu.kotatsu.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.util.names
+import org.koitharu.kotatsu.parsers.util.toTitleCase
 import com.mlord.settings.protect.ProtectSetupActivity
 import com.mlord.settings.utils.ActivityListPreference
 import com.mlord.settings.utils.MultiSummaryProvider

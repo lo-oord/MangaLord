@@ -15,9 +15,9 @@ import com.mlord.core.network.CommonHeaders
 import com.mlord.core.prefs.AppSettings
 import com.mlord.core.util.ext.isNotEmpty
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.util.await
-import com.mlord.parsers.util.requireBody
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.await
+import org.koitharu.kotatsu.parsers.util.requireBody
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.io.File
 import java.net.HttpURLConnection
 import java.text.SimpleDateFormat

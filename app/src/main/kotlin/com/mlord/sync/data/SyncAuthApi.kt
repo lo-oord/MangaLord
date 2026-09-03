@@ -7,10 +7,10 @@ import org.json.JSONObject
 import com.mlord.core.exceptions.SyncApiException
 import com.mlord.core.network.BaseHttpClient
 import com.mlord.core.util.ext.toRequestBody
-import com.mlord.parsers.util.await
-import com.mlord.parsers.util.parseJson
-import com.mlord.parsers.util.parseRaw
-import com.mlord.parsers.util.removeSurrounding
+import org.koitharu.kotatsu.parsers.util.await
+import org.koitharu.kotatsu.parsers.util.parseJson
+import org.koitharu.kotatsu.parsers.util.parseRaw
+import org.koitharu.kotatsu.parsers.util.removeSurrounding
 import javax.inject.Inject
 
 @Reusable

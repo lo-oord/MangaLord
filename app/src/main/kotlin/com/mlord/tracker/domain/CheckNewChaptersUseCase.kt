@@ -12,9 +12,9 @@ import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.core.util.ext.toInstantOrNull
 import com.mlord.history.data.HistoryRepository
 import com.mlord.local.data.LocalMangaRepository
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.findById
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.findById
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.tracker.domain.model.MangaTracking
 import com.mlord.tracker.domain.model.MangaUpdates
 import java.time.Instant

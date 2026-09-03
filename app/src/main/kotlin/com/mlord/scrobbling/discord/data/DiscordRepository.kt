@@ -18,8 +18,8 @@ import com.mlord.core.network.BaseHttpClient
 import com.mlord.core.network.CommonHeaders
 import com.mlord.core.prefs.AppSettings
 import com.mlord.core.util.ext.ensureSuccess
-import com.mlord.parsers.util.await
-import com.mlord.parsers.util.parseRaw
+import org.koitharu.kotatsu.parsers.util.await
+import org.koitharu.kotatsu.parsers.util.parseRaw
 import javax.inject.Inject
 
 private const val SCHEME_MP = "mp:"

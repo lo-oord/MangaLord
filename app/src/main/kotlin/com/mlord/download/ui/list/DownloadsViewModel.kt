@@ -41,9 +41,9 @@ import com.mlord.list.ui.model.LoadingState
 import com.mlord.local.data.LocalMangaRepository
 import com.mlord.local.data.LocalStorageChanges
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.mapToSet
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.util.LinkedList
 import java.util.UUID
 import javax.inject.Inject

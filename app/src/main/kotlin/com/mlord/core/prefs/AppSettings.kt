@@ -32,11 +32,11 @@ import com.mlord.core.util.ext.takeIfReadable
 import com.mlord.core.util.ext.toUriOrNull
 import com.mlord.explore.data.SourcesSortOrder
 import com.mlord.list.domain.ListSortOrder
-import com.mlord.parsers.model.SortOrder
-import com.mlord.parsers.util.find
-import com.mlord.parsers.util.mapNotNullToSet
-import com.mlord.parsers.util.mapToSet
-import com.mlord.parsers.util.nullIfEmpty
+import org.koitharu.kotatsu.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.util.find
+import org.koitharu.kotatsu.parsers.util.mapNotNullToSet
+import org.koitharu.kotatsu.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 import com.mlord.reader.domain.ReaderColorFilter
 import java.io.File
 import java.net.Proxy

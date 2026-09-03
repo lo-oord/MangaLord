@@ -1,8 +1,8 @@
 package com.mlord.suggestions.domain
 
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaTag
-import com.mlord.parsers.util.almostEquals
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.util.almostEquals
 
 class TagsBlacklist(
 	private val tags: Set<String>,

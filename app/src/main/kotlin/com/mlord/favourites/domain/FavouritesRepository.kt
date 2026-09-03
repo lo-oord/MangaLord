@@ -25,9 +25,9 @@ import com.mlord.favourites.data.toMangaList
 import com.mlord.favourites.domain.model.Cover
 import com.mlord.list.domain.ListFilterOption
 import com.mlord.list.domain.ListSortOrder
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.levenshteinDistance
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.levenshteinDistance
 import com.mlord.search.domain.SearchKind
 import javax.inject.Inject
 

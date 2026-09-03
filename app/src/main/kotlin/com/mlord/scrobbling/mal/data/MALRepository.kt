@@ -10,10 +10,10 @@ import okhttp3.Request
 import org.json.JSONObject
 import com.mlord.R
 import com.mlord.core.db.MangaDatabase
-import com.mlord.parsers.util.await
-import com.mlord.parsers.util.json.getStringOrNull
-import com.mlord.parsers.util.json.mapJSONNotNull
-import com.mlord.parsers.util.parseJson
+import org.koitharu.kotatsu.parsers.util.await
+import org.koitharu.kotatsu.parsers.util.json.getStringOrNull
+import org.koitharu.kotatsu.parsers.util.json.mapJSONNotNull
+import org.koitharu.kotatsu.parsers.util.parseJson
 import com.mlord.scrobbling.common.data.ScrobblerRepository
 import com.mlord.scrobbling.common.data.ScrobblerStorage
 import com.mlord.scrobbling.common.data.ScrobblingEntity

@@ -32,7 +32,7 @@ import com.mlord.core.util.ext.parentView
 import com.mlord.core.util.ext.showOrHide
 import com.mlord.databinding.DialogDownloadBinding
 import com.mlord.main.ui.owners.BottomNavOwner
-import com.mlord.parsers.util.format
+import org.koitharu.kotatsu.parsers.util.format
 import com.mlord.settings.storage.DirectoryModel
 
 @AndroidEntryPoint

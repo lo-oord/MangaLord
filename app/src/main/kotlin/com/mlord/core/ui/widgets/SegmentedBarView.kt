@@ -16,7 +16,7 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.mlord.core.util.ext.getAnimationDuration
 import com.mlord.core.util.ext.isAnimationsEnabled
 import com.mlord.core.util.ext.resolveDp
-import com.mlord.parsers.util.replaceWith
+import org.koitharu.kotatsu.parsers.util.replaceWith
 
 class SegmentedBarView @JvmOverloads constructor(
 	context: Context,

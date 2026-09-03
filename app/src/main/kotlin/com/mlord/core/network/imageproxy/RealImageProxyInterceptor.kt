@@ -10,7 +10,7 @@ import okhttp3.Response
 import com.mlord.core.prefs.AppSettings
 import com.mlord.core.prefs.observeAsStateFlow
 import com.mlord.core.util.ext.processLifecycleScope
-import com.mlord.parsers.util.await
+import org.koitharu.kotatsu.parsers.util.await
 import javax.inject.Inject
 import javax.inject.Singleton
 

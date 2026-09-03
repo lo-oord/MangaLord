@@ -13,7 +13,7 @@ import okio.source
 import org.jetbrains.annotations.Blocking
 import com.mlord.core.prefs.AppSettings
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.io.File
 import javax.inject.Inject
 

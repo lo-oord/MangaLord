@@ -9,10 +9,10 @@ import kotlinx.coroutines.sync.withPermit
 import com.mlord.core.parser.MangaRepository
 import com.mlord.core.util.ext.toLocale
 import com.mlord.explore.data.MangaSourcesRepository
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaParserSource
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaParserSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.search.domain.SearchKind
 import com.mlord.search.domain.SearchV2Helper
 import java.util.Locale

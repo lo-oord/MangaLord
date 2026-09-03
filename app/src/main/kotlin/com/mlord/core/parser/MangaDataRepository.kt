@@ -26,10 +26,10 @@ import com.mlord.core.os.AppShortcutManager
 import com.mlord.core.prefs.ReaderMode
 import com.mlord.core.ui.model.MangaOverride
 import com.mlord.core.util.ext.toFileOrNull
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.model.MangaTag
-import com.mlord.parsers.util.nullIfEmpty
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 import com.mlord.reader.domain.ReaderColorFilter
 import javax.inject.Inject
 import javax.inject.Provider

@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import com.mlord.core.model.toChipModel
 import com.mlord.core.prefs.AppSettings
 import com.mlord.list.ui.model.QuickFilter
-import com.mlord.parsers.util.suspendlazy.getOrNull
-import com.mlord.parsers.util.suspendlazy.suspendLazy
+import org.koitharu.kotatsu.parsers.util.suspendlazy.getOrNull
+import org.koitharu.kotatsu.parsers.util.suspendlazy.suspendLazy
 
 abstract class MangaListQuickFilter(
 	private val settings: AppSettings,

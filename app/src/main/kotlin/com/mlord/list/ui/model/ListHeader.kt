@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.annotation.StringRes
 import com.mlord.core.model.getLocalizedTitle
 import com.mlord.core.ui.model.DateTimeAgo
-import com.mlord.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaChapter
 
 data class ListHeader private constructor(
 	private val textRaw: Any,

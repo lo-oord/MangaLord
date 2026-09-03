@@ -42,8 +42,8 @@ import com.mlord.explore.ui.adapter.ExploreListEventListener
 import com.mlord.explore.ui.model.MangaSourceItem
 import com.mlord.list.ui.adapter.TypedListSpacingDecoration
 import com.mlord.list.ui.model.ListHeader
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaParserSource
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaParserSource
 
 @AndroidEntryPoint
 class ExploreFragment :

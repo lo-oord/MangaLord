@@ -15,9 +15,9 @@ import com.mlord.core.parser.MangaRepository
 import com.mlord.core.util.ext.findKeyByValue
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.core.util.ext.sanitize
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.util.findById
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.util.findById
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.scrobbling.common.data.ScrobblerRepository
 import com.mlord.scrobbling.common.data.ScrobblingEntity
 import com.mlord.scrobbling.common.domain.model.ScrobblerManga

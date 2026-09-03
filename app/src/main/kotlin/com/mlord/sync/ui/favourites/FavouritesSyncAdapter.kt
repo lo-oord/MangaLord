@@ -9,7 +9,7 @@ import android.os.Bundle
 import dagger.hilt.android.EntryPointAccessors
 import com.mlord.R
 import com.mlord.core.util.ext.onError
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.sync.domain.SyncController
 import com.mlord.sync.ui.SyncAdapterEntryPoint
 

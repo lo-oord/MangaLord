@@ -26,10 +26,10 @@ import com.mlord.core.util.ext.isNetworkUri
 import com.mlord.core.util.ext.toMimeTypeOrNull
 import com.mlord.local.data.LocalStorageCache
 import com.mlord.local.data.PageCache
-import com.mlord.parsers.model.MangaPage
-import com.mlord.parsers.util.mimeType
-import com.mlord.parsers.util.requireBody
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.util.mimeType
+import org.koitharu.kotatsu.parsers.util.requireBody
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.reader.domain.PageLoader
 import javax.inject.Inject
 

@@ -8,21 +8,21 @@ import com.mlord.core.exceptions.CloudFlareProtectedException
 import com.mlord.core.exceptions.InteractiveActionRequiredException
 import com.mlord.core.exceptions.ProxyConfigException
 import com.mlord.core.prefs.SourceSettings
-import com.mlord.parsers.MangaParser
-import com.mlord.parsers.MangaParserAuthProvider
-import com.mlord.parsers.config.ConfigKey
-import com.mlord.parsers.exception.AuthRequiredException
-import com.mlord.parsers.model.Favicons
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaListFilterCapabilities
-import com.mlord.parsers.model.MangaListFilterOptions
-import com.mlord.parsers.model.MangaPage
-import com.mlord.parsers.model.MangaParserSource
-import com.mlord.parsers.model.SortOrder
-import com.mlord.parsers.util.runCatchingCancellable
-import com.mlord.parsers.util.suspendlazy.suspendLazy
+import org.koitharu.kotatsu.parsers.MangaParser
+import org.koitharu.kotatsu.parsers.MangaParserAuthProvider
+import org.koitharu.kotatsu.parsers.config.ConfigKey
+import org.koitharu.kotatsu.parsers.exception.AuthRequiredException
+import org.koitharu.kotatsu.parsers.model.Favicons
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaListFilterCapabilities
+import org.koitharu.kotatsu.parsers.model.MangaListFilterOptions
+import org.koitharu.kotatsu.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.model.MangaParserSource
+import org.koitharu.kotatsu.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.suspendlazy.suspendLazy
 
 class ParserMangaRepository(
 	private val parser: MangaParser,

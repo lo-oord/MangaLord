@@ -2,7 +2,7 @@ package com.mlord.settings.sources.catalog
 
 import com.mlord.list.ui.ListModelDiffCallback
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.model.ContentType
+import org.koitharu.kotatsu.parsers.model.ContentType
 
 data class SourceCatalogPage(
 	val type: ContentType,

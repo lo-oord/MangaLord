@@ -9,7 +9,7 @@ import com.mlord.list.domain.ListFilterOption
 import com.mlord.list.domain.ListSortOrder
 import com.mlord.local.data.index.LocalMangaIndex
 import com.mlord.local.domain.LocalObserveMapper
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import javax.inject.Inject
 
 @Reusable

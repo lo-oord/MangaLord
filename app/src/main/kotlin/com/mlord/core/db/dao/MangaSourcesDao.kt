@@ -16,8 +16,8 @@ import kotlinx.coroutines.isActive
 import com.mlord.BuildConfig
 import com.mlord.core.db.entity.MangaSourceEntity
 import com.mlord.explore.data.SourcesSortOrder
-import com.mlord.parsers.network.CloudFlareHelper
-import com.mlord.parsers.network.CloudFlareHelper.PROTECTION_CAPTCHA
+import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
+import org.koitharu.kotatsu.parsers.network.CloudFlareHelper.PROTECTION_CAPTCHA
 
 @Dao
 abstract class MangaSourcesDao {

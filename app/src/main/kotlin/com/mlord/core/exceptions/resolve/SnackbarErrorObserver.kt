@@ -9,7 +9,7 @@ import com.mlord.core.util.ext.getDisplayMessage
 import com.mlord.core.util.ext.isSerializable
 import com.mlord.main.ui.owners.BottomNavOwner
 import com.mlord.main.ui.owners.BottomSheetOwner
-import com.mlord.parsers.exception.ParseException
+import org.koitharu.kotatsu.parsers.exception.ParseException
 
 class SnackbarErrorObserver(
 	host: View,

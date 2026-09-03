@@ -10,9 +10,9 @@ import com.mlord.R
 import com.mlord.core.parser.EmptyMangaRepository
 import com.mlord.core.parser.MangaRepository
 import com.mlord.core.parser.ParserMangaRepository
-import com.mlord.parsers.config.ConfigKey
-import com.mlord.parsers.network.UserAgents
-import com.mlord.parsers.util.mapToArray
+import org.koitharu.kotatsu.parsers.config.ConfigKey
+import org.koitharu.kotatsu.parsers.network.UserAgents
+import org.koitharu.kotatsu.parsers.util.mapToArray
 import com.mlord.settings.utils.AutoCompleteTextViewPreference
 import com.mlord.settings.utils.EditTextBindListener
 import com.mlord.settings.utils.EditTextDefaultSummaryProvider

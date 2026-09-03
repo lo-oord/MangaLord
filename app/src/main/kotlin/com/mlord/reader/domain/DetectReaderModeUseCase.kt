@@ -16,9 +16,9 @@ import com.mlord.core.prefs.ReaderMode
 import com.mlord.core.util.ext.isFileUri
 import com.mlord.core.util.ext.isZipUri
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaPage
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.reader.ui.ReaderState
 import java.io.InputStream
 import java.util.zip.ZipFile

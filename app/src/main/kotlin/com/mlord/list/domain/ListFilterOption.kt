@@ -9,9 +9,9 @@ import com.mlord.core.model.LocalMangaSource
 import com.mlord.core.model.unwrap
 import com.mlord.core.parser.external.ExternalMangaSource
 import com.mlord.core.parser.favicon.faviconUri
-import com.mlord.parsers.model.MangaParserSource
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.MangaParserSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaTag
 
 sealed interface ListFilterOption {
 

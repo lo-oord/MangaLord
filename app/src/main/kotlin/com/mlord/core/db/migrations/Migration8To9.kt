@@ -2,7 +2,7 @@ package com.mlord.core.db.migrations
 
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.mlord.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.model.SortOrder
 
 class Migration8To9 : Migration(8, 9) {
 

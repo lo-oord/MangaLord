@@ -26,10 +26,10 @@ import com.mlord.core.network.cookies.MutableCookieJar
 import com.mlord.core.parser.ParserMangaRepository
 import com.mlord.core.util.ext.getDisplayMessage
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.network.CloudFlareHelper
-import com.mlord.parsers.util.ifNullOrEmpty
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import javax.inject.Inject
 
 @AndroidEntryPoint

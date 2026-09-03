@@ -21,8 +21,8 @@ import com.mlord.list.ui.model.MangaDetailedListModel
 import com.mlord.list.ui.model.MangaGridModel
 import com.mlord.list.ui.model.MangaListModel
 import com.mlord.local.data.index.LocalMangaIndex
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaTag
 import com.mlord.tracker.domain.TrackingRepository
 import com.mlord.tracker.domain.model.TrackingLogItem
 import com.mlord.tracker.ui.feed.model.FeedItem

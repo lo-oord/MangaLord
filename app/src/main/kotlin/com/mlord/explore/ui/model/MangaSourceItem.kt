@@ -2,7 +2,7 @@ package com.mlord.explore.ui.model
 
 import com.mlord.core.model.MangaSourceInfo
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.util.longHashCode
+import org.koitharu.kotatsu.parsers.util.longHashCode
 
 data class MangaSourceItem(
 	val source: MangaSourceInfo,

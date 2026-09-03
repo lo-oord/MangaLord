@@ -27,8 +27,8 @@ import com.mlord.list.domain.ReadingProgress
 import com.mlord.list.ui.model.ListModel
 import com.mlord.list.ui.model.LoadingFooter
 import com.mlord.list.ui.model.LoadingState
-import com.mlord.parsers.util.ifZero
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.ifZero
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.scrobbling.common.domain.Scrobbler
 import com.mlord.scrobbling.common.domain.model.ScrobblerManga
 import com.mlord.scrobbling.common.domain.model.ScrobblingStatus

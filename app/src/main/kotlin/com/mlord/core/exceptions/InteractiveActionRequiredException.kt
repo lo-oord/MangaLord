@@ -1,7 +1,7 @@
 package com.mlord.core.exceptions
 
 import okio.IOException
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaSource
 
 class InteractiveActionRequiredException(
 	val source: MangaSource,

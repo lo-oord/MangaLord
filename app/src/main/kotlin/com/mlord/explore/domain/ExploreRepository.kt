@@ -7,11 +7,11 @@ import com.mlord.core.util.ext.asArrayList
 import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.explore.data.MangaSourcesRepository
 import com.mlord.history.data.HistoryRepository
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.util.almostEquals
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.util.almostEquals
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import com.mlord.suggestions.domain.TagsBlacklist
 import javax.inject.Inject
 

@@ -13,11 +13,11 @@ import com.mlord.core.util.ext.printStackTraceDebug
 import com.mlord.history.data.HistoryRepository
 import com.mlord.local.data.LocalMangaRepository
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.util.findById
-import com.mlord.parsers.util.recoverCatchingCancellable
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.util.findById
+import org.koitharu.kotatsu.parsers.util.recoverCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import javax.inject.Inject
 
 class DeleteReadChaptersUseCase @Inject constructor(

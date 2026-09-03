@@ -3,8 +3,8 @@ package com.mlord.bookmarks.domain
 import com.mlord.core.util.MimeTypes
 import com.mlord.core.util.ext.isImage
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaPage
 import java.time.Instant
 
 data class Bookmark(

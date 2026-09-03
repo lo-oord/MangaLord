@@ -14,12 +14,12 @@ import kotlinx.serialization.encoding.encodeStructure
 import kotlinx.serialization.serializer
 import com.mlord.core.model.MangaSource
 import com.mlord.core.util.ext.toLocaleOrNull
-import com.mlord.parsers.model.ContentRating
-import com.mlord.parsers.model.ContentType
-import com.mlord.parsers.model.Demographic
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaState
-import com.mlord.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.ContentRating
+import org.koitharu.kotatsu.parsers.model.ContentType
+import org.koitharu.kotatsu.parsers.model.Demographic
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaState
+import org.koitharu.kotatsu.parsers.model.MangaTag
 import java.util.Locale
 
 object MangaListFilterSerializer : KSerializer<MangaListFilter> {

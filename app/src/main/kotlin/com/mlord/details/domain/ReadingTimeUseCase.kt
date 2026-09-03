@@ -4,7 +4,7 @@ import com.mlord.core.model.MangaHistory
 import com.mlord.core.prefs.AppSettings
 import com.mlord.details.data.MangaDetails
 import com.mlord.details.data.ReadingTime
-import com.mlord.parsers.util.findById
+import org.koitharu.kotatsu.parsers.util.findById
 import com.mlord.stats.data.StatsRepository
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject

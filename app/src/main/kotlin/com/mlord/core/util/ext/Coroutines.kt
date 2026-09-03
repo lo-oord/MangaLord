@@ -12,8 +12,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
 import com.mlord.core.util.AcraCoroutineErrorHandler
 import com.mlord.core.util.RetainedLifecycleCoroutineScope
-import com.mlord.parsers.util.cancelAll
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.cancelAll
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 import kotlin.coroutines.cancellation.CancellationException

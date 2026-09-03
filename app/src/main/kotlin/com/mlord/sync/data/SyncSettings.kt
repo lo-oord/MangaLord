@@ -7,7 +7,7 @@ import androidx.annotation.WorkerThread
 import dagger.hilt.android.qualifiers.ApplicationContext
 import com.mlord.R
 import com.mlord.core.util.ext.isHttpUrl
-import com.mlord.parsers.util.ifNullOrEmpty
+import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 import javax.inject.Inject
 
 class SyncSettings(

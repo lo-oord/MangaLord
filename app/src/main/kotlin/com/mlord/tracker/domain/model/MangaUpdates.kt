@@ -1,9 +1,9 @@
 package com.mlord.tracker.domain.model
 
-import com.mlord.parsers.exception.TooManyRequestExceptions
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.util.ifZero
+import org.koitharu.kotatsu.parsers.exception.TooManyRequestExceptions
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.util.ifZero
 
 sealed interface MangaUpdates {
 

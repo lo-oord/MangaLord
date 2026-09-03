@@ -2,7 +2,7 @@ package com.mlord.details.ui.pager.pages
 
 import coil3.key.Keyer
 import coil3.request.Options
-import com.mlord.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.model.MangaPage
 
 class MangaPageKeyer : Keyer<MangaPage> {
 

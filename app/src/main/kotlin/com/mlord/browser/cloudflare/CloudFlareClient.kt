@@ -5,7 +5,7 @@ import android.webkit.WebView
 import com.mlord.browser.BrowserClient
 import com.mlord.core.network.cookies.MutableCookieJar
 import com.mlord.core.network.webview.adblock.AdBlock
-import com.mlord.parsers.network.CloudFlareHelper
+import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
 
 private const val LOOP_COUNTER = 3
 

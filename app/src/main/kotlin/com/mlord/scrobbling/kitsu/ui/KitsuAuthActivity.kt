@@ -17,7 +17,7 @@ import com.mlord.core.ui.BaseActivity
 import com.mlord.core.ui.util.DefaultTextWatcher
 import com.mlord.core.util.ext.consume
 import com.mlord.databinding.ActivityKitsuAuthBinding
-import com.mlord.parsers.util.urlEncoded
+import org.koitharu.kotatsu.parsers.util.urlEncoded
 
 class KitsuAuthActivity : BaseActivity<ActivityKitsuAuthBinding>(),
 	View.OnClickListener,

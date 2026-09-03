@@ -2,7 +2,7 @@ package com.mlord.list.domain
 
 import androidx.annotation.StringRes
 import com.mlord.R
-import com.mlord.parsers.util.find
+import org.koitharu.kotatsu.parsers.util.find
 import java.util.EnumSet
 
 enum class ListSortOrder(

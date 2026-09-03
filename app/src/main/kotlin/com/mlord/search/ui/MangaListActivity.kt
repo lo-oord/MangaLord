@@ -46,10 +46,10 @@ import com.mlord.filter.ui.sheet.FilterSheetFragment
 import com.mlord.list.ui.preview.PreviewFragment
 import com.mlord.local.ui.LocalListFragment
 import com.mlord.main.ui.owners.AppBarOwner
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaListFilter
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.SortOrder
 import com.mlord.remotelist.ui.RemoteListFragment
 import kotlin.math.absoluteValue
 import com.google.android.material.R as materialR

@@ -8,9 +8,9 @@ import okhttp3.Request
 import com.mlord.BuildConfig
 import com.mlord.core.network.MangaHttpClient
 import com.mlord.core.prefs.AppSettings
-import com.mlord.parsers.model.MangaParserSource
-import com.mlord.parsers.util.await
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.MangaParserSource
+import org.koitharu.kotatsu.parsers.util.await
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.util.EnumSet
 import javax.inject.Inject
 

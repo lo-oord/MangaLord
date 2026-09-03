@@ -9,8 +9,8 @@ import android.provider.DocumentsContract
 import android.provider.OpenableColumns
 import androidx.annotation.RequiresApi
 import androidx.core.net.toFile
-import com.mlord.parsers.util.nullIfEmpty
-import com.mlord.parsers.util.removeSuffix
+import org.koitharu.kotatsu.parsers.util.nullIfEmpty
+import org.koitharu.kotatsu.parsers.util.removeSuffix
 import java.io.File
 import java.lang.reflect.Array as ArrayReflect
 

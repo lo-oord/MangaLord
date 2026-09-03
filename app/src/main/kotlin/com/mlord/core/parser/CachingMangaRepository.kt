@@ -14,10 +14,10 @@ import com.mlord.core.cache.MemoryContentCache
 import com.mlord.core.cache.SafeDeferred
 import com.mlord.core.util.MultiMutex
 import com.mlord.core.util.ext.processLifecycleScope
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.model.MangaPage
-import com.mlord.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 
 abstract class CachingMangaRepository(
 	private val cache: MemoryContentCache,

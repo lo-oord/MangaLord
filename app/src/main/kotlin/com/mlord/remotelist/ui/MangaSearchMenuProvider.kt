@@ -11,7 +11,7 @@ import com.mlord.core.ui.util.ReversibleAction
 import com.mlord.core.util.ext.call
 import com.mlord.filter.ui.FilterCoordinator
 import com.mlord.list.ui.MangaListViewModel
-import com.mlord.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaListFilter
 
 class MangaSearchMenuProvider(
 	private val filter: FilterCoordinator,

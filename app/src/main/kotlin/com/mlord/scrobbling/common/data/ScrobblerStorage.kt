@@ -3,7 +3,7 @@ package com.mlord.scrobbling.common.data
 import android.content.Context
 import androidx.core.content.edit
 import org.jsoup.internal.StringUtil.StringJoiner
-import com.mlord.parsers.util.nullIfEmpty
+import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 import com.mlord.scrobbling.common.domain.model.ScrobblerService
 import com.mlord.scrobbling.common.domain.model.ScrobblerUser
 

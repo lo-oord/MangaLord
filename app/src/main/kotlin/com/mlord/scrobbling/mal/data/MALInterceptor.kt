@@ -4,8 +4,8 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import okio.IOException
 import com.mlord.core.network.CommonHeaders
-import com.mlord.parsers.util.mimeType
-import com.mlord.parsers.util.parseHtml
+import org.koitharu.kotatsu.parsers.util.mimeType
+import org.koitharu.kotatsu.parsers.util.parseHtml
 import com.mlord.scrobbling.common.data.ScrobblerStorage
 import com.mlord.scrobbling.common.domain.ScrobblerAuthRequiredException
 import com.mlord.scrobbling.common.domain.model.ScrobblerService

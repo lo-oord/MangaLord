@@ -34,8 +34,8 @@ import com.mlord.core.util.ext.isZipUri
 import com.mlord.core.util.ext.toFileNameSafe
 import com.mlord.core.util.ext.toFileOrNull
 import com.mlord.core.util.ext.writeAllCancellable
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaPage
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaPage
 import com.mlord.reader.domain.PageLoader
 import java.io.File
 import java.text.SimpleDateFormat

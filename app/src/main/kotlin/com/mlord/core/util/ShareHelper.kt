@@ -8,7 +8,7 @@ import androidx.core.content.FileProvider
 import com.mlord.BuildConfig
 import com.mlord.R
 import com.mlord.core.model.appUrl
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import java.io.File
 
 private const val TYPE_TEXT = "text/plain"

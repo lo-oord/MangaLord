@@ -29,7 +29,7 @@ import com.mlord.list.ui.adapter.emptyStateListAD
 import com.mlord.list.ui.adapter.loadingFooterAD
 import com.mlord.list.ui.adapter.loadingStateAD
 import com.mlord.list.ui.model.ListModel
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import javax.inject.Inject
 
 @AndroidEntryPoint

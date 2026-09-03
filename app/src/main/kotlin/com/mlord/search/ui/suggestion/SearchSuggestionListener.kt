@@ -2,9 +2,9 @@ package com.mlord.search.ui.suggestion
 
 import android.text.TextWatcher
 import android.widget.TextView
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.model.MangaTag
 import com.mlord.search.domain.SearchKind
 
 interface SearchSuggestionListener : TextWatcher, TextView.OnEditorActionListener {

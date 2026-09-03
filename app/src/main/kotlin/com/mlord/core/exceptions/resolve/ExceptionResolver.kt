@@ -27,10 +27,10 @@ import com.mlord.core.ui.dialog.buildAlertDialog
 import com.mlord.core.util.ext.isHttpUrl
 import com.mlord.core.util.ext.restartApplication
 import com.mlord.details.ui.pager.EmptyMangaReason
-import com.mlord.parsers.exception.AuthRequiredException
-import com.mlord.parsers.exception.NotFoundException
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.exception.AuthRequiredException
+import org.koitharu.kotatsu.parsers.exception.NotFoundException
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaSource
 import com.mlord.scrobbling.common.domain.ScrobblerAuthRequiredException
 import com.mlord.scrobbling.common.ui.ScrobblerAuthHelper
 import com.mlord.settings.sources.auth.SourceAuthActivity

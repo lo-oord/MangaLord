@@ -10,7 +10,7 @@ import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.badge.BadgeUtils
 import com.google.android.material.badge.ExperimentalBadgeUtils
 import com.mlord.R
-import com.mlord.parsers.util.nullIfEmpty
+import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 
 @Deprecated("")
 @CheckResult

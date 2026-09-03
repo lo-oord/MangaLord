@@ -3,7 +3,7 @@ package com.mlord.core.network.webview
 import android.graphics.Bitmap
 import android.webkit.WebView
 import com.mlord.core.network.cookies.MutableCookieJar
-import com.mlord.parsers.network.CloudFlareHelper
+import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
 import kotlin.coroutines.Continuation
 
 class CaptchaContinuationClient(

@@ -17,11 +17,11 @@ import com.mlord.core.os.AppValidator
 import com.mlord.core.prefs.AppSettings
 import com.mlord.core.util.ext.asArrayList
 import com.mlord.core.util.ext.printStackTraceDebug
-import com.mlord.parsers.util.await
-import com.mlord.parsers.util.json.mapJSONNotNull
-import com.mlord.parsers.util.parseJsonArray
-import com.mlord.parsers.util.runCatchingCancellable
-import com.mlord.parsers.util.suspendlazy.getOrNull
+import org.koitharu.kotatsu.parsers.util.await
+import org.koitharu.kotatsu.parsers.util.json.mapJSONNotNull
+import org.koitharu.kotatsu.parsers.util.parseJsonArray
+import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
+import org.koitharu.kotatsu.parsers.util.suspendlazy.getOrNull
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -24,8 +24,8 @@ import com.mlord.core.util.ext.checkNotificationPermission
 import com.mlord.core.util.ext.getQuantityStringSafe
 import com.mlord.core.util.ext.mangaSourceExtra
 import com.mlord.core.util.ext.toBitmapOrNull
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
 import javax.inject.Inject
 
 class TrackerNotificationHelper @Inject constructor(

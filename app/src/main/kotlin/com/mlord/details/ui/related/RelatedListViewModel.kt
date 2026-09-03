@@ -28,7 +28,7 @@ import com.mlord.list.ui.model.LoadingState
 import com.mlord.list.ui.model.toErrorState
 import com.mlord.local.data.LocalStorageChanges
 import com.mlord.local.domain.model.LocalManga
-import com.mlord.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.Manga
 import javax.inject.Inject
 
 @HiltViewModel

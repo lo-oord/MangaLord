@@ -23,8 +23,8 @@ import com.mlord.core.prefs.AppSettings
 import com.mlord.core.util.ext.lifecycleScope
 import com.mlord.explore.data.MangaSourcesRepository
 import com.mlord.explore.data.SourcesSortOrder
-import com.mlord.parsers.model.MangaParserSource
-import com.mlord.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.model.MangaParserSource
+import org.koitharu.kotatsu.parsers.util.mapToSet
 import com.mlord.settings.sources.model.SourceConfigItem
 import javax.inject.Inject
 

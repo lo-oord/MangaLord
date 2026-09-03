@@ -6,7 +6,7 @@ import coil3.request.ImageResult
 import com.mlord.core.model.unwrap
 import com.mlord.core.network.CommonHeaders
 import com.mlord.core.util.ext.mangaSourceKey
-import com.mlord.parsers.model.MangaParserSource
+import org.koitharu.kotatsu.parsers.model.MangaParserSource
 
 class MangaSourceHeaderInterceptor : Interceptor {
 

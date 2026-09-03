@@ -20,7 +20,7 @@ import com.mlord.core.ui.util.ActivityRecreationHandle
 import com.mlord.list.ui.model.ListModel
 import com.mlord.main.ui.MainActivity
 import com.mlord.main.ui.MainNavigationDelegate
-import com.mlord.parsers.util.move
+import org.koitharu.kotatsu.parsers.util.move
 import com.mlord.settings.nav.model.NavItemAddModel
 import com.mlord.settings.nav.model.NavItemConfigModel
 import javax.inject.Inject

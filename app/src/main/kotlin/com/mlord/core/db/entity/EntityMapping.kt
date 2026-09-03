@@ -1,17 +1,17 @@
 package com.mlord.core.db.entity
 
 import com.mlord.core.model.MangaSource
-import com.mlord.parsers.model.ContentRating
-import com.mlord.parsers.model.Manga
-import com.mlord.parsers.model.MangaChapter
-import com.mlord.parsers.model.MangaState
-import com.mlord.parsers.model.MangaTag
-import com.mlord.parsers.model.SortOrder
-import com.mlord.parsers.util.longHashCode
-import com.mlord.parsers.util.mapToSet
-import com.mlord.parsers.util.nullIfEmpty
-import com.mlord.parsers.util.toArraySet
-import com.mlord.parsers.util.toTitleCase
+import org.koitharu.kotatsu.parsers.model.ContentRating
+import org.koitharu.kotatsu.parsers.model.Manga
+import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.MangaState
+import org.koitharu.kotatsu.parsers.model.MangaTag
+import org.koitharu.kotatsu.parsers.model.SortOrder
+import org.koitharu.kotatsu.parsers.util.longHashCode
+import org.koitharu.kotatsu.parsers.util.mapToSet
+import org.koitharu.kotatsu.parsers.util.nullIfEmpty
+import org.koitharu.kotatsu.parsers.util.toArraySet
+import org.koitharu.kotatsu.parsers.util.toTitleCase
 
 private const val VALUES_DIVIDER = '\n'
 

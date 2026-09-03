@@ -5,8 +5,8 @@ import okhttp3.Response
 import okio.IOException
 import com.mlord.core.exceptions.CloudFlareBlockedException
 import com.mlord.core.exceptions.CloudFlareProtectedException
-import com.mlord.parsers.model.MangaSource
-import com.mlord.parsers.network.CloudFlareHelper
+import org.koitharu.kotatsu.parsers.model.MangaSource
+import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
 
 class CloudFlareInterceptor : Interceptor {
 

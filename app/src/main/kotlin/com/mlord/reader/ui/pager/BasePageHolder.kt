@@ -25,7 +25,7 @@ import com.mlord.core.util.ext.isLowRamDevice
 import com.mlord.core.util.ext.isSerializable
 import com.mlord.core.util.ext.observe
 import com.mlord.databinding.LayoutPageInfoBinding
-import com.mlord.parsers.util.ifZero
+import org.koitharu.kotatsu.parsers.util.ifZero
 import com.mlord.reader.domain.PageLoader
 import com.mlord.reader.ui.config.ReaderSettings
 import com.mlord.reader.ui.pager.vm.PageState
