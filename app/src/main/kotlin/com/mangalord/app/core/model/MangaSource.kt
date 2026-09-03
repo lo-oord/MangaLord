@@ -68,9 +68,10 @@ val ContentType.titleResId
 		ContentType.OTHER -> R.string.content_type_other
 		ContentType.MANHWA -> R.string.content_type_manhwa
 		ContentType.MANHUA -> R.string.content_type_manhua
-		ContentType.NOVEL -> R.string.content_type_novel
-		ContentType.ANIME -> R.string.content_type_anime
-		ContentType.ONE_SHOT -> R.string.content_type_one_shot
+			ContentType.NOVEL -> R.string.content_type_novel
+			ContentType.ANIME -> R.string.content_type_anime
+			ContentType.MOVIES_SERIES -> R.string.content_type_movies_series
+			ContentType.ONE_SHOT -> R.string.content_type_one_shot
 		ContentType.DOUJINSHI -> R.string.content_type_doujinshi
 		ContentType.IMAGE_SET -> R.string.content_type_image_set
 		ContentType.ARTIST_CG -> R.string.content_type_artist_cg

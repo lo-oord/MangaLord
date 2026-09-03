@@ -26,6 +26,9 @@ public enum class ContentType {
 	/** Streamed anime series whose chapters represent playable episodes. */
 	ANIME,
 
+	/** Movies and television series represented as playable episodes. */
+	MOVIES_SERIES,
+
 	/**
 	 * Use this type if no other suits your needs. For example, for an indie manga
 	 */
