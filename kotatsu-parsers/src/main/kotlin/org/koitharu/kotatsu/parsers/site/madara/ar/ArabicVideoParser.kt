@@ -16,19 +16,27 @@ internal abstract class ArabicVideoParser(
 
     protected suspend fun extractDirectStreams(chapter: MangaChapter): List<AnimeStream> {
         val page = webClient.httpGet(chapter.url.toAbsoluteUrl(domain)).parseHtml()
-        return page.select("video source[src], video[src], source[src], a[href]")
+        val selectors = "video source[src], video[src], source[src], iframe[src], a[href], [data-video], [data-src], [data-url]"
+        return page.select(selectors)
             .mapNotNull { element ->
-                val url = element.attr("src").ifBlank { element.attr("href") }
-                    .toAbsoluteUrl(domain)
+                val rawUrl = sequenceOf(
+                    element.attr("src"), element.attr("href"), element.attr("data-video"),
+                    element.attr("data-src"), element.attr("data-url"),
+                ).map(String::trim).firstOrNull(String::isNotEmpty) ?: return@mapNotNull null
+                val url = rawUrl.toAbsoluteUrl(domain)
                 val lower = url.lowercase()
-                if (!lower.contains(".m3u8") && !lower.contains(".mp4")) return@mapNotNull null
+                if (!lower.contains(".m3u8") && !lower.contains(".mp4") && !lower.contains(".m4v")) {
+                    return@mapNotNull null
+                }
+                val quality = element.attr("label").ifBlank { element.attr("data-quality") }
+                    .ifBlank { element.attr("title") }.takeIf(String::isNotBlank)
                 AnimeStream(
-                    name = element.attr("label").ifBlank { element.attr("title") }.ifBlank { source.title },
+                    name = quality?.let { "${source.title} • $it" } ?: source.title,
                     url = url,
                     headers = mapOf("Referer" to "https://$domain/"),
-                    quality = element.attr("label").ifBlank { null },
+                    quality = quality,
                 )
             }
-            .distinctBy { it.url }
+            .distinctBy(AnimeStream::url)
     }
 }

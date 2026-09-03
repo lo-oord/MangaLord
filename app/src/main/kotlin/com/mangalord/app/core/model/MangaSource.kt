@@ -57,7 +57,7 @@ fun MangaSource.isNsfw(): Boolean = when (this) {
 }
 
 fun MangaSource.isAnimeSource(): Boolean =
-	(unwrap() as? MangaParserSource)?.contentType == ContentType.ANIME
+	(unwrap() as? MangaParserSource)?.contentType in setOf(ContentType.ANIME, ContentType.MOVIES_SERIES)
 
 @get:StringRes
 val ContentType.titleResId

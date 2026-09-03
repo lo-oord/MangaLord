@@ -38,7 +38,13 @@ internal class MovieBox(context: MangaLoaderContext) :
     private fun parseCard(element: Element): Manga? {
         val url = element.attr("href").trim().takeIf { it.startsWith("/detail/") } ?: return null
         val title = element.text().trim().takeIf { it.isNotEmpty() } ?: return null
-        val image = element.selectFirst("img")?.let { it.attr("src").ifBlank { it.attr("data-src") } }
+        val imageElement = element.selectFirst("img") ?: element.parent()?.selectFirst("img")
+        val image = imageElement?.let {
+            listOf("src", "data-src", "data-original", "data-lazy-src", "data-image").asSequence()
+                .map { attribute -> it.attr(attribute).trim() }
+                .firstOrNull(String::isNotEmpty)
+                ?: it.attr("srcset").substringBefore(',').trim().substringBefore(' ')
+        }
         return Manga(
             id = generateUid(url), url = url, publicUrl = url.toAbsoluteUrl(domain),
             altTitles = emptySet(), title = title, authors = emptySet(),
@@ -54,7 +60,12 @@ internal class MovieBox(context: MangaLoaderContext) :
         val subject = json.optJSONObject("data")?.optJSONObject("subject") ?: return manga
         val subjectId = subject.optString("subjectId").takeIf { it.isNotBlank() } ?: return manga
         val title = subject.optString("title").takeIf { it.isNotBlank() } ?: manga.title
-        val cover = subject.optJSONObject("cover")?.optString("url")?.takeIf { it.isNotBlank() } ?: manga.coverUrl
+        val coverObject = subject.optJSONObject("cover")
+        val cover = listOf(
+            coverObject?.optString("url"),
+            coverObject?.optString("thumbnail"),
+            subject.optString("coverUrl"),
+        ).firstOrNull { !it.isNullOrBlank() } ?: manga.coverUrl
         val chapter = MangaChapter(
             id = generateUid("$subjectId:$detailPath:1:1"), title = title, number = 1f, volume = 0,
             url = "/detail/$detailPath?subjectId=$subjectId&se=1&ep=1", scanlator = null,
