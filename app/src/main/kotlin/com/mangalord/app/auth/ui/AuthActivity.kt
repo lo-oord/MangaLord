@@ -5,11 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuthEmailException
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -117,8 +115,7 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
         val message = when (error) {
             is FirebaseAuthWeakPasswordException -> R.string.auth_weak_password
             is FirebaseAuthUserCollisionException -> R.string.auth_email_in_use
-            is FirebaseAuthInvalidCredentialsException, is FirebaseAuthInvalidUserException,
-            is FirebaseAuthEmailException -> R.string.auth_invalid_credentials
+            is FirebaseAuthInvalidCredentialsException, is FirebaseAuthInvalidUserException -> R.string.auth_invalid_credentials
             else -> null
         }
         if (message != null) toast(message) else Snackbar.make(viewBinding.root, error.localizedMessage ?: getString(R.string.operation_not_supported), Snackbar.LENGTH_LONG).show()
