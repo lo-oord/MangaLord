@@ -39,6 +39,7 @@ import kotlinx.coroutines.flow.filterNot
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import com.mangalord.app.R
+import com.mangalord.app.auth.AuthGate
 import com.mangalord.app.bookmarks.domain.Bookmark
 import com.mangalord.app.core.image.CoilMemoryCacheKey
 import com.mangalord.app.core.model.FavouriteCategory
@@ -226,6 +227,7 @@ class DetailsActivity :
 			}
 
 			R.id.chip_favorite -> {
+				if (!AuthGate.requireSignIn(this)) return
 				val manga = viewModel.getMangaOrNull() ?: return
 				router.showFavoriteDialog(manga)
 			}

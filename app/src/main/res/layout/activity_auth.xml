@@ -97,6 +97,15 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/continue_with_google" />
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonSignOut"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/sign_out"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/buttonForgotPassword"
                 android:layout_width="match_parent"

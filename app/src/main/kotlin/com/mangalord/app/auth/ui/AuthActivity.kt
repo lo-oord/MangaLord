@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
@@ -52,6 +53,11 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
         setDisplayHomeAsUp(true, true)
         viewBinding.buttonEmailSignIn.setOnClickListener { runAuth { authRepository.signInWithEmail(email(), password()) } }
         viewBinding.buttonCreateAccount.setOnClickListener { runAuth { authRepository.createAccount(email(), password()) } }
+        viewBinding.buttonSignOut.isVisible = authRepository.isSignedIn()
+        viewBinding.buttonSignOut.setOnClickListener {
+            authRepository.signOut()
+            finish()
+        }
         viewBinding.buttonGoogle.setOnClickListener {
             val client = GoogleSignIn.getClient(this, authRepository.googleSignInOptions(this))
             googleLauncher.launch(client.signInIntent)

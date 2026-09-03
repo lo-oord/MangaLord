@@ -65,5 +65,7 @@ class FirebaseAuthRepository @Inject constructor(
         auth.signOut()
     }
 
+    fun isSignedIn(): Boolean = auth.currentUser != null
+
     fun isEmailVerified(): Boolean = auth.currentUser?.isEmailVerified == true
 }
