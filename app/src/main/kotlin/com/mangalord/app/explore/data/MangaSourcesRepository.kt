@@ -421,6 +421,11 @@ class MangaSourcesRepository @Inject constructor(
 			"MANGAREAD",       // Manga Read
 			"ROCKSMANGA",      // Rocks Manga
 			"KLZ9",            // Klz9
+			"ANIME3RB",       // Anime3rb
+			"ANIME_PHOENIX",  // Anime Phoenix
+			"ANIME_SLAYER",   // Anime Slayer
+			"ANIME_WITCHER",  // AnimeWitcher
+			"ANIME_RISTO",    // RistoAnime
 		)
 	}
 }
