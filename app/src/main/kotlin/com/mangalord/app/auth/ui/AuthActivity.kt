@@ -2,6 +2,7 @@ package com.mangalord.app.auth.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseUser
@@ -11,6 +12,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.auth.api.signin.GoogleSignInStatusCodes
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -32,19 +34,25 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
     private val googleLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
     ) { result ->
-        if (result.resultCode != RESULT_OK) return@registerForActivityResult
+        Log.d(TAG, "Google account result received: resultCode=${result.resultCode}")
         val account = runCatching {
             GoogleSignIn.getSignedInAccountFromIntent(result.data)
                 .getResult(ApiException::class.java)
         }.getOrElse { error ->
+            Log.e(TAG, "Google credential retrieval failed", error)
             showError(error)
             return@registerForActivityResult
         }
+        Log.d(TAG, "Google account selected; credential received")
         val token = account.idToken
         if (token.isNullOrBlank()) {
+            Log.e(TAG, "Google credential did not contain an ID token")
             showError(IllegalStateException("Google ID token is missing"))
-        } else {
-            runAuth(requiresPassword = false, validateEmail = false) { authRepository.signInWithGoogle(token) }
+            return@registerForActivityResult
+        }
+        Log.d(TAG, "Firebase authentication started with Google credential")
+        runAuth(requiresPassword = false, validateEmail = false) {
+            authRepository.signInWithGoogle(token)
         }
     }
 
@@ -83,8 +91,12 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
             }
         }
         viewBinding.buttonGoogle.setOnClickListener {
+            Log.d(TAG, "Google button clicked; launching account picker")
+            viewBinding.buttonGoogle.isEnabled = false
             val client = GoogleSignIn.getClient(this, authRepository.googleSignInOptions(this))
-            googleLauncher.launch(client.signInIntent)
+            client.signOut().addOnCompleteListener {
+                googleLauncher.launch(client.signInIntent)
+            }
         }
         viewBinding.buttonForgotPassword.setOnClickListener {
             val email = email()
@@ -131,6 +143,8 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
             runCatching { block() }
                 .onSuccess {
                     viewBinding.progress.visibility = View.GONE
+                    viewBinding.buttonGoogle.isEnabled = true
+                    Log.d(TAG, "Firebase authentication succeeded")
                     val user = authRepository.reloadUser()
                     if (user != null && !user.isEmailVerified && user.providerData.none { it.providerId == "google.com" }) {
                         viewBinding.textVerification.text = getString(R.string.email_verification_required)
@@ -143,6 +157,8 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
                 }
                 .onFailure {
                     viewBinding.progress.visibility = View.GONE
+                    viewBinding.buttonGoogle.isEnabled = true
+                    Log.e(TAG, "Authentication failed", it)
                     showError(it)
                 }
         }
@@ -150,12 +166,17 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
 
     private fun showError(error: Throwable) {
         val message = when (error) {
+            is ApiException -> when (error.statusCode) {
+                GoogleSignInStatusCodes.SIGN_IN_CANCELLED -> R.string.google_sign_in_cancelled
+                else -> R.string.google_sign_in_failed
+            }
             is FirebaseAuthWeakPasswordException -> R.string.auth_weak_password
             is FirebaseAuthUserCollisionException -> R.string.auth_email_in_use
             is FirebaseAuthInvalidCredentialsException, is FirebaseAuthInvalidUserException -> R.string.auth_invalid_credentials
             else -> null
         }
-        if (message != null) toast(message) else Snackbar.make(viewBinding.root, error.localizedMessage ?: getString(R.string.operation_not_supported), Snackbar.LENGTH_LONG).show()
+        if (message != null) toast(message)
+        else Snackbar.make(viewBinding.root, getString(R.string.google_sign_in_failed), Snackbar.LENGTH_LONG).show()
     }
 
     private fun showProfile(user: FirebaseUser) {
@@ -172,4 +193,8 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
     }
 
     private fun toast(message: Int) = Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+
+    private companion object {
+        const val TAG = "AuthActivity"
+    }
 }

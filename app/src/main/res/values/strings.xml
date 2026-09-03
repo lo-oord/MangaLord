@@ -999,4 +999,6 @@ For project-related questions, use the contact or source-code link shown in the 
     <string name="profile_name">Username</string>
     <string name="save_profile">Save profile</string>
     <string name="profile_saved">Profile saved</string>
+    <string name="google_sign_in_cancelled">Google sign-in was cancelled.</string>
+    <string name="google_sign_in_failed">Unable to sign in with Google. Please try again.</string>
 </resources>

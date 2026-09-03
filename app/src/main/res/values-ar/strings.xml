@@ -807,4 +807,6 @@
     <string name="tags_warnings_summary">ابراز التصنيفات التي قد تكون غير مناسبة لغالبية المستخدين.</string>
     <string name="error_non_file_uri">لا يمكن استخدام المسار المحدد لأنه لا يشير إلى ملف أو دليل.</string>
     <string name="manga_override_hint">ستؤثر هذه التغييرات على كيفية عرض المانجا في التطبيق.</string>
+    <string name="google_sign_in_cancelled">تم إلغاء تسجيل الدخول باستخدام Google.</string>
+    <string name="google_sign_in_failed">تعذر تسجيل الدخول باستخدام Google. يرجى المحاولة مرة أخرى.</string>
 </resources>
