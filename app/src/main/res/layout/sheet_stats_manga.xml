@@ -8,7 +8,7 @@
 	android:orientation="vertical"
 	android:paddingBottom="@dimen/screen_padding">
 
-	<com.mlord.app.core.ui.sheet.AdaptiveSheetHeaderBar
+	<com.mangalord.app.core.ui.sheet.AdaptiveSheetHeaderBar
 		android:id="@+id/headerBar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
 
 			</LinearLayout>
 
-			<com.mlord.app.stats.ui.views.BarChartView
+			<com.mangalord.app.stats.ui.views.BarChartView
 				android:id="@+id/chartView"
 				android:layout_width="match_parent"
 				android:layout_height="240dp"

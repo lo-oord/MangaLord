@@ -13,7 +13,7 @@
 		android:layout_height="wrap_content"
 		android:paddingBottom="?actionBarSize">
 
-		<com.mlord.app.image.ui.CoverImageView
+		<com.mangalord.app.image.ui.CoverImageView
 			android:id="@+id/imageView_cover"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
@@ -29,7 +29,7 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintWidth_percent="0.3"
-			app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Mlord.Cover"
+			app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MangaLord.Cover"
 			app:useExistingDrawable="true"
 			tools:background="@tools:sample/backgrounds/scenic[5]"
 			tools:ignore="ContentDescription,UnusedAttribute" />
@@ -149,7 +149,7 @@
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintTop_toTopOf="@id/button_read" />
 
-		<com.mlord.app.core.ui.widgets.ChipsView
+		<com.mangalord.app.core.ui.widgets.ChipsView
 			android:id="@+id/chips_tags"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@+id/button_read" />
 
-		<com.mlord.app.core.ui.widgets.SelectableTextView
+		<com.mangalord.app.core.ui.widgets.SelectableTextView
 			android:id="@+id/textView_description"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"

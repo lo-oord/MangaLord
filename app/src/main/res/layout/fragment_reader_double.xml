@@ -7,4 +7,4 @@
 	android:layout_height="match_parent"
 	android:defaultFocusHighlightEnabled="false"
 	android:orientation="horizontal"
-	app:layoutManager="com.mlord.app.reader.ui.pager.doublepage.DoublePageLayoutManager" />
+	app:layoutManager="com.mangalord.app.reader.ui.pager.doublepage.DoublePageLayoutManager" />

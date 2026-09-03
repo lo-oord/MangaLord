@@ -35,7 +35,7 @@
 		android:summary="@string/webtoon_zoom_summary"
 		android:title="@string/webtoon_zoom" />
 
-	<com.mlord.app.settings.utils.SliderPreference
+	<com.mangalord.app.settings.utils.SliderPreference
 		android:dependency="webtoon_zoom"
 		android:key="webtoon_zoom_out"
 		android:stepSize="10"

@@ -17,7 +17,7 @@
         android:title="@string/restore_backup" />
 
     <PreferenceScreen
-        android:fragment="com.mlord.app.backups.ui.periodical.PeriodicalBackupSettingsFragment"
+        android:fragment="com.mangalord.app.backups.ui.periodical.PeriodicalBackupSettingsFragment"
         android:key="backup_periodic"
         android:persistent="false"
         android:title="@string/periodic_backups" />

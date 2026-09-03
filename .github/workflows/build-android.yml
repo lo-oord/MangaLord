@@ -39,27 +39,27 @@ jobs:
       - name: Create CI signing key
         run: |
           keytool -genkeypair -v \
-            -keystore "$RUNNER_TEMP/mlord-release.keystore" \
-            -storepass mlord-ci-store-password \
-            -alias mlord-release \
-            -keypass mlord-ci-store-password \
+            -keystore "$RUNNER_TEMP/mangalord-release.keystore" \
+            -storepass mangalord-ci-store-password \
+            -alias mangalord-release \
+            -keypass mangalord-ci-store-password \
             -keyalg RSA \
             -keysize 2048 \
             -validity 10000 \
-            -dname "CN=Mlord CI, OU=Build, O=Mlord, L=Unknown, ST=Unknown, C=US"
+            -dname "CN=MangaLord CI, OU=Build, O=MangaLord, L=Unknown, ST=Unknown, C=US"
 
       - name: Build signed release APK
         env:
-          MLORD_SIGNING_STORE: ${{ runner.temp }}/mlord-release.keystore
-          MLORD_SIGNING_STORE_PASSWORD: ${{ secrets.MLORD_KEYSTORE_PASSWORD || 'mlord-ci-store-password' }}
-          MLORD_SIGNING_KEY_ALIAS: ${{ secrets.MLORD_KEY_ALIAS || 'mlord-release' }}
-          MLORD_SIGNING_KEY_PASSWORD: ${{ secrets.MLORD_KEY_PASSWORD || 'mlord-ci-store-password' }}
+          MANGALORD_SIGNING_STORE: ${{ runner.temp }}/mangalord-release.keystore
+          MANGALORD_SIGNING_STORE_PASSWORD: ${{ secrets.MANGALORD_KEYSTORE_PASSWORD || 'mangalord-ci-store-password' }}
+          MANGALORD_SIGNING_KEY_ALIAS: ${{ secrets.MANGALORD_KEY_ALIAS || 'mangalord-release' }}
+          MANGALORD_SIGNING_KEY_PASSWORD: ${{ secrets.MANGALORD_KEY_PASSWORD || 'mangalord-ci-store-password' }}
         run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: mlord-release-apk
+          name: mangalord-release-apk
           path: app/build/outputs/apk/release/*.apk
           if-no-files-found: error
           retention-days: 14
@@ -67,7 +67,7 @@ jobs:
       - name: Upload mapping files when available
         uses: actions/upload-artifact@v4
         with:
-          name: mlord-mapping-files
+          name: mangalord-mapping-files
           path: app/build/outputs/mapping/**/*.txt
           if-no-files-found: ignore
           retention-days: 14

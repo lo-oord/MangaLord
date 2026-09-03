@@ -15,16 +15,16 @@ plugins {
 android {
 	compileSdk = 36
 	buildToolsVersion = '35.0.0'
-	namespace = 'com.mlord.app'
+	namespace = 'com.mangalord.app'
 
 	defaultConfig {
-		applicationId 'com.mlord.app'
+		applicationId 'com.mangalord.app'
 		minSdk = 23
 		targetSdk = 36
-		versionCode = 10002
-		versionName = '1.0.2'
+		versionCode = 10003
+		versionName = '1.0.3'
 		generatedDensities = []
-		testInstrumentationRunner 'com.mlord.app.HiltTestRunner'
+		testInstrumentationRunner 'com.mangalord.app.HiltTestRunner'
 		ksp {
 			arg('room.generateKotlin', 'true')
 		}
@@ -41,12 +41,12 @@ android {
 	}
 	signingConfigs {
 		release {
-			def signingStore = System.getenv('MLORD_SIGNING_STORE')
+			def signingStore = System.getenv('MANGALORD_SIGNING_STORE')
 			if (signingStore != null) {
 				storeFile file(signingStore)
-				storePassword System.getenv('MLORD_SIGNING_STORE_PASSWORD')
-				keyAlias System.getenv('MLORD_SIGNING_KEY_ALIAS')
-				keyPassword System.getenv('MLORD_SIGNING_KEY_PASSWORD')
+				storePassword System.getenv('MANGALORD_SIGNING_STORE_PASSWORD')
+				keyAlias System.getenv('MANGALORD_SIGNING_KEY_ALIAS')
+				keyPassword System.getenv('MANGALORD_SIGNING_KEY_PASSWORD')
 			}
 		}
 	}
@@ -56,7 +56,7 @@ android {
 			applicationIdSuffix = '.debug'
 		}
 			release {
-			if (System.getenv('MLORD_SIGNING_STORE') != null) {
+			if (System.getenv('MANGALORD_SIGNING_STORE') != null) {
 				signingConfig signingConfigs.release
 			}
 			minifyEnabled true
@@ -125,7 +125,7 @@ android {
 			variant.outputs.each { output ->
 				def now = LocalDateTime.now()
 				output.versionCodeOverride = now.format("yyMMdd").toInteger()
-				output.versionNameOverride = '1.0.2'
+				output.versionNameOverride = '1.0.3'
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-Mlord is a free and open source manga reader for Android.
+MangaLord is a free and open source manga reader for Android.
 
 
 **Main Features:**

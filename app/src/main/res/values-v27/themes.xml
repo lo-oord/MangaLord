@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<style name="Base.V27.Mlord" parent="Base.Theme.Mlord">
+	<style name="Base.V27.MangaLord" parent="Base.Theme.MangaLord">
 		<item name="android:windowLightNavigationBar">@bool/light_navigation_bar</item>
 		<item name="android:navigationBarColor">@android:color/transparent</item>
 	</style>
 
-	<style name="Theme.Mlord" parent="Base.V27.Mlord" />
+	<style name="Theme.MangaLord" parent="Base.V27.MangaLord" />
 
 </resources>

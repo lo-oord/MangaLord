@@ -47,7 +47,7 @@
 			app:liftOnScroll="false"
 			app:liftOnScrollColor="@null">
 
-			<com.mlord.app.core.ui.widgets.WindowInsetHolder
+			<com.mangalord.app.core.ui.widgets.WindowInsetHolder
 				android:id="@+id/insetsHolder"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"

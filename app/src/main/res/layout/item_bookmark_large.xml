@@ -9,16 +9,16 @@
 	app:cardBackgroundColor="?attr/colorSurfaceContainerHighest"
 	tools:layout_width="140dp">
 
-	<com.mlord.app.image.ui.CoverImageView
+	<com.mangalord.app.image.ui.CoverImageView
 		android:id="@+id/imageView_thumb"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="horizontal"
-		app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Mlord.Cover"
+		app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MangaLord.Cover"
 		tools:ignore="ContentDescription"
 		tools:src="@tools:sample/backgrounds/scenic[5]" />
 
-	<com.mlord.app.history.ui.util.ReadingProgressView
+	<com.mangalord.app.history.ui.util.ReadingProgressView
 		android:id="@+id/progressView"
 		android:layout_width="@dimen/card_indicator_size"
 		android:layout_height="@dimen/card_indicator_size"

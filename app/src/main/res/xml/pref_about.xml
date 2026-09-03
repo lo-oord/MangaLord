@@ -16,14 +16,14 @@
 		android:title="@string/allow_unstable_updates" />
 
 	<Preference
-		android:fragment="com.mlord.app.settings.about.changelog.ChangelogFragment"
+		android:fragment="com.mangalord.app.settings.about.changelog.ChangelogFragment"
 		android:key="changelog"
 		android:persistent="false"
 		android:summary="@string/changelog_summary"
 		android:title="@string/changelog" />
 
 		<Preference
-			android:fragment="com.mlord.app.settings.about.privacy.PrivacyPolicyFragment"
+			android:fragment="com.mangalord.app.settings.about.privacy.PrivacyPolicyFragment"
 			android:key="privacy_policy"
 			android:persistent="false"
 			android:summary="@string/privacy_policy_summary"

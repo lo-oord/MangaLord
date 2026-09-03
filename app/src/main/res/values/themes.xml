@@ -2,42 +2,42 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
 	<!-- Base application theme. -->
-	<style name="Base.Theme.Mlord" parent="Theme.Material3.DayNight.NoActionBar">
+	<style name="Base.Theme.MangaLord" parent="Theme.Material3.DayNight.NoActionBar">
 
 		<!-- Theme Colors -->
-		<item name="colorPrimary">@color/mlord_primary</item>
-		<item name="colorPrimaryContainer">@color/mlord_primaryContainer</item>
-		<item name="colorOnPrimary">@color/mlord_onPrimary</item>
-		<item name="colorOnPrimaryContainer">@color/mlord_onPrimaryContainer</item>
-		<item name="colorPrimaryInverse">@color/mlord_inversePrimary</item>
-		<item name="colorSecondary">@color/mlord_secondary</item>
-		<item name="colorSecondaryContainer">@color/mlord_secondaryContainer</item>
-		<item name="colorOnSecondary">@color/mlord_onSecondary</item>
-		<item name="colorOnSecondaryContainer">@color/mlord_onSecondaryContainer</item>
-		<item name="colorTertiary">@color/mlord_tertiary</item>
-		<item name="colorTertiaryContainer">@color/mlord_tertiaryContainer</item>
-		<item name="colorOnTertiary">@color/mlord_onTertiary</item>
-		<item name="colorOnTertiaryContainer">@color/mlord_onTertiaryContainer</item>
-		<item name="colorSurface">@color/mlord_surface</item>
-		<item name="colorSurfaceDim">@color/mlord_surfaceDim</item>
-		<item name="colorSurfaceBright">@color/mlord_surfaceBright</item>
-		<item name="colorSurfaceContainerLowest">@color/mlord_surfaceContainerLowest</item>
-		<item name="colorSurfaceContainerLow">@color/mlord_surfaceContainerLow</item>
-		<item name="colorSurfaceContainer">@color/mlord_surfaceContainer</item>
-		<item name="colorSurfaceContainerHigh">@color/mlord_surfaceContainerHigh</item>
-		<item name="colorSurfaceContainerHighest">@color/mlord_surfaceContainerHighest</item>
-		<item name="colorSurfaceVariant">@color/mlord_surfaceVariant</item>
-		<item name="colorOnSurface">@color/mlord_onSurface</item>
-		<item name="colorOnSurfaceVariant">@color/mlord_onSurfaceVariant</item>
-		<item name="colorSurfaceInverse">@color/mlord_inverseSurface</item>
-		<item name="colorOnSurfaceInverse">@color/mlord_inverseOnSurface</item>
-		<item name="colorOnBackground">@color/mlord_onSurface</item>
+		<item name="colorPrimary">@color/mangalord_primary</item>
+		<item name="colorPrimaryContainer">@color/mangalord_primaryContainer</item>
+		<item name="colorOnPrimary">@color/mangalord_onPrimary</item>
+		<item name="colorOnPrimaryContainer">@color/mangalord_onPrimaryContainer</item>
+		<item name="colorPrimaryInverse">@color/mangalord_inversePrimary</item>
+		<item name="colorSecondary">@color/mangalord_secondary</item>
+		<item name="colorSecondaryContainer">@color/mangalord_secondaryContainer</item>
+		<item name="colorOnSecondary">@color/mangalord_onSecondary</item>
+		<item name="colorOnSecondaryContainer">@color/mangalord_onSecondaryContainer</item>
+		<item name="colorTertiary">@color/mangalord_tertiary</item>
+		<item name="colorTertiaryContainer">@color/mangalord_tertiaryContainer</item>
+		<item name="colorOnTertiary">@color/mangalord_onTertiary</item>
+		<item name="colorOnTertiaryContainer">@color/mangalord_onTertiaryContainer</item>
+		<item name="colorSurface">@color/mangalord_surface</item>
+		<item name="colorSurfaceDim">@color/mangalord_surfaceDim</item>
+		<item name="colorSurfaceBright">@color/mangalord_surfaceBright</item>
+		<item name="colorSurfaceContainerLowest">@color/mangalord_surfaceContainerLowest</item>
+		<item name="colorSurfaceContainerLow">@color/mangalord_surfaceContainerLow</item>
+		<item name="colorSurfaceContainer">@color/mangalord_surfaceContainer</item>
+		<item name="colorSurfaceContainerHigh">@color/mangalord_surfaceContainerHigh</item>
+		<item name="colorSurfaceContainerHighest">@color/mangalord_surfaceContainerHighest</item>
+		<item name="colorSurfaceVariant">@color/mangalord_surfaceVariant</item>
+		<item name="colorOnSurface">@color/mangalord_onSurface</item>
+		<item name="colorOnSurfaceVariant">@color/mangalord_onSurfaceVariant</item>
+		<item name="colorSurfaceInverse">@color/mangalord_inverseSurface</item>
+		<item name="colorOnSurfaceInverse">@color/mangalord_inverseOnSurface</item>
+		<item name="colorOnBackground">@color/mangalord_onSurface</item>
 		<item name="colorError">@color/error</item>
 		<item name="colorErrorContainer">@color/errorContainer</item>
 		<item name="colorOnError">@color/onError</item>
 		<item name="colorOnErrorContainer">@color/onErrorContainer</item>
-		<item name="colorOutline">@color/mlord_outline</item>
-		<item name="colorOutlineVariant">@color/mlord_outline</item>
+		<item name="colorOutline">@color/mangalord_outline</item>
+		<item name="colorOutlineVariant">@color/mangalord_outline</item>
 
 		<!-- Drawables (icons) -->
 		<item name="actionModeCloseDrawable">@drawable/abc_ic_clear_material</item>
@@ -54,39 +54,39 @@
 		<item name="windowActionModeOverlay">true</item>
 
 		<!-- System components styles -->
-		<item name="android:alertDialogTheme">@style/ThemeOverlay.Mlord.AlertDialog</item>
-		<item name="alertDialogTheme">@style/ThemeOverlay.Mlord.AlertDialog</item>
-		<item name="bottomSheetDialogTheme">@style/ThemeOverlay.Mlord.BottomSheetDialog</item>
-		<item name="sideSheetDialogTheme">@style/ThemeOverlay.Mlord.SideSheetDialog</item>
-		<item name="recyclerViewStyle">@style/Widget.Mlord.RecyclerView</item>
-		<item name="android:dropDownSpinnerStyle">@style/Widget.Mlord.Spinner.DropDown</item>
+		<item name="android:alertDialogTheme">@style/ThemeOverlay.MangaLord.AlertDialog</item>
+		<item name="alertDialogTheme">@style/ThemeOverlay.MangaLord.AlertDialog</item>
+		<item name="bottomSheetDialogTheme">@style/ThemeOverlay.MangaLord.BottomSheetDialog</item>
+		<item name="sideSheetDialogTheme">@style/ThemeOverlay.MangaLord.SideSheetDialog</item>
+		<item name="recyclerViewStyle">@style/Widget.MangaLord.RecyclerView</item>
+		<item name="android:dropDownSpinnerStyle">@style/Widget.MangaLord.Spinner.DropDown</item>
 		<item name="switchPreferenceCompatStyle">@style/Preference.SwitchPreferenceCompat.M3</item>
-		<item name="circularProgressIndicatorStyle">@style/Widget.Mlord.CircularProgressIndicator</item>
-		<item name="linearProgressIndicatorStyle">@style/Widget.Mlord.LinearProgressIndicator</item>
-		<item name="bottomSheetDragHandleStyle">@style/Widget.Mlord.BottomSheet.DragHandle</item>
-		<item name="preferenceTheme">@style/PreferenceThemeOverlay.Mlord</item>
+		<item name="circularProgressIndicatorStyle">@style/Widget.MangaLord.CircularProgressIndicator</item>
+		<item name="linearProgressIndicatorStyle">@style/Widget.MangaLord.LinearProgressIndicator</item>
+		<item name="bottomSheetDragHandleStyle">@style/Widget.MangaLord.BottomSheet.DragHandle</item>
+		<item name="preferenceTheme">@style/PreferenceThemeOverlay.MangaLord</item>
 		<!-- Fix crash in A15 -->
 		<item name="actionButtonStyle">@style/Widget.AppCompat.ActionButton</item>
 
 		<!-- Custom views -->
-		<item name="fastScrollerStyle">@style/Widget.Mlord.FastScroller</item>
-		<item name="listItemTextViewStyle">@style/Widget.Mlord.ListItemTextView</item>
-		<item name="dotIndicatorStyle">@style/Widget.Mlord.DotIndicator</item>
-		<item name="badgeViewStyle">@style/Widget.Mlord.BadgeView</item>
-		<item name="coverImageViewStyle">@style/Widget.Mlord.ImageView.Cover</item>
+		<item name="fastScrollerStyle">@style/Widget.MangaLord.FastScroller</item>
+		<item name="listItemTextViewStyle">@style/Widget.MangaLord.ListItemTextView</item>
+		<item name="dotIndicatorStyle">@style/Widget.MangaLord.DotIndicator</item>
+		<item name="badgeViewStyle">@style/Widget.MangaLord.BadgeView</item>
+		<item name="coverImageViewStyle">@style/Widget.MangaLord.ImageView.Cover</item>
 	</style>
 
 	<!--== Default Theme ==-->
-	<style name="Theme.Mlord" parent="Base.Theme.Mlord" />
+	<style name="Theme.MangaLord" parent="Base.Theme.MangaLord" />
 
 	<!-- Base ThemeOverlay -->
-	<style name="ThemeOverlay.Mlord" parent="ThemeOverlay.Material3.Light" />
+	<style name="ThemeOverlay.MangaLord" parent="ThemeOverlay.Material3.Light" />
 
 	<!-- Monet theme only support S+ -->
-	<style name="ThemeOverlay.Mlord.Monet" parent="ThemeOverlay.Material3.DynamicColors.Light" />
+	<style name="ThemeOverlay.MangaLord.Monet" parent="ThemeOverlay.Material3.DynamicColors.Light" />
 
 	<!-- Expressive Monet theme -->
-	<style name="ThemeOverlay.Mlord.Expressive" parent="ThemeOverlay.Material3Expressive.DynamicColors.DayNight">
+	<style name="ThemeOverlay.MangaLord.Expressive" parent="ThemeOverlay.Material3Expressive.DynamicColors.DayNight">
 		<item name="alertDialogTheme">@style/ThemeOverlay.Material3Expressive.Dialog.Alert</item>
 		<item name="materialAlertDialogTheme">@style/ThemeOverlay.Material3Expressive.MaterialAlertDialog</item>
 
@@ -148,12 +148,12 @@
 	</style>
 
 	<!-- Changes only for night -->
-	<style name="ThemeOverlay.Mlord.Amoled" parent="" />
+	<style name="ThemeOverlay.MangaLord.Amoled" parent="" />
 
 	<!-- App Widgets -->
 
-	<style name="Theme.Mlord.AppWidgetContainer" parent="@style/Theme.MaterialComponents.Light">
-		<item name="android:colorBackground">@color/mlord_background</item>
-		<item name="android:panelColorBackground">@color/mlord_primaryContainer</item>
+	<style name="Theme.MangaLord.AppWidgetContainer" parent="@style/Theme.MaterialComponents.Light">
+		<item name="android:colorBackground">@color/mangalord_background</item>
+		<item name="android:panelColorBackground">@color/mangalord_primaryContainer</item>
 	</style>
 </resources>

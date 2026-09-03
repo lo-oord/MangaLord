@@ -2,8 +2,8 @@
 
 I acknowledge that:
 
-- I have updated to the latest version of the app (https://github.com/lo-oord/Mlord/releases/latest)
-- If this is an issue with a parser, that I should be opening an issue in https://github.com/MlordApp/kotatsu-parsers
+- I have updated to the latest version of the app (https://github.com/lo-oord/MangaLord/releases/latest)
+- If this is an issue with a parser, that I should be opening an issue in https://github.com/MangaLordApp/kotatsu-parsers
 - I have searched the existing issues and this is new ticket **NOT** a duplicate or related to another open or closed issue
 - I will fill out the title and the information in this template
 
@@ -14,7 +14,7 @@ Note that the issue will be automatically closed if you do not fill out the titl
 ---
 
 ## Device information
-* Mlord version: ?
+* MangaLord version: ?
 * Android version: ?
 * Device: ?
 

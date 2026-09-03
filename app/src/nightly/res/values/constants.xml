@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="account_type_sync" translatable="false">org.mlord.nightly.sync</string>
-	<string name="sync_authority_history" translatable="false">com.mlord.app.nightly.history</string>
-	<string name="sync_authority_favourites" translatable="false">com.mlord.app.nightly.favourites</string>
-	<string name="github_updates_repo" translatable="false">MlordApp/Mlord-Nightly</string>
+	<string name="account_type_sync" translatable="false">org.mangalord.nightly.sync</string>
+	<string name="sync_authority_history" translatable="false">com.mangalord.app.nightly.history</string>
+	<string name="sync_authority_favourites" translatable="false">com.mangalord.app.nightly.favourites</string>
+	<string name="github_updates_repo" translatable="false">MangaLordApp/MangaLord-Nightly</string>
 </resources>

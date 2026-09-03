@@ -3,9 +3,9 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	tools:parentTag="com.mlord.app.core.ui.widgets.StackLayout">
+	tools:parentTag="com.mangalord.app.core.ui.widgets.StackLayout">
 
-	<com.mlord.app.image.ui.CoverImageView
+	<com.mangalord.app.image.ui.CoverImageView
 		android:id="@+id/imageView_cover3"
 		android:layout_width="wrap_content"
 		android:layout_height="64dp"
@@ -15,13 +15,13 @@
 		android:backgroundTintMode="src_atop"
 		android:scaleType="centerCrop"
 		app:fallbackDrawable="@android:color/transparent"
-		app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Mlord.Cover.Small"
+		app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MangaLord.Cover.Small"
 		app:tintMode="src_atop"
 		tools:backgroundTint="#99FFFFFF"
 		tools:src="@tools:sample/backgrounds/scenic"
 		tools:tint="#99FFFFFF" />
 
-	<com.mlord.app.image.ui.CoverImageView
+	<com.mangalord.app.image.ui.CoverImageView
 		android:id="@+id/imageView_cover2"
 		android:layout_width="wrap_content"
 		android:layout_height="64dp"
@@ -30,13 +30,13 @@
 		android:backgroundTintMode="src_atop"
 		android:scaleType="centerCrop"
 		app:fallbackDrawable="@android:color/transparent"
-		app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Mlord.Cover.Small"
+		app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MangaLord.Cover.Small"
 		app:tintMode="src_atop"
 		tools:backgroundTint="#4DFFFFFF"
 		tools:src="@tools:sample/backgrounds/scenic"
 		tools:tint="#4DFFFFFF" />
 
-	<com.mlord.app.image.ui.CoverImageView
+	<com.mangalord.app.image.ui.CoverImageView
 		android:id="@+id/imageView_cover1"
 		android:layout_width="wrap_content"
 		android:layout_height="64dp"
@@ -45,7 +45,7 @@
 		android:backgroundTintMode="src_atop"
 		android:scaleType="centerCrop"
 		app:fallbackDrawable="@android:color/transparent"
-		app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Mlord.Cover.Small"
+		app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MangaLord.Cover.Small"
 		tools:src="@tools:sample/backgrounds/scenic" />
 
 </merge>

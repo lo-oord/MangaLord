@@ -8,7 +8,7 @@
 	android:orientation="horizontal"
 	android:paddingHorizontal="32dp">
 
-	<com.mlord.app.core.image.CoilImageView
+	<com.mangalord.app.core.image.CoilImageView
 		android:id="@+id/icon"
 		android:layout_width="192dp"
 		android:layout_height="192dp"
