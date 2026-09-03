@@ -424,12 +424,8 @@ class MangaSourcesRepository @Inject constructor(
 				"ANIME3RB",       // Anime3rb
 				"ANIME_PHOENIX",  // Anime Phoenix
 				"ANIME_RISTO",    // RistoAnime
-				"MANGADAR",       // MangaDar
-				"PROCOMIC",       // ProComic
-				"ANIMERCO",       // Animerco
 				"ANIMELEK",       // AnimeLek
 				"MOVIE_BOX",      // Movie Box
-				"ARABSEED",       // Arab Seed
 		)
 	}
 }

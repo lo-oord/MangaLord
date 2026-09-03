@@ -2,6 +2,7 @@ package org.koitharu.kotatsu.parsers.site.madara.ar
 
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
+import org.json.JSONObject
 import org.koitharu.kotatsu.parsers.MangaLoaderContext
 import org.koitharu.kotatsu.parsers.MangaSourceParser
 import org.koitharu.kotatsu.parsers.model.AnimeStream
@@ -24,16 +25,57 @@ import org.koitharu.kotatsu.parsers.util.toAbsoluteUrl
 internal class MovieBox(context: MangaLoaderContext) :
     MadaraParser(context, MangaParserSource.MOVIE_BOX, "movie-box.co") {
 
-    override val listUrl = "/web/movie"
+    override val listUrl = "web/movie"
+
     override suspend fun getListPage(page: Int, order: SortOrder, filter: MangaListFilter): List<Manga> {
-        val query = filter.query?.trim()?.takeIf { it.isNotEmpty() }?.let { "?keyword=${it.replace(" ", "%20")}" } ?: ""
-        val pageSuffix = if (page > 0 && query.isEmpty()) "?page=${page + 1}" else query
-        return parseMangaList(webClient.httpGet("https://$domain/web/movie$pageSuffix").parseHtml())
+        val query = filter.query?.trim().orEmpty()
+        val json = webClient.httpGet(
+            "https://h5-api.aoneroom.com/wefeed-h5api-bff/tab-operating?tabId=ONEROOM_MOVIE&host=movie-box.co",
+        ).parseJson()
+        val subjects = collectSubjects(json)
+        return subjects.asSequence()
+            .filter { query.isBlank() || it.optString("title").contains(query, ignoreCase = true) }
+            .mapNotNull(::subjectToManga)
+            .distinctBy(Manga::url)
+            .toList()
     }
 
-    override fun parseMangaList(doc: Document): List<Manga> = doc.select("a[href^=/detail/]")
+    override fun parseMangaList(doc: Document): List<Manga> = doc.select("a[href*='/detail/']")
         .mapNotNull(::parseCard)
         .distinctBy(Manga::url)
+
+    private fun collectSubjects(json: JSONObject): List<JSONObject> {
+        val result = ArrayList<JSONObject>()
+        val operating = json.optJSONObject("data")?.optJSONArray("operatingList") ?: return result
+        for (i in 0 until operating.length()) {
+            val row = operating.optJSONObject(i) ?: continue
+            val direct = row.optJSONArray("subjects")
+            if (direct != null) {
+                for (j in 0 until direct.length()) direct.optJSONObject(j)?.let(result::add)
+            }
+            val bannerItems = row.optJSONObject("banner")?.optJSONArray("items")
+            if (bannerItems != null) {
+                for (j in 0 until bannerItems.length()) {
+                    val subject = bannerItems.optJSONObject(j)?.optJSONObject("subject")
+                    subject?.let(result::add)
+                }
+            }
+        }
+        return result
+    }
+
+    private fun subjectToManga(subject: JSONObject): Manga? {
+        val detailPath = subject.optString("detailPath").takeIf { it.isNotBlank() } ?: return null
+        val title = subject.optString("title").takeIf { it.isNotBlank() } ?: return null
+        val cover = subject.optJSONObject("cover")?.optString("url")?.takeIf { it.isNotBlank() }
+        val url = "/detail/$detailPath"
+        return Manga(
+            id = generateUid(url), url = url, publicUrl = url.toAbsoluteUrl(domain),
+            altTitles = emptySet(), title = title, authors = emptySet(), coverUrl = cover,
+            tags = emptySet(), rating = subject.optString("imdbRatingValue").toFloatOrNull() ?: RATING_UNKNOWN,
+            state = MangaState.FINISHED, contentRating = null, source = source,
+        )
+    }
 
     private fun parseCard(element: Element): Manga? {
         val url = element.attr("href").trim().takeIf { it.startsWith("/detail/") } ?: return null
