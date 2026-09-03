@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="url_github" translatable="false">https://github.com/MlordApp/Mlord</string>
+	<string name="url_github" translatable="false">https://github.com/KotatsuAppApp/Mlord</string>
 	<string name="url_telegram_web" translatable="false">https://t.me/mlordapp</string>
 	<string name="url_telegram" translatable="false">tg://resolve?domain=mlordapp</string>
 	<string name="url_weblate" translatable="false">https://hosted.weblate.org/engage/mlord</string>
