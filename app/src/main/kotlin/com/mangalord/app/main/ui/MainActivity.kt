@@ -1,8 +1,6 @@
 package com.mangalord.app.main.ui
 
 import android.Manifest
-import android.app.BackgroundServiceStartNotAllowedException
-import android.app.ServiceStartNotAllowedException
 import android.content.Intent
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Build
@@ -316,9 +314,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), AppBarOwner, BottomNav
 	private fun startServiceSafely(intent: Intent) {
 		try {
 			startService(intent)
-		} catch (e: BackgroundServiceStartNotAllowedException) {
-			e.printStackTraceDebug()
-		} catch (e: ServiceStartNotAllowedException) {
+		} catch (e: IllegalStateException) {
 			e.printStackTraceDebug()
 		} catch (e: SecurityException) {
 			e.printStackTraceDebug()
