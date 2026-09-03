@@ -36,14 +36,7 @@ jobs:
       - name: Grant Gradle execute permission
         run: chmod +x ./gradlew
 
-      - name: Restore stable signing key
-        if: ${{ secrets.MLORD_KEYSTORE_BASE64 != '' }}
-        env:
-          MLORD_KEYSTORE_BASE64: ${{ secrets.MLORD_KEYSTORE_BASE64 }}
-        run: echo "$MLORD_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/mlord-release.keystore"
-
-      - name: Create temporary CI signing key
-        if: ${{ secrets.MLORD_KEYSTORE_BASE64 == '' }}
+      - name: Create CI signing key
         run: |
           keytool -genkeypair -v \
             -keystore "$RUNNER_TEMP/mlord-release.keystore" \
