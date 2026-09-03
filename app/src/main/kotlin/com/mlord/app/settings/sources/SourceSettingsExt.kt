@@ -89,18 +89,22 @@ private fun PreferenceFragmentCompat.addPreferencesFromParserRepository(reposito
 				}
 			}
 
-			is ConfigKey.PreferredImageServer -> {
-				ListPreference(screen.context).apply {
-					entries = key.presetValues.values.mapToArray {
-						it ?: context.getString(R.string.automatic)
+							is ConfigKey.PreferredImageServer -> {
+					ListPreference(screen.context).apply {
+						entries = key.presetValues.values.mapToArray {
+							it ?: context.getString(R.string.automatic)
+						}
+						entryValues = key.presetValues.keys.mapToArray { it.orEmpty() }
+						setDefaultValue(key.defaultValue.orEmpty())
+						setTitle(R.string.image_server)
+						setDialogTitle(R.string.image_server)
+						summaryProvider = ListPreference.SimpleSummaryProvider.getInstance()
 					}
-					entryValues = key.presetValues.keys.mapToArray { it.orEmpty() }
-					setDefaultValue(key.defaultValue.orEmpty())
-					setTitle(R.string.image_server)
-					setDialogTitle(R.string.image_server)
-					summaryProvider = ListPreference.SimpleSummaryProvider.getInstance()
 				}
-			}
+
+				is ConfigKey.DisableUpdateChecking,
+				is ConfigKey.InterceptCloudflare -> continue
+
 		}
 		preference.isIconSpaceReserved = false
 		preference.key = key.key
