@@ -12,13 +12,37 @@ permissions:
 
 jobs:
   build:
-    name: Build release APK
+    name: Validate and build release APK
     runs-on: ubuntu-24.04
     timeout-minutes: 30
+    env:
+      HAS_RELEASE_KEYSTORE: ${{ secrets.MANGALORD_KEYSTORE_BASE64 != '' }}
 
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
+
+      - name: Validate Firebase and Android identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          app_gradle = Path("app/build.gradle").read_text()
+          config = json.loads(Path("app/google-services.json").read_text())
+          client = config["client"][0]
+          package_name = client["client_info"]["android_client_info"]["package_name"]
+          if "applicationId '" + package_name + "'" not in app_gradle:
+              raise SystemExit(f"Firebase package {package_name!r} does not match app applicationId")
+          oauth = [item for item in client.get("oauth_client", []) if item.get("client_type") == 3]
+          if not oauth:
+              raise SystemExit("google-services.json has no Web OAuth client for requestIdToken")
+          print(f"Firebase project: {config['project_info']['project_id']}")
+          print(f"Android package: {package_name}")
+          print("Web OAuth client: present (client ID value intentionally not printed)")
+          PY
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -36,28 +60,36 @@ jobs:
       - name: Grant Gradle execute permission
         run: chmod +x ./gradlew
 
-      - name: Create CI signing key
+      - name: Decode release keystore
+        if: ${{ env.HAS_RELEASE_KEYSTORE == 'true' }}
         env:
-          MANGALORD_KEYSTORE_PASSWORD: ${{ secrets.MANGALORD_KEYSTORE_PASSWORD || 'mangalord-ci-store-password' }}
-          MANGALORD_KEY_ALIAS: ${{ secrets.MANGALORD_KEY_ALIAS || 'mangalord-release' }}
-          MANGALORD_KEY_PASSWORD: ${{ secrets.MANGALORD_KEY_PASSWORD || 'mangalord-ci-store-password' }}
+          MANGALORD_KEYSTORE_BASE64: ${{ secrets.MANGALORD_KEYSTORE_BASE64 }}
+        shell: bash
         run: |
-          keytool -genkeypair -v \
-            -keystore "$RUNNER_TEMP/mangalord-release.keystore" \
-            -storepass "$MANGALORD_KEYSTORE_PASSWORD" \
-            -alias "$MANGALORD_KEY_ALIAS" \
-            -keypass "$MANGALORD_KEY_PASSWORD" \
-            -keyalg RSA \
-            -keysize 2048 \
-            -validity 10000 \
-            -dname "CN=MangaLord CI, OU=Build, O=MangaLord, L=Unknown, ST=Unknown, C=US"
+          set -euo pipefail
+          printf '%s' "$MANGALORD_KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/mangalord-release.keystore"
+          chmod 600 "$RUNNER_TEMP/mangalord-release.keystore"
+          test -s "$RUNNER_TEMP/mangalord-release.keystore"
+          keytool -list -keystore "$RUNNER_TEMP/mangalord-release.keystore" \
+            -storepass "${{ secrets.MANGALORD_KEYSTORE_PASSWORD }}" \
+            -alias "${{ secrets.MANGALORD_KEY_ALIAS }}" > "$RUNNER_TEMP/keystore-details.txt"
+          keytool -list -v -keystore "$RUNNER_TEMP/mangalord-release.keystore" \
+            -storepass "${{ secrets.MANGALORD_KEYSTORE_PASSWORD }}" \
+            -alias "${{ secrets.MANGALORD_KEY_ALIAS }}" \
+            | grep -E '^(Alias name:|Certificate fingerprints:|^[[:space:]]+(SHA1|SHA256):)' \
+            | sed -E 's/(SHA1|SHA256):.*/\1: [redacted from CI log]/'
 
       - name: Build signed release APK
+        if: ${{ env.HAS_RELEASE_KEYSTORE == 'true' }}
         env:
           MANGALORD_SIGNING_STORE: ${{ runner.temp }}/mangalord-release.keystore
-          MANGALORD_SIGNING_STORE_PASSWORD: ${{ secrets.MANGALORD_KEYSTORE_PASSWORD || 'mangalord-ci-store-password' }}
-          MANGALORD_SIGNING_KEY_ALIAS: ${{ secrets.MANGALORD_KEY_ALIAS || 'mangalord-release' }}
-          MANGALORD_SIGNING_KEY_PASSWORD: ${{ secrets.MANGALORD_KEY_PASSWORD || 'mangalord-ci-store-password' }}
+          MANGALORD_SIGNING_STORE_PASSWORD: ${{ secrets.MANGALORD_KEYSTORE_PASSWORD }}
+          MANGALORD_SIGNING_KEY_ALIAS: ${{ secrets.MANGALORD_KEY_ALIAS }}
+          MANGALORD_SIGNING_KEY_PASSWORD: ${{ secrets.MANGALORD_KEY_PASSWORD }}
+        run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
+
+      - name: Build unsigned release APK for CI validation
+        if: ${{ env.HAS_RELEASE_KEYSTORE != 'true' }}
         run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
 
       - name: Upload APK artifact
@@ -75,3 +107,9 @@ jobs:
           path: app/build/outputs/mapping/**/*.txt
           if-no-files-found: ignore
           retention-days: 14
+
+      - name: Explain Firebase SHA requirement
+        if: ${{ env.HAS_RELEASE_KEYSTORE != 'true' }}
+        run: |
+          echo "CI produced an unsigned validation APK because MANGALORD_KEYSTORE_BASE64 is not configured."
+          echo "Register the SHA-1/SHA-256 of the real release keystore in Firebase before testing Google Sign-In with a release APK."

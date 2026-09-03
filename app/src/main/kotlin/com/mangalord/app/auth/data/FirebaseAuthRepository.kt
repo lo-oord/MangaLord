@@ -1,6 +1,7 @@
 package com.mangalord.app.auth.data
 
 import android.app.Activity
+import android.util.Log
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
@@ -38,14 +39,14 @@ class FirebaseAuthRepository @Inject constructor(
     suspend fun signInWithEmail(email: String, password: String): FirebaseUser {
         val user = auth.signInWithEmailAndPassword(email.trim(), password).await().user
             ?: error("Firebase did not return a user")
-        ensureUserProfile(user, "email")
+        persistUserProfileBestEffort(user, "email")
         return user
     }
 
     suspend fun createAccount(email: String, password: String): FirebaseUser {
         val user = auth.createUserWithEmailAndPassword(email.trim(), password).await().user
             ?: error("Firebase did not return a user")
-        ensureUserProfile(user, "password")
+        persistUserProfileBestEffort(user, "password")
         user.sendEmailVerification().await()
         return user
     }
@@ -55,7 +56,9 @@ class FirebaseAuthRepository @Inject constructor(
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         val user = auth.signInWithCredential(credential).await().user
             ?: error("Firebase did not return a user")
-        ensureUserProfile(user, "google.com")
+        // Firebase authentication is the source of truth for the session. A temporary
+        // Firestore/network failure must not strand the user on the auth screen.
+        persistUserProfileBestEffort(user, "google.com")
         return user
     }
 
@@ -63,7 +66,7 @@ class FirebaseAuthRepository @Inject constructor(
         val user = auth.currentUser ?: error("No signed-in user")
         val linked = user.linkWithCredential(GoogleAuthProvider.getCredential(idToken, null)).await().user
             ?: error("Firebase did not return a user")
-        ensureUserProfile(linked, "google.com")
+        persistUserProfileBestEffort(linked, "google.com")
         return linked
     }
 
@@ -71,9 +74,8 @@ class FirebaseAuthRepository @Inject constructor(
         val user = auth.currentUser ?: error("No signed-in user")
         val cleanName = name.trim().takeIf { it.isNotEmpty() } ?: error("Name cannot be empty")
         user.updateProfile(UserProfileChangeRequest.Builder().setDisplayName(cleanName).build()).await()
-        user.reload().await()
-        val refreshed = auth.currentUser ?: user
-        ensureUserProfile(refreshed, providerOf(refreshed))
+        val refreshed = reloadUser() ?: user
+        persistUserProfileBestEffort(refreshed, providerOf(refreshed))
         return refreshed
     }
 
@@ -87,7 +89,10 @@ class FirebaseAuthRepository @Inject constructor(
     }
 
     suspend fun reloadUser(): FirebaseUser? {
-        auth.currentUser?.reload()?.await()
+        auth.currentUser?.let { user ->
+            runCatching { user.reload().await() }
+                .onFailure { error -> Log.w(TAG, "Firebase user refresh failed", error) }
+        }
         return auth.currentUser
     }
 
@@ -113,6 +118,18 @@ class FirebaseAuthRepository @Inject constructor(
         ref.set(profile, SetOptions.merge()).await()
     }
 
+    private suspend fun persistUserProfileBestEffort(user: FirebaseUser, provider: String) {
+        runCatching { ensureUserProfile(user, provider) }
+            .onFailure { error ->
+                // Never log credentials, tokens, email addresses, or profile contents.
+                Log.w(TAG, "User authenticated but profile persistence failed", error)
+            }
+    }
+
     private fun providerOf(user: FirebaseUser): String =
         user.providerData.firstOrNull { it.providerId != "firebase" }?.providerId ?: "password"
+
+    private companion object {
+        const val TAG = "FirebaseAuthRepository"
+    }
 }
