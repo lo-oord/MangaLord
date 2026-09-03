@@ -856,7 +856,7 @@
     <string name="additional_action_required">Additional action is required</string>
     <string name="hide_from_main_screen">Hide from main screen</string>
     <string name="changelog">Changelog</string>
-    <string name="changelog_current_entry">## MangaLord 1.0.2 (Build 10002)\n\n- Kept only the requested manga sources: Azorafly, Asura Comic, Thunder Scans, Hijalacom, Link Manga.net, Manga Swat, Manga Starz, Manga Cloud, Manga Fire English and Japanese, Manga Read, Rocks Manga, and Klz9.\n- Removed all other manga sources and all Hentai sources from the catalog.\n- Fixed and linked the in-app Privacy Policy page.\n- Updated parser networking compatibility and Cloudflare User-Agent handling.\n- Release APKs are signed by the CI release configuration.</string>
+    <string name="changelog_current_entry">## MangaLord 1.0.4 (Build 10004)\n\n- Kept only the requested manga sources: Team X Manga, Azorafly, Asura Comic, Thunder Scans, Hijalacom, Link Manga.net, Manga Swat, Manga Starz, Manga Cloud, Manga Fire English and Japanese, Manga Read, Rocks Manga, and Klz9.\n- Removed all other manga sources and all Hentai sources from the catalog.\n- Fixed and linked the in-app Privacy Policy page.\n- Updated parser networking compatibility and Cloudflare User-Agent handling.\n- Release APKs are signed by the CI release configuration.</string>
     <string name="changelog_summary">Changes history for recently released versions</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="privacy_policy_summary">How MangaLord handles your data and permissions</string>

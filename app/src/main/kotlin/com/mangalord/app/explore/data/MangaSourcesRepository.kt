@@ -407,6 +407,7 @@ class MangaSourcesRepository @Inject constructor(
 
 	companion object {
 		val ALLOWED_SOURCE_IDS: Set<String> = setOf(
+			"TEAMXNOVEL",      // Team X Manga / TeamXNovel
 			"AZORAMOON",       // Azorafly
 			"ASURASCANS",      // Asura Comic
 			"THUNDERSCANS",    // Thunder Scans

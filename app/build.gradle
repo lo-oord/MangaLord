@@ -21,8 +21,8 @@ android {
 		applicationId 'com.mangalord.app'
 		minSdk = 23
 		targetSdk = 36
-		versionCode = 10003
-		versionName = '1.0.3'
+		versionCode = 10004
+		versionName = '1.0.4'
 		generatedDensities = []
 		testInstrumentationRunner 'com.mangalord.app.HiltTestRunner'
 		ksp {
@@ -125,7 +125,7 @@ android {
 			variant.outputs.each { output ->
 				def now = LocalDateTime.now()
 				output.versionCodeOverride = now.format("yyMMdd").toInteger()
-				output.versionNameOverride = '1.0.3'
+				output.versionNameOverride = '1.0.4'
 			}
 		}
 	}
