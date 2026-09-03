@@ -155,6 +155,9 @@ dependencies {
 	implementation libs.androidx.preference
 	implementation libs.androidx.biometric
 	implementation libs.material
+	implementation libs.media3.exoplayer
+	implementation libs.media3.exoplayer.hls
+	implementation libs.media3.ui
 	implementation libs.androidx.lifecycle.common.java8
 	implementation libs.androidx.webkit
 
