@@ -1,0 +1,9 @@
+package com.mlord.core.ui.model
+
+import com.mlord.parsers.model.ContentRating
+
+data class MangaOverride(
+	val coverUrl: String?,
+	val title: String?,
+	val contentRating: ContentRating?,
+)
