@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.common.api.ApiException
@@ -74,6 +75,8 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
             }
         }
     }
+
+    override fun onApplyWindowInsets(v: View, insets: WindowInsetsCompat): WindowInsetsCompat = insets
 
     private fun email() = viewBinding.email.text?.toString().orEmpty()
     private fun password() = viewBinding.password.text?.toString().orEmpty()
