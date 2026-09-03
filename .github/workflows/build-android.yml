@@ -90,9 +90,9 @@ jobs:
           MANGALORD_SIGNING_KEY_PASSWORD: ${{ secrets.MANGALORD_KEY_PASSWORD }}
         run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
 
-      - name: Build signed debug APK for install validation
+      - name: Build unsigned release APK for install validation
         if: ${{ env.HAS_RELEASE_KEYSTORE != 'true' || steps.signed_build.outcome == 'failure' }}
-        run: ./gradlew assembleDebug -PciInstall --no-daemon --stacktrace --console=plain
+        run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
 
       - name: Prepare installable APK
         if: always() && (steps.signed_build.outcome == 'success' || env.HAS_RELEASE_KEYSTORE != 'true' || steps.signed_build.outcome == 'failure')
@@ -102,11 +102,26 @@ jobs:
           mkdir -p "$GITHUB_WORKSPACE/ci-artifacts"
           if [ "${{ steps.signed_build.outcome }}" = "success" ]; then
             apk=$(find app/build/outputs/apk/release -maxdepth 1 -type f -name '*.apk' | head -n 1)
+            cp "$apk" "$GITHUB_WORKSPACE/ci-artifacts/MangaLord.apk"
           else
-            apk=$(find app/build/outputs/apk/debug -maxdepth 1 -type f -name '*.apk' | head -n 1)
+            apk=$(find app/build/outputs/apk/release -maxdepth 1 -type f -name '*unsigned*.apk' | head -n 1)
+            test -n "$apk"
+            keytool -genkeypair -v \
+              -keystore "$RUNNER_TEMP/mangalord-ci-install.keystore" \
+              -storepass "mangalord-ci-install" \
+              -alias "mangalord-ci-install" \
+              -keypass "mangalord-ci-install" \
+              -keyalg RSA -keysize 2048 -validity 3650 \
+              -dname "CN=MangaLord CI Install, OU=CI, O=MangaLord, C=US"
+            apksigner=$(find "$ANDROID_HOME/build-tools" -type f -name apksigner | sort -V | tail -n 1)
+            test -x "$apksigner"
+            "$apksigner" sign \
+              --ks "$RUNNER_TEMP/mangalord-ci-install.keystore" \
+              --ks-key-alias "mangalord-ci-install" \
+              --ks-pass pass:mangalord-ci-install \
+              --key-pass pass:mangalord-ci-install \
+              --out "$GITHUB_WORKSPACE/ci-artifacts/MangaLord.apk" "$apk"
           fi
-          test -n "$apk"
-          cp "$apk" "$GITHUB_WORKSPACE/ci-artifacts/MangaLord.apk"
           test -s "$GITHUB_WORKSPACE/ci-artifacts/MangaLord.apk"
 
       - name: Upload APK artifact
@@ -128,5 +143,5 @@ jobs:
       - name: Explain Firebase SHA requirement
         if: ${{ env.HAS_RELEASE_KEYSTORE != 'true' || steps.signed_build.outcome == 'failure' }}
         run: |
-          echo "CI produced a signed debug APK for installation because the configured release signing credentials were unavailable or invalid."
+          echo "CI produced a release APK signed with a temporary CI key because the configured release signing credentials were unavailable or invalid."
           echo "Register the SHA-1/SHA-256 of the real release keystore in Firebase before testing Google Sign-In with a release APK."
