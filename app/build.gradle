@@ -55,7 +55,7 @@ android {
 		debug {
 			applicationIdSuffix = '.debug'
 		}
-			release {
+		release {
 			if (System.getenv('MANGALORD_SIGNING_STORE') != null) {
 				signingConfig signingConfigs.release
 			}
@@ -87,7 +87,7 @@ android {
 	compileOptions {
 		coreLibraryDesugaringEnabled true
 		sourceCompatibility JavaVersion.VERSION_17
-			targetCompatibility JavaVersion.VERSION_17
+		targetCompatibility JavaVersion.VERSION_17
 	}
 	kotlinOptions {
 		jvmTarget = JavaVersion.VERSION_17.toString()

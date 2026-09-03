@@ -37,12 +37,16 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Create CI signing key
+        env:
+          MANGALORD_KEYSTORE_PASSWORD: ${{ secrets.MANGALORD_KEYSTORE_PASSWORD || 'mangalord-ci-store-password' }}
+          MANGALORD_KEY_ALIAS: ${{ secrets.MANGALORD_KEY_ALIAS || 'mangalord-release' }}
+          MANGALORD_KEY_PASSWORD: ${{ secrets.MANGALORD_KEY_PASSWORD || 'mangalord-ci-store-password' }}
         run: |
           keytool -genkeypair -v \
             -keystore "$RUNNER_TEMP/mangalord-release.keystore" \
-            -storepass mangalord-ci-store-password \
-            -alias mangalord-release \
-            -keypass mangalord-ci-store-password \
+            -storepass "$MANGALORD_KEYSTORE_PASSWORD" \
+            -alias "$MANGALORD_KEY_ALIAS" \
+            -keypass "$MANGALORD_KEY_PASSWORD" \
             -keyalg RSA \
             -keysize 2048 \
             -validity 10000 \
