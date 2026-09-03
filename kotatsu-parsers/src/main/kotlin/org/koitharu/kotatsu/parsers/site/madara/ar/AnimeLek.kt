@@ -8,8 +8,8 @@ import org.koitharu.kotatsu.parsers.model.AnimeStream
 
 @MangaSourceParser("ANIMELEK", "AnimeLek", "ar", ContentType.ANIME)
 internal class AnimeLek(context: MangaLoaderContext) :
-    ArabicVideoParser(context, MangaParserSource.ANIMELEK, "animelek.cc") {
-    override val listUrl = "/anime/"
+    ArabicVideoParser(context, MangaParserSource.ANIMELEK, "animedar.net") {
+    override val listUrl = "/anime-p/"
 
     override suspend fun getVideoStreams(chapter: org.koitharu.kotatsu.parsers.model.MangaChapter): List<AnimeStream> =
         extractDirectStreams(chapter)

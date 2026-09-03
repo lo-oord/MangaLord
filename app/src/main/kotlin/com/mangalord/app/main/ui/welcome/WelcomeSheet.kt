@@ -1,6 +1,5 @@
 package com.mangalord.app.main.ui.welcome
 
-import android.accounts.AccountManager
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -50,7 +49,6 @@ class WelcomeSheet : BaseAdaptiveSheet<SheetWelcomeBinding>(), ChipsView.OnChipC
 		binding.chipsLocales.onChipClickListener = this
 		binding.chipsType.onChipClickListener = this
 		binding.chipBackup.setOnClickListener(this)
-		binding.chipSync.setOnClickListener(this)
 		binding.chipDirectories.setOnClickListener(this)
 
 		viewModel.locales.observe(viewLifecycleOwner, ::onLocalesChanged)
@@ -80,12 +78,6 @@ class WelcomeSheet : BaseAdaptiveSheet<SheetWelcomeBinding>(), ChipsView.OnChipC
 						v, R.string.operation_not_supported, Snackbar.LENGTH_SHORT,
 					).show()
 				}
-			}
-
-			R.id.chip_sync -> {
-				val am = AccountManager.get(v.context)
-				val accountType = getString(R.string.account_type_sync)
-				am.addAccount(accountType, accountType, null, null, requireActivity(), null, null)
 			}
 
             R.id.chip_directories -> {

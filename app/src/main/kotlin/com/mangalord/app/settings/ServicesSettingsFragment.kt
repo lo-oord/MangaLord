@@ -1,6 +1,5 @@
 package com.mangalord.app.settings
 
-import android.accounts.AccountManager
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -9,9 +8,6 @@ import androidx.preference.Preference
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import com.mangalord.app.R
 import com.mangalord.app.auth.ui.AuthActivity
 import com.mangalord.app.core.nav.router
@@ -20,19 +16,15 @@ import com.mangalord.app.core.ui.BasePreferenceFragment
 import com.mangalord.app.core.ui.dialog.buildAlertDialog
 import com.mangalord.app.core.util.ext.getDisplayMessage
 import com.mangalord.app.core.util.ext.printStackTraceDebug
-import com.mangalord.app.core.util.ext.viewLifecycleScope
 import com.mangalord.app.scrobbling.common.domain.model.ScrobblerService
 import com.mangalord.app.scrobbling.common.ui.ScrobblerAuthHelper
 import com.mangalord.app.settings.utils.SplitSwitchPreference
-import com.mangalord.app.sync.domain.SyncController
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class ServicesSettingsFragment : BasePreferenceFragment(R.string.services),
 	SharedPreferences.OnSharedPreferenceChangeListener {
 
-	@Inject
-	lateinit var syncController: SyncController
 
 	@Inject
 	lateinit var scrobblerAuthHelper: ScrobblerAuthHelper
@@ -68,7 +60,6 @@ class ServicesSettingsFragment : BasePreferenceFragment(R.string.services),
 		bindScrobblerSummary(AppSettings.KEY_ANILIST, ScrobblerService.ANILIST)
 		bindScrobblerSummary(AppSettings.KEY_MAL, ScrobblerService.MAL)
 		bindScrobblerSummary(AppSettings.KEY_KITSU, ScrobblerService.KITSU)
-		bindSyncSummary()
 		bindFirebaseAccountSummary()
 	}
 
@@ -103,20 +94,6 @@ class ServicesSettingsFragment : BasePreferenceFragment(R.string.services),
 
 			AppSettings.KEY_KITSU -> {
 				handleScrobblerClick(ScrobblerService.KITSU)
-				true
-			}
-
-			AppSettings.KEY_SYNC -> {
-				val am = AccountManager.get(requireContext())
-				val accountType = getString(R.string.account_type_sync)
-				val account = am.getAccountsByType(accountType).firstOrNull()
-				if (account == null) {
-					am.addAccount(accountType, accountType, null, null, requireActivity(), null, null)
-				} else {
-					if (!router.openSystemSyncSettings(account)) {
-						Snackbar.make(listView, R.string.operation_not_supported, Snackbar.LENGTH_SHORT).show()
-					}
-				}
 				true
 			}
 
@@ -165,22 +142,6 @@ class ServicesSettingsFragment : BasePreferenceFragment(R.string.services),
 			firebaseAuth.currentUser?.email ?: getString(R.string.auth_required_for_feature)
 	}
 
-	private fun bindSyncSummary() {
-		viewLifecycleScope.launch {
-			val account = withContext(Dispatchers.Default) {
-				val type = getString(R.string.account_type_sync)
-				AccountManager.get(requireContext()).getAccountsByType(type).firstOrNull()
-			}
-			findPreference<Preference>(AppSettings.KEY_SYNC)?.run {
-				summary = when {
-					account == null -> getString(R.string.sync_title)
-					syncController.isEnabled(account) -> account.name
-					else -> getString(R.string.disabled)
-				}
-			}
-			findPreference<Preference>(AppSettings.KEY_SYNC_SETTINGS)?.isEnabled = account != null
-		}
-	}
 
 	private fun bindSuggestionsSummary() {
 		findPreference<Preference>(AppSettings.KEY_SUGGESTIONS)?.setSummary(

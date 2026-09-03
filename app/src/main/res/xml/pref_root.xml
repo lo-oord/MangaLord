@@ -2,6 +2,12 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <Preference
+        android:key="firebase_account"
+        android:icon="@drawable/ic_user"
+        android:title="@string/auth_title"
+        android:summary="@string/auth_required_for_feature" />
+
     <PreferenceScreen
         android:fragment="com.mangalord.app.settings.AppearanceSettingsFragment"
         android:icon="@drawable/ic_appearance"

@@ -65,7 +65,6 @@ import com.mangalord.app.main.ui.protect.AppProtectHelper
 import com.mangalord.app.main.ui.protect.ScreenshotPolicyHelper
 import org.koitharu.kotatsu.parsers.MangaLoaderContext
 import com.mangalord.app.search.ui.MangaSuggestionsProvider
-import com.mangalord.app.sync.domain.SyncController
 import com.mangalord.app.widget.WidgetUpdater
 import javax.inject.Provider
 import javax.inject.Singleton
@@ -171,12 +170,12 @@ interface AppModule {
 			widgetUpdater: WidgetUpdater,
 			appShortcutManager: AppShortcutManager,
 			backupObserver: BackupObserver,
-			syncController: SyncController,
+
 		): Set<@JvmSuppressWildcards InvalidationTracker.Observer> = arraySetOf(
 			widgetUpdater,
 			appShortcutManager,
 			backupObserver,
-			syncController,
+
 		)
 
 		@Provides

@@ -1,5 +1,6 @@
 package com.mangalord.app.settings
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.StringRes
@@ -7,7 +8,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.preference.Preference
 import dagger.hilt.android.AndroidEntryPoint
+import com.google.firebase.auth.FirebaseAuth
 import com.mangalord.app.BuildConfig
+import com.mangalord.app.auth.ui.AuthActivity
 import com.mangalord.app.R
 import com.mangalord.app.core.prefs.AppSettings
 import com.mangalord.app.core.ui.BasePreferenceFragment
@@ -32,11 +35,26 @@ class RootSettingsFragment : BasePreferenceFragment(0) {
 		bindPreferenceSummary("userdata", R.string.create_or_restore_backup, R.string.periodic_backups)
 		bindPreferenceSummary("downloads", R.string.manga_save_location, R.string.downloads_wifi_only)
 		bindPreferenceSummary("tracker", R.string.track_sources, R.string.notifications_settings)
-		bindPreferenceSummary("services", R.string.suggestions, R.string.sync, R.string.tracking)
+		bindPreferenceSummary("services", R.string.suggestions, R.string.tracking)
 		findPreference<Preference>("about")?.summary = getString(R.string.app_version, BuildConfig.VERSION_NAME)
+		bindFirebaseAccountSummary()
 	}
 
-	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+			override fun onPreferenceTreeClick(preference: Preference): Boolean {
+			if (preference.key == "firebase_account") {
+				startActivity(Intent(requireContext(), AuthActivity::class.java))
+				return true
+			}
+			return super.onPreferenceTreeClick(preference)
+		}
+
+		override fun onResume() {
+			super.onResume()
+			bindFirebaseAccountSummary()
+		}
+
+		override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
 		super.onViewCreated(view, savedInstanceState)
 		findPreference<Preference>(AppSettings.KEY_REMOTE_SOURCES)?.let { pref ->
 			val total = viewModel.totalSourcesCount
@@ -57,7 +75,13 @@ class RootSettingsFragment : BasePreferenceFragment(0) {
 		}
 	}
 
-	private fun bindPreferenceSummary(key: String, @StringRes vararg items: Int) {
+			private fun bindFirebaseAccountSummary() {
+			findPreference<Preference>("firebase_account")?.summary =
+				FirebaseAuth.getInstance().currentUser?.email ?: getString(R.string.auth_required_for_feature)
+		}
+
+		private fun bindPreferenceSummary(key: String, @StringRes vararg items: Int) {
+
 		findPreference<Preference>(key)?.summary = items.joinToString { getString(it) }
 	}
 }
