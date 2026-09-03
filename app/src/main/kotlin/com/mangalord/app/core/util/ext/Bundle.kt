@@ -30,6 +30,15 @@ inline fun <reified T : Parcelable> Intent.getParcelableExtraCompat(key: String)
 	return IntentCompat.getParcelableExtra(this, key, T::class.java)
 }
 
+inline fun <reified T : Parcelable> Intent.getParcelableArrayListExtraCompat(key: String): ArrayList<T>? {
+	return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+		getParcelableArrayListExtra(key, T::class.java)
+	} else {
+		@Suppress("DEPRECATION")
+		getParcelableArrayListExtra(key)
+	}
+}
+
 inline fun <reified T : Serializable> Intent.getSerializableExtraCompat(key: String): T? {
 	return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
 		getSerializableExtra(key, T::class.java)

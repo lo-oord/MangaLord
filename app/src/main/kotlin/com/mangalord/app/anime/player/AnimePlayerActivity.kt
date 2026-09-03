@@ -29,6 +29,7 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.net.toUri
+import androidx.core.net.toFile
 import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -65,7 +66,6 @@ import com.mangalord.app.core.util.ext.getParcelableExtraCompat
 import com.mangalord.app.core.util.ext.systemBarsInsets
 import com.mangalord.app.databinding.ActivityAnimePlayerBinding
 import com.mangalord.app.history.domain.HistoryUpdateUseCase
-import com.mangalord.app.local.data.LocalMangaRepository
 import com.mangalord.app.reader.ui.ReaderState
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter
@@ -85,9 +85,6 @@ class AnimePlayerActivity : BaseActivity<ActivityAnimePlayerBinding>() {
 
 	@Inject
 	lateinit var settings: AppSettings
-
-	@Inject
-	lateinit var localMangaRepository: LocalMangaRepository
 
 	private lateinit var manga: Manga
 	private lateinit var episode: MangaChapter
@@ -334,7 +331,9 @@ class AnimePlayerActivity : BaseActivity<ActivityAnimePlayerBinding>() {
 		showLoading(true)
 		loadJob = lifecycleScope.launch {
 			runCatching {
-				val downloadedFile = localMangaRepository.findDownloadedEpisodeFile(manga, episode.id)
+					val downloadedFile = runCatching {
+						episode.url.toUri().toFile().takeIf { it.isFile && it.canRead() }
+					}.getOrNull()
 				if (downloadedFile != null) {
 					listOf(
 						AnimeStream(
