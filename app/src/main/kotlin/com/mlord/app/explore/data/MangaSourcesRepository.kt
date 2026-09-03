@@ -55,7 +55,7 @@ class MangaSourcesRepository @Inject constructor(
 	val allMangaSources: Set<MangaParserSource> = Collections.unmodifiableSet(
 		EnumSet.noneOf<MangaParserSource>(MangaParserSource::class.java).also {
             MangaParserSource.entries.filterTo(it) {
-				!it.isBroken && it.contentType != ContentType.HENTAI && it.locale in SUPPORTED_SOURCE_LOCALES
+				!it.isBroken && it.contentType != ContentType.HENTAI && it.name in ALLOWED_SOURCE_IDS
 			}
         }
 	)
@@ -406,6 +406,20 @@ class MangaSourcesRepository @Inject constructor(
 	private fun String.toMangaSourceOrNull(): MangaParserSource? = MangaParserSource.entries.find { it.name == this }
 
 	companion object {
-		val SUPPORTED_SOURCE_LOCALES: Set<String> = setOf("ar", "en", "ja")
+		val ALLOWED_SOURCE_IDS: Set<String> = setOf(
+			"AZORAMOON",       // Azorafly
+			"ASURASCANS",      // Asura Comic
+			"THUNDERSCANS",    // Thunder Scans
+			"HIJALACOM",       // Hijalacom
+			"MANGALINKNET",    // Link-Manga.net
+			"MANGASWAT",       // Manga Swat
+			"MANGASTARZ",      // Manga Starz
+			"MANGACLOUD",      // Manga Cloud
+			"MANGAFIRE_EN",    // Manga Fire English
+			"MANGAFIRE_JA",    // Manga Fire Japanese
+			"MANGAREAD",       // Manga Read
+			"ROCKSMANGA",      // Rocks Manga
+			"KLZ9",            // Klz9
+		)
 	}
 }
