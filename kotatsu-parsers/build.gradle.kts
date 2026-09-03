@@ -21,11 +21,7 @@ fun parserSecret(propertyName: String, environmentName: String): String =
 	localConfig.getProperty(propertyName)?.takeIf(String::isNotBlank)
 		?: System.getenv(environmentName).orEmpty()
 
-val parserSecrets = mapOf(
-	"ANIME_SLAYER_CLIENT_SECRET" to parserSecret("anime_slayer_client_secret", "ANIME_SLAYER_CLIENT_SECRET"),
-	"ANIME_WITCHER_ALGOLIA_SEARCH_KEY" to parserSecret("anime_witcher_algolia_search_key", "ANIME_WITCHER_ALGOLIA_SEARCH_KEY"),
-	"ANIME_WITCHER_FIREBASE_API_KEY" to parserSecret("anime_witcher_firebase_api_key", "ANIME_WITCHER_FIREBASE_API_KEY"),
-)
+val parserSecrets = emptyMap<String, String>()
 fun kotlinString(value: String): String = buildString {
     value.forEach { character ->
         append(

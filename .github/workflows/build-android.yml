@@ -55,13 +55,10 @@ jobs:
       - name: Build signed release APK
         env:
           MANGALORD_SIGNING_STORE: ${{ runner.temp }}/mangalord-release.keystore
-          MANGALORD_SIGNING_STORE_PASSWORD: ${{ secrets.MANGALORD_KEYSTORE_PASSWORD || 'mangalord-ci-store-password' }}
-          MANGALORD_SIGNING_KEY_ALIAS: ${{ secrets.MANGALORD_KEY_ALIAS || 'mangalord-release' }}
-          MANGALORD_SIGNING_KEY_PASSWORD: ${{ secrets.MANGALORD_KEY_PASSWORD || 'mangalord-ci-store-password' }}
-          ANIME_SLAYER_CLIENT_SECRET: ${{ secrets.ANIME_SLAYER_CLIENT_SECRET }}
-          ANIME_WITCHER_ALGOLIA_SEARCH_KEY: ${{ secrets.ANIME_WITCHER_ALGOLIA_SEARCH_KEY }}
-          ANIME_WITCHER_FIREBASE_API_KEY: ${{ secrets.ANIME_WITCHER_FIREBASE_API_KEY }}
-        run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
+	          MANGALORD_SIGNING_STORE_PASSWORD: ${{ secrets.MANGALORD_KEYSTORE_PASSWORD || 'mangalord-ci-store-password' }}
+	          MANGALORD_SIGNING_KEY_ALIAS: ${{ secrets.MANGALORD_KEY_ALIAS || 'mangalord-release' }}
+	          MANGALORD_SIGNING_KEY_PASSWORD: ${{ secrets.MANGALORD_KEY_PASSWORD || 'mangalord-ci-store-password' }}
+	        run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
