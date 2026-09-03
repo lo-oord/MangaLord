@@ -54,7 +54,9 @@ class MangaSourcesRepository @Inject constructor(
 
 	val allMangaSources: Set<MangaParserSource> = Collections.unmodifiableSet(
 		EnumSet.noneOf<MangaParserSource>(MangaParserSource::class.java).also {
-            MangaParserSource.entries.filterNotTo(it, MangaParserSource::isBroken)
+            MangaParserSource.entries.filterTo(it) {
+				!it.isBroken && it.locale in SUPPORTED_SOURCE_LOCALES
+			}
         }
 	)
 
@@ -75,7 +77,7 @@ class MangaSourcesRepository @Inject constructor(
 		assimilateNewSources()
 		val skipNsfw = settings.isNsfwContentDisabled
 		return dao.findAllPinned().mapNotNullToSet {
-			it.source.toMangaSourceOrNull()?.takeUnless { x -> skipNsfw && x.isNsfw() }
+			it.source.toMangaSourceOrNull()?.takeIf { x -> x in allMangaSources }?.takeUnless { x -> skipNsfw && x.isNsfw() }
 		}
 	}
 
@@ -150,7 +152,7 @@ class MangaSourcesRepository @Inject constructor(
 			},
 		) { skipNsfw, sources ->
 			sources.count {
-				it.source.toMangaSourceOrNull()?.let { s -> !skipNsfw || !s.isNsfw() } == true
+				it.source.toMangaSourceOrNull()?.takeIf { s -> s in allMangaSources }?.let { s -> !skipNsfw || !s.isNsfw() } == true
 			}
 		}.distinctUntilChanged().onStart { assimilateNewSources() }
 	}
@@ -402,4 +404,8 @@ class MangaSourcesRepository @Inject constructor(
 	}
 
 	private fun String.toMangaSourceOrNull(): MangaParserSource? = MangaParserSource.entries.find { it.name == this }
+
+	companion object {
+		val SUPPORTED_SOURCE_LOCALES: Set<String> = setOf("ar", "en", "ja")
+	}
 }
