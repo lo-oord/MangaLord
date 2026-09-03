@@ -4,10 +4,13 @@ import org.koitharu.kotatsu.parsers.MangaLoaderContext
 import org.koitharu.kotatsu.parsers.MangaSourceParser
 import org.koitharu.kotatsu.parsers.model.ContentType
 import org.koitharu.kotatsu.parsers.model.MangaParserSource
-import org.koitharu.kotatsu.parsers.site.madara.MadaraParser
+import org.koitharu.kotatsu.parsers.model.AnimeStream
 
 @MangaSourceParser("ANIMELEK", "AnimeLek", "ar", ContentType.ANIME)
 internal class AnimeLek(context: MangaLoaderContext) :
-    MadaraParser(context, MangaParserSource.ANIMELEK, "animelek.cc") {
+    ArabicVideoParser(context, MangaParserSource.ANIMELEK, "animelek.cc") {
     override val listUrl = "/anime/"
+
+    override suspend fun getVideoStreams(chapter: org.koitharu.kotatsu.parsers.model.MangaChapter): List<AnimeStream> =
+        extractDirectStreams(chapter)
 }
