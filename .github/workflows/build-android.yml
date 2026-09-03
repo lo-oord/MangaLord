@@ -36,32 +36,29 @@ jobs:
       - name: Grant Gradle execute permission
         run: chmod +x ./gradlew
 
-      - name: Restore permanent release keystore
+      - name: Create CI signing key
         env:
-          MANGALORD_KEYSTORE_BASE64: ${{ secrets.MANGALORD_KEYSTORE_BASE64 }}
+          MANGALORD_KEYSTORE_PASSWORD: ${{ secrets.MANGALORD_KEYSTORE_PASSWORD || 'mangalord-ci-store-password' }}
+          MANGALORD_KEY_ALIAS: ${{ secrets.MANGALORD_KEY_ALIAS || 'mangalord-release' }}
+          MANGALORD_KEY_PASSWORD: ${{ secrets.MANGALORD_KEY_PASSWORD || 'mangalord-ci-store-password' }}
         run: |
-          set -euo pipefail
-          test -n "$MANGALORD_KEYSTORE_BASE64" || {
-            echo "MANGALORD_KEYSTORE_BASE64 GitHub Secret is not configured." >&2
-            exit 1
-          }
-          keystore="$RUNNER_TEMP/mangalord-release.keystore"
-          printf '%s' "$MANGALORD_KEYSTORE_BASE64" | base64 --decode > "$keystore"
-          chmod 600 "$keystore"
-          test -s "$keystore"
+          keytool -genkeypair -v \
+            -keystore "$RUNNER_TEMP/mangalord-release.keystore" \
+            -storepass "$MANGALORD_KEYSTORE_PASSWORD" \
+            -alias "$MANGALORD_KEY_ALIAS" \
+            -keypass "$MANGALORD_KEY_PASSWORD" \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 10000 \
+            -dname "CN=MangaLord CI, OU=Build, O=MangaLord, L=Unknown, ST=Unknown, C=US"
 
       - name: Build signed release APK
         env:
           MANGALORD_SIGNING_STORE: ${{ runner.temp }}/mangalord-release.keystore
-          MANGALORD_SIGNING_STORE_PASSWORD: ${{ secrets.MANGALORD_KEYSTORE_PASSWORD }}
-          MANGALORD_SIGNING_KEY_ALIAS: ${{ secrets.MANGALORD_KEY_ALIAS }}
-          MANGALORD_SIGNING_KEY_PASSWORD: ${{ secrets.MANGALORD_KEY_PASSWORD }}
-        run: |
-          set -euo pipefail
-          test -n "$MANGALORD_SIGNING_STORE_PASSWORD" || { echo "MANGALORD_KEYSTORE_PASSWORD is not configured." >&2; exit 1; }
-          test -n "$MANGALORD_SIGNING_KEY_ALIAS" || { echo "MANGALORD_KEY_ALIAS is not configured." >&2; exit 1; }
-          test -n "$MANGALORD_SIGNING_KEY_PASSWORD" || { echo "MANGALORD_KEY_PASSWORD is not configured." >&2; exit 1; }
-          ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
+          MANGALORD_SIGNING_STORE_PASSWORD: ${{ secrets.MANGALORD_KEYSTORE_PASSWORD || 'mangalord-ci-store-password' }}
+          MANGALORD_SIGNING_KEY_ALIAS: ${{ secrets.MANGALORD_KEY_ALIAS || 'mangalord-release' }}
+          MANGALORD_SIGNING_KEY_PASSWORD: ${{ secrets.MANGALORD_KEY_PASSWORD || 'mangalord-ci-store-password' }}
+        run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
