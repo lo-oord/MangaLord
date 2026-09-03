@@ -65,7 +65,7 @@ internal class MovieBox(context: MangaLoaderContext) :
         .mapNotNull(::parseCard)
         .distinctBy(Manga::url)
 
-    private fun apiGet(path: String): JSONObject = webClient.httpGet(
+    private suspend fun apiGet(path: String): JSONObject = webClient.httpGet(
         "$API$path".toHttpUrl(), apiHeaders(),
     ).parseJson()
 
