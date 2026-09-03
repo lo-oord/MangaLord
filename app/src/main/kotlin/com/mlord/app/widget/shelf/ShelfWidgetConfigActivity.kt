@@ -1,4 +1,4 @@
-package com.mlord.app.app.widget.shelf
+package com.mlord.app.widget.shelf
 
 import android.appwidget.AppWidgetManager
 import android.content.Intent
@@ -8,18 +8,18 @@ import androidx.activity.viewModels
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.SnackbarErrorObserver
-import com.mlord.app.app.app.core.prefs.AppWidgetConfig
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.app.databinding.ActivityAppwidgetShelfBinding
-import com.mlord.app.app.app.widget.shelf.adapter.CategorySelectAdapter
-import com.mlord.app.app.app.widget.shelf.model.CategoryItem
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.SnackbarErrorObserver
+import com.mlord.app.app.core.prefs.AppWidgetConfig
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.systemBarsInsets
+import com.mlord.app.app.databinding.ActivityAppwidgetShelfBinding
+import com.mlord.app.app.widget.shelf.adapter.CategorySelectAdapter
+import com.mlord.app.app.widget.shelf.model.CategoryItem
 
 @AndroidEntryPoint
 class ShelfWidgetConfigActivity :

@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.util.iterator
+package com.mlord.app.core.util.iterator
 
 class MappingIterator<T, R>(
 	private val upstream: Iterator<T>,

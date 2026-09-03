@@ -1,10 +1,10 @@
-package com.mlord.app.app.search.ui.suggestion.adapter
+package com.mlord.app.search.ui.suggestion.adapter
 
 import android.widget.TextView
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.app.search.ui.suggestion.model.SearchSuggestionItem
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.search.ui.suggestion.model.SearchSuggestionItem
 
 fun searchSuggestionTextAD() = adapterDelegate<SearchSuggestionItem.Text, SearchSuggestionItem>(
 	R.layout.item_search_suggestion_text,

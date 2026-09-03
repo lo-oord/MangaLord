@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.image
+package com.mlord.app.core.image
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -23,7 +23,7 @@ import coil3.size.Scale
 import coil3.size.Size
 import coil3.size.isOriginal
 import coil3.size.pxOrElse
-import com.mlord.app.app.app.core.util.ext.copyWithNewSource
+import com.mlord.app.app.core.util.ext.copyWithNewSource
 import kotlin.math.roundToInt
 
 class RegionBitmapDecoder(

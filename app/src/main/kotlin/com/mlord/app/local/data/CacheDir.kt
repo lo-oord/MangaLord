@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.data
+package com.mlord.app.local.data
 
 enum class CacheDir(val dir: String) {
 

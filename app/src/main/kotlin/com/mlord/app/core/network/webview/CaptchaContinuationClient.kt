@@ -1,8 +1,8 @@
-package com.mlord.app.app.core.network.webview
+package com.mlord.app.core.network.webview
 
 import android.graphics.Bitmap
 import android.webkit.WebView
-import com.mlord.app.app.app.core.network.cookies.MutableCookieJar
+import com.mlord.app.app.core.network.cookies.MutableCookieJar
 import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
 import kotlin.coroutines.Continuation
 

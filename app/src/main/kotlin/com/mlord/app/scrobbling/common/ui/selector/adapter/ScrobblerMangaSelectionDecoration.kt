@@ -1,4 +1,4 @@
-package com.mlord.app.app.scrobbling.common.ui.selector.adapter
+package com.mlord.app.scrobbling.common.ui.selector.adapter
 
 import android.content.Context
 import android.graphics.Canvas
@@ -7,9 +7,9 @@ import android.graphics.RectF
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
-import com.mlord.app.app.app.core.util.ext.getItem
-import com.mlord.app.app.app.list.ui.MangaSelectionDecoration
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerManga
+import com.mlord.app.app.core.util.ext.getItem
+import com.mlord.app.app.list.ui.MangaSelectionDecoration
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerManga
 
 class ScrobblerMangaSelectionDecoration(context: Context) : MangaSelectionDecoration(context) {
 

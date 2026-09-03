@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui
+package com.mlord.app.reader.ui
 
 import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
@@ -24,13 +24,13 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.withScale
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ext.getThemeColorStateList
-import com.mlord.app.app.app.core.util.ext.isNightMode
-import com.mlord.app.app.app.core.util.ext.measureDimension
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ext.getThemeColorStateList
+import com.mlord.app.app.core.util.ext.isNightMode
+import com.mlord.app.app.core.util.ext.measureDimension
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.util.format
-import com.mlord.app.app.app.reader.ui.pager.ReaderUiState
+import com.mlord.app.app.reader.ui.pager.ReaderUiState
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle

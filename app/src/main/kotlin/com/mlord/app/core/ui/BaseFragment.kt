@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui
+package com.mlord.app.core.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -10,8 +10,8 @@ import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import dagger.hilt.android.EntryPointAccessors
-import com.mlord.app.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.app.core.ui.util.ActionModeDelegate
+import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.app.core.ui.util.ActionModeDelegate
 
 abstract class BaseFragment<B : ViewBinding> :
 	OnApplyWindowInsetsListener,

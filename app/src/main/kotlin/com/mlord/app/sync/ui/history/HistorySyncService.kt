@@ -1,4 +1,4 @@
-package com.mlord.app.app.sync.ui.history
+package com.mlord.app.sync.ui.history
 
 import android.app.Service
 import android.content.Intent

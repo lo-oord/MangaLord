@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.domain
+package com.mlord.app.reader.domain
 
 enum class TapGridArea {
 

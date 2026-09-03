@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.util.ext
+package com.mlord.app.core.util.ext
 
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable

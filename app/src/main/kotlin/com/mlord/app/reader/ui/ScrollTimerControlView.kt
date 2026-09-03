@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui
+package com.mlord.app.reader.ui
 
 import android.content.Context
 import android.util.AttributeSet
@@ -17,14 +17,14 @@ import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.ReaderMode
-import com.mlord.app.app.app.core.prefs.observeAsStateFlow
-import com.mlord.app.app.app.core.util.ext.isAnimationsEnabled
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.parentView
-import com.mlord.app.app.app.databinding.ViewScrollTimerBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.ReaderMode
+import com.mlord.app.app.core.prefs.observeAsStateFlow
+import com.mlord.app.app.core.util.ext.isAnimationsEnabled
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.parentView
+import com.mlord.app.app.databinding.ViewScrollTimerBinding
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import kotlin.math.abs

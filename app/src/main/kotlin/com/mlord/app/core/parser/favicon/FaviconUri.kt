@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.parser.favicon
+package com.mlord.app.core.parser.favicon
 
 import android.net.Uri
 import org.koitharu.kotatsu.parsers.model.MangaSource

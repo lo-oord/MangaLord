@@ -1,4 +1,4 @@
-package com.mlord.app.app.favourites.data
+package com.mlord.app.favourites.data
 
 import androidx.room.Dao
 import androidx.room.Insert

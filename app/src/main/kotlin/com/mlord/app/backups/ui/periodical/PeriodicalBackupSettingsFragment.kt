@@ -1,4 +1,4 @@
-package com.mlord.app.app.backups.ui.periodical
+package com.mlord.app.backups.ui.periodical
 
 import android.content.Intent
 import android.net.Uri
@@ -12,16 +12,16 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceCategory
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.SnackbarErrorObserver
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.os.OpenDocumentTreeHelper
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.tryLaunch
-import com.mlord.app.app.app.settings.utils.EditTextFallbackSummaryProvider
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.SnackbarErrorObserver
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.os.OpenDocumentTreeHelper
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.BasePreferenceFragment
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.tryLaunch
+import com.mlord.app.app.settings.utils.EditTextFallbackSummaryProvider
 import java.util.Date
 import javax.inject.Inject
 

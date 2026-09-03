@@ -1,12 +1,12 @@
-package com.mlord.app.app.local.ui
+package com.mlord.app.local.ui
 
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.router
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.router
 
 class LocalListMenuProvider(
 	private val fragment: Fragment,

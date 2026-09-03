@@ -1,12 +1,12 @@
-package com.mlord.app.app.core.parser
+package com.mlord.app.core.parser
 
 import android.net.Uri
 import coil3.request.CachePolicy
 import dagger.Reusable
-import com.mlord.app.app.app.core.model.MangaSource
-import com.mlord.app.app.app.core.model.UnknownMangaSource
-import com.mlord.app.app.app.core.model.isNsfw
-import com.mlord.app.app.app.core.util.ext.isHttpUrl
+import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.app.core.model.UnknownMangaSource
+import com.mlord.app.app.core.model.isNsfw
+import com.mlord.app.app.core.util.ext.isHttpUrl
 import org.koitharu.kotatsu.parsers.MangaLoaderContext
 import org.koitharu.kotatsu.parsers.exception.NotFoundException
 import org.koitharu.kotatsu.parsers.model.Manga

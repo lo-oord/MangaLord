@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.dialog
+package com.mlord.app.core.ui.dialog
 
 import android.content.Context
 import android.content.DialogInterface
@@ -10,7 +10,7 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.mlord.app.app.app.databinding.DialogTwoButtonsBinding
+import com.mlord.app.app.databinding.DialogTwoButtonsBinding
 
 class BigButtonsAlertDialog private constructor(
 	private val delegate: AlertDialog

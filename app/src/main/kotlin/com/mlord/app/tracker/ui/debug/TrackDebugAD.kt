@@ -1,4 +1,4 @@
-package com.mlord.app.app.tracker.ui.debug
+package com.mlord.app.tracker.ui.debug
 
 import android.graphics.Color
 import android.text.format.DateUtils
@@ -7,12 +7,12 @@ import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.drawableStart
-import com.mlord.app.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.app.databinding.ItemTrackDebugBinding
-import com.mlord.app.app.app.tracker.data.TrackEntity
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.drawableStart
+import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.databinding.ItemTrackDebugBinding
+import com.mlord.app.app.tracker.data.TrackEntity
 import androidx.appcompat.R as appcompatR
 
 fun trackDebugAD(

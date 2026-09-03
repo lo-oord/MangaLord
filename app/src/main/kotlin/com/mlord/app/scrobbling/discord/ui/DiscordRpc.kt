@@ -1,4 +1,4 @@
-package com.mlord.app.app.scrobbling.discord.ui
+package com.mlord.app.scrobbling.discord.ui
 
 import android.content.Context
 import android.os.SystemClock
@@ -19,18 +19,18 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
 import okio.utf8Size
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.LocalizedAppContext
-import com.mlord.app.app.app.core.model.appUrl
-import com.mlord.app.app.app.core.model.getTitle
-import com.mlord.app.app.app.core.model.isNsfw
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.lifecycleScope
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.R
+import com.mlord.app.app.core.LocalizedAppContext
+import com.mlord.app.app.core.model.appUrl
+import com.mlord.app.app.core.model.getTitle
+import com.mlord.app.app.core.model.isNsfw
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.lifecycleScope
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.app.reader.ui.pager.ReaderUiState
-import com.mlord.app.app.app.scrobbling.discord.data.DiscordRepository
+import com.mlord.app.app.reader.ui.pager.ReaderUiState
+import com.mlord.app.app.scrobbling.discord.data.DiscordRepository
 import java.util.Collections
 import javax.inject.Inject
 

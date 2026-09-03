@@ -1,5 +1,5 @@
-package com.mlord.app.app.sync.ui.favourites
+package com.mlord.app.sync.ui.favourites
 
-import com.mlord.app.app.app.sync.ui.SyncProvider
+import com.mlord.app.app.sync.ui.SyncProvider
 
 class FavouritesSyncProvider : SyncProvider()

@@ -1,8 +1,8 @@
-package com.mlord.app.app.reader.ui.pager.doublereversed
+package com.mlord.app.reader.ui.pager.doublereversed
 
-import com.mlord.app.app.app.reader.ui.ReaderState
-import com.mlord.app.app.app.reader.ui.pager.ReaderPage
-import com.mlord.app.app.app.reader.ui.pager.doublepage.DoubleReaderFragment
+import com.mlord.app.app.reader.ui.ReaderState
+import com.mlord.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.app.reader.ui.pager.doublepage.DoubleReaderFragment
 
 class ReversedDoubleReaderFragment : DoubleReaderFragment() {
 

@@ -1,4 +1,4 @@
-package com.mlord.app.app.details.domain
+package com.mlord.app.details.domain
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -6,21 +6,21 @@ import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
-import com.mlord.app.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.app.core.model.isNsfw
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.TriStateOption
-import com.mlord.app.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.app.details.data.MangaDetails
-import com.mlord.app.app.app.favourites.domain.FavouritesRepository
-import com.mlord.app.app.app.history.data.HistoryRepository
-import com.mlord.app.app.app.local.data.LocalMangaRepository
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.core.model.FavouriteCategory
+import com.mlord.app.app.core.model.isNsfw
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.TriStateOption
+import com.mlord.app.app.core.prefs.observeAsFlow
+import com.mlord.app.app.details.data.MangaDetails
+import com.mlord.app.app.favourites.domain.FavouritesRepository
+import com.mlord.app.app.history.data.HistoryRepository
+import com.mlord.app.app.local.data.LocalMangaRepository
+import com.mlord.app.app.local.domain.model.LocalManga
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.app.scrobbling.common.domain.Scrobbler
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblingInfo
-import com.mlord.app.app.app.tracker.domain.TrackingRepository
+import com.mlord.app.app.scrobbling.common.domain.Scrobbler
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingInfo
+import com.mlord.app.app.tracker.domain.TrackingRepository
 import javax.inject.Inject
 
 /* TODO: remove */

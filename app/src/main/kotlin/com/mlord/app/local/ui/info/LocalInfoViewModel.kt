@@ -1,21 +1,21 @@
-package com.mlord.app.app.local.ui.info
+package com.mlord.app.local.ui.info
 
 import androidx.core.net.toUri
 import androidx.lifecycle.SavedStateHandle
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import com.mlord.app.app.app.core.model.parcelable.ParcelableManga
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.app.core.util.ext.call
-import com.mlord.app.app.app.core.util.ext.computeSize
-import com.mlord.app.app.app.core.util.ext.require
-import com.mlord.app.app.app.core.util.ext.toFileOrNull
-import com.mlord.app.app.app.local.data.LocalMangaRepository
-import com.mlord.app.app.app.local.data.LocalStorageManager
-import com.mlord.app.app.app.local.domain.DeleteReadChaptersUseCase
+import com.mlord.app.app.core.model.parcelable.ParcelableManga
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.util.ext.MutableEventFlow
+import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.app.core.util.ext.computeSize
+import com.mlord.app.app.core.util.ext.require
+import com.mlord.app.app.core.util.ext.toFileOrNull
+import com.mlord.app.app.local.data.LocalMangaRepository
+import com.mlord.app.app.local.data.LocalStorageManager
+import com.mlord.app.app.local.domain.DeleteReadChaptersUseCase
 import javax.inject.Inject
 
 @HiltViewModel

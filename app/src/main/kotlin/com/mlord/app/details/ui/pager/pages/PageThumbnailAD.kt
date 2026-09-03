@@ -1,13 +1,13 @@
-package com.mlord.app.app.details.ui.pager.pages
+package com.mlord.app.details.ui.pager.pages
 
 import coil3.size.Size
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.list.AdapterDelegateClickListenerAdapter
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.setTextColorAttr
-import com.mlord.app.app.app.databinding.ItemPageThumbBinding
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.list.AdapterDelegateClickListenerAdapter
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.setTextColorAttr
+import com.mlord.app.app.databinding.ItemPageThumbBinding
+import com.mlord.app.app.list.ui.model.ListModel
 import com.google.android.material.R as materialR
 
 fun pageThumbnailAD(

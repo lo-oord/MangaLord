@@ -1,17 +1,17 @@
-package com.mlord.app.app.reader.ui.pager.reversed
+package com.mlord.app.reader.ui.pager.reversed
 
 import android.graphics.PointF
 import android.view.Gravity
 import android.widget.FrameLayout
 import androidx.lifecycle.LifecycleOwner
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-import com.mlord.app.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.app.core.model.ZoomMode
-import com.mlord.app.app.app.core.os.NetworkState
-import com.mlord.app.app.app.databinding.ItemPageBinding
-import com.mlord.app.app.app.reader.domain.PageLoader
-import com.mlord.app.app.app.reader.ui.config.ReaderSettings
-import com.mlord.app.app.app.reader.ui.pager.standard.PageHolder
+import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.app.core.model.ZoomMode
+import com.mlord.app.app.core.os.NetworkState
+import com.mlord.app.app.databinding.ItemPageBinding
+import com.mlord.app.app.reader.domain.PageLoader
+import com.mlord.app.app.reader.ui.config.ReaderSettings
+import com.mlord.app.app.reader.ui.pager.standard.PageHolder
 
 class ReversedPageHolder(
 	owner: LifecycleOwner,

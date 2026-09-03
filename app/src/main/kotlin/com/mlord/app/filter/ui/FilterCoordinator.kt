@@ -1,4 +1,4 @@
-package com.mlord.app.app.filter.ui
+package com.mlord.app.filter.ui
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.SavedStateHandle
@@ -19,17 +19,17 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.core.model.MangaSource
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.util.LocaleComparator
-import com.mlord.app.app.app.core.util.ext.asFlow
-import com.mlord.app.app.app.core.util.ext.lifecycleScope
-import com.mlord.app.app.app.core.util.ext.sortedByOrdinal
-import com.mlord.app.app.app.core.util.ext.sortedWithSafe
-import com.mlord.app.app.app.filter.data.PersistableFilter
-import com.mlord.app.app.app.filter.data.SavedFiltersRepository
-import com.mlord.app.app.app.filter.ui.model.FilterProperty
-import com.mlord.app.app.app.filter.ui.tags.TagTitleComparator
+import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.util.LocaleComparator
+import com.mlord.app.app.core.util.ext.asFlow
+import com.mlord.app.app.core.util.ext.lifecycleScope
+import com.mlord.app.app.core.util.ext.sortedByOrdinal
+import com.mlord.app.app.core.util.ext.sortedWithSafe
+import com.mlord.app.app.filter.data.PersistableFilter
+import com.mlord.app.app.filter.data.SavedFiltersRepository
+import com.mlord.app.app.filter.ui.model.FilterProperty
+import com.mlord.app.app.filter.ui.tags.TagTitleComparator
 import org.koitharu.kotatsu.parsers.model.ContentRating
 import org.koitharu.kotatsu.parsers.model.ContentType
 import org.koitharu.kotatsu.parsers.model.Demographic
@@ -43,8 +43,8 @@ import org.koitharu.kotatsu.parsers.model.YEAR_MIN
 import org.koitharu.kotatsu.parsers.util.ifZero
 import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 import org.koitharu.kotatsu.parsers.util.suspendlazy.suspendLazy
-import com.mlord.app.app.app.remotelist.ui.RemoteListFragment
-import com.mlord.app.app.app.search.domain.MangaSearchRepository
+import com.mlord.app.app.remotelist.ui.RemoteListFragment
+import com.mlord.app.app.search.domain.MangaSearchRepository
 import java.util.Calendar
 import java.util.Locale
 import javax.inject.Inject

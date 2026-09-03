@@ -1,4 +1,4 @@
-package com.mlord.app.app.picker.ui.manga
+package com.mlord.app.picker.ui.manga
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -9,20 +9,20 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.favourites.domain.FavouritesRepository
-import com.mlord.app.app.app.history.data.HistoryRepository
-import com.mlord.app.app.app.list.domain.MangaListMapper
-import com.mlord.app.app.app.list.ui.MangaListViewModel
-import com.mlord.app.app.app.list.ui.model.ListHeader
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.list.ui.model.LoadingState
+import com.mlord.app.app.R
+import com.mlord.app.app.core.parser.MangaDataRepository
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.favourites.domain.FavouritesRepository
+import com.mlord.app.app.history.data.HistoryRepository
+import com.mlord.app.app.list.domain.MangaListMapper
+import com.mlord.app.app.list.ui.MangaListViewModel
+import com.mlord.app.app.list.ui.model.ListHeader
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.LoadingState
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharedFlow
-import com.mlord.app.app.app.local.data.LocalStorageChanges
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.local.data.LocalStorageChanges
+import com.mlord.app.app.local.domain.model.LocalManga
 
 @HiltViewModel
 class MangaPickerViewModel @Inject constructor(

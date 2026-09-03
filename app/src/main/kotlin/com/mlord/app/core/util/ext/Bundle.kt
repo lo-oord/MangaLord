@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.mlord.app.app.core.util.ext
+package com.mlord.app.core.util.ext
 
 import android.content.Intent
 import android.os.Build

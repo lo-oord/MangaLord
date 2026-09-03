@@ -1,4 +1,4 @@
-package com.mlord.app.app.scrobbling.common.ui.selector
+package com.mlord.app.scrobbling.common.ui.selector
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
@@ -12,27 +12,27 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.app.core.model.parcelable.ParcelableManga
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.app.core.util.ext.call
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.core.util.ext.require
-import com.mlord.app.app.app.core.util.ext.requireValue
-import com.mlord.app.app.app.history.data.HistoryRepository
-import com.mlord.app.app.app.list.domain.ReadingProgress
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.list.ui.model.LoadingFooter
-import com.mlord.app.app.app.list.ui.model.LoadingState
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.app.core.model.parcelable.ParcelableManga
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.util.ext.MutableEventFlow
+import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.require
+import com.mlord.app.app.core.util.ext.requireValue
+import com.mlord.app.app.history.data.HistoryRepository
+import com.mlord.app.app.list.domain.ReadingProgress
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.LoadingFooter
+import com.mlord.app.app.list.ui.model.LoadingState
 import org.koitharu.kotatsu.parsers.util.ifZero
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.app.scrobbling.common.domain.Scrobbler
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerManga
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblingStatus
-import com.mlord.app.app.app.scrobbling.common.ui.selector.model.ScrobblerHint
+import com.mlord.app.app.scrobbling.common.domain.Scrobbler
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerManga
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingStatus
+import com.mlord.app.app.scrobbling.common.ui.selector.model.ScrobblerHint
 import javax.inject.Inject
 
 @HiltViewModel

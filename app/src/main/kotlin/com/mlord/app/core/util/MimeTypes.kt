@@ -1,10 +1,10 @@
-package com.mlord.app.app.core.util
+package com.mlord.app.core.util
 
 import android.os.Build
 import android.webkit.MimeTypeMap
 import org.jetbrains.annotations.Blocking
-import com.mlord.app.app.app.core.util.ext.MimeType
-import com.mlord.app.app.app.core.util.ext.toMimeTypeOrNull
+import com.mlord.app.app.core.util.ext.MimeType
+import com.mlord.app.app.core.util.ext.toMimeTypeOrNull
 import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 import org.koitharu.kotatsu.parsers.util.removeSuffix
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable

@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings
+package com.mlord.app.settings
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -15,18 +15,18 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.network.BaseHttpClient
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.core.util.ext.viewLifecycleScope
+import com.mlord.app.app.R
+import com.mlord.app.app.core.network.BaseHttpClient
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.BasePreferenceFragment
+import com.mlord.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.viewLifecycleScope
 import org.koitharu.kotatsu.parsers.util.await
-import com.mlord.app.app.app.settings.utils.EditTextBindListener
-import com.mlord.app.app.app.settings.utils.PasswordSummaryProvider
-import com.mlord.app.app.app.settings.utils.validation.DomainValidator
-import com.mlord.app.app.app.settings.utils.validation.PortNumberValidator
+import com.mlord.app.app.settings.utils.EditTextBindListener
+import com.mlord.app.app.settings.utils.PasswordSummaryProvider
+import com.mlord.app.app.settings.utils.validation.DomainValidator
+import com.mlord.app.app.settings.utils.validation.PortNumberValidator
 import java.net.Proxy
 import javax.inject.Inject
 import kotlin.coroutines.cancellation.CancellationException

@@ -1,11 +1,11 @@
-package com.mlord.app.app.scrobbling.common.domain
+package com.mlord.app.scrobbling.common.domain
 
-import com.mlord.app.app.app.scrobbling.anilist.data.AniListRepository
-import com.mlord.app.app.app.scrobbling.common.data.ScrobblerRepository
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerService
-import com.mlord.app.app.app.scrobbling.kitsu.data.KitsuRepository
-import com.mlord.app.app.app.scrobbling.mal.data.MALRepository
-import com.mlord.app.app.app.scrobbling.shikimori.data.ShikimoriRepository
+import com.mlord.app.app.scrobbling.anilist.data.AniListRepository
+import com.mlord.app.app.scrobbling.common.data.ScrobblerRepository
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.app.scrobbling.kitsu.data.KitsuRepository
+import com.mlord.app.app.scrobbling.mal.data.MALRepository
+import com.mlord.app.app.scrobbling.shikimori.data.ShikimoriRepository
 import javax.inject.Inject
 import javax.inject.Provider
 

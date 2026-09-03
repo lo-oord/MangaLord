@@ -1,4 +1,4 @@
-package com.mlord.app.app.image.ui
+package com.mlord.app.image.ui
 
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -22,27 +22,27 @@ import com.davemorrissey.labs.subscaleview.ImageSource
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.SnackbarErrorObserver
-import com.mlord.app.app.app.core.image.CoilMemoryCacheKey
-import com.mlord.app.app.app.core.model.MangaSource
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.ui.util.PopupMenuMediator
-import com.mlord.app.app.app.core.util.ShareHelper
-import com.mlord.app.app.app.core.util.ext.consumeAll
-import com.mlord.app.app.app.core.util.ext.end
-import com.mlord.app.app.app.core.util.ext.enqueueWith
-import com.mlord.app.app.app.core.util.ext.getDisplayIcon
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.app.core.util.ext.getParcelableExtraCompat
-import com.mlord.app.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.app.core.util.ext.mangaSourceExtra
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.start
-import com.mlord.app.app.app.databinding.ActivityImageBinding
-import com.mlord.app.app.app.databinding.ItemErrorStateBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.SnackbarErrorObserver
+import com.mlord.app.app.core.image.CoilMemoryCacheKey
+import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.ui.util.PopupMenuMediator
+import com.mlord.app.app.core.util.ShareHelper
+import com.mlord.app.app.core.util.ext.consumeAll
+import com.mlord.app.app.core.util.ext.end
+import com.mlord.app.app.core.util.ext.enqueueWith
+import com.mlord.app.app.core.util.ext.getDisplayIcon
+import com.mlord.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.core.util.ext.getParcelableExtraCompat
+import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.core.util.ext.mangaSourceExtra
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.start
+import com.mlord.app.app.databinding.ActivityImageBinding
+import com.mlord.app.app.databinding.ItemErrorStateBinding
 import javax.inject.Inject
 import androidx.appcompat.R as appcompatR
 

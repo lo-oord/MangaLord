@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.reversed
+package com.mlord.app.reader.ui.pager.reversed
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2

@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.dialog
+package com.mlord.app.core.ui.dialog
 
 import android.content.DialogInterface
 

@@ -1,7 +1,7 @@
-package com.mlord.app.app.settings.sources.catalog
+package com.mlord.app.settings.sources.catalog
 
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.model.ContentType
 
 data class SourceCatalogPage(

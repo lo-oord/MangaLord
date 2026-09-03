@@ -1,11 +1,11 @@
-package com.mlord.app.app.settings.utils
+package com.mlord.app.settings.utils
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.preference.PreferenceViewHolder
 import androidx.preference.SwitchPreferenceCompat
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 
 class SplitSwitchPreference @JvmOverloads constructor(
 	context: Context,

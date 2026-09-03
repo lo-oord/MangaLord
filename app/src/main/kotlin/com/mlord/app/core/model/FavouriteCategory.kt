@@ -1,10 +1,10 @@
-package com.mlord.app.app.core.model
+package com.mlord.app.core.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import com.mlord.app.app.app.list.domain.ListSortOrder
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.domain.ListSortOrder
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.model.ListModel
 import java.time.Instant
 
 @Parcelize

@@ -1,4 +1,4 @@
-package com.mlord.app.app.tracker.domain.model
+package com.mlord.app.tracker.domain.model
 
 import org.koitharu.kotatsu.parsers.exception.TooManyRequestExceptions
 import org.koitharu.kotatsu.parsers.model.Manga

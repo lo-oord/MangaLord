@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.about
+package com.mlord.app.settings.about
 
 import android.app.DownloadManager
 import android.content.Context
@@ -12,12 +12,12 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.isActive
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.github.AppUpdateRepository
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.app.core.util.ext.call
-import com.mlord.app.app.app.core.util.ext.requireValue
+import com.mlord.app.app.R
+import com.mlord.app.app.core.github.AppUpdateRepository
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.util.ext.MutableEventFlow
+import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.app.core.util.ext.requireValue
 import javax.inject.Inject
 
 @HiltViewModel

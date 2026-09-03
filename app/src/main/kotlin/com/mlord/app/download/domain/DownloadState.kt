@@ -1,8 +1,8 @@
-package com.mlord.app.app.download.domain
+package com.mlord.app.download.domain
 
 import androidx.work.Data
-import com.mlord.app.app.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
+import com.mlord.app.app.local.domain.model.LocalManga
 import org.koitharu.kotatsu.parsers.model.Manga
 import java.time.Instant
 

@@ -1,4 +1,4 @@
-package com.mlord.app.app.widget.recent
+package com.mlord.app.widget.recent
 
 import android.content.Context
 import android.content.Intent
@@ -13,12 +13,12 @@ import coil3.size.Size
 import coil3.transform.RoundedCornersTransformation
 import dagger.Lazy
 import kotlinx.coroutines.runBlocking
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.getDrawableOrThrow
-import com.mlord.app.app.app.core.util.ext.mangaExtra
-import com.mlord.app.app.app.history.data.HistoryRepository
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.getDrawableOrThrow
+import com.mlord.app.app.core.util.ext.mangaExtra
+import com.mlord.app.app.history.data.HistoryRepository
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.replaceWith
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable

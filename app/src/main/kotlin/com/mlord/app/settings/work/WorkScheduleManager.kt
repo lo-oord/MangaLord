@@ -1,12 +1,12 @@
-package com.mlord.app.app.settings.work
+package com.mlord.app.settings.work
 
 import android.content.SharedPreferences
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.processLifecycleScope
-import com.mlord.app.app.app.suggestions.ui.SuggestionsWorker
-import com.mlord.app.app.app.tracker.work.TrackWorker
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.processLifecycleScope
+import com.mlord.app.app.suggestions.ui.SuggestionsWorker
+import com.mlord.app.app.tracker.work.TrackWorker
 import javax.inject.Inject
 import javax.inject.Singleton
 

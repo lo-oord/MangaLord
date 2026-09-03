@@ -1,4 +1,4 @@
-package com.mlord.app.app.search.ui.suggestion
+package com.mlord.app.search.ui.suggestion
 
 import android.content.Context
 import android.view.Menu
@@ -6,10 +6,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
 import androidx.core.view.MenuProvider
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.dialog.buildAlertDialog
-import com.mlord.app.app.app.core.util.ext.resolve
-import com.mlord.app.app.app.core.util.ext.tryLaunch
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.app.core.util.ext.resolve
+import com.mlord.app.app.core.util.ext.tryLaunch
 
 class SearchSuggestionMenuProvider(
 	private val context: Context,

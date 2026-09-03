@@ -1,4 +1,4 @@
-package com.mlord.app.app.list.ui.preview
+package com.mlord.app.list.ui.preview
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,18 +11,18 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.ui.BaseFragment
-import com.mlord.app.app.app.core.ui.widgets.ChipsView
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.app.databinding.FragmentPreviewBinding
-import com.mlord.app.app.app.filter.ui.FilterCoordinator
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.ui.BaseFragment
+import com.mlord.app.app.core.ui.widgets.ChipsView
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.textAndVisible
+import com.mlord.app.app.databinding.FragmentPreviewBinding
+import com.mlord.app.app.filter.ui.FilterCoordinator
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaTag
 import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
-import com.mlord.app.app.app.search.ui.MangaListActivity
+import com.mlord.app.app.search.ui.MangaListActivity
 
 @AndroidEntryPoint
 class PreviewFragment : BaseFragment<FragmentPreviewBinding>(), View.OnClickListener, ChipsView.OnChipClickListener {

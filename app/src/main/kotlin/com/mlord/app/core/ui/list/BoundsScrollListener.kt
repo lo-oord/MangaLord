@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.list
+package com.mlord.app.core.ui.list
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

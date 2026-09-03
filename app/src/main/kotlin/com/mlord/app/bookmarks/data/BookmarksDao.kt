@@ -1,4 +1,4 @@
-package com.mlord.app.app.bookmarks.data
+package com.mlord.app.bookmarks.data
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -10,7 +10,7 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
-import com.mlord.app.app.app.core.db.entity.MangaWithTags
+import com.mlord.app.app.core.db.entity.MangaWithTags
 
 @Dao
 abstract class BookmarksDao {

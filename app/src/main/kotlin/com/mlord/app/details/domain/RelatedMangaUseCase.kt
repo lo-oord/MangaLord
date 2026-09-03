@@ -1,7 +1,7 @@
-package com.mlord.app.app.details.domain
+package com.mlord.app.details.domain
 
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import javax.inject.Inject

@@ -1,11 +1,11 @@
-package com.mlord.app.app.history.data
+package com.mlord.app.history.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.mlord.app.app.app.core.db.TABLE_HISTORY
-import com.mlord.app.app.app.core.db.entity.MangaEntity
+import com.mlord.app.app.core.db.TABLE_HISTORY
+import com.mlord.app.app.core.db.entity.MangaEntity
 
 @Entity(
 	tableName = TABLE_HISTORY,

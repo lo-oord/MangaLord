@@ -1,4 +1,4 @@
-package com.mlord.app.app.details.ui.pager
+package com.mlord.app.details.ui.pager
 
 import android.view.Menu
 import android.view.MenuInflater
@@ -10,14 +10,14 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.slider.LabelFormatter
 import com.google.android.material.slider.Slider
 import com.google.android.material.slider.TickVisibilityMode
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.sheet.BaseAdaptiveSheet
-import com.mlord.app.app.app.core.util.ext.setValueRounded
-import com.mlord.app.app.app.core.util.progress.IntPercentLabelFormatter
-import com.mlord.app.app.app.details.ui.pager.ChaptersPagesSheet.Companion.TAB_BOOKMARKS
-import com.mlord.app.app.app.details.ui.pager.ChaptersPagesSheet.Companion.TAB_CHAPTERS
-import com.mlord.app.app.app.details.ui.pager.ChaptersPagesSheet.Companion.TAB_PAGES
+import com.mlord.app.app.R
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.sheet.BaseAdaptiveSheet
+import com.mlord.app.app.core.util.ext.setValueRounded
+import com.mlord.app.app.core.util.progress.IntPercentLabelFormatter
+import com.mlord.app.app.details.ui.pager.ChaptersPagesSheet.Companion.TAB_BOOKMARKS
+import com.mlord.app.app.details.ui.pager.ChaptersPagesSheet.Companion.TAB_CHAPTERS
+import com.mlord.app.app.details.ui.pager.ChaptersPagesSheet.Companion.TAB_PAGES
 import java.lang.ref.WeakReference
 
 class ChapterPagesMenuProvider(

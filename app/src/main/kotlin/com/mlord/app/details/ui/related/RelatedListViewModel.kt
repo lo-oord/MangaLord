@@ -1,4 +1,4 @@
-package com.mlord.app.app.details.ui.related
+package com.mlord.app.details.ui.related
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
@@ -12,22 +12,22 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.model.parcelable.ParcelableManga
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.call
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.core.util.ext.require
-import com.mlord.app.app.app.list.domain.MangaListMapper
-import com.mlord.app.app.app.list.ui.MangaListViewModel
-import com.mlord.app.app.app.list.ui.model.EmptyState
-import com.mlord.app.app.app.list.ui.model.LoadingState
-import com.mlord.app.app.app.list.ui.model.toErrorState
-import com.mlord.app.app.app.local.data.LocalStorageChanges
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.R
+import com.mlord.app.app.core.model.parcelable.ParcelableManga
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.parser.MangaDataRepository
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.require
+import com.mlord.app.app.list.domain.MangaListMapper
+import com.mlord.app.app.list.ui.MangaListViewModel
+import com.mlord.app.app.list.ui.model.EmptyState
+import com.mlord.app.app.list.ui.model.LoadingState
+import com.mlord.app.app.list.ui.model.toErrorState
+import com.mlord.app.app.local.data.LocalStorageChanges
+import com.mlord.app.app.local.domain.model.LocalManga
 import org.koitharu.kotatsu.parsers.model.Manga
 import javax.inject.Inject
 

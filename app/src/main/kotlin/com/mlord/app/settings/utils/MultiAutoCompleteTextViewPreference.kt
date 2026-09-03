@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.utils
+package com.mlord.app.settings.utils
 
 import android.content.Context
 import android.util.AttributeSet
@@ -12,7 +12,7 @@ import androidx.annotation.StyleRes
 import androidx.annotation.WorkerThread
 import androidx.preference.EditTextPreference
 import kotlinx.coroutines.runBlocking
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 import org.koitharu.kotatsu.parsers.util.replaceWith
 
 class MultiAutoCompleteTextViewPreference @JvmOverloads constructor(

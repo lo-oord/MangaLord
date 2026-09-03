@@ -1,12 +1,12 @@
-package com.mlord.app.app.details.ui.pager.pages
+package com.mlord.app.details.ui.pager.pages
 
 import android.content.Context
-import com.mlord.app.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.ui.list.fastscroll.FastScroller
-import com.mlord.app.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.app.list.ui.adapter.listHeaderAD
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.ui.BaseListAdapter
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.ui.list.fastscroll.FastScroller
+import com.mlord.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.app.list.ui.adapter.listHeaderAD
+import com.mlord.app.app.list.ui.model.ListModel
 
 class PageThumbnailAdapter(
 	clickListener: OnListItemClickListener<PageThumbnail>,

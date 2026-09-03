@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.parser
+package com.mlord.app.core.parser
 
 import android.util.Log
 import androidx.collection.MutableLongSet
@@ -9,11 +9,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainCoroutineDispatcher
 import kotlinx.coroutines.async
 import kotlinx.coroutines.currentCoroutineContext
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.core.cache.MemoryContentCache
-import com.mlord.app.app.app.core.cache.SafeDeferred
-import com.mlord.app.app.app.core.util.MultiMutex
-import com.mlord.app.app.app.core.util.ext.processLifecycleScope
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.core.cache.MemoryContentCache
+import com.mlord.app.app.core.cache.SafeDeferred
+import com.mlord.app.app.core.util.MultiMutex
+import com.mlord.app.app.core.util.ext.processLifecycleScope
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import org.koitharu.kotatsu.parsers.model.MangaPage

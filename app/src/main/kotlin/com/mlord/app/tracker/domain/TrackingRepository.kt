@@ -1,4 +1,4 @@
-package com.mlord.app.app.tracker.domain
+package com.mlord.app.tracker.domain
 
 import androidx.annotation.VisibleForTesting
 import androidx.room.withTransaction
@@ -6,22 +6,22 @@ import dagger.Reusable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.onStart
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.db.entity.toManga
-import com.mlord.app.app.app.core.db.entity.toMangaTags
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.mapItems
-import com.mlord.app.app.app.core.util.ext.toInstantOrNull
-import com.mlord.app.app.app.details.domain.ProgressUpdateUseCase
-import com.mlord.app.app.app.list.domain.ListFilterOption
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.db.entity.toManga
+import com.mlord.app.app.core.db.entity.toMangaTags
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.mapItems
+import com.mlord.app.app.core.util.ext.toInstantOrNull
+import com.mlord.app.app.details.domain.ProgressUpdateUseCase
+import com.mlord.app.app.list.domain.ListFilterOption
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.ifZero
-import com.mlord.app.app.app.tracker.data.TrackEntity
-import com.mlord.app.app.app.tracker.data.TrackLogEntity
-import com.mlord.app.app.app.tracker.data.toTrackingLogItem
-import com.mlord.app.app.app.tracker.domain.model.MangaTracking
-import com.mlord.app.app.app.tracker.domain.model.MangaUpdates
-import com.mlord.app.app.app.tracker.domain.model.TrackingLogItem
+import com.mlord.app.app.tracker.data.TrackEntity
+import com.mlord.app.app.tracker.data.TrackLogEntity
+import com.mlord.app.app.tracker.data.toTrackingLogItem
+import com.mlord.app.app.tracker.domain.model.MangaTracking
+import com.mlord.app.app.tracker.domain.model.MangaUpdates
+import com.mlord.app.app.tracker.domain.model.TrackingLogItem
 import java.util.concurrent.atomic.AtomicBoolean
 import javax.inject.Inject
 

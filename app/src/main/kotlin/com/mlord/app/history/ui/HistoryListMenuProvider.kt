@@ -1,14 +1,14 @@
-package com.mlord.app.app.history.ui
+package com.mlord.app.history.ui
 
 import android.content.Context
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.view.MenuProvider
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.ui.dialog.RememberSelectionDialogListener
-import com.mlord.app.app.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.ui.dialog.RememberSelectionDialogListener
+import com.mlord.app.app.core.ui.dialog.buildAlertDialog
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId

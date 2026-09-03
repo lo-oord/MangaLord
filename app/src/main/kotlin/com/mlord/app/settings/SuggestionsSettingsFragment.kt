@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings
+package com.mlord.app.settings
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -6,13 +6,13 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.app.settings.utils.MultiAutoCompleteTextViewPreference
-import com.mlord.app.app.app.settings.utils.TagsAutoCompleteProvider
-import com.mlord.app.app.app.suggestions.domain.SuggestionRepository
-import com.mlord.app.app.app.suggestions.ui.SuggestionsWorker
+import com.mlord.app.app.R
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.BasePreferenceFragment
+import com.mlord.app.app.settings.utils.MultiAutoCompleteTextViewPreference
+import com.mlord.app.app.settings.utils.TagsAutoCompleteProvider
+import com.mlord.app.app.suggestions.domain.SuggestionRepository
+import com.mlord.app.app.suggestions.ui.SuggestionsWorker
 import javax.inject.Inject
 
 @AndroidEntryPoint

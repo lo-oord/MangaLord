@@ -1,14 +1,14 @@
-package com.mlord.app.app.favourites.ui.categories.select.adapter
+package com.mlord.app.favourites.ui.categories.select.adapter
 
 import androidx.core.text.buildSpannedString
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.model.appendIcon
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.databinding.ItemCategoryCheckableBinding
-import com.mlord.app.app.app.favourites.ui.categories.select.model.MangaCategoryItem
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.R
+import com.mlord.app.app.core.model.appendIcon
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.databinding.ItemCategoryCheckableBinding
+import com.mlord.app.app.favourites.ui.categories.select.model.MangaCategoryItem
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.model.ListModel
 
 fun mangaCategoryAD(
 	clickListener: OnListItemClickListener<MangaCategoryItem>,

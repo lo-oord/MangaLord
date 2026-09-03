@@ -1,4 +1,4 @@
-package com.mlord.app.app.scrobbling.common.domain.model
+package com.mlord.app.scrobbling.common.domain.model
 
 data class ScrobblerUser(
 	val id: Long,

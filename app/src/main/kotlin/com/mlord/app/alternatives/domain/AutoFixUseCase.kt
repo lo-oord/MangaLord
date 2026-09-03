@@ -1,4 +1,4 @@
-package com.mlord.app.app.alternatives.domain
+package com.mlord.app.alternatives.domain
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -11,11 +11,11 @@ import kotlinx.coroutines.flow.transformWhile
 import kotlinx.coroutines.flow.withIndex
 import kotlinx.coroutines.launch
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
-import com.mlord.app.app.app.core.model.chaptersCount
-import com.mlord.app.app.app.core.model.parcelable.ParcelableManga
-import com.mlord.app.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.util.ext.concat
+import com.mlord.app.app.core.model.chaptersCount
+import com.mlord.app.app.core.model.parcelable.ParcelableManga
+import com.mlord.app.app.core.parser.MangaDataRepository
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.util.ext.concat
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.util.concurrent.TimeUnit

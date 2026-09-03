@@ -1,11 +1,11 @@
-package com.mlord.app.app.details.ui.pager.pages
+package com.mlord.app.details.ui.pager.pages
 
 import android.net.Uri
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.FlowCollector
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ShareHelper
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ShareHelper
 
 class PagesSavedObserver(
 	private val snackbarHost: View,

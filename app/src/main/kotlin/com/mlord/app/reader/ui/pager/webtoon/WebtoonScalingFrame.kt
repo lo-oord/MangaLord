@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.webtoon
+package com.mlord.app.reader.ui.pager.webtoon
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -19,9 +19,9 @@ import android.widget.FrameLayout
 import android.widget.OverScroller
 import androidx.core.animation.doOnEnd
 import androidx.core.view.ViewConfigurationCompat
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.widgets.ZoomControl
-import com.mlord.app.app.app.core.util.ext.getAnimationDuration
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.widgets.ZoomControl
+import com.mlord.app.app.core.util.ext.getAnimationDuration
 import kotlin.math.roundToInt
 
 private const val MAX_SCALE = 2.5f

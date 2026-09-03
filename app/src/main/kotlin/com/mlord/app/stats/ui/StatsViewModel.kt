@@ -1,4 +1,4 @@
-package com.mlord.app.app.stats.ui
+package com.mlord.app.stats.ui
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -6,16 +6,16 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.take
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.ui.util.ReversibleAction
-import com.mlord.app.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.app.core.util.ext.call
-import com.mlord.app.app.app.favourites.domain.FavouritesRepository
-import com.mlord.app.app.app.stats.data.StatsRepository
-import com.mlord.app.app.app.stats.domain.StatsPeriod
-import com.mlord.app.app.app.stats.domain.StatsRecord
+import com.mlord.app.app.R
+import com.mlord.app.app.core.model.FavouriteCategory
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.ui.util.ReversibleAction
+import com.mlord.app.app.core.util.ext.MutableEventFlow
+import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.app.favourites.domain.FavouritesRepository
+import com.mlord.app.app.stats.data.StatsRepository
+import com.mlord.app.app.stats.domain.StatsPeriod
+import com.mlord.app.app.stats.domain.StatsRecord
 import javax.inject.Inject
 
 @HiltViewModel

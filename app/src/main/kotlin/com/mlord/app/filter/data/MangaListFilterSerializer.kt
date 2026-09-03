@@ -1,4 +1,4 @@
-package com.mlord.app.app.filter.data
+package com.mlord.app.filter.data
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.SetSerializer
@@ -12,8 +12,8 @@ import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.encoding.decodeStructure
 import kotlinx.serialization.encoding.encodeStructure
 import kotlinx.serialization.serializer
-import com.mlord.app.app.app.core.model.MangaSource
-import com.mlord.app.app.app.core.util.ext.toLocaleOrNull
+import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.app.core.util.ext.toLocaleOrNull
 import org.koitharu.kotatsu.parsers.model.ContentRating
 import org.koitharu.kotatsu.parsers.model.ContentType
 import org.koitharu.kotatsu.parsers.model.Demographic

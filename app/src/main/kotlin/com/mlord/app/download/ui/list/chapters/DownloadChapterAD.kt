@@ -1,10 +1,10 @@
-package com.mlord.app.app.download.ui.list.chapters
+package com.mlord.app.download.ui.list.chapters
 
 import androidx.core.content.ContextCompat
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ext.drawableEnd
-import com.mlord.app.app.app.databinding.ItemChapterDownloadBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ext.drawableEnd
+import com.mlord.app.app.databinding.ItemChapterDownloadBinding
 
 fun downloadChapterAD() = adapterDelegateViewBinding<DownloadChapter, DownloadChapter, ItemChapterDownloadBinding>(
 	{ layoutInflater, parent -> ItemChapterDownloadBinding.inflate(layoutInflater, parent, false) },

@@ -1,4 +1,4 @@
-package com.mlord.app.app.search.ui.suggestion
+package com.mlord.app.search.ui.suggestion
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,20 +14,20 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.SearchSuggestionType
-import com.mlord.app.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.app.core.prefs.observeAsStateFlow
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.ui.widgets.ChipsView
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.explore.data.MangaSourcesRepository
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.SearchSuggestionType
+import com.mlord.app.app.core.prefs.observeAsFlow
+import com.mlord.app.app.core.prefs.observeAsStateFlow
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.ui.widgets.ChipsView
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.explore.data.MangaSourcesRepository
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.MangaTag
 import org.koitharu.kotatsu.parsers.util.mapToSet
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.app.search.domain.MangaSearchRepository
-import com.mlord.app.app.app.search.ui.suggestion.model.SearchSuggestionItem
+import com.mlord.app.app.search.domain.MangaSearchRepository
+import com.mlord.app.app.search.ui.suggestion.model.SearchSuggestionItem
 import javax.inject.Inject
 
 private const val DEBOUNCE_TIMEOUT = 300L

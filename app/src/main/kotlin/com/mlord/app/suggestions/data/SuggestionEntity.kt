@@ -1,11 +1,11 @@
-package com.mlord.app.app.suggestions.data
+package com.mlord.app.suggestions.data
 
 import androidx.annotation.FloatRange
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.mlord.app.app.app.core.db.entity.MangaEntity
+import com.mlord.app.app.core.db.entity.MangaEntity
 
 @Entity(
 	tableName = "suggestions",

@@ -1,14 +1,14 @@
-package com.mlord.app.app.core.model.parcelable
+package com.mlord.app.core.model.parcelable
 
 import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.parcelize.Parceler
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.TypeParceler
-import com.mlord.app.app.app.core.util.ext.readEnumSet
-import com.mlord.app.app.app.core.util.ext.readParcelableCompat
-import com.mlord.app.app.app.core.util.ext.readSerializableCompat
-import com.mlord.app.app.app.core.util.ext.writeEnumSet
+import com.mlord.app.app.core.util.ext.readEnumSet
+import com.mlord.app.app.core.util.ext.readParcelableCompat
+import com.mlord.app.app.core.util.ext.readSerializableCompat
+import com.mlord.app.app.core.util.ext.writeEnumSet
 import org.koitharu.kotatsu.parsers.model.ContentRating
 import org.koitharu.kotatsu.parsers.model.ContentType
 import org.koitharu.kotatsu.parsers.model.Demographic

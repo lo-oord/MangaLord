@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.vertical
+package com.mlord.app.reader.ui.pager.vertical
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2

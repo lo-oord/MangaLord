@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.util.ext
+package com.mlord.app.core.util.ext
 
 import android.util.DisplayMetrics
 import androidx.core.view.doOnNextLayout

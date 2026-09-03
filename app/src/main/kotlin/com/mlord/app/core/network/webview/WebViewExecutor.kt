@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network.webview
+package com.mlord.app.core.network.webview
 
 import android.content.Context
 import android.util.AndroidRuntimeException
@@ -13,14 +13,14 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
-import com.mlord.app.app.app.core.exceptions.CloudFlareException
-import com.mlord.app.app.app.core.network.CommonHeaders
-import com.mlord.app.app.app.core.network.cookies.MutableCookieJar
-import com.mlord.app.app.app.core.network.proxy.ProxyProvider
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.parser.ParserMangaRepository
-import com.mlord.app.app.app.core.util.ext.configureForParser
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.exceptions.CloudFlareException
+import com.mlord.app.app.core.network.CommonHeaders
+import com.mlord.app.app.core.network.cookies.MutableCookieJar
+import com.mlord.app.app.core.network.proxy.ProxyProvider
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.parser.ParserMangaRepository
+import com.mlord.app.app.core.util.ext.configureForParser
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.lang.ref.WeakReference

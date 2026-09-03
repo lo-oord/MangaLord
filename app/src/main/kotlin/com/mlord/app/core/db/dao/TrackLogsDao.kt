@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.db.dao
+package com.mlord.app.core.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -8,10 +8,10 @@ import androidx.room.RawQuery
 import androidx.room.Transaction
 import androidx.sqlite.db.SupportSQLiteQuery
 import kotlinx.coroutines.flow.Flow
-import com.mlord.app.app.app.core.db.MangaQueryBuilder
-import com.mlord.app.app.app.list.domain.ListFilterOption
-import com.mlord.app.app.app.tracker.data.TrackLogEntity
-import com.mlord.app.app.app.tracker.data.TrackLogWithManga
+import com.mlord.app.app.core.db.MangaQueryBuilder
+import com.mlord.app.app.list.domain.ListFilterOption
+import com.mlord.app.app.tracker.data.TrackLogEntity
+import com.mlord.app.app.tracker.data.TrackLogWithManga
 
 @Dao
 abstract class TrackLogsDao : MangaQueryBuilder.ConditionCallback {

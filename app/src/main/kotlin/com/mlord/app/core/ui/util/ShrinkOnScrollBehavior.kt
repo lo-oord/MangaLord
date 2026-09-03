@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.util
+package com.mlord.app.core.ui.util
 
 import android.content.Context
 import android.util.AttributeSet

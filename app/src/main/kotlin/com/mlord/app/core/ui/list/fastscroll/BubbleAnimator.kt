@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.list.fastscroll
+package com.mlord.app.core.ui.list.fastscroll
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -8,8 +8,8 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
-import com.mlord.app.app.app.core.util.ext.animatorDurationScale
-import com.mlord.app.app.app.core.util.ext.measureWidth
+import com.mlord.app.app.core.util.ext.animatorDurationScale
+import com.mlord.app.app.core.util.ext.measureWidth
 import kotlin.math.hypot
 
 class BubbleAnimator(

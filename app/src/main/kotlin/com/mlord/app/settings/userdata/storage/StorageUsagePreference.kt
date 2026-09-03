@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.userdata.storage
+package com.mlord.app.settings.userdata.storage
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -9,11 +9,11 @@ import androidx.core.widget.TextViewCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import kotlinx.coroutines.flow.FlowCollector
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.widgets.SegmentedBarView
-import com.mlord.app.app.app.core.util.FileSize
-import com.mlord.app.app.app.core.util.MlordColors
-import com.mlord.app.app.app.databinding.PreferenceMemoryUsageBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.widgets.SegmentedBarView
+import com.mlord.app.app.core.util.FileSize
+import com.mlord.app.app.core.util.MlordColors
+import com.mlord.app.app.databinding.PreferenceMemoryUsageBinding
 
 class StorageUsagePreference @JvmOverloads constructor(
 	context: Context,

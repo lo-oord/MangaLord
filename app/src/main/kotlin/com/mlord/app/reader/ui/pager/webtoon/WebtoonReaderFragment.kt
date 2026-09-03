@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.webtoon
+package com.mlord.app.reader.ui.pager.webtoon
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,18 +16,18 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.yield
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.os.NetworkState
-import com.mlord.app.app.app.core.ui.list.lifecycle.RecyclerViewLifecycleDispatcher
-import com.mlord.app.app.app.core.util.ext.firstVisibleItemPosition
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.removeItemDecoration
-import com.mlord.app.app.app.databinding.FragmentReaderWebtoonBinding
-import com.mlord.app.app.app.reader.domain.PageLoader
-import com.mlord.app.app.app.reader.ui.ReaderState
-import com.mlord.app.app.app.reader.ui.pager.BaseReaderAdapter
-import com.mlord.app.app.app.reader.ui.pager.BaseReaderFragment
-import com.mlord.app.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.app.R
+import com.mlord.app.app.core.os.NetworkState
+import com.mlord.app.app.core.ui.list.lifecycle.RecyclerViewLifecycleDispatcher
+import com.mlord.app.app.core.util.ext.firstVisibleItemPosition
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.removeItemDecoration
+import com.mlord.app.app.databinding.FragmentReaderWebtoonBinding
+import com.mlord.app.app.reader.domain.PageLoader
+import com.mlord.app.app.reader.ui.ReaderState
+import com.mlord.app.app.reader.ui.pager.BaseReaderAdapter
+import com.mlord.app.app.reader.ui.pager.BaseReaderFragment
+import com.mlord.app.app.reader.ui.pager.ReaderPage
 import javax.inject.Inject
 
 @AndroidEntryPoint

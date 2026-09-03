@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui
+package com.mlord.app.reader.ui
 
 import android.content.Context
 import android.net.Uri
@@ -24,19 +24,19 @@ import okio.buffer
 import okio.openZip
 import okio.sink
 import okio.source
-import com.mlord.app.app.app.core.LocalizedAppContext
-import com.mlord.app.app.app.core.image.BitmapDecoderCompat
-import com.mlord.app.app.app.core.os.OpenDocumentTreeHelper
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.MimeTypes
-import com.mlord.app.app.app.core.util.ext.isFileUri
-import com.mlord.app.app.app.core.util.ext.isZipUri
-import com.mlord.app.app.app.core.util.ext.toFileNameSafe
-import com.mlord.app.app.app.core.util.ext.toFileOrNull
-import com.mlord.app.app.app.core.util.ext.writeAllCancellable
+import com.mlord.app.app.core.LocalizedAppContext
+import com.mlord.app.app.core.image.BitmapDecoderCompat
+import com.mlord.app.app.core.os.OpenDocumentTreeHelper
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.MimeTypes
+import com.mlord.app.app.core.util.ext.isFileUri
+import com.mlord.app.app.core.util.ext.isZipUri
+import com.mlord.app.app.core.util.ext.toFileNameSafe
+import com.mlord.app.app.core.util.ext.toFileOrNull
+import com.mlord.app.app.core.util.ext.writeAllCancellable
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaPage
-import com.mlord.app.app.app.reader.domain.PageLoader
+import com.mlord.app.app.reader.domain.PageLoader
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date

@@ -1,9 +1,9 @@
-package com.mlord.app.app.core.fs
+package com.mlord.app.core.fs
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.mlord.app.app.app.core.util.CloseableSequence
-import com.mlord.app.app.app.core.util.iterator.MappingIterator
+import com.mlord.app.app.core.util.CloseableSequence
+import com.mlord.app.app.core.util.iterator.MappingIterator
 import java.io.File
 import java.nio.file.Files
 import java.nio.file.Path

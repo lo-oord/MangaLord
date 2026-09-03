@@ -1,4 +1,4 @@
-package com.mlord.app.app.stats.domain
+package com.mlord.app.stats.domain
 
 import androidx.collection.LongSparseArray
 import androidx.collection.set
@@ -6,13 +6,13 @@ import dagger.hilt.android.ViewModelLifecycle
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.RetainedLifecycleCoroutineScope
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.RetainedLifecycleCoroutineScope
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.app.reader.ui.ReaderState
-import com.mlord.app.app.app.stats.data.StatsEntity
+import com.mlord.app.app.reader.ui.ReaderState
+import com.mlord.app.app.stats.data.StatsEntity
 import javax.inject.Inject
 
 @ViewModelScoped

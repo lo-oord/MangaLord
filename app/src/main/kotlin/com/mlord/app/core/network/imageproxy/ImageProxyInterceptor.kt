@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network.imageproxy
+package com.mlord.app.core.network.imageproxy
 
 import coil3.intercept.Interceptor
 import okhttp3.OkHttpClient

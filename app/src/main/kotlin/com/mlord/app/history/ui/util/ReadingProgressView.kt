@@ -1,4 +1,4 @@
-package com.mlord.app.app.history.ui.util
+package com.mlord.app.history.ui.util
 
 import android.animation.Animator
 import android.animation.ValueAnimator
@@ -10,15 +10,15 @@ import android.view.ViewOutlineProvider
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.prefs.ProgressIndicatorMode.CHAPTERS_LEFT
-import com.mlord.app.app.app.core.prefs.ProgressIndicatorMode.CHAPTERS_READ
-import com.mlord.app.app.app.core.prefs.ProgressIndicatorMode.NONE
-import com.mlord.app.app.app.core.prefs.ProgressIndicatorMode.PERCENT_LEFT
-import com.mlord.app.app.app.core.prefs.ProgressIndicatorMode.PERCENT_READ
-import com.mlord.app.app.app.core.util.ext.getAnimationDuration
-import com.mlord.app.app.app.list.domain.ReadingProgress
-import com.mlord.app.app.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
+import com.mlord.app.app.R
+import com.mlord.app.app.core.prefs.ProgressIndicatorMode.CHAPTERS_LEFT
+import com.mlord.app.app.core.prefs.ProgressIndicatorMode.CHAPTERS_READ
+import com.mlord.app.app.core.prefs.ProgressIndicatorMode.NONE
+import com.mlord.app.app.core.prefs.ProgressIndicatorMode.PERCENT_LEFT
+import com.mlord.app.app.core.prefs.ProgressIndicatorMode.PERCENT_READ
+import com.mlord.app.app.core.util.ext.getAnimationDuration
+import com.mlord.app.app.list.domain.ReadingProgress
+import com.mlord.app.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
 
 class ReadingProgressView @JvmOverloads constructor(
 	context: Context,

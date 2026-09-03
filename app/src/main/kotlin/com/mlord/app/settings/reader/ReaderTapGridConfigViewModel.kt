@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.reader
+package com.mlord.app.settings.reader
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.reader.data.TapGridSettings
-import com.mlord.app.app.app.reader.domain.TapGridArea
-import com.mlord.app.app.app.reader.ui.tapgrid.TapAction
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.reader.data.TapGridSettings
+import com.mlord.app.app.reader.domain.TapGridArea
+import com.mlord.app.app.reader.ui.tapgrid.TapAction
 import java.util.EnumMap
 import javax.inject.Inject
 

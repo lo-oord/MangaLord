@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.github
+package com.mlord.app.core.github
 
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -10,13 +10,13 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONArray
 import org.json.JSONObject
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.network.BaseHttpClient
-import com.mlord.app.app.app.core.os.AppValidator
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.asArrayList
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.R
+import com.mlord.app.app.core.network.BaseHttpClient
+import com.mlord.app.app.core.os.AppValidator
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.asArrayList
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.util.await
 import org.koitharu.kotatsu.parsers.util.json.mapJSONNotNull
 import org.koitharu.kotatsu.parsers.util.parseJsonArray

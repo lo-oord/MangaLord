@@ -1,14 +1,14 @@
-package com.mlord.app.app.list.domain
+package com.mlord.app.list.domain
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.db.entity.toEntity
-import com.mlord.app.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.app.core.model.LocalMangaSource
-import com.mlord.app.app.app.core.model.unwrap
-import com.mlord.app.app.app.core.parser.external.ExternalMangaSource
-import com.mlord.app.app.app.core.parser.favicon.faviconUri
+import com.mlord.app.app.R
+import com.mlord.app.app.core.db.entity.toEntity
+import com.mlord.app.app.core.model.FavouriteCategory
+import com.mlord.app.app.core.model.LocalMangaSource
+import com.mlord.app.app.core.model.unwrap
+import com.mlord.app.app.core.parser.external.ExternalMangaSource
+import com.mlord.app.app.core.parser.favicon.faviconUri
 import org.koitharu.kotatsu.parsers.model.MangaParserSource
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.MangaTag

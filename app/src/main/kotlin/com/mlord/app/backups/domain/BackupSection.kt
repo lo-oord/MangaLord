@@ -1,4 +1,4 @@
-package com.mlord.app.app.backups.domain
+package com.mlord.app.backups.domain
 
 import java.util.Locale
 import java.util.zip.ZipEntry

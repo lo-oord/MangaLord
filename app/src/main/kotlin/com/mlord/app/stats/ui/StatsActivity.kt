@@ -1,4 +1,4 @@
-package com.mlord.app.app.stats.ui
+package com.mlord.app.stats.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -19,28 +19,28 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.app.core.ui.dialog.buildAlertDialog
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.ui.util.ReversibleActionObserver
-import com.mlord.app.app.app.core.util.MlordColors
-import com.mlord.app.app.app.core.util.ext.end
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.setTextAndVisible
-import com.mlord.app.app.app.core.util.ext.showOrHide
-import com.mlord.app.app.app.core.util.ext.start
-import com.mlord.app.app.app.databinding.ActivityStatsBinding
-import com.mlord.app.app.app.databinding.ItemEmptyStateBinding
-import com.mlord.app.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.app.R
+import com.mlord.app.app.core.model.FavouriteCategory
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.ui.BaseListAdapter
+import com.mlord.app.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.ui.util.ReversibleActionObserver
+import com.mlord.app.app.core.util.MlordColors
+import com.mlord.app.app.core.util.ext.end
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.setTextAndVisible
+import com.mlord.app.app.core.util.ext.showOrHide
+import com.mlord.app.app.core.util.ext.start
+import com.mlord.app.app.databinding.ActivityStatsBinding
+import com.mlord.app.app.databinding.ItemEmptyStateBinding
+import com.mlord.app.app.list.ui.adapter.ListItemType
 import org.koitharu.kotatsu.parsers.model.Manga
-import com.mlord.app.app.app.stats.domain.StatsPeriod
-import com.mlord.app.app.app.stats.domain.StatsRecord
-import com.mlord.app.app.app.stats.ui.views.PieChartView
+import com.mlord.app.app.stats.domain.StatsPeriod
+import com.mlord.app.app.stats.domain.StatsRecord
+import com.mlord.app.app.stats.ui.views.PieChartView
 
 @AndroidEntryPoint
 class StatsActivity : BaseActivity<ActivityStatsBinding>(),

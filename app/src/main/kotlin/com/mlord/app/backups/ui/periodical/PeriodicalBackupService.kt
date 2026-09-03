@@ -1,21 +1,21 @@
-package com.mlord.app.app.backups.ui.periodical
+package com.mlord.app.backups.ui.periodical
 
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.PendingIntentCompat
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.backups.data.BackupRepository
-import com.mlord.app.app.app.backups.domain.BackupUtils
-import com.mlord.app.app.app.backups.domain.ExternalBackupStorage
-import com.mlord.app.app.app.backups.ui.BaseBackupRestoreService
-import com.mlord.app.app.app.core.ErrorReporterReceiver
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.CoroutineIntentService
-import com.mlord.app.app.app.core.util.ext.checkNotificationPermission
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.R
+import com.mlord.app.app.backups.data.BackupRepository
+import com.mlord.app.app.backups.domain.BackupUtils
+import com.mlord.app.app.backups.domain.ExternalBackupStorage
+import com.mlord.app.app.backups.ui.BaseBackupRestoreService
+import com.mlord.app.app.core.ErrorReporterReceiver
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.CoroutineIntentService
+import com.mlord.app.app.core.util.ext.checkNotificationPermission
+import com.mlord.app.app.core.util.ext.getDisplayMessage
 import java.util.zip.ZipOutputStream
 import javax.inject.Inject
 

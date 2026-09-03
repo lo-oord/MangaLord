@@ -1,4 +1,4 @@
-package com.mlord.app.app.suggestions.domain
+package com.mlord.app.suggestions.domain
 
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaTag

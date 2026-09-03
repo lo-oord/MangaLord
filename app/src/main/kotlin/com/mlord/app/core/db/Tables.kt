@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.db
+package com.mlord.app.core.db
 
 const val TABLE_FAVOURITES = "favourites"
 const val TABLE_MANGA = "manga"

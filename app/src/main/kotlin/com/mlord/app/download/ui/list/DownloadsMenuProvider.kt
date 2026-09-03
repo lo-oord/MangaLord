@@ -1,13 +1,13 @@
-package com.mlord.app.app.download.ui.list
+package com.mlord.app.download.ui.list
 
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.FragmentActivity
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.ui.dialog.buildAlertDialog
 
 class DownloadsMenuProvider(
 	private val activity: FragmentActivity,

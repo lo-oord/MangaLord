@@ -1,16 +1,16 @@
-package com.mlord.app.app.details.data
+package com.mlord.app.details.data
 
-import com.mlord.app.app.app.core.model.getLocale
-import com.mlord.app.app.app.core.model.isLocal
-import com.mlord.app.app.app.core.model.withOverride
-import com.mlord.app.app.app.core.ui.model.MangaOverride
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.core.model.getLocale
+import com.mlord.app.app.core.model.isLocal
+import com.mlord.app.app.core.model.withOverride
+import com.mlord.app.app.core.ui.model.MangaOverride
+import com.mlord.app.app.local.domain.model.LocalManga
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import org.koitharu.kotatsu.parsers.model.MangaState
 import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 import org.koitharu.kotatsu.parsers.util.nullIfEmpty
-import com.mlord.app.app.app.reader.data.filterChapters
+import com.mlord.app.app.reader.data.filterChapters
 import java.util.Locale
 
 data class MangaDetails(

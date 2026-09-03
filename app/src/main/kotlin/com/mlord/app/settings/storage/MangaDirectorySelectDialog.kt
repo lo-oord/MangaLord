@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.storage
+package com.mlord.app.settings.storage
 
 import android.Manifest
 import android.content.Intent
@@ -13,15 +13,15 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.ToastErrorObserver
-import com.mlord.app.app.app.core.os.OpenDocumentTreeHelper
-import com.mlord.app.app.app.core.ui.AlertDialogFragment
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.tryLaunch
-import com.mlord.app.app.app.databinding.DialogDirectorySelectBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.ToastErrorObserver
+import com.mlord.app.app.core.os.OpenDocumentTreeHelper
+import com.mlord.app.app.core.ui.AlertDialogFragment
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.tryLaunch
+import com.mlord.app.app.databinding.DialogDirectorySelectBinding
 
 @AndroidEntryPoint
 class MangaDirectorySelectDialog : AlertDialogFragment<DialogDirectorySelectBinding>(),

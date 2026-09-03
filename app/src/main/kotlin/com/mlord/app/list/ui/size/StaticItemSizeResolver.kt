@@ -1,11 +1,11 @@
-package com.mlord.app.app.list.ui.size
+package com.mlord.app.list.ui.size
 
 import android.view.View
 import android.widget.TextView
 import androidx.core.view.updateLayoutParams
 import androidx.core.widget.TextViewCompat
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.history.ui.util.ReadingProgressView
+import com.mlord.app.app.R
+import com.mlord.app.app.history.ui.util.ReadingProgressView
 
 class StaticItemSizeResolver(
 	override val cellWidth: Int,

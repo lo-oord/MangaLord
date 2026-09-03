@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.sources
+package com.mlord.app.settings.sources
 
 import android.os.Bundle
 import android.view.View
@@ -10,20 +10,20 @@ import androidx.preference.Preference
 import androidx.preference.SwitchPreferenceCompat
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.filterNotNull
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.SnackbarErrorObserver
-import com.mlord.app.app.app.core.model.getTitle
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.parser.EmptyMangaRepository
-import com.mlord.app.app.app.core.parser.ParserMangaRepository
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.SourceSettings
-import com.mlord.app.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.app.core.ui.util.ReversibleActionObserver
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.withArgs
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.SnackbarErrorObserver
+import com.mlord.app.app.core.model.getTitle
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.parser.EmptyMangaRepository
+import com.mlord.app.app.core.parser.ParserMangaRepository
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.SourceSettings
+import com.mlord.app.app.core.ui.BasePreferenceFragment
+import com.mlord.app.app.core.ui.util.ReversibleActionObserver
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.withArgs
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import java.io.File
 

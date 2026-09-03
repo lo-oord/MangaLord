@@ -1,9 +1,9 @@
-package com.mlord.app.app.settings.storage
+package com.mlord.app.settings.storage
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.app.databinding.ItemStorageBinding
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.textAndVisible
+import com.mlord.app.app.databinding.ItemStorageBinding
 
 fun directoryAD(
 	clickListener: OnListItemClickListener<DirectoryModel>,

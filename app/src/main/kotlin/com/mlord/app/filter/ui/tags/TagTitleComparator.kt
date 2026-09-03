@@ -1,4 +1,4 @@
-package com.mlord.app.app.filter.ui.tags
+package com.mlord.app.filter.ui.tags
 
 import org.koitharu.kotatsu.parsers.model.MangaTag
 import java.text.Collator

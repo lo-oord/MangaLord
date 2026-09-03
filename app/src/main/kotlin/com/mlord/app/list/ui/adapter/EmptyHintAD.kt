@@ -1,10 +1,10 @@
-package com.mlord.app.app.list.ui.adapter
+package com.mlord.app.list.ui.adapter
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.core.util.ext.setTextAndVisible
-import com.mlord.app.app.app.databinding.ItemEmptyCardBinding
-import com.mlord.app.app.app.list.ui.model.EmptyHint
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.util.ext.setTextAndVisible
+import com.mlord.app.app.databinding.ItemEmptyCardBinding
+import com.mlord.app.app.list.ui.model.EmptyHint
+import com.mlord.app.app.list.ui.model.ListModel
 
 fun emptyHintAD(
 	listener: ListStateHolderListener,

@@ -1,10 +1,10 @@
-package com.mlord.app.app.core.prefs
+package com.mlord.app.core.prefs
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.annotation.Keep
 import androidx.annotation.StringRes
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 
 @Keep
 enum class NavItem(

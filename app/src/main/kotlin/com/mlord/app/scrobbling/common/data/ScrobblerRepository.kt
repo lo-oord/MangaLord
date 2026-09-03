@@ -1,8 +1,8 @@
-package com.mlord.app.app.scrobbling.common.data
+package com.mlord.app.scrobbling.common.data
 
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerManga
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerMangaInfo
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerUser
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerManga
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerMangaInfo
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerUser
 
 interface ScrobblerRepository {
 

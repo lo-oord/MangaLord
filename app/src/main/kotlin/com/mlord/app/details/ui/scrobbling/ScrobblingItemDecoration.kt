@@ -1,9 +1,9 @@
-package com.mlord.app.app.details.ui.scrobbling
+package com.mlord.app.details.ui.scrobbling
 
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 
 class ScrobblingItemDecoration : RecyclerView.ItemDecoration() {
 

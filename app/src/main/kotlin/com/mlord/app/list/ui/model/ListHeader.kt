@@ -1,9 +1,9 @@
-package com.mlord.app.app.list.ui.model
+package com.mlord.app.list.ui.model
 
 import android.content.Context
 import androidx.annotation.StringRes
-import com.mlord.app.app.app.core.model.getLocalizedTitle
-import com.mlord.app.app.app.core.ui.model.DateTimeAgo
+import com.mlord.app.app.core.model.getLocalizedTitle
+import com.mlord.app.app.core.ui.model.DateTimeAgo
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 
 data class ListHeader private constructor(

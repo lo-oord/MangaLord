@@ -1,10 +1,10 @@
-package com.mlord.app.app.browser.cloudflare
+package com.mlord.app.browser.cloudflare
 
 import android.graphics.Bitmap
 import android.webkit.WebView
-import com.mlord.app.app.app.browser.BrowserClient
-import com.mlord.app.app.app.core.network.cookies.MutableCookieJar
-import com.mlord.app.app.app.core.network.webview.adblock.AdBlock
+import com.mlord.app.app.browser.BrowserClient
+import com.mlord.app.app.core.network.cookies.MutableCookieJar
+import com.mlord.app.app.core.network.webview.adblock.AdBlock
 import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
 
 private const val LOOP_COUNTER = 3

@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.config
+package com.mlord.app.reader.ui.config
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,23 +17,23 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.ReaderMode
-import com.mlord.app.app.app.core.ui.sheet.BaseAdaptiveSheet
-import com.mlord.app.app.app.core.util.ext.consume
-import com.mlord.app.app.app.core.util.ext.findParentCallback
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.setValueRounded
-import com.mlord.app.app.app.core.util.ext.viewLifecycleScope
-import com.mlord.app.app.app.core.util.progress.IntPercentLabelFormatter
-import com.mlord.app.app.app.databinding.SheetReaderConfigBinding
-import com.mlord.app.app.app.reader.domain.PageLoader
-import com.mlord.app.app.app.reader.ui.ReaderViewModel
-import com.mlord.app.app.app.reader.ui.ScreenOrientationHelper
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.ReaderMode
+import com.mlord.app.app.core.ui.sheet.BaseAdaptiveSheet
+import com.mlord.app.app.core.util.ext.consume
+import com.mlord.app.app.core.util.ext.findParentCallback
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.setValueRounded
+import com.mlord.app.app.core.util.ext.viewLifecycleScope
+import com.mlord.app.app.core.util.progress.IntPercentLabelFormatter
+import com.mlord.app.app.databinding.SheetReaderConfigBinding
+import com.mlord.app.app.reader.domain.PageLoader
+import com.mlord.app.app.reader.ui.ReaderViewModel
+import com.mlord.app.app.reader.ui.ScreenOrientationHelper
 import javax.inject.Inject
 
 @AndroidEntryPoint

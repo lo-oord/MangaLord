@@ -1,4 +1,4 @@
-package com.mlord.app.app.scrobbling.mal.data
+package com.mlord.app.scrobbling.mal.data
 
 import android.content.Context
 import android.util.Base64
@@ -8,20 +8,20 @@ import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.db.MangaDatabase
+import com.mlord.app.app.R
+import com.mlord.app.app.core.db.MangaDatabase
 import org.koitharu.kotatsu.parsers.util.await
 import org.koitharu.kotatsu.parsers.util.json.getStringOrNull
 import org.koitharu.kotatsu.parsers.util.json.mapJSONNotNull
 import org.koitharu.kotatsu.parsers.util.parseJson
-import com.mlord.app.app.app.scrobbling.common.data.ScrobblerRepository
-import com.mlord.app.app.app.scrobbling.common.data.ScrobblerStorage
-import com.mlord.app.app.app.scrobbling.common.data.ScrobblingEntity
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerManga
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerMangaInfo
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerService
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerType
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerUser
+import com.mlord.app.app.scrobbling.common.data.ScrobblerRepository
+import com.mlord.app.app.scrobbling.common.data.ScrobblerStorage
+import com.mlord.app.app.scrobbling.common.data.ScrobblingEntity
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerManga
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerMangaInfo
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerType
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerUser
 import java.security.SecureRandom
 import javax.inject.Inject
 import javax.inject.Singleton

@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.domain
+package com.mlord.app.local.domain
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -7,8 +7,8 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.onStart
-import com.mlord.app.app.app.core.model.isLocal
-import com.mlord.app.app.app.local.data.index.LocalMangaIndex
+import com.mlord.app.app.core.model.isLocal
+import com.mlord.app.app.local.data.index.LocalMangaIndex
 import org.koitharu.kotatsu.parsers.model.Manga
 
 abstract class LocalObserveMapper<E : Any, R : Any>(

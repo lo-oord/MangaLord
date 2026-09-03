@@ -1,10 +1,10 @@
-package com.mlord.app.app.core.ui.image
+package com.mlord.app.core.ui.image
 
 import android.graphics.Bitmap
 import androidx.core.graphics.get
 import coil3.size.Size
 import coil3.transform.Transformation
-import com.mlord.app.app.app.reader.domain.EdgeDetector.Companion.isColorTheSame
+import com.mlord.app.app.reader.domain.EdgeDetector.Companion.isColorTheSame
 
 class TrimTransformation(
 	private val tolerance: Int = 20,

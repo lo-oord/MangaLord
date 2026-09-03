@@ -1,7 +1,7 @@
-package com.mlord.app.app.settings.search
+package com.mlord.app.settings.search
 
 import androidx.preference.PreferenceFragmentCompat
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.ListModel
 
 data class SettingsItem(
 	val key: String,

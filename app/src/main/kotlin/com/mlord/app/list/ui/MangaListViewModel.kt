@@ -1,4 +1,4 @@
-package com.mlord.app.app.list.ui
+package com.mlord.app.list.ui
 
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
@@ -12,20 +12,20 @@ import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.core.model.isNsfw
-import com.mlord.app.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.ListMode
-import com.mlord.app.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.app.core.prefs.observeAsStateFlow
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.ui.util.ReversibleAction
-import com.mlord.app.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.app.list.domain.ListFilterOption
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.model.isNsfw
+import com.mlord.app.app.core.parser.MangaDataRepository
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.ListMode
+import com.mlord.app.app.core.prefs.observeAsFlow
+import com.mlord.app.app.core.prefs.observeAsStateFlow
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.ui.util.ReversibleAction
+import com.mlord.app.app.core.util.ext.MutableEventFlow
+import com.mlord.app.app.list.domain.ListFilterOption
+import com.mlord.app.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.model.Manga
-import com.mlord.app.app.app.local.data.LocalStorageChanges
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.local.data.LocalStorageChanges
+import com.mlord.app.app.local.domain.model.LocalManga
 
 abstract class MangaListViewModel(
 	private val settings: AppSettings,

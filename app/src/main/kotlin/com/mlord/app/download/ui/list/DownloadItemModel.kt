@@ -1,4 +1,4 @@
-package com.mlord.app.app.download.ui.list
+package com.mlord.app.download.ui.list
 
 import android.content.Context
 import android.graphics.Color
@@ -8,10 +8,10 @@ import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import androidx.work.WorkInfo
 import kotlinx.coroutines.flow.StateFlow
-import com.mlord.app.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.app.download.ui.list.chapters.DownloadChapter
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.download.ui.list.chapters.DownloadChapter
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.model.Manga
 import java.time.Instant
 import java.util.UUID

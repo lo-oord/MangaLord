@@ -1,4 +1,4 @@
-package com.mlord.app.app.download.ui.list
+package com.mlord.app.download.ui.list
 
 import android.view.View
 import androidx.core.view.isGone
@@ -11,17 +11,17 @@ import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.app.core.util.ext.getQuantityStringSafe
-import com.mlord.app.app.app.core.util.ext.setContentDescriptionAndTooltip
-import com.mlord.app.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.app.databinding.ItemDownloadBinding
-import com.mlord.app.app.app.download.ui.list.chapters.DownloadChapter
-import com.mlord.app.app.app.download.ui.list.chapters.downloadChapterAD
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.BaseListAdapter
+import com.mlord.app.app.core.util.ext.getQuantityStringSafe
+import com.mlord.app.app.core.util.ext.setContentDescriptionAndTooltip
+import com.mlord.app.app.core.util.ext.textAndVisible
+import com.mlord.app.app.databinding.ItemDownloadBinding
+import com.mlord.app.app.download.ui.list.chapters.DownloadChapter
+import com.mlord.app.app.download.ui.list.chapters.downloadChapterAD
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.util.format
 
 fun downloadItemAD(

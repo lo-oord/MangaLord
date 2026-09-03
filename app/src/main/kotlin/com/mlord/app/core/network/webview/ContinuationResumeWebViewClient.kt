@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network.webview
+package com.mlord.app.core.network.webview
 
 import android.webkit.WebView
 import android.webkit.WebViewClient

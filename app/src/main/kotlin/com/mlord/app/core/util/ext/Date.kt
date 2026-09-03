@@ -1,8 +1,8 @@
-package com.mlord.app.app.core.util.ext
+package com.mlord.app.core.util.ext
 
 import android.content.res.Resources
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.model.DateTimeAgo
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.model.DateTimeAgo
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime

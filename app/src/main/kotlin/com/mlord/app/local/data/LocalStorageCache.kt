@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.data
+package com.mlord.app.local.data
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -12,15 +12,15 @@ import okio.Source
 import okio.buffer
 import okio.sink
 import okio.use
-import com.mlord.app.app.app.core.exceptions.NoDataReceivedException
-import com.mlord.app.app.app.core.util.MimeTypes
-import com.mlord.app.app.app.core.util.ext.MimeType
-import com.mlord.app.app.app.core.util.ext.compressToPNG
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.core.util.ext.subdir
-import com.mlord.app.app.app.core.util.ext.takeIfReadable
-import com.mlord.app.app.app.core.util.ext.takeIfWriteable
-import com.mlord.app.app.app.core.util.ext.writeAllCancellable
+import com.mlord.app.app.core.exceptions.NoDataReceivedException
+import com.mlord.app.app.core.util.MimeTypes
+import com.mlord.app.app.core.util.ext.MimeType
+import com.mlord.app.app.core.util.ext.compressToPNG
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.subdir
+import com.mlord.app.app.core.util.ext.takeIfReadable
+import com.mlord.app.app.core.util.ext.takeIfWriteable
+import com.mlord.app.app.core.util.ext.writeAllCancellable
 import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import org.koitharu.kotatsu.parsers.util.suspendlazy.suspendLazy

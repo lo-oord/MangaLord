@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.image
+package com.mlord.app.core.ui.image
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -14,8 +14,8 @@ import androidx.annotation.AttrRes
 import androidx.annotation.RequiresApi
 import androidx.core.graphics.PaintCompat
 import com.google.android.material.resources.TextAppearance
-import com.mlord.app.app.app.core.util.ext.getThemeResId
-import com.mlord.app.app.app.core.util.ext.hasFocusStateSpecified
+import com.mlord.app.app.core.util.ext.getThemeResId
+import com.mlord.app.app.core.util.ext.hasFocusStateSpecified
 
 class TextDrawable(
 	val text: String,

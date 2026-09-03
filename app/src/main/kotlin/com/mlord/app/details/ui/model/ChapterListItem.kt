@@ -1,10 +1,10 @@
-package com.mlord.app.app.details.ui.model
+package com.mlord.app.details.ui.model
 
 import android.content.res.Resources
 import android.text.format.DateUtils
 import org.jsoup.internal.StringUtil.StringJoiner
-import com.mlord.app.app.app.core.model.getLocalizedTitle
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.model.getLocalizedTitle
+import com.mlord.app.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import kotlin.experimental.and
 

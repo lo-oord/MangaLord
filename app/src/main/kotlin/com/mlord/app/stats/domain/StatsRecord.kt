@@ -1,7 +1,7 @@
-package com.mlord.app.app.stats.domain
+package com.mlord.app.stats.domain
 
-import com.mlord.app.app.app.details.data.ReadingTime
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.details.data.ReadingTime
+import com.mlord.app.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.model.Manga
 import java.util.concurrent.TimeUnit
 

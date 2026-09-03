@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.data.index
+package com.mlord.app.local.data.index
 
 import androidx.room.Dao
 import androidx.room.Query

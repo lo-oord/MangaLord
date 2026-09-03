@@ -1,4 +1,4 @@
-package com.mlord.app.app.sync.domain
+package com.mlord.app.sync.domain
 
 data class SyncAuthResult(
 	val syncURL: String,

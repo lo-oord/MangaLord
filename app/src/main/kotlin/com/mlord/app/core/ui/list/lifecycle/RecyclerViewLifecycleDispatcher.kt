@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.list.lifecycle
+package com.mlord.app.core.ui.list.lifecycle
 
 import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager

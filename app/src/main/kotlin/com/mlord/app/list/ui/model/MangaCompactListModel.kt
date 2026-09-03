@@ -1,6 +1,6 @@
-package com.mlord.app.app.list.ui.model
+package com.mlord.app.list.ui.model
 
-import com.mlord.app.app.app.core.ui.model.MangaOverride
+import com.mlord.app.app.core.ui.model.MangaOverride
 import org.koitharu.kotatsu.parsers.model.Manga
 
 data class MangaCompactListModel(

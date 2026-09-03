@@ -1,4 +1,4 @@
-package com.mlord.app.app.list.domain
+package com.mlord.app.list.domain
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,24 +8,24 @@ import androidx.collection.MutableScatterSet
 import androidx.collection.ScatterSet
 import dagger.Reusable
 import dagger.hilt.android.qualifiers.ApplicationContext
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.ListMode
-import com.mlord.app.app.app.core.ui.model.MangaOverride
-import com.mlord.app.app.app.core.ui.widgets.ChipsView
-import com.mlord.app.app.app.favourites.domain.FavouritesRepository
-import com.mlord.app.app.app.history.data.HistoryRepository
-import com.mlord.app.app.app.list.ui.model.MangaCompactListModel
-import com.mlord.app.app.app.list.ui.model.MangaDetailedListModel
-import com.mlord.app.app.app.list.ui.model.MangaGridModel
-import com.mlord.app.app.app.list.ui.model.MangaListModel
-import com.mlord.app.app.app.local.data.index.LocalMangaIndex
+import com.mlord.app.app.R
+import com.mlord.app.app.core.parser.MangaDataRepository
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.ListMode
+import com.mlord.app.app.core.ui.model.MangaOverride
+import com.mlord.app.app.core.ui.widgets.ChipsView
+import com.mlord.app.app.favourites.domain.FavouritesRepository
+import com.mlord.app.app.history.data.HistoryRepository
+import com.mlord.app.app.list.ui.model.MangaCompactListModel
+import com.mlord.app.app.list.ui.model.MangaDetailedListModel
+import com.mlord.app.app.list.ui.model.MangaGridModel
+import com.mlord.app.app.list.ui.model.MangaListModel
+import com.mlord.app.app.local.data.index.LocalMangaIndex
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaTag
-import com.mlord.app.app.app.tracker.domain.TrackingRepository
-import com.mlord.app.app.app.tracker.domain.model.TrackingLogItem
-import com.mlord.app.app.app.tracker.ui.feed.model.FeedItem
+import com.mlord.app.app.tracker.domain.TrackingRepository
+import com.mlord.app.app.tracker.domain.model.TrackingLogItem
+import com.mlord.app.app.tracker.ui.feed.model.FeedItem
 import javax.inject.Inject
 
 @Reusable

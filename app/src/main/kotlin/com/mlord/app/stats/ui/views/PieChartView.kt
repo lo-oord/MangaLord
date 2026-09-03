@@ -1,4 +1,4 @@
-package com.mlord.app.app.stats.ui.views
+package com.mlord.app.stats.ui.views
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -13,8 +13,8 @@ import androidx.appcompat.widget.TooltipCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.view.PointerIconCompat
 import androidx.core.view.ViewCompat
-import com.mlord.app.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.app.core.util.ext.resolveDp
+import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.core.util.ext.resolveDp
 import org.koitharu.kotatsu.parsers.util.replaceWith
 import kotlin.math.atan2
 import kotlin.math.sqrt

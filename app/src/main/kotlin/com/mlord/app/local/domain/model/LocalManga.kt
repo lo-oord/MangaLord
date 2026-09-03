@@ -1,10 +1,10 @@
-package com.mlord.app.app.local.domain.model
+package com.mlord.app.local.domain.model
 
 import android.net.Uri
 import androidx.core.net.toFile
 import androidx.core.net.toUri
-import com.mlord.app.app.app.core.util.ext.contains
-import com.mlord.app.app.app.core.util.ext.creationTime
+import com.mlord.app.app.core.util.ext.contains
+import com.mlord.app.app.core.util.ext.creationTime
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaTag
 import java.io.File

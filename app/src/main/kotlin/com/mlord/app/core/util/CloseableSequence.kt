@@ -1,3 +1,3 @@
-package com.mlord.app.app.core.util
+package com.mlord.app.core.util
 
 interface CloseableSequence<T> : Sequence<T>, AutoCloseable

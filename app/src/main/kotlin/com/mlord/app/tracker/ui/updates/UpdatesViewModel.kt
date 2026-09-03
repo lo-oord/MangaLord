@@ -1,4 +1,4 @@
-package com.mlord.app.app.tracker.ui.updates
+package com.mlord.app.tracker.ui.updates
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,29 +10,29 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.ListMode
-import com.mlord.app.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.app.core.ui.model.DateTimeAgo
-import com.mlord.app.app.app.core.util.ext.calculateTimeAgo
-import com.mlord.app.app.app.core.util.ext.onFirst
-import com.mlord.app.app.app.list.domain.ListFilterOption
-import com.mlord.app.app.app.list.domain.MangaListMapper
-import com.mlord.app.app.app.list.domain.QuickFilterListener
-import com.mlord.app.app.app.list.ui.MangaListViewModel
-import com.mlord.app.app.app.list.ui.model.EmptyState
-import com.mlord.app.app.app.list.ui.model.ListHeader
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.list.ui.model.LoadingState
-import com.mlord.app.app.app.list.ui.model.toErrorState
-import com.mlord.app.app.app.tracker.domain.TrackingRepository
-import com.mlord.app.app.app.tracker.domain.UpdatesListQuickFilter
-import com.mlord.app.app.app.tracker.domain.model.MangaTracking
+import com.mlord.app.app.R
+import com.mlord.app.app.core.parser.MangaDataRepository
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.ListMode
+import com.mlord.app.app.core.prefs.observeAsFlow
+import com.mlord.app.app.core.ui.model.DateTimeAgo
+import com.mlord.app.app.core.util.ext.calculateTimeAgo
+import com.mlord.app.app.core.util.ext.onFirst
+import com.mlord.app.app.list.domain.ListFilterOption
+import com.mlord.app.app.list.domain.MangaListMapper
+import com.mlord.app.app.list.domain.QuickFilterListener
+import com.mlord.app.app.list.ui.MangaListViewModel
+import com.mlord.app.app.list.ui.model.EmptyState
+import com.mlord.app.app.list.ui.model.ListHeader
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.LoadingState
+import com.mlord.app.app.list.ui.model.toErrorState
+import com.mlord.app.app.tracker.domain.TrackingRepository
+import com.mlord.app.app.tracker.domain.UpdatesListQuickFilter
+import com.mlord.app.app.tracker.domain.model.MangaTracking
 import javax.inject.Inject
-import com.mlord.app.app.app.local.data.LocalStorageChanges
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.local.data.LocalStorageChanges
+import com.mlord.app.app.local.domain.model.LocalManga
 import kotlinx.coroutines.flow.SharedFlow
 
 @HiltViewModel

@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network
+package com.mlord.app.core.network
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,8 +6,8 @@ import android.content.res.AssetManager
 import android.util.Log
 import okhttp3.OkHttpClient
 import okhttp3.tls.HandshakeCertificates
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import java.security.SecureRandom
 import java.security.cert.CertificateFactory
 import java.security.cert.X509Certificate

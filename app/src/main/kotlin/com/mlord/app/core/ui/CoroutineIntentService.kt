@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui
+package com.mlord.app.core.ui
 
 import android.app.Notification
 import android.app.PendingIntent
@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 
 abstract class CoroutineIntentService : BaseService() {
 

@@ -1,4 +1,4 @@
-package com.mlord.app.app.list.domain
+package com.mlord.app.list.domain
 
 interface QuickFilterListener {
 

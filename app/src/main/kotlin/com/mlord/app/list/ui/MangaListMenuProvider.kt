@@ -1,17 +1,17 @@
-package com.mlord.app.app.list.ui
+package com.mlord.app.list.ui
 
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.favourites.ui.list.FavouritesListFragment
-import com.mlord.app.app.app.history.ui.HistoryListFragment
-import com.mlord.app.app.app.list.ui.config.ListConfigSection
-import com.mlord.app.app.app.suggestions.ui.SuggestionsFragment
-import com.mlord.app.app.app.tracker.ui.updates.UpdatesFragment
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.favourites.ui.list.FavouritesListFragment
+import com.mlord.app.app.history.ui.HistoryListFragment
+import com.mlord.app.app.list.ui.config.ListConfigSection
+import com.mlord.app.app.suggestions.ui.SuggestionsFragment
+import com.mlord.app.app.tracker.ui.updates.UpdatesFragment
 
 class MangaListMenuProvider(
 	private val fragment: Fragment,

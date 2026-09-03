@@ -1,4 +1,4 @@
-package com.mlord.app.app.sync.ui
+package com.mlord.app.sync.ui
 
 import android.accounts.AbstractAccountAuthenticator
 import android.accounts.Account

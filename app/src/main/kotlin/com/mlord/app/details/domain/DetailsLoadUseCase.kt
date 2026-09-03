@@ -1,4 +1,4 @@
-package com.mlord.app.app.details.domain
+package com.mlord.app.details.domain
 
 import android.text.Html
 import android.text.SpannableString
@@ -16,18 +16,18 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.runInterruptible
-import com.mlord.app.app.app.core.model.isLocal
-import com.mlord.app.app.app.core.nav.MangaIntent
-import com.mlord.app.app.app.core.os.NetworkState
-import com.mlord.app.app.app.core.parser.CachingMangaRepository
-import com.mlord.app.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.ui.model.MangaOverride
-import com.mlord.app.app.app.core.util.ext.sanitize
-import com.mlord.app.app.app.details.data.MangaDetails
-import com.mlord.app.app.app.explore.domain.RecoverMangaUseCase
-import com.mlord.app.app.app.local.data.LocalMangaRepository
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.core.model.isLocal
+import com.mlord.app.app.core.nav.MangaIntent
+import com.mlord.app.app.core.os.NetworkState
+import com.mlord.app.app.core.parser.CachingMangaRepository
+import com.mlord.app.app.core.parser.MangaDataRepository
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.ui.model.MangaOverride
+import com.mlord.app.app.core.util.ext.sanitize
+import com.mlord.app.app.details.data.MangaDetails
+import com.mlord.app.app.explore.domain.RecoverMangaUseCase
+import com.mlord.app.app.local.data.LocalMangaRepository
+import com.mlord.app.app.local.domain.model.LocalManga
 import org.koitharu.kotatsu.parsers.exception.NotFoundException
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.nullIfEmpty

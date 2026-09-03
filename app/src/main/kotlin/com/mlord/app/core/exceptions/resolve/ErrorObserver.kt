@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.exceptions.resolve
+package com.mlord.app.core.exceptions.resolve
 
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -12,9 +12,9 @@ import androidx.lifecycle.coroutineScope
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.util.ext.findActivity
-import com.mlord.app.app.app.core.util.ext.viewLifecycleScope
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.util.ext.findActivity
+import com.mlord.app.app.core.util.ext.viewLifecycleScope
 
 abstract class ErrorObserver(
 	protected val host: View,

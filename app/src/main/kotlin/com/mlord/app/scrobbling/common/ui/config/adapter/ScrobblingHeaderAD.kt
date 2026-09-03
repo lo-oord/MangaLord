@@ -1,11 +1,11 @@
-package com.mlord.app.app.scrobbling.common.ui.config.adapter
+package com.mlord.app.scrobbling.common.ui.config.adapter
 
 import androidx.core.view.isInvisible
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.databinding.ItemHeaderBinding
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblingStatus
+import com.mlord.app.app.R
+import com.mlord.app.app.databinding.ItemHeaderBinding
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingStatus
 
 fun scrobblingHeaderAD() = adapterDelegateViewBinding<ScrobblingStatus, ListModel, ItemHeaderBinding>(
 	{ inflater, parent -> ItemHeaderBinding.inflate(inflater, parent, false) },

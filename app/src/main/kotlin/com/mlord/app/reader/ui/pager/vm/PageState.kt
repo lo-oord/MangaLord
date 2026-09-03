@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.vm
+package com.mlord.app.reader.ui.pager.vm
 
 import com.davemorrissey.labs.subscaleview.ImageSource
 

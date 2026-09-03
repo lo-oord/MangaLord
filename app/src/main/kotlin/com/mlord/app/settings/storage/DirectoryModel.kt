@@ -1,8 +1,8 @@
-package com.mlord.app.app.settings.storage
+package com.mlord.app.settings.storage
 
 import androidx.annotation.StringRes
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.model.ListModel
 import java.io.File
 
 data class DirectoryModel(

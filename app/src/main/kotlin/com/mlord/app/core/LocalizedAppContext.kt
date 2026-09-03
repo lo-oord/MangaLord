@@ -1,4 +1,4 @@
-package com.mlord.app.app.core
+package com.mlord.app.core
 
 import javax.inject.Qualifier
 

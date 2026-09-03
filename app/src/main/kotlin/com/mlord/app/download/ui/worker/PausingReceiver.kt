@@ -1,4 +1,4 @@
-package com.mlord.app.app.download.ui.worker
+package com.mlord.app.download.ui.worker
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -7,7 +7,7 @@ import android.content.IntentFilter
 import android.os.PatternMatcher
 import androidx.core.app.PendingIntentCompat
 import androidx.core.net.toUri
-import com.mlord.app.app.app.core.util.ext.toUUIDOrNull
+import com.mlord.app.app.core.util.ext.toUUIDOrNull
 import java.util.UUID
 
 class PausingReceiver(

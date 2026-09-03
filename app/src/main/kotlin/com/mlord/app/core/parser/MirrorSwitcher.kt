@@ -1,13 +1,13 @@
-package com.mlord.app.app.core.parser
+package com.mlord.app.core.parser
 
 import android.util.Log
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.core.network.MangaHttpClient
-import com.mlord.app.app.app.core.prefs.AppSettings
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.core.network.MangaHttpClient
+import com.mlord.app.app.core.prefs.AppSettings
 import org.koitharu.kotatsu.parsers.model.MangaParserSource
 import org.koitharu.kotatsu.parsers.util.await
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable

@@ -1,7 +1,7 @@
-package com.mlord.app.app.settings.sources.adapter
+package com.mlord.app.settings.sources.adapter
 
-import com.mlord.app.app.app.core.ui.list.OnTipCloseListener
-import com.mlord.app.app.app.settings.sources.model.SourceConfigItem
+import com.mlord.app.app.core.ui.list.OnTipCloseListener
+import com.mlord.app.app.settings.sources.model.SourceConfigItem
 
 interface SourceConfigListener : OnTipCloseListener<SourceConfigItem.Tip> {
 

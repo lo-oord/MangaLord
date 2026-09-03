@@ -1,4 +1,4 @@
-package com.mlord.app.app.core
+package com.mlord.app.core
 
 import android.app.Application
 import android.content.Context
@@ -21,18 +21,18 @@ import org.acra.data.StringFormat
 import org.acra.ktx.initAcra
 import org.acra.sender.HttpSender
 import org.conscrypt.Conscrypt
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.os.AppValidator
-import com.mlord.app.app.app.core.os.RomCompat
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.processLifecycleScope
-import com.mlord.app.app.app.local.data.LocalStorageChanges
-import com.mlord.app.app.app.local.data.index.LocalMangaIndex
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.R
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.os.AppValidator
+import com.mlord.app.app.core.os.RomCompat
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.processLifecycleScope
+import com.mlord.app.app.local.data.LocalStorageChanges
+import com.mlord.app.app.local.data.index.LocalMangaIndex
+import com.mlord.app.app.local.domain.model.LocalManga
 import org.koitharu.kotatsu.parsers.util.suspendlazy.getOrNull
-import com.mlord.app.app.app.settings.work.WorkScheduleManager
+import com.mlord.app.app.settings.work.WorkScheduleManager
 import java.security.Security
 import javax.inject.Inject
 import javax.inject.Provider

@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.ui.info
+package com.mlord.app.local.ui.info
 
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -11,16 +11,16 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.AlertDialogFragment
-import com.mlord.app.app.app.core.ui.widgets.SegmentedBarView
-import com.mlord.app.app.app.core.util.FileSize
-import com.mlord.app.app.app.core.util.MlordColors
-import com.mlord.app.app.app.core.util.ext.getQuantityStringSafe
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.setProgressIcon
-import com.mlord.app.app.app.databinding.DialogLocalInfoBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.AlertDialogFragment
+import com.mlord.app.app.core.ui.widgets.SegmentedBarView
+import com.mlord.app.app.core.util.FileSize
+import com.mlord.app.app.core.util.MlordColors
+import com.mlord.app.app.core.util.ext.getQuantityStringSafe
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.setProgressIcon
+import com.mlord.app.app.databinding.DialogLocalInfoBinding
 import androidx.appcompat.R as appcompatR
 
 @AndroidEntryPoint

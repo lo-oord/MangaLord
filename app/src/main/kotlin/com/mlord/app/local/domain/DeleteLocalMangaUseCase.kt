@@ -1,9 +1,9 @@
-package com.mlord.app.app.local.domain
+package com.mlord.app.local.domain
 
-import com.mlord.app.app.app.core.model.isLocal
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.history.data.HistoryRepository
-import com.mlord.app.app.app.local.data.LocalMangaRepository
+import com.mlord.app.app.core.model.isLocal
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.history.data.HistoryRepository
+import com.mlord.app.app.local.data.LocalMangaRepository
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.io.IOException

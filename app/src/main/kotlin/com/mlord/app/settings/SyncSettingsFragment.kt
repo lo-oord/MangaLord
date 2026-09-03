@@ -1,14 +1,14 @@
-package com.mlord.app.app.settings
+package com.mlord.app.settings
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.FragmentResultListener
 import androidx.preference.Preference
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.app.sync.data.SyncSettings
-import com.mlord.app.app.app.sync.ui.SyncHostDialogFragment
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.BasePreferenceFragment
+import com.mlord.app.app.sync.data.SyncSettings
+import com.mlord.app.app.sync.ui.SyncHostDialogFragment
 import javax.inject.Inject
 
 @AndroidEntryPoint

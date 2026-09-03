@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.reader
+package com.mlord.app.settings.reader
 
 import android.content.DialogInterface
 import android.graphics.drawable.Drawable
@@ -16,16 +16,16 @@ import androidx.core.text.buildSpannedString
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.app.core.util.ext.findKeyByValue
-import com.mlord.app.app.app.core.util.ext.getThemeDrawable
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.app.databinding.ActivityReaderTapActionsBinding
-import com.mlord.app.app.app.reader.domain.TapGridArea
-import com.mlord.app.app.app.reader.ui.tapgrid.TapAction
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.app.core.util.ext.findKeyByValue
+import com.mlord.app.app.core.util.ext.getThemeDrawable
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.systemBarsInsets
+import com.mlord.app.app.databinding.ActivityReaderTapActionsBinding
+import com.mlord.app.app.reader.domain.TapGridArea
+import com.mlord.app.app.reader.ui.tapgrid.TapAction
 import java.util.EnumMap
 import androidx.appcompat.R as appcompatR
 

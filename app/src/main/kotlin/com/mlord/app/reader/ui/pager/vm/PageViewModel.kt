@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.vm
+package com.mlord.app.reader.ui.pager.vm
 
 import android.graphics.Rect
 import android.net.Uri
@@ -20,13 +20,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
 import kotlinx.coroutines.withContext
 import okio.IOException
-import com.mlord.app.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.app.core.os.NetworkState
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.core.util.ext.throttle
+import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.app.core.os.NetworkState
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.throttle
 import org.koitharu.kotatsu.parsers.model.MangaPage
-import com.mlord.app.app.app.reader.domain.PageLoader
-import com.mlord.app.app.app.reader.ui.config.ReaderSettings
+import com.mlord.app.app.reader.domain.PageLoader
+import com.mlord.app.app.reader.ui.config.ReaderSettings
 
 class PageViewModel(
 	private val loader: PageLoader,

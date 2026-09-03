@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.userdata.storage
+package com.mlord.app.settings.userdata.storage
 
 data class StorageUsage(
 	val savedManga: Item,

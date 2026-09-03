@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.os
+package com.mlord.app.core.os
 
 import android.content.Context
 import android.content.Intent

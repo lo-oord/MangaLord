@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.about
+package com.mlord.app.settings.about
 
 import android.Manifest
 import android.app.DownloadManager
@@ -24,21 +24,21 @@ import io.noties.markwon.Markwon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.withContext
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.github.AppVersion
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.util.FileSize
-import com.mlord.app.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.core.util.ext.setTextAndVisible
-import com.mlord.app.app.app.core.util.ext.showOrHide
-import com.mlord.app.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.app.databinding.ActivityAppUpdateBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.github.AppVersion
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.util.FileSize
+import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.setTextAndVisible
+import com.mlord.app.app.core.util.ext.showOrHide
+import com.mlord.app.app.core.util.ext.systemBarsInsets
+import com.mlord.app.app.core.util.ext.textAndVisible
+import com.mlord.app.app.databinding.ActivityAppUpdateBinding
 
 @AndroidEntryPoint
 class AppUpdateActivity : BaseActivity<ActivityAppUpdateBinding>(), View.OnClickListener {

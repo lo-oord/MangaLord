@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.parser
+package com.mlord.app.core.parser
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,15 +11,15 @@ import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.ResponseBody.Companion.asResponseBody
 import okio.Buffer
-import com.mlord.app.app.app.core.exceptions.InteractiveActionRequiredException
-import com.mlord.app.app.app.core.image.BitmapDecoderCompat
-import com.mlord.app.app.app.core.network.MangaHttpClient
-import com.mlord.app.app.app.core.network.cookies.MutableCookieJar
-import com.mlord.app.app.app.core.network.webview.WebViewExecutor
-import com.mlord.app.app.app.core.prefs.SourceSettings
-import com.mlord.app.app.app.core.util.ext.toList
-import com.mlord.app.app.app.core.util.ext.toMimeType
-import com.mlord.app.app.app.core.util.ext.use
+import com.mlord.app.app.core.exceptions.InteractiveActionRequiredException
+import com.mlord.app.app.core.image.BitmapDecoderCompat
+import com.mlord.app.app.core.network.MangaHttpClient
+import com.mlord.app.app.core.network.cookies.MutableCookieJar
+import com.mlord.app.app.core.network.webview.WebViewExecutor
+import com.mlord.app.app.core.prefs.SourceSettings
+import com.mlord.app.app.core.util.ext.toList
+import com.mlord.app.app.core.util.ext.toMimeType
+import com.mlord.app.app.core.util.ext.use
 import org.koitharu.kotatsu.parsers.MangaLoaderContext
 import org.koitharu.kotatsu.parsers.MangaParser
 import org.koitharu.kotatsu.parsers.bitmap.Bitmap

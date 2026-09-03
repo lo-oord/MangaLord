@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network.imageproxy
+package com.mlord.app.core.network.imageproxy
 
 import android.util.Log
 import androidx.collection.ArraySet
@@ -14,9 +14,9 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
 import org.jsoup.HttpStatusException
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.core.exceptions.CloudFlareBlockedException
-import com.mlord.app.app.app.core.util.ext.ensureSuccess
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.core.exceptions.CloudFlareBlockedException
+import com.mlord.app.app.core.util.ext.ensureSuccess
 import org.koitharu.kotatsu.parsers.util.await
 import org.koitharu.kotatsu.parsers.util.isHttpOrHttps
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable

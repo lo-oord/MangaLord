@@ -1,11 +1,11 @@
-package com.mlord.app.app.core.model.parcelable
+package com.mlord.app.core.model.parcelable
 
 import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.parcelize.Parceler
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.TypeParceler
-import com.mlord.app.app.app.core.model.MangaSource
+import com.mlord.app.app.core.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.MangaTag
 
 object MangaTagParceler : Parceler<MangaTag> {

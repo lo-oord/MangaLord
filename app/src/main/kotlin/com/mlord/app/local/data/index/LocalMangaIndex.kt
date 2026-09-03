@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.data.index
+package com.mlord.app.local.data.index
 
 import android.content.Context
 import androidx.core.content.edit
@@ -7,12 +7,12 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.local.data.LocalMangaRepository
-import com.mlord.app.app.app.local.data.input.LocalMangaParser
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.parser.MangaDataRepository
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.local.data.LocalMangaRepository
+import com.mlord.app.app.local.data.input.LocalMangaParser
+import com.mlord.app.app.local.domain.model.LocalManga
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.io.File
 import javax.inject.Inject

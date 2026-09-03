@@ -1,12 +1,12 @@
-package com.mlord.app.app.favourites.ui.categories.adapter
+package com.mlord.app.favourites.ui.categories.adapter
 
-import com.mlord.app.app.app.core.ui.ReorderableListAdapter
-import com.mlord.app.app.app.favourites.ui.categories.FavouriteCategoriesListListener
-import com.mlord.app.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.app.list.ui.adapter.ListStateHolderListener
-import com.mlord.app.app.app.list.ui.adapter.emptyStateListAD
-import com.mlord.app.app.app.list.ui.adapter.loadingStateAD
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.ui.ReorderableListAdapter
+import com.mlord.app.app.favourites.ui.categories.FavouriteCategoriesListListener
+import com.mlord.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.app.list.ui.adapter.ListStateHolderListener
+import com.mlord.app.app.list.ui.adapter.emptyStateListAD
+import com.mlord.app.app.list.ui.adapter.loadingStateAD
+import com.mlord.app.app.list.ui.model.ListModel
 
 class CategoriesAdapter(
 	onItemClickListener: FavouriteCategoriesListListener,

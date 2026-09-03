@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.util.ext
+package com.mlord.app.core.util.ext
 
 import android.graphics.drawable.Drawable
 import androidx.annotation.CheckResult
@@ -16,8 +16,8 @@ import coil3.request.SuccessResult
 import coil3.request.bitmapConfig
 import coil3.toBitmap
 import okio.buffer
-import com.mlord.app.app.app.bookmarks.domain.Bookmark
-import com.mlord.app.app.app.core.image.RegionBitmapDecoder
+import com.mlord.app.app.bookmarks.domain.Bookmark
+import com.mlord.app.app.core.image.RegionBitmapDecoder
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaSource
 

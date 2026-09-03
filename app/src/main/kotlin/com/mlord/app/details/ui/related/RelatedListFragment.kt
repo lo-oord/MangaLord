@@ -1,12 +1,12 @@
-package com.mlord.app.app.details.ui.related
+package com.mlord.app.details.ui.related
 
 import android.view.Menu
 import android.view.MenuInflater
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.list.ListSelectionController
-import com.mlord.app.app.app.list.ui.MangaListFragment
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.list.ListSelectionController
+import com.mlord.app.app.list.ui.MangaListFragment
 
 @AndroidEntryPoint
 class RelatedListFragment : MangaListFragment() {

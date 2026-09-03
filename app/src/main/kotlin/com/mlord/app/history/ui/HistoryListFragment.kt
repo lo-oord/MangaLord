@@ -1,4 +1,4 @@
-package com.mlord.app.app.history.ui
+package com.mlord.app.history.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -7,17 +7,17 @@ import android.view.MenuItem
 import androidx.appcompat.view.ActionMode
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.ui.dialog.buildAlertDialog
-import com.mlord.app.app.app.core.ui.list.ListSelectionController
-import com.mlord.app.app.app.core.ui.list.RecyclerScrollKeeper
-import com.mlord.app.app.app.core.ui.util.MenuInvalidator
-import com.mlord.app.app.app.core.util.ext.addMenuProvider
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.databinding.FragmentListBinding
-import com.mlord.app.app.app.list.ui.MangaListFragment
-import com.mlord.app.app.app.list.ui.size.DynamicItemSizeResolver
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.app.core.ui.list.ListSelectionController
+import com.mlord.app.app.core.ui.list.RecyclerScrollKeeper
+import com.mlord.app.app.core.ui.util.MenuInvalidator
+import com.mlord.app.app.core.util.ext.addMenuProvider
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.databinding.FragmentListBinding
+import com.mlord.app.app.list.ui.MangaListFragment
+import com.mlord.app.app.list.ui.size.DynamicItemSizeResolver
 
 @AndroidEntryPoint
 class HistoryListFragment : MangaListFragment() {

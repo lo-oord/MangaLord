@@ -1,14 +1,14 @@
-package com.mlord.app.app.tracker.ui.feed.adapter
+package com.mlord.app.tracker.ui.feed.adapter
 
 import androidx.core.content.ContextCompat
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.drawableStart
-import com.mlord.app.app.app.core.util.ext.getQuantityStringSafe
-import com.mlord.app.app.app.databinding.ItemFeedBinding
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.tracker.ui.feed.model.FeedItem
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.drawableStart
+import com.mlord.app.app.core.util.ext.getQuantityStringSafe
+import com.mlord.app.app.databinding.ItemFeedBinding
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.tracker.ui.feed.model.FeedItem
 
 fun feedItemAD(
 	clickListener: OnListItemClickListener<FeedItem>,

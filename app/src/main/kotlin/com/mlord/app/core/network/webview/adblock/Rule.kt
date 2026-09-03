@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network.webview.adblock
+package com.mlord.app.core.network.webview.adblock
 
 import okhttp3.HttpUrl
 

@@ -1,12 +1,12 @@
-package com.mlord.app.app.download.ui.list
+package com.mlord.app.download.ui.list
 
 import androidx.lifecycle.LifecycleOwner
-import com.mlord.app.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.app.list.ui.adapter.emptyStateListAD
-import com.mlord.app.app.app.list.ui.adapter.listHeaderAD
-import com.mlord.app.app.app.list.ui.adapter.loadingStateAD
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.ui.BaseListAdapter
+import com.mlord.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.app.list.ui.adapter.emptyStateListAD
+import com.mlord.app.app.list.ui.adapter.listHeaderAD
+import com.mlord.app.app.list.ui.adapter.loadingStateAD
+import com.mlord.app.app.list.ui.model.ListModel
 
 class DownloadsAdapter(
 	lifecycleOwner: LifecycleOwner,

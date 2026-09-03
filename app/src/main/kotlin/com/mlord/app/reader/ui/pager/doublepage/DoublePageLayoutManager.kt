@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.doublepage
+package com.mlord.app.reader.ui.pager.doublepage
 
 import android.content.Context
 import android.util.AttributeSet

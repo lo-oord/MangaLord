@@ -1,11 +1,11 @@
-package com.mlord.app.app.settings.search
+package com.mlord.app.settings.search
 
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 
 class SettingsSearchMenuProvider(
 	private val viewModel: SettingsSearchViewModel,

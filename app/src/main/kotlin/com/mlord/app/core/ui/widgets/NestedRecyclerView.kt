@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.widgets
+package com.mlord.app.core.ui.widgets
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.core.content.withStyledAttributes
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 
 class NestedRecyclerView @JvmOverloads constructor(
 	context: Context,

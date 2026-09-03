@@ -1,4 +1,4 @@
-package com.mlord.app.app.favourites.ui.list
+package com.mlord.app.favourites.ui.list
 
 import android.os.Bundle
 import android.view.Menu
@@ -10,14 +10,14 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.ui.list.ListSelectionController
-import com.mlord.app.app.app.core.util.ext.sortedByOrdinal
-import com.mlord.app.app.app.core.util.ext.withArgs
-import com.mlord.app.app.app.databinding.FragmentListBinding
-import com.mlord.app.app.app.list.domain.ListSortOrder
-import com.mlord.app.app.app.list.ui.MangaListFragment
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.ui.list.ListSelectionController
+import com.mlord.app.app.core.util.ext.sortedByOrdinal
+import com.mlord.app.app.core.util.ext.withArgs
+import com.mlord.app.app.databinding.FragmentListBinding
+import com.mlord.app.app.list.domain.ListSortOrder
+import com.mlord.app.app.list.ui.MangaListFragment
 
 @AndroidEntryPoint
 class FavouritesListFragment : MangaListFragment(), PopupMenu.OnMenuItemClickListener {

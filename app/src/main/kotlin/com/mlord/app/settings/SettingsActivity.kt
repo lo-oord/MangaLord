@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings
+package com.mlord.app.settings
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,29 +17,29 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.backups.ui.periodical.PeriodicalBackupSettingsFragment
-import com.mlord.app.app.app.core.model.MangaSource
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.util.ext.buildBundle
-import com.mlord.app.app.app.core.util.ext.end
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.start
-import com.mlord.app.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.app.databinding.ActivitySettingsBinding
-import com.mlord.app.app.app.main.ui.owners.AppBarOwner
-import com.mlord.app.app.app.settings.about.AboutSettingsFragment
-import com.mlord.app.app.app.settings.discord.DiscordSettingsFragment
-import com.mlord.app.app.app.settings.search.SettingsItem
-import com.mlord.app.app.app.settings.search.SettingsSearchFragment
-import com.mlord.app.app.app.settings.search.SettingsSearchViewModel
-import com.mlord.app.app.app.settings.sources.SourceSettingsFragment
-import com.mlord.app.app.app.settings.sources.SourcesSettingsFragment
-import com.mlord.app.app.app.settings.sources.manage.SourcesManageFragment
-import com.mlord.app.app.app.settings.tracker.TrackerSettingsFragment
-import com.mlord.app.app.app.settings.userdata.BackupsSettingsFragment
+import com.mlord.app.app.R
+import com.mlord.app.app.backups.ui.periodical.PeriodicalBackupSettingsFragment
+import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.util.ext.buildBundle
+import com.mlord.app.app.core.util.ext.end
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.start
+import com.mlord.app.app.core.util.ext.textAndVisible
+import com.mlord.app.app.databinding.ActivitySettingsBinding
+import com.mlord.app.app.main.ui.owners.AppBarOwner
+import com.mlord.app.app.settings.about.AboutSettingsFragment
+import com.mlord.app.app.settings.discord.DiscordSettingsFragment
+import com.mlord.app.app.settings.search.SettingsItem
+import com.mlord.app.app.settings.search.SettingsSearchFragment
+import com.mlord.app.app.settings.search.SettingsSearchViewModel
+import com.mlord.app.app.settings.sources.SourceSettingsFragment
+import com.mlord.app.app.settings.sources.SourcesSettingsFragment
+import com.mlord.app.app.settings.sources.manage.SourcesManageFragment
+import com.mlord.app.app.settings.tracker.TrackerSettingsFragment
+import com.mlord.app.app.settings.userdata.BackupsSettingsFragment
 
 @AndroidEntryPoint
 class SettingsActivity :

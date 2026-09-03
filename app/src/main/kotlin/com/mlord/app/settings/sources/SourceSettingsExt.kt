@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.sources
+package com.mlord.app.settings.sources
 
 import android.view.inputmethod.EditorInfo
 import androidx.preference.EditTextPreference
@@ -6,18 +6,18 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.parser.EmptyMangaRepository
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.parser.ParserMangaRepository
+import com.mlord.app.app.R
+import com.mlord.app.app.core.parser.EmptyMangaRepository
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.parser.ParserMangaRepository
 import org.koitharu.kotatsu.parsers.config.ConfigKey
 import org.koitharu.kotatsu.parsers.network.UserAgents
 import org.koitharu.kotatsu.parsers.util.mapToArray
-import com.mlord.app.app.app.settings.utils.AutoCompleteTextViewPreference
-import com.mlord.app.app.app.settings.utils.EditTextBindListener
-import com.mlord.app.app.app.settings.utils.EditTextDefaultSummaryProvider
-import com.mlord.app.app.app.settings.utils.validation.DomainValidator
-import com.mlord.app.app.app.settings.utils.validation.HeaderValidator
+import com.mlord.app.app.settings.utils.AutoCompleteTextViewPreference
+import com.mlord.app.app.settings.utils.EditTextBindListener
+import com.mlord.app.app.settings.utils.EditTextDefaultSummaryProvider
+import com.mlord.app.app.settings.utils.validation.DomainValidator
+import com.mlord.app.app.settings.utils.validation.HeaderValidator
 
 fun PreferenceFragmentCompat.addPreferencesFromRepository(repository: MangaRepository) = when (repository) {
 	is ParserMangaRepository -> addPreferencesFromParserRepository(repository)

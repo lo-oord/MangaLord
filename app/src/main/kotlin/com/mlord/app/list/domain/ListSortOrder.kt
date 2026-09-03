@@ -1,7 +1,7 @@
-package com.mlord.app.app.list.domain
+package com.mlord.app.list.domain
 
 import androidx.annotation.StringRes
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 import org.koitharu.kotatsu.parsers.util.find
 import java.util.EnumSet
 

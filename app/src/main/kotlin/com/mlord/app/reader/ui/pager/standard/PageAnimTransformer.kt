@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.standard
+package com.mlord.app.reader.ui.pager.standard
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2

@@ -1,13 +1,13 @@
-package com.mlord.app.app.search.ui.multi
+package com.mlord.app.search.ui.multi
 
 import android.os.Build
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.view.MenuProvider
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.search.domain.SearchKind
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.search.domain.SearchKind
 
 class SearchMenuProvider(
 	private val activity: SearchActivity,

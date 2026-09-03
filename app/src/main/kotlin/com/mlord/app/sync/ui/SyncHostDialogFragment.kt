@@ -1,4 +1,4 @@
-package com.mlord.app.app.sync.ui
+package com.mlord.app.sync.ui
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -11,14 +11,14 @@ import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.AlertDialogFragment
-import com.mlord.app.app.app.core.util.ext.isHttpUrl
-import com.mlord.app.app.app.core.util.ext.withArgs
-import com.mlord.app.app.app.databinding.PreferenceDialogAutocompletetextviewBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.AlertDialogFragment
+import com.mlord.app.app.core.util.ext.isHttpUrl
+import com.mlord.app.app.core.util.ext.withArgs
+import com.mlord.app.app.databinding.PreferenceDialogAutocompletetextviewBinding
 import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
-import com.mlord.app.app.app.settings.utils.validation.UrlValidator
-import com.mlord.app.app.app.sync.data.SyncSettings
+import com.mlord.app.app.settings.utils.validation.UrlValidator
+import com.mlord.app.app.sync.data.SyncSettings
 import javax.inject.Inject
 
 @AndroidEntryPoint

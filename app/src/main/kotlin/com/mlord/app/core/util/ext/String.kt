@@ -1,8 +1,8 @@
-package com.mlord.app.app.core.util.ext
+package com.mlord.app.core.util.ext
 
 import android.content.Context
 import androidx.collection.arraySetOf
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 import org.koitharu.kotatsu.parsers.util.ellipsize
 import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 import java.util.UUID

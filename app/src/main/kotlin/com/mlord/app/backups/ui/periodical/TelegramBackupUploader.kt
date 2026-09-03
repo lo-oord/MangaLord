@@ -1,4 +1,4 @@
-package com.mlord.app.app.backups.ui.periodical
+package com.mlord.app.backups.ui.periodical
 
 import android.content.Context
 import androidx.annotation.CheckResult
@@ -11,10 +11,10 @@ import okhttp3.Request
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.Response
 import okhttp3.internal.closeQuietly
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.network.BaseHttpClient
-import com.mlord.app.app.app.core.prefs.AppSettings
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.network.BaseHttpClient
+import com.mlord.app.app.core.prefs.AppSettings
 import org.koitharu.kotatsu.parsers.util.await
 import org.koitharu.kotatsu.parsers.util.json.getBooleanOrDefault
 import org.koitharu.kotatsu.parsers.util.json.getStringOrNull

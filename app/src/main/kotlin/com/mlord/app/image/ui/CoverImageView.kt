@@ -1,4 +1,4 @@
-package com.mlord.app.app.image.ui
+package com.mlord.app.image.ui
 
 import android.content.Context
 import android.graphics.drawable.LayerDrawable
@@ -23,28 +23,28 @@ import coil3.size.ViewSizeResolver
 import kotlinx.coroutines.suspendCancellableCoroutine
 import okio.FileNotFoundException
 import org.jsoup.HttpStatusException
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.bookmarks.domain.Bookmark
-import com.mlord.app.app.app.core.exceptions.CloudFlareProtectedException
-import com.mlord.app.app.app.core.exceptions.UnsupportedSourceException
-import com.mlord.app.app.app.core.image.CoilImageView
-import com.mlord.app.app.app.core.ui.image.AnimatedPlaceholderDrawable
-import com.mlord.app.app.app.core.ui.image.TextDrawable
-import com.mlord.app.app.app.core.ui.image.TrimTransformation
-import com.mlord.app.app.app.core.util.ext.bookmarkExtra
-import com.mlord.app.app.app.core.util.ext.decodeRegion
-import com.mlord.app.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.app.core.util.ext.isNetworkError
-import com.mlord.app.app.app.core.util.ext.mangaExtra
-import com.mlord.app.app.app.core.util.ext.mangaSourceExtra
-import com.mlord.app.app.app.favourites.domain.model.Cover
+import com.mlord.app.app.R
+import com.mlord.app.app.bookmarks.domain.Bookmark
+import com.mlord.app.app.core.exceptions.CloudFlareProtectedException
+import com.mlord.app.app.core.exceptions.UnsupportedSourceException
+import com.mlord.app.app.core.image.CoilImageView
+import com.mlord.app.app.core.ui.image.AnimatedPlaceholderDrawable
+import com.mlord.app.app.core.ui.image.TextDrawable
+import com.mlord.app.app.core.ui.image.TrimTransformation
+import com.mlord.app.app.core.util.ext.bookmarkExtra
+import com.mlord.app.app.core.util.ext.decodeRegion
+import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.core.util.ext.isNetworkError
+import com.mlord.app.app.core.util.ext.mangaExtra
+import com.mlord.app.app.core.util.ext.mangaSourceExtra
+import com.mlord.app.app.favourites.domain.model.Cover
 import org.koitharu.kotatsu.parsers.exception.ContentUnavailableException
 import org.koitharu.kotatsu.parsers.exception.ParseException
 import org.koitharu.kotatsu.parsers.exception.TooManyRequestExceptions
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaPage
 import org.koitharu.kotatsu.parsers.model.MangaSource
-import com.mlord.app.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.app.reader.ui.pager.ReaderPage
 import kotlin.coroutines.resume
 import androidx.appcompat.R as appcompatR
 import com.google.android.material.R as materialR

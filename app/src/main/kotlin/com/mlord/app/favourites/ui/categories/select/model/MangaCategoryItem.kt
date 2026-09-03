@@ -1,9 +1,9 @@
-package com.mlord.app.app.favourites.ui.categories.select.model
+package com.mlord.app.favourites.ui.categories.select.model
 
 import com.google.android.material.checkbox.MaterialCheckBox.CheckedState
-import com.mlord.app.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.model.FavouriteCategory
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.model.ListModel
 
 data class MangaCategoryItem(
 	val category: FavouriteCategory,

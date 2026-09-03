@@ -1,14 +1,14 @@
-package com.mlord.app.app.favourites.ui.container
+package com.mlord.app.favourites.ui.container
 
 import android.content.Context
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.view.MenuProvider
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.ui.dialog.buildAlertDialog
-import com.mlord.app.app.app.favourites.ui.list.FavouritesListFragment.Companion.NO_ID
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.app.favourites.ui.list.FavouritesListFragment.Companion.NO_ID
 
 class FavouriteTabPopupMenuProvider(
 	private val context: Context,

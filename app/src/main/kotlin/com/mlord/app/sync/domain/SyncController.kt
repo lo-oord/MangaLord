@@ -1,4 +1,4 @@
-package com.mlord.app.app.sync.domain
+package com.mlord.app.sync.domain
 
 import android.accounts.Account
 import android.accounts.AccountManager
@@ -18,12 +18,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.db.TABLE_FAVOURITES
-import com.mlord.app.app.app.core.db.TABLE_FAVOURITE_CATEGORIES
-import com.mlord.app.app.app.core.db.TABLE_HISTORY
-import com.mlord.app.app.app.core.util.ext.processLifecycleScope
+import com.mlord.app.app.R
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.db.TABLE_FAVOURITES
+import com.mlord.app.app.core.db.TABLE_FAVOURITE_CATEGORIES
+import com.mlord.app.app.core.db.TABLE_HISTORY
+import com.mlord.app.app.core.util.ext.processLifecycleScope
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import javax.inject.Provider

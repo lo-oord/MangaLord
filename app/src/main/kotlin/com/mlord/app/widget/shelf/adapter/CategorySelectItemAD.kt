@@ -1,10 +1,10 @@
-package com.mlord.app.app.widget.shelf.adapter
+package com.mlord.app.widget.shelf.adapter
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.databinding.ItemCategoryCheckableSingleBinding
-import com.mlord.app.app.app.widget.shelf.model.CategoryItem
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.databinding.ItemCategoryCheckableSingleBinding
+import com.mlord.app.app.widget.shelf.model.CategoryItem
 
 fun categorySelectItemAD(
 	clickListener: OnListItemClickListener<CategoryItem>

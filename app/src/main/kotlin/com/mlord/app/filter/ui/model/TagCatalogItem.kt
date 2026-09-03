@@ -1,7 +1,7 @@
-package com.mlord.app.app.filter.ui.model
+package com.mlord.app.filter.ui.model
 
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.model.MangaTag
 
 data class TagCatalogItem(

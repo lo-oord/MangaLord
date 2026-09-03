@@ -1,4 +1,4 @@
-package com.mlord.app.app.list.ui.model
+package com.mlord.app.list.ui.model
 
 data class LoadingFooter @JvmOverloads constructor(
 	val key: Int = 0,

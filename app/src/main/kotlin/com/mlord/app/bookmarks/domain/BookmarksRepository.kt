@@ -1,21 +1,21 @@
-package com.mlord.app.app.bookmarks.domain
+package com.mlord.app.bookmarks.domain
 
 import android.database.SQLException
 import androidx.room.withTransaction
 import dagger.Reusable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import com.mlord.app.app.app.bookmarks.data.BookmarkEntity
-import com.mlord.app.app.app.bookmarks.data.toBookmark
-import com.mlord.app.app.app.bookmarks.data.toBookmarks
-import com.mlord.app.app.app.bookmarks.data.toEntity
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.db.entity.toEntities
-import com.mlord.app.app.app.core.db.entity.toEntity
-import com.mlord.app.app.app.core.db.entity.toManga
-import com.mlord.app.app.app.core.ui.util.ReversibleHandle
-import com.mlord.app.app.app.core.util.ext.mapItems
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.bookmarks.data.BookmarkEntity
+import com.mlord.app.app.bookmarks.data.toBookmark
+import com.mlord.app.app.bookmarks.data.toBookmarks
+import com.mlord.app.app.bookmarks.data.toEntity
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.db.entity.toEntities
+import com.mlord.app.app.core.db.entity.toEntity
+import com.mlord.app.app.core.db.entity.toManga
+import com.mlord.app.app.core.ui.util.ReversibleHandle
+import com.mlord.app.app.core.util.ext.mapItems
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.Manga
 import javax.inject.Inject
 

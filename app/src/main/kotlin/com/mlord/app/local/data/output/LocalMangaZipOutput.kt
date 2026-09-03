@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.data.output
+package com.mlord.app.local.data.output
 
 import androidx.annotation.WorkerThread
 import kotlinx.coroutines.Dispatchers
@@ -6,13 +6,13 @@ import kotlinx.coroutines.runInterruptible
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import okhttp3.internal.closeQuietly
-import com.mlord.app.app.app.core.model.isLocal
-import com.mlord.app.app.app.core.util.MimeTypes
-import com.mlord.app.app.app.core.util.ext.MimeType
-import com.mlord.app.app.app.core.util.ext.deleteAwait
-import com.mlord.app.app.app.core.util.ext.readText
-import com.mlord.app.app.app.core.zip.ZipOutput
-import com.mlord.app.app.app.local.data.MangaIndex
+import com.mlord.app.app.core.model.isLocal
+import com.mlord.app.app.core.util.MimeTypes
+import com.mlord.app.app.core.util.ext.MimeType
+import com.mlord.app.app.core.util.ext.deleteAwait
+import com.mlord.app.app.core.util.ext.readText
+import com.mlord.app.app.core.zip.ZipOutput
+import com.mlord.app.app.local.data.MangaIndex
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import java.io.File

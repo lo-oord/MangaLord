@@ -1,9 +1,9 @@
-package com.mlord.app.app.explore.ui
+package com.mlord.app.explore.ui
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
-import com.mlord.app.app.app.explore.ui.adapter.ExploreAdapter
-import com.mlord.app.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.app.explore.ui.adapter.ExploreAdapter
+import com.mlord.app.app.list.ui.adapter.ListItemType
 
 class ExploreGridSpanSizeLookup(
 	private val adapter: ExploreAdapter,

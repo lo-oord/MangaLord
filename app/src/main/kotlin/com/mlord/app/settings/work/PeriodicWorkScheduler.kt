@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.work
+package com.mlord.app.settings.work
 
 interface PeriodicWorkScheduler {
 

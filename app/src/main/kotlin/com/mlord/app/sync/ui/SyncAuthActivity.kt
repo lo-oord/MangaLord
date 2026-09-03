@@ -1,4 +1,4 @@
-package com.mlord.app.app.sync.ui
+package com.mlord.app.sync.ui
 
 import android.accounts.Account
 import android.accounts.AccountAuthenticatorResponse
@@ -20,18 +20,18 @@ import androidx.transition.TransitionManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.ui.util.DefaultTextWatcher
-import com.mlord.app.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.app.core.util.ext.getParcelableExtraCompat
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.app.databinding.ActivitySyncAuthBinding
-import com.mlord.app.app.app.sync.data.SyncSettings
-import com.mlord.app.app.app.sync.domain.SyncAuthResult
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.ui.util.DefaultTextWatcher
+import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.core.util.ext.getParcelableExtraCompat
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.systemBarsInsets
+import com.mlord.app.app.databinding.ActivitySyncAuthBinding
+import com.mlord.app.app.sync.data.SyncSettings
+import com.mlord.app.app.sync.domain.SyncAuthResult
 
 private const val PAGE_EMAIL = 0
 private const val PAGE_PASSWORD = 1

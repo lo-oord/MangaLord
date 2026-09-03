@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.nav
+package com.mlord.app.settings.nav
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,17 +12,17 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.NavItem
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.ui.util.ActivityRecreationHandle
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.main.ui.MainActivity
-import com.mlord.app.app.app.main.ui.MainNavigationDelegate
+import com.mlord.app.app.R
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.NavItem
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.ui.util.ActivityRecreationHandle
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.main.ui.MainActivity
+import com.mlord.app.app.main.ui.MainNavigationDelegate
 import org.koitharu.kotatsu.parsers.util.move
-import com.mlord.app.app.app.settings.nav.model.NavItemAddModel
-import com.mlord.app.app.app.settings.nav.model.NavItemConfigModel
+import com.mlord.app.app.settings.nav.model.NavItemAddModel
+import com.mlord.app.app.settings.nav.model.NavItemConfigModel
 import javax.inject.Inject
 
 @HiltViewModel

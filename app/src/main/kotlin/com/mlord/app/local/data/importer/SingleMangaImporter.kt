@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.data.importer
+package com.mlord.app.local.data.importer
 
 import android.content.Context
 import android.net.Uri
@@ -11,15 +11,15 @@ import kotlinx.coroutines.runInterruptible
 import kotlinx.coroutines.withContext
 import okio.buffer
 import okio.sink
-import com.mlord.app.app.app.core.exceptions.UnsupportedFileException
-import com.mlord.app.app.app.core.util.ext.openSource
-import com.mlord.app.app.app.core.util.ext.resolveName
-import com.mlord.app.app.app.core.util.ext.writeAllCancellable
-import com.mlord.app.app.app.local.data.LocalStorageChanges
-import com.mlord.app.app.app.local.data.LocalStorageManager
-import com.mlord.app.app.app.local.data.hasZipExtension
-import com.mlord.app.app.app.local.data.input.LocalMangaParser
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.core.exceptions.UnsupportedFileException
+import com.mlord.app.app.core.util.ext.openSource
+import com.mlord.app.app.core.util.ext.resolveName
+import com.mlord.app.app.core.util.ext.writeAllCancellable
+import com.mlord.app.app.local.data.LocalStorageChanges
+import com.mlord.app.app.local.data.LocalStorageManager
+import com.mlord.app.app.local.data.hasZipExtension
+import com.mlord.app.app.local.data.input.LocalMangaParser
+import com.mlord.app.app.local.domain.model.LocalManga
 import java.io.File
 import java.io.IOException
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.mlord.app.app.browser.cloudflare
+package com.mlord.app.browser.cloudflare
 
 import android.content.Context
 import android.content.Intent
@@ -16,16 +16,16 @@ import kotlinx.coroutines.runInterruptible
 import kotlinx.coroutines.yield
 import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.browser.BaseBrowserActivity
-import com.mlord.app.app.app.core.exceptions.CloudFlareProtectedException
-import com.mlord.app.app.app.core.exceptions.resolve.CaptchaHandler
-import com.mlord.app.app.app.core.model.MangaSource
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.network.cookies.MutableCookieJar
-import com.mlord.app.app.app.core.parser.ParserMangaRepository
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.R
+import com.mlord.app.app.browser.BaseBrowserActivity
+import com.mlord.app.app.core.exceptions.CloudFlareProtectedException
+import com.mlord.app.app.core.exceptions.resolve.CaptchaHandler
+import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.network.cookies.MutableCookieJar
+import com.mlord.app.app.core.parser.ParserMangaRepository
+import com.mlord.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
 import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty

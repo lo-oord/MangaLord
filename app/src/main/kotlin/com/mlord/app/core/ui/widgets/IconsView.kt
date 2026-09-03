@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.widgets
+package com.mlord.app.core.ui.widgets
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -9,7 +9,7 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isNotEmpty
 import androidx.core.view.isVisible
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 
 class IconsView @JvmOverloads constructor(
 	context: Context,

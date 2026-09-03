@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.utils
+package com.mlord.app.settings.utils
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -17,10 +17,10 @@ import androidx.core.view.updatePaddingRelative
 import androidx.customview.view.AbsSavedState
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.prefs.ColorScheme
-import com.mlord.app.app.app.databinding.ItemColorSchemeBinding
-import com.mlord.app.app.app.databinding.PreferenceThemeBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.prefs.ColorScheme
+import com.mlord.app.app.databinding.ItemColorSchemeBinding
+import com.mlord.app.app.databinding.PreferenceThemeBinding
 import java.lang.ref.WeakReference
 import com.google.android.material.R as materialR
 

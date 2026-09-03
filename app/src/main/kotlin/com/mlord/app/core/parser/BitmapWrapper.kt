@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.parser
+package com.mlord.app.core.parser
 
 import android.graphics.Canvas
 import androidx.core.graphics.createBitmap

@@ -1,6 +1,6 @@
-package com.mlord.app.app.download.ui.list
+package com.mlord.app.download.ui.list
 
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
 
 interface DownloadItemListener : OnListItemClickListener<DownloadItemModel> {
 

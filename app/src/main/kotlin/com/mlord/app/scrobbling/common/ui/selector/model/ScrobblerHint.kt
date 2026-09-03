@@ -1,8 +1,8 @@
-package com.mlord.app.app.scrobbling.common.ui.selector.model
+package com.mlord.app.scrobbling.common.ui.selector.model
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.ListModel
 
 data class ScrobblerHint(
 	@DrawableRes val icon: Int,

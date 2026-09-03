@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.sources.auth
+package com.mlord.app.settings.sources.auth
 
 import android.content.Context
 import android.content.Intent
@@ -11,14 +11,14 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.browser.BaseBrowserActivity
-import com.mlord.app.app.app.browser.BrowserCallback
-import com.mlord.app.app.app.browser.BrowserClient
-import com.mlord.app.app.app.core.model.getTitle
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.parser.ParserMangaRepository
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.R
+import com.mlord.app.app.browser.BaseBrowserActivity
+import com.mlord.app.app.browser.BrowserCallback
+import com.mlord.app.app.browser.BrowserClient
+import com.mlord.app.app.core.model.getTitle
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.parser.ParserMangaRepository
+import com.mlord.app.app.core.util.ext.getDisplayMessage
 import org.koitharu.kotatsu.parsers.MangaParserAuthProvider
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable

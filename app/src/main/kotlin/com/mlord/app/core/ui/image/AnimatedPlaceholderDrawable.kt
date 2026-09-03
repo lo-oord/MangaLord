@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.image
+package com.mlord.app.core.ui.image
 
 import android.animation.TimeAnimator
 import android.content.Context
@@ -10,9 +10,9 @@ import android.graphics.drawable.Drawable
 import androidx.core.graphics.ColorUtils
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import com.google.android.material.animation.ArgbEvaluatorCompat
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ext.getAnimationDuration
-import com.mlord.app.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ext.getAnimationDuration
+import com.mlord.app.app.core.util.ext.getThemeColor
 import kotlin.math.abs
 import com.google.android.material.R as materialR
 

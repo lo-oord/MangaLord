@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.discord
+package com.mlord.app.settings.discord
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,12 +10,12 @@ import androidx.preference.EditTextPreference
 import androidx.preference.EditTextPreferenceDialogFragmentCompat
 import androidx.preference.Preference
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.withArgs
-import com.mlord.app.app.app.scrobbling.discord.ui.DiscordAuthActivity
+import com.mlord.app.app.R
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.BasePreferenceFragment
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.withArgs
+import com.mlord.app.app.scrobbling.discord.ui.DiscordAuthActivity
 
 @AndroidEntryPoint
 class DiscordSettingsFragment : BasePreferenceFragment(R.string.discord) {

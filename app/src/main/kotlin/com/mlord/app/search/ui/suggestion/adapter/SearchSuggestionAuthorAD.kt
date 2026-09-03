@@ -1,12 +1,12 @@
-package com.mlord.app.app.search.ui.suggestion.adapter
+package com.mlord.app.search.ui.suggestion.adapter
 
 import android.view.View
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.databinding.ItemSearchSuggestionQueryHintBinding
-import com.mlord.app.app.app.search.domain.SearchKind
-import com.mlord.app.app.app.search.ui.suggestion.SearchSuggestionListener
-import com.mlord.app.app.app.search.ui.suggestion.model.SearchSuggestionItem
+import com.mlord.app.app.R
+import com.mlord.app.app.databinding.ItemSearchSuggestionQueryHintBinding
+import com.mlord.app.app.search.domain.SearchKind
+import com.mlord.app.app.search.ui.suggestion.SearchSuggestionListener
+import com.mlord.app.app.search.ui.suggestion.model.SearchSuggestionItem
 
 fun searchSuggestionAuthorAD(
 	listener: SearchSuggestionListener,

@@ -1,9 +1,9 @@
-package com.mlord.app.app.browser
+package com.mlord.app.browser
 
 import android.content.Intent
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.core.network.webview.adblock.AdBlock
-import com.mlord.app.app.app.core.ui.CoroutineIntentService
+import com.mlord.app.app.core.network.webview.adblock.AdBlock
+import com.mlord.app.app.core.ui.CoroutineIntentService
 import javax.inject.Inject
 
 @AndroidEntryPoint

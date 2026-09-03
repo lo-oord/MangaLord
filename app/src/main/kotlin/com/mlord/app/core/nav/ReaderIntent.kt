@@ -1,13 +1,13 @@
-package com.mlord.app.app.core.nav
+package com.mlord.app.core.nav
 
 import android.content.Context
 import android.content.Intent
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.bookmarks.domain.Bookmark
-import com.mlord.app.app.app.core.model.parcelable.ParcelableManga
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.bookmarks.domain.Bookmark
+import com.mlord.app.app.core.model.parcelable.ParcelableManga
 import org.koitharu.kotatsu.parsers.model.Manga
-import com.mlord.app.app.app.reader.ui.ReaderActivity
-import com.mlord.app.app.app.reader.ui.ReaderState
+import com.mlord.app.app.reader.ui.ReaderActivity
+import com.mlord.app.app.reader.ui.ReaderState
 
 @JvmInline
 value class ReaderIntent private constructor(

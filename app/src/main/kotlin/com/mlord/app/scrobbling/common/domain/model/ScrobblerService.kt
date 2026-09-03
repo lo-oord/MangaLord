@@ -1,8 +1,8 @@
-package com.mlord.app.app.scrobbling.common.domain.model
+package com.mlord.app.scrobbling.common.domain.model
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 
 enum class ScrobblerService(
 	val id: Int,

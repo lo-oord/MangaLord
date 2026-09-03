@@ -1,4 +1,4 @@
-package com.mlord.app.app.favourites.domain
+package com.mlord.app.favourites.domain
 
 import androidx.room.withTransaction
 import dagger.Reusable
@@ -8,27 +8,27 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapLatest
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.db.TABLE_FAVOURITES
-import com.mlord.app.app.app.core.db.TABLE_FAVOURITE_CATEGORIES
-import com.mlord.app.app.app.core.db.entity.toEntities
-import com.mlord.app.app.app.core.db.entity.toEntity
-import com.mlord.app.app.app.core.db.entity.toMangaList
-import com.mlord.app.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.app.core.model.toMangaSources
-import com.mlord.app.app.app.core.ui.util.ReversibleHandle
-import com.mlord.app.app.app.core.util.ext.mapItems
-import com.mlord.app.app.app.favourites.data.FavouriteCategoryEntity
-import com.mlord.app.app.app.favourites.data.FavouriteEntity
-import com.mlord.app.app.app.favourites.data.toFavouriteCategory
-import com.mlord.app.app.app.favourites.data.toMangaList
-import com.mlord.app.app.app.favourites.domain.model.Cover
-import com.mlord.app.app.app.list.domain.ListFilterOption
-import com.mlord.app.app.app.list.domain.ListSortOrder
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.db.TABLE_FAVOURITES
+import com.mlord.app.app.core.db.TABLE_FAVOURITE_CATEGORIES
+import com.mlord.app.app.core.db.entity.toEntities
+import com.mlord.app.app.core.db.entity.toEntity
+import com.mlord.app.app.core.db.entity.toMangaList
+import com.mlord.app.app.core.model.FavouriteCategory
+import com.mlord.app.app.core.model.toMangaSources
+import com.mlord.app.app.core.ui.util.ReversibleHandle
+import com.mlord.app.app.core.util.ext.mapItems
+import com.mlord.app.app.favourites.data.FavouriteCategoryEntity
+import com.mlord.app.app.favourites.data.FavouriteEntity
+import com.mlord.app.app.favourites.data.toFavouriteCategory
+import com.mlord.app.app.favourites.data.toMangaList
+import com.mlord.app.app.favourites.domain.model.Cover
+import com.mlord.app.app.list.domain.ListFilterOption
+import com.mlord.app.app.list.domain.ListSortOrder
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.util.levenshteinDistance
-import com.mlord.app.app.app.search.domain.SearchKind
+import com.mlord.app.app.search.domain.SearchKind
 import javax.inject.Inject
 
 @Reusable

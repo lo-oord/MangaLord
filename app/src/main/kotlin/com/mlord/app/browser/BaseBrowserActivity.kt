@@ -1,4 +1,4 @@
-package com.mlord.app.app.browser
+package com.mlord.app.browser
 
 import android.os.Bundle
 import android.view.View
@@ -6,17 +6,17 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePadding
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.core.model.MangaSource
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.network.CommonHeaders
-import com.mlord.app.app.app.core.network.proxy.ProxyProvider
-import com.mlord.app.app.app.core.network.webview.adblock.AdBlock
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.parser.ParserMangaRepository
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.util.ext.configureForParser
-import com.mlord.app.app.app.core.util.ext.consumeAll
-import com.mlord.app.app.app.databinding.ActivityBrowserBinding
+import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.network.CommonHeaders
+import com.mlord.app.app.core.network.proxy.ProxyProvider
+import com.mlord.app.app.core.network.webview.adblock.AdBlock
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.parser.ParserMangaRepository
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.util.ext.configureForParser
+import com.mlord.app.app.core.util.ext.consumeAll
+import com.mlord.app.app.databinding.ActivityBrowserBinding
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 import javax.inject.Inject

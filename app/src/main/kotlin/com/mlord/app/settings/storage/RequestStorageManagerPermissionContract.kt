@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.storage
+package com.mlord.app.settings.storage
 
 import android.content.Context
 import android.content.Intent

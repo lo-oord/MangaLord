@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.sheet
+package com.mlord.app.core.ui.sheet
 
 import android.app.Dialog
 import android.content.Context
@@ -24,11 +24,11 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.sidesheet.SideSheetDialog
 import dagger.hilt.android.EntryPointAccessors
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.ui.BaseActivityEntryPoint
-import com.mlord.app.app.app.core.ui.util.ActionModeDelegate
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.ui.BaseActivityEntryPoint
+import com.mlord.app.app.core.ui.util.ActionModeDelegate
 import com.google.android.material.R as materialR
 
 abstract class BaseAdaptiveSheet<B : ViewBinding> : AppCompatDialogFragment(),

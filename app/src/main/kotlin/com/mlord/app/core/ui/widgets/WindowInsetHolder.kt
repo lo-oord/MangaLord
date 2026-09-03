@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.widgets
+package com.mlord.app.core.ui.widgets
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,8 +10,8 @@ import android.widget.LinearLayout
 import androidx.annotation.AttrRes
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.WindowInsetsCompat
-import com.mlord.app.app.app.core.util.ext.end
-import com.mlord.app.app.app.core.util.ext.start
+import com.mlord.app.app.core.util.ext.end
+import com.mlord.app.app.core.util.ext.start
 
 class WindowInsetHolder @JvmOverloads constructor(
 	context: Context,

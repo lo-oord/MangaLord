@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.webtoon
+package com.mlord.app.reader.ui.pager.webtoon
 
 import android.content.Context
 import android.graphics.Canvas

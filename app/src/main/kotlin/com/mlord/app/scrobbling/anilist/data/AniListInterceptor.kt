@@ -1,11 +1,11 @@
-package com.mlord.app.app.scrobbling.anilist.data
+package com.mlord.app.scrobbling.anilist.data
 
 import okhttp3.Interceptor
 import okhttp3.Response
-import com.mlord.app.app.app.core.network.CommonHeaders
-import com.mlord.app.app.app.scrobbling.common.data.ScrobblerStorage
-import com.mlord.app.app.app.scrobbling.common.domain.ScrobblerAuthRequiredException
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.app.core.network.CommonHeaders
+import com.mlord.app.app.scrobbling.common.data.ScrobblerStorage
+import com.mlord.app.app.scrobbling.common.domain.ScrobblerAuthRequiredException
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
 import java.net.HttpURLConnection
 
 private const val JSON = "application/json"

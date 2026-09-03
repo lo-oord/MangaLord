@@ -1,4 +1,4 @@
-package com.mlord.app.app.list.ui.config
+package com.mlord.app.list.ui.config
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

@@ -1,4 +1,4 @@
-package com.mlord.app.app.details.ui.pager
+package com.mlord.app.details.ui.pager
 
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout

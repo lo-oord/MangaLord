@@ -1,4 +1,4 @@
-package com.mlord.app.app.scrobbling.kitsu.ui
+package com.mlord.app.scrobbling.kitsu.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -12,11 +12,11 @@ import androidx.core.net.toUri
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.ui.util.DefaultTextWatcher
-import com.mlord.app.app.app.core.util.ext.consume
-import com.mlord.app.app.app.databinding.ActivityKitsuAuthBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.ui.util.DefaultTextWatcher
+import com.mlord.app.app.core.util.ext.consume
+import com.mlord.app.app.databinding.ActivityKitsuAuthBinding
 import org.koitharu.kotatsu.parsers.util.urlEncoded
 
 class KitsuAuthActivity : BaseActivity<ActivityKitsuAuthBinding>(),

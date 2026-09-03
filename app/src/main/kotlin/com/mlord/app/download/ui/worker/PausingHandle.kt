@@ -1,4 +1,4 @@
-package com.mlord.app.app.download.ui.worker
+package com.mlord.app.download.ui.worker
 
 import androidx.annotation.AnyThread
 import kotlinx.coroutines.currentCoroutineContext

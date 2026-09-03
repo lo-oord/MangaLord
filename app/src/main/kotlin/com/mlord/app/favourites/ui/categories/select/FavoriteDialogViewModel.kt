@@ -1,4 +1,4 @@
-package com.mlord.app.app.favourites.ui.categories.select
+package com.mlord.app.favourites.ui.categories.select
 
 import androidx.collection.MutableLongObjectMap
 import androidx.collection.MutableLongSet
@@ -12,20 +12,20 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.app.core.model.ids
-import com.mlord.app.app.app.core.model.parcelable.ParcelableManga
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.util.ext.require
-import com.mlord.app.app.app.favourites.domain.FavouritesRepository
-import com.mlord.app.app.app.favourites.ui.categories.select.model.MangaCategoryItem
-import com.mlord.app.app.app.list.ui.model.EmptyState
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.list.ui.model.LoadingState
+import com.mlord.app.app.R
+import com.mlord.app.app.core.model.FavouriteCategory
+import com.mlord.app.app.core.model.ids
+import com.mlord.app.app.core.model.parcelable.ParcelableManga
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.observeAsFlow
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.util.ext.require
+import com.mlord.app.app.favourites.domain.FavouritesRepository
+import com.mlord.app.app.favourites.ui.categories.select.model.MangaCategoryItem
+import com.mlord.app.app.list.ui.model.EmptyState
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.LoadingState
 import javax.inject.Inject
 
 @HiltViewModel

@@ -1,4 +1,4 @@
-package com.mlord.app.app.favourites.ui.categories.edit
+package com.mlord.app.favourites.ui.categories.edit
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
@@ -9,15 +9,15 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.app.core.util.ext.call
-import com.mlord.app.app.app.favourites.domain.FavouritesRepository
-import com.mlord.app.app.app.favourites.ui.categories.edit.FavouritesCategoryEditActivity.Companion.NO_ID
-import com.mlord.app.app.app.list.domain.ListSortOrder
+import com.mlord.app.app.core.model.FavouriteCategory
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.util.ext.MutableEventFlow
+import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.app.favourites.domain.FavouritesRepository
+import com.mlord.app.app.favourites.ui.categories.edit.FavouritesCategoryEditActivity.Companion.NO_ID
+import com.mlord.app.app.list.domain.ListSortOrder
 import javax.inject.Inject
 
 @HiltViewModel

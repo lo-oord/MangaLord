@@ -1,11 +1,11 @@
-package com.mlord.app.app.details.domain
+package com.mlord.app.details.domain
 
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.model.isLocal
-import com.mlord.app.app.app.core.os.NetworkState
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
-import com.mlord.app.app.app.local.data.LocalMangaRepository
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.model.isLocal
+import com.mlord.app.app.core.os.NetworkState
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
+import com.mlord.app.app.local.data.LocalMangaRepository
 import org.koitharu.kotatsu.parsers.model.Manga
 import javax.inject.Inject
 

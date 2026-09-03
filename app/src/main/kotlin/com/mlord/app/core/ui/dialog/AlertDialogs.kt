@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.dialog
+package com.mlord.app.core.ui.dialog
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -20,9 +20,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegatesManager
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.databinding.DialogCheckboxBinding
-import com.mlord.app.app.app.databinding.ViewDialogAutocompleteBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.databinding.DialogCheckboxBinding
+import com.mlord.app.app.databinding.ViewDialogAutocompleteBinding
 import com.google.android.material.R as materialR
 
 inline fun buildAlertDialog(

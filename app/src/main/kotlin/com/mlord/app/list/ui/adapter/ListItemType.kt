@@ -1,4 +1,4 @@
-package com.mlord.app.app.list.ui.adapter
+package com.mlord.app.list.ui.adapter
 
 enum class ListItemType {
 

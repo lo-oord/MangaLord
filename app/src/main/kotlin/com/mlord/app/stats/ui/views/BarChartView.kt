@@ -1,4 +1,4 @@
-package com.mlord.app.app.stats.ui.views
+package com.mlord.app.stats.ui.views
 
 import android.content.Context
 import android.graphics.Canvas
@@ -8,8 +8,8 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.ColorInt
-import com.mlord.app.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.app.core.util.ext.resolveDp
+import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.core.util.ext.resolveDp
 import org.koitharu.kotatsu.parsers.util.replaceWith
 import org.koitharu.kotatsu.parsers.util.toIntUp
 import kotlin.math.roundToInt

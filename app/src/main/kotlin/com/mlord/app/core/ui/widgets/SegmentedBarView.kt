@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.widgets
+package com.mlord.app.core.ui.widgets
 
 import android.animation.Animator
 import android.animation.ValueAnimator
@@ -13,9 +13,9 @@ import androidx.annotation.ColorInt
 import androidx.annotation.FloatRange
 import androidx.collection.MutableFloatList
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
-import com.mlord.app.app.app.core.util.ext.getAnimationDuration
-import com.mlord.app.app.app.core.util.ext.isAnimationsEnabled
-import com.mlord.app.app.app.core.util.ext.resolveDp
+import com.mlord.app.app.core.util.ext.getAnimationDuration
+import com.mlord.app.app.core.util.ext.isAnimationsEnabled
+import com.mlord.app.app.core.util.ext.resolveDp
 import org.koitharu.kotatsu.parsers.util.replaceWith
 
 class SegmentedBarView @JvmOverloads constructor(

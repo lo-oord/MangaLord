@@ -1,4 +1,4 @@
-package com.mlord.app.app.stats.ui.sheet
+package com.mlord.app.stats.ui.sheet
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,16 +9,16 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.ui.sheet.BaseAdaptiveSheet
-import com.mlord.app.app.app.core.util.MlordColors
-import com.mlord.app.app.app.core.util.ext.consume
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.app.databinding.SheetStatsMangaBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.ui.sheet.BaseAdaptiveSheet
+import com.mlord.app.app.core.util.MlordColors
+import com.mlord.app.app.core.util.ext.consume
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.textAndVisible
+import com.mlord.app.app.databinding.SheetStatsMangaBinding
 import org.koitharu.kotatsu.parsers.util.format
-import com.mlord.app.app.app.stats.ui.views.BarChartView
+import com.mlord.app.app.stats.ui.views.BarChartView
 
 @AndroidEntryPoint
 class MangaStatsSheet : BaseAdaptiveSheet<SheetStatsMangaBinding>(), View.OnClickListener {

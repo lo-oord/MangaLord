@@ -1,4 +1,4 @@
-package com.mlord.app.app.sync.ui
+package com.mlord.app.sync.ui
 
 import android.content.ContentProvider
 import android.content.ContentProviderOperation
@@ -13,7 +13,7 @@ import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.components.SingletonComponent
-import com.mlord.app.app.app.core.db.*
+import com.mlord.app.app.core.db.*
 import java.util.concurrent.Callable
 
 abstract class SyncProvider : ContentProvider() {

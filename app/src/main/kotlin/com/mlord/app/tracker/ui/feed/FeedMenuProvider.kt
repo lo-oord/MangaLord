@@ -1,4 +1,4 @@
-package com.mlord.app.app.tracker.ui.feed
+package com.mlord.app.tracker.ui.feed
 
 import android.content.Context
 import android.view.Menu
@@ -6,10 +6,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.core.view.MenuProvider
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.dialog.RememberCheckListener
-import com.mlord.app.app.app.core.ui.dialog.buildAlertDialog
-import com.mlord.app.app.app.core.ui.dialog.setCheckbox
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.dialog.RememberCheckListener
+import com.mlord.app.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.app.core.ui.dialog.setCheckbox
 
 class FeedMenuProvider(
 	private val snackbarHost: View,

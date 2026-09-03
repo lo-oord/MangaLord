@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.prefs
+package com.mlord.app.core.prefs
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -6,8 +6,8 @@ import android.view.ContextThemeWrapper
 import androidx.annotation.Keep
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
-import com.mlord.app.app.app.core.util.ext.getThemeDrawable
-import com.mlord.app.app.app.core.util.ext.isNightMode
+import com.mlord.app.app.core.util.ext.getThemeDrawable
+import com.mlord.app.app.core.util.ext.isNightMode
 import com.google.android.material.R as materialR
 
 @Keep

@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.utils
+package com.mlord.app.settings.utils
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,7 @@ import android.net.Uri
 import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.annotation.StringRes
-import com.mlord.app.app.app.core.util.ext.getParcelableExtraCompat
+import com.mlord.app.app.core.util.ext.getParcelableExtraCompat
 
 class RingtonePickContract(@StringRes private val titleResId: Int) : ActivityResultContract<Uri?, Uri?>() {
 

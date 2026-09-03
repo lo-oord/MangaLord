@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.search
+package com.mlord.app.settings.search
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,22 +8,22 @@ import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceScreen
 import androidx.preference.get
 import dagger.Reusable
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.backups.ui.periodical.PeriodicalBackupSettingsFragment
-import com.mlord.app.app.app.core.LocalizedAppContext
-import com.mlord.app.app.app.settings.AppearanceSettingsFragment
-import com.mlord.app.app.app.settings.DownloadsSettingsFragment
-import com.mlord.app.app.app.settings.ProxySettingsFragment
-import com.mlord.app.app.app.settings.ReaderSettingsFragment
-import com.mlord.app.app.app.settings.ServicesSettingsFragment
-import com.mlord.app.app.app.settings.StorageAndNetworkSettingsFragment
-import com.mlord.app.app.app.settings.SuggestionsSettingsFragment
-import com.mlord.app.app.app.settings.about.AboutSettingsFragment
-import com.mlord.app.app.app.settings.discord.DiscordSettingsFragment
-import com.mlord.app.app.app.settings.sources.SourcesSettingsFragment
-import com.mlord.app.app.app.settings.tracker.TrackerSettingsFragment
-import com.mlord.app.app.app.settings.userdata.BackupsSettingsFragment
-import com.mlord.app.app.app.settings.userdata.storage.DataCleanupSettingsFragment
+import com.mlord.app.app.R
+import com.mlord.app.app.backups.ui.periodical.PeriodicalBackupSettingsFragment
+import com.mlord.app.app.core.LocalizedAppContext
+import com.mlord.app.app.settings.AppearanceSettingsFragment
+import com.mlord.app.app.settings.DownloadsSettingsFragment
+import com.mlord.app.app.settings.ProxySettingsFragment
+import com.mlord.app.app.settings.ReaderSettingsFragment
+import com.mlord.app.app.settings.ServicesSettingsFragment
+import com.mlord.app.app.settings.StorageAndNetworkSettingsFragment
+import com.mlord.app.app.settings.SuggestionsSettingsFragment
+import com.mlord.app.app.settings.about.AboutSettingsFragment
+import com.mlord.app.app.settings.discord.DiscordSettingsFragment
+import com.mlord.app.app.settings.sources.SourcesSettingsFragment
+import com.mlord.app.app.settings.tracker.TrackerSettingsFragment
+import com.mlord.app.app.settings.userdata.BackupsSettingsFragment
+import com.mlord.app.app.settings.userdata.storage.DataCleanupSettingsFragment
 import javax.inject.Inject
 
 @Reusable

@@ -1,8 +1,8 @@
-package com.mlord.app.app.tracker.ui.feed.model
+package com.mlord.app.tracker.ui.feed.model
 
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.list.ui.model.MangaListModel
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.MangaListModel
 
 data class UpdatedMangaHeader(
 	val list: List<MangaListModel>,

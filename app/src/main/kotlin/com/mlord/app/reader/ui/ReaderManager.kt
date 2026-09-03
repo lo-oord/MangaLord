@@ -1,19 +1,19 @@
-package com.mlord.app.app.reader.ui
+package com.mlord.app.reader.ui
 
 import android.content.res.Configuration
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.ReaderMode
-import com.mlord.app.app.app.core.util.ext.findKeyByValue
-import com.mlord.app.app.app.reader.ui.pager.BaseReaderFragment
-import com.mlord.app.app.app.reader.ui.pager.doublepage.DoubleReaderFragment
-import com.mlord.app.app.app.reader.ui.pager.doublereversed.ReversedDoubleReaderFragment
-import com.mlord.app.app.app.reader.ui.pager.reversed.ReversedReaderFragment
-import com.mlord.app.app.app.reader.ui.pager.standard.PagerReaderFragment
-import com.mlord.app.app.app.reader.ui.pager.vertical.VerticalReaderFragment
-import com.mlord.app.app.app.reader.ui.pager.webtoon.WebtoonReaderFragment
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.ReaderMode
+import com.mlord.app.app.core.util.ext.findKeyByValue
+import com.mlord.app.app.reader.ui.pager.BaseReaderFragment
+import com.mlord.app.app.reader.ui.pager.doublepage.DoubleReaderFragment
+import com.mlord.app.app.reader.ui.pager.doublereversed.ReversedDoubleReaderFragment
+import com.mlord.app.app.reader.ui.pager.reversed.ReversedReaderFragment
+import com.mlord.app.app.reader.ui.pager.standard.PagerReaderFragment
+import com.mlord.app.app.reader.ui.pager.vertical.VerticalReaderFragment
+import com.mlord.app.app.reader.ui.pager.webtoon.WebtoonReaderFragment
 import java.util.EnumMap
 
 class ReaderManager(

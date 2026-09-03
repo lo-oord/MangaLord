@@ -1,11 +1,11 @@
-package com.mlord.app.app.core.image
+package com.mlord.app.core.image
 
 import coil3.intercept.Interceptor
 import coil3.network.httpHeaders
 import coil3.request.ImageResult
-import com.mlord.app.app.app.core.model.unwrap
-import com.mlord.app.app.app.core.network.CommonHeaders
-import com.mlord.app.app.app.core.util.ext.mangaSourceKey
+import com.mlord.app.app.core.model.unwrap
+import com.mlord.app.app.core.network.CommonHeaders
+import com.mlord.app.app.core.util.ext.mangaSourceKey
 import org.koitharu.kotatsu.parsers.model.MangaParserSource
 
 class MangaSourceHeaderInterceptor : Interceptor {

@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.widgets
+package com.mlord.app.core.ui.widgets
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -24,11 +24,11 @@ import androidx.core.widget.TextViewCompat
 import com.google.android.material.ripple.RippleUtils
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ext.getDrawableCompat
-import com.mlord.app.app.app.core.util.ext.resolveDp
-import com.mlord.app.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.app.databinding.ViewTwoLinesItemBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ext.getDrawableCompat
+import com.mlord.app.app.core.util.ext.resolveDp
+import com.mlord.app.app.core.util.ext.textAndVisible
+import com.mlord.app.app.databinding.ViewTwoLinesItemBinding
 
 @SuppressLint("RestrictedApi")
 class TwoLinesItemView @JvmOverloads constructor(

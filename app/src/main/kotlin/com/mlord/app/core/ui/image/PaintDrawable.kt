@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.image
+package com.mlord.app.core.ui.image
 
 import android.graphics.ColorFilter
 import android.graphics.Paint

@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.util
+package com.mlord.app.core.util
 
 import androidx.annotation.Px
 import androidx.recyclerview.widget.LinearLayoutManager

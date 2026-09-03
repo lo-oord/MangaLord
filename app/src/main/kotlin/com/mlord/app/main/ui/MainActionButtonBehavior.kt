@@ -1,4 +1,4 @@
-package com.mlord.app.app.main.ui
+package com.mlord.app.main.ui
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,8 +6,8 @@ import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-import com.mlord.app.app.app.core.ui.util.ShrinkOnScrollBehavior
-import com.mlord.app.app.app.core.ui.widgets.SlidingBottomNavigationView
+import com.mlord.app.app.core.ui.util.ShrinkOnScrollBehavior
+import com.mlord.app.app.core.ui.widgets.SlidingBottomNavigationView
 
 class MainActionButtonBehavior : ShrinkOnScrollBehavior {
 

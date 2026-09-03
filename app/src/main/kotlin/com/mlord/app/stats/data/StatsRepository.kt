@@ -1,4 +1,4 @@
-package com.mlord.app.app.stats.data
+package com.mlord.app.stats.data
 
 import androidx.room.withTransaction
 import kotlinx.coroutines.flow.Flow
@@ -6,12 +6,12 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.db.entity.toManga
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.app.stats.domain.StatsPeriod
-import com.mlord.app.app.app.stats.domain.StatsRecord
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.db.entity.toManga
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.observeAsFlow
+import com.mlord.app.app.stats.domain.StatsPeriod
+import com.mlord.app.app.stats.domain.StatsRecord
 import java.util.NavigableMap
 import java.util.TreeMap
 import java.util.concurrent.TimeUnit

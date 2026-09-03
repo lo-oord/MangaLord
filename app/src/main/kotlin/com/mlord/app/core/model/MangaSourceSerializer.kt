@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.model
+package com.mlord.app.core.model
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor

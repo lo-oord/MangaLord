@@ -1,4 +1,4 @@
-package com.mlord.app.app.history.data
+package com.mlord.app.history.data
 
 import android.database.DatabaseUtils.sqlEscapeString
 import androidx.room.Dao
@@ -12,13 +12,13 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
-import com.mlord.app.app.app.core.db.MangaQueryBuilder
-import com.mlord.app.app.app.core.db.TABLE_HISTORY
-import com.mlord.app.app.app.core.db.entity.MangaWithTags
-import com.mlord.app.app.app.core.db.entity.TagEntity
-import com.mlord.app.app.app.list.domain.ListFilterOption
-import com.mlord.app.app.app.list.domain.ListSortOrder
-import com.mlord.app.app.app.list.domain.ReadingProgress.Companion.PROGRESS_COMPLETED
+import com.mlord.app.app.core.db.MangaQueryBuilder
+import com.mlord.app.app.core.db.TABLE_HISTORY
+import com.mlord.app.app.core.db.entity.MangaWithTags
+import com.mlord.app.app.core.db.entity.TagEntity
+import com.mlord.app.app.list.domain.ListFilterOption
+import com.mlord.app.app.list.domain.ListSortOrder
+import com.mlord.app.app.list.domain.ReadingProgress.Companion.PROGRESS_COMPLETED
 
 @Dao
 abstract class HistoryDao : MangaQueryBuilder.ConditionCallback {

@@ -1,7 +1,7 @@
-package com.mlord.app.app.core.exceptions
+package com.mlord.app.core.exceptions
 
 import okhttp3.Headers
-import com.mlord.app.app.app.core.model.UnknownMangaSource
+import com.mlord.app.app.core.model.UnknownMangaSource
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
 

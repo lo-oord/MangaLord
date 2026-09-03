@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.github
+package com.mlord.app.core.github
 
 import org.koitharu.kotatsu.parsers.util.digits
 import java.util.Locale

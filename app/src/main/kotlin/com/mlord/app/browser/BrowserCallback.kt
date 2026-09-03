@@ -1,4 +1,4 @@
-package com.mlord.app.app.browser
+package com.mlord.app.browser
 
 interface BrowserCallback : OnHistoryChangedListener {
 

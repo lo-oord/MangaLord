@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui
+package com.mlord.app.core.ui
 
 import android.app.Dialog
 import android.os.Bundle

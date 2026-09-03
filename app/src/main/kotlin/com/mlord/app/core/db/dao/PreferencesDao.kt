@@ -1,10 +1,10 @@
-package com.mlord.app.app.core.db.dao
+package com.mlord.app.core.db.dao
 
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
 import kotlinx.coroutines.flow.Flow
-import com.mlord.app.app.app.core.db.entity.MangaPrefsEntity
+import com.mlord.app.app.core.db.entity.MangaPrefsEntity
 
 @Dao
 abstract class PreferencesDao {

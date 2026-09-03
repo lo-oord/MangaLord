@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.exceptions
+package com.mlord.app.core.exceptions
 
 class SyncApiException(
 	message: String,

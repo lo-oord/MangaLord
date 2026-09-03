@@ -1,14 +1,14 @@
-package com.mlord.app.app.settings
+package com.mlord.app.settings
 
 import android.content.SharedPreferences
 import android.media.RingtoneManager
 import android.os.Bundle
 import android.view.View
 import androidx.preference.Preference
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.app.settings.utils.RingtonePickContract
+import com.mlord.app.app.R
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.BasePreferenceFragment
+import com.mlord.app.app.settings.utils.RingtonePickContract
 
 class NotificationSettingsLegacyFragment :
 	BasePreferenceFragment(R.string.notifications),

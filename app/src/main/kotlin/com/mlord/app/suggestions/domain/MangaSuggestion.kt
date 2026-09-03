@@ -1,4 +1,4 @@
-package com.mlord.app.app.suggestions.domain
+package com.mlord.app.suggestions.domain
 
 import androidx.annotation.FloatRange
 import org.koitharu.kotatsu.parsers.model.Manga

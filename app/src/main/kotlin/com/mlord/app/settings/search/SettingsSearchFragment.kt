@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.search
+package com.mlord.app.settings.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,13 +9,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.AsyncListDiffer.ListListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.core.ui.BaseFragment
-import com.mlord.app.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.consumeAll
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.databinding.FragmentSearchSuggestionBinding
-import com.mlord.app.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.app.core.ui.BaseFragment
+import com.mlord.app.app.core.ui.BaseListAdapter
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.consumeAll
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.databinding.FragmentSearchSuggestionBinding
+import com.mlord.app.app.list.ui.adapter.ListItemType
 
 @AndroidEntryPoint
 class SettingsSearchFragment : BaseFragment<FragmentSearchSuggestionBinding>(),

@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.model
+package com.mlord.app.core.ui.model
 
 import org.koitharu.kotatsu.parsers.model.ContentRating
 

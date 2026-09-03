@@ -1,7 +1,7 @@
-package com.mlord.app.app.settings.utils
+package com.mlord.app.settings.utils
 
 import androidx.preference.Preference
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 
 class PercentSummaryProvider : Preference.SummaryProvider<SliderPreference> {
 

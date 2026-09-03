@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.util.ext
+package com.mlord.app.core.util.ext
 
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody

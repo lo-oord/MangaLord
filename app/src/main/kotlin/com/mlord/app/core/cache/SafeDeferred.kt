@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.cache
+package com.mlord.app.core.cache
 
 import kotlinx.coroutines.Deferred
 

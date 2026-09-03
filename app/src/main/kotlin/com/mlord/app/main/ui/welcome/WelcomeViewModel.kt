@@ -1,4 +1,4 @@
-package com.mlord.app.app.main.ui.welcome
+package com.mlord.app.main.ui.welcome
 
 import android.content.Context
 import androidx.core.os.ConfigurationCompat
@@ -6,15 +6,15 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
-import com.mlord.app.app.app.core.LocalizedAppContext
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.util.LocaleComparator
-import com.mlord.app.app.app.core.util.ext.mapSortedByCount
-import com.mlord.app.app.app.core.util.ext.sortedWithSafe
-import com.mlord.app.app.app.core.util.ext.toList
-import com.mlord.app.app.app.core.util.ext.toLocale
-import com.mlord.app.app.app.explore.data.MangaSourcesRepository
-import com.mlord.app.app.app.filter.ui.model.FilterProperty
+import com.mlord.app.app.core.LocalizedAppContext
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.util.LocaleComparator
+import com.mlord.app.app.core.util.ext.mapSortedByCount
+import com.mlord.app.app.core.util.ext.sortedWithSafe
+import com.mlord.app.app.core.util.ext.toList
+import com.mlord.app.app.core.util.ext.toLocale
+import com.mlord.app.app.explore.data.MangaSourcesRepository
+import com.mlord.app.app.filter.ui.model.FilterProperty
 import org.koitharu.kotatsu.parsers.model.ContentType
 import org.koitharu.kotatsu.parsers.model.MangaParserSource
 import org.koitharu.kotatsu.parsers.util.mapToSet

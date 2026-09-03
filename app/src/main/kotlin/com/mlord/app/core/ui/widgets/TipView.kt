@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.widgets
+package com.mlord.app.core.ui.widgets
 
 import android.content.Context
 import android.graphics.Outline
@@ -16,13 +16,13 @@ import androidx.core.view.isVisible
 import androidx.core.view.setPadding
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ext.drawableStart
-import com.mlord.app.app.app.core.util.ext.getDrawableCompat
-import com.mlord.app.app.app.core.util.ext.getThemeColorStateList
-import com.mlord.app.app.app.core.util.ext.setTextAndVisible
-import com.mlord.app.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.app.databinding.ViewTipBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ext.drawableStart
+import com.mlord.app.app.core.util.ext.getDrawableCompat
+import com.mlord.app.app.core.util.ext.getThemeColorStateList
+import com.mlord.app.app.core.util.ext.setTextAndVisible
+import com.mlord.app.app.core.util.ext.textAndVisible
+import com.mlord.app.app.databinding.ViewTipBinding
 
 class TipView @JvmOverloads constructor(
 	context: Context,

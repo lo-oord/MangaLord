@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.standard
+package com.mlord.app.reader.ui.pager.standard
 
 import android.view.KeyEvent
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.viewpager2.widget.ViewPager2
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-import com.mlord.app.app.app.core.util.ext.recyclerView
+import com.mlord.app.app.core.util.ext.recyclerView
 
 class PagerEventSupplier(private val pager: ViewPager2) : View.OnKeyListener {
 

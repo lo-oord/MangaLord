@@ -1,9 +1,9 @@
-package com.mlord.app.app.tracker.domain
+package com.mlord.app.tracker.domain
 
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.favourites.domain.FavouritesRepository
-import com.mlord.app.app.app.list.domain.ListFilterOption
-import com.mlord.app.app.app.list.domain.MangaListQuickFilter
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.favourites.domain.FavouritesRepository
+import com.mlord.app.app.list.domain.ListFilterOption
+import com.mlord.app.app.list.domain.MangaListQuickFilter
 import javax.inject.Inject
 
 class UpdatesListQuickFilter @Inject constructor(

@@ -1,4 +1,4 @@
-package com.mlord.app.app.sync.data.model
+package com.mlord.app.sync.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

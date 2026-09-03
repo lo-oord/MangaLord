@@ -1,4 +1,4 @@
-package com.mlord.app.app.sync.ui.history
+package com.mlord.app.sync.ui.history
 
 import android.accounts.Account
 import android.content.AbstractThreadedSyncAdapter
@@ -7,11 +7,11 @@ import android.content.Context
 import android.content.SyncResult
 import android.os.Bundle
 import dagger.hilt.android.EntryPointAccessors
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ext.onError
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ext.onError
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.app.sync.domain.SyncController
-import com.mlord.app.app.app.sync.ui.SyncAdapterEntryPoint
+import com.mlord.app.app.sync.domain.SyncController
+import com.mlord.app.app.sync.ui.SyncAdapterEntryPoint
 
 class HistorySyncAdapter(context: Context) : AbstractThreadedSyncAdapter(context, true) {
 

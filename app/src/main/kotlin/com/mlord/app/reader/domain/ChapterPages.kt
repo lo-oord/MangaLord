@@ -1,8 +1,8 @@
-package com.mlord.app.app.reader.domain
+package com.mlord.app.reader.domain
 
 import androidx.collection.LongSparseArray
 import androidx.collection.contains
-import com.mlord.app.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.app.reader.ui.pager.ReaderPage
 
 class ChapterPages private constructor(private val pages: ArrayDeque<ReaderPage>) : List<ReaderPage> by pages {
 

@@ -1,4 +1,4 @@
-package com.mlord.app.app.list.ui.model
+package com.mlord.app.list.ui.model
 
 import androidx.annotation.StringRes
 

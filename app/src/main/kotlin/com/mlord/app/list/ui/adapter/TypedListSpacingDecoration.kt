@@ -1,11 +1,11 @@
-package com.mlord.app.app.list.ui.adapter
+package com.mlord.app.list.ui.adapter
 
 import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 
 class TypedListSpacingDecoration(
 	context: Context,

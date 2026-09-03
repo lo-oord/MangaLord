@@ -1,14 +1,14 @@
-package com.mlord.app.app.search.domain
+package com.mlord.app.search.domain
 
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-import com.mlord.app.app.app.core.model.isNsfw
-import com.mlord.app.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.contains
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.model.isNsfw
+import com.mlord.app.app.core.parser.MangaDataRepository
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.contains
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaListFilter
 import org.koitharu.kotatsu.parsers.model.MangaSource

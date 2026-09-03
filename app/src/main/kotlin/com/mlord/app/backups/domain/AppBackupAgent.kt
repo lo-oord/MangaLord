@@ -1,4 +1,4 @@
-package com.mlord.app.app.backups.domain
+package com.mlord.app.backups.domain
 
 import android.app.backup.BackupAgent
 import android.app.backup.BackupDataInput
@@ -9,12 +9,12 @@ import android.os.ParcelFileDescriptor
 import androidx.annotation.VisibleForTesting
 import com.google.common.io.ByteStreams
 import kotlinx.coroutines.runBlocking
-import com.mlord.app.app.app.backups.data.BackupRepository
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.explore.data.MangaSourcesRepository
-import com.mlord.app.app.app.filter.data.SavedFiltersRepository
-import com.mlord.app.app.app.reader.data.TapGridSettings
+import com.mlord.app.app.backups.data.BackupRepository
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.explore.data.MangaSourcesRepository
+import com.mlord.app.app.filter.data.SavedFiltersRepository
+import com.mlord.app.app.reader.data.TapGridSettings
 import java.io.File
 import java.io.FileDescriptor
 import java.io.FileInputStream

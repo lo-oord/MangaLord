@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.widgets
+package com.mlord.app.core.ui.widgets
 
 import android.content.Context
 import android.os.Parcel
@@ -10,7 +10,7 @@ import androidx.customview.view.AbsSavedState
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.textview.MaterialTextView
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 
 class BadgeView @JvmOverloads constructor(
 	context: Context,

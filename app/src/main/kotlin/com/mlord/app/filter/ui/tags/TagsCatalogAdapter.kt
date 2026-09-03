@@ -1,20 +1,20 @@
-package com.mlord.app.app.filter.ui.tags
+package com.mlord.app.filter.ui.tags
 
 import android.content.Context
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.ui.list.fastscroll.FastScroller
-import com.mlord.app.app.app.core.util.ext.setChecked
-import com.mlord.app.app.app.databinding.ItemCheckableNewBinding
-import com.mlord.app.app.app.filter.ui.model.TagCatalogItem
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.app.list.ui.adapter.errorFooterAD
-import com.mlord.app.app.app.list.ui.adapter.errorStateListAD
-import com.mlord.app.app.app.list.ui.adapter.loadingFooterAD
-import com.mlord.app.app.app.list.ui.adapter.loadingStateAD
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.ui.BaseListAdapter
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.ui.list.fastscroll.FastScroller
+import com.mlord.app.app.core.util.ext.setChecked
+import com.mlord.app.app.databinding.ItemCheckableNewBinding
+import com.mlord.app.app.filter.ui.model.TagCatalogItem
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.app.list.ui.adapter.errorFooterAD
+import com.mlord.app.app.list.ui.adapter.errorStateListAD
+import com.mlord.app.app.list.ui.adapter.loadingFooterAD
+import com.mlord.app.app.list.ui.adapter.loadingStateAD
+import com.mlord.app.app.list.ui.model.ListModel
 
 class TagsCatalogAdapter(
 	listener: OnListItemClickListener<TagCatalogItem>,

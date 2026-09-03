@@ -1,12 +1,12 @@
-package com.mlord.app.app.core.network
+package com.mlord.app.core.network
 
 import okhttp3.Cache
 import okhttp3.Dns
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.dnsoverhttps.DnsOverHttps
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import java.net.InetAddress
 import java.net.UnknownHostException
 

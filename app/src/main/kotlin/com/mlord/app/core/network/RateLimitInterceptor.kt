@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network
+package com.mlord.app.core.network
 
 import okhttp3.Interceptor
 import okhttp3.Response

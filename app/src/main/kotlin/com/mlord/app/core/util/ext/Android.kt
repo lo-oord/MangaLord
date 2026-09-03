@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.util.ext
+package com.mlord.app.core.util.ext
 
 import android.Manifest
 import android.app.Activity
@@ -51,9 +51,9 @@ import okio.IOException
 import okio.use
 import org.json.JSONException
 import org.jsoup.internal.StringUtil.StringJoiner
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.main.ui.MainActivity
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.R
+import com.mlord.app.app.main.ui.MainActivity
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException

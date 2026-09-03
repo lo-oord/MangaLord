@@ -1,10 +1,10 @@
-package com.mlord.app.app.search.ui.suggestion.model
+package com.mlord.app.search.ui.suggestion.model
 
 import androidx.annotation.StringRes
-import com.mlord.app.app.app.core.model.isNsfw
-import com.mlord.app.app.app.core.ui.widgets.ChipsView
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.model.isNsfw
+import com.mlord.app.app.core.ui.widgets.ChipsView
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaSource
 

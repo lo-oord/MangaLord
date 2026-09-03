@@ -1,11 +1,11 @@
-package com.mlord.app.app.details.domain
+package com.mlord.app.details.domain
 
-import com.mlord.app.app.app.core.model.MangaHistory
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.details.data.MangaDetails
-import com.mlord.app.app.app.details.data.ReadingTime
+import com.mlord.app.app.core.model.MangaHistory
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.details.data.MangaDetails
+import com.mlord.app.app.details.data.ReadingTime
 import org.koitharu.kotatsu.parsers.util.findById
-import com.mlord.app.app.app.stats.data.StatsRepository
+import com.mlord.app.app.stats.data.StatsRepository
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import kotlin.math.roundToInt

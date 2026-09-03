@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.sources.manage
+package com.mlord.app.settings.sources.manage
 
 import android.content.Context
 import androidx.room.InvalidationTracker
@@ -13,19 +13,19 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.LocalizedAppContext
-import com.mlord.app.app.app.core.db.TABLE_SOURCES
-import com.mlord.app.app.app.core.model.getTitle
-import com.mlord.app.app.app.core.model.isNsfw
-import com.mlord.app.app.app.core.model.unwrap
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.lifecycleScope
-import com.mlord.app.app.app.explore.data.MangaSourcesRepository
-import com.mlord.app.app.app.explore.data.SourcesSortOrder
+import com.mlord.app.app.R
+import com.mlord.app.app.core.LocalizedAppContext
+import com.mlord.app.app.core.db.TABLE_SOURCES
+import com.mlord.app.app.core.model.getTitle
+import com.mlord.app.app.core.model.isNsfw
+import com.mlord.app.app.core.model.unwrap
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.lifecycleScope
+import com.mlord.app.app.explore.data.MangaSourcesRepository
+import com.mlord.app.app.explore.data.SourcesSortOrder
 import org.koitharu.kotatsu.parsers.model.MangaParserSource
 import org.koitharu.kotatsu.parsers.util.mapToSet
-import com.mlord.app.app.app.settings.sources.model.SourceConfigItem
+import com.mlord.app.app.settings.sources.model.SourceConfigItem
 import javax.inject.Inject
 
 @ViewModelScoped

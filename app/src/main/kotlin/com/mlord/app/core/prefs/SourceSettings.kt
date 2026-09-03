@@ -1,18 +1,18 @@
-package com.mlord.app.app.core.prefs
+package com.mlord.app.core.prefs
 
 import android.content.Context
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import androidx.core.content.edit
-import com.mlord.app.app.app.core.util.ext.getEnumValue
-import com.mlord.app.app.app.core.util.ext.putEnumValue
-import com.mlord.app.app.app.core.util.ext.sanitizeHeaderValue
+import com.mlord.app.app.core.util.ext.getEnumValue
+import com.mlord.app.app.core.util.ext.putEnumValue
+import com.mlord.app.app.core.util.ext.sanitizeHeaderValue
 import org.koitharu.kotatsu.parsers.config.ConfigKey
 import org.koitharu.kotatsu.parsers.config.MangaSourceConfig
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.SortOrder
 import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 import org.koitharu.kotatsu.parsers.util.nullIfEmpty
-import com.mlord.app.app.app.settings.utils.validation.DomainValidator
+import com.mlord.app.app.settings.utils.validation.DomainValidator
 import java.io.File
 
 class SourceSettings(context: Context, source: MangaSource) : MangaSourceConfig {

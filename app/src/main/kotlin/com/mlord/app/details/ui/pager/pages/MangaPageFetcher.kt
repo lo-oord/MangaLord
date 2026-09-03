@@ -1,4 +1,4 @@
-package com.mlord.app.app.details.ui.pager.pages
+package com.mlord.app.details.ui.pager.pages
 
 import androidx.core.net.toUri
 import coil3.ImageLoader
@@ -17,20 +17,20 @@ import okhttp3.OkHttpClient
 import okhttp3.Response
 import okio.FileSystem
 import okio.Path.Companion.toOkioPath
-import com.mlord.app.app.app.core.network.MangaHttpClient
-import com.mlord.app.app.app.core.network.imageproxy.ImageProxyInterceptor
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.util.MimeTypes
-import com.mlord.app.app.app.core.util.ext.fetch
-import com.mlord.app.app.app.core.util.ext.isNetworkUri
-import com.mlord.app.app.app.core.util.ext.toMimeTypeOrNull
-import com.mlord.app.app.app.local.data.LocalStorageCache
-import com.mlord.app.app.app.local.data.PageCache
+import com.mlord.app.app.core.network.MangaHttpClient
+import com.mlord.app.app.core.network.imageproxy.ImageProxyInterceptor
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.util.MimeTypes
+import com.mlord.app.app.core.util.ext.fetch
+import com.mlord.app.app.core.util.ext.isNetworkUri
+import com.mlord.app.app.core.util.ext.toMimeTypeOrNull
+import com.mlord.app.app.local.data.LocalStorageCache
+import com.mlord.app.app.local.data.PageCache
 import org.koitharu.kotatsu.parsers.model.MangaPage
 import org.koitharu.kotatsu.parsers.util.mimeType
 import org.koitharu.kotatsu.parsers.util.requireBody
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.app.reader.domain.PageLoader
+import com.mlord.app.app.reader.domain.PageLoader
 import javax.inject.Inject
 
 class MangaPageFetcher(

@@ -1,11 +1,11 @@
-package com.mlord.app.app.details.ui.scrobbling
+package com.mlord.app.details.ui.scrobbling
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.databinding.ItemScrobblingInfoBinding
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblingInfo
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.databinding.ItemScrobblingInfoBinding
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingInfo
 
 fun scrobblingInfoAD(
 	router: AppRouter,

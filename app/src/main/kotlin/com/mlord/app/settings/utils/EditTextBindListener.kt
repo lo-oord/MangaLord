@@ -1,8 +1,8 @@
-package com.mlord.app.app.settings.utils
+package com.mlord.app.settings.utils
 
 import android.widget.EditText
 import androidx.preference.EditTextPreference
-import com.mlord.app.app.app.core.util.EditTextValidator
+import com.mlord.app.app.core.util.EditTextValidator
 
 class EditTextBindListener(
 	private val inputType: Int,

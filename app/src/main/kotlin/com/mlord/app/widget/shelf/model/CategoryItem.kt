@@ -1,7 +1,7 @@
-package com.mlord.app.app.widget.shelf.model
+package com.mlord.app.widget.shelf.model
 
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.model.ListModel
 
 data class CategoryItem(
 	val id: Long,

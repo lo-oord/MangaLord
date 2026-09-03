@@ -1,4 +1,4 @@
-package com.mlord.app.app.main.ui
+package com.mlord.app.main.ui
 
 import android.os.Build
 import androidx.activity.OnBackPressedCallback

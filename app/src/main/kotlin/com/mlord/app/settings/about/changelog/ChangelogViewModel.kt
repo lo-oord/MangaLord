@@ -1,11 +1,11 @@
-package com.mlord.app.app.settings.about.changelog
+package com.mlord.app.settings.about.changelog
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.jsoup.internal.StringUtil
-import com.mlord.app.app.app.core.github.AppUpdateRepository
-import com.mlord.app.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.github.AppUpdateRepository
+import com.mlord.app.app.core.ui.BaseViewModel
 import javax.inject.Inject
 
 @HiltViewModel

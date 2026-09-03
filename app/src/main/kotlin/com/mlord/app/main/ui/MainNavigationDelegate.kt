@@ -1,4 +1,4 @@
-package com.mlord.app.app.main.ui
+package com.mlord.app.main.ui
 
 import android.os.Bundle
 import android.view.Gravity
@@ -26,24 +26,24 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.bookmarks.ui.AllBookmarksFragment
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.NavItem
-import com.mlord.app.app.app.core.ui.util.RecyclerViewOwner
-import com.mlord.app.app.app.core.ui.widgets.SlidingBottomNavigationView
-import com.mlord.app.app.app.core.util.ext.buildBundle
-import com.mlord.app.app.app.core.util.ext.setContentDescriptionAndTooltip
-import com.mlord.app.app.app.core.util.ext.smoothScrollToTop
-import com.mlord.app.app.app.databinding.NavigationRailFabBinding
-import com.mlord.app.app.app.explore.ui.ExploreFragment
-import com.mlord.app.app.app.favourites.ui.container.FavouritesContainerFragment
-import com.mlord.app.app.app.history.ui.HistoryListFragment
-import com.mlord.app.app.app.local.ui.LocalListFragment
-import com.mlord.app.app.app.suggestions.ui.SuggestionsFragment
-import com.mlord.app.app.app.tracker.ui.feed.FeedFragment
-import com.mlord.app.app.app.tracker.ui.updates.UpdatesFragment
+import com.mlord.app.app.R
+import com.mlord.app.app.bookmarks.ui.AllBookmarksFragment
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.NavItem
+import com.mlord.app.app.core.ui.util.RecyclerViewOwner
+import com.mlord.app.app.core.ui.widgets.SlidingBottomNavigationView
+import com.mlord.app.app.core.util.ext.buildBundle
+import com.mlord.app.app.core.util.ext.setContentDescriptionAndTooltip
+import com.mlord.app.app.core.util.ext.smoothScrollToTop
+import com.mlord.app.app.databinding.NavigationRailFabBinding
+import com.mlord.app.app.explore.ui.ExploreFragment
+import com.mlord.app.app.favourites.ui.container.FavouritesContainerFragment
+import com.mlord.app.app.history.ui.HistoryListFragment
+import com.mlord.app.app.local.ui.LocalListFragment
+import com.mlord.app.app.suggestions.ui.SuggestionsFragment
+import com.mlord.app.app.tracker.ui.feed.FeedFragment
+import com.mlord.app.app.tracker.ui.updates.UpdatesFragment
 import java.util.LinkedList
 import com.google.android.material.R as materialR
 

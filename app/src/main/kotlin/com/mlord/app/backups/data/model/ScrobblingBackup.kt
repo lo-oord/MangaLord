@@ -1,8 +1,8 @@
-package com.mlord.app.app.backups.data.model
+package com.mlord.app.backups.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import com.mlord.app.app.app.scrobbling.common.data.ScrobblingEntity
+import com.mlord.app.app.scrobbling.common.data.ScrobblingEntity
 
 @Serializable
 class ScrobblingBackup(

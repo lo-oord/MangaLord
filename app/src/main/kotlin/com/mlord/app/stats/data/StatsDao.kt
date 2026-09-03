@@ -1,4 +1,4 @@
-package com.mlord.app.app.stats.data
+package com.mlord.app.stats.data
 
 import androidx.room.Dao
 import androidx.room.MapColumn
@@ -11,7 +11,7 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
-import com.mlord.app.app.app.core.db.entity.MangaEntity
+import com.mlord.app.app.core.db.entity.MangaEntity
 import kotlin.collections.forEach
 
 @Dao

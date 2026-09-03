@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.io
+package com.mlord.app.core.io
 
 import java.io.OutputStream
 import java.util.Objects

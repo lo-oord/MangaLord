@@ -1,7 +1,7 @@
-package com.mlord.app.app.core.util
+package com.mlord.app.core.util
 
 import androidx.core.os.LocaleListCompat
-import com.mlord.app.app.app.core.util.ext.iterator
+import com.mlord.app.app.core.util.ext.iterator
 import java.util.Locale
 
 class LocaleComparator : Comparator<Locale> {

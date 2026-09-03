@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network
+package com.mlord.app.core.network
 
 enum class DoHProvider {
 

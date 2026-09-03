@@ -1,4 +1,4 @@
-package com.mlord.app.app.filter.ui.model
+package com.mlord.app.filter.ui.model
 
 data class FilterProperty<out T>(
 	val availableItems: List<T>,

@@ -1,10 +1,10 @@
-package com.mlord.app.app.core.network
+package com.mlord.app.core.network
 
 import okhttp3.Interceptor
 import okhttp3.Response
 import okio.IOException
-import com.mlord.app.app.app.core.exceptions.CloudFlareBlockedException
-import com.mlord.app.app.app.core.exceptions.CloudFlareProtectedException
+import com.mlord.app.app.core.exceptions.CloudFlareBlockedException
+import com.mlord.app.app.core.exceptions.CloudFlareProtectedException
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
 

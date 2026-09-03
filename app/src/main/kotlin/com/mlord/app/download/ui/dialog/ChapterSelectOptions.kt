@@ -1,4 +1,4 @@
-package com.mlord.app.app.download.ui.dialog
+package com.mlord.app.download.ui.dialog
 
 data class ChapterSelectOptions(
 	val wholeManga: ChaptersSelectMacro.WholeManga,

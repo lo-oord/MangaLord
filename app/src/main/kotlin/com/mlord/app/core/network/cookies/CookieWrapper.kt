@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network.cookies
+package com.mlord.app.core.network.cookies
 
 import android.util.Base64
 import okhttp3.Cookie

@@ -1,20 +1,20 @@
-package com.mlord.app.app.alternatives.domain
+package com.mlord.app.alternatives.domain
 
 import androidx.room.withTransaction
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.model.getPreferredBranch
-import com.mlord.app.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.details.domain.ProgressUpdateUseCase
-import com.mlord.app.app.app.history.data.HistoryEntity
-import com.mlord.app.app.app.history.data.toMangaHistory
-import com.mlord.app.app.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.model.getPreferredBranch
+import com.mlord.app.app.core.parser.MangaDataRepository
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.details.domain.ProgressUpdateUseCase
+import com.mlord.app.app.history.data.HistoryEntity
+import com.mlord.app.app.history.data.toMangaHistory
+import com.mlord.app.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.app.scrobbling.common.domain.Scrobbler
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblingStatus
-import com.mlord.app.app.app.tracker.data.TrackEntity
+import com.mlord.app.app.scrobbling.common.domain.Scrobbler
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingStatus
+import com.mlord.app.app.tracker.data.TrackEntity
 import javax.inject.Inject
 
 class MigrateUseCase

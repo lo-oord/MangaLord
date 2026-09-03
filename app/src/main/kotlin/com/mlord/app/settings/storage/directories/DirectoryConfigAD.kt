@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.storage.directories
+package com.mlord.app.settings.storage.directories
 
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -7,13 +7,13 @@ import androidx.core.text.buildSpannedString
 import androidx.core.text.color
 import androidx.core.view.isGone
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.FileSize
-import com.mlord.app.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.app.core.util.ext.setTooltipCompat
-import com.mlord.app.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.app.databinding.ItemStorageConfig2Binding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.FileSize
+import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.core.util.ext.setTooltipCompat
+import com.mlord.app.app.core.util.ext.textAndVisible
+import com.mlord.app.app.databinding.ItemStorageConfig2Binding
 
 fun directoryConfigAD(
     clickListener: OnListItemClickListener<DirectoryConfigModel>,

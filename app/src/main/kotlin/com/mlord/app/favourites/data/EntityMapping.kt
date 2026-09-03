@@ -1,9 +1,9 @@
-package com.mlord.app.app.favourites.data
+package com.mlord.app.favourites.data
 
-import com.mlord.app.app.app.core.db.entity.toManga
-import com.mlord.app.app.app.core.db.entity.toMangaTags
-import com.mlord.app.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.app.list.domain.ListSortOrder
+import com.mlord.app.app.core.db.entity.toManga
+import com.mlord.app.app.core.db.entity.toMangaTags
+import com.mlord.app.app.core.model.FavouriteCategory
+import com.mlord.app.app.list.domain.ListSortOrder
 import java.time.Instant
 
 fun FavouriteCategoryEntity.toFavouriteCategory(id: Long = categoryId.toLong()) = FavouriteCategory(

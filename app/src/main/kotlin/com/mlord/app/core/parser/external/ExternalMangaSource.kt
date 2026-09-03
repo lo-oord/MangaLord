@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.parser.external
+package com.mlord.app.core.parser.external
 
 import android.content.Context
 import org.koitharu.kotatsu.parsers.model.MangaSource

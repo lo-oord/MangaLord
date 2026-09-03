@@ -1,7 +1,7 @@
-package com.mlord.app.app.explore.ui.model
+package com.mlord.app.explore.ui.model
 
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.list.ui.model.MangaCompactListModel
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.MangaCompactListModel
 
 data class RecommendationsItem(
 	val manga: List<MangaCompactListModel>

@@ -1,6 +1,6 @@
-package com.mlord.app.app.favourites.domain.model
+package com.mlord.app.favourites.domain.model
 
-import com.mlord.app.app.app.core.model.MangaSource
+import com.mlord.app.app.core.model.MangaSource
 
 data class Cover(
 	val url: String?,

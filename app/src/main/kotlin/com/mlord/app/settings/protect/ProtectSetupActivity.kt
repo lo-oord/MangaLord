@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.protect
+package com.mlord.app.settings.protect
 
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -14,14 +14,14 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.ui.util.DefaultTextWatcher
-import com.mlord.app.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.app.databinding.ActivitySetupProtectBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.ui.util.DefaultTextWatcher
+import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.systemBarsInsets
+import com.mlord.app.app.databinding.ActivitySetupProtectBinding
 
 private const val MIN_PASSWORD_LENGTH = 4
 

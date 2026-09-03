@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.storage
+package com.mlord.app.settings.storage
 
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 

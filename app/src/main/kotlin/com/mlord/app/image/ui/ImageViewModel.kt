@@ -1,4 +1,4 @@
-package com.mlord.app.app.image.ui
+package com.mlord.app.image.ui
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -12,14 +12,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runInterruptible
-import com.mlord.app.app.app.core.model.MangaSource
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.app.core.util.ext.call
-import com.mlord.app.app.app.core.util.ext.getDrawableOrThrow
-import com.mlord.app.app.app.core.util.ext.mangaSourceExtra
-import com.mlord.app.app.app.core.util.ext.require
+import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.util.ext.MutableEventFlow
+import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.app.core.util.ext.getDrawableOrThrow
+import com.mlord.app.app.core.util.ext.mangaSourceExtra
+import com.mlord.app.app.core.util.ext.require
 import javax.inject.Inject
 
 @HiltViewModel

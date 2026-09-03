@@ -1,15 +1,15 @@
-package com.mlord.app.app.scrobbling.anilist.data
+package com.mlord.app.scrobbling.anilist.data
 
 import kotlinx.coroutines.runBlocking
 import okhttp3.Authenticator
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
-import com.mlord.app.app.app.core.network.CommonHeaders
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.scrobbling.common.data.ScrobblerStorage
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerService
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerType
+import com.mlord.app.app.core.network.CommonHeaders
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.scrobbling.common.data.ScrobblerStorage
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerType
 import javax.inject.Inject
 import javax.inject.Provider
 

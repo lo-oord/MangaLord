@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.util.progress
+package com.mlord.app.core.util.progress
 
 import android.os.SystemClock
 import androidx.annotation.AnyThread

@@ -1,4 +1,4 @@
-package com.mlord.app.app.favourites.ui.categories.edit
+package com.mlord.app.favourites.ui.categories.edit
 
 import android.content.Context
 import android.os.Bundle
@@ -11,20 +11,20 @@ import androidx.activity.viewModels
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.ui.util.DefaultTextWatcher
-import com.mlord.app.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.app.core.util.ext.getSerializableCompat
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.setChecked
-import com.mlord.app.app.app.core.util.ext.sortedByOrdinal
-import com.mlord.app.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.app.databinding.ActivityCategoryEditBinding
-import com.mlord.app.app.app.list.domain.ListSortOrder
+import com.mlord.app.app.R
+import com.mlord.app.app.core.model.FavouriteCategory
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.ui.util.DefaultTextWatcher
+import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.core.util.ext.getSerializableCompat
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.setChecked
+import com.mlord.app.app.core.util.ext.sortedByOrdinal
+import com.mlord.app.app.core.util.ext.systemBarsInsets
+import com.mlord.app.app.databinding.ActivityCategoryEditBinding
+import com.mlord.app.app.list.domain.ListSortOrder
 
 @AndroidEntryPoint
 class FavouritesCategoryEditActivity :

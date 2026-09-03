@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.doublepage
+package com.mlord.app.reader.ui.pager.doublepage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,17 +11,17 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.yield
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.os.NetworkState
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.list.lifecycle.RecyclerViewLifecycleDispatcher
-import com.mlord.app.app.app.core.util.ext.firstVisibleItemPosition
-import com.mlord.app.app.app.databinding.FragmentReaderDoubleBinding
-import com.mlord.app.app.app.reader.domain.PageLoader
-import com.mlord.app.app.app.reader.ui.ReaderState
-import com.mlord.app.app.app.reader.ui.pager.BaseReaderAdapter
-import com.mlord.app.app.app.reader.ui.pager.BaseReaderFragment
-import com.mlord.app.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.app.R
+import com.mlord.app.app.core.os.NetworkState
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.list.lifecycle.RecyclerViewLifecycleDispatcher
+import com.mlord.app.app.core.util.ext.firstVisibleItemPosition
+import com.mlord.app.app.databinding.FragmentReaderDoubleBinding
+import com.mlord.app.app.reader.domain.PageLoader
+import com.mlord.app.app.reader.ui.ReaderState
+import com.mlord.app.app.reader.ui.pager.BaseReaderAdapter
+import com.mlord.app.app.reader.ui.pager.BaseReaderFragment
+import com.mlord.app.app.reader.ui.pager.ReaderPage
 import javax.inject.Inject
 import kotlin.math.absoluteValue
 

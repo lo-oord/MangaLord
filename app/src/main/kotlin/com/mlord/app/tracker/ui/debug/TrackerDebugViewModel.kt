@@ -1,4 +1,4 @@
-package com.mlord.app.app.tracker.ui.debug
+package com.mlord.app.tracker.ui.debug
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -7,11 +7,11 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.db.entity.toManga
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.util.ext.toInstantOrNull
-import com.mlord.app.app.app.tracker.data.TrackWithManga
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.db.entity.toManga
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.util.ext.toInstantOrNull
+import com.mlord.app.app.tracker.data.TrackWithManga
 import javax.inject.Inject
 
 @HiltViewModel

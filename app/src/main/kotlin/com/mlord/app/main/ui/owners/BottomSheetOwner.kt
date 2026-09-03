@@ -1,4 +1,4 @@
-package com.mlord.app.app.main.ui.owners
+package com.mlord.app.main.ui.owners
 
 import android.view.View
 

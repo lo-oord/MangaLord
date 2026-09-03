@@ -1,17 +1,17 @@
-package com.mlord.app.app.list.ui.adapter
+package com.mlord.app.list.ui.adapter
 
 import androidx.core.view.isVisible
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.list.AdapterDelegateClickListenerAdapter
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.setTooltipCompat
-import com.mlord.app.app.app.databinding.ItemMangaGridBinding
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback.Companion.PAYLOAD_PROGRESS_CHANGED
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.list.ui.model.MangaGridModel
-import com.mlord.app.app.app.list.ui.model.MangaListModel
-import com.mlord.app.app.app.list.ui.size.ItemSizeResolver
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.list.AdapterDelegateClickListenerAdapter
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.setTooltipCompat
+import com.mlord.app.app.databinding.ItemMangaGridBinding
+import com.mlord.app.app.list.ui.ListModelDiffCallback.Companion.PAYLOAD_PROGRESS_CHANGED
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.MangaGridModel
+import com.mlord.app.app.list.ui.model.MangaListModel
+import com.mlord.app.app.list.ui.size.ItemSizeResolver
 
 fun mangaGridItemAD(
 	sizeResolver: ItemSizeResolver,

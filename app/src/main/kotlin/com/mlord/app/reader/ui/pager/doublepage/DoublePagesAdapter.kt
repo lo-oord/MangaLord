@@ -1,14 +1,14 @@
-package com.mlord.app.app.reader.ui.pager.doublepage
+package com.mlord.app.reader.ui.pager.doublepage
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
-import com.mlord.app.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.app.core.os.NetworkState
-import com.mlord.app.app.app.databinding.ItemPageBinding
-import com.mlord.app.app.app.reader.domain.PageLoader
-import com.mlord.app.app.app.reader.ui.config.ReaderSettings
-import com.mlord.app.app.app.reader.ui.pager.BaseReaderAdapter
+import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.app.core.os.NetworkState
+import com.mlord.app.app.databinding.ItemPageBinding
+import com.mlord.app.app.reader.domain.PageLoader
+import com.mlord.app.app.reader.ui.config.ReaderSettings
+import com.mlord.app.app.reader.ui.pager.BaseReaderAdapter
 
 class DoublePagesAdapter(
 	private val lifecycleOwner: LifecycleOwner,

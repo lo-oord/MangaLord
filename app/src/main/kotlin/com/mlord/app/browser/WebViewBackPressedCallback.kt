@@ -1,4 +1,4 @@
-package com.mlord.app.app.browser
+package com.mlord.app.browser
 
 import android.webkit.WebView
 import androidx.activity.OnBackPressedCallback

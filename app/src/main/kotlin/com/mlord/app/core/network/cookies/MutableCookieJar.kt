@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network.cookies
+package com.mlord.app.core.network.cookies
 
 import androidx.annotation.WorkerThread
 import androidx.core.util.Predicate

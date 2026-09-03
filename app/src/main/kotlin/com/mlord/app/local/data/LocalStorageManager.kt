@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.data
+package com.mlord.app.local.data
 
 import android.Manifest
 import android.content.ContentResolver
@@ -17,16 +17,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runInterruptible
 import kotlinx.coroutines.withContext
 import okhttp3.Cache
-import com.mlord.app.app.app.core.LocalizedAppContext
-import com.mlord.app.app.app.core.exceptions.NonFileUriException
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.computeSize
-import com.mlord.app.app.app.core.util.ext.getStorageName
-import com.mlord.app.app.app.core.util.ext.isFileUri
-import com.mlord.app.app.app.core.util.ext.isReadable
-import com.mlord.app.app.app.core.util.ext.isWriteable
-import com.mlord.app.app.app.core.util.ext.resolveFile
-import com.mlord.app.app.app.core.util.ext.takeIfWriteable
+import com.mlord.app.app.core.LocalizedAppContext
+import com.mlord.app.app.core.exceptions.NonFileUriException
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.computeSize
+import com.mlord.app.app.core.util.ext.getStorageName
+import com.mlord.app.app.core.util.ext.isFileUri
+import com.mlord.app.app.core.util.ext.isReadable
+import com.mlord.app.app.core.util.ext.isWriteable
+import com.mlord.app.app.core.util.ext.resolveFile
+import com.mlord.app.app.core.util.ext.takeIfWriteable
 import org.koitharu.kotatsu.parsers.util.mapToSet
 import java.io.File
 import javax.inject.Inject

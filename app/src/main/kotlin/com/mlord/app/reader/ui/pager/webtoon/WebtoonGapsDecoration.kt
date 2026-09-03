@@ -1,10 +1,10 @@
-package com.mlord.app.app.reader.ui.pager.webtoon
+package com.mlord.app.reader.ui.pager.webtoon
 
 import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 
 class WebtoonGapsDecoration : RecyclerView.ItemDecoration() {
 

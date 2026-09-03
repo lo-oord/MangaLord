@@ -1,13 +1,13 @@
-package com.mlord.app.app.reader.ui.config
+package com.mlord.app.reader.ui.config
 
 import android.content.Context
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.parser.ParserMangaRepository
+import com.mlord.app.app.R
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.parser.ParserMangaRepository
 import org.koitharu.kotatsu.parsers.config.ConfigKey
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.util.mapToArray

@@ -1,12 +1,12 @@
-package com.mlord.app.app.core.ui.widgets
+package com.mlord.app.core.ui.widgets
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import com.google.android.material.button.MaterialButtonGroup
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.databinding.ViewZoomBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.databinding.ViewZoomBinding
 
 class ZoomControl @JvmOverloads constructor(
 	context: Context,

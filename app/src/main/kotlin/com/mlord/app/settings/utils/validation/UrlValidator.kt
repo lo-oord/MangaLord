@@ -1,8 +1,8 @@
-package com.mlord.app.app.settings.utils.validation
+package com.mlord.app.settings.utils.validation
 
 import android.webkit.URLUtil
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.EditTextValidator
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.EditTextValidator
 
 class UrlValidator : EditTextValidator() {
 

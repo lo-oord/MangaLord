@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.image
+package com.mlord.app.core.image
 
 import android.net.Uri
 import coil3.ImageLoader
@@ -11,8 +11,8 @@ import coil3.toAndroidUri
 import kotlinx.coroutines.runInterruptible
 import okio.Path.Companion.toPath
 import okio.openZip
-import com.mlord.app.app.app.core.util.MimeTypes
-import com.mlord.app.app.app.core.util.ext.isZipUri
+import com.mlord.app.app.core.util.MimeTypes
+import com.mlord.app.app.core.util.ext.isZipUri
 import coil3.Uri as CoilUri
 
 class CbzFetcher(

@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.model
+package com.mlord.app.core.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

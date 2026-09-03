@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.sources
+package com.mlord.app.settings.sources
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -8,15 +8,15 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.TwoStatePreference
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.TriStateOption
-import com.mlord.app.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.app.core.util.ext.getQuantityStringSafe
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.setDefaultValueCompat
-import com.mlord.app.app.app.explore.data.SourcesSortOrder
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.TriStateOption
+import com.mlord.app.app.core.ui.BasePreferenceFragment
+import com.mlord.app.app.core.util.ext.getQuantityStringSafe
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.setDefaultValueCompat
+import com.mlord.app.app.explore.data.SourcesSortOrder
 import org.koitharu.kotatsu.parsers.util.names
 
 @AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.dialog
+package com.mlord.app.core.ui.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,19 +7,19 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.github.AppUpdateRepository
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.ui.AlertDialogFragment
-import com.mlord.app.app.app.core.util.ext.copyToClipboard
-import com.mlord.app.app.app.core.util.ext.getCauseUrl
-import com.mlord.app.app.app.core.util.ext.isHttpUrl
-import com.mlord.app.app.app.core.util.ext.isReportable
-import com.mlord.app.app.app.core.util.ext.report
-import com.mlord.app.app.app.core.util.ext.requireSerializable
-import com.mlord.app.app.app.core.util.ext.setTextAndVisible
-import com.mlord.app.app.app.databinding.DialogErrorDetailsBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.github.AppUpdateRepository
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.ui.AlertDialogFragment
+import com.mlord.app.app.core.util.ext.copyToClipboard
+import com.mlord.app.app.core.util.ext.getCauseUrl
+import com.mlord.app.app.core.util.ext.isHttpUrl
+import com.mlord.app.app.core.util.ext.isReportable
+import com.mlord.app.app.core.util.ext.report
+import com.mlord.app.app.core.util.ext.requireSerializable
+import com.mlord.app.app.core.util.ext.setTextAndVisible
+import com.mlord.app.app.databinding.DialogErrorDetailsBinding
 import javax.inject.Inject
 
 @AndroidEntryPoint

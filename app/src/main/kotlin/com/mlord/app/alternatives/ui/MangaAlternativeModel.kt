@@ -1,8 +1,8 @@
-package com.mlord.app.app.alternatives.ui
+package com.mlord.app.alternatives.ui
 
-import com.mlord.app.app.app.core.model.chaptersCount
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.list.ui.model.MangaGridModel
+import com.mlord.app.app.core.model.chaptersCount
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.MangaGridModel
 import org.koitharu.kotatsu.parsers.model.Manga
 
 data class MangaAlternativeModel(

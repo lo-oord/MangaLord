@@ -1,8 +1,8 @@
-package com.mlord.app.app.reader.ui
+package com.mlord.app.reader.ui
 
-import com.mlord.app.app.app.bookmarks.domain.Bookmark
+import com.mlord.app.app.bookmarks.domain.Bookmark
 import org.koitharu.kotatsu.parsers.model.MangaChapter
-import com.mlord.app.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.app.reader.ui.pager.ReaderPage
 
 interface ReaderNavigationCallback {
 

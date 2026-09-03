@@ -1,11 +1,11 @@
-package com.mlord.app.app.settings.search
+package com.mlord.app.settings.search
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.list.AdapterDelegateClickListenerAdapter
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.app.databinding.ItemPreferenceBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.list.AdapterDelegateClickListenerAdapter
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.textAndVisible
+import com.mlord.app.app.databinding.ItemPreferenceBinding
 
 fun settingsItemAD(
 	listener: OnListItemClickListener<SettingsItem>,

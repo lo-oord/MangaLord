@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.sources.catalog
+package com.mlord.app.settings.sources.catalog
 
 import org.koitharu.kotatsu.parsers.model.ContentType
 

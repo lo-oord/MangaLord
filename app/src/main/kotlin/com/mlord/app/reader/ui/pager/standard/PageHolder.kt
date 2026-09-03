@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.standard
+package com.mlord.app.reader.ui.pager.standard
 
 import android.annotation.SuppressLint
 import android.graphics.PointF
@@ -18,16 +18,16 @@ import androidx.core.view.setMargins
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.LifecycleOwner
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.app.core.model.ZoomMode
-import com.mlord.app.app.app.core.os.NetworkState
-import com.mlord.app.app.app.core.ui.widgets.ZoomControl
-import com.mlord.app.app.app.databinding.ItemPageBinding
-import com.mlord.app.app.app.reader.domain.PageLoader
-import com.mlord.app.app.app.reader.ui.config.ReaderSettings
-import com.mlord.app.app.app.reader.ui.pager.BasePageHolder
-import com.mlord.app.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.app.core.model.ZoomMode
+import com.mlord.app.app.core.os.NetworkState
+import com.mlord.app.app.core.ui.widgets.ZoomControl
+import com.mlord.app.app.databinding.ItemPageBinding
+import com.mlord.app.app.reader.domain.PageLoader
+import com.mlord.app.app.reader.ui.config.ReaderSettings
+import com.mlord.app.app.reader.ui.pager.BasePageHolder
+import com.mlord.app.app.reader.ui.pager.ReaderPage
 
 open class PageHolder(
 	owner: LifecycleOwner,

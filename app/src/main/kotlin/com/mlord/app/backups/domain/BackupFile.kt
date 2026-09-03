@@ -1,4 +1,4 @@
-package com.mlord.app.app.backups.domain
+package com.mlord.app.backups.domain
 
 import android.net.Uri
 import java.util.Date

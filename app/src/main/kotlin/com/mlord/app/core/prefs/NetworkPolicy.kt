@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.prefs
+package com.mlord.app.core.prefs
 
 import android.net.ConnectivityManager
 import androidx.annotation.Keep

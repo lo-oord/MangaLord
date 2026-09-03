@@ -1,11 +1,11 @@
-package com.mlord.app.app.picker.ui
+package com.mlord.app.picker.ui
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.activity.result.contract.ActivityResultContract
-import com.mlord.app.app.app.core.model.parcelable.ParcelableManga
-import com.mlord.app.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.model.parcelable.ParcelableManga
+import com.mlord.app.app.core.nav.AppRouter
 import org.koitharu.kotatsu.parsers.model.Manga
 
 class PageImagePickContract : ActivityResultContract<Manga?, Uri?>() {

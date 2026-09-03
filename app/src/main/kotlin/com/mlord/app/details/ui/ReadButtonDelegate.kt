@@ -1,4 +1,4 @@
-package com.mlord.app.app.details.ui
+package com.mlord.app.details.ui
 
 import android.content.Context
 import android.graphics.Color
@@ -20,13 +20,13 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialSplitButton
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.combine
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.model.isLocal
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.nav.ReaderIntent
-import com.mlord.app.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.details.ui.model.HistoryInfo
+import com.mlord.app.app.R
+import com.mlord.app.app.core.model.isLocal
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.nav.ReaderIntent
+import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.details.ui.model.HistoryInfo
 
 class ReadButtonDelegate(
 	private val splitButton: MaterialSplitButton,

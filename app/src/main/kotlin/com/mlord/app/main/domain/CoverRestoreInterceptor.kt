@@ -1,17 +1,17 @@
-package com.mlord.app.app.main.domain
+package com.mlord.app.main.domain
 
 import androidx.collection.ArraySet
 import coil3.intercept.Interceptor
 import coil3.request.ErrorResult
 import coil3.request.ImageResult
-import com.mlord.app.app.app.bookmarks.domain.Bookmark
-import com.mlord.app.app.app.bookmarks.domain.BookmarksRepository
-import com.mlord.app.app.app.core.model.isLocal
-import com.mlord.app.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.util.ext.bookmarkKey
-import com.mlord.app.app.app.core.util.ext.mangaKey
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.bookmarks.domain.Bookmark
+import com.mlord.app.app.bookmarks.domain.BookmarksRepository
+import com.mlord.app.app.core.model.isLocal
+import com.mlord.app.app.core.parser.MangaDataRepository
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.util.ext.bookmarkKey
+import com.mlord.app.app.core.util.ext.mangaKey
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.findById
 import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty

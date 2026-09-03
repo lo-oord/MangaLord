@@ -1,9 +1,9 @@
-package com.mlord.app.app.core.cache
+package com.mlord.app.core.cache
 
 import android.app.Application
 import android.content.ComponentCallbacks2
 import android.content.res.Configuration
-import com.mlord.app.app.app.core.util.ext.isLowRamDevice
+import com.mlord.app.app.core.util.ext.isLowRamDevice
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaPage
 import org.koitharu.kotatsu.parsers.model.MangaSource

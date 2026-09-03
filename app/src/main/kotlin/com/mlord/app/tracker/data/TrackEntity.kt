@@ -1,11 +1,11 @@
-package com.mlord.app.app.tracker.data
+package com.mlord.app.tracker.data
 
 import androidx.annotation.IntDef
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.mlord.app.app.app.core.db.entity.MangaEntity
+import com.mlord.app.app.core.db.entity.MangaEntity
 
 @Entity(
 	tableName = "tracks",

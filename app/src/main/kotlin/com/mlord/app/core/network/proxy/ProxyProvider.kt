@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network.proxy
+package com.mlord.app.core.network.proxy
 
 import androidx.webkit.ProxyConfig
 import androidx.webkit.ProxyController
@@ -12,10 +12,10 @@ import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
 import okio.IOException
-import com.mlord.app.app.app.core.exceptions.ProxyConfigException
-import com.mlord.app.app.app.core.network.CommonHeaders
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.exceptions.ProxyConfigException
+import com.mlord.app.app.core.network.CommonHeaders
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import java.net.InetSocketAddress
 import java.net.PasswordAuthentication
 import java.net.Proxy

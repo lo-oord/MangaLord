@@ -1,15 +1,15 @@
-package com.mlord.app.app.reader.domain
+package com.mlord.app.reader.domain
 
 import android.util.LongSparseArray
 import androidx.annotation.CheckResult
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.details.data.MangaDetails
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.details.data.MangaDetails
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import org.koitharu.kotatsu.parsers.model.MangaPage
-import com.mlord.app.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.app.reader.ui.pager.ReaderPage
 import javax.inject.Inject
 
 private const val PAGES_TRIM_THRESHOLD = 120

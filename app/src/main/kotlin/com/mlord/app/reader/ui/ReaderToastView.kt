@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui
+package com.mlord.app.reader.ui
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -11,9 +11,9 @@ import androidx.annotation.StringRes
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.google.android.material.textview.MaterialTextView
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ext.getAnimationDuration
-import com.mlord.app.app.app.core.util.ext.isAnimationsEnabled
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ext.getAnimationDuration
+import com.mlord.app.app.core.util.ext.isAnimationsEnabled
 
 class ReaderToastView @JvmOverloads constructor(
 	context: Context,

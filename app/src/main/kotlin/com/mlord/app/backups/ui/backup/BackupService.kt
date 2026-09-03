@@ -1,4 +1,4 @@
-package com.mlord.app.app.backups.ui.backup
+package com.mlord.app.backups.ui.backup
 
 import android.annotation.SuppressLint
 import android.app.Notification
@@ -17,17 +17,17 @@ import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.backups.data.BackupRepository
-import com.mlord.app.app.app.backups.ui.BaseBackupRestoreService
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.util.CompositeResult
-import com.mlord.app.app.app.core.util.ext.checkNotificationPermission
-import com.mlord.app.app.app.core.util.ext.powerManager
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.core.util.ext.toUriOrNull
-import com.mlord.app.app.app.core.util.ext.withPartialWakeLock
-import com.mlord.app.app.app.core.util.progress.Progress
+import com.mlord.app.app.R
+import com.mlord.app.app.backups.data.BackupRepository
+import com.mlord.app.app.backups.ui.BaseBackupRestoreService
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.util.CompositeResult
+import com.mlord.app.app.core.util.ext.checkNotificationPermission
+import com.mlord.app.app.core.util.ext.powerManager
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.toUriOrNull
+import com.mlord.app.app.core.util.ext.withPartialWakeLock
+import com.mlord.app.app.core.util.progress.Progress
 import java.io.FileNotFoundException
 import java.util.zip.ZipOutputStream
 import javax.inject.Inject

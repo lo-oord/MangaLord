@@ -1,9 +1,9 @@
-package com.mlord.app.app.scrobbling.discord.ui
+package com.mlord.app.scrobbling.discord.ui
 
 import android.graphics.Bitmap
 import android.webkit.WebView
-import com.mlord.app.app.app.browser.BrowserCallback
-import com.mlord.app.app.app.browser.BrowserClient
+import com.mlord.app.app.browser.BrowserCallback
+import com.mlord.app.app.browser.BrowserClient
 import org.koitharu.kotatsu.parsers.util.removeSurrounding
 
 class DiscordTokenWebClient(private val callback: Callback) : BrowserClient(callback, null) {

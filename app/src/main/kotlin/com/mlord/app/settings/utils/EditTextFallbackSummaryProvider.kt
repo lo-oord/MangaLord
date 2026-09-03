@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.utils
+package com.mlord.app.settings.utils
 
 import androidx.annotation.StringRes
 import androidx.preference.EditTextPreference

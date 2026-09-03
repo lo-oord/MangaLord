@@ -1,6 +1,6 @@
-package com.mlord.app.app.browser.cloudflare
+package com.mlord.app.browser.cloudflare
 
-import com.mlord.app.app.app.browser.BrowserCallback
+import com.mlord.app.app.browser.BrowserCallback
 
 interface CloudFlareCallback : BrowserCallback {
 

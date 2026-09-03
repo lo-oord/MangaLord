@@ -1,10 +1,10 @@
-package com.mlord.app.app.core.prefs
+package com.mlord.app.core.prefs
 
 import androidx.annotation.Keep
 import androidx.annotation.StringRes
 import androidx.annotation.StyleRes
 import com.google.android.material.color.DynamicColors
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 import org.koitharu.kotatsu.parsers.util.find
 
 @Keep

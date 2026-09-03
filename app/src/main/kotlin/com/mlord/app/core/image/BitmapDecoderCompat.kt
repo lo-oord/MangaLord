@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.image
+package com.mlord.app.core.image
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -14,12 +14,12 @@ import okio.source
 import org.aomedia.avif.android.AvifDecoder
 import org.aomedia.avif.android.AvifDecoder.Info
 import org.jetbrains.annotations.Blocking
-import com.mlord.app.app.app.core.util.MimeTypes
-import com.mlord.app.app.app.core.util.ext.MimeType
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.core.util.ext.readByteBuffer
-import com.mlord.app.app.app.core.util.ext.toByteBuffer
-import com.mlord.app.app.app.core.util.ext.toMimeTypeOrNull
+import com.mlord.app.app.core.util.MimeTypes
+import com.mlord.app.app.core.util.ext.MimeType
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.readByteBuffer
+import com.mlord.app.app.core.util.ext.toByteBuffer
+import com.mlord.app.app.core.util.ext.toMimeTypeOrNull
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.io.File
 import java.io.InputStream

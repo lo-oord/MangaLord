@@ -1,9 +1,9 @@
-package com.mlord.app.app.favourites.data
+package com.mlord.app.favourites.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.mlord.app.app.app.core.db.TABLE_FAVOURITE_CATEGORIES
+import com.mlord.app.app.core.db.TABLE_FAVOURITE_CATEGORIES
 
 @Entity(tableName = TABLE_FAVOURITE_CATEGORIES)
 data class FavouriteCategoryEntity(

@@ -1,4 +1,4 @@
-package com.mlord.app.app.picker.ui
+package com.mlord.app.picker.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,22 +13,22 @@ import androidx.core.view.updatePadding
 import androidx.fragment.app.commit
 import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.DialogErrorObserver
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.util.ext.consume
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.databinding.ActivityPickerBinding
-import com.mlord.app.app.app.main.ui.owners.AppBarOwner
-import com.mlord.app.app.app.main.ui.owners.SnackbarOwner
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.DialogErrorObserver
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.util.ext.consume
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.databinding.ActivityPickerBinding
+import com.mlord.app.app.main.ui.owners.AppBarOwner
+import com.mlord.app.app.main.ui.owners.SnackbarOwner
 import org.koitharu.kotatsu.parsers.model.Manga
-import com.mlord.app.app.app.picker.ui.manga.MangaPickerFragment
-import com.mlord.app.app.app.picker.ui.page.PagePickerFragment
-import com.mlord.app.app.app.reader.ui.PageSaveHelper
-import com.mlord.app.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.app.picker.ui.manga.MangaPickerFragment
+import com.mlord.app.app.picker.ui.page.PagePickerFragment
+import com.mlord.app.app.reader.ui.PageSaveHelper
+import com.mlord.app.app.reader.ui.pager.ReaderPage
 import java.io.File
 import javax.inject.Inject
 

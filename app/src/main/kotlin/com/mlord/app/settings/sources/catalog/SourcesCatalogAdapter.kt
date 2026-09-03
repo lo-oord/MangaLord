@@ -1,13 +1,13 @@
-package com.mlord.app.app.settings.sources.catalog
+package com.mlord.app.settings.sources.catalog
 
 import android.content.Context
-import com.mlord.app.app.app.core.model.getTitle
-import com.mlord.app.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.ui.list.fastscroll.FastScroller
-import com.mlord.app.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.app.list.ui.adapter.loadingStateAD
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.model.getTitle
+import com.mlord.app.app.core.ui.BaseListAdapter
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.ui.list.fastscroll.FastScroller
+import com.mlord.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.app.list.ui.adapter.loadingStateAD
+import com.mlord.app.app.list.ui.model.ListModel
 
 class SourcesCatalogAdapter(
 	listener: OnListItemClickListener<SourceCatalogItem.Source>,

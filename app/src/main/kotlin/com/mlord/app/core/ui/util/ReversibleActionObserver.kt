@@ -1,12 +1,12 @@
-package com.mlord.app.app.core.ui.util
+package com.mlord.app.core.ui.util
 
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.FlowCollector
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ext.findActivity
-import com.mlord.app.app.app.main.ui.owners.BottomNavOwner
-import com.mlord.app.app.app.main.ui.owners.BottomSheetOwner
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ext.findActivity
+import com.mlord.app.app.main.ui.owners.BottomNavOwner
+import com.mlord.app.app.main.ui.owners.BottomSheetOwner
 
 class ReversibleActionObserver(
 	private val snackbarHost: View,

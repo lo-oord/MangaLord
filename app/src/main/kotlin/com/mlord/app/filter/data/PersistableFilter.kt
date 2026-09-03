@@ -1,9 +1,9 @@
-package com.mlord.app.app.filter.data
+package com.mlord.app.filter.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonIgnoreUnknownKeys
-import com.mlord.app.app.app.core.model.MangaSourceSerializer
+import com.mlord.app.app.core.model.MangaSourceSerializer
 import org.koitharu.kotatsu.parsers.model.MangaListFilter
 import org.koitharu.kotatsu.parsers.model.MangaSource
 

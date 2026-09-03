@@ -1,4 +1,4 @@
-package com.mlord.app.app.picker.ui.page
+package com.mlord.app.picker.ui.page
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,26 +12,26 @@ import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.SnackbarErrorObserver
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.BaseFragment
-import com.mlord.app.app.app.core.ui.list.BoundsScrollListener
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.ui.util.PagerNestedScrollHelper
-import com.mlord.app.app.app.core.util.ext.consumeAll
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.showOrHide
-import com.mlord.app.app.app.databinding.FragmentPagesBinding
-import com.mlord.app.app.app.details.ui.pager.pages.PageThumbnail
-import com.mlord.app.app.app.details.ui.pager.pages.PageThumbnailAdapter
-import com.mlord.app.app.app.list.ui.GridSpanResolver
-import com.mlord.app.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.app.list.ui.adapter.TypedListSpacingDecoration
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.SnackbarErrorObserver
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.BaseFragment
+import com.mlord.app.app.core.ui.list.BoundsScrollListener
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.ui.util.PagerNestedScrollHelper
+import com.mlord.app.app.core.util.ext.consumeAll
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.showOrHide
+import com.mlord.app.app.databinding.FragmentPagesBinding
+import com.mlord.app.app.details.ui.pager.pages.PageThumbnail
+import com.mlord.app.app.details.ui.pager.pages.PageThumbnailAdapter
+import com.mlord.app.app.list.ui.GridSpanResolver
+import com.mlord.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.app.list.ui.adapter.TypedListSpacingDecoration
+import com.mlord.app.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
-import com.mlord.app.app.app.picker.ui.PageImagePickActivity
+import com.mlord.app.app.picker.ui.PageImagePickActivity
 import javax.inject.Inject
 
 @AndroidEntryPoint

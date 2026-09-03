@@ -1,8 +1,8 @@
-package com.mlord.app.app.backups.data.model
+package com.mlord.app.backups.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import com.mlord.app.app.app.core.db.entity.TagEntity
+import com.mlord.app.app.core.db.entity.TagEntity
 
 @Serializable
 class TagBackup(

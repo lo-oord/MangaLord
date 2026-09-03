@@ -1,10 +1,10 @@
-package com.mlord.app.app.search.ui.suggestion
+package com.mlord.app.search.ui.suggestion
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.app.core.util.ext.getItem
-import com.mlord.app.app.app.search.ui.suggestion.adapter.SEARCH_SUGGESTION_ITEM_TYPE_QUERY
-import com.mlord.app.app.app.search.ui.suggestion.model.SearchSuggestionItem
+import com.mlord.app.app.core.util.ext.getItem
+import com.mlord.app.app.search.ui.suggestion.adapter.SEARCH_SUGGESTION_ITEM_TYPE_QUERY
+import com.mlord.app.app.search.ui.suggestion.model.SearchSuggestionItem
 
 class SearchSuggestionItemCallback(
 	private val listener: SuggestionItemListener,

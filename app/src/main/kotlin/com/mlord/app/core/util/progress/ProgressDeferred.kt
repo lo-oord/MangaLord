@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.util.progress
+package com.mlord.app.core.util.progress
 
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.flow.Flow

@@ -1,4 +1,4 @@
-package com.mlord.app.app.details.ui.pager.pages
+package com.mlord.app.details.ui.pager.pages
 
 import coil3.key.Keyer
 import coil3.request.Options

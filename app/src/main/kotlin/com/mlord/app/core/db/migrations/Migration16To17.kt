@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.db.migrations
+package com.mlord.app.core.db.migrations
 
 import android.content.Context
 import androidx.preference.PreferenceManager

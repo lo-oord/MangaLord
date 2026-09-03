@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.ui
+package com.mlord.app.local.ui
 
 import android.annotation.SuppressLint
 import android.app.NotificationManager
@@ -11,17 +11,17 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.MutableSharedFlow
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ErrorReporterReceiver
-import com.mlord.app.app.app.core.model.parcelable.ParcelableManga
-import com.mlord.app.app.app.core.ui.CoroutineIntentService
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.app.core.util.ext.getParcelableExtraCompat
-import com.mlord.app.app.app.core.util.ext.powerManager
-import com.mlord.app.app.app.core.util.ext.withPartialWakeLock
-import com.mlord.app.app.app.local.data.LocalMangaRepository
-import com.mlord.app.app.app.local.data.LocalStorageChanges
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ErrorReporterReceiver
+import com.mlord.app.app.core.model.parcelable.ParcelableManga
+import com.mlord.app.app.core.ui.CoroutineIntentService
+import com.mlord.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.core.util.ext.getParcelableExtraCompat
+import com.mlord.app.app.core.util.ext.powerManager
+import com.mlord.app.app.core.util.ext.withPartialWakeLock
+import com.mlord.app.app.local.data.LocalMangaRepository
+import com.mlord.app.app.local.data.LocalStorageChanges
+import com.mlord.app.app.local.domain.model.LocalManga
 import org.koitharu.kotatsu.parsers.model.Manga
 import javax.inject.Inject
 

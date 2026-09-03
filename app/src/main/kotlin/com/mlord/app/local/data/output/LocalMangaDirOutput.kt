@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.data.output
+package com.mlord.app.local.data.output
 
 import androidx.core.net.toFile
 import androidx.core.net.toUri
@@ -7,15 +7,15 @@ import kotlinx.coroutines.runInterruptible
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import okhttp3.internal.closeQuietly
-import com.mlord.app.app.app.core.model.isLocal
-import com.mlord.app.app.app.core.util.MimeTypes
-import com.mlord.app.app.app.core.util.ext.MimeType
-import com.mlord.app.app.app.core.util.ext.deleteAwait
-import com.mlord.app.app.app.core.util.ext.takeIfReadable
-import com.mlord.app.app.app.core.util.ext.toFileNameSafe
-import com.mlord.app.app.app.core.zip.ZipOutput
-import com.mlord.app.app.app.local.data.MangaIndex
-import com.mlord.app.app.app.local.data.input.LocalMangaParser
+import com.mlord.app.app.core.model.isLocal
+import com.mlord.app.app.core.util.MimeTypes
+import com.mlord.app.app.core.util.ext.MimeType
+import com.mlord.app.app.core.util.ext.deleteAwait
+import com.mlord.app.app.core.util.ext.takeIfReadable
+import com.mlord.app.app.core.util.ext.toFileNameSafe
+import com.mlord.app.app.core.zip.ZipOutput
+import com.mlord.app.app.local.data.MangaIndex
+import com.mlord.app.app.local.data.input.LocalMangaParser
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import org.koitharu.kotatsu.parsers.util.nullIfEmpty

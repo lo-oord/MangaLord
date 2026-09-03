@@ -1,17 +1,17 @@
-package com.mlord.app.app.core.parser
+package com.mlord.app.core.parser
 
 import android.content.Context
 import androidx.annotation.AnyThread
 import androidx.collection.ArrayMap
 import dagger.hilt.android.qualifiers.ApplicationContext
-import com.mlord.app.app.app.core.cache.MemoryContentCache
-import com.mlord.app.app.app.core.model.LocalMangaSource
-import com.mlord.app.app.app.core.model.MangaSourceInfo
-import com.mlord.app.app.app.core.model.TestMangaSource
-import com.mlord.app.app.app.core.model.UnknownMangaSource
-import com.mlord.app.app.app.core.parser.external.ExternalMangaRepository
-import com.mlord.app.app.app.core.parser.external.ExternalMangaSource
-import com.mlord.app.app.app.local.data.LocalMangaRepository
+import com.mlord.app.app.core.cache.MemoryContentCache
+import com.mlord.app.app.core.model.LocalMangaSource
+import com.mlord.app.app.core.model.MangaSourceInfo
+import com.mlord.app.app.core.model.TestMangaSource
+import com.mlord.app.app.core.model.UnknownMangaSource
+import com.mlord.app.app.core.parser.external.ExternalMangaRepository
+import com.mlord.app.app.core.parser.external.ExternalMangaSource
+import com.mlord.app.app.local.data.LocalMangaRepository
 import org.koitharu.kotatsu.parsers.MangaLoaderContext
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter

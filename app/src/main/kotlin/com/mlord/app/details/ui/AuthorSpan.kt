@@ -1,4 +1,4 @@
-package com.mlord.app.app.details.ui
+package com.mlord.app.details.ui
 
 import android.text.Spannable
 import android.text.TextPaint

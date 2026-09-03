@@ -1,10 +1,10 @@
-package com.mlord.app.app.reader.ui.pager.webtoon
+package com.mlord.app.reader.ui.pager.webtoon
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import androidx.annotation.AttrRes
-import com.mlord.app.app.app.R
+import com.mlord.app.app.R
 
 class WebtoonFrameLayout @JvmOverloads constructor(
 	context: Context,

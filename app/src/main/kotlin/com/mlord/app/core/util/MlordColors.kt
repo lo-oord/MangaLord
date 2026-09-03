@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.util
+package com.mlord.app.core.util
 
 import android.content.Context
 import androidx.annotation.AttrRes
@@ -6,7 +6,7 @@ import androidx.annotation.ColorInt
 import androidx.core.graphics.ColorUtils
 import com.google.android.material.R
 import com.google.android.material.color.MaterialColors
-import com.mlord.app.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.core.util.ext.getThemeColor
 import org.koitharu.kotatsu.parsers.model.Manga
 import kotlin.math.absoluteValue
 

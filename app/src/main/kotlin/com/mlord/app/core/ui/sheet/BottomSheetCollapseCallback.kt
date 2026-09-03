@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.sheet
+package com.mlord.app.core.ui.sheet
 
 import android.annotation.SuppressLint
 import android.view.View

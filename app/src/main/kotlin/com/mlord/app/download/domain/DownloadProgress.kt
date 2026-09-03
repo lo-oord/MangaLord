@@ -1,4 +1,4 @@
-package com.mlord.app.app.download.domain
+package com.mlord.app.download.domain
 
 data class DownloadProgress(
 	val totalChapters: Int,

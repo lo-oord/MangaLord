@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui
+package com.mlord.app.core.ui
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -16,19 +16,19 @@ import androidx.preference.get
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.util.RecyclerViewOwner
-import com.mlord.app.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.app.core.util.ext.container
-import com.mlord.app.app.app.core.util.ext.end
-import com.mlord.app.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.app.core.util.ext.getThemeDrawable
-import com.mlord.app.app.app.core.util.ext.parentView
-import com.mlord.app.app.app.core.util.ext.start
-import com.mlord.app.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.app.settings.SettingsActivity
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.util.RecyclerViewOwner
+import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.app.core.util.ext.container
+import com.mlord.app.app.core.util.ext.end
+import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.core.util.ext.getThemeDrawable
+import com.mlord.app.app.core.util.ext.parentView
+import com.mlord.app.app.core.util.ext.start
+import com.mlord.app.app.core.util.ext.systemBarsInsets
+import com.mlord.app.app.settings.SettingsActivity
 import javax.inject.Inject
 import com.google.android.material.R as materialR
 

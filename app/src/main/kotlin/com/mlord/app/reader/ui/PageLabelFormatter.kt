@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui
+package com.mlord.app.reader.ui
 
 import com.google.android.material.slider.LabelFormatter
 import org.koitharu.kotatsu.parsers.util.format

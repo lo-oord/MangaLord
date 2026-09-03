@@ -1,4 +1,4 @@
-package com.mlord.app.app.image.ui
+package com.mlord.app.image.ui
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -13,12 +13,12 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.core.widget.ImageViewCompat
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.model.UnknownMangaSource
-import com.mlord.app.app.app.core.ui.widgets.StackLayout
-import com.mlord.app.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.app.databinding.ViewCoverStackBinding
-import com.mlord.app.app.app.favourites.domain.model.Cover
+import com.mlord.app.app.R
+import com.mlord.app.app.core.model.UnknownMangaSource
+import com.mlord.app.app.core.ui.widgets.StackLayout
+import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.databinding.ViewCoverStackBinding
+import com.mlord.app.app.favourites.domain.model.Cover
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaSource
 

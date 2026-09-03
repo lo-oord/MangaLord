@@ -1,4 +1,4 @@
-package com.mlord.app.app.core
+package com.mlord.app.core
 
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
@@ -8,12 +8,12 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.PendingIntentCompat
 import androidx.core.net.toUri
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.util.ext.getSerializableExtraCompat
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.core.util.ext.report
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.util.ext.getSerializableExtraCompat
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.report
 
 class ErrorReporterReceiver : BroadcastReceiver() {
 

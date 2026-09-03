@@ -1,4 +1,4 @@
-package com.mlord.app.app.backups.ui.restore
+package com.mlord.app.backups.ui.restore
 
 import android.content.Context
 import androidx.lifecycle.SavedStateHandle
@@ -9,12 +9,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.runInterruptible
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import com.mlord.app.app.app.backups.data.model.BackupIndex
-import com.mlord.app.app.app.backups.domain.BackupSection
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.core.util.ext.toUriOrNull
+import com.mlord.app.app.backups.data.model.BackupIndex
+import com.mlord.app.app.backups.domain.BackupSection
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.toUriOrNull
 import java.io.FileNotFoundException
 import java.io.InputStream
 import java.util.Date

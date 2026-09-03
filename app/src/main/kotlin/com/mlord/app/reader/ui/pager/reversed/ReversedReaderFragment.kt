@@ -1,11 +1,11 @@
-package com.mlord.app.app.reader.ui.pager.reversed
+package com.mlord.app.reader.ui.pager.reversed
 
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.reader.ui.ReaderState
-import com.mlord.app.app.app.reader.ui.pager.BasePagerReaderFragment
-import com.mlord.app.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.reader.ui.ReaderState
+import com.mlord.app.app.reader.ui.pager.BasePagerReaderFragment
+import com.mlord.app.app.reader.ui.pager.ReaderPage
 import javax.inject.Inject
 
 @AndroidEntryPoint

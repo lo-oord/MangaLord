@@ -1,20 +1,20 @@
-package com.mlord.app.app.settings.sources.catalog
+package com.mlord.app.settings.sources.catalog
 
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.core.view.updatePaddingRelative
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.model.getSummary
-import com.mlord.app.app.app.core.model.getTitle
-import com.mlord.app.app.app.core.ui.image.FaviconDrawable
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.drawableStart
-import com.mlord.app.app.app.core.util.ext.getThemeDimensionPixelOffset
-import com.mlord.app.app.app.core.util.ext.setTextAndVisible
-import com.mlord.app.app.app.databinding.ItemEmptyHintBinding
-import com.mlord.app.app.app.databinding.ItemSourceCatalogBinding
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.R
+import com.mlord.app.app.core.model.getSummary
+import com.mlord.app.app.core.model.getTitle
+import com.mlord.app.app.core.ui.image.FaviconDrawable
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.drawableStart
+import com.mlord.app.app.core.util.ext.getThemeDimensionPixelOffset
+import com.mlord.app.app.core.util.ext.setTextAndVisible
+import com.mlord.app.app.databinding.ItemEmptyHintBinding
+import com.mlord.app.app.databinding.ItemSourceCatalogBinding
+import com.mlord.app.app.list.ui.model.ListModel
 import androidx.appcompat.R as appcompatR
 
 fun sourceCatalogItemSourceAD(

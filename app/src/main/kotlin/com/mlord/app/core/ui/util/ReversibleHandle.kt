@@ -1,12 +1,12 @@
-package com.mlord.app.app.core.ui.util
+package com.mlord.app.core.ui.util
 
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.core.util.ext.processLifecycleScope
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.processLifecycleScope
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 
 fun interface ReversibleHandle {

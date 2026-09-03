@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network.imageproxy
+package com.mlord.app.core.network.imageproxy
 
 import coil3.intercept.Interceptor
 import coil3.request.ImageResult
@@ -7,9 +7,9 @@ import kotlinx.coroutines.plus
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.observeAsStateFlow
-import com.mlord.app.app.app.core.util.ext.processLifecycleScope
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.observeAsStateFlow
+import com.mlord.app.app.core.util.ext.processLifecycleScope
 import org.koitharu.kotatsu.parsers.util.await
 import javax.inject.Inject
 import javax.inject.Singleton

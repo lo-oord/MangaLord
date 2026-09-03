@@ -1,10 +1,10 @@
-package com.mlord.app.app.core.ui.list.lifecycle
+package com.mlord.app.core.ui.list.lifecycle
 
 import android.view.View
 import androidx.core.view.children
 import androidx.core.view.isEmpty
 import androidx.viewpager2.widget.ViewPager2
-import com.mlord.app.app.app.core.util.ext.recyclerView
+import com.mlord.app.app.core.util.ext.recyclerView
 
 class PagerLifecycleDispatcher(
 	private val pager: ViewPager2,

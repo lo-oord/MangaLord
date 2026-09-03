@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.image
+package com.mlord.app.core.ui.image
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -9,7 +9,7 @@ import coil3.executeBlocking
 import coil3.request.ImageRequest
 import coil3.request.allowHardware
 import dagger.hilt.android.qualifiers.ApplicationContext
-import com.mlord.app.app.app.core.util.ext.drawable
+import com.mlord.app.app.core.util.ext.drawable
 import javax.inject.Inject
 
 class CoilImageGetter @Inject constructor(

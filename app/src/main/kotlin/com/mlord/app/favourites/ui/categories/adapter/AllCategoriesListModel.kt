@@ -1,8 +1,8 @@
-package com.mlord.app.app.favourites.ui.categories.adapter
+package com.mlord.app.favourites.ui.categories.adapter
 
-import com.mlord.app.app.app.favourites.domain.model.Cover
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.favourites.domain.model.Cover
+import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.app.list.ui.model.ListModel
 
 data class AllCategoriesListModel(
 	val mangaCount: Int,

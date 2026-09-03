@@ -1,12 +1,12 @@
-package com.mlord.app.app.backups.ui.restore
+package com.mlord.app.backups.ui.restore
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.setChecked
-import com.mlord.app.app.app.databinding.ItemCheckableMultipleBinding
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback.Companion.PAYLOAD_CHECKED_CHANGED
-import com.mlord.app.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.app.core.ui.BaseListAdapter
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.setChecked
+import com.mlord.app.app.databinding.ItemCheckableMultipleBinding
+import com.mlord.app.app.list.ui.ListModelDiffCallback.Companion.PAYLOAD_CHECKED_CHANGED
+import com.mlord.app.app.list.ui.adapter.ListItemType
 
 class BackupSectionsAdapter(
 	clickListener: OnListItemClickListener<BackupSectionModel>,

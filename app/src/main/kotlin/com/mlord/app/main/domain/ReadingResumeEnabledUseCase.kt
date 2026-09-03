@@ -1,4 +1,4 @@
-package com.mlord.app.app.main.domain
+package com.mlord.app.main.domain
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -6,10 +6,10 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
-import com.mlord.app.app.app.core.model.isLocal
-import com.mlord.app.app.app.core.os.NetworkState
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.history.data.HistoryRepository
+import com.mlord.app.app.core.model.isLocal
+import com.mlord.app.app.core.os.NetworkState
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.history.data.HistoryRepository
 import javax.inject.Inject
 
 class ReadingResumeEnabledUseCase @Inject constructor(

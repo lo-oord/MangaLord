@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.discord
+package com.mlord.app.settings.discord
 
 enum class TokenState {
 

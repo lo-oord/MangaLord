@@ -1,4 +1,4 @@
-package com.mlord.app.app.details.ui.adapter
+package com.mlord.app.details.ui.adapter
 
 import android.content.Context
 import android.graphics.Canvas
@@ -10,11 +10,11 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.list.decor.AbstractSelectionItemDecoration
-import com.mlord.app.app.app.core.util.ext.getItem
-import com.mlord.app.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.app.details.ui.model.ChapterListItem
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.list.decor.AbstractSelectionItemDecoration
+import com.mlord.app.app.core.util.ext.getItem
+import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.details.ui.model.ChapterListItem
 import androidx.appcompat.R as appcompatR
 import com.google.android.material.R as materialR
 

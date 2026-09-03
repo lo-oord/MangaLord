@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.storage.directories
+package com.mlord.app.settings.storage.directories
 
 import android.net.Uri
 import android.os.StatFs
@@ -7,12 +7,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.MutableStateFlow
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.util.ext.computeSize
-import com.mlord.app.app.app.core.util.ext.isReadable
-import com.mlord.app.app.app.core.util.ext.isWriteable
-import com.mlord.app.app.app.local.data.LocalStorageManager
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.util.ext.computeSize
+import com.mlord.app.app.core.util.ext.isReadable
+import com.mlord.app.app.core.util.ext.isWriteable
+import com.mlord.app.app.local.data.LocalStorageManager
 import java.io.File
 import javax.inject.Inject
 

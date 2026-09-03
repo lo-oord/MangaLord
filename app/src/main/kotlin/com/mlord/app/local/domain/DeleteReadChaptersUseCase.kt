@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.domain
+package com.mlord.app.local.domain
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.buffer
@@ -6,13 +6,13 @@ import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.flow.fold
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import com.mlord.app.app.app.core.model.ids
-import com.mlord.app.app.app.core.model.isLocal
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.history.data.HistoryRepository
-import com.mlord.app.app.app.local.data.LocalMangaRepository
-import com.mlord.app.app.app.local.domain.model.LocalManga
+import com.mlord.app.app.core.model.ids
+import com.mlord.app.app.core.model.isLocal
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.history.data.HistoryRepository
+import com.mlord.app.app.local.data.LocalMangaRepository
+import com.mlord.app.app.local.domain.model.LocalManga
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import org.koitharu.kotatsu.parsers.util.findById

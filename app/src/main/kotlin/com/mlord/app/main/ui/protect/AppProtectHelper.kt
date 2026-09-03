@@ -1,11 +1,11 @@
-package com.mlord.app.app.main.ui.protect
+package com.mlord.app.main.ui.protect
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import org.acra.dialog.CrashReportDialog
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.DefaultActivityLifecycleCallbacks
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.DefaultActivityLifecycleCallbacks
 import javax.inject.Inject
 import javax.inject.Singleton
 

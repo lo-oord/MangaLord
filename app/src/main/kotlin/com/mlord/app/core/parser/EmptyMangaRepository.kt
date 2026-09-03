@@ -1,6 +1,6 @@
-package com.mlord.app.app.core.parser
+package com.mlord.app.core.parser
 
-import com.mlord.app.app.app.core.exceptions.UnsupportedSourceException
+import com.mlord.app.app.core.exceptions.UnsupportedSourceException
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import org.koitharu.kotatsu.parsers.model.MangaListFilter

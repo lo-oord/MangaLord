@@ -1,4 +1,4 @@
-package com.mlord.app.app.details.ui.pager.bookmarks
+package com.mlord.app.details.ui.pager.bookmarks
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,23 +12,23 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.bookmarks.domain.Bookmark
-import com.mlord.app.app.app.bookmarks.domain.BookmarksRepository
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.observeAsStateFlow
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.ui.util.ReversibleAction
-import com.mlord.app.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.app.core.util.ext.call
-import com.mlord.app.app.app.core.util.ext.requireValue
-import com.mlord.app.app.app.details.data.MangaDetails
-import com.mlord.app.app.app.list.ui.model.EmptyState
-import com.mlord.app.app.app.list.ui.model.ListHeader
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.list.ui.model.LoadingState
+import com.mlord.app.app.R
+import com.mlord.app.app.bookmarks.domain.Bookmark
+import com.mlord.app.app.bookmarks.domain.BookmarksRepository
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.observeAsStateFlow
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.ui.util.ReversibleAction
+import com.mlord.app.app.core.util.ext.MutableEventFlow
+import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.app.core.util.ext.requireValue
+import com.mlord.app.app.details.data.MangaDetails
+import com.mlord.app.app.list.ui.model.EmptyState
+import com.mlord.app.app.list.ui.model.ListHeader
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.LoadingState
 import org.koitharu.kotatsu.parsers.model.Manga
-import com.mlord.app.app.app.reader.ui.PageSaveHelper
+import com.mlord.app.app.reader.ui.PageSaveHelper
 import javax.inject.Inject
 
 @HiltViewModel

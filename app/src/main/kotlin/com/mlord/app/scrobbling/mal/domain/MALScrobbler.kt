@@ -1,11 +1,11 @@
-package com.mlord.app.app.scrobbling.mal.domain
+package com.mlord.app.scrobbling.mal.domain
 
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.scrobbling.common.domain.Scrobbler
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerService
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblingStatus
-import com.mlord.app.app.app.scrobbling.mal.data.MALRepository
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.scrobbling.common.domain.Scrobbler
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingStatus
+import com.mlord.app.app.scrobbling.mal.data.MALRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 

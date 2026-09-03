@@ -1,4 +1,4 @@
-package com.mlord.app.app.local.data
+package com.mlord.app.local.data
 
 import androidx.annotation.WorkerThread
 import okio.FileSystem
@@ -8,10 +8,10 @@ import okio.buffer
 import org.jetbrains.annotations.Blocking
 import org.json.JSONArray
 import org.json.JSONObject
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.core.model.MangaSource
-import com.mlord.app.app.app.core.model.isLocal
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.app.core.model.isLocal
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.ContentRating
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter

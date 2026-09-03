@@ -1,4 +1,4 @@
-package com.mlord.app.app.widget.shelf
+package com.mlord.app.widget.shelf
 
 import android.appwidget.AppWidgetManager
 import android.content.Intent
@@ -6,8 +6,8 @@ import android.widget.RemoteViewsService
 import coil3.ImageLoader
 import dagger.Lazy
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.favourites.domain.FavouritesRepository
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.favourites.domain.FavouritesRepository
 import javax.inject.Inject
 
 @AndroidEntryPoint

@@ -1,14 +1,14 @@
-package com.mlord.app.app.core.nav
+package com.mlord.app.core.nav
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.lifecycle.SavedStateHandle
-import com.mlord.app.app.app.core.model.parcelable.ParcelableManga
-import com.mlord.app.app.app.core.nav.AppRouter.Companion.KEY_ID
-import com.mlord.app.app.app.core.nav.AppRouter.Companion.KEY_MANGA
-import com.mlord.app.app.app.core.util.ext.getParcelableCompat
-import com.mlord.app.app.app.core.util.ext.getParcelableExtraCompat
+import com.mlord.app.app.core.model.parcelable.ParcelableManga
+import com.mlord.app.app.core.nav.AppRouter.Companion.KEY_ID
+import com.mlord.app.app.core.nav.AppRouter.Companion.KEY_MANGA
+import com.mlord.app.app.core.util.ext.getParcelableCompat
+import com.mlord.app.app.core.util.ext.getParcelableExtraCompat
 import org.koitharu.kotatsu.parsers.model.Manga
 
 class MangaIntent private constructor(

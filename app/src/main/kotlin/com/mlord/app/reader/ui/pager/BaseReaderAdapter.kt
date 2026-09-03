@@ -1,14 +1,14 @@
-package com.mlord.app.app.reader.ui.pager
+package com.mlord.app.reader.ui.pager
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.app.core.os.NetworkState
-import com.mlord.app.app.app.core.util.ext.resetTransformations
-import com.mlord.app.app.app.reader.domain.PageLoader
-import com.mlord.app.app.app.reader.ui.config.ReaderSettings
+import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.app.core.os.NetworkState
+import com.mlord.app.app.core.util.ext.resetTransformations
+import com.mlord.app.app.reader.domain.PageLoader
+import com.mlord.app.app.reader.ui.config.ReaderSettings
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 

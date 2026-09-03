@@ -1,9 +1,9 @@
-package com.mlord.app.app.core.db.entity
+package com.mlord.app.core.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import com.mlord.app.app.app.core.db.TABLE_MANGA_TAGS
+import com.mlord.app.app.core.db.TABLE_MANGA_TAGS
 
 @Entity(
 	tableName = TABLE_MANGA_TAGS,

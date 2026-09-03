@@ -1,4 +1,4 @@
-package com.mlord.app.app.favourites.ui.categories
+package com.mlord.app.favourites.ui.categories
 
 import android.os.Bundle
 import android.view.View
@@ -12,22 +12,22 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import coil3.ImageLoader
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.SnackbarErrorObserver
-import com.mlord.app.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.ui.BaseActivity
-import com.mlord.app.app.app.core.ui.list.ListSelectionController
-import com.mlord.app.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.app.core.util.ext.end
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.app.databinding.ActivityCategoriesBinding
-import com.mlord.app.app.app.favourites.ui.categories.adapter.CategoriesAdapter
-import com.mlord.app.app.app.list.ui.adapter.ListStateHolderListener
-import com.mlord.app.app.app.list.ui.adapter.TypedListSpacingDecoration
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.SnackbarErrorObserver
+import com.mlord.app.app.core.model.FavouriteCategory
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.ui.BaseActivity
+import com.mlord.app.app.core.ui.list.ListSelectionController
+import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.app.core.util.ext.end
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.systemBarsInsets
+import com.mlord.app.app.databinding.ActivityCategoriesBinding
+import com.mlord.app.app.favourites.ui.categories.adapter.CategoriesAdapter
+import com.mlord.app.app.list.ui.adapter.ListStateHolderListener
+import com.mlord.app.app.list.ui.adapter.TypedListSpacingDecoration
+import com.mlord.app.app.list.ui.model.ListModel
 import javax.inject.Inject
 
 @AndroidEntryPoint

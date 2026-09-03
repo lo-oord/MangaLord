@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.sheet
+package com.mlord.app.core.ui.sheet
 
 import android.content.Context
 import android.util.AttributeSet
@@ -14,8 +14,8 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.ancestors
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.databinding.LayoutSheetHeaderAdaptiveBinding
+import com.mlord.app.app.R
+import com.mlord.app.app.databinding.LayoutSheetHeaderAdaptiveBinding
 
 class AdaptiveSheetHeaderBar @JvmOverloads constructor(
 	context: Context,

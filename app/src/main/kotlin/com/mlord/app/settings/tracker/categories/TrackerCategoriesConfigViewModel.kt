@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.tracker.categories
+package com.mlord.app.settings.tracker.categories
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -7,9 +7,9 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.favourites.domain.FavouritesRepository
+import com.mlord.app.app.core.model.FavouriteCategory
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.favourites.domain.FavouritesRepository
 import javax.inject.Inject
 
 @HiltViewModel

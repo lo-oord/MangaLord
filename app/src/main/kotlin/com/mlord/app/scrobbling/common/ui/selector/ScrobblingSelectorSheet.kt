@@ -1,4 +1,4 @@
-package com.mlord.app.app.scrobbling.common.ui.selector
+package com.mlord.app.scrobbling.common.ui.selector
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,30 +15,30 @@ import androidx.recyclerview.widget.RecyclerView.NO_ID
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.ui.list.PaginationScrollListener
-import com.mlord.app.app.app.core.ui.sheet.BaseAdaptiveSheet
-import com.mlord.app.app.app.core.ui.util.CollapseActionViewCallback
-import com.mlord.app.app.app.core.util.RecyclerViewScrollCallback
-import com.mlord.app.app.app.core.util.ext.consume
-import com.mlord.app.app.app.core.util.ext.firstVisibleItemPosition
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.app.core.util.ext.setProgressIcon
-import com.mlord.app.app.app.core.util.ext.setTabsEnabled
-import com.mlord.app.app.app.core.util.ext.viewLifecycleScope
-import com.mlord.app.app.app.databinding.SheetScrobblingSelectorBinding
-import com.mlord.app.app.app.list.ui.adapter.ListStateHolderListener
-import com.mlord.app.app.app.list.ui.adapter.TypedListSpacingDecoration
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.list.ui.model.LoadingFooter
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerManga
-import com.mlord.app.app.app.scrobbling.common.ui.selector.adapter.ScrobblerMangaSelectionDecoration
-import com.mlord.app.app.app.scrobbling.common.ui.selector.adapter.ScrobblerSelectorAdapter
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.ui.list.PaginationScrollListener
+import com.mlord.app.app.core.ui.sheet.BaseAdaptiveSheet
+import com.mlord.app.app.core.ui.util.CollapseActionViewCallback
+import com.mlord.app.app.core.util.RecyclerViewScrollCallback
+import com.mlord.app.app.core.util.ext.consume
+import com.mlord.app.app.core.util.ext.firstVisibleItemPosition
+import com.mlord.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.app.core.util.ext.setProgressIcon
+import com.mlord.app.app.core.util.ext.setTabsEnabled
+import com.mlord.app.app.core.util.ext.viewLifecycleScope
+import com.mlord.app.app.databinding.SheetScrobblingSelectorBinding
+import com.mlord.app.app.list.ui.adapter.ListStateHolderListener
+import com.mlord.app.app.list.ui.adapter.TypedListSpacingDecoration
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.LoadingFooter
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerManga
+import com.mlord.app.app.scrobbling.common.ui.selector.adapter.ScrobblerMangaSelectionDecoration
+import com.mlord.app.app.scrobbling.common.ui.selector.adapter.ScrobblerSelectorAdapter
 
 @AndroidEntryPoint
 class ScrobblingSelectorSheet :

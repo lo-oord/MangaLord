@@ -1,4 +1,4 @@
-package com.mlord.app.app.search.domain
+package com.mlord.app.search.domain
 
 enum class SearchKind {
 

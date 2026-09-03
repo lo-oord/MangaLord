@@ -1,11 +1,11 @@
-package com.mlord.app.app.details.ui
+package com.mlord.app.details.ui
 
 import android.content.Context
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnLayout
 import androidx.core.widget.NestedScrollView
-import com.mlord.app.app.app.core.util.ext.findActivity
+import com.mlord.app.app.core.util.ext.findActivity
 import java.lang.ref.WeakReference
 
 class TitleScrollCoordinator(

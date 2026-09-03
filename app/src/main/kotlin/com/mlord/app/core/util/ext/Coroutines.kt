@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.util.ext
+package com.mlord.app.core.util.ext
 
 import android.content.BroadcastReceiver
 import androidx.lifecycle.ProcessLifecycleOwner
@@ -10,8 +10,8 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.core.util.AcraCoroutineErrorHandler
-import com.mlord.app.app.app.core.util.RetainedLifecycleCoroutineScope
+import com.mlord.app.app.core.util.AcraCoroutineErrorHandler
+import com.mlord.app.app.core.util.RetainedLifecycleCoroutineScope
 import org.koitharu.kotatsu.parsers.util.cancelAll
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import kotlin.coroutines.CoroutineContext

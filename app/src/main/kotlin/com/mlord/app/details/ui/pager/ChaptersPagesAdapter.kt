@@ -1,13 +1,13 @@
-package com.mlord.app.app.details.ui.pager
+package com.mlord.app.details.ui.pager
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.details.ui.pager.bookmarks.BookmarksFragment
-import com.mlord.app.app.app.details.ui.pager.chapters.ChaptersFragment
-import com.mlord.app.app.app.details.ui.pager.pages.PagesFragment
+import com.mlord.app.app.R
+import com.mlord.app.app.details.ui.pager.bookmarks.BookmarksFragment
+import com.mlord.app.app.details.ui.pager.chapters.ChaptersFragment
+import com.mlord.app.app.details.ui.pager.pages.PagesFragment
 
 class ChaptersPagesAdapter(
 	fragment: Fragment,

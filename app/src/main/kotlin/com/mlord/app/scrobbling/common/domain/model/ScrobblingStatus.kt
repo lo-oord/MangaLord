@@ -1,6 +1,6 @@
-package com.mlord.app.app.scrobbling.common.domain.model
+package com.mlord.app.scrobbling.common.domain.model
 
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.ListModel
 
 enum class ScrobblingStatus : ListModel {
 

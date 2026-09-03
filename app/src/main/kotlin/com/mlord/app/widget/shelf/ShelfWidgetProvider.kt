@@ -1,4 +1,4 @@
-package com.mlord.app.app.widget.shelf
+package com.mlord.app.widget.shelf
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -8,11 +8,11 @@ import android.graphics.Color
 import android.widget.RemoteViews
 import androidx.core.app.PendingIntentCompat
 import androidx.core.net.toUri
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.ReaderIntent
-import com.mlord.app.app.app.core.prefs.AppWidgetConfig
-import com.mlord.app.app.app.core.ui.BaseAppWidgetProvider
-import com.mlord.app.app.app.reader.ui.ReaderActivity
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.ReaderIntent
+import com.mlord.app.app.core.prefs.AppWidgetConfig
+import com.mlord.app.app.core.ui.BaseAppWidgetProvider
+import com.mlord.app.app.reader.ui.ReaderActivity
 
 class ShelfWidgetProvider : BaseAppWidgetProvider() {
 

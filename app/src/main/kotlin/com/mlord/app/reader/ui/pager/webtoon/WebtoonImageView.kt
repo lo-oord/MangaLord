@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.pager.webtoon
+package com.mlord.app.reader.ui.pager.webtoon
 
 import android.content.Context
 import android.graphics.Canvas
@@ -8,7 +8,7 @@ import android.util.AttributeSet
 import androidx.core.view.ancestors
 import androidx.recyclerview.widget.RecyclerView
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-import com.mlord.app.app.app.core.util.ext.resolveDp
+import com.mlord.app.app.core.util.ext.resolveDp
 import kotlin.math.roundToInt
 
 class WebtoonImageView @JvmOverloads constructor(

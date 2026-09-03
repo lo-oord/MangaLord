@@ -1,4 +1,4 @@
-package com.mlord.app.app.scrobbling.common.data
+package com.mlord.app.scrobbling.common.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.model
+package com.mlord.app.core.model
 
 import android.content.res.Resources
 import android.net.Uri
@@ -10,10 +10,10 @@ import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.core.text.buildSpannedString
 import androidx.core.text.strikeThrough
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.model.MangaOverride
-import com.mlord.app.app.app.core.util.ext.iterator
-import com.mlord.app.app.app.details.ui.model.ChapterListItem
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.model.MangaOverride
+import com.mlord.app.app.core.util.ext.iterator
+import com.mlord.app.app.details.ui.model.ChapterListItem
 import org.koitharu.kotatsu.parsers.model.ContentRating
 import org.koitharu.kotatsu.parsers.model.Demographic
 import org.koitharu.kotatsu.parsers.model.Manga

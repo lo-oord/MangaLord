@@ -1,10 +1,10 @@
-package com.mlord.app.app.list.ui.adapter
+package com.mlord.app.list.ui.adapter
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.core.util.ext.setTextAndVisible
-import com.mlord.app.app.app.databinding.ItemInfoBinding
-import com.mlord.app.app.app.list.ui.model.InfoModel
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.util.ext.setTextAndVisible
+import com.mlord.app.app.databinding.ItemInfoBinding
+import com.mlord.app.app.list.ui.model.InfoModel
+import com.mlord.app.app.list.ui.model.ListModel
 
 fun infoAD() = adapterDelegateViewBinding<InfoModel, ListModel, ItemInfoBinding>(
 	{ layoutInflater, parent -> ItemInfoBinding.inflate(layoutInflater, parent, false) },

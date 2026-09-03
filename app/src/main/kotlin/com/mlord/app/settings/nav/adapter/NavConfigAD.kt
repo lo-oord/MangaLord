@@ -1,18 +1,18 @@
-package com.mlord.app.app.settings.nav.adapter
+package com.mlord.app.settings.nav.adapter
 
 import android.annotation.SuppressLint
 import android.view.MotionEvent
 import android.view.View
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.prefs.NavItem
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.setTextAndVisible
-import com.mlord.app.app.app.databinding.ItemNavAvailableBinding
-import com.mlord.app.app.app.databinding.ItemNavConfigBinding
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.settings.nav.model.NavItemAddModel
-import com.mlord.app.app.app.settings.nav.model.NavItemConfigModel
+import com.mlord.app.app.R
+import com.mlord.app.app.core.prefs.NavItem
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.setTextAndVisible
+import com.mlord.app.app.databinding.ItemNavAvailableBinding
+import com.mlord.app.app.databinding.ItemNavConfigBinding
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.settings.nav.model.NavItemAddModel
+import com.mlord.app.app.settings.nav.model.NavItemConfigModel
 
 @SuppressLint("ClickableViewAccessibility")
 fun navConfigAD(

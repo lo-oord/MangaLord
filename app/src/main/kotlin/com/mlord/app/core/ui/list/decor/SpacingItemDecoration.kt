@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.list.decor
+package com.mlord.app.core.ui.list.decor
 
 import android.graphics.Rect
 import android.view.View

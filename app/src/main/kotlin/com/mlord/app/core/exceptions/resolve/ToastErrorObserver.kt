@@ -1,9 +1,9 @@
-package com.mlord.app.app.core.exceptions.resolve
+package com.mlord.app.core.exceptions.resolve
 
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.core.util.ext.getDisplayMessage
 
 class ToastErrorObserver(
 	host: View,

@@ -1,4 +1,4 @@
-package com.mlord.app.app.widget
+package com.mlord.app.widget
 
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
@@ -6,10 +6,10 @@ import android.content.Context
 import android.content.Intent
 import androidx.room.InvalidationTracker
 import dagger.hilt.android.qualifiers.ApplicationContext
-import com.mlord.app.app.app.core.db.TABLE_FAVOURITES
-import com.mlord.app.app.app.core.db.TABLE_HISTORY
-import com.mlord.app.app.app.widget.recent.RecentWidgetProvider
-import com.mlord.app.app.app.widget.shelf.ShelfWidgetProvider
+import com.mlord.app.app.core.db.TABLE_FAVOURITES
+import com.mlord.app.app.core.db.TABLE_HISTORY
+import com.mlord.app.app.widget.recent.RecentWidgetProvider
+import com.mlord.app.app.widget.shelf.ShelfWidgetProvider
 import javax.inject.Inject
 import javax.inject.Singleton
 

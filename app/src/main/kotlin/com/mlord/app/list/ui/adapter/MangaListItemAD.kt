@@ -1,15 +1,15 @@
-package com.mlord.app.app.list.ui.adapter
+package com.mlord.app.list.ui.adapter
 
 import androidx.core.view.isVisible
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.core.ui.list.AdapterDelegateClickListenerAdapter
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.setTooltipCompat
-import com.mlord.app.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.app.databinding.ItemMangaListBinding
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.list.ui.model.MangaCompactListModel
-import com.mlord.app.app.app.list.ui.model.MangaListModel
+import com.mlord.app.app.core.ui.list.AdapterDelegateClickListenerAdapter
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.setTooltipCompat
+import com.mlord.app.app.core.util.ext.textAndVisible
+import com.mlord.app.app.databinding.ItemMangaListBinding
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.model.MangaCompactListModel
+import com.mlord.app.app.list.ui.model.MangaListModel
 
 fun mangaListItemAD(
 	clickListener: OnListItemClickListener<MangaListModel>,

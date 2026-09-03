@@ -1,4 +1,4 @@
-package com.mlord.app.app.details.ui
+package com.mlord.app.details.ui
 
 import android.view.View
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout

@@ -1,9 +1,9 @@
-package com.mlord.app.app.core.db.dao
+package com.mlord.app.core.db.dao
 
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Upsert
-import com.mlord.app.app.app.core.db.entity.TagEntity
+import com.mlord.app.app.core.db.entity.TagEntity
 
 @Dao
 abstract class TagsDao {

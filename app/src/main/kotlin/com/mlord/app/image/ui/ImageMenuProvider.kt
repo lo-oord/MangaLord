@@ -1,4 +1,4 @@
-package com.mlord.app.app.image.ui
+package com.mlord.app.image.ui
 
 import android.Manifest
 import android.os.Build
@@ -10,9 +10,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.MenuProvider
 import com.google.android.material.snackbar.Snackbar
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ext.isZipUri
-import com.mlord.app.app.app.core.util.ext.tryLaunch
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ext.isZipUri
+import com.mlord.app.app.core.util.ext.tryLaunch
 
 class ImageMenuProvider(
 	private val activity: ComponentActivity,

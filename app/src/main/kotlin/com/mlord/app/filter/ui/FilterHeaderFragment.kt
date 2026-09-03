@@ -1,4 +1,4 @@
-package com.mlord.app.app.filter.ui
+package com.mlord.app.filter.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,14 +10,14 @@ import com.google.android.material.chip.Chip
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
-import com.mlord.app.app.app.core.nav.router
-import com.mlord.app.app.app.core.ui.BaseFragment
-import com.mlord.app.app.app.core.ui.widgets.ChipsView
-import com.mlord.app.app.app.core.util.ext.isAnimationsEnabled
-import com.mlord.app.app.app.core.util.ext.observe
-import com.mlord.app.app.app.databinding.FragmentFilterHeaderBinding
-import com.mlord.app.app.app.filter.data.PersistableFilter
-import com.mlord.app.app.app.filter.ui.model.FilterHeaderModel
+import com.mlord.app.app.core.nav.router
+import com.mlord.app.app.core.ui.BaseFragment
+import com.mlord.app.app.core.ui.widgets.ChipsView
+import com.mlord.app.app.core.util.ext.isAnimationsEnabled
+import com.mlord.app.app.core.util.ext.observe
+import com.mlord.app.app.databinding.FragmentFilterHeaderBinding
+import com.mlord.app.app.filter.data.PersistableFilter
+import com.mlord.app.app.filter.ui.model.FilterHeaderModel
 import org.koitharu.kotatsu.parsers.model.ContentRating
 import org.koitharu.kotatsu.parsers.model.ContentType
 import org.koitharu.kotatsu.parsers.model.Demographic

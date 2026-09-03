@@ -1,5 +1,5 @@
-package com.mlord.app.app.suggestions.ui
+package com.mlord.app.suggestions.ui
 
-import com.mlord.app.app.app.core.ui.FragmentContainerActivity
+import com.mlord.app.app.core.ui.FragmentContainerActivity
 
 class SuggestionsActivity : FragmentContainerActivity(SuggestionsFragment::class.java)

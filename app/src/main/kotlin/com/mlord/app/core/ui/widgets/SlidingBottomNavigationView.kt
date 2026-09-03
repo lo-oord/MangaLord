@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.widgets
+package com.mlord.app.core.ui.widgets
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -19,8 +19,8 @@ import androidx.interpolator.view.animation.FastOutLinearInInterpolator
 import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.navigation.NavigationBarView
-import com.mlord.app.app.app.core.util.ext.applySystemAnimatorScale
-import com.mlord.app.app.app.core.util.ext.measureHeight
+import com.mlord.app.app.core.util.ext.applySystemAnimatorScale
+import com.mlord.app.app.core.util.ext.measureHeight
 import kotlin.math.max
 import com.google.android.material.R as materialR
 

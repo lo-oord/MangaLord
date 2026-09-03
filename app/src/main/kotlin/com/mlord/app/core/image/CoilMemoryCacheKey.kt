@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.image
+package com.mlord.app.core.image
 
 import android.os.Parcel
 import android.os.Parcelable

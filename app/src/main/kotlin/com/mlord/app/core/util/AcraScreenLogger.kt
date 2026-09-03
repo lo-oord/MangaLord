@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.util
+package com.mlord.app.core.util
 
 import android.app.Activity
 import android.content.Context
@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentManager.FragmentLifecycleCallbacks
 import org.acra.ACRA
-import com.mlord.app.app.app.core.ui.DefaultActivityLifecycleCallbacks
+import com.mlord.app.app.core.ui.DefaultActivityLifecycleCallbacks
 import java.time.LocalTime
 import java.time.temporal.ChronoUnit
 import java.util.WeakHashMap

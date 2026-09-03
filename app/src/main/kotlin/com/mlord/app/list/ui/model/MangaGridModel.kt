@@ -1,9 +1,9 @@
-package com.mlord.app.app.list.ui.model
+package com.mlord.app.list.ui.model
 
-import com.mlord.app.app.app.core.ui.model.MangaOverride
-import com.mlord.app.app.app.list.domain.ReadingProgress
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback.Companion.PAYLOAD_ANYTHING_CHANGED
-import com.mlord.app.app.app.list.ui.ListModelDiffCallback.Companion.PAYLOAD_PROGRESS_CHANGED
+import com.mlord.app.app.core.ui.model.MangaOverride
+import com.mlord.app.app.list.domain.ReadingProgress
+import com.mlord.app.app.list.ui.ListModelDiffCallback.Companion.PAYLOAD_ANYTHING_CHANGED
+import com.mlord.app.app.list.ui.ListModelDiffCallback.Companion.PAYLOAD_PROGRESS_CHANGED
 import org.koitharu.kotatsu.parsers.model.Manga
 
 data class MangaGridModel(

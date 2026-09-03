@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.image
+package com.mlord.app.core.ui.image
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -18,11 +18,11 @@ import coil3.asImage
 import coil3.getExtra
 import coil3.request.ImageRequest
 import com.google.android.material.color.MaterialColors
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.model.getTitle
-import com.mlord.app.app.app.core.util.MlordColors
-import com.mlord.app.app.app.core.util.ext.hasFocusStateSpecified
-import com.mlord.app.app.app.core.util.ext.mangaSourceKey
+import com.mlord.app.app.R
+import com.mlord.app.app.core.model.getTitle
+import com.mlord.app.app.core.util.MlordColors
+import com.mlord.app.app.core.util.ext.hasFocusStateSpecified
+import com.mlord.app.app.core.util.ext.mangaSourceKey
 
 open class FaviconDrawable(
 	context: Context,

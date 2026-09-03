@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.db.migrations
+package com.mlord.app.core.db.migrations
 
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase

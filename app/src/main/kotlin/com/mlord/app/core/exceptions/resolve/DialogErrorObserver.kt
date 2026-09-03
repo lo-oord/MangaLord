@@ -1,13 +1,13 @@
-package com.mlord.app.app.core.exceptions.resolve
+package com.mlord.app.core.exceptions.resolve
 
 import android.content.DialogInterface
 import android.view.View
 import androidx.core.util.Consumer
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.app.core.util.ext.isSerializable
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.core.util.ext.isSerializable
 import org.koitharu.kotatsu.parsers.exception.ParseException
 
 class DialogErrorObserver(

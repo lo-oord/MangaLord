@@ -1,11 +1,11 @@
-package com.mlord.app.app.favourites.ui.container
+package com.mlord.app.favourites.ui.container
 
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.view.MenuProvider
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.nav.AppRouter
+import com.mlord.app.app.R
+import com.mlord.app.app.core.nav.AppRouter
 
 class FavouritesContainerMenuProvider(
 	private val router: AppRouter,

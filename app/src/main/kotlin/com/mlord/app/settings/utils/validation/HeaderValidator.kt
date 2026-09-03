@@ -1,9 +1,9 @@
-package com.mlord.app.app.settings.utils.validation
+package com.mlord.app.settings.utils.validation
 
 import okhttp3.Headers
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.network.CommonHeaders
-import com.mlord.app.app.app.core.util.EditTextValidator
+import com.mlord.app.app.R
+import com.mlord.app.app.core.network.CommonHeaders
+import com.mlord.app.app.core.util.EditTextValidator
 
 class HeaderValidator : EditTextValidator() {
 

@@ -1,12 +1,12 @@
-package com.mlord.app.app.sync.data
+package com.mlord.app.sync.data
 
 import dagger.Reusable
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
-import com.mlord.app.app.app.core.exceptions.SyncApiException
-import com.mlord.app.app.app.core.network.BaseHttpClient
-import com.mlord.app.app.app.core.util.ext.toRequestBody
+import com.mlord.app.app.core.exceptions.SyncApiException
+import com.mlord.app.app.core.network.BaseHttpClient
+import com.mlord.app.app.core.util.ext.toRequestBody
 import org.koitharu.kotatsu.parsers.util.await
 import org.koitharu.kotatsu.parsers.util.parseJson
 import org.koitharu.kotatsu.parsers.util.parseRaw

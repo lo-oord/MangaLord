@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui.widgets
+package com.mlord.app.core.ui.widgets
 
 import android.content.Context
 import android.graphics.Color
@@ -29,11 +29,11 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipDrawable
 import com.google.android.material.chip.ChipGroup
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.image.ChipIconTarget
-import com.mlord.app.app.app.core.util.ext.enqueueWith
-import com.mlord.app.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.app.core.util.ext.setProgressIcon
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.image.ChipIconTarget
+import com.mlord.app.app.core.util.ext.enqueueWith
+import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.app.core.util.ext.setProgressIcon
 import org.koitharu.kotatsu.parsers.util.ifZero
 import javax.inject.Inject
 import com.google.android.material.R as materialR

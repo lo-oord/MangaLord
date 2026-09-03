@@ -1,18 +1,18 @@
-package com.mlord.app.app.details.ui.adapter
+package com.mlord.app.details.ui.adapter
 
 import android.graphics.Typeface
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.list.AdapterDelegateClickListenerAdapter
-import com.mlord.app.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.app.core.util.ext.drawableStart
-import com.mlord.app.app.app.core.util.ext.getThemeColorStateList
-import com.mlord.app.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.app.databinding.ItemChapterBinding
-import com.mlord.app.app.app.details.ui.model.ChapterListItem
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.list.AdapterDelegateClickListenerAdapter
+import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.app.core.util.ext.drawableStart
+import com.mlord.app.app.core.util.ext.getThemeColorStateList
+import com.mlord.app.app.core.util.ext.textAndVisible
+import com.mlord.app.app.databinding.ItemChapterBinding
+import com.mlord.app.app.details.ui.model.ChapterListItem
+import com.mlord.app.app.list.ui.model.ListModel
 import com.google.android.material.R as materialR
 
 fun chapterListItemAD(

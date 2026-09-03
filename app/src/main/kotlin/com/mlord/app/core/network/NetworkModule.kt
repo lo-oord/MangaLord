@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network
+package com.mlord.app.core.network
 
 import android.content.Context
 import dagger.Binds
@@ -10,17 +10,17 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.Cache
 import okhttp3.CookieJar
 import okhttp3.OkHttpClient
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.core.network.cookies.AndroidCookieJar
-import com.mlord.app.app.app.core.network.cookies.MutableCookieJar
-import com.mlord.app.app.app.core.network.cookies.PreferencesCookieJar
-import com.mlord.app.app.app.core.network.imageproxy.ImageProxyInterceptor
-import com.mlord.app.app.app.core.network.imageproxy.RealImageProxyInterceptor
-import com.mlord.app.app.app.core.network.proxy.ProxyProvider
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.util.ext.assertNotInMainThread
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.local.data.LocalStorageManager
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.core.network.cookies.AndroidCookieJar
+import com.mlord.app.app.core.network.cookies.MutableCookieJar
+import com.mlord.app.app.core.network.cookies.PreferencesCookieJar
+import com.mlord.app.app.core.network.imageproxy.ImageProxyInterceptor
+import com.mlord.app.app.core.network.imageproxy.RealImageProxyInterceptor
+import com.mlord.app.app.core.network.proxy.ProxyProvider
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.util.ext.assertNotInMainThread
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.local.data.LocalStorageManager
 import java.util.concurrent.TimeUnit
 import javax.inject.Provider
 import javax.inject.Singleton

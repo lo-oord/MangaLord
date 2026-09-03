@@ -1,12 +1,12 @@
-package com.mlord.app.app.backups.domain
+package com.mlord.app.backups.domain
 
 import android.app.backup.BackupManager
 import android.content.Context
 import androidx.room.InvalidationTracker
 import dagger.hilt.android.qualifiers.ApplicationContext
-import com.mlord.app.app.app.core.db.TABLE_FAVOURITES
-import com.mlord.app.app.app.core.db.TABLE_FAVOURITE_CATEGORIES
-import com.mlord.app.app.app.core.db.TABLE_HISTORY
+import com.mlord.app.app.core.db.TABLE_FAVOURITES
+import com.mlord.app.app.core.db.TABLE_FAVOURITE_CATEGORIES
+import com.mlord.app.app.core.db.TABLE_HISTORY
 import javax.inject.Inject
 import javax.inject.Singleton
 

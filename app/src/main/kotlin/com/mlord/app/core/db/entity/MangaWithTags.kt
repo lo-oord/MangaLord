@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.db.entity
+package com.mlord.app.core.db.entity
 
 import androidx.room.Embedded
 import androidx.room.Junction

@@ -1,4 +1,4 @@
-package com.mlord.app.app.backups.ui.restore
+package com.mlord.app.backups.ui.restore
 
 import android.annotation.SuppressLint
 import android.app.Notification
@@ -13,18 +13,18 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.backups.data.BackupRepository
-import com.mlord.app.app.app.backups.domain.BackupSection
-import com.mlord.app.app.app.backups.ui.BaseBackupRestoreService
-import com.mlord.app.app.app.core.nav.AppRouter
-import com.mlord.app.app.app.core.util.ext.checkNotificationPermission
-import com.mlord.app.app.app.core.util.ext.getSerializableExtraCompat
-import com.mlord.app.app.app.core.util.ext.powerManager
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.app.core.util.ext.toUriOrNull
-import com.mlord.app.app.app.core.util.ext.withPartialWakeLock
-import com.mlord.app.app.app.core.util.progress.Progress
+import com.mlord.app.app.R
+import com.mlord.app.app.backups.data.BackupRepository
+import com.mlord.app.app.backups.domain.BackupSection
+import com.mlord.app.app.backups.ui.BaseBackupRestoreService
+import com.mlord.app.app.core.nav.AppRouter
+import com.mlord.app.app.core.util.ext.checkNotificationPermission
+import com.mlord.app.app.core.util.ext.getSerializableExtraCompat
+import com.mlord.app.app.core.util.ext.powerManager
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.toUriOrNull
+import com.mlord.app.app.core.util.ext.withPartialWakeLock
+import com.mlord.app.app.core.util.progress.Progress
 import java.io.FileNotFoundException
 import java.util.zip.ZipInputStream
 import javax.inject.Inject

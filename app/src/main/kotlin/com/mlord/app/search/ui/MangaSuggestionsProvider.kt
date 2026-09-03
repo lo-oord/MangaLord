@@ -1,4 +1,4 @@
-package com.mlord.app.app.search.ui
+package com.mlord.app.search.ui
 
 import android.app.SearchManager
 import android.content.ContentResolver
@@ -7,7 +7,7 @@ import android.content.SearchRecentSuggestionsProvider
 import android.net.Uri
 import android.provider.SearchRecentSuggestions
 import androidx.core.net.toUri
-import com.mlord.app.app.app.BuildConfig
+import com.mlord.app.app.BuildConfig
 
 class MangaSuggestionsProvider : SearchRecentSuggestionsProvider() {
 

@@ -1,4 +1,4 @@
-package com.mlord.app.app.settings.discord
+package com.mlord.app.settings.discord
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,11 +10,11 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.util.ext.isNetworkError
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.util.ext.isNetworkError
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.app.scrobbling.discord.data.DiscordRepository
+import com.mlord.app.app.scrobbling.discord.data.DiscordRepository
 import javax.inject.Inject
 
 @HiltViewModel

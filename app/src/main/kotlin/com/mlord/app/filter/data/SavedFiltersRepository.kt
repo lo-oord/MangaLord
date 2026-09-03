@@ -1,4 +1,4 @@
-package com.mlord.app.app.filter.data
+package com.mlord.app.filter.data
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -14,8 +14,8 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
-import com.mlord.app.app.app.core.util.ext.observeChanges
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.core.util.ext.observeChanges
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.MangaListFilter
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import java.io.File

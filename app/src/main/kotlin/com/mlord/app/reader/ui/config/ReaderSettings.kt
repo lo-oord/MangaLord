@@ -1,4 +1,4 @@
-package com.mlord.app.app.reader.ui.config
+package com.mlord.app.reader.ui.config
 
 import android.graphics.Bitmap
 import android.view.View
@@ -19,15 +19,15 @@ import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
-import com.mlord.app.app.app.core.model.ZoomMode
-import com.mlord.app.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.prefs.ReaderBackground
-import com.mlord.app.app.app.core.prefs.ReaderMode
-import com.mlord.app.app.app.core.util.MediatorStateFlow
-import com.mlord.app.app.app.core.util.ext.isLowRamDevice
-import com.mlord.app.app.app.core.util.ext.processLifecycleScope
-import com.mlord.app.app.app.reader.domain.ReaderColorFilter
+import com.mlord.app.app.core.model.ZoomMode
+import com.mlord.app.app.core.parser.MangaDataRepository
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.prefs.ReaderBackground
+import com.mlord.app.app.core.prefs.ReaderMode
+import com.mlord.app.app.core.util.MediatorStateFlow
+import com.mlord.app.app.core.util.ext.isLowRamDevice
+import com.mlord.app.app.core.util.ext.processLifecycleScope
+import com.mlord.app.app.reader.domain.ReaderColorFilter
 
 data class ReaderSettings(
 	val zoomMode: ZoomMode,

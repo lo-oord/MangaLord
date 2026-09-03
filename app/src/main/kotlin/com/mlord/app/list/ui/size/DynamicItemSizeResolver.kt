@@ -1,4 +1,4 @@
-package com.mlord.app.app.list.ui.size
+package com.mlord.app.list.ui.size
 
 import android.content.SharedPreferences
 import android.content.res.Resources
@@ -8,9 +8,9 @@ import androidx.annotation.StyleRes
 import androidx.core.widget.TextViewCompat
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.history.ui.util.ReadingProgressView
+import com.mlord.app.app.R
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.history.ui.util.ReadingProgressView
 import kotlin.math.roundToInt
 
 class DynamicItemSizeResolver(

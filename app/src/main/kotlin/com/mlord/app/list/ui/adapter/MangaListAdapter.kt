@@ -1,8 +1,8 @@
-package com.mlord.app.app.list.ui.adapter
+package com.mlord.app.list.ui.adapter
 
-import com.mlord.app.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.app.list.ui.model.ListModel
-import com.mlord.app.app.app.list.ui.size.ItemSizeResolver
+import com.mlord.app.app.core.ui.BaseListAdapter
+import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.app.list.ui.size.ItemSizeResolver
 
 open class MangaListAdapter(
 	listener: MangaListListener,

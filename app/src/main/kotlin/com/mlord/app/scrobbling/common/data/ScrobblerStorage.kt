@@ -1,11 +1,11 @@
-package com.mlord.app.app.scrobbling.common.data
+package com.mlord.app.scrobbling.common.data
 
 import android.content.Context
 import androidx.core.content.edit
 import org.jsoup.internal.StringUtil.StringJoiner
 import org.koitharu.kotatsu.parsers.util.nullIfEmpty
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerService
-import com.mlord.app.app.app.scrobbling.common.domain.model.ScrobblerUser
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerUser
 
 private const val KEY_ACCESS_TOKEN = "access_token"
 private const val KEY_REFRESH_TOKEN = "refresh_token"

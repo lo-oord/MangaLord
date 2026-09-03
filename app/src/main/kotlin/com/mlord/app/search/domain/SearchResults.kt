@@ -1,4 +1,4 @@
-package com.mlord.app.app.search.domain
+package com.mlord.app.search.domain
 
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaListFilter

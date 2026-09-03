@@ -1,4 +1,4 @@
-package com.mlord.app.app.tracker.ui.updates
+package com.mlord.app.tracker.ui.updates
 
 import android.view.Menu
 import android.view.MenuInflater
@@ -6,9 +6,9 @@ import android.view.MenuItem
 import androidx.appcompat.view.ActionMode
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.ui.list.ListSelectionController
-import com.mlord.app.app.app.list.ui.MangaListFragment
+import com.mlord.app.app.R
+import com.mlord.app.app.core.ui.list.ListSelectionController
+import com.mlord.app.app.list.ui.MangaListFragment
 
 @AndroidEntryPoint
 class UpdatesFragment : MangaListFragment() {

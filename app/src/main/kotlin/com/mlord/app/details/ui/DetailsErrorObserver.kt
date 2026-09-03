@@ -1,13 +1,13 @@
-package com.mlord.app.app.details.ui
+package com.mlord.app.details.ui
 
 import com.google.android.material.snackbar.Snackbar
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.exceptions.UnsupportedSourceException
-import com.mlord.app.app.app.core.exceptions.resolve.ErrorObserver
-import com.mlord.app.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.app.core.util.ext.isNetworkError
-import com.mlord.app.app.app.core.util.ext.isSerializable
+import com.mlord.app.app.R
+import com.mlord.app.app.core.exceptions.UnsupportedSourceException
+import com.mlord.app.app.core.exceptions.resolve.ErrorObserver
+import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.app.core.util.ext.isNetworkError
+import com.mlord.app.app.core.util.ext.isSerializable
 import org.koitharu.kotatsu.parsers.exception.NotFoundException
 import org.koitharu.kotatsu.parsers.exception.ParseException
 

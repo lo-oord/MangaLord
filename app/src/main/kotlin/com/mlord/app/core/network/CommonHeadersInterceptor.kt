@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.network
+package com.mlord.app.core.network
 
 import dagger.Lazy
 import okhttp3.Headers
@@ -7,12 +7,12 @@ import okhttp3.Interceptor.Chain
 import okhttp3.Request
 import okhttp3.Response
 import okio.IOException
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.core.model.MangaSource
-import com.mlord.app.app.app.core.parser.MangaLoaderContextImpl
-import com.mlord.app.app.app.core.parser.MangaRepository
-import com.mlord.app.app.app.core.parser.ParserMangaRepository
-import com.mlord.app.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.app.core.parser.MangaLoaderContextImpl
+import com.mlord.app.app.core.parser.MangaRepository
+import com.mlord.app.app.core.parser.ParserMangaRepository
+import com.mlord.app.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.MangaParserSource
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.util.mergeWith

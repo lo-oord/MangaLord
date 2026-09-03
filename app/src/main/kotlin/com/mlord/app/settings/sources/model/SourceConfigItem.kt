@@ -1,9 +1,9 @@
-package com.mlord.app.app.settings.sources.model
+package com.mlord.app.settings.sources.model
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
-import com.mlord.app.app.app.core.model.isNsfw
-import com.mlord.app.app.app.list.ui.model.ListModel
+import com.mlord.app.app.core.model.isNsfw
+import com.mlord.app.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.model.MangaSource
 
 sealed interface SourceConfigItem : ListModel {

@@ -1,21 +1,21 @@
-package com.mlord.app.app.settings.sources.manage
+package com.mlord.app.settings.sources.manage
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.db.MangaDatabase
-import com.mlord.app.app.app.core.db.removeObserverAsync
-import com.mlord.app.app.app.core.prefs.AppSettings
-import com.mlord.app.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.app.core.ui.util.ReversibleAction
-import com.mlord.app.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.app.core.util.ext.call
-import com.mlord.app.app.app.explore.data.MangaSourcesRepository
+import com.mlord.app.app.R
+import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.app.core.db.removeObserverAsync
+import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.app.core.ui.util.ReversibleAction
+import com.mlord.app.app.core.util.ext.MutableEventFlow
+import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.app.explore.data.MangaSourcesRepository
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.util.move
-import com.mlord.app.app.app.settings.sources.model.SourceConfigItem
+import com.mlord.app.app.settings.sources.model.SourceConfigItem
 import javax.inject.Inject
 
 @HiltViewModel

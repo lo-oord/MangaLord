@@ -1,14 +1,14 @@
-package com.mlord.app.app.sync.data
+package com.mlord.app.sync.data
 
 import android.accounts.Account
 import android.accounts.AccountManager
 import android.content.Context
 import okhttp3.Interceptor
 import okhttp3.Response
-import com.mlord.app.app.app.BuildConfig
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.db.DATABASE_VERSION
-import com.mlord.app.app.app.core.network.CommonHeaders
+import com.mlord.app.app.BuildConfig
+import com.mlord.app.app.R
+import com.mlord.app.app.core.db.DATABASE_VERSION
+import com.mlord.app.app.core.network.CommonHeaders
 
 class SyncInterceptor(
 	context: Context,

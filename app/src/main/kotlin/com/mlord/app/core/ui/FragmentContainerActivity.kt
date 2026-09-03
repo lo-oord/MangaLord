@@ -1,4 +1,4 @@
-package com.mlord.app.app.core.ui
+package com.mlord.app.core.ui
 
 import android.os.Bundle
 import android.view.View
@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.app.R
-import com.mlord.app.app.app.core.util.ext.consumeSystemBarsInsets
-import com.mlord.app.app.app.databinding.ActivityContainerBinding
-import com.mlord.app.app.app.main.ui.owners.AppBarOwner
-import com.mlord.app.app.app.main.ui.owners.SnackbarOwner
+import com.mlord.app.app.R
+import com.mlord.app.app.core.util.ext.consumeSystemBarsInsets
+import com.mlord.app.app.databinding.ActivityContainerBinding
+import com.mlord.app.app.main.ui.owners.AppBarOwner
+import com.mlord.app.app.main.ui.owners.SnackbarOwner
 
 @AndroidEntryPoint
 abstract class FragmentContainerActivity(private val fragmentClass: Class<out Fragment>) :
