@@ -6,7 +6,7 @@
 	android:layout_height="wrap_content"
 	android:orientation="vertical">
 
-	<com.mlord.core.ui.sheet.AdaptiveSheetHeaderBar
+	<com.mlord.app.core.ui.sheet.AdaptiveSheetHeaderBar
 		android:id="@+id/headerBar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
 				android:text="@string/languages"
 				android:textAppearance="?textAppearanceTitleSmall" />
 
-			<com.mlord.core.ui.widgets.ChipsView
+			<com.mlord.app.core.ui.widgets.ChipsView
 				android:id="@+id/chips_locales"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
 				android:text="@string/type"
 				android:textAppearance="?textAppearanceTitleSmall" />
 
-			<com.mlord.core.ui.widgets.ChipsView
+			<com.mlord.app.core.ui.widgets.ChipsView
 				android:id="@+id/chips_type"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"

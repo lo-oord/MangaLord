@@ -16,7 +16,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
 
-		<com.mlord.image.ui.CoverImageView
+		<com.mlord.app.image.ui.CoverImageView
 			android:id="@+id/imageView_cover"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -27,14 +27,14 @@
 			tools:ignore="ContentDescription"
 			tools:src="@tools:sample/backgrounds/scenic[5]" />
 
-		<com.mlord.history.ui.util.ReadingProgressView
+		<com.mlord.app.history.ui.util.ReadingProgressView
 			android:id="@+id/progressView"
 			android:layout_width="@dimen/card_indicator_size"
 			android:layout_height="@dimen/card_indicator_size"
 			android:layout_gravity="bottom|end"
 			android:layout_margin="@dimen/card_indicator_offset" />
 
-		<com.mlord.core.ui.widgets.IconsView
+		<com.mlord.app.core.ui.widgets.IconsView
 			android:id="@+id/iconsView"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
 			app:iconSize="14dp"
 			app:iconSpacing="4dp" />
 
-		<com.mlord.core.ui.widgets.BadgeView
+		<com.mlord.app.core.ui.widgets.BadgeView
 			android:id="@+id/badge"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"

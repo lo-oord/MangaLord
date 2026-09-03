@@ -15,7 +15,7 @@
         android:title="@string/show_in_grid_view" />
 
     <PreferenceScreen
-        android:fragment="com.mlord.settings.sources.manage.SourcesManageFragment"
+        android:fragment="com.mlord.app.settings.sources.manage.SourcesManageFragment"
         android:key="remote_sources"
         android:persistent="false"
         android:title="@string/manage_sources" />

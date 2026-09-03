@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="url_github" translatable="false">https://github.com/lo-oord/Mlord</string>
-	<string name="url_telegram_web" translatable="false">https://t.me/kotatsuapp</string>
-	<string name="url_telegram" translatable="false">tg://resolve?domain=kotatsuapp</string>
+	<string name="url_telegram_web" translatable="false"></string>
+	<string name="url_telegram" translatable="false"></string>
 	<string name="url_weblate" translatable="false">https://hosted.weblate.org/engage/mlord</string>
 	<string name="url_user_manual" translatable="false">https://mlord.app/manuals/guides/getting-started/</string>
 	<string name="url_error_report" translatable="false">https://bugs.mlord.app/report</string>
@@ -17,8 +17,8 @@
 	<string name="kitsu_clientSecret" translatable="false">54d7307928f63414defd96399fc31ba847961ceaecef3a5fd93144e960c0e151</string>
 	<string name="acra_login" translatable="false">zPALLBPdpn5mnCB4</string>
 	<string name="acra_password" translatable="false">kgpuhoNJpSsQDCwu</string>
-	<string name="sync_authority_history" translatable="false">com.mlord.history</string>
-	<string name="sync_authority_favourites" translatable="false">com.mlord.favourites</string>
+	<string name="sync_authority_history" translatable="false">com.mlord.app.history</string>
+	<string name="sync_authority_favourites" translatable="false">com.mlord.app.favourites</string>
 	<string name="tg_backup_bot_name" translatable="false">mlord_backup_bot</string>
 	<string name="discord_app_id" translatable="false">1395464028611940393</string>
 	<string name="app_icon_url" translatable="false">https://raw.githubusercontent.com/lo-oord/Mlord/main/metadata/en-US/icon.png</string>

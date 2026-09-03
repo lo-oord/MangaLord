@@ -41,7 +41,7 @@
 
 	<Preference
 		android:dependency="tracker_enabled"
-		android:fragment="com.mlord.settings.NotificationSettingsLegacyFragment"
+		android:fragment="com.mlord.app.settings.NotificationSettingsLegacyFragment"
 		android:key="notifications_settings"
 		android:title="@string/notifications_settings" />
 
@@ -76,7 +76,7 @@
 			android:title="@string/disable_battery_optimization"
 			app:isPreferenceVisible="false" />
 
-		<com.mlord.settings.utils.LinksPreference
+		<com.mlord.app.settings.utils.LinksPreference
 			android:icon="@drawable/ic_info_outline"
 			android:key="track_warning"
 			android:persistent="false"

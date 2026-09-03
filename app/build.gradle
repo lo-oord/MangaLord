@@ -15,16 +15,16 @@ plugins {
 android {
 	compileSdk = 36
 	buildToolsVersion = '35.0.0'
-	namespace = 'com.mlord'
+	namespace = 'com.mlord.app'
 
 	defaultConfig {
-		applicationId 'com.mlord'
+		applicationId 'com.mlord.app'
 		minSdk = 23
 		targetSdk = 36
 		versionCode = 1033
-		versionName = '9.4.1'
+		versionName = '1.0'
 		generatedDensities = []
-		testInstrumentationRunner 'com.mlord.HiltTestRunner'
+		testInstrumentationRunner 'com.mlord.app.HiltTestRunner'
 		ksp {
 			arg('room.generateKotlin', 'true')
 		}
@@ -110,7 +110,7 @@ android {
 			variant.outputs.each { output ->
 				def now = LocalDateTime.now()
 				output.versionCodeOverride = now.format("yyMMdd").toInteger()
-				output.versionNameOverride = 'N' + now.format("yyyyMMdd")
+				output.versionNameOverride = '1.0'
 			}
 		}
 	}
@@ -119,11 +119,11 @@ dependencies {
 	def parsersVersion = libs.versions.parsers.get()
 	if (System.properties.containsKey('parsersVersionOverride')) {
 		// usage:
-		// -DparsersVersionOverride=$(curl -s https://api.github.com/repos/KotatsuApp/Kotatsu-parsers/commits/master -H "Accept: application/vnd.github.sha" | cut -c -10)
+		// -DparsersVersionOverride=$(curl -s https://api.github.com/repos/MlordApp/Mlord-parsers/commits/master -H "Accept: application/vnd.github.sha" | cut -c -10)
 		parsersVersion = System.getProperty('parsersVersionOverride')
 	}
 	//noinspection UseTomlInstead
-	implementation("com.github.KotatsuApp:kotatsu-parsers:$parsersVersion") {
+	implementation("com.github.MlordApp:kotatsu-parsers:$parsersVersion") {
 		exclude group: 'org.json', module: 'json'
 	}
 

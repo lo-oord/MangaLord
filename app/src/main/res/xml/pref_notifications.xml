@@ -27,7 +27,7 @@
 		android:key="notifications_light"
 		android:title="@string/light_indicator" />
 
-	<com.mlord.settings.utils.LinksPreference
+	<com.mlord.app.settings.utils.LinksPreference
 		android:icon="@drawable/ic_info_outline"
 		android:key="tracker_notifications_info"
 		android:persistent="false"

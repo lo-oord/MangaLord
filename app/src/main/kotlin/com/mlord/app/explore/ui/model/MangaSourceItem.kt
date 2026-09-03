@@ -1,0 +1,17 @@
+package com.mlord.app.app.explore.ui.model
+
+import com.mlord.app.app.app.core.model.MangaSourceInfo
+import com.mlord.app.app.app.list.ui.model.ListModel
+import org.koitharu.kotatsu.parsers.util.longHashCode
+
+data class MangaSourceItem(
+	val source: MangaSourceInfo,
+	val isGrid: Boolean,
+) : ListModel {
+
+	val id: Long = source.name.longHashCode()
+
+	override fun areItemsTheSame(other: ListModel): Boolean {
+		return other is MangaSourceItem && other.source == source
+	}
+}

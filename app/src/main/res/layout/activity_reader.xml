@@ -23,7 +23,7 @@
 		app:icon="@drawable/ic_timelapse"
 		app:layout_insetEdge="bottom" />
 
-	<com.mlord.core.ui.widgets.ZoomControl
+	<com.mlord.app.core.ui.widgets.ZoomControl
 		android:id="@+id/zoomControl"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
 		app:layout_dodgeInsetEdges="bottom"
 		tools:visibility="visible" />
 
-	<com.mlord.reader.ui.ReaderInfoBarView
+	<com.mlord.app.reader.ui.ReaderInfoBarView
 		android:id="@+id/infoBar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
 		android:visibility="gone"
 		tools:visibility="visible" />
 
-	<com.mlord.reader.ui.ScrollTimerControlView
+	<com.mlord.app.reader.ui.ScrollTimerControlView
 		android:id="@+id/timerControl"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
 		app:cardBackgroundColor="?colorSurfaceContainer"
 		app:layout_insetEdge="bottom">
 
-		<com.mlord.reader.ui.ReaderActionsView
+		<com.mlord.app.reader.ui.ReaderActionsView
 			android:id="@+id/actionsView"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
 
 	</com.google.android.material.dockedtoolbar.DockedToolbarLayout>
 
-	<com.mlord.reader.ui.ReaderToastView
+	<com.mlord.app.reader.ui.ReaderToastView
 		android:id="@+id/toastView"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"

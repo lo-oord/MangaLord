@@ -16,12 +16,12 @@
 -dontwarn com.google.j2objc.annotations.**
 -dontwarn coil3.PlatformContext
 
--keep class com.mlord.settings.NotificationSettingsLegacyFragment
--keep class com.mlord.settings.about.changelog.ChangelogFragment
+-keep class com.mlord.app.settings.NotificationSettingsLegacyFragment
+-keep class com.mlord.app.settings.about.changelog.ChangelogFragment
 
--keep class com.mlord.core.exceptions.* { *; }
--keep class com.mlord.core.prefs.ScreenshotsPolicy { *; }
--keep class com.mlord.backups.ui.periodical.PeriodicalBackupSettingsFragment { *; }
+-keep class com.mlord.app.core.exceptions.* { *; }
+-keep class com.mlord.app.core.prefs.ScreenshotsPolicy { *; }
+-keep class com.mlord.app.backups.ui.periodical.PeriodicalBackupSettingsFragment { *; }
 -keep class org.jsoup.parser.Tag
 -keep class org.jsoup.internal.StringUtil
 
