@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseUser
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
@@ -43,7 +44,7 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
         if (token.isNullOrBlank()) {
             showError(IllegalStateException("Google ID token is missing"))
         } else {
-            runAuth { authRepository.signInWithGoogle(token) }
+            runAuth(requiresPassword = false, validateEmail = false) { authRepository.signInWithGoogle(token) }
         }
     }
 
@@ -51,12 +52,33 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
         super.onCreate(savedInstanceState)
         setContentView(ActivityAuthBinding.inflate(layoutInflater))
         setDisplayHomeAsUp(true, true)
+        val signedInUser = authRepository.reloadUser()
+        if (signedInUser != null) {
+            showProfile(signedInUser)
+        } else {
+            viewBinding.authForm.isVisible = true
+            viewBinding.profilePanel.isVisible = false
+        }
         viewBinding.buttonEmailSignIn.setOnClickListener { runAuth { authRepository.signInWithEmail(email(), password()) } }
         viewBinding.buttonCreateAccount.setOnClickListener { runAuth { authRepository.createAccount(email(), password()) } }
-        viewBinding.buttonSignOut.isVisible = authRepository.isSignedIn()
-        viewBinding.buttonSignOut.setOnClickListener {
-            authRepository.signOut()
-            finish()
+        viewBinding.buttonSignOut.isVisible = false
+        viewBinding.buttonSignOut.setOnClickListener { signOutAndFinish() }
+        viewBinding.buttonProfileSignOut.setOnClickListener { signOutAndFinish() }
+        viewBinding.buttonSaveProfile.setOnClickListener {
+            viewBinding.profileNameLayout.error = null
+            viewBinding.progress.isVisible = true
+            lifecycleScope.launch {
+                runCatching { authRepository.updateDisplayName(viewBinding.profileName.text?.toString().orEmpty()) }
+                    .onSuccess {
+                        viewBinding.progress.isVisible = false
+                        showProfile(it)
+                        toast(R.string.profile_saved)
+                    }
+                    .onFailure {
+                        viewBinding.progress.isVisible = false
+                        viewBinding.profileNameLayout.error = it.localizedMessage
+                    }
+            }
         }
         viewBinding.buttonGoogle.setOnClickListener {
             val client = GoogleSignIn.getClient(this, authRepository.googleSignInOptions(this))
@@ -87,10 +109,14 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
     private fun email() = viewBinding.email.text?.toString().orEmpty()
     private fun password() = viewBinding.password.text?.toString().orEmpty()
 
-    private fun <T> runAuth(requiresPassword: Boolean = true, block: suspend () -> T) {
+    private fun <T> runAuth(
+        requiresPassword: Boolean = true,
+        validateEmail: Boolean = true,
+        block: suspend () -> T,
+    ) {
         viewBinding.emailLayout.error = null
         viewBinding.passwordLayout.error = null
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email()).matches()) {
+        if (validateEmail && !android.util.Patterns.EMAIL_ADDRESS.matcher(email()).matches()) {
             viewBinding.emailLayout.error = getString(R.string.auth_invalid_email)
             return
         }
@@ -128,6 +154,19 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
             else -> null
         }
         if (message != null) toast(message) else Snackbar.make(viewBinding.root, error.localizedMessage ?: getString(R.string.operation_not_supported), Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun showProfile(user: FirebaseUser) {
+        viewBinding.authForm.isVisible = false
+        viewBinding.profilePanel.isVisible = true
+        viewBinding.profileEmail.text = user.email.orEmpty()
+        viewBinding.profileName.setText(user.displayName.orEmpty())
+        viewBinding.profileAvatar.text = user.displayName?.trim()?.firstOrNull()?.uppercase() ?: "M"
+    }
+
+    private fun signOutAndFinish() {
+        authRepository.signOut()
+        finish()
     }
 
     private fun toast(message: Int) = Toast.makeText(this, message, Toast.LENGTH_LONG).show()

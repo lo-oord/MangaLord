@@ -5,6 +5,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.GoogleAuthProvider
 import com.mangalord.app.R
 import kotlinx.coroutines.channels.awaitClose
@@ -44,8 +45,17 @@ class FirebaseAuthRepository @Inject constructor(
     }
 
     suspend fun signInWithGoogle(idToken: String): FirebaseUser {
-        return auth.signInWithCredential(GoogleAuthProvider.getCredential(idToken, null)).await().user
+        val user = auth.signInWithCredential(GoogleAuthProvider.getCredential(idToken, null)).await().user
             ?: error("Firebase did not return a user")
+        return user
+    }
+
+    suspend fun updateDisplayName(name: String): FirebaseUser {
+        val user = auth.currentUser ?: error("No signed-in user")
+        val cleanName = name.trim().takeIf { it.isNotEmpty() } ?: error("Name cannot be empty")
+        user.updateProfile(UserProfileChangeRequest.Builder().setDisplayName(cleanName).build()).await()
+        user.reload().await()
+        return auth.currentUser ?: user
     }
 
     suspend fun resendVerificationEmail() {
