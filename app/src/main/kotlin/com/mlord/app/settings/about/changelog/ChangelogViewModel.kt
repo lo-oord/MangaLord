@@ -4,6 +4,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.jsoup.internal.StringUtil
+import com.mlord.app.R
 import com.mlord.app.core.github.AppUpdateRepository
 import com.mlord.app.core.ui.BaseViewModel
 import javax.inject.Inject
@@ -19,6 +20,7 @@ class ChangelogViewModel @Inject constructor(
 		launchLoadingJob(Dispatchers.Default) {
 			val versions = appUpdateRepository.getAvailableVersions()
 			val stringJoiner = StringUtil.StringJoiner("\n\n\n")
+			stringJoiner.add(getString(R.string.changelog_current_entry))
 			for (version in versions) {
 				stringJoiner.add("# ")
 					.append(version.name)

@@ -856,7 +856,35 @@
     <string name="additional_action_required">Additional action is required</string>
     <string name="hide_from_main_screen">Hide from main screen</string>
     <string name="changelog">Changelog</string>
+    <string name="changelog_current_entry">## Mlord 1.0.1 (Build 10001)\n\n- Limited manga sources to Arabic, English, and Japanese.\n- Removed Hentai sources from the available source catalog.\n- Updated parser networking compatibility and Cloudflare User-Agent handling.\n- Added an in-app Privacy Policy page.\n- Release APKs are signed by the CI release configuration.</string>
     <string name="changelog_summary">Changes history for recently released versions</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="privacy_policy_summary">How Mlord handles your data and permissions</string>
+    <string name="privacy_policy_content"># Mlord Privacy Policy
+
+**Last updated: September 2026**
+
+Mlord is a manga reading application. The application does not require an account to browse sources, read manga, manage favorites, keep reading history, or download content for offline reading.
+
+## Data stored on your device
+
+Mlord may store settings, source preferences, favorites, reading history, downloads, cached images, and application logs locally on your device. This data remains under your control and can be removed through the application settings or by uninstalling the application.
+
+## Network requests
+
+When you use a manga source, Mlord connects directly to that source to search for titles and retrieve manga details, chapters, pages, and images. The source website may receive your IP address and normal HTTP request information. Each source is operated independently and may have its own privacy policy and terms.
+
+## Permissions
+
+The application requests only permissions needed for its features, such as network access, notifications, and selecting storage locations for downloads or backups. Mlord does not sell personal data and does not use your content for advertising profiles.
+
+## Third-party services
+
+Optional integrations, if enabled by you, may connect to their respective services. Their data handling is governed by their own policies. You can disable optional integrations from Settings.
+
+## Contact
+
+For project-related questions, use the contact or source-code link shown in the About section of the application.</string>
     <string name="collapse">Collapse</string>
     <string name="expand">Expand</string>
     <string name="adblock">Block ads in browser</string>
