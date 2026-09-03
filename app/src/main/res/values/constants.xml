@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="url_github" translatable="false">https://github.com/KotatsuAppApp/Mlord</string>
-	<string name="url_telegram_web" translatable="false">https://t.me/mlordapp</string>
-	<string name="url_telegram" translatable="false">tg://resolve?domain=mlordapp</string>
+	<string name="url_github" translatable="false">https://github.com/lo-oord/Mlord</string>
+	<string name="url_telegram_web" translatable="false">https://t.me/kotatsuapp</string>
+	<string name="url_telegram" translatable="false">tg://resolve?domain=kotatsuapp</string>
 	<string name="url_weblate" translatable="false">https://hosted.weblate.org/engage/mlord</string>
 	<string name="url_user_manual" translatable="false">https://mlord.app/manuals/guides/getting-started/</string>
 	<string name="url_error_report" translatable="false">https://bugs.mlord.app/report</string>
 	<string name="account_type_sync" translatable="false">org.mlord.sync</string>
-	<string name="github_updates_repo" translatable="false">MlordApp/Mlord</string>
+	<string name="github_updates_repo" translatable="false">lo-oord/Mlord</string>
 	<string name="shikimori_clientId" translatable="false">Mw6F0tPEOgyV7F9U9Twg50Q8SndMY7hzIOfXg0AX_XU</string>
 	<string name="shikimori_clientSecret" translatable="false">euBMt1GGRSDpVIFQVPxZrO7Kh6X4gWyv0dABuj4B-M8</string>
 	<string name="anilist_clientId" translatable="false">9887</string>
@@ -21,7 +21,7 @@
 	<string name="sync_authority_favourites" translatable="false">com.mlord.favourites</string>
 	<string name="tg_backup_bot_name" translatable="false">mlord_backup_bot</string>
 	<string name="discord_app_id" translatable="false">1395464028611940393</string>
-	<string name="app_icon_url" translatable="false">https://raw.githubusercontent.com/MlordApp/Mlord/refs/heads/devel/metadata/en-US/icon.png</string>
+	<string name="app_icon_url" translatable="false">https://raw.githubusercontent.com/lo-oord/Mlord/main/metadata/en-US/icon.png</string>
 	<string-array name="values_theme" translatable="false">
 		<item>-1</item>
 		<item>1</item>

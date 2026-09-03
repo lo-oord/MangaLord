@@ -7,16 +7,16 @@
 
 <div align="center">
 
-**[Mlord](https://github.com/KotatsuAppApp/Mlord) is a free and open-source manga reader for Android with built-in
+**[Mlord](https://github.com/lo-oord/Mlord) is a free and open-source manga reader for Android with built-in
 online content sources.**
 
-![Android 6.0](https://img.shields.io/badge/android-6.0+-brightgreen) [![Sources count](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2FMlordApp%2Fkotatsu-parsers%2Frefs%2Fheads%2Fmaster%2F.github%2Fsummary.yaml&query=total&label=manga%20sources&color=%23E9321C)](https://github.com/KotatsuAppApp/kotatsu-parsers) [![weblate](https://hosted.weblate.org/widgets/mlord/-/strings/svg-badge.svg)](https://hosted.weblate.org/engage/mlord/) [![Discord](https://img.shields.io/discord/898363402467045416?color=5865f2&label=discord)](https://discord.gg/NNJ5RgVBC5) [![Telegram](https://img.shields.io/badge/chat-telegram-60ACFF?)](https://t.me/mlordapp) [![License](https://img.shields.io/github/license/MlordApp/Mlord)](https://github.com/KotatsuAppApp/Mlord/blob/devel/LICENSE)
+![Android 6.0](https://img.shields.io/badge/android-6.0+-brightgreen) [![Sources count](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2FMlordApp%2Fkotatsu-parsers%2Frefs%2Fheads%2Fmaster%2F.github%2Fsummary.yaml&query=total&label=manga%20sources&color=%23E9321C)](https://github.com/KotatsuApp/kotatsu-parsers) [![weblate](https://hosted.weblate.org/widgets/mlord/-/strings/svg-badge.svg)](https://hosted.weblate.org/engage/mlord/) [![Discord](https://img.shields.io/discord/898363402467045416?color=5865f2&label=discord)](https://discord.gg/NNJ5RgVBC5) [![Telegram](https://img.shields.io/badge/chat-telegram-60ACFF?)](https://t.me/kotatsuapp) [![License](https://img.shields.io/github/license/MlordApp/Mlord)](https://github.com/lo-oord/Mlord/blob/devel/LICENSE)
 
 ### Main Features
 
 <div align="left">
 
-* Online [manga catalogues](https://github.com/KotatsuAppApp/kotatsu-parsers) (with 1200+ manga sources)
+* Online [manga catalogues](https://github.com/KotatsuApp/kotatsu-parsers) (with 1200+ manga sources)
 * Search manga by name, genres and more filters
 * Favorites organized by user-defined categories
 * Reading history, bookmarks and incognito mode support
@@ -55,7 +55,7 @@ online content sources.**
 <img src="https://hosted.weblate.org/widget/mlord/horizontal-auto.png" alt="Translation status" />
 </a>
 
-**[Mlord](https://github.com/KotatsuAppApp/Mlord) is localized in a number of different languages.**<br>
+**[Mlord](https://github.com/lo-oord/Mlord) is localized in a number of different languages.**<br>
 **📌 If you would like to help improve these or add new languages,
 please head over to the [Weblate project page](https://hosted.weblate.org/engage/mlord/)**
 
@@ -63,13 +63,13 @@ please head over to the [Weblate project page](https://hosted.weblate.org/engage
 
 <br>
 
-<a href="https://github.com/KotatsuAppApp/Mlord">
+<a href="https://github.com/lo-oord/Mlord">
   <picture>
     <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=MlordApp&repo=Mlord&bg_color=0d1117&text_color=1976d2&title_color=1976d2&icon_color=0877d2&border_radius=10&description_lines_count=2&show_owner=true" media="(prefers-color-scheme: dark)">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=MlordApp&repo=Mlord&text_color=1976d2&title_color=1976d2&icon_color=0877d2&border_radius=10&description_lines_count=2&show_owner=true" alt="Mlord GitHub Repository">
   </picture>
 </a>
-<a href="https://github.com/KotatsuAppApp/Mlord-parsers">
+<a href="https://github.com/lo-oord/Mlord-parsers">
   <picture>
     <source srcset="https://github-readme-stats.vercel.app/api/pin/?username=MlordApp&repo=Mlord-parsers&bg_color=0d1117&text_color=1976d2&title_color=1976d2&icon_color=0877d2&border_radius=10&description_lines_count=2&show_owner=true" media="(prefers-color-scheme: dark)">
     <img src="https://github-readme-stats.vercel.app/api/pin/?username=MlordApp&repo=Mlord-parsers&text_color=1976d2&title_color=1976d2&icon_color=0877d2&border_radius=10&description_lines_count=2&show_owner=true" alt="Mlord-parsers GitHub Repository">
@@ -79,7 +79,7 @@ please head over to the [Weblate project page](https://hosted.weblate.org/engage
 </br>
 
 **📌 Pull requests are welcome, if you want:
-See [CONTRIBUTING.md](https://github.com/KotatsuAppApp/Mlord/blob/devel/CONTRIBUTING.md) for the guidelines**
+See [CONTRIBUTING.md](https://github.com/lo-oord/Mlord/blob/devel/CONTRIBUTING.md) for the guidelines**
 
 ### Certificate fingerprints
 
