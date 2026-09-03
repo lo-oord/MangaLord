@@ -1,8 +1,8 @@
 from pathlib import Path
 from PIL import Image
 
-SOURCE = Path('/home/ubuntu/upload/designarena_image_1qcjb7bl.png')
 ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT / 'tools' / 'mangalord_icon_source.png'
 
 # Legacy launcher bitmap sizes in Android density-independent pixels.
 LEGACY_SIZES = {
@@ -22,8 +22,10 @@ FOREGROUND_SIZES = {
 }
 
 image = Image.open(SOURCE).convert('RGB')
-if image.width != image.height:
-    raise ValueError(f'Launcher source must be square, got {image.size}')
+side = min(image.size)
+left = (image.width - side) // 2
+top = (image.height - side) // 2
+image = image.crop((left, top, left + side, top + side))
 
 for variant_root in (ROOT / 'app/src/main/res', ROOT / 'app/src/nightly/res'):
     for density, size in LEGACY_SIZES.items():
@@ -38,4 +40,7 @@ for variant_root in (ROOT / 'app/src/main/res', ROOT / 'app/src/nightly/res'):
         resized = image.resize((size, size), Image.Resampling.LANCZOS)
         resized.save(out_dir / 'ic_launcher_foreground.webp', 'WEBP', quality=100, method=6)
 
-print('Generated launcher icons for main and nightly variants.')
+metadata_icon = image.resize((512, 512), Image.Resampling.LANCZOS)
+metadata_icon.save(ROOT / 'metadata/en-US/icon.png', 'PNG', optimize=True)
+
+print('Generated launcher icons for main and nightly variants, plus metadata icon.')
