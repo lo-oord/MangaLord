@@ -52,10 +52,14 @@ android {
 		}
 	}
 
-	buildTypes {
-		debug {
-			applicationIdSuffix = '.debug'
-		}
+		buildTypes {
+			debug {
+				// CI install-validation APKs must use the Firebase-registered package.
+				// Local debug builds keep the suffix to avoid colliding with release installs.
+				if (!project.hasProperty('ciInstall')) {
+					applicationIdSuffix = '.debug'
+				}
+			}
 		release {
 			if (System.getenv('MANGALORD_SIGNING_STORE') != null) {
 				signingConfig signingConfigs.release

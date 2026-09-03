@@ -92,7 +92,7 @@ jobs:
 
       - name: Build signed debug APK for install validation
         if: ${{ env.HAS_RELEASE_KEYSTORE != 'true' || steps.signed_build.outcome == 'failure' }}
-        run: ./gradlew assembleDebug --no-daemon --stacktrace --console=plain
+        run: ./gradlew assembleDebug -PciInstall --no-daemon --stacktrace --console=plain
 
       - name: Prepare installable APK
         if: always() && (steps.signed_build.outcome == 'success' || env.HAS_RELEASE_KEYSTORE != 'true' || steps.signed_build.outcome == 'failure')
