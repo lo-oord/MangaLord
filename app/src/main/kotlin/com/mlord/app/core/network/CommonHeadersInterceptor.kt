@@ -45,6 +45,10 @@ class CommonHeadersInterceptor @Inject constructor(
 		repository?.getRequestHeaders()?.let {
 			headersBuilder.mergeWith(it, replaceExisting = false)
 		}
+		// Cloudflare clearance cookies are bound to the User-Agent used during the challenge.
+		repository?.getConfig()?.cloudFlareUserAgent?.let {
+			headersBuilder.trySet(CommonHeaders.USER_AGENT, it)
+		}
 		if (headersBuilder[CommonHeaders.USER_AGENT] == null) {
 			headersBuilder[CommonHeaders.USER_AGENT] = mangaLoaderContextLazy.get().getDefaultUserAgent()
 		}

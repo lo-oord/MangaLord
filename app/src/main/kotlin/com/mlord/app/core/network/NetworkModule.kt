@@ -79,7 +79,9 @@ interface NetworkModule {
 				installExtraCertificates(contextProvider.get())
 			}
 			cache(cache)
-			addInterceptor(GZipInterceptor())
+				// Parser sources may return already-compressed or range-sensitive payloads.
+				// Keep request compression disabled, matching the current source networking behavior.
+				// addInterceptor(GZipInterceptor())
 			addInterceptor(CloudFlareInterceptor())
 			addInterceptor(RateLimitInterceptor())
 			if (BuildConfig.DEBUG) {
