@@ -7,6 +7,9 @@ import android.view.View
 import androidx.preference.Preference
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import dagger.hilt.android.AndroidEntryPoint
 import com.mangalord.app.R
 import com.mangalord.app.auth.ui.AuthActivity
@@ -16,6 +19,7 @@ import com.mangalord.app.core.ui.BasePreferenceFragment
 import com.mangalord.app.core.ui.dialog.buildAlertDialog
 import com.mangalord.app.core.util.ext.getDisplayMessage
 import com.mangalord.app.core.util.ext.printStackTraceDebug
+import com.mangalord.app.core.util.ext.viewLifecycleScope
 import com.mangalord.app.scrobbling.common.domain.model.ScrobblerService
 import com.mangalord.app.scrobbling.common.ui.ScrobblerAuthHelper
 import com.mangalord.app.settings.utils.SplitSwitchPreference
