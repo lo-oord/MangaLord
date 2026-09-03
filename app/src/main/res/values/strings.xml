@@ -979,8 +979,6 @@ For project-related questions, use the contact or source-code link shown in the 
     <string name="player_gesture_volume">Volume · %1$d%%</string>
     <string name="player_gesture_brightness">Brightness · %1$d%%</string>
     <string name="player_seek_feedback">%1$s10 seconds</string>
-</resources>
-
     <string name="auth_title">Account</string>
     <string name="auth_welcome">Sign in to MangaLord</string>
     <string name="auth_sync_description">Sign in to sync your favourites, lists, history and settings across devices.</string>
@@ -998,3 +996,4 @@ For project-related questions, use the contact or source-code link shown in the 
     <string name="auth_required_for_feature">Sign in to use this feature and sync your data.</string>
     <string name="resend_verification">Resend verification email</string>
     <string name="sign_out">Sign out</string>
+</resources>
