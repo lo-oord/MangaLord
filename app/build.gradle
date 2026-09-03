@@ -21,7 +21,7 @@ android {
 		applicationId 'com.mlord.app'
 		minSdk = 23
 		targetSdk = 36
-		versionCode = 1033
+		versionCode = 10000
 		versionName = '1.0'
 		generatedDensities = []
 		testInstrumentationRunner 'com.mlord.app.HiltTestRunner'
@@ -39,11 +39,26 @@ android {
 		}
 		resValue 'string', 'tg_backup_bot_token', localProperties.getProperty('tg_backup_bot_token', '')
 	}
+	signingConfigs {
+		release {
+			def signingStore = System.getenv('MLORD_SIGNING_STORE')
+			if (signingStore != null) {
+				storeFile file(signingStore)
+				storePassword System.getenv('MLORD_SIGNING_STORE_PASSWORD')
+				keyAlias System.getenv('MLORD_SIGNING_KEY_ALIAS')
+				keyPassword System.getenv('MLORD_SIGNING_KEY_PASSWORD')
+			}
+		}
+	}
+
 	buildTypes {
 		debug {
 			applicationIdSuffix = '.debug'
 		}
-		release {
+			release {
+			if (System.getenv('MLORD_SIGNING_STORE') != null) {
+				signingConfig signingConfigs.release
+			}
 			minifyEnabled true
 			shrinkResources true
 			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
