@@ -293,21 +293,36 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), AppBarOwner, BottomNav
 
 	private fun onFirstStart() = try {
 		lifecycleScope.launch(Dispatchers.Main) { // not a default `Main.immediate` dispatcher
-			withContext(Dispatchers.Default) {
-				LocalStorageCleanupWorker.enqueue(applicationContext)
-			}
-			withResumed {
-				MangaPrefetchService.prefetchLast(this@MainActivity)
-				requestNotificationsPermission()
-				startService(Intent(this@MainActivity, LocalIndexUpdateService::class.java))
-				startService(Intent(this@MainActivity, PeriodicalBackupService::class.java))
-				if (settings.isAdBlockEnabled) {
-					startService(Intent(this@MainActivity, AdListUpdateService::class.java))
+			runCatching {
+				withContext(Dispatchers.Default) {
+					LocalStorageCleanupWorker.enqueue(applicationContext)
 				}
-			}
+				withResumed {
+					runCatching { MangaPrefetchService.prefetchLast(this@MainActivity) }
+						.onFailure(Throwable::printStackTraceDebug)
+					requestNotificationsPermission()
+					startServiceSafely(Intent(this@MainActivity, LocalIndexUpdateService::class.java))
+					startServiceSafely(Intent(this@MainActivity, PeriodicalBackupService::class.java))
+					if (settings.isAdBlockEnabled) {
+						startServiceSafely(Intent(this@MainActivity, AdListUpdateService::class.java))
+					}
+				}
+			}.onFailure(Throwable::printStackTraceDebug)
 		}
-	} catch (e: IllegalStateException) {
-		e.printStackTraceDebug()
+		} catch (e: IllegalStateException) {
+			e.printStackTraceDebug()
+		}
+
+	private fun startServiceSafely(intent: Intent) {
+		try {
+			startService(intent)
+		} catch (e: BackgroundServiceStartNotAllowedException) {
+			e.printStackTraceDebug()
+		} catch (e: ServiceStartNotAllowedException) {
+			e.printStackTraceDebug()
+		} catch (e: SecurityException) {
+			e.printStackTraceDebug()
+		}
 	}
 
 	private fun adjustAppbar(topFragment: Fragment) {
