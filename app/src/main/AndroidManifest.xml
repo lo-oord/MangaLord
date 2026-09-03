@@ -67,8 +67,11 @@
 		android:theme="@style/Theme.MangaLord"
 		tools:ignore="UnusedAttribute">
 
-		<activity
-			android:name="com.mangalord.app.main.ui.MainActivity"
+			<activity
+				android:name="com.mangalord.app.auth.ui.AuthActivity"
+				android:exported="false" />
+			<activity
+				android:name="com.mangalord.app.main.ui.MainActivity"
 			android:exported="true">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

@@ -980,3 +980,21 @@ For project-related questions, use the contact or source-code link shown in the 
     <string name="player_gesture_brightness">Brightness · %1$d%%</string>
     <string name="player_seek_feedback">%1$s10 seconds</string>
 </resources>
+
+    <string name="auth_title">Account</string>
+    <string name="auth_welcome">Sign in to MangaLord</string>
+    <string name="auth_sync_description">Sign in to sync your favourites, lists, history and settings across devices.</string>
+    <string name="create_account">Create account</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="email_verification_required">Please verify your email address before continuing.</string>
+    <string name="verification_email_sent">A verification email has been sent.</string>
+    <string name="password_reset_sent">Password reset email sent.</string>
+    <string name="account_created_verify_email">Account created. Check your email to verify your account.</string>
+    <string name="auth_invalid_credentials">The email or password is incorrect.</string>
+    <string name="auth_email_in_use">This email is already in use.</string>
+    <string name="auth_weak_password">Password must contain at least 6 characters.</string>
+    <string name="auth_invalid_email">Please enter a valid email address.</string>
+    <string name="auth_required_for_feature">Sign in to use this feature and sync your data.</string>
+    <string name="resend_verification">Resend verification email</string>
+    <string name="sign_out">Sign out</string>

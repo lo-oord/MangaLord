@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "177712745205",
+    "project_id": "mangalord2814",
+    "storage_bucket": "mangalord2814.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177712745205:android:f5cdf0db744ce34cb813bc",
+        "android_client_info": {
+          "package_name": "com.mangalord.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "177712745205-grcuvbsvrciv0pjpn1na1b1o93jkk4g1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDts8r2Y9C74MEmRw0m1A8G0YRUx6g7V7Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "177712745205-grcuvbsvrciv0pjpn1na1b1o93jkk4g1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

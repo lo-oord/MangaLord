@@ -2,6 +2,8 @@ package com.mangalord.app.core
 
 import android.app.Application
 import android.content.Context
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import android.os.Build
 import android.provider.SearchRecentSuggestions
 import android.text.Html
@@ -150,8 +152,16 @@ interface AppModule {
 				}.build()
 		}
 
-		@Provides
-		fun provideSearchSuggestions(
+			@Provides
+			@Singleton
+			fun provideFirebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()
+
+			@Provides
+			@Singleton
+			fun provideFirebaseFirestore(): FirebaseFirestore = FirebaseFirestore.getInstance()
+
+			@Provides
+			fun provideSearchSuggestions(
 			@ApplicationContext context: Context,
 		): SearchRecentSuggestions = MangaSuggestionsProvider.createSuggestions(context)
 

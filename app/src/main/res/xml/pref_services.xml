@@ -5,6 +5,12 @@
 	android:title="@string/services">
 
 	<Preference
+		android:key="firebase_account"
+		android:summary="@string/auth_required_for_feature"
+		android:title="@string/auth_title"
+		app:icon="@drawable/ic_user" />
+
+	<Preference
 		android:enabled="@bool/is_sync_enabled"
 		android:key="sync"
 		android:persistent="false"

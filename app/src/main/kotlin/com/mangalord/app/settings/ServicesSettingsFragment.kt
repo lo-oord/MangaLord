@@ -1,16 +1,19 @@
 package com.mangalord.app.settings
 
 import android.accounts.AccountManager
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.preference.Preference
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import com.mangalord.app.R
+import com.mangalord.app.auth.ui.AuthActivity
 import com.mangalord.app.core.nav.router
 import com.mangalord.app.core.prefs.AppSettings
 import com.mangalord.app.core.ui.BasePreferenceFragment
@@ -33,6 +36,9 @@ class ServicesSettingsFragment : BasePreferenceFragment(R.string.services),
 
 	@Inject
 	lateinit var scrobblerAuthHelper: ScrobblerAuthHelper
+
+	@Inject
+	lateinit var firebaseAuth: FirebaseAuth
 
 	override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
 		addPreferencesFromResource(R.xml.pref_services)
@@ -63,6 +69,7 @@ class ServicesSettingsFragment : BasePreferenceFragment(R.string.services),
 		bindScrobblerSummary(AppSettings.KEY_MAL, ScrobblerService.MAL)
 		bindScrobblerSummary(AppSettings.KEY_KITSU, ScrobblerService.KITSU)
 		bindSyncSummary()
+		bindFirebaseAccountSummary()
 	}
 
 	override fun onSharedPreferenceChanged(prefs: SharedPreferences?, key: String?) {
@@ -75,6 +82,10 @@ class ServicesSettingsFragment : BasePreferenceFragment(R.string.services),
 
 	override fun onPreferenceTreeClick(preference: Preference): Boolean {
 		return when (preference.key) {
+			"firebase_account" -> {
+				startActivity(Intent(requireContext(), AuthActivity::class.java))
+				true
+			}
 			AppSettings.KEY_SHIKIMORI -> {
 				handleScrobblerClick(ScrobblerService.SHIKIMORI)
 				true
@@ -147,6 +158,11 @@ class ServicesSettingsFragment : BasePreferenceFragment(R.string.services),
 		} else {
 			router.openScrobblerSettings(scrobblerService)
 		}
+	}
+
+	private fun bindFirebaseAccountSummary() {
+		findPreference<Preference>("firebase_account")?.summary =
+			firebaseAuth.currentUser?.email ?: getString(R.string.auth_required_for_feature)
 	}
 
 	private fun bindSyncSummary() {
