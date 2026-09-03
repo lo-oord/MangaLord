@@ -42,7 +42,7 @@ jobs:
             -keystore "$RUNNER_TEMP/mlord-release.keystore" \
             -storepass mlord-ci-store-password \
             -alias mlord-release \
-            -keypass mlord-ci-key-password \
+            -keypass mlord-ci-store-password \
             -keyalg RSA \
             -keysize 2048 \
             -validity 10000 \
@@ -53,7 +53,7 @@ jobs:
           MLORD_SIGNING_STORE: ${{ runner.temp }}/mlord-release.keystore
           MLORD_SIGNING_STORE_PASSWORD: mlord-ci-store-password
           MLORD_SIGNING_KEY_ALIAS: mlord-release
-          MLORD_SIGNING_KEY_PASSWORD: mlord-ci-key-password
+          MLORD_SIGNING_KEY_PASSWORD: mlord-ci-store-password
         run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
 
       - name: Upload APK artifact
