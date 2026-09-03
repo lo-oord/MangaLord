@@ -15,12 +15,12 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
 import androidx.core.widget.TextViewCompat
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ext.drawableStart
-import com.mlord.app.app.core.util.ext.getThemeColorStateList
-import com.mlord.app.app.core.util.ext.setThemeTextAppearance
-import com.mlord.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.databinding.ViewFilterFieldBinding
+import com.mlord.app.R
+import com.mlord.app.core.util.ext.drawableStart
+import com.mlord.app.core.util.ext.getThemeColorStateList
+import com.mlord.app.core.util.ext.setThemeTextAppearance
+import com.mlord.app.core.util.ext.textAndVisible
+import com.mlord.app.databinding.ViewFilterFieldBinding
 import java.util.LinkedList
 import androidx.appcompat.R as appcompatR
 import com.google.android.material.R as materialR

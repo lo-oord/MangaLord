@@ -7,15 +7,15 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import com.mlord.app.app.R
-import com.mlord.app.app.backups.domain.BackupUtils
-import com.mlord.app.app.backups.domain.ExternalBackupStorage
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.ui.util.ReversibleAction
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
-import com.mlord.app.app.core.util.ext.resolveFile
+import com.mlord.app.R
+import com.mlord.app.backups.domain.BackupUtils
+import com.mlord.app.backups.domain.ExternalBackupStorage
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.ui.util.ReversibleAction
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
+import com.mlord.app.core.util.ext.resolveFile
 import java.util.Date
 import javax.inject.Inject
 

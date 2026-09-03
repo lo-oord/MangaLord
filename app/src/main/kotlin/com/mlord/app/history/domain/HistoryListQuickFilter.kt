@@ -1,10 +1,10 @@
 package com.mlord.app.history.domain
 
-import com.mlord.app.app.core.os.NetworkState
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.history.data.HistoryRepository
-import com.mlord.app.app.list.domain.ListFilterOption
-import com.mlord.app.app.list.domain.MangaListQuickFilter
+import com.mlord.app.core.os.NetworkState
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.history.data.HistoryRepository
+import com.mlord.app.list.domain.ListFilterOption
+import com.mlord.app.list.domain.MangaListQuickFilter
 import javax.inject.Inject
 
 class HistoryListQuickFilter @Inject constructor(

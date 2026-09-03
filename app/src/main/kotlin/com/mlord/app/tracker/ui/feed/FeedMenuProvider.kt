@@ -6,10 +6,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.core.view.MenuProvider
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.dialog.RememberCheckListener
-import com.mlord.app.app.core.ui.dialog.buildAlertDialog
-import com.mlord.app.app.core.ui.dialog.setCheckbox
+import com.mlord.app.R
+import com.mlord.app.core.ui.dialog.RememberCheckListener
+import com.mlord.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.core.ui.dialog.setCheckbox
 
 class FeedMenuProvider(
 	private val snackbarHost: View,

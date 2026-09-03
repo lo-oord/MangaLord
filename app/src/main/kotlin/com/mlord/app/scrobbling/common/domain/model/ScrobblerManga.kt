@@ -1,6 +1,6 @@
 package com.mlord.app.scrobbling.common.domain.model
 
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.list.ui.model.ListModel
 
 data class ScrobblerManga(
 	val id: Long,

@@ -2,12 +2,12 @@ package com.mlord.app.stats.ui
 
 import android.content.res.ColorStateList
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.core.util.MlordColors
-import com.mlord.app.app.databinding.ItemStatsBinding
+import com.mlord.app.R
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.core.util.MlordColors
+import com.mlord.app.databinding.ItemStatsBinding
 import org.koitharu.kotatsu.parsers.model.Manga
-import com.mlord.app.app.stats.domain.StatsRecord
+import com.mlord.app.stats.domain.StatsRecord
 
 fun statsAD(
 	listener: OnListItemClickListener<Manga>,

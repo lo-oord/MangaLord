@@ -8,13 +8,13 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.core.ui.sheet.BaseAdaptiveSheet
-import com.mlord.app.app.core.util.ext.consume
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.databinding.SheetBaseBinding
+import com.mlord.app.R
+import com.mlord.app.core.model.FavouriteCategory
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.core.ui.sheet.BaseAdaptiveSheet
+import com.mlord.app.core.util.ext.consume
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.databinding.SheetBaseBinding
 
 @AndroidEntryPoint
 class TrackerCategoriesConfigSheet :

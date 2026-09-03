@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
-import com.mlord.app.app.core.db.entity.ChapterEntity
+import com.mlord.app.core.db.entity.ChapterEntity
 
 @Dao
 abstract class ChaptersDao {

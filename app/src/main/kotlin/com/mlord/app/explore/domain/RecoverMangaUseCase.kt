@@ -1,9 +1,9 @@
 package com.mlord.app.explore.domain
 
-import com.mlord.app.app.core.model.isLocal
-import com.mlord.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.core.parser.MangaRepository
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.model.isLocal
+import com.mlord.app.core.parser.MangaDataRepository
+import com.mlord.app.core.parser.MangaRepository
+import com.mlord.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaListFilter
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable

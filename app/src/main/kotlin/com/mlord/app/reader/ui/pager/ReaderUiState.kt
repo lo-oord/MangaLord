@@ -1,7 +1,7 @@
 package com.mlord.app.reader.ui.pager
 
 import android.content.res.Resources
-import com.mlord.app.app.core.model.getLocalizedTitle
+import com.mlord.app.core.model.getLocalizedTitle
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 
 data class ReaderUiState(

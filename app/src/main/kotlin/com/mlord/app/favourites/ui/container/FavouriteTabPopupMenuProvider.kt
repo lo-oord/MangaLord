@@ -5,10 +5,10 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.view.MenuProvider
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.ui.dialog.buildAlertDialog
-import com.mlord.app.app.favourites.ui.list.FavouritesListFragment.Companion.NO_ID
+import com.mlord.app.R
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.favourites.ui.list.FavouritesListFragment.Companion.NO_ID
 
 class FavouriteTabPopupMenuProvider(
 	private val context: Context,

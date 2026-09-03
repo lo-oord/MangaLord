@@ -11,8 +11,8 @@ import okio.buffer
 import okio.sink
 import okio.source
 import org.jetbrains.annotations.Blocking
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.io.File
 import javax.inject.Inject

@@ -1,6 +1,6 @@
 package com.mlord.app.settings.storage.directories
 
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.list.ui.model.ListModel
 import java.io.File
 
 data class DirectoryConfigModel(

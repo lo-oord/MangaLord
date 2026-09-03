@@ -1,10 +1,10 @@
 package com.mlord.app.list.ui.adapter
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.core.ui.widgets.TipView
-import com.mlord.app.app.databinding.ItemTip2Binding
-import com.mlord.app.app.list.ui.model.ListModel
-import com.mlord.app.app.list.ui.model.TipModel
+import com.mlord.app.core.ui.widgets.TipView
+import com.mlord.app.databinding.ItemTip2Binding
+import com.mlord.app.list.ui.model.ListModel
+import com.mlord.app.list.ui.model.TipModel
 
 fun tipAD(
 	listener: TipView.OnButtonClickListener,

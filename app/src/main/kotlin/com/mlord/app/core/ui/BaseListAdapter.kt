@@ -12,11 +12,11 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.onStart
-import com.mlord.app.app.core.util.ContinuationResumeRunnable
-import com.mlord.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.list.ui.model.ListHeader
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.core.util.ContinuationResumeRunnable
+import com.mlord.app.list.ui.ListModelDiffCallback
+import com.mlord.app.list.ui.adapter.ListItemType
+import com.mlord.app.list.ui.model.ListHeader
+import com.mlord.app.list.ui.model.ListModel
 import kotlin.coroutines.suspendCoroutine
 
 open class BaseListAdapter<T : ListModel> : AsyncListDifferDelegationAdapter<T>(

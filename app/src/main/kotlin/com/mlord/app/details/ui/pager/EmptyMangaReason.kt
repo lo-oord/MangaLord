@@ -1,7 +1,7 @@
 package com.mlord.app.details.ui.pager
 
 import androidx.annotation.StringRes
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 enum class EmptyMangaReason(
 	@StringRes val msgResId: Int,

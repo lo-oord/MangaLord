@@ -20,13 +20,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.plus
 import kotlinx.coroutines.withContext
 import okio.IOException
-import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.core.os.NetworkState
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.core.util.ext.throttle
+import com.mlord.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.core.os.NetworkState
+import com.mlord.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.util.ext.throttle
 import org.koitharu.kotatsu.parsers.model.MangaPage
-import com.mlord.app.app.reader.domain.PageLoader
-import com.mlord.app.app.reader.ui.config.ReaderSettings
+import com.mlord.app.reader.domain.PageLoader
+import com.mlord.app.reader.ui.config.ReaderSettings
 
 class PageViewModel(
 	private val loader: PageLoader,

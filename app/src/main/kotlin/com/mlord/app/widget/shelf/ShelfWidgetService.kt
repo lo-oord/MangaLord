@@ -6,8 +6,8 @@ import android.widget.RemoteViewsService
 import coil3.ImageLoader
 import dagger.Lazy
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.favourites.domain.FavouritesRepository
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.favourites.domain.FavouritesRepository
 import javax.inject.Inject
 
 @AndroidEntryPoint

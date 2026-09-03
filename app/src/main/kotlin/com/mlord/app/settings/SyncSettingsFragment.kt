@@ -5,10 +5,10 @@ import android.view.View
 import androidx.fragment.app.FragmentResultListener
 import androidx.preference.Preference
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.sync.data.SyncSettings
-import com.mlord.app.app.sync.ui.SyncHostDialogFragment
+import com.mlord.app.R
+import com.mlord.app.core.ui.BasePreferenceFragment
+import com.mlord.app.sync.data.SyncSettings
+import com.mlord.app.sync.ui.SyncHostDialogFragment
 import javax.inject.Inject
 
 @AndroidEntryPoint

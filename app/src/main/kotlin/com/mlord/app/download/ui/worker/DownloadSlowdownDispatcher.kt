@@ -3,8 +3,8 @@ package com.mlord.app.download.ui.worker
 import android.os.SystemClock
 import androidx.collection.MutableObjectLongMap
 import kotlinx.coroutines.delay
-import com.mlord.app.app.core.parser.MangaRepository
-import com.mlord.app.app.core.parser.ParserMangaRepository
+import com.mlord.app.core.parser.MangaRepository
+import com.mlord.app.core.parser.ParserMangaRepository
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import javax.inject.Inject
 import javax.inject.Singleton

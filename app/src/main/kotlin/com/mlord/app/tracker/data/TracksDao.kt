@@ -7,8 +7,8 @@ import androidx.room.Transaction
 import androidx.room.Upsert
 import androidx.sqlite.db.SupportSQLiteQuery
 import kotlinx.coroutines.flow.Flow
-import com.mlord.app.app.core.db.MangaQueryBuilder
-import com.mlord.app.app.list.domain.ListFilterOption
+import com.mlord.app.core.db.MangaQueryBuilder
+import com.mlord.app.list.domain.ListFilterOption
 
 @Dao
 abstract class TracksDao : MangaQueryBuilder.ConditionCallback {

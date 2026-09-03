@@ -11,7 +11,7 @@ import androidx.annotation.AnyThread
 import androidx.annotation.WorkerThread
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import com.mlord.app.app.core.network.webview.adblock.AdBlock
+import com.mlord.app.core.network.webview.adblock.AdBlock
 import java.io.ByteArrayInputStream
 
 open class BrowserClient(

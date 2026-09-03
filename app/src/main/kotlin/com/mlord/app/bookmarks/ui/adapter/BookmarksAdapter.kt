@@ -1,18 +1,18 @@
 package com.mlord.app.bookmarks.ui.adapter
 
 import android.content.Context
-import com.mlord.app.app.bookmarks.domain.Bookmark
-import com.mlord.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.core.ui.list.fastscroll.FastScroller
-import com.mlord.app.app.list.ui.adapter.ListHeaderClickListener
-import com.mlord.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.list.ui.adapter.emptyStateListAD
-import com.mlord.app.app.list.ui.adapter.errorStateListAD
-import com.mlord.app.app.list.ui.adapter.listHeaderAD
-import com.mlord.app.app.list.ui.adapter.loadingFooterAD
-import com.mlord.app.app.list.ui.adapter.loadingStateAD
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.bookmarks.domain.Bookmark
+import com.mlord.app.core.ui.BaseListAdapter
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.core.ui.list.fastscroll.FastScroller
+import com.mlord.app.list.ui.adapter.ListHeaderClickListener
+import com.mlord.app.list.ui.adapter.ListItemType
+import com.mlord.app.list.ui.adapter.emptyStateListAD
+import com.mlord.app.list.ui.adapter.errorStateListAD
+import com.mlord.app.list.ui.adapter.listHeaderAD
+import com.mlord.app.list.ui.adapter.loadingFooterAD
+import com.mlord.app.list.ui.adapter.loadingStateAD
+import com.mlord.app.list.ui.model.ListModel
 
 class BookmarksAdapter(
 	clickListener: OnListItemClickListener<Bookmark>,

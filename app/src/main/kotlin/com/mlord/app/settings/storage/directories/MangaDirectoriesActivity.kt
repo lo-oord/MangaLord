@@ -15,18 +15,18 @@ import androidx.core.view.updatePadding
 import com.google.android.material.snackbar.Snackbar
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.exceptions.resolve.SnackbarErrorObserver
-import com.mlord.app.app.core.os.OpenDocumentTreeHelper
-import com.mlord.app.app.core.ui.BaseActivity
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.core.ui.list.decor.SpacingItemDecoration
-import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.core.util.ext.tryLaunch
-import com.mlord.app.app.databinding.ActivityMangaDirectoriesBinding
-import com.mlord.app.app.settings.storage.RequestStorageManagerPermissionContract
+import com.mlord.app.R
+import com.mlord.app.core.exceptions.resolve.SnackbarErrorObserver
+import com.mlord.app.core.os.OpenDocumentTreeHelper
+import com.mlord.app.core.ui.BaseActivity
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.core.ui.list.decor.SpacingItemDecoration
+import com.mlord.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.core.util.ext.tryLaunch
+import com.mlord.app.databinding.ActivityMangaDirectoriesBinding
+import com.mlord.app.settings.storage.RequestStorageManagerPermissionContract
 
 @AndroidEntryPoint
 class MangaDirectoriesActivity : BaseActivity<ActivityMangaDirectoriesBinding>(),

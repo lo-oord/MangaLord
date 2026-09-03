@@ -11,9 +11,9 @@ import androidx.core.net.toUri
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.google.android.material.snackbar.Snackbar
-import com.mlord.app.app.R
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.util.ext.powerManager
+import com.mlord.app.R
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.util.ext.powerManager
 
 @SuppressLint("BatteryLife")
 class DozeHelper(

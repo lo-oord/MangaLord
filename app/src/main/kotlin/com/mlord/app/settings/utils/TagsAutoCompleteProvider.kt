@@ -1,7 +1,7 @@
 package com.mlord.app.settings.utils
 
 import javax.inject.Inject
-import com.mlord.app.app.core.db.MangaDatabase
+import com.mlord.app.core.db.MangaDatabase
 
 class TagsAutoCompleteProvider @Inject constructor(
 	private val db: MangaDatabase,

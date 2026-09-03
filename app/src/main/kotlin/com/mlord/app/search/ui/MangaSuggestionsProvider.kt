@@ -7,7 +7,7 @@ import android.content.SearchRecentSuggestionsProvider
 import android.net.Uri
 import android.provider.SearchRecentSuggestions
 import androidx.core.net.toUri
-import com.mlord.app.app.BuildConfig
+import com.mlord.app.BuildConfig
 
 class MangaSuggestionsProvider : SearchRecentSuggestionsProvider() {
 

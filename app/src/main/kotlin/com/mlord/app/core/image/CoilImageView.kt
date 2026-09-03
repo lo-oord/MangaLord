@@ -28,12 +28,12 @@ import com.google.android.material.imageview.ShapeableImageView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import com.mlord.app.app.R
-import com.mlord.app.app.core.os.NetworkState
-import com.mlord.app.app.core.util.ext.decodeRegion
-import com.mlord.app.app.core.util.ext.getAnimationDuration
-import com.mlord.app.app.core.util.ext.isAnimationsEnabled
-import com.mlord.app.app.core.util.ext.isNetworkError
+import com.mlord.app.R
+import com.mlord.app.core.os.NetworkState
+import com.mlord.app.core.util.ext.decodeRegion
+import com.mlord.app.core.util.ext.getAnimationDuration
+import com.mlord.app.core.util.ext.isAnimationsEnabled
+import com.mlord.app.core.util.ext.isNetworkError
 import java.util.LinkedList
 import javax.inject.Inject
 

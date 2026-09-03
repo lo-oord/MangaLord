@@ -4,13 +4,13 @@ import android.net.Uri
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import com.mlord.app.app.R
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
-import com.mlord.app.app.core.util.ext.isWriteable
-import com.mlord.app.app.local.data.LocalStorageManager
+import com.mlord.app.R
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
+import com.mlord.app.core.util.ext.isWriteable
+import com.mlord.app.local.data.LocalStorageManager
 import javax.inject.Inject
 
 @HiltViewModel

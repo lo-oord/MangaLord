@@ -10,12 +10,12 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.annotation.StyleRes
 import androidx.appcompat.content.res.AppCompatResources
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.image.PaintDrawable
-import com.mlord.app.app.core.util.ext.hasFocusStateSpecified
-import com.mlord.app.app.core.util.ext.scale
-import com.mlord.app.app.list.domain.ReadingProgress
-import com.mlord.app.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
+import com.mlord.app.R
+import com.mlord.app.core.ui.image.PaintDrawable
+import com.mlord.app.core.util.ext.hasFocusStateSpecified
+import com.mlord.app.core.util.ext.scale
+import com.mlord.app.list.domain.ReadingProgress
+import com.mlord.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
 
 class ReadingProgressDrawable(
 	context: Context,

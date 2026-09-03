@@ -3,9 +3,9 @@ package com.mlord.app.core.parser.external
 import android.content.ContentResolver
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runInterruptible
-import com.mlord.app.app.core.cache.MemoryContentCache
-import com.mlord.app.app.core.parser.CachingMangaRepository
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.cache.MemoryContentCache
+import com.mlord.app.core.parser.CachingMangaRepository
+import com.mlord.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import org.koitharu.kotatsu.parsers.model.MangaListFilter

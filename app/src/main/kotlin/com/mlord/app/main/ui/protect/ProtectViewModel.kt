@@ -3,11 +3,11 @@ package com.mlord.app.main.ui.protect
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import com.mlord.app.app.core.exceptions.WrongPasswordException
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.core.exceptions.WrongPasswordException
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
 import org.koitharu.kotatsu.parsers.util.md5
 import javax.inject.Inject
 

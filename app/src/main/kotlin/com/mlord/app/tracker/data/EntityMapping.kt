@@ -1,8 +1,8 @@
 package com.mlord.app.tracker.data
 
-import com.mlord.app.app.core.db.entity.toManga
-import com.mlord.app.app.core.db.entity.toMangaTags
-import com.mlord.app.app.tracker.domain.model.TrackingLogItem
+import com.mlord.app.core.db.entity.toManga
+import com.mlord.app.core.db.entity.toMangaTags
+import com.mlord.app.tracker.domain.model.TrackingLogItem
 import java.time.Instant
 
 fun TrackLogWithManga.toTrackingLogItem(): TrackingLogItem {

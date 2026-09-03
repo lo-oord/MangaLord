@@ -1,11 +1,11 @@
 package com.mlord.app.scrobbling.kitsu.domain
 
-import com.mlord.app.app.core.db.MangaDatabase
-import com.mlord.app.app.core.parser.MangaRepository
-import com.mlord.app.app.scrobbling.common.domain.Scrobbler
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingStatus
-import com.mlord.app.app.scrobbling.kitsu.data.KitsuRepository
+import com.mlord.app.core.db.MangaDatabase
+import com.mlord.app.core.parser.MangaRepository
+import com.mlord.app.scrobbling.common.domain.Scrobbler
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.scrobbling.common.domain.model.ScrobblingStatus
+import com.mlord.app.scrobbling.kitsu.data.KitsuRepository
 import javax.inject.Inject
 
 class KitsuScrobbler @Inject constructor(

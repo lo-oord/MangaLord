@@ -11,11 +11,11 @@ import kotlinx.coroutines.flow.transformWhile
 import kotlinx.coroutines.flow.withIndex
 import kotlinx.coroutines.launch
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
-import com.mlord.app.app.core.model.chaptersCount
-import com.mlord.app.app.core.model.parcelable.ParcelableManga
-import com.mlord.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.core.parser.MangaRepository
-import com.mlord.app.app.core.util.ext.concat
+import com.mlord.app.core.model.chaptersCount
+import com.mlord.app.core.model.parcelable.ParcelableManga
+import com.mlord.app.core.parser.MangaDataRepository
+import com.mlord.app.core.parser.MangaRepository
+import com.mlord.app.core.util.ext.concat
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import java.util.concurrent.TimeUnit

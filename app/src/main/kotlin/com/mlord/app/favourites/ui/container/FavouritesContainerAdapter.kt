@@ -9,9 +9,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 import kotlinx.coroutines.flow.FlowCollector
-import com.mlord.app.app.core.util.ContinuationResumeRunnable
-import com.mlord.app.app.favourites.ui.list.FavouritesListFragment
-import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.core.util.ContinuationResumeRunnable
+import com.mlord.app.favourites.ui.list.FavouritesListFragment
+import com.mlord.app.list.ui.ListModelDiffCallback
 import kotlin.coroutines.suspendCoroutine
 
 class FavouritesContainerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment),

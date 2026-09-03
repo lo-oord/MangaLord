@@ -17,18 +17,18 @@ import androidx.preference.MultiSelectListPreference
 import androidx.preference.Preference
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.TrackerDownloadStrategy
-import com.mlord.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.setDefaultValueCompat
+import com.mlord.app.R
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.TrackerDownloadStrategy
+import com.mlord.app.core.ui.BasePreferenceFragment
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.setDefaultValueCompat
 import org.koitharu.kotatsu.parsers.util.names
-import com.mlord.app.app.settings.utils.DozeHelper
-import com.mlord.app.app.settings.utils.MultiSummaryProvider
-import com.mlord.app.app.tracker.ui.debug.TrackerDebugActivity
-import com.mlord.app.app.tracker.work.TrackerNotificationHelper
+import com.mlord.app.settings.utils.DozeHelper
+import com.mlord.app.settings.utils.MultiSummaryProvider
+import com.mlord.app.tracker.ui.debug.TrackerDebugActivity
+import com.mlord.app.tracker.work.TrackerNotificationHelper
 import javax.inject.Inject
 
 @AndroidEntryPoint

@@ -2,7 +2,7 @@ package com.mlord.app.backups.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import com.mlord.app.app.BuildConfig
+import com.mlord.app.BuildConfig
 
 @Serializable
 class BackupIndex(

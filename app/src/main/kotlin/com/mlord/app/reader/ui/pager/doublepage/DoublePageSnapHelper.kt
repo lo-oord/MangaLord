@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.SmoothScroller.ScrollVectorProvider
 import androidx.recyclerview.widget.SnapHelper
-import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.AppSettings
 import kotlin.math.abs
 import kotlin.math.absoluteValue
 import kotlin.math.max

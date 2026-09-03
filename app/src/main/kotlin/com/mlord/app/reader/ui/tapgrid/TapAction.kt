@@ -1,7 +1,7 @@
 package com.mlord.app.reader.ui.tapgrid
 
 import androidx.annotation.StringRes
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 enum class TapAction(
 	@StringRes val nameStringResId: Int,

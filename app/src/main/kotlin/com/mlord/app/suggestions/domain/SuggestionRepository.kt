@@ -2,19 +2,19 @@ package com.mlord.app.suggestions.domain
 
 import androidx.room.withTransaction
 import kotlinx.coroutines.flow.Flow
-import com.mlord.app.app.core.db.MangaDatabase
-import com.mlord.app.app.core.db.entity.toEntities
-import com.mlord.app.app.core.db.entity.toEntity
-import com.mlord.app.app.core.db.entity.toManga
-import com.mlord.app.app.core.db.entity.toMangaTagsList
-import com.mlord.app.app.core.model.toMangaSources
-import com.mlord.app.app.core.util.ext.mapItems
-import com.mlord.app.app.list.domain.ListFilterOption
+import com.mlord.app.core.db.MangaDatabase
+import com.mlord.app.core.db.entity.toEntities
+import com.mlord.app.core.db.entity.toEntity
+import com.mlord.app.core.db.entity.toManga
+import com.mlord.app.core.db.entity.toMangaTagsList
+import com.mlord.app.core.model.toMangaSources
+import com.mlord.app.core.util.ext.mapItems
+import com.mlord.app.list.domain.ListFilterOption
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.MangaTag
-import com.mlord.app.app.suggestions.data.SuggestionEntity
-import com.mlord.app.app.suggestions.data.SuggestionWithManga
+import com.mlord.app.suggestions.data.SuggestionEntity
+import com.mlord.app.suggestions.data.SuggestionWithManga
 import javax.inject.Inject
 
 class SuggestionRepository @Inject constructor(

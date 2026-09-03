@@ -1,7 +1,7 @@
 package com.mlord.app.explore.data
 
 import androidx.annotation.StringRes
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 enum class SourcesSortOrder(
 	@StringRes val titleResId: Int,

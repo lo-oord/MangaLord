@@ -9,7 +9,7 @@ import coil3.executeBlocking
 import coil3.request.ImageRequest
 import coil3.request.allowHardware
 import dagger.hilt.android.qualifiers.ApplicationContext
-import com.mlord.app.app.core.util.ext.drawable
+import com.mlord.app.core.util.ext.drawable
 import javax.inject.Inject
 
 class CoilImageGetter @Inject constructor(

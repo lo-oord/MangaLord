@@ -8,21 +8,21 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.exceptions.resolve.SnackbarErrorObserver
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.ui.BaseActivity
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.core.util.ext.showOrHide
-import com.mlord.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.databinding.ActivityScrobblerConfigBinding
-import com.mlord.app.app.list.ui.adapter.TypedListSpacingDecoration
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerUser
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingInfo
-import com.mlord.app.app.scrobbling.common.ui.config.adapter.ScrobblingMangaAdapter
+import com.mlord.app.R
+import com.mlord.app.core.exceptions.resolve.SnackbarErrorObserver
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.ui.BaseActivity
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.core.util.ext.showOrHide
+import com.mlord.app.core.util.ext.systemBarsInsets
+import com.mlord.app.databinding.ActivityScrobblerConfigBinding
+import com.mlord.app.list.ui.adapter.TypedListSpacingDecoration
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerUser
+import com.mlord.app.scrobbling.common.domain.model.ScrobblingInfo
+import com.mlord.app.scrobbling.common.ui.config.adapter.ScrobblingMangaAdapter
 import androidx.appcompat.R as appcompatR
 
 @AndroidEntryPoint

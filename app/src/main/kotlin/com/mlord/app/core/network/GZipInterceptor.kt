@@ -4,8 +4,8 @@ import okhttp3.Interceptor
 import okhttp3.MultipartBody
 import okhttp3.Response
 import okio.IOException
-import com.mlord.app.app.core.exceptions.WrapperIOException
-import com.mlord.app.app.core.network.CommonHeaders.CONTENT_ENCODING
+import com.mlord.app.core.exceptions.WrapperIOException
+import com.mlord.app.core.network.CommonHeaders.CONTENT_ENCODING
 
 class GZipInterceptor : Interceptor {
 

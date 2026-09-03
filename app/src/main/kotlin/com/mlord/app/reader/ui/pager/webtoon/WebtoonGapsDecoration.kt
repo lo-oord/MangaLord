@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 class WebtoonGapsDecoration : RecyclerView.ItemDecoration() {
 

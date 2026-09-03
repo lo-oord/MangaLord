@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.local.data.CacheDir
-import com.mlord.app.app.local.data.LocalStorageManager
-import com.mlord.app.app.settings.userdata.storage.StorageUsage
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.local.data.CacheDir
+import com.mlord.app.local.data.LocalStorageManager
+import com.mlord.app.settings.userdata.storage.StorageUsage
 import javax.inject.Inject
 
 @HiltViewModel

@@ -3,9 +3,9 @@ package com.mlord.app.list.domain
 import androidx.collection.ArraySet
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import com.mlord.app.app.core.model.toChipModel
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.list.ui.model.QuickFilter
+import com.mlord.app.core.model.toChipModel
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.list.ui.model.QuickFilter
 import org.koitharu.kotatsu.parsers.util.suspendlazy.getOrNull
 import org.koitharu.kotatsu.parsers.util.suspendlazy.suspendLazy
 

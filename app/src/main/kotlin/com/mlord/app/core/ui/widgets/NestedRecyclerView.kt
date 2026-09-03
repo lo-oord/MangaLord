@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import androidx.core.content.withStyledAttributes
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 class NestedRecyclerView @JvmOverloads constructor(
 	context: Context,

@@ -3,15 +3,15 @@ package com.mlord.app.list.ui.config
 import androidx.lifecycle.SavedStateHandle
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.runBlocking
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.ListMode
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.require
-import com.mlord.app.app.core.util.ext.sortedByOrdinal
-import com.mlord.app.app.favourites.domain.FavouritesRepository
-import com.mlord.app.app.favourites.ui.list.FavouritesListFragment.Companion.NO_ID
-import com.mlord.app.app.list.domain.ListSortOrder
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.ListMode
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.require
+import com.mlord.app.core.util.ext.sortedByOrdinal
+import com.mlord.app.favourites.domain.FavouritesRepository
+import com.mlord.app.favourites.ui.list.FavouritesListFragment.Companion.NO_ID
+import com.mlord.app.list.domain.ListSortOrder
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import javax.inject.Inject
 

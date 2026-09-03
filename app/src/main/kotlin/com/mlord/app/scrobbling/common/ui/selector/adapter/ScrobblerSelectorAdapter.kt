@@ -1,13 +1,13 @@
 package com.mlord.app.scrobbling.common.ui.selector.adapter
 
-import com.mlord.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.list.ui.adapter.ListStateHolderListener
-import com.mlord.app.app.list.ui.adapter.loadingFooterAD
-import com.mlord.app.app.list.ui.adapter.loadingStateAD
-import com.mlord.app.app.list.ui.model.ListModel
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerManga
+import com.mlord.app.core.ui.BaseListAdapter
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.list.ui.adapter.ListItemType
+import com.mlord.app.list.ui.adapter.ListStateHolderListener
+import com.mlord.app.list.ui.adapter.loadingFooterAD
+import com.mlord.app.list.ui.adapter.loadingStateAD
+import com.mlord.app.list.ui.model.ListModel
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerManga
 
 class ScrobblerSelectorAdapter(
 	clickListener: OnListItemClickListener<ScrobblerManga>,

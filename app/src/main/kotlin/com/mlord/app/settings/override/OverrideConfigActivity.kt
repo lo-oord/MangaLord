@@ -12,18 +12,18 @@ import androidx.core.view.isVisible
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.filterNotNull
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.BaseActivity
-import com.mlord.app.app.core.ui.model.MangaOverride
-import com.mlord.app.app.core.util.ext.consumeAll
-import com.mlord.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.core.util.ext.tryLaunch
-import com.mlord.app.app.databinding.ActivityOverrideEditBinding
+import com.mlord.app.R
+import com.mlord.app.core.ui.BaseActivity
+import com.mlord.app.core.ui.model.MangaOverride
+import com.mlord.app.core.util.ext.consumeAll
+import com.mlord.app.core.util.ext.getDisplayMessage
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.core.util.ext.tryLaunch
+import com.mlord.app.databinding.ActivityOverrideEditBinding
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
-import com.mlord.app.app.picker.ui.PageImagePickContract
+import com.mlord.app.picker.ui.PageImagePickContract
 import com.google.android.material.R as materialR
 
 @AndroidEntryPoint

@@ -3,8 +3,8 @@ package com.mlord.app.sync.data.model
 import android.database.Cursor
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import com.mlord.app.app.core.util.ext.buildContentValues
-import com.mlord.app.app.core.util.ext.getBoolean
+import com.mlord.app.core.util.ext.buildContentValues
+import com.mlord.app.core.util.ext.getBoolean
 
 @Serializable
 data class FavouriteSyncDto(

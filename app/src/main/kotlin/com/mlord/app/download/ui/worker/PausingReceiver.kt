@@ -7,7 +7,7 @@ import android.content.IntentFilter
 import android.os.PatternMatcher
 import androidx.core.app.PendingIntentCompat
 import androidx.core.net.toUri
-import com.mlord.app.app.core.util.ext.toUUIDOrNull
+import com.mlord.app.core.util.ext.toUUIDOrNull
 import java.util.UUID
 
 class PausingReceiver(

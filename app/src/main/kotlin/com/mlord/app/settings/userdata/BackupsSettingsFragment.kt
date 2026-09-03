@@ -9,16 +9,16 @@ import androidx.fragment.app.viewModels
 import androidx.preference.Preference
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.backups.domain.BackupUtils
-import com.mlord.app.app.backups.ui.backup.BackupService
-import com.mlord.app.app.core.exceptions.resolve.SnackbarErrorObserver
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.core.util.ext.tryLaunch
+import com.mlord.app.R
+import com.mlord.app.backups.domain.BackupUtils
+import com.mlord.app.backups.ui.backup.BackupService
+import com.mlord.app.core.exceptions.resolve.SnackbarErrorObserver
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.ui.BasePreferenceFragment
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.core.util.ext.tryLaunch
 
 @AndroidEntryPoint
 class BackupsSettingsFragment : BasePreferenceFragment(R.string.backup_restore),

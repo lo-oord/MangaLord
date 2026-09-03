@@ -5,14 +5,14 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.Response
 import okhttp3.internal.closeQuietly
 import okio.IOException
-import com.mlord.app.app.core.network.CommonHeaders
+import com.mlord.app.core.network.CommonHeaders
 import org.koitharu.kotatsu.parsers.util.mimeType
 import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 import org.koitharu.kotatsu.parsers.util.parseHtml
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.scrobbling.common.data.ScrobblerStorage
-import com.mlord.app.app.scrobbling.common.domain.ScrobblerAuthRequiredException
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.scrobbling.common.data.ScrobblerStorage
+import com.mlord.app.scrobbling.common.domain.ScrobblerAuthRequiredException
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerService
 import java.net.HttpURLConnection
 
 class KitsuInterceptor(private val storage: ScrobblerStorage) : Interceptor {

@@ -13,11 +13,11 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.internal.closeQuietly
-import com.mlord.app.app.R
-import com.mlord.app.app.core.network.BaseHttpClient
-import com.mlord.app.app.core.network.CommonHeaders
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.util.ext.ensureSuccess
+import com.mlord.app.R
+import com.mlord.app.core.network.BaseHttpClient
+import com.mlord.app.core.network.CommonHeaders
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.util.ext.ensureSuccess
 import org.koitharu.kotatsu.parsers.util.await
 import org.koitharu.kotatsu.parsers.util.parseRaw
 import javax.inject.Inject

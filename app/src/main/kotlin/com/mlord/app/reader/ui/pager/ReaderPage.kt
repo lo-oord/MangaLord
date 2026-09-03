@@ -3,7 +3,7 @@ package com.mlord.app.reader.ui.pager
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.TypeParceler
-import com.mlord.app.app.core.model.parcelable.MangaSourceParceler
+import com.mlord.app.core.model.parcelable.MangaSourceParceler
 import org.koitharu.kotatsu.parsers.model.MangaPage
 import org.koitharu.kotatsu.parsers.model.MangaSource
 

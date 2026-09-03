@@ -2,7 +2,7 @@ package com.mlord.app.tracker.data
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.mlord.app.app.core.db.entity.MangaEntity
+import com.mlord.app.core.db.entity.MangaEntity
 
 class TrackWithManga(
 	@Embedded val track: TrackEntity,

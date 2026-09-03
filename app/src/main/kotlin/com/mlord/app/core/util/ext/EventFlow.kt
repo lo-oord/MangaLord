@@ -3,7 +3,7 @@ package com.mlord.app.core.util.ext
 import androidx.annotation.AnyThread
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import com.mlord.app.app.core.util.Event
+import com.mlord.app.core.util.Event
 
 @Suppress("FunctionName")
 fun <T> MutableEventFlow() = MutableStateFlow<Event<T>?>(null)

@@ -4,10 +4,10 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import androidx.core.net.toUri
-import com.mlord.app.app.scrobbling.common.domain.ScrobblerRepositoryMap
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerUser
-import com.mlord.app.app.scrobbling.kitsu.ui.KitsuAuthActivity
+import com.mlord.app.scrobbling.common.domain.ScrobblerRepositoryMap
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerUser
+import com.mlord.app.scrobbling.kitsu.ui.KitsuAuthActivity
 import javax.inject.Inject
 
 class ScrobblerAuthHelper @Inject constructor(

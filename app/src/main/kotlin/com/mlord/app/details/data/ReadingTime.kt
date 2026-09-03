@@ -1,8 +1,8 @@
 package com.mlord.app.details.data
 
 import android.content.res.Resources
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ext.getQuantityStringSafe
+import com.mlord.app.R
+import com.mlord.app.core.util.ext.getQuantityStringSafe
 
 data class ReadingTime(
 	val minutes: Int,

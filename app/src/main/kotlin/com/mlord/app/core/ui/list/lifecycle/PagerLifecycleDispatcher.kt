@@ -4,7 +4,7 @@ import android.view.View
 import androidx.core.view.children
 import androidx.core.view.isEmpty
 import androidx.viewpager2.widget.ViewPager2
-import com.mlord.app.app.core.util.ext.recyclerView
+import com.mlord.app.core.util.ext.recyclerView
 
 class PagerLifecycleDispatcher(
 	private val pager: ViewPager2,

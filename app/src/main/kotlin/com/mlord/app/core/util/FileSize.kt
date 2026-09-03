@@ -1,7 +1,7 @@
 package com.mlord.app.core.util
 
 import android.content.Context
-import com.mlord.app.app.R
+import com.mlord.app.R
 import java.text.DecimalFormat
 import kotlin.math.log10
 import kotlin.math.pow

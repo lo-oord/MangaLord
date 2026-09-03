@@ -15,22 +15,22 @@ import com.davemorrissey.labs.subscaleview.DefaultOnImageEventListener
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.mlord.app.app.BuildConfig
-import com.mlord.app.app.R
-import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.core.os.NetworkState
-import com.mlord.app.app.core.ui.list.lifecycle.LifecycleAwareViewHolder
-import com.mlord.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.core.util.ext.isLowRamDevice
-import com.mlord.app.app.core.util.ext.isSerializable
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.databinding.LayoutPageInfoBinding
+import com.mlord.app.BuildConfig
+import com.mlord.app.R
+import com.mlord.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.core.os.NetworkState
+import com.mlord.app.core.ui.list.lifecycle.LifecycleAwareViewHolder
+import com.mlord.app.core.util.ext.getDisplayMessage
+import com.mlord.app.core.util.ext.isLowRamDevice
+import com.mlord.app.core.util.ext.isSerializable
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.databinding.LayoutPageInfoBinding
 import org.koitharu.kotatsu.parsers.util.ifZero
-import com.mlord.app.app.reader.domain.PageLoader
-import com.mlord.app.app.reader.ui.config.ReaderSettings
-import com.mlord.app.app.reader.ui.pager.vm.PageState
-import com.mlord.app.app.reader.ui.pager.vm.PageViewModel
-import com.mlord.app.app.reader.ui.pager.webtoon.WebtoonHolder
+import com.mlord.app.reader.domain.PageLoader
+import com.mlord.app.reader.ui.config.ReaderSettings
+import com.mlord.app.reader.ui.pager.vm.PageState
+import com.mlord.app.reader.ui.pager.vm.PageViewModel
+import com.mlord.app.reader.ui.pager.webtoon.WebtoonHolder
 
 abstract class BasePageHolder<B : ViewBinding>(
 	protected val binding: B,

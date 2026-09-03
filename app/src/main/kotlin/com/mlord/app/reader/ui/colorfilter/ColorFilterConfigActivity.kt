@@ -16,19 +16,19 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.slider.LabelFormatter
 import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.BaseActivity
-import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.core.util.ext.setChecked
-import com.mlord.app.app.core.util.ext.setValueRounded
-import com.mlord.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.core.util.progress.ImageRequestIndicatorListener
-import com.mlord.app.app.databinding.ActivityColorFilterBinding
+import com.mlord.app.R
+import com.mlord.app.core.ui.BaseActivity
+import com.mlord.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.core.util.ext.setChecked
+import com.mlord.app.core.util.ext.setValueRounded
+import com.mlord.app.core.util.ext.systemBarsInsets
+import com.mlord.app.core.util.progress.ImageRequestIndicatorListener
+import com.mlord.app.databinding.ActivityColorFilterBinding
 import org.koitharu.kotatsu.parsers.model.MangaPage
 import org.koitharu.kotatsu.parsers.util.format
-import com.mlord.app.app.reader.domain.ReaderColorFilter
+import com.mlord.app.reader.domain.ReaderColorFilter
 import javax.inject.Inject
 
 @AndroidEntryPoint

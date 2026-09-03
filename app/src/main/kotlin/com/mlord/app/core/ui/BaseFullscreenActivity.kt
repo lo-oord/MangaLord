@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.util.SystemUiController
+import com.mlord.app.R
+import com.mlord.app.core.ui.util.SystemUiController
 
 abstract class BaseFullscreenActivity<B : ViewBinding> :
 	BaseActivity<B>() {

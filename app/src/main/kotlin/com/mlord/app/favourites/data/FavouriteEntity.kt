@@ -3,8 +3,8 @@ package com.mlord.app.favourites.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import com.mlord.app.app.core.db.TABLE_FAVOURITES
-import com.mlord.app.app.core.db.entity.MangaEntity
+import com.mlord.app.core.db.TABLE_FAVOURITES
+import com.mlord.app.core.db.entity.MangaEntity
 
 @Entity(
 	tableName = TABLE_FAVOURITES,

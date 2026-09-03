@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
 import org.koitharu.kotatsu.parsers.util.isNumeric
 import org.koitharu.kotatsu.parsers.util.md5
 import javax.inject.Inject

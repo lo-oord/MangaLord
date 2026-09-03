@@ -14,21 +14,21 @@ import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import com.mlord.app.app.R
-import com.mlord.app.app.core.model.LocalMangaSource
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.ui.list.ListSelectionController
-import com.mlord.app.app.core.ui.widgets.TipView
-import com.mlord.app.app.core.util.ShareHelper
-import com.mlord.app.app.core.util.ext.addMenuProvider
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.core.util.ext.tryLaunch
-import com.mlord.app.app.databinding.FragmentListBinding
-import com.mlord.app.app.filter.ui.FilterCoordinator
-import com.mlord.app.app.list.ui.MangaListFragment
-import com.mlord.app.app.remotelist.ui.MangaSearchMenuProvider
-import com.mlord.app.app.remotelist.ui.RemoteListFragment
-import com.mlord.app.app.settings.storage.RequestStorageManagerPermissionContract
+import com.mlord.app.R
+import com.mlord.app.core.model.LocalMangaSource
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.ui.list.ListSelectionController
+import com.mlord.app.core.ui.widgets.TipView
+import com.mlord.app.core.util.ShareHelper
+import com.mlord.app.core.util.ext.addMenuProvider
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.core.util.ext.tryLaunch
+import com.mlord.app.databinding.FragmentListBinding
+import com.mlord.app.filter.ui.FilterCoordinator
+import com.mlord.app.list.ui.MangaListFragment
+import com.mlord.app.remotelist.ui.MangaSearchMenuProvider
+import com.mlord.app.remotelist.ui.RemoteListFragment
+import com.mlord.app.settings.storage.RequestStorageManagerPermissionContract
 
 class LocalListFragment : MangaListFragment(), FilterCoordinator.Owner {
 

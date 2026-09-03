@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
 import androidx.preference.ListPreference
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.util.ext.printStackTraceDebug
 
 @Suppress("unused")
 class ActivityListPreference : ListPreference {

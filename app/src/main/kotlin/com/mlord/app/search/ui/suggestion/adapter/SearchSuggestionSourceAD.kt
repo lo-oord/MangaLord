@@ -1,11 +1,11 @@
 package com.mlord.app.search.ui.suggestion.adapter
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.core.model.getSummary
-import com.mlord.app.app.core.model.getTitle
-import com.mlord.app.app.databinding.ItemSearchSuggestionSourceBinding
-import com.mlord.app.app.search.ui.suggestion.SearchSuggestionListener
-import com.mlord.app.app.search.ui.suggestion.model.SearchSuggestionItem
+import com.mlord.app.core.model.getSummary
+import com.mlord.app.core.model.getTitle
+import com.mlord.app.databinding.ItemSearchSuggestionSourceBinding
+import com.mlord.app.search.ui.suggestion.SearchSuggestionListener
+import com.mlord.app.search.ui.suggestion.model.SearchSuggestionItem
 
 fun searchSuggestionSourceAD(
 	listener: SearchSuggestionListener,

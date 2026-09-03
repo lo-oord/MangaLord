@@ -5,7 +5,7 @@ import android.widget.TextView
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.MangaTag
-import com.mlord.app.app.search.domain.SearchKind
+import com.mlord.app.search.domain.SearchKind
 
 interface SearchSuggestionListener : TextWatcher, TextView.OnEditorActionListener {
 

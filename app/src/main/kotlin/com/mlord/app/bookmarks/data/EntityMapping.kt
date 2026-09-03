@@ -1,6 +1,6 @@
 package com.mlord.app.bookmarks.data
 
-import com.mlord.app.app.bookmarks.domain.Bookmark
+import com.mlord.app.bookmarks.domain.Bookmark
 import org.koitharu.kotatsu.parsers.model.Manga
 import java.time.Instant
 

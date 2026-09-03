@@ -4,8 +4,8 @@ import android.content.Context
 import android.text.Editable
 import android.widget.EditText
 import androidx.annotation.CallSuper
-import com.mlord.app.app.core.ui.util.DefaultTextWatcher
-import com.mlord.app.app.core.util.ext.getDisplayMessage
+import com.mlord.app.core.ui.util.DefaultTextWatcher
+import com.mlord.app.core.util.ext.getDisplayMessage
 import java.lang.ref.WeakReference
 
 abstract class EditTextValidator : DefaultTextWatcher {

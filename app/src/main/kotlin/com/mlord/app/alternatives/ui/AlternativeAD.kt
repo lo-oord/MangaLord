@@ -17,18 +17,18 @@ import coil3.request.placeholder
 import coil3.request.transformations
 import coil3.transform.RoundedCornersTransformation
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.R
-import com.mlord.app.app.core.model.getTitle
-import com.mlord.app.app.core.parser.favicon.faviconUri
-import com.mlord.app.app.core.ui.image.ChipIconTarget
-import com.mlord.app.app.core.ui.list.AdapterDelegateClickListenerAdapter
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.core.util.ext.enqueueWith
-import com.mlord.app.app.core.util.ext.getQuantityStringSafe
-import com.mlord.app.app.core.util.ext.mangaSourceExtra
-import com.mlord.app.app.databinding.ItemMangaAlternativeBinding
-import com.mlord.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.R
+import com.mlord.app.core.model.getTitle
+import com.mlord.app.core.parser.favicon.faviconUri
+import com.mlord.app.core.ui.image.ChipIconTarget
+import com.mlord.app.core.ui.list.AdapterDelegateClickListenerAdapter
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.core.util.ext.enqueueWith
+import com.mlord.app.core.util.ext.getQuantityStringSafe
+import com.mlord.app.core.util.ext.mangaSourceExtra
+import com.mlord.app.databinding.ItemMangaAlternativeBinding
+import com.mlord.app.list.ui.ListModelDiffCallback
+import com.mlord.app.list.ui.model.ListModel
 import kotlin.math.sign
 import com.google.android.material.R as materialR
 

@@ -14,13 +14,13 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.prefs.ListMode
-import com.mlord.app.app.core.ui.sheet.BaseAdaptiveSheet
-import com.mlord.app.app.core.util.ext.consume
-import com.mlord.app.app.core.util.ext.setValueRounded
-import com.mlord.app.app.core.util.progress.IntPercentLabelFormatter
-import com.mlord.app.app.databinding.SheetListModeBinding
+import com.mlord.app.R
+import com.mlord.app.core.prefs.ListMode
+import com.mlord.app.core.ui.sheet.BaseAdaptiveSheet
+import com.mlord.app.core.util.ext.consume
+import com.mlord.app.core.util.ext.setValueRounded
+import com.mlord.app.core.util.progress.IntPercentLabelFormatter
+import com.mlord.app.databinding.SheetListModeBinding
 
 @AndroidEntryPoint
 class ListConfigBottomSheet :

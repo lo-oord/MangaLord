@@ -5,11 +5,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import okio.Closeable
-import com.mlord.app.app.core.db.MangaDatabase
-import com.mlord.app.app.core.db.TABLE_FAVOURITE_CATEGORIES
-import com.mlord.app.app.core.db.removeObserverAsync
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.tracker.domain.TrackingRepository
+import com.mlord.app.core.db.MangaDatabase
+import com.mlord.app.core.db.TABLE_FAVOURITE_CATEGORIES
+import com.mlord.app.core.db.removeObserverAsync
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.tracker.domain.TrackingRepository
 import javax.inject.Inject
 
 @HiltViewModel

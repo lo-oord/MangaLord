@@ -3,9 +3,9 @@ package com.mlord.app.settings.userdata
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.core.ui.BaseViewModel
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.observeAsFlow
+import com.mlord.app.core.ui.BaseViewModel
 import javax.inject.Inject
 
 @HiltViewModel

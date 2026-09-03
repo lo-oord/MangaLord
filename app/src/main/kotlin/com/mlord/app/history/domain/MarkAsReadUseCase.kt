@@ -4,8 +4,8 @@ import dagger.Reusable
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.supervisorScope
-import com.mlord.app.app.core.parser.MangaRepository
-import com.mlord.app.app.history.data.HistoryRepository
+import com.mlord.app.core.parser.MangaRepository
+import com.mlord.app.history.data.HistoryRepository
 import org.koitharu.kotatsu.parsers.model.Manga
 import javax.inject.Inject
 

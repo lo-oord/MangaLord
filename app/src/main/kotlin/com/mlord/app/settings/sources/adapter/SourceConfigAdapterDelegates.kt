@@ -8,14 +8,14 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.R
-import com.mlord.app.app.core.model.getSummary
-import com.mlord.app.app.core.model.getTitle
-import com.mlord.app.app.core.ui.list.OnTipCloseListener
-import com.mlord.app.app.core.util.ext.drawableStart
-import com.mlord.app.app.databinding.ItemSourceConfigBinding
-import com.mlord.app.app.databinding.ItemTipBinding
-import com.mlord.app.app.settings.sources.model.SourceConfigItem
+import com.mlord.app.R
+import com.mlord.app.core.model.getSummary
+import com.mlord.app.core.model.getTitle
+import com.mlord.app.core.ui.list.OnTipCloseListener
+import com.mlord.app.core.util.ext.drawableStart
+import com.mlord.app.databinding.ItemSourceConfigBinding
+import com.mlord.app.databinding.ItemTipBinding
+import com.mlord.app.settings.sources.model.SourceConfigItem
 
 fun sourceConfigItemDelegate2(
 	listener: SourceConfigListener,

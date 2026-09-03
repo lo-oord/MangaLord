@@ -11,9 +11,9 @@ import androidx.core.database.getStringOrNull
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runInterruptible
 import org.jetbrains.annotations.Blocking
-import com.mlord.app.app.R
-import com.mlord.app.app.core.fs.FileSequence
-import com.mlord.app.app.core.util.MimeTypes
+import com.mlord.app.R
+import com.mlord.app.core.fs.FileSequence
+import com.mlord.app.core.util.MimeTypes
 import java.io.BufferedReader
 import java.io.File
 import java.nio.file.attribute.BasicFileAttributes

@@ -1,7 +1,7 @@
 package com.mlord.app.list.ui
 
 import androidx.recyclerview.widget.DiffUtil
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.list.ui.model.ListModel
 
 open class ListModelDiffCallback<T : ListModel> : DiffUtil.ItemCallback<T>() {
 

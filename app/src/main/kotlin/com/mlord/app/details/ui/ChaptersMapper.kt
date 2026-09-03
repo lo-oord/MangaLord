@@ -1,13 +1,13 @@
 package com.mlord.app.details.ui
 
 import android.content.Context
-import com.mlord.app.app.R
-import com.mlord.app.app.bookmarks.domain.Bookmark
-import com.mlord.app.app.details.data.MangaDetails
-import com.mlord.app.app.details.ui.model.ChapterListItem
-import com.mlord.app.app.details.ui.model.toListItem
-import com.mlord.app.app.list.ui.model.ListHeader
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.R
+import com.mlord.app.bookmarks.domain.Bookmark
+import com.mlord.app.details.data.MangaDetails
+import com.mlord.app.details.ui.model.ChapterListItem
+import com.mlord.app.details.ui.model.toListItem
+import com.mlord.app.list.ui.model.ListHeader
+import com.mlord.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.util.mapToSet
 
 fun MangaDetails.mapChapters(

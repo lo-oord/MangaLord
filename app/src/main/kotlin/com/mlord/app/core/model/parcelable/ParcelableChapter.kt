@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.parcelize.Parceler
 import kotlinx.parcelize.Parcelize
-import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.core.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 
 @Parcelize

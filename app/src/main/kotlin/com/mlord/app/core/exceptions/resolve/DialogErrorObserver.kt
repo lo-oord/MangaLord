@@ -5,9 +5,9 @@ import android.view.View
 import androidx.core.util.Consumer
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.core.util.ext.isSerializable
+import com.mlord.app.R
+import com.mlord.app.core.util.ext.getDisplayMessage
+import com.mlord.app.core.util.ext.isSerializable
 import org.koitharu.kotatsu.parsers.exception.ParseException
 
 class DialogErrorObserver(

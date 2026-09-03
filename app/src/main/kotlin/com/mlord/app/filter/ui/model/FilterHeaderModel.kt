@@ -1,6 +1,6 @@
 package com.mlord.app.filter.ui.model
 
-import com.mlord.app.app.core.ui.widgets.ChipsView
+import com.mlord.app.core.ui.widgets.ChipsView
 import org.koitharu.kotatsu.parsers.model.SortOrder
 
 data class FilterHeaderModel(

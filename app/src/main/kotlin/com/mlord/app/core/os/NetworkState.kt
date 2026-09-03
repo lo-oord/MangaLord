@@ -9,8 +9,8 @@ import android.net.NetworkRequest
 import android.os.Build
 import coil3.network.ConnectivityChecker
 import kotlinx.coroutines.flow.first
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.util.MediatorStateFlow
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.util.MediatorStateFlow
 
 class NetworkState(
 	private val connectivityManager: ConnectivityManager,

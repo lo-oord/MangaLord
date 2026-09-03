@@ -7,9 +7,9 @@ import kotlinx.coroutines.plus
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.observeAsStateFlow
-import com.mlord.app.app.core.util.ext.processLifecycleScope
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.observeAsStateFlow
+import com.mlord.app.core.util.ext.processLifecycleScope
 import org.koitharu.kotatsu.parsers.util.await
 import javax.inject.Inject
 import javax.inject.Singleton

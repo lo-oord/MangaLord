@@ -14,8 +14,8 @@ import androidx.annotation.AttrRes
 import androidx.annotation.RequiresApi
 import androidx.core.graphics.PaintCompat
 import com.google.android.material.resources.TextAppearance
-import com.mlord.app.app.core.util.ext.getThemeResId
-import com.mlord.app.app.core.util.ext.hasFocusStateSpecified
+import com.mlord.app.core.util.ext.getThemeResId
+import com.mlord.app.core.util.ext.hasFocusStateSpecified
 
 class TextDrawable(
 	val text: String,

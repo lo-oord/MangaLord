@@ -2,9 +2,9 @@ package com.mlord.app.favourites.ui.container
 
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator.TabConfigurationStrategy
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.ui.util.PopupMenuMediator
+import com.mlord.app.R
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.ui.util.PopupMenuMediator
 
 class FavouritesTabConfigurationStrategy(
 	private val adapter: FavouritesContainerAdapter,

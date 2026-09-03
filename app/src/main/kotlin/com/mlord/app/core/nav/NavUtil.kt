@@ -6,8 +6,8 @@ import android.view.View
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.mlord.app.app.core.util.ext.isAnimationsEnabled
-import com.mlord.app.app.core.util.ext.isOnScreen
+import com.mlord.app.core.util.ext.isAnimationsEnabled
+import com.mlord.app.core.util.ext.isOnScreen
 
 inline val FragmentActivity.router: AppRouter
 	get() = AppRouter(this)

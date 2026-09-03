@@ -16,19 +16,19 @@ import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.ReaderControl
-import com.mlord.app.app.core.util.ext.hasVisibleChildren
-import com.mlord.app.app.core.util.ext.isRtl
-import com.mlord.app.app.core.util.ext.setContentDescriptionAndTooltip
-import com.mlord.app.app.core.util.ext.setTooltipCompat
-import com.mlord.app.app.core.util.ext.setValueRounded
-import com.mlord.app.app.databinding.LayoutReaderActionsBinding
-import com.mlord.app.app.details.ui.pager.ChaptersPagesSheet
-import com.mlord.app.app.details.ui.pager.ChaptersPagesSheet.Companion.TAB_PAGES
-import com.mlord.app.app.reader.ui.ReaderControlDelegate.OnInteractionListener
+import com.mlord.app.R
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.ReaderControl
+import com.mlord.app.core.util.ext.hasVisibleChildren
+import com.mlord.app.core.util.ext.isRtl
+import com.mlord.app.core.util.ext.setContentDescriptionAndTooltip
+import com.mlord.app.core.util.ext.setTooltipCompat
+import com.mlord.app.core.util.ext.setValueRounded
+import com.mlord.app.databinding.LayoutReaderActionsBinding
+import com.mlord.app.details.ui.pager.ChaptersPagesSheet
+import com.mlord.app.details.ui.pager.ChaptersPagesSheet.Companion.TAB_PAGES
+import com.mlord.app.reader.ui.ReaderControlDelegate.OnInteractionListener
 import javax.inject.Inject
 import com.google.android.material.R as materialR
 

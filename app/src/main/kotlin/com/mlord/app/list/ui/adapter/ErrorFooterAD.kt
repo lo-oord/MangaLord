@@ -1,10 +1,10 @@
 package com.mlord.app.list.ui.adapter
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.databinding.ItemErrorFooterBinding
-import com.mlord.app.app.list.ui.model.ErrorFooter
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.core.util.ext.getDisplayMessage
+import com.mlord.app.databinding.ItemErrorFooterBinding
+import com.mlord.app.list.ui.model.ErrorFooter
+import com.mlord.app.list.ui.model.ListModel
 
 fun errorFooterAD(
 	listener: ListStateHolderListener?,

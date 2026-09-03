@@ -1,7 +1,7 @@
 package com.mlord.app.details.domain
 
-import com.mlord.app.app.core.util.LocaleStringComparator
-import com.mlord.app.app.details.ui.model.MangaBranch
+import com.mlord.app.core.util.LocaleStringComparator
+import com.mlord.app.details.ui.model.MangaBranch
 
 class BranchComparator : Comparator<MangaBranch> {
 

@@ -1,8 +1,8 @@
 package com.mlord.app.settings.utils.validation
 
 import okhttp3.HttpUrl
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.EditTextValidator
+import com.mlord.app.R
+import com.mlord.app.core.util.EditTextValidator
 
 class DomainValidator : EditTextValidator() {
 

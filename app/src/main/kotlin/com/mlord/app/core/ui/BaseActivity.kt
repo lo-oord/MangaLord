@@ -22,13 +22,13 @@ import androidx.viewbinding.ViewBinding
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
-import com.mlord.app.app.BuildConfig
-import com.mlord.app.app.R
-import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.ui.util.ActionModeDelegate
-import com.mlord.app.app.core.util.ext.isWebViewUnavailable
-import com.mlord.app.app.main.ui.protect.ScreenshotPolicyHelper
+import com.mlord.app.BuildConfig
+import com.mlord.app.R
+import com.mlord.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.ui.util.ActionModeDelegate
+import com.mlord.app.core.util.ext.isWebViewUnavailable
+import com.mlord.app.main.ui.protect.ScreenshotPolicyHelper
 import androidx.appcompat.R as appcompatR
 
 abstract class BaseActivity<B : ViewBinding> :

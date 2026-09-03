@@ -3,9 +3,9 @@ package com.mlord.app.bookmarks.ui
 import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.bookmarks.domain.Bookmark
-import com.mlord.app.app.core.util.ext.getItem
-import com.mlord.app.app.list.ui.MangaSelectionDecoration
+import com.mlord.app.bookmarks.domain.Bookmark
+import com.mlord.app.core.util.ext.getItem
+import com.mlord.app.list.ui.MangaSelectionDecoration
 
 class BookmarksSelectionDecoration(context: Context) : MangaSelectionDecoration(context) {
 

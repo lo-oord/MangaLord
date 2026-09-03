@@ -51,9 +51,9 @@ import okio.IOException
 import okio.use
 import org.json.JSONException
 import org.jsoup.internal.StringUtil.StringJoiner
-import com.mlord.app.app.BuildConfig
-import com.mlord.app.app.R
-import com.mlord.app.app.main.ui.MainActivity
+import com.mlord.app.BuildConfig
+import com.mlord.app.R
+import com.mlord.app.main.ui.MainActivity
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException

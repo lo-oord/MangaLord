@@ -11,8 +11,8 @@ import coil3.toAndroidUri
 import kotlinx.coroutines.runInterruptible
 import okio.Path.Companion.toPath
 import okio.openZip
-import com.mlord.app.app.core.util.MimeTypes
-import com.mlord.app.app.core.util.ext.isZipUri
+import com.mlord.app.core.util.MimeTypes
+import com.mlord.app.core.util.ext.isZipUri
 import coil3.Uri as CoilUri
 
 class CbzFetcher(

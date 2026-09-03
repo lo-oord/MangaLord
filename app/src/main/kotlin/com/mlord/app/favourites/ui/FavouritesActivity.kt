@@ -1,9 +1,9 @@
 package com.mlord.app.favourites.ui
 
 import android.os.Bundle
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.ui.FragmentContainerActivity
-import com.mlord.app.app.favourites.ui.list.FavouritesListFragment
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.ui.FragmentContainerActivity
+import com.mlord.app.favourites.ui.list.FavouritesListFragment
 
 class FavouritesActivity : FragmentContainerActivity(FavouritesListFragment::class.java) {
 

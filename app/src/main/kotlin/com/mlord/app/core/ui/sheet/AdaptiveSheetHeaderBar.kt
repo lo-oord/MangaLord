@@ -14,8 +14,8 @@ import androidx.core.content.withStyledAttributes
 import androidx.core.view.ancestors
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
-import com.mlord.app.app.R
-import com.mlord.app.app.databinding.LayoutSheetHeaderAdaptiveBinding
+import com.mlord.app.R
+import com.mlord.app.databinding.LayoutSheetHeaderAdaptiveBinding
 
 class AdaptiveSheetHeaderBar @JvmOverloads constructor(
 	context: Context,

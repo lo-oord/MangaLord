@@ -1,8 +1,8 @@
 package com.mlord.app.widget.shelf.adapter
 
-import com.mlord.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.widget.shelf.model.CategoryItem
+import com.mlord.app.core.ui.BaseListAdapter
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.widget.shelf.model.CategoryItem
 
 class CategorySelectAdapter(
 	clickListener: OnListItemClickListener<CategoryItem>

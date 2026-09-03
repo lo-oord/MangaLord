@@ -13,10 +13,10 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.ScreenshotsPolicy
-import com.mlord.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.core.ui.DefaultActivityLifecycleCallbacks
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.ScreenshotsPolicy
+import com.mlord.app.core.prefs.observeAsFlow
+import com.mlord.app.core.ui.DefaultActivityLifecycleCallbacks
 import javax.inject.Inject
 
 class ScreenshotPolicyHelper @Inject constructor(

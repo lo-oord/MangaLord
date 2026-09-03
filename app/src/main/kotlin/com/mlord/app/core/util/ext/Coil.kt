@@ -16,8 +16,8 @@ import coil3.request.SuccessResult
 import coil3.request.bitmapConfig
 import coil3.toBitmap
 import okio.buffer
-import com.mlord.app.app.bookmarks.domain.Bookmark
-import com.mlord.app.app.core.image.RegionBitmapDecoder
+import com.mlord.app.bookmarks.domain.Bookmark
+import com.mlord.app.core.image.RegionBitmapDecoder
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaSource
 

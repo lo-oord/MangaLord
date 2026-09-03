@@ -3,10 +3,10 @@ package com.mlord.app.picker.ui.manga
 import android.view.View
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.list.ui.MangaListFragment
-import com.mlord.app.app.list.ui.model.MangaListModel
-import com.mlord.app.app.picker.ui.PageImagePickActivity
+import com.mlord.app.R
+import com.mlord.app.list.ui.MangaListFragment
+import com.mlord.app.list.ui.model.MangaListModel
+import com.mlord.app.picker.ui.PageImagePickActivity
 
 @AndroidEntryPoint
 class MangaPickerFragment : MangaListFragment() {

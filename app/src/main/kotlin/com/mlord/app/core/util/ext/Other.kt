@@ -1,6 +1,6 @@
 package com.mlord.app.core.util.ext
 
-import com.mlord.app.app.core.io.NullOutputStream
+import com.mlord.app.core.io.NullOutputStream
 import java.io.ObjectOutputStream
 
 @Suppress("UNCHECKED_CAST")

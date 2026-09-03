@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.mlord.app.app.core.util.ext.getThemeColor
+import com.mlord.app.core.util.ext.getThemeColor
 import com.google.android.material.R as materialR
 
 class ActionModeDelegate : OnBackPressedCallback(false) {

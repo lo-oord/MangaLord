@@ -1,6 +1,6 @@
 package com.mlord.app.core.db.entity
 
-import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.core.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.ContentRating
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter

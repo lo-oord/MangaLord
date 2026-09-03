@@ -3,9 +3,9 @@ package com.mlord.app.tracker.data
 import androidx.room.Embedded
 import androidx.room.Junction
 import androidx.room.Relation
-import com.mlord.app.app.core.db.entity.MangaEntity
-import com.mlord.app.app.core.db.entity.MangaTagsEntity
-import com.mlord.app.app.core.db.entity.TagEntity
+import com.mlord.app.core.db.entity.MangaEntity
+import com.mlord.app.core.db.entity.MangaTagsEntity
+import com.mlord.app.core.db.entity.TagEntity
 
 class MangaWithTrack(
 	@Embedded val track: TrackEntity,

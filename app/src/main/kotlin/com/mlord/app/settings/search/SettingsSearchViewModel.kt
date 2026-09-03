@@ -8,9 +8,9 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
 import javax.inject.Inject
 
 @HiltViewModel

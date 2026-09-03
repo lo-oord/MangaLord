@@ -12,7 +12,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.StyleRes
 import androidx.core.content.withStyledAttributes
 import androidx.preference.EditTextPreference
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 class AutoCompleteTextViewPreference @JvmOverloads constructor(
 	context: Context,

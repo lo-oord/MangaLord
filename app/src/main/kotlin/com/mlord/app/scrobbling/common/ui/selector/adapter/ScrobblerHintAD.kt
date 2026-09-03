@@ -1,13 +1,13 @@
 package com.mlord.app.scrobbling.common.ui.selector.adapter
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.core.util.ext.setTextAndVisible
-import com.mlord.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.databinding.ItemEmptyHintBinding
-import com.mlord.app.app.list.ui.adapter.ListStateHolderListener
-import com.mlord.app.app.list.ui.model.ListModel
-import com.mlord.app.app.scrobbling.common.ui.selector.model.ScrobblerHint
+import com.mlord.app.core.util.ext.getDisplayMessage
+import com.mlord.app.core.util.ext.setTextAndVisible
+import com.mlord.app.core.util.ext.textAndVisible
+import com.mlord.app.databinding.ItemEmptyHintBinding
+import com.mlord.app.list.ui.adapter.ListStateHolderListener
+import com.mlord.app.list.ui.model.ListModel
+import com.mlord.app.scrobbling.common.ui.selector.model.ScrobblerHint
 
 fun scrobblerHintAD(
 	listener: ListStateHolderListener,

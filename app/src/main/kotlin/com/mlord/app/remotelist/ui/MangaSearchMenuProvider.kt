@@ -6,11 +6,11 @@ import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.core.view.inputmethod.EditorInfoCompat
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.util.ReversibleAction
-import com.mlord.app.app.core.util.ext.call
-import com.mlord.app.app.filter.ui.FilterCoordinator
-import com.mlord.app.app.list.ui.MangaListViewModel
+import com.mlord.app.R
+import com.mlord.app.core.ui.util.ReversibleAction
+import com.mlord.app.core.util.ext.call
+import com.mlord.app.filter.ui.FilterCoordinator
+import com.mlord.app.list.ui.MangaListViewModel
 import org.koitharu.kotatsu.parsers.model.MangaListFilter
 
 class MangaSearchMenuProvider(

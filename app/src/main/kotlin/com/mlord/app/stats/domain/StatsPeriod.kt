@@ -1,7 +1,7 @@
 package com.mlord.app.stats.domain
 
 import androidx.annotation.StringRes
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 enum class StatsPeriod(
 	@StringRes val titleResId: Int,

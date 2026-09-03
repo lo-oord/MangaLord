@@ -9,9 +9,9 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.navigation.NavigationBarView
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ext.getAnimationDuration
-import com.mlord.app.app.core.util.ext.measureHeight
+import com.mlord.app.R
+import com.mlord.app.core.util.ext.getAnimationDuration
+import com.mlord.app.core.util.ext.measureHeight
 
 class HideBottomNavigationOnScrollBehavior @JvmOverloads constructor(
 	context: Context? = null,

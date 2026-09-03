@@ -1,6 +1,6 @@
 package com.mlord.app.scrobbling.anilist.data
 
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.util.ext.printStackTraceDebug
 
 enum class ScoreFormat {
 

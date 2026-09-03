@@ -1,6 +1,6 @@
 package com.mlord.app.reader.ui
 
-import com.mlord.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.reader.ui.pager.ReaderPage
 
 data class ReaderContent(
 	val pages: List<ReaderPage>,

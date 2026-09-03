@@ -17,7 +17,7 @@ import coil3.util.component2
 import com.davemorrissey.labs.subscaleview.decoder.ImageDecodeException
 import kotlinx.coroutines.runInterruptible
 import org.aomedia.avif.android.AvifDecoder
-import com.mlord.app.app.core.util.ext.readByteBuffer
+import com.mlord.app.core.util.ext.readByteBuffer
 
 class AvifImageDecoder(
 	private val source: ImageSource,

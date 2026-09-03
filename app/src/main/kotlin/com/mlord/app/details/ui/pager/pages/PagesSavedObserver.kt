@@ -4,8 +4,8 @@ import android.net.Uri
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.FlowCollector
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ShareHelper
+import com.mlord.app.R
+import com.mlord.app.core.util.ShareHelper
 
 class PagesSavedObserver(
 	private val snackbarHost: View,

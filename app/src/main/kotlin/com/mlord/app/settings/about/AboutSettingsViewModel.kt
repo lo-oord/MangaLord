@@ -5,11 +5,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
-import com.mlord.app.app.core.github.AppUpdateRepository
-import com.mlord.app.app.core.github.AppVersion
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.core.github.AppUpdateRepository
+import com.mlord.app.core.github.AppVersion
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
 import javax.inject.Inject
 
 @HiltViewModel

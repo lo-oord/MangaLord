@@ -3,7 +3,7 @@ package com.mlord.app.reader.ui.tapgrid
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
-import com.mlord.app.app.reader.domain.TapGridArea
+import com.mlord.app.reader.domain.TapGridArea
 import kotlin.math.roundToInt
 
 class TapGridDispatcher(

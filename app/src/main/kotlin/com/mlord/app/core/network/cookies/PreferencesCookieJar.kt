@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.Cookie
 import okhttp3.HttpUrl
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.util.ext.printStackTraceDebug
 
 private const val PREFS_NAME = "cookies"
 

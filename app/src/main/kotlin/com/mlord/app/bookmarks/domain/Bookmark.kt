@@ -1,8 +1,8 @@
 package com.mlord.app.bookmarks.domain
 
-import com.mlord.app.app.core.util.MimeTypes
-import com.mlord.app.app.core.util.ext.isImage
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.core.util.MimeTypes
+import com.mlord.app.core.util.ext.isImage
+import com.mlord.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaPage
 import java.time.Instant

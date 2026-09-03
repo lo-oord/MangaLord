@@ -17,9 +17,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.savedstate.SavedStateRegistry
 import androidx.savedstate.SavedStateRegistryOwner
 import kotlinx.coroutines.Dispatchers
-import com.mlord.app.app.core.ui.list.decor.AbstractSelectionItemDecoration
-import com.mlord.app.app.core.util.ext.toLongArray
-import com.mlord.app.app.core.util.ext.toSet
+import com.mlord.app.core.ui.list.decor.AbstractSelectionItemDecoration
+import com.mlord.app.core.util.ext.toLongArray
+import com.mlord.app.core.util.ext.toSet
 import kotlin.coroutines.EmptyCoroutineContext
 
 private const val KEY_SELECTION = "selection"

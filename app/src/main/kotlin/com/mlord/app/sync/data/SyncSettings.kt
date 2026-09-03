@@ -5,8 +5,8 @@ import android.accounts.AccountManager
 import android.content.Context
 import androidx.annotation.WorkerThread
 import dagger.hilt.android.qualifiers.ApplicationContext
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ext.isHttpUrl
+import com.mlord.app.R
+import com.mlord.app.core.util.ext.isHttpUrl
 import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 import javax.inject.Inject
 

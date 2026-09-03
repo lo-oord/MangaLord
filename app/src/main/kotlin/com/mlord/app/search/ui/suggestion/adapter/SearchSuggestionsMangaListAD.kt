@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.list.decor.SpacingItemDecoration
-import com.mlord.app.app.core.util.RecyclerViewScrollCallback
-import com.mlord.app.app.core.util.ext.setTooltipCompat
-import com.mlord.app.app.databinding.ItemSearchSuggestionMangaGridBinding
+import com.mlord.app.R
+import com.mlord.app.core.ui.list.decor.SpacingItemDecoration
+import com.mlord.app.core.util.RecyclerViewScrollCallback
+import com.mlord.app.core.util.ext.setTooltipCompat
+import com.mlord.app.databinding.ItemSearchSuggestionMangaGridBinding
 import org.koitharu.kotatsu.parsers.model.Manga
-import com.mlord.app.app.search.ui.suggestion.SearchSuggestionListener
-import com.mlord.app.app.search.ui.suggestion.model.SearchSuggestionItem
+import com.mlord.app.search.ui.suggestion.SearchSuggestionListener
+import com.mlord.app.search.ui.suggestion.model.SearchSuggestionItem
 
 fun searchSuggestionMangaListAD(
 	listener: SearchSuggestionListener,

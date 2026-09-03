@@ -1,7 +1,7 @@
 package com.mlord.app.core.db
 
 import androidx.sqlite.db.SimpleSQLiteQuery
-import com.mlord.app.app.list.domain.ListFilterOption
+import com.mlord.app.list.domain.ListFilterOption
 import java.util.LinkedList
 
 class MangaQueryBuilder(

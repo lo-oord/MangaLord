@@ -1,5 +1,5 @@
 package com.mlord.app.bookmarks.ui
 
-import com.mlord.app.app.core.ui.FragmentContainerActivity
+import com.mlord.app.core.ui.FragmentContainerActivity
 
 class AllBookmarksActivity : FragmentContainerActivity(AllBookmarksFragment::class.java)

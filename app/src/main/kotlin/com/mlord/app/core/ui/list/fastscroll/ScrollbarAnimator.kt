@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewPropertyAnimator
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ext.animatorDurationScale
+import com.mlord.app.R
+import com.mlord.app.core.util.ext.animatorDurationScale
 
 class ScrollbarAnimator(
 	private val scrollbar: View,

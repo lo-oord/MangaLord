@@ -10,10 +10,10 @@ import androidx.room.Transaction
 import androidx.room.Update
 import androidx.sqlite.db.SupportSQLiteQuery
 import kotlinx.coroutines.flow.Flow
-import com.mlord.app.app.core.db.MangaQueryBuilder
-import com.mlord.app.app.core.db.entity.MangaWithTags
-import com.mlord.app.app.core.db.entity.TagEntity
-import com.mlord.app.app.list.domain.ListFilterOption
+import com.mlord.app.core.db.MangaQueryBuilder
+import com.mlord.app.core.db.entity.MangaWithTags
+import com.mlord.app.core.db.entity.TagEntity
+import com.mlord.app.list.domain.ListFilterOption
 
 @Dao
 abstract class SuggestionDao : MangaQueryBuilder.ConditionCallback {

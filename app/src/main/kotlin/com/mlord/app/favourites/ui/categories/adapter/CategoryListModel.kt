@@ -1,9 +1,9 @@
 package com.mlord.app.favourites.ui.categories.adapter
 
-import com.mlord.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.favourites.domain.model.Cover
-import com.mlord.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.core.model.FavouriteCategory
+import com.mlord.app.favourites.domain.model.Cover
+import com.mlord.app.list.ui.ListModelDiffCallback
+import com.mlord.app.list.ui.model.ListModel
 
 class CategoryListModel(
 	val mangaCount: Int,

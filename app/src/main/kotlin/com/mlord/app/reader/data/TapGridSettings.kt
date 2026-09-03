@@ -7,12 +7,12 @@ import dagger.Reusable
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
-import com.mlord.app.app.core.util.ext.getEnumValue
-import com.mlord.app.app.core.util.ext.observeChanges
-import com.mlord.app.app.core.util.ext.putAll
-import com.mlord.app.app.core.util.ext.putEnumValue
-import com.mlord.app.app.reader.domain.TapGridArea
-import com.mlord.app.app.reader.ui.tapgrid.TapAction
+import com.mlord.app.core.util.ext.getEnumValue
+import com.mlord.app.core.util.ext.observeChanges
+import com.mlord.app.core.util.ext.putAll
+import com.mlord.app.core.util.ext.putEnumValue
+import com.mlord.app.reader.domain.TapGridArea
+import com.mlord.app.reader.ui.tapgrid.TapAction
 import javax.inject.Inject
 
 @Reusable

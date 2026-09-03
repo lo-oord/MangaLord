@@ -1,6 +1,6 @@
 package com.mlord.app.core.exceptions
 
-import com.mlord.app.app.core.model.UnknownMangaSource
+import com.mlord.app.core.model.UnknownMangaSource
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
 

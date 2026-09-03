@@ -2,10 +2,10 @@ package com.mlord.app.backups.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import com.mlord.app.app.core.db.entity.MangaWithTags
-import com.mlord.app.app.history.data.HistoryEntity
-import com.mlord.app.app.history.data.HistoryWithManga
-import com.mlord.app.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
+import com.mlord.app.core.db.entity.MangaWithTags
+import com.mlord.app.history.data.HistoryEntity
+import com.mlord.app.history.data.HistoryWithManga
+import com.mlord.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
 
 @Serializable
 class HistoryBackup(

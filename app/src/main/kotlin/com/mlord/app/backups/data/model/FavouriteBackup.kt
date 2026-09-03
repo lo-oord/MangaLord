@@ -2,9 +2,9 @@ package com.mlord.app.backups.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import com.mlord.app.app.core.db.entity.MangaWithTags
-import com.mlord.app.app.favourites.data.FavouriteEntity
-import com.mlord.app.app.favourites.data.FavouriteManga
+import com.mlord.app.core.db.entity.MangaWithTags
+import com.mlord.app.favourites.data.FavouriteEntity
+import com.mlord.app.favourites.data.FavouriteManga
 
 @Serializable
 class FavouriteBackup(

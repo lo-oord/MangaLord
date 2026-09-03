@@ -2,10 +2,10 @@ package com.mlord.app.list.ui.adapter
 
 import androidx.core.view.isVisible
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.core.util.ext.setTextAndVisible
-import com.mlord.app.app.databinding.ItemEmptyStateBinding
-import com.mlord.app.app.list.ui.model.EmptyState
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.core.util.ext.setTextAndVisible
+import com.mlord.app.databinding.ItemEmptyStateBinding
+import com.mlord.app.list.ui.model.EmptyState
+import com.mlord.app.list.ui.model.ListModel
 
 fun emptyStateListAD(
 	listener: ListStateHolderListener?,

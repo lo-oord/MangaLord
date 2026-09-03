@@ -1,7 +1,7 @@
 package com.mlord.app.list.ui.adapter
 
 import android.view.View
-import com.mlord.app.app.core.ui.widgets.TipView
+import com.mlord.app.core.ui.widgets.TipView
 
 interface MangaListListener : MangaDetailsClickListener, ListStateHolderListener, ListHeaderClickListener,
 	TipView.OnButtonClickListener, QuickFilterClickListener {

@@ -3,12 +3,12 @@ package com.mlord.app.reader.ui.pager.webtoon
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
-import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.core.os.NetworkState
-import com.mlord.app.app.databinding.ItemPageWebtoonBinding
-import com.mlord.app.app.reader.domain.PageLoader
-import com.mlord.app.app.reader.ui.config.ReaderSettings
-import com.mlord.app.app.reader.ui.pager.BaseReaderAdapter
+import com.mlord.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.core.os.NetworkState
+import com.mlord.app.databinding.ItemPageWebtoonBinding
+import com.mlord.app.reader.domain.PageLoader
+import com.mlord.app.reader.ui.config.ReaderSettings
+import com.mlord.app.reader.ui.pager.BaseReaderAdapter
 
 class WebtoonAdapter(
 	private val lifecycleOwner: LifecycleOwner,

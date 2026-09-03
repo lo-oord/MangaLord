@@ -10,7 +10,7 @@ import androidx.customview.view.AbsSavedState
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.textview.MaterialTextView
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 class BadgeView @JvmOverloads constructor(
 	context: Context,

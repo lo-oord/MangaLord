@@ -8,7 +8,7 @@ import androidx.core.view.ancestors
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 class FastScrollRecyclerView @JvmOverloads constructor(
 	context: Context,

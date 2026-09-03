@@ -3,7 +3,7 @@ package com.mlord.app.core.ui.util
 import android.app.Activity
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
-import com.mlord.app.app.core.ui.DefaultActivityLifecycleCallbacks
+import com.mlord.app.core.ui.DefaultActivityLifecycleCallbacks
 import java.util.WeakHashMap
 import javax.inject.Inject
 import javax.inject.Singleton

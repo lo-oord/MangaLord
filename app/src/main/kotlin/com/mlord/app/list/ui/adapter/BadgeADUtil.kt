@@ -9,7 +9,7 @@ import androidx.core.view.doOnNextLayout
 import com.google.android.material.badge.BadgeDrawable
 import com.google.android.material.badge.BadgeUtils
 import com.google.android.material.badge.ExperimentalBadgeUtils
-import com.mlord.app.app.R
+import com.mlord.app.R
 import org.koitharu.kotatsu.parsers.util.nullIfEmpty
 
 @Deprecated("")

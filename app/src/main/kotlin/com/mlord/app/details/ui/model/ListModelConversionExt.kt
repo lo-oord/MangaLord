@@ -1,11 +1,11 @@
 package com.mlord.app.details.ui.model
 
-import com.mlord.app.app.details.ui.model.ChapterListItem.Companion.FLAG_BOOKMARKED
-import com.mlord.app.app.details.ui.model.ChapterListItem.Companion.FLAG_CURRENT
-import com.mlord.app.app.details.ui.model.ChapterListItem.Companion.FLAG_DOWNLOADED
-import com.mlord.app.app.details.ui.model.ChapterListItem.Companion.FLAG_GRID
-import com.mlord.app.app.details.ui.model.ChapterListItem.Companion.FLAG_NEW
-import com.mlord.app.app.details.ui.model.ChapterListItem.Companion.FLAG_UNREAD
+import com.mlord.app.details.ui.model.ChapterListItem.Companion.FLAG_BOOKMARKED
+import com.mlord.app.details.ui.model.ChapterListItem.Companion.FLAG_CURRENT
+import com.mlord.app.details.ui.model.ChapterListItem.Companion.FLAG_DOWNLOADED
+import com.mlord.app.details.ui.model.ChapterListItem.Companion.FLAG_GRID
+import com.mlord.app.details.ui.model.ChapterListItem.Companion.FLAG_NEW
+import com.mlord.app.details.ui.model.ChapterListItem.Companion.FLAG_UNREAD
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import kotlin.experimental.or
 

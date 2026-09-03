@@ -7,8 +7,8 @@ import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.withContext
-import com.mlord.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.list.ui.adapter.ListItemType
+import com.mlord.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.util.move
 import java.util.LinkedList
 

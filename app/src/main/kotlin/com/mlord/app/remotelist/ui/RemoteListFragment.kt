@@ -11,22 +11,22 @@ import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.drop
-import com.mlord.app.app.R
-import com.mlord.app.app.core.model.getTitle
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.ui.list.ListSelectionController
-import com.mlord.app.app.core.ui.util.MenuInvalidator
-import com.mlord.app.app.core.util.ext.addMenuProvider
-import com.mlord.app.app.core.util.ext.getCauseUrl
-import com.mlord.app.app.core.util.ext.isHttpUrl
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.core.util.ext.withArgs
-import com.mlord.app.app.databinding.FragmentListBinding
-import com.mlord.app.app.filter.ui.FilterCoordinator
-import com.mlord.app.app.list.ui.MangaListFragment
+import com.mlord.app.R
+import com.mlord.app.core.model.getTitle
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.ui.list.ListSelectionController
+import com.mlord.app.core.ui.util.MenuInvalidator
+import com.mlord.app.core.util.ext.addMenuProvider
+import com.mlord.app.core.util.ext.getCauseUrl
+import com.mlord.app.core.util.ext.isHttpUrl
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.core.util.ext.withArgs
+import com.mlord.app.databinding.FragmentListBinding
+import com.mlord.app.filter.ui.FilterCoordinator
+import com.mlord.app.list.ui.MangaListFragment
 import org.koitharu.kotatsu.parsers.model.MangaSource
-import com.mlord.app.app.search.domain.SearchKind
+import com.mlord.app.search.domain.SearchKind
 
 @AndroidEntryPoint
 class RemoteListFragment : MangaListFragment(), FilterCoordinator.Owner, View.OnClickListener {

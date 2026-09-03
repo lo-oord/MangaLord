@@ -4,7 +4,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.view.MenuProvider
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 class ReaderMenuProvider(
 	private val viewModel: ReaderViewModel,

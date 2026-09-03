@@ -2,10 +2,10 @@ package com.mlord.app.search.ui.multi
 
 import android.content.Context
 import androidx.annotation.StringRes
-import com.mlord.app.app.core.model.getTitle
-import com.mlord.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.list.ui.model.ListModel
-import com.mlord.app.app.list.ui.model.MangaListModel
+import com.mlord.app.core.model.getTitle
+import com.mlord.app.list.ui.ListModelDiffCallback
+import com.mlord.app.list.ui.model.ListModel
+import com.mlord.app.list.ui.model.MangaListModel
 import org.koitharu.kotatsu.parsers.model.MangaListFilter
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.SortOrder

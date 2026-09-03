@@ -5,12 +5,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.core.util.ext.processLifecycleScope
-import com.mlord.app.app.history.data.HistoryRepository
+import com.mlord.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.util.ext.processLifecycleScope
+import com.mlord.app.history.data.HistoryRepository
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.reader.ui.ReaderState
+import com.mlord.app.reader.ui.ReaderState
 import javax.inject.Inject
 
 class HistoryUpdateUseCase @Inject constructor(

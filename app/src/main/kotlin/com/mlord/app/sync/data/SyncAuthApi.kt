@@ -4,9 +4,9 @@ import dagger.Reusable
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
-import com.mlord.app.app.core.exceptions.SyncApiException
-import com.mlord.app.app.core.network.BaseHttpClient
-import com.mlord.app.app.core.util.ext.toRequestBody
+import com.mlord.app.core.exceptions.SyncApiException
+import com.mlord.app.core.network.BaseHttpClient
+import com.mlord.app.core.util.ext.toRequestBody
 import org.koitharu.kotatsu.parsers.util.await
 import org.koitharu.kotatsu.parsers.util.parseJson
 import org.koitharu.kotatsu.parsers.util.parseRaw

@@ -14,13 +14,13 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
-import com.mlord.app.app.R
-import com.mlord.app.app.core.model.LocalMangaSource
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.os.AppShortcutManager
-import com.mlord.app.app.core.ui.dialog.buildAlertDialog
-import com.mlord.app.app.core.util.ext.isHttpUrl
+import com.mlord.app.R
+import com.mlord.app.core.model.LocalMangaSource
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.os.AppShortcutManager
+import com.mlord.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.core.util.ext.isHttpUrl
 
 class DetailsMenuProvider(
 	private val activity: FragmentActivity,

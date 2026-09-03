@@ -7,14 +7,14 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.app.PendingIntentCompat
 import androidx.core.app.ShareCompat
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ErrorReporterReceiver
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.ui.CoroutineIntentService
-import com.mlord.app.app.core.util.CompositeResult
-import com.mlord.app.app.core.util.ext.checkNotificationPermission
-import com.mlord.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.core.util.ext.getFileDisplayName
+import com.mlord.app.R
+import com.mlord.app.core.ErrorReporterReceiver
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.ui.CoroutineIntentService
+import com.mlord.app.core.util.CompositeResult
+import com.mlord.app.core.util.ext.checkNotificationPermission
+import com.mlord.app.core.util.ext.getDisplayMessage
+import com.mlord.app.core.util.ext.getFileDisplayName
 import androidx.appcompat.R as appcompatR
 
 abstract class BaseBackupRestoreService : CoroutineIntentService() {

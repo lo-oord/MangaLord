@@ -1,6 +1,6 @@
 package com.mlord.app.history.data
 
-import com.mlord.app.app.core.model.MangaHistory
+import com.mlord.app.core.model.MangaHistory
 import java.time.Instant
 
 fun HistoryEntity.toMangaHistory() = MangaHistory(

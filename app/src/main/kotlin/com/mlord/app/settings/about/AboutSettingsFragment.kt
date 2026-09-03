@@ -10,16 +10,16 @@ import androidx.preference.SwitchPreferenceCompat
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.combine
-import com.mlord.app.app.BuildConfig
-import com.mlord.app.app.R
-import com.mlord.app.app.core.github.AppVersion
-import com.mlord.app.app.core.github.VersionId
-import com.mlord.app.app.core.github.isStable
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
+import com.mlord.app.BuildConfig
+import com.mlord.app.R
+import com.mlord.app.core.github.AppVersion
+import com.mlord.app.core.github.VersionId
+import com.mlord.app.core.github.isStable
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.ui.BasePreferenceFragment
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
 
 @AndroidEntryPoint
 class AboutSettingsFragment : BasePreferenceFragment(R.string.about) {

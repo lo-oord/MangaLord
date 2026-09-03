@@ -2,7 +2,7 @@ package com.mlord.app.reader.ui.pager.vertical
 
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.reader.ui.pager.BasePagerReaderFragment
+import com.mlord.app.reader.ui.pager.BasePagerReaderFragment
 
 @AndroidEntryPoint
 class VerticalReaderFragment : BasePagerReaderFragment() {

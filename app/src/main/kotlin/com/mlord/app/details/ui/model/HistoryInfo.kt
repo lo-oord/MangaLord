@@ -1,8 +1,8 @@
 package com.mlord.app.details.ui.model
 
-import com.mlord.app.app.core.model.MangaHistory
-import com.mlord.app.app.details.data.MangaDetails
-import com.mlord.app.app.details.data.ReadingTime
+import com.mlord.app.core.model.MangaHistory
+import com.mlord.app.details.data.MangaDetails
+import com.mlord.app.details.data.ReadingTime
 
 data class HistoryInfo(
 	val totalChapters: Int,

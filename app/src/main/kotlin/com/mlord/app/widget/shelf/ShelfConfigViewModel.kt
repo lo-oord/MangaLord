@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.favourites.domain.FavouritesRepository
-import com.mlord.app.app.widget.shelf.model.CategoryItem
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.favourites.domain.FavouritesRepository
+import com.mlord.app.widget.shelf.model.CategoryItem
 import javax.inject.Inject
 
 @HiltViewModel

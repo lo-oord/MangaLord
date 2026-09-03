@@ -2,7 +2,7 @@ package com.mlord.app.core.prefs
 
 import androidx.annotation.Keep
 import androidx.annotation.StringRes
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 @Keep
 enum class SearchSuggestionType(

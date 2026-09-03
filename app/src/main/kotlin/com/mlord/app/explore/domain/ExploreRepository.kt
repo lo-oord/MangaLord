@@ -1,18 +1,18 @@
 package com.mlord.app.explore.domain
 
-import com.mlord.app.app.core.model.isNsfw
-import com.mlord.app.app.core.parser.MangaRepository
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.util.ext.asArrayList
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.explore.data.MangaSourcesRepository
-import com.mlord.app.app.history.data.HistoryRepository
+import com.mlord.app.core.model.isNsfw
+import com.mlord.app.core.parser.MangaRepository
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.util.ext.asArrayList
+import com.mlord.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.explore.data.MangaSourcesRepository
+import com.mlord.app.history.data.HistoryRepository
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaListFilter
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.util.almostEquals
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.suggestions.domain.TagsBlacklist
+import com.mlord.app.suggestions.domain.TagsBlacklist
 import javax.inject.Inject
 
 class ExploreRepository @Inject constructor(

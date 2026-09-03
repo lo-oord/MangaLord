@@ -1,8 +1,8 @@
 package com.mlord.app.search.ui.suggestion.adapter
 
-import com.mlord.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.search.ui.suggestion.SearchSuggestionListener
-import com.mlord.app.app.search.ui.suggestion.model.SearchSuggestionItem
+import com.mlord.app.core.ui.BaseListAdapter
+import com.mlord.app.search.ui.suggestion.SearchSuggestionListener
+import com.mlord.app.search.ui.suggestion.model.SearchSuggestionItem
 
 const val SEARCH_SUGGESTION_ITEM_TYPE_QUERY = 0
 

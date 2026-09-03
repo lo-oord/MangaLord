@@ -9,11 +9,11 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import androidx.core.text.inSpans
-import com.mlord.app.app.R
-import com.mlord.app.app.core.parser.external.ExternalMangaSource
-import com.mlord.app.app.core.util.ext.getDisplayName
-import com.mlord.app.app.core.util.ext.toLocale
-import com.mlord.app.app.core.util.ext.toLocaleOrNull
+import com.mlord.app.R
+import com.mlord.app.core.parser.external.ExternalMangaSource
+import com.mlord.app.core.util.ext.getDisplayName
+import com.mlord.app.core.util.ext.toLocale
+import com.mlord.app.core.util.ext.toLocaleOrNull
 import org.koitharu.kotatsu.parsers.model.ContentType
 import org.koitharu.kotatsu.parsers.model.MangaParserSource
 import org.koitharu.kotatsu.parsers.model.MangaSource

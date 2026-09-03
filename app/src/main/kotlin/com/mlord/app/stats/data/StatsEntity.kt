@@ -3,7 +3,7 @@ package com.mlord.app.stats.data
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
-import com.mlord.app.app.history.data.HistoryEntity
+import com.mlord.app.history.data.HistoryEntity
 
 @Entity(
 	tableName = "stats",

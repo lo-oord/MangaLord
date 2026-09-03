@@ -3,10 +3,10 @@ package com.mlord.app.list.ui.model
 import android.content.Context
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
-import com.mlord.app.app.core.model.getTitle
-import com.mlord.app.app.core.model.withOverride
-import com.mlord.app.app.core.ui.model.MangaOverride
-import com.mlord.app.app.list.ui.ListModelDiffCallback.Companion.PAYLOAD_ANYTHING_CHANGED
+import com.mlord.app.core.model.getTitle
+import com.mlord.app.core.model.withOverride
+import com.mlord.app.core.ui.model.MangaOverride
+import com.mlord.app.list.ui.ListModelDiffCallback.Companion.PAYLOAD_ANYTHING_CHANGED
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty

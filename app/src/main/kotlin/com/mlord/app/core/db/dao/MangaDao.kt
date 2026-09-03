@@ -8,10 +8,10 @@ import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
 import androidx.room.Upsert
-import com.mlord.app.app.core.db.entity.MangaEntity
-import com.mlord.app.app.core.db.entity.MangaTagsEntity
-import com.mlord.app.app.core.db.entity.MangaWithTags
-import com.mlord.app.app.core.db.entity.TagEntity
+import com.mlord.app.core.db.entity.MangaEntity
+import com.mlord.app.core.db.entity.MangaTagsEntity
+import com.mlord.app.core.db.entity.MangaWithTags
+import com.mlord.app.core.db.entity.TagEntity
 
 @Dao
 abstract class MangaDao {

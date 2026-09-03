@@ -5,7 +5,7 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.widget.RemoteViews
 import androidx.annotation.CallSuper
-import com.mlord.app.app.core.prefs.AppWidgetConfig
+import com.mlord.app.core.prefs.AppWidgetConfig
 
 abstract class BaseAppWidgetProvider : AppWidgetProvider() {
 

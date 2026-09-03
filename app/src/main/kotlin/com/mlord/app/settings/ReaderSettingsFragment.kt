@@ -8,21 +8,21 @@ import androidx.preference.ListPreference
 import androidx.preference.MultiSelectListPreference
 import androidx.preference.Preference
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.model.ZoomMode
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.ReaderAnimation
-import com.mlord.app.app.core.prefs.ReaderBackground
-import com.mlord.app.app.core.prefs.ReaderControl
-import com.mlord.app.app.core.prefs.ReaderMode
-import com.mlord.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.core.util.ext.setDefaultValueCompat
+import com.mlord.app.R
+import com.mlord.app.core.model.ZoomMode
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.ReaderAnimation
+import com.mlord.app.core.prefs.ReaderBackground
+import com.mlord.app.core.prefs.ReaderControl
+import com.mlord.app.core.prefs.ReaderMode
+import com.mlord.app.core.ui.BasePreferenceFragment
+import com.mlord.app.core.util.ext.setDefaultValueCompat
 import org.koitharu.kotatsu.parsers.util.mapToSet
 import org.koitharu.kotatsu.parsers.util.names
-import com.mlord.app.app.settings.utils.MultiSummaryProvider
-import com.mlord.app.app.settings.utils.PercentSummaryProvider
-import com.mlord.app.app.settings.utils.SliderPreference
+import com.mlord.app.settings.utils.MultiSummaryProvider
+import com.mlord.app.settings.utils.PercentSummaryProvider
+import com.mlord.app.settings.utils.SliderPreference
 
 @AndroidEntryPoint
 class ReaderSettingsFragment :

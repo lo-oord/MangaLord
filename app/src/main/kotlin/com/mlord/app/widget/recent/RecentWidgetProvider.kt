@@ -8,11 +8,11 @@ import android.graphics.Color
 import android.widget.RemoteViews
 import androidx.core.app.PendingIntentCompat
 import androidx.core.net.toUri
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.ReaderIntent
-import com.mlord.app.app.core.prefs.AppWidgetConfig
-import com.mlord.app.app.core.ui.BaseAppWidgetProvider
-import com.mlord.app.app.reader.ui.ReaderActivity
+import com.mlord.app.R
+import com.mlord.app.core.nav.ReaderIntent
+import com.mlord.app.core.prefs.AppWidgetConfig
+import com.mlord.app.core.ui.BaseAppWidgetProvider
+import com.mlord.app.reader.ui.ReaderActivity
 
 class RecentWidgetProvider : BaseAppWidgetProvider() {
 

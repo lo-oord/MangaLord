@@ -10,11 +10,11 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.isNetworkError
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.isNetworkError
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.scrobbling.discord.data.DiscordRepository
+import com.mlord.app.scrobbling.discord.data.DiscordRepository
 import javax.inject.Inject
 
 @HiltViewModel

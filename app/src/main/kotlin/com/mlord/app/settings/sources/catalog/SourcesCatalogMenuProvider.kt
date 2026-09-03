@@ -6,8 +6,8 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
-import com.mlord.app.app.R
-import com.mlord.app.app.main.ui.owners.AppBarOwner
+import com.mlord.app.R
+import com.mlord.app.main.ui.owners.AppBarOwner
 
 class SourcesCatalogMenuProvider(
 	private val activity: Activity,

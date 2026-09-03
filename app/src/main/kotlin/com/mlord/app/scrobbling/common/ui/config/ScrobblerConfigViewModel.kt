@@ -13,20 +13,20 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
-import com.mlord.app.app.core.util.ext.onFirst
-import com.mlord.app.app.core.util.ext.require
-import com.mlord.app.app.list.ui.model.EmptyState
-import com.mlord.app.app.list.ui.model.ListModel
-import com.mlord.app.app.scrobbling.common.domain.Scrobbler
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerUser
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingInfo
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingStatus
+import com.mlord.app.R
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
+import com.mlord.app.core.util.ext.onFirst
+import com.mlord.app.core.util.ext.require
+import com.mlord.app.list.ui.model.EmptyState
+import com.mlord.app.list.ui.model.ListModel
+import com.mlord.app.scrobbling.common.domain.Scrobbler
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerUser
+import com.mlord.app.scrobbling.common.domain.model.ScrobblingInfo
+import com.mlord.app.scrobbling.common.domain.model.ScrobblingStatus
 import javax.inject.Inject
 
 @HiltViewModel

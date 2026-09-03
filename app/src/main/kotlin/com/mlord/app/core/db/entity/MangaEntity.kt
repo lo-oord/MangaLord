@@ -3,7 +3,7 @@ package com.mlord.app.core.db.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.mlord.app.app.core.db.TABLE_MANGA
+import com.mlord.app.core.db.TABLE_MANGA
 
 @Entity(tableName = TABLE_MANGA)
 data class MangaEntity(

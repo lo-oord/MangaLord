@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import androidx.core.graphics.get
 import coil3.size.Size
 import coil3.transform.Transformation
-import com.mlord.app.app.reader.domain.EdgeDetector.Companion.isColorTheSame
+import com.mlord.app.reader.domain.EdgeDetector.Companion.isColorTheSame
 
 class TrimTransformation(
 	private val tolerance: Int = 20,

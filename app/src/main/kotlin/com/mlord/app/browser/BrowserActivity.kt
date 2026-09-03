@@ -10,13 +10,13 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import com.mlord.app.app.R
-import com.mlord.app.app.core.exceptions.InteractiveActionRequiredException
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.parser.ParserMangaRepository
-import com.mlord.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.R
+import com.mlord.app.core.exceptions.InteractiveActionRequiredException
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.parser.ParserMangaRepository
+import com.mlord.app.core.util.ext.getDisplayMessage
+import com.mlord.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.model.MangaSource
 
 @AndroidEntryPoint

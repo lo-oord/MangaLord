@@ -7,15 +7,15 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.preference.Preference
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.BuildConfig
-import com.mlord.app.app.R
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.core.util.ext.addMenuProvider
-import com.mlord.app.app.core.util.ext.getQuantityStringSafe
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.settings.search.SettingsSearchMenuProvider
-import com.mlord.app.app.settings.search.SettingsSearchViewModel
+import com.mlord.app.BuildConfig
+import com.mlord.app.R
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.ui.BasePreferenceFragment
+import com.mlord.app.core.util.ext.addMenuProvider
+import com.mlord.app.core.util.ext.getQuantityStringSafe
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.settings.search.SettingsSearchMenuProvider
+import com.mlord.app.settings.search.SettingsSearchViewModel
 
 @AndroidEntryPoint
 class RootSettingsFragment : BasePreferenceFragment(0) {

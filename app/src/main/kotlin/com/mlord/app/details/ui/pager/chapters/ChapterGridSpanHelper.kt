@@ -3,8 +3,8 @@ package com.mlord.app.details.ui.pager.chapters
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.R
-import com.mlord.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.R
+import com.mlord.app.list.ui.adapter.ListItemType
 import kotlin.math.roundToInt
 
 class ChapterGridSpanHelper private constructor() : View.OnLayoutChangeListener {

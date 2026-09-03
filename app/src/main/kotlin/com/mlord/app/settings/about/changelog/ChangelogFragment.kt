@@ -12,17 +12,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
-import com.mlord.app.app.R
-import com.mlord.app.app.core.exceptions.resolve.DialogErrorObserver
-import com.mlord.app.app.core.ui.BaseFragment
-import com.mlord.app.app.core.util.ext.consumeAll
-import com.mlord.app.app.core.util.ext.container
-import com.mlord.app.app.core.util.ext.end
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.core.util.ext.showOrHide
-import com.mlord.app.app.core.util.ext.start
-import com.mlord.app.app.databinding.FragmentChangelogBinding
+import com.mlord.app.R
+import com.mlord.app.core.exceptions.resolve.DialogErrorObserver
+import com.mlord.app.core.ui.BaseFragment
+import com.mlord.app.core.util.ext.consumeAll
+import com.mlord.app.core.util.ext.container
+import com.mlord.app.core.util.ext.end
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.core.util.ext.showOrHide
+import com.mlord.app.core.util.ext.start
+import com.mlord.app.databinding.FragmentChangelogBinding
 
 @AndroidEntryPoint
 class ChangelogFragment : BaseFragment<FragmentChangelogBinding>() {

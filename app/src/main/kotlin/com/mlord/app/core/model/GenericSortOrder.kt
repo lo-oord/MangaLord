@@ -1,7 +1,7 @@
 package com.mlord.app.core.model
 
 import androidx.annotation.StringRes
-import com.mlord.app.app.R
+import com.mlord.app.R
 import org.koitharu.kotatsu.parsers.model.SortOrder
 
 @Deprecated("")

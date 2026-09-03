@@ -10,18 +10,18 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.ui.BasePreferenceFragment
-import com.mlord.app.app.core.ui.dialog.buildAlertDialog
-import com.mlord.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.core.util.ext.viewLifecycleScope
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
-import com.mlord.app.app.scrobbling.common.ui.ScrobblerAuthHelper
-import com.mlord.app.app.settings.utils.SplitSwitchPreference
-import com.mlord.app.app.sync.domain.SyncController
+import com.mlord.app.R
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.ui.BasePreferenceFragment
+import com.mlord.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.core.util.ext.getDisplayMessage
+import com.mlord.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.util.ext.viewLifecycleScope
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.scrobbling.common.ui.ScrobblerAuthHelper
+import com.mlord.app.settings.utils.SplitSwitchPreference
+import com.mlord.app.sync.domain.SyncController
 import javax.inject.Inject
 
 @AndroidEntryPoint

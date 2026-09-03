@@ -11,10 +11,10 @@ import androidx.core.content.withStyledAttributes
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import androidx.viewpager2.widget.ViewPager2
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ext.getThemeColorStateList
-import com.mlord.app.app.core.util.ext.measureDimension
-import com.mlord.app.app.core.util.ext.resolveDp
+import com.mlord.app.R
+import com.mlord.app.core.util.ext.getThemeColorStateList
+import com.mlord.app.core.util.ext.measureDimension
+import com.mlord.app.core.util.ext.resolveDp
 import org.koitharu.kotatsu.parsers.util.toIntUp
 import com.google.android.material.R as materialR
 

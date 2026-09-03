@@ -1,11 +1,11 @@
 package com.mlord.app.list.domain
 
-import com.mlord.app.app.core.prefs.ProgressIndicatorMode
-import com.mlord.app.app.core.prefs.ProgressIndicatorMode.CHAPTERS_LEFT
-import com.mlord.app.app.core.prefs.ProgressIndicatorMode.CHAPTERS_READ
-import com.mlord.app.app.core.prefs.ProgressIndicatorMode.NONE
-import com.mlord.app.app.core.prefs.ProgressIndicatorMode.PERCENT_LEFT
-import com.mlord.app.app.core.prefs.ProgressIndicatorMode.PERCENT_READ
+import com.mlord.app.core.prefs.ProgressIndicatorMode
+import com.mlord.app.core.prefs.ProgressIndicatorMode.CHAPTERS_LEFT
+import com.mlord.app.core.prefs.ProgressIndicatorMode.CHAPTERS_READ
+import com.mlord.app.core.prefs.ProgressIndicatorMode.NONE
+import com.mlord.app.core.prefs.ProgressIndicatorMode.PERCENT_LEFT
+import com.mlord.app.core.prefs.ProgressIndicatorMode.PERCENT_READ
 
 data class ReadingProgress(
 	val percent: Float,

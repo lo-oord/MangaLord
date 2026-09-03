@@ -6,8 +6,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.explore.data.MangaSourcesRepository
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.explore.data.MangaSourcesRepository
 import javax.inject.Inject
 
 @HiltViewModel

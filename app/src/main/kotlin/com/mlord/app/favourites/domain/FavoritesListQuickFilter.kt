@@ -3,10 +3,10 @@ package com.mlord.app.favourites.domain
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
-import com.mlord.app.app.core.os.NetworkState
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.list.domain.ListFilterOption
-import com.mlord.app.app.list.domain.MangaListQuickFilter
+import com.mlord.app.core.os.NetworkState
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.list.domain.ListFilterOption
+import com.mlord.app.list.domain.MangaListQuickFilter
 
 class FavoritesListQuickFilter @AssistedInject constructor(
 	@Assisted private val categoryId: Long,

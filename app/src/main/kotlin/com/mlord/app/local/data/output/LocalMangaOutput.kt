@@ -5,11 +5,11 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import okio.Closeable
-import com.mlord.app.app.core.prefs.DownloadFormat
-import com.mlord.app.app.core.util.ext.MimeType
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.core.util.ext.toFileNameSafe
-import com.mlord.app.app.local.data.input.LocalMangaParser
+import com.mlord.app.core.prefs.DownloadFormat
+import com.mlord.app.core.util.ext.MimeType
+import com.mlord.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.util.ext.toFileNameSafe
+import com.mlord.app.local.data.input.LocalMangaParser
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable

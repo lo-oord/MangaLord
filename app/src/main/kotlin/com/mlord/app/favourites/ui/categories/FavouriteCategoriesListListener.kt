@@ -2,8 +2,8 @@ package com.mlord.app.favourites.ui.categories
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.core.model.FavouriteCategory
+import com.mlord.app.core.ui.list.OnListItemClickListener
 
 interface FavouriteCategoriesListListener : OnListItemClickListener<FavouriteCategory?> {
 

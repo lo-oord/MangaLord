@@ -24,16 +24,16 @@ import androidx.lifecycle.withResumed
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.BaseActivity
-import com.mlord.app.app.core.ui.util.DefaultTextWatcher
-import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.core.util.ext.getParcelableExtraCompat
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.databinding.ActivityProtectBinding
+import com.mlord.app.R
+import com.mlord.app.core.ui.BaseActivity
+import com.mlord.app.core.ui.util.DefaultTextWatcher
+import com.mlord.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.core.util.ext.getDisplayMessage
+import com.mlord.app.core.util.ext.getParcelableExtraCompat
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.core.util.ext.systemBarsInsets
+import com.mlord.app.databinding.ActivityProtectBinding
 import com.google.android.material.R as materialR
 
 @AndroidEntryPoint

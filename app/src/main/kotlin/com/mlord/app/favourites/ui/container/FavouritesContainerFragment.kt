@@ -14,21 +14,21 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.ui.BaseFragment
-import com.mlord.app.app.core.ui.util.ActionModeListener
-import com.mlord.app.app.core.ui.util.RecyclerViewOwner
-import com.mlord.app.app.core.ui.util.ReversibleActionObserver
-import com.mlord.app.app.core.util.ext.addMenuProvider
-import com.mlord.app.app.core.util.ext.findCurrentPagerFragment
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.core.util.ext.recyclerView
-import com.mlord.app.app.core.util.ext.setTabsEnabled
-import com.mlord.app.app.core.util.ext.setTextAndVisible
-import com.mlord.app.app.databinding.FragmentFavouritesContainerBinding
-import com.mlord.app.app.databinding.ItemEmptyStateBinding
+import com.mlord.app.R
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.ui.BaseFragment
+import com.mlord.app.core.ui.util.ActionModeListener
+import com.mlord.app.core.ui.util.RecyclerViewOwner
+import com.mlord.app.core.ui.util.ReversibleActionObserver
+import com.mlord.app.core.util.ext.addMenuProvider
+import com.mlord.app.core.util.ext.findCurrentPagerFragment
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.core.util.ext.recyclerView
+import com.mlord.app.core.util.ext.setTabsEnabled
+import com.mlord.app.core.util.ext.setTextAndVisible
+import com.mlord.app.databinding.FragmentFavouritesContainerBinding
+import com.mlord.app.databinding.ItemEmptyStateBinding
 
 @AndroidEntryPoint
 class FavouritesContainerFragment : BaseFragment<FragmentFavouritesContainerBinding>(),

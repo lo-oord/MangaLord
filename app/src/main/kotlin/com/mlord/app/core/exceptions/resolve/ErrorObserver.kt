@@ -12,9 +12,9 @@ import androidx.lifecycle.coroutineScope
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.util.ext.findActivity
-import com.mlord.app.app.core.util.ext.viewLifecycleScope
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.util.ext.findActivity
+import com.mlord.app.core.util.ext.viewLifecycleScope
 
 abstract class ErrorObserver(
 	protected val host: View,

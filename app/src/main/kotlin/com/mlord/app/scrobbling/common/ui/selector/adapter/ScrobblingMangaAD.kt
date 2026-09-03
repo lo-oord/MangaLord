@@ -1,12 +1,12 @@
 package com.mlord.app.scrobbling.common.ui.selector.adapter
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.databinding.ItemMangaListBinding
-import com.mlord.app.app.list.ui.model.ListModel
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerManga
+import com.mlord.app.R
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.core.util.ext.textAndVisible
+import com.mlord.app.databinding.ItemMangaListBinding
+import com.mlord.app.list.ui.model.ListModel
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerManga
 
 fun scrobblingMangaAD(
 	clickListener: OnListItemClickListener<ScrobblerManga>,

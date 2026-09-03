@@ -6,12 +6,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
-import com.mlord.app.app.sync.data.SyncAuthApi
-import com.mlord.app.app.sync.domain.SyncAuthResult
+import com.mlord.app.R
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
+import com.mlord.app.sync.data.SyncAuthApi
+import com.mlord.app.sync.domain.SyncAuthResult
 import javax.inject.Inject
 
 @HiltViewModel

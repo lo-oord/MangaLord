@@ -7,16 +7,16 @@ import android.widget.Toast
 import androidx.appcompat.view.ActionMode
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import com.mlord.app.app.R
-import com.mlord.app.app.core.model.LocalMangaSource
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.ui.list.BaseListSelectionCallback
-import com.mlord.app.app.core.ui.list.ListSelectionController
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.core.util.ext.toCollection
-import com.mlord.app.app.core.util.ext.toSet
-import com.mlord.app.app.details.ui.pager.ChaptersPagesViewModel
-import com.mlord.app.app.local.ui.LocalChaptersRemoveService
+import com.mlord.app.R
+import com.mlord.app.core.model.LocalMangaSource
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.ui.list.BaseListSelectionCallback
+import com.mlord.app.core.ui.list.ListSelectionController
+import com.mlord.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.util.ext.toCollection
+import com.mlord.app.core.util.ext.toSet
+import com.mlord.app.details.ui.pager.ChaptersPagesViewModel
+import com.mlord.app.local.ui.LocalChaptersRemoveService
 
 class ChaptersSelectionCallback(
 	private val viewModel: ChaptersPagesViewModel,

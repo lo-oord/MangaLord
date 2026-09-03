@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.core.view.isVisible
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ext.textAndVisible
-import com.mlord.app.app.databinding.ItemStorageConfigBinding
-import com.mlord.app.app.settings.storage.DirectoryModel
+import com.mlord.app.R
+import com.mlord.app.core.util.ext.textAndVisible
+import com.mlord.app.databinding.ItemStorageConfigBinding
+import com.mlord.app.settings.storage.DirectoryModel
 
 class DestinationsAdapter(context: Context, dataset: List<DirectoryModel>) :
 	ArrayAdapter<DirectoryModel>(context, android.R.layout.simple_spinner_dropdown_item, android.R.id.text1, dataset) {

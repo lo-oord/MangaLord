@@ -2,8 +2,8 @@ package com.mlord.app.local.ui
 
 import android.content.Intent
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.core.ui.CoroutineIntentService
-import com.mlord.app.app.local.data.index.LocalMangaIndex
+import com.mlord.app.core.ui.CoroutineIntentService
+import com.mlord.app.local.data.index.LocalMangaIndex
 import javax.inject.Inject
 
 @AndroidEntryPoint

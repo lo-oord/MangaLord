@@ -9,13 +9,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.AsyncListDiffer.ListListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.core.ui.BaseFragment
-import com.mlord.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.core.util.ext.consumeAll
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.databinding.FragmentSearchSuggestionBinding
-import com.mlord.app.app.list.ui.adapter.ListItemType
+import com.mlord.app.core.ui.BaseFragment
+import com.mlord.app.core.ui.BaseListAdapter
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.core.util.ext.consumeAll
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.databinding.FragmentSearchSuggestionBinding
+import com.mlord.app.list.ui.adapter.ListItemType
 
 @AndroidEntryPoint
 class SettingsSearchFragment : BaseFragment<FragmentSearchSuggestionBinding>(),

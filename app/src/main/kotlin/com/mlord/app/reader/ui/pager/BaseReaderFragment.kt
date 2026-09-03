@@ -5,13 +5,13 @@ import android.view.View
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.activityViewModels
 import androidx.viewbinding.ViewBinding
-import com.mlord.app.app.core.prefs.ReaderAnimation
-import com.mlord.app.app.core.ui.BaseFragment
-import com.mlord.app.app.core.ui.widgets.ZoomControl
-import com.mlord.app.app.core.util.ext.isAnimationsEnabled
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.reader.ui.ReaderState
-import com.mlord.app.app.reader.ui.ReaderViewModel
+import com.mlord.app.core.prefs.ReaderAnimation
+import com.mlord.app.core.ui.BaseFragment
+import com.mlord.app.core.ui.widgets.ZoomControl
+import com.mlord.app.core.util.ext.isAnimationsEnabled
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.reader.ui.ReaderState
+import com.mlord.app.reader.ui.ReaderViewModel
 
 abstract class BaseReaderFragment<B : ViewBinding> : BaseFragment<B>(), ZoomControl.ZoomControlListener {
 

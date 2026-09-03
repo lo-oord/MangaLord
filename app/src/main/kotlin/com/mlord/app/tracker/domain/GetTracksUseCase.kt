@@ -1,6 +1,6 @@
 package com.mlord.app.tracker.domain
 
-import com.mlord.app.app.tracker.domain.model.MangaTracking
+import com.mlord.app.tracker.domain.model.MangaTracking
 import javax.inject.Inject
 
 class GetTracksUseCase @Inject constructor(

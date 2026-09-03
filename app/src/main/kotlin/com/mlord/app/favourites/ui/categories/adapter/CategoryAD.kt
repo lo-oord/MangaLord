@@ -9,13 +9,13 @@ import android.view.View.OnTouchListener
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ext.getQuantityStringSafe
-import com.mlord.app.app.core.util.ext.setTooltipCompat
-import com.mlord.app.app.databinding.ItemCategoriesAllBinding
-import com.mlord.app.app.databinding.ItemCategoryBinding
-import com.mlord.app.app.favourites.ui.categories.FavouriteCategoriesListListener
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.R
+import com.mlord.app.core.util.ext.getQuantityStringSafe
+import com.mlord.app.core.util.ext.setTooltipCompat
+import com.mlord.app.databinding.ItemCategoriesAllBinding
+import com.mlord.app.databinding.ItemCategoryBinding
+import com.mlord.app.favourites.ui.categories.FavouriteCategoriesListListener
+import com.mlord.app.list.ui.model.ListModel
 
 @SuppressLint("ClickableViewAccessibility")
 fun categoryAD(

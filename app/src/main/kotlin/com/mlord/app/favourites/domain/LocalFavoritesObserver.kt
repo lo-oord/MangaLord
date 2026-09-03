@@ -2,14 +2,14 @@ package com.mlord.app.favourites.domain
 
 import dagger.Reusable
 import kotlinx.coroutines.flow.Flow
-import com.mlord.app.app.core.db.MangaDatabase
-import com.mlord.app.app.core.db.entity.toManga
-import com.mlord.app.app.core.db.entity.toMangaTags
-import com.mlord.app.app.favourites.data.FavouriteManga
-import com.mlord.app.app.list.domain.ListFilterOption
-import com.mlord.app.app.list.domain.ListSortOrder
-import com.mlord.app.app.local.data.index.LocalMangaIndex
-import com.mlord.app.app.local.domain.LocalObserveMapper
+import com.mlord.app.core.db.MangaDatabase
+import com.mlord.app.core.db.entity.toManga
+import com.mlord.app.core.db.entity.toMangaTags
+import com.mlord.app.favourites.data.FavouriteManga
+import com.mlord.app.list.domain.ListFilterOption
+import com.mlord.app.list.domain.ListSortOrder
+import com.mlord.app.local.data.index.LocalMangaIndex
+import com.mlord.app.local.domain.LocalObserveMapper
 import org.koitharu.kotatsu.parsers.model.Manga
 import javax.inject.Inject
 

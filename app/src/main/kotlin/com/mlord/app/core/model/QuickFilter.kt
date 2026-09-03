@@ -1,7 +1,7 @@
 package com.mlord.app.core.model
 
-import com.mlord.app.app.core.ui.widgets.ChipsView
-import com.mlord.app.app.list.domain.ListFilterOption
+import com.mlord.app.core.ui.widgets.ChipsView
+import com.mlord.app.list.domain.ListFilterOption
 
 fun ListFilterOption.toChipModel(isChecked: Boolean) = ChipsView.ChipModel(
 	title = titleText,

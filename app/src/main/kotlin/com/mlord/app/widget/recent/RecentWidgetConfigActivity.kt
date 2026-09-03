@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.WindowInsetsCompat
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.prefs.AppWidgetConfig
-import com.mlord.app.app.core.ui.BaseActivity
-import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.databinding.ActivityAppwidgetRecentBinding
+import com.mlord.app.R
+import com.mlord.app.core.prefs.AppWidgetConfig
+import com.mlord.app.core.ui.BaseActivity
+import com.mlord.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.core.util.ext.systemBarsInsets
+import com.mlord.app.databinding.ActivityAppwidgetRecentBinding
 
 @AndroidEntryPoint
 class RecentWidgetConfigActivity :

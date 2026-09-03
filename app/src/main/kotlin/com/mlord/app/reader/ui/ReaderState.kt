@@ -2,7 +2,7 @@ package com.mlord.app.reader.ui
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import com.mlord.app.app.core.model.MangaHistory
+import com.mlord.app.core.model.MangaHistory
 import org.koitharu.kotatsu.parsers.model.Manga
 
 @Parcelize

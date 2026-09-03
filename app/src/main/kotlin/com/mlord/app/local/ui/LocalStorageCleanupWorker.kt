@@ -21,12 +21,12 @@ import androidx.work.WorkerParameters
 import androidx.work.await
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.local.data.LocalMangaRepository
-import com.mlord.app.app.local.domain.DeleteReadChaptersUseCase
+import com.mlord.app.R
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.parser.MangaDataRepository
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.local.data.LocalMangaRepository
+import com.mlord.app.local.domain.DeleteReadChaptersUseCase
 import java.util.concurrent.TimeUnit
 
 @HiltWorker

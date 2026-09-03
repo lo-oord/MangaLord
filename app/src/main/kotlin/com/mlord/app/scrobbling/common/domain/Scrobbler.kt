@@ -10,22 +10,22 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import com.mlord.app.app.core.db.MangaDatabase
-import com.mlord.app.app.core.parser.MangaRepository
-import com.mlord.app.app.core.util.ext.findKeyByValue
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
-import com.mlord.app.app.core.util.ext.sanitize
+import com.mlord.app.core.db.MangaDatabase
+import com.mlord.app.core.parser.MangaRepository
+import com.mlord.app.core.util.ext.findKeyByValue
+import com.mlord.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.util.ext.sanitize
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.findById
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.scrobbling.common.data.ScrobblerRepository
-import com.mlord.app.app.scrobbling.common.data.ScrobblingEntity
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerManga
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerMangaInfo
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerUser
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingInfo
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingStatus
+import com.mlord.app.scrobbling.common.data.ScrobblerRepository
+import com.mlord.app.scrobbling.common.data.ScrobblingEntity
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerManga
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerMangaInfo
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerUser
+import com.mlord.app.scrobbling.common.domain.model.ScrobblingInfo
+import com.mlord.app.scrobbling.common.domain.model.ScrobblingStatus
 import java.util.EnumMap
 
 abstract class Scrobbler(

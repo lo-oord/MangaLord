@@ -6,13 +6,13 @@ import dagger.hilt.android.ViewModelLifecycle
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.mlord.app.app.core.db.MangaDatabase
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.util.RetainedLifecycleCoroutineScope
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.db.MangaDatabase
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.util.RetainedLifecycleCoroutineScope
+import com.mlord.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.reader.ui.ReaderState
-import com.mlord.app.app.stats.data.StatsEntity
+import com.mlord.app.reader.ui.ReaderState
+import com.mlord.app.stats.data.StatsEntity
 import javax.inject.Inject
 
 @ViewModelScoped

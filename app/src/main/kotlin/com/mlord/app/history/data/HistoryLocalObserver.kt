@@ -1,14 +1,14 @@
 package com.mlord.app.history.data
 
 import dagger.Reusable
-import com.mlord.app.app.core.db.MangaDatabase
-import com.mlord.app.app.core.db.entity.toManga
-import com.mlord.app.app.core.db.entity.toMangaTags
-import com.mlord.app.app.history.domain.model.MangaWithHistory
-import com.mlord.app.app.list.domain.ListFilterOption
-import com.mlord.app.app.list.domain.ListSortOrder
-import com.mlord.app.app.local.data.index.LocalMangaIndex
-import com.mlord.app.app.local.domain.LocalObserveMapper
+import com.mlord.app.core.db.MangaDatabase
+import com.mlord.app.core.db.entity.toManga
+import com.mlord.app.core.db.entity.toMangaTags
+import com.mlord.app.history.domain.model.MangaWithHistory
+import com.mlord.app.list.domain.ListFilterOption
+import com.mlord.app.list.domain.ListSortOrder
+import com.mlord.app.local.data.index.LocalMangaIndex
+import com.mlord.app.local.domain.LocalObserveMapper
 import org.koitharu.kotatsu.parsers.model.Manga
 import javax.inject.Inject
 

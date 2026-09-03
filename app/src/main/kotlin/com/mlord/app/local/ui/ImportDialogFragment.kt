@@ -9,12 +9,12 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.os.OpenDocumentTreeHelper
-import com.mlord.app.app.core.ui.AlertDialogFragment
-import com.mlord.app.app.core.util.ext.tryLaunch
-import com.mlord.app.app.databinding.DialogImportBinding
-import com.mlord.app.app.local.data.LocalStorageManager
+import com.mlord.app.R
+import com.mlord.app.core.os.OpenDocumentTreeHelper
+import com.mlord.app.core.ui.AlertDialogFragment
+import com.mlord.app.core.util.ext.tryLaunch
+import com.mlord.app.databinding.DialogImportBinding
+import com.mlord.app.local.data.LocalStorageManager
 import javax.inject.Inject
 
 @AndroidEntryPoint

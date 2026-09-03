@@ -4,7 +4,7 @@ import android.database.Cursor
 import androidx.core.database.getStringOrNull
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import com.mlord.app.app.core.util.ext.buildContentValues
+import com.mlord.app.core.util.ext.buildContentValues
 
 @Serializable
 data class MangaSyncDto(

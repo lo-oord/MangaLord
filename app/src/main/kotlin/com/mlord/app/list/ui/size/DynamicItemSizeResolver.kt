@@ -8,9 +8,9 @@ import androidx.annotation.StyleRes
 import androidx.core.widget.TextViewCompat
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import com.mlord.app.app.R
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.history.ui.util.ReadingProgressView
+import com.mlord.app.R
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.history.ui.util.ReadingProgressView
 import kotlin.math.roundToInt
 
 class DynamicItemSizeResolver(

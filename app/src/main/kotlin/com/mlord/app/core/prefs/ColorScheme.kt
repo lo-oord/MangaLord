@@ -4,7 +4,7 @@ import androidx.annotation.Keep
 import androidx.annotation.StringRes
 import androidx.annotation.StyleRes
 import com.google.android.material.color.DynamicColors
-import com.mlord.app.app.R
+import com.mlord.app.R
 import org.koitharu.kotatsu.parsers.util.find
 
 @Keep

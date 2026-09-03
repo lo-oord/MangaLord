@@ -3,7 +3,7 @@ package com.mlord.app.reader.ui.pager.doublepage
 import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.reader.ui.pager.standard.PageHolder
+import com.mlord.app.reader.ui.pager.standard.PageHolder
 
 fun RecyclerView.visiblePageHolders(): Sequence<PageHolder> {
 	val lm = layoutManager as? LinearLayoutManager ?: return emptySequence()

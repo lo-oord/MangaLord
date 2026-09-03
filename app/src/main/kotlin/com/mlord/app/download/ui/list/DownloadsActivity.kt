@@ -12,18 +12,18 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import coil3.ImageLoader
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.ui.BaseActivity
-import com.mlord.app.app.core.ui.list.ListSelectionController
-import com.mlord.app.app.core.ui.list.RecyclerScrollKeeper
-import com.mlord.app.app.core.ui.util.MenuInvalidator
-import com.mlord.app.app.core.ui.util.ReversibleActionObserver
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.databinding.ActivityDownloadsBinding
-import com.mlord.app.app.download.ui.worker.DownloadWorker
-import com.mlord.app.app.list.ui.adapter.TypedListSpacingDecoration
+import com.mlord.app.R
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.ui.BaseActivity
+import com.mlord.app.core.ui.list.ListSelectionController
+import com.mlord.app.core.ui.list.RecyclerScrollKeeper
+import com.mlord.app.core.ui.util.MenuInvalidator
+import com.mlord.app.core.ui.util.ReversibleActionObserver
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.databinding.ActivityDownloadsBinding
+import com.mlord.app.download.ui.worker.DownloadWorker
+import com.mlord.app.list.ui.adapter.TypedListSpacingDecoration
 import javax.inject.Inject
 
 @AndroidEntryPoint

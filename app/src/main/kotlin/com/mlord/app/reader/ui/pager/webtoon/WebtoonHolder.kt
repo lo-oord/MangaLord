@@ -2,12 +2,12 @@ package com.mlord.app.reader.ui.pager.webtoon
 
 import android.view.View
 import androidx.lifecycle.LifecycleOwner
-import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.core.os.NetworkState
-import com.mlord.app.app.databinding.ItemPageWebtoonBinding
-import com.mlord.app.app.reader.domain.PageLoader
-import com.mlord.app.app.reader.ui.config.ReaderSettings
-import com.mlord.app.app.reader.ui.pager.BasePageHolder
+import com.mlord.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.core.os.NetworkState
+import com.mlord.app.databinding.ItemPageWebtoonBinding
+import com.mlord.app.reader.domain.PageLoader
+import com.mlord.app.reader.ui.config.ReaderSettings
+import com.mlord.app.reader.ui.pager.BasePageHolder
 
 class WebtoonHolder(
 	owner: LifecycleOwner,

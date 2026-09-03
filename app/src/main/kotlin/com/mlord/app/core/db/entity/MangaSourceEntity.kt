@@ -3,7 +3,7 @@ package com.mlord.app.core.db.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.mlord.app.app.core.db.TABLE_SOURCES
+import com.mlord.app.core.db.TABLE_SOURCES
 
 @Entity(
 	tableName = TABLE_SOURCES,

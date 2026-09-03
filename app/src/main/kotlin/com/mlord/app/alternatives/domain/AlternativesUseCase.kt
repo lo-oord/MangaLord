@@ -6,15 +6,15 @@ import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Semaphore
 import kotlinx.coroutines.sync.withPermit
-import com.mlord.app.app.core.parser.MangaRepository
-import com.mlord.app.app.core.util.ext.toLocale
-import com.mlord.app.app.explore.data.MangaSourcesRepository
+import com.mlord.app.core.parser.MangaRepository
+import com.mlord.app.core.util.ext.toLocale
+import com.mlord.app.explore.data.MangaSourcesRepository
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaParserSource
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable
-import com.mlord.app.app.search.domain.SearchKind
-import com.mlord.app.app.search.domain.SearchV2Helper
+import com.mlord.app.search.domain.SearchKind
+import com.mlord.app.search.domain.SearchV2Helper
 import java.util.Locale
 import javax.inject.Inject
 

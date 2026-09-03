@@ -5,10 +5,10 @@ import android.accounts.AccountManager
 import android.content.Context
 import okhttp3.Interceptor
 import okhttp3.Response
-import com.mlord.app.app.BuildConfig
-import com.mlord.app.app.R
-import com.mlord.app.app.core.db.DATABASE_VERSION
-import com.mlord.app.app.core.network.CommonHeaders
+import com.mlord.app.BuildConfig
+import com.mlord.app.R
+import com.mlord.app.core.db.DATABASE_VERSION
+import com.mlord.app.core.network.CommonHeaders
 
 class SyncInterceptor(
 	context: Context,

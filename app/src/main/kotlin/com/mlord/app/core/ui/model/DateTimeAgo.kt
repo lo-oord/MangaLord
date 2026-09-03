@@ -2,9 +2,9 @@ package com.mlord.app.core.ui.model
 
 import android.content.Context
 import android.text.format.DateUtils
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ext.getQuantityStringSafe
-import com.mlord.app.app.core.util.ext.toMillis
+import com.mlord.app.R
+import com.mlord.app.core.util.ext.getQuantityStringSafe
+import com.mlord.app.core.util.ext.toMillis
 import java.time.LocalDate
 
 sealed class DateTimeAgo {

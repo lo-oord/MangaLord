@@ -2,8 +2,8 @@ package com.mlord.app.core.parser.external
 
 import android.database.Cursor
 import android.database.CursorWrapper
-import com.mlord.app.app.core.exceptions.IncompatiblePluginException
-import com.mlord.app.app.core.util.ext.getBoolean
+import com.mlord.app.core.exceptions.IncompatiblePluginException
+import com.mlord.app.core.util.ext.getBoolean
 
 class ExternalPluginCursor(private val source: ExternalMangaSource, cursor: Cursor) : CursorWrapper(cursor) {
 

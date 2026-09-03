@@ -16,24 +16,24 @@ import androidx.lifecycle.LifecycleOwner
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.prefs.DownloadFormat
-import com.mlord.app.app.core.ui.AlertDialogFragment
-import com.mlord.app.app.core.ui.widgets.TwoLinesItemView
-import com.mlord.app.app.core.util.ext.findActivity
-import com.mlord.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.core.util.ext.getQuantityStringSafe
-import com.mlord.app.app.core.util.ext.joinToStringWithLimit
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.core.util.ext.parentView
-import com.mlord.app.app.core.util.ext.showOrHide
-import com.mlord.app.app.databinding.DialogDownloadBinding
-import com.mlord.app.app.main.ui.owners.BottomNavOwner
+import com.mlord.app.R
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.prefs.DownloadFormat
+import com.mlord.app.core.ui.AlertDialogFragment
+import com.mlord.app.core.ui.widgets.TwoLinesItemView
+import com.mlord.app.core.util.ext.findActivity
+import com.mlord.app.core.util.ext.getDisplayMessage
+import com.mlord.app.core.util.ext.getQuantityStringSafe
+import com.mlord.app.core.util.ext.joinToStringWithLimit
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.core.util.ext.parentView
+import com.mlord.app.core.util.ext.showOrHide
+import com.mlord.app.databinding.DialogDownloadBinding
+import com.mlord.app.main.ui.owners.BottomNavOwner
 import org.koitharu.kotatsu.parsers.util.format
-import com.mlord.app.app.settings.storage.DirectoryModel
+import com.mlord.app.settings.storage.DirectoryModel
 
 @AndroidEntryPoint
 class DownloadDialogFragment : AlertDialogFragment<DialogDownloadBinding>(), View.OnClickListener {

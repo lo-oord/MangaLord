@@ -9,20 +9,20 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.R
-import com.mlord.app.app.bookmarks.domain.Bookmark
-import com.mlord.app.app.bookmarks.domain.BookmarksRepository
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.ui.util.ReversibleAction
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
-import com.mlord.app.app.list.ui.model.EmptyState
-import com.mlord.app.app.list.ui.model.ListHeader
-import com.mlord.app.app.list.ui.model.ListModel
-import com.mlord.app.app.list.ui.model.LoadingState
-import com.mlord.app.app.list.ui.model.toErrorState
+import com.mlord.app.R
+import com.mlord.app.bookmarks.domain.Bookmark
+import com.mlord.app.bookmarks.domain.BookmarksRepository
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.ui.util.ReversibleAction
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
+import com.mlord.app.list.ui.model.EmptyState
+import com.mlord.app.list.ui.model.ListHeader
+import com.mlord.app.list.ui.model.ListModel
+import com.mlord.app.list.ui.model.LoadingState
+import com.mlord.app.list.ui.model.toErrorState
 import org.koitharu.kotatsu.parsers.model.Manga
-import com.mlord.app.app.reader.ui.PageSaveHelper
+import com.mlord.app.reader.ui.PageSaveHelper
 import javax.inject.Inject
 
 @HiltViewModel

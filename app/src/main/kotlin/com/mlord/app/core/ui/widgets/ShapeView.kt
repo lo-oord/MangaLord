@@ -13,7 +13,7 @@ import android.view.ViewOutlineProvider
 import androidx.core.content.withStyledAttributes
 import androidx.core.graphics.withClip
 import com.google.android.material.drawable.DrawableUtils
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 class ShapeView @JvmOverloads constructor(
 	context: Context,

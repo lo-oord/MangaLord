@@ -5,12 +5,12 @@ import android.view.KeyEvent
 import android.widget.TextView
 import androidx.core.net.toUri
 import com.google.android.material.search.SearchView
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.parser.MangaLinkResolver
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.parser.MangaLinkResolver
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.MangaTag
-import com.mlord.app.app.search.domain.SearchKind
+import com.mlord.app.search.domain.SearchKind
 
 class SearchSuggestionListenerImpl(
 	private val router: AppRouter,

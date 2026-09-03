@@ -10,8 +10,8 @@ import androidx.customview.view.AbsSavedState
 import androidx.preference.Preference
 import androidx.preference.PreferenceViewHolder
 import com.google.android.material.slider.Slider
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ext.setValueRounded
+import com.mlord.app.R
+import com.mlord.app.core.util.ext.setValueRounded
 
 class SliderPreference @JvmOverloads constructor(
 	context: Context,

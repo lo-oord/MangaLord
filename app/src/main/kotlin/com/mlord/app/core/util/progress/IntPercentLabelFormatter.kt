@@ -2,7 +2,7 @@ package com.mlord.app.core.util.progress
 
 import android.content.Context
 import com.google.android.material.slider.LabelFormatter
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 class IntPercentLabelFormatter(context: Context) : LabelFormatter {
 

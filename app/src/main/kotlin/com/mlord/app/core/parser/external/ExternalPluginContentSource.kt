@@ -6,7 +6,7 @@ import androidx.annotation.WorkerThread
 import androidx.collection.ArraySet
 import androidx.core.net.toUri
 import org.jetbrains.annotations.Blocking
-import com.mlord.app.app.core.exceptions.IncompatiblePluginException
+import com.mlord.app.core.exceptions.IncompatiblePluginException
 import org.koitharu.kotatsu.parsers.model.ContentRating
 import org.koitharu.kotatsu.parsers.model.ContentType
 import org.koitharu.kotatsu.parsers.model.Demographic

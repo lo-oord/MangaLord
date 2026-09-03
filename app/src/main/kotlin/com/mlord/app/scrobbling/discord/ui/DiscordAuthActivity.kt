@@ -3,9 +3,9 @@ package com.mlord.app.scrobbling.discord.ui
 import android.os.Bundle
 import android.view.MenuItem
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.browser.BaseBrowserActivity
-import com.mlord.app.app.core.parser.ParserMangaRepository
-import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.browser.BaseBrowserActivity
+import com.mlord.app.core.parser.ParserMangaRepository
+import com.mlord.app.core.prefs.AppSettings
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import javax.inject.Inject
 

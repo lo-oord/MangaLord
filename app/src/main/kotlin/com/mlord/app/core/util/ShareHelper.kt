@@ -5,9 +5,9 @@ import android.content.Intent
 import android.net.Uri
 import androidx.core.app.ShareCompat
 import androidx.core.content.FileProvider
-import com.mlord.app.app.BuildConfig
-import com.mlord.app.app.R
-import com.mlord.app.app.core.model.appUrl
+import com.mlord.app.BuildConfig
+import com.mlord.app.R
+import com.mlord.app.core.model.appUrl
 import org.koitharu.kotatsu.parsers.model.Manga
 import java.io.File
 

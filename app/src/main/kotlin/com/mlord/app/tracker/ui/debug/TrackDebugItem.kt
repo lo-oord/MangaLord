@@ -1,6 +1,6 @@
 package com.mlord.app.tracker.ui.debug
 
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.model.Manga
 import java.time.Instant
 

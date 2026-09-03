@@ -13,7 +13,7 @@ import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.components.SingletonComponent
-import com.mlord.app.app.core.db.*
+import com.mlord.app.core.db.*
 import java.util.concurrent.Callable
 
 abstract class SyncProvider : ContentProvider() {

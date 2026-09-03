@@ -20,16 +20,16 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.plus
-import com.mlord.app.app.core.model.getPreferredBranch
-import com.mlord.app.app.core.model.parcelable.ParcelableManga
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.parser.MangaRepository
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.require
-import com.mlord.app.app.core.util.ext.sanitize
-import com.mlord.app.app.history.data.HistoryRepository
-import com.mlord.app.app.list.domain.MangaListMapper
-import com.mlord.app.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
+import com.mlord.app.core.model.getPreferredBranch
+import com.mlord.app.core.model.parcelable.ParcelableManga
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.parser.MangaRepository
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.require
+import com.mlord.app.core.util.ext.sanitize
+import com.mlord.app.history.data.HistoryRepository
+import com.mlord.app.list.domain.MangaListMapper
+import com.mlord.app.list.domain.ReadingProgress.Companion.PROGRESS_NONE
 import javax.inject.Inject
 
 @HiltViewModel

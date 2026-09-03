@@ -4,7 +4,7 @@ import android.content.res.Resources
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.R
+import com.mlord.app.R
 import kotlin.math.abs
 import kotlin.math.roundToInt
 

@@ -14,15 +14,15 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.filter.ui.FilterCoordinator
-import com.mlord.app.app.filter.ui.model.FilterProperty
-import com.mlord.app.app.filter.ui.model.TagCatalogItem
-import com.mlord.app.app.list.ui.model.ListModel
-import com.mlord.app.app.list.ui.model.LoadingState
-import com.mlord.app.app.list.ui.model.toErrorFooter
-import com.mlord.app.app.list.ui.model.toErrorState
+import com.mlord.app.core.parser.MangaDataRepository
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.filter.ui.FilterCoordinator
+import com.mlord.app.filter.ui.model.FilterProperty
+import com.mlord.app.filter.ui.model.TagCatalogItem
+import com.mlord.app.list.ui.model.ListModel
+import com.mlord.app.list.ui.model.LoadingState
+import com.mlord.app.list.ui.model.toErrorFooter
+import com.mlord.app.list.ui.model.toErrorState
 import org.koitharu.kotatsu.parsers.model.MangaParserSource
 import org.koitharu.kotatsu.parsers.model.MangaTag
 

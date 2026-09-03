@@ -1,9 +1,9 @@
 package com.mlord.app.list.ui.model
 
 import androidx.annotation.StringRes
-import com.mlord.app.app.R
-import com.mlord.app.app.core.exceptions.resolve.ExceptionResolver
-import com.mlord.app.app.core.util.ext.getDisplayIcon
+import com.mlord.app.R
+import com.mlord.app.core.exceptions.resolve.ExceptionResolver
+import com.mlord.app.core.util.ext.getDisplayIcon
 import org.koitharu.kotatsu.parsers.util.ifZero
 
 fun Throwable.toErrorState(canRetry: Boolean = true, @StringRes secondaryAction: Int = 0) = ErrorState(

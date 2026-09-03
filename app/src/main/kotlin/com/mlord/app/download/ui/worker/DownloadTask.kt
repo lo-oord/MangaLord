@@ -3,7 +3,7 @@ package com.mlord.app.download.ui.worker
 import android.os.Parcelable
 import androidx.work.Data
 import kotlinx.parcelize.Parcelize
-import com.mlord.app.app.core.prefs.DownloadFormat
+import com.mlord.app.core.prefs.DownloadFormat
 import org.koitharu.kotatsu.parsers.util.find
 import java.io.File
 

@@ -8,11 +8,11 @@ import android.graphics.RectF
 import android.view.View
 import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.list.decor.AbstractSelectionItemDecoration
-import com.mlord.app.app.core.util.ext.getItem
-import com.mlord.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.favourites.ui.categories.adapter.CategoryListModel
+import com.mlord.app.R
+import com.mlord.app.core.ui.list.decor.AbstractSelectionItemDecoration
+import com.mlord.app.core.util.ext.getItem
+import com.mlord.app.core.util.ext.getThemeColor
+import com.mlord.app.favourites.ui.categories.adapter.CategoryListModel
 import androidx.appcompat.R as appcompatR
 import com.google.android.material.R as materialR
 

@@ -11,7 +11,7 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
-import com.mlord.app.app.core.db.entity.MangaEntity
+import com.mlord.app.core.db.entity.MangaEntity
 import kotlin.collections.forEach
 
 @Dao

@@ -1,9 +1,9 @@
 package com.mlord.app.core.cache
 
-import com.mlord.app.app.core.util.SynchronizedSieveCache
+import com.mlord.app.core.util.SynchronizedSieveCache
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import java.util.concurrent.TimeUnit
-import com.mlord.app.app.core.cache.MemoryContentCache.Key as CacheKey
+import com.mlord.app.core.cache.MemoryContentCache.Key as CacheKey
 
 class ExpiringLruCache<T>(
 	val maxSize: Int,

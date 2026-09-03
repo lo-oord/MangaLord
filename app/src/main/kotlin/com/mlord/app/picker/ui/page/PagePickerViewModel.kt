@@ -10,17 +10,17 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.plus
-import com.mlord.app.app.core.nav.MangaIntent
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.observeAsStateFlow
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.firstNotNull
-import com.mlord.app.app.details.data.MangaDetails
-import com.mlord.app.app.details.domain.DetailsLoadUseCase
-import com.mlord.app.app.details.ui.pager.pages.PageThumbnail
-import com.mlord.app.app.list.ui.model.ListHeader
-import com.mlord.app.app.list.ui.model.ListModel
-import com.mlord.app.app.reader.domain.ChaptersLoader
+import com.mlord.app.core.nav.MangaIntent
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.observeAsStateFlow
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.firstNotNull
+import com.mlord.app.details.data.MangaDetails
+import com.mlord.app.details.domain.DetailsLoadUseCase
+import com.mlord.app.details.ui.pager.pages.PageThumbnail
+import com.mlord.app.list.ui.model.ListHeader
+import com.mlord.app.list.ui.model.ListModel
+import com.mlord.app.reader.domain.ChaptersLoader
 import javax.inject.Inject
 
 @HiltViewModel

@@ -10,11 +10,11 @@ import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okio.sink
-import com.mlord.app.app.core.network.BaseHttpClient
-import com.mlord.app.app.core.network.CommonHeaders
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.util.ext.isNotEmpty
-import com.mlord.app.app.core.util.ext.printStackTraceDebug
+import com.mlord.app.core.network.BaseHttpClient
+import com.mlord.app.core.network.CommonHeaders
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.util.ext.isNotEmpty
+import com.mlord.app.core.util.ext.printStackTraceDebug
 import org.koitharu.kotatsu.parsers.util.await
 import org.koitharu.kotatsu.parsers.util.requireBody
 import org.koitharu.kotatsu.parsers.util.runCatchingCancellable

@@ -7,19 +7,19 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.core.exceptions.EmptyHistoryException
-import com.mlord.app.app.core.github.AppUpdateRepository
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.core.prefs.observeAsStateFlow
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
-import com.mlord.app.app.explore.data.MangaSourcesRepository
-import com.mlord.app.app.history.data.HistoryRepository
-import com.mlord.app.app.main.domain.ReadingResumeEnabledUseCase
+import com.mlord.app.core.exceptions.EmptyHistoryException
+import com.mlord.app.core.github.AppUpdateRepository
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.observeAsFlow
+import com.mlord.app.core.prefs.observeAsStateFlow
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
+import com.mlord.app.explore.data.MangaSourcesRepository
+import com.mlord.app.history.data.HistoryRepository
+import com.mlord.app.main.domain.ReadingResumeEnabledUseCase
 import org.koitharu.kotatsu.parsers.model.Manga
-import com.mlord.app.app.tracker.domain.TrackingRepository
+import com.mlord.app.tracker.domain.TrackingRepository
 import javax.inject.Inject
 
 @HiltViewModel

@@ -9,17 +9,17 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.R
-import com.mlord.app.app.core.model.FavouriteCategory
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.ui.util.ReversibleAction
-import com.mlord.app.app.core.ui.util.ReversibleHandle
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
-import com.mlord.app.app.favourites.domain.FavouritesRepository
-import com.mlord.app.app.favourites.ui.list.FavouritesListFragment.Companion.NO_ID
+import com.mlord.app.R
+import com.mlord.app.core.model.FavouriteCategory
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.observeAsFlow
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.ui.util.ReversibleAction
+import com.mlord.app.core.ui.util.ReversibleHandle
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
+import com.mlord.app.favourites.domain.FavouritesRepository
+import com.mlord.app.favourites.ui.list.FavouritesListFragment.Companion.NO_ID
 import javax.inject.Inject
 
 @HiltViewModel

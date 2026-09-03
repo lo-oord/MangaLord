@@ -5,9 +5,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.view.ActionMode
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.dialog.buildAlertDialog
-import com.mlord.app.app.core.ui.list.ListSelectionController
+import com.mlord.app.R
+import com.mlord.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.core.ui.list.ListSelectionController
 
 class CategoriesSelectionCallback(
 	private val recyclerView: RecyclerView,

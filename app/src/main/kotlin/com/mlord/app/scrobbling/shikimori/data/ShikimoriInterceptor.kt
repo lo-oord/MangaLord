@@ -3,10 +3,10 @@ package com.mlord.app.scrobbling.shikimori.data
 import okhttp3.Interceptor
 import okhttp3.Response
 import okio.IOException
-import com.mlord.app.app.core.network.CommonHeaders
-import com.mlord.app.app.scrobbling.common.data.ScrobblerStorage
-import com.mlord.app.app.scrobbling.common.domain.ScrobblerAuthRequiredException
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.core.network.CommonHeaders
+import com.mlord.app.scrobbling.common.data.ScrobblerStorage
+import com.mlord.app.scrobbling.common.domain.ScrobblerAuthRequiredException
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerService
 import java.net.HttpURLConnection
 
 private const val USER_AGENT_SHIKIMORI = "Mlord"

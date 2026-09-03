@@ -20,7 +20,7 @@ import kotlinx.coroutines.runInterruptible
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
-import com.mlord.app.app.core.util.SynchronizedSieveCache
+import com.mlord.app.core.util.SynchronizedSieveCache
 import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.min

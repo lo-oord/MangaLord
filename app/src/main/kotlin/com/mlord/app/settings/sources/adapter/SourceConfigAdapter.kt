@@ -1,7 +1,7 @@
 package com.mlord.app.settings.sources.adapter
 
-import com.mlord.app.app.core.ui.ReorderableListAdapter
-import com.mlord.app.app.settings.sources.model.SourceConfigItem
+import com.mlord.app.core.ui.ReorderableListAdapter
+import com.mlord.app.settings.sources.model.SourceConfigItem
 
 class SourceConfigAdapter(
 	listener: SourceConfigListener,

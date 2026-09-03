@@ -9,20 +9,20 @@ import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.plus
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.observeAsStateFlow
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
-import com.mlord.app.app.core.util.ext.firstNotNull
-import com.mlord.app.app.core.util.ext.requireValue
-import com.mlord.app.app.details.data.MangaDetails
-import com.mlord.app.app.list.ui.model.ListHeader
-import com.mlord.app.app.list.ui.model.ListModel
-import com.mlord.app.app.reader.domain.ChaptersLoader
-import com.mlord.app.app.reader.ui.PageSaveHelper
-import com.mlord.app.app.reader.ui.ReaderState
-import com.mlord.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.observeAsStateFlow
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
+import com.mlord.app.core.util.ext.firstNotNull
+import com.mlord.app.core.util.ext.requireValue
+import com.mlord.app.details.data.MangaDetails
+import com.mlord.app.list.ui.model.ListHeader
+import com.mlord.app.list.ui.model.ListModel
+import com.mlord.app.reader.domain.ChaptersLoader
+import com.mlord.app.reader.ui.PageSaveHelper
+import com.mlord.app.reader.ui.ReaderState
+import com.mlord.app.reader.ui.pager.ReaderPage
 import javax.inject.Inject
 
 @HiltViewModel

@@ -3,11 +3,11 @@ package com.mlord.app.core.parser
 import kotlinx.coroutines.Dispatchers
 import okhttp3.Interceptor
 import okhttp3.Response
-import com.mlord.app.app.core.cache.MemoryContentCache
-import com.mlord.app.app.core.exceptions.CloudFlareProtectedException
-import com.mlord.app.app.core.exceptions.InteractiveActionRequiredException
-import com.mlord.app.app.core.exceptions.ProxyConfigException
-import com.mlord.app.app.core.prefs.SourceSettings
+import com.mlord.app.core.cache.MemoryContentCache
+import com.mlord.app.core.exceptions.CloudFlareProtectedException
+import com.mlord.app.core.exceptions.InteractiveActionRequiredException
+import com.mlord.app.core.exceptions.ProxyConfigException
+import com.mlord.app.core.prefs.SourceSettings
 import org.koitharu.kotatsu.parsers.MangaParser
 import org.koitharu.kotatsu.parsers.MangaParserAuthProvider
 import org.koitharu.kotatsu.parsers.config.ConfigKey

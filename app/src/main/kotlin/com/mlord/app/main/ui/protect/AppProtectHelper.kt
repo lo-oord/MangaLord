@@ -4,8 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import org.acra.dialog.CrashReportDialog
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.ui.DefaultActivityLifecycleCallbacks
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.ui.DefaultActivityLifecycleCallbacks
 import javax.inject.Inject
 import javax.inject.Singleton
 

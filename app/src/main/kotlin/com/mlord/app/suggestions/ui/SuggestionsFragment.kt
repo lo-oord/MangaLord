@@ -7,12 +7,12 @@ import android.view.MenuItem
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.ui.list.ListSelectionController
-import com.mlord.app.app.core.util.ext.addMenuProvider
-import com.mlord.app.app.databinding.FragmentListBinding
-import com.mlord.app.app.list.ui.MangaListFragment
+import com.mlord.app.R
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.ui.list.ListSelectionController
+import com.mlord.app.core.util.ext.addMenuProvider
+import com.mlord.app.databinding.FragmentListBinding
+import com.mlord.app.list.ui.MangaListFragment
 
 class SuggestionsFragment : MangaListFragment() {
 

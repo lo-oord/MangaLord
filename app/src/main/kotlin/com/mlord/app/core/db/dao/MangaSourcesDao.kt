@@ -13,9 +13,9 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
-import com.mlord.app.app.BuildConfig
-import com.mlord.app.app.core.db.entity.MangaSourceEntity
-import com.mlord.app.app.explore.data.SourcesSortOrder
+import com.mlord.app.BuildConfig
+import com.mlord.app.core.db.entity.MangaSourceEntity
+import com.mlord.app.explore.data.SourcesSortOrder
 import org.koitharu.kotatsu.parsers.network.CloudFlareHelper
 import org.koitharu.kotatsu.parsers.network.CloudFlareHelper.PROTECTION_CAPTCHA
 

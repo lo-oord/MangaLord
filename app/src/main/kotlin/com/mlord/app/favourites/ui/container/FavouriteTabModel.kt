@@ -1,6 +1,6 @@
 package com.mlord.app.favourites.ui.container
 
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.list.ui.model.ListModel
 
 data class FavouriteTabModel(
 	val id: Long,

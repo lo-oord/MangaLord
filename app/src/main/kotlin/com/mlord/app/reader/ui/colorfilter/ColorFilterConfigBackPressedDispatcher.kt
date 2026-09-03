@@ -3,8 +3,8 @@ package com.mlord.app.reader.ui.colorfilter
 import android.content.DialogInterface
 import androidx.activity.OnBackPressedCallback
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.mlord.app.app.R
-import com.mlord.app.app.core.util.ext.call
+import com.mlord.app.R
+import com.mlord.app.core.util.ext.call
 
 class ColorFilterConfigBackPressedDispatcher(
 	private val activity: ColorFilterConfigActivity,

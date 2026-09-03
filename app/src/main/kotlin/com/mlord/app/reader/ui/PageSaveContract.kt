@@ -7,8 +7,8 @@ import android.os.Environment
 import android.provider.DocumentsContract
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
-import com.mlord.app.app.core.util.MimeTypes
-import com.mlord.app.app.core.util.ext.toUriOrNull
+import com.mlord.app.core.util.MimeTypes
+import com.mlord.app.core.util.ext.toUriOrNull
 import java.io.File
 
 class PageSaveContract : ActivityResultContracts.CreateDocument("image/*") {

@@ -13,10 +13,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import com.mlord.app.app.R
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.main.ui.owners.BottomNavOwner
+import com.mlord.app.R
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.observeAsFlow
+import com.mlord.app.main.ui.owners.BottomNavOwner
 
 class ExitCallback(
 	private val activity: MainActivity,

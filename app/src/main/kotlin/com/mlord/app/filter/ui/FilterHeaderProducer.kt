@@ -2,18 +2,18 @@ package com.mlord.app.filter.ui
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
-import com.mlord.app.app.R
-import com.mlord.app.app.core.model.titleResId
-import com.mlord.app.app.core.ui.widgets.ChipsView
-import com.mlord.app.app.filter.data.PersistableFilter
-import com.mlord.app.app.filter.ui.model.FilterHeaderModel
-import com.mlord.app.app.filter.ui.model.FilterProperty
+import com.mlord.app.R
+import com.mlord.app.core.model.titleResId
+import com.mlord.app.core.ui.widgets.ChipsView
+import com.mlord.app.filter.data.PersistableFilter
+import com.mlord.app.filter.ui.model.FilterHeaderModel
+import com.mlord.app.filter.ui.model.FilterProperty
 import org.koitharu.kotatsu.parsers.model.MangaListFilter
 import org.koitharu.kotatsu.parsers.model.MangaListFilterCapabilities
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.MangaTag
 import org.koitharu.kotatsu.parsers.util.toTitleCase
-import com.mlord.app.app.search.domain.MangaSearchRepository
+import com.mlord.app.search.domain.MangaSearchRepository
 import javax.inject.Inject
 import androidx.appcompat.R as appcompatR
 

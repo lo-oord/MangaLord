@@ -1,9 +1,9 @@
 package com.mlord.app.tracker.ui.feed.model
 
-import com.mlord.app.app.core.model.withOverride
-import com.mlord.app.app.core.ui.model.MangaOverride
-import com.mlord.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.core.model.withOverride
+import com.mlord.app.core.ui.model.MangaOverride
+import com.mlord.app.list.ui.ListModelDiffCallback
+import com.mlord.app.list.ui.model.ListModel
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.util.ifNullOrEmpty
 

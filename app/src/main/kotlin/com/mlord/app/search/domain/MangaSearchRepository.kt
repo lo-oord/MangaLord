@@ -9,20 +9,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.withContext
-import com.mlord.app.app.core.db.MangaDatabase
-import com.mlord.app.app.core.db.entity.toEntity
-import com.mlord.app.app.core.db.entity.toManga
-import com.mlord.app.app.core.db.entity.toMangaTag
-import com.mlord.app.app.core.db.entity.toMangaTagsList
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.explore.data.MangaSourcesRepository
+import com.mlord.app.core.db.MangaDatabase
+import com.mlord.app.core.db.entity.toEntity
+import com.mlord.app.core.db.entity.toManga
+import com.mlord.app.core.db.entity.toMangaTag
+import com.mlord.app.core.db.entity.toMangaTagsList
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.explore.data.MangaSourcesRepository
 import org.koitharu.kotatsu.parsers.model.ContentType
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.MangaTag
 import org.koitharu.kotatsu.parsers.util.levenshteinDistance
 import org.koitharu.kotatsu.parsers.util.mapToSet
-import com.mlord.app.app.search.ui.MangaSuggestionsProvider
+import com.mlord.app.search.ui.MangaSuggestionsProvider
 import javax.inject.Inject
 
 @Reusable

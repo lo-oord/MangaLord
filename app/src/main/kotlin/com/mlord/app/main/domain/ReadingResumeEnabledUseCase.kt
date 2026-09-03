@@ -6,10 +6,10 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
-import com.mlord.app.app.core.model.isLocal
-import com.mlord.app.app.core.os.NetworkState
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.history.data.HistoryRepository
+import com.mlord.app.core.model.isLocal
+import com.mlord.app.core.os.NetworkState
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.history.data.HistoryRepository
 import javax.inject.Inject
 
 class ReadingResumeEnabledUseCase @Inject constructor(

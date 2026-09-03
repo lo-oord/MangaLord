@@ -20,9 +20,9 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.yield
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.core.util.ext.resolveDp
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.observeAsFlow
+import com.mlord.app.core.util.ext.resolveDp
 import kotlin.math.roundToLong
 
 private const val MAX_DELAY = 32L

@@ -4,9 +4,9 @@ import android.view.Menu
 import android.view.MenuInflater
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.list.ListSelectionController
-import com.mlord.app.app.list.ui.MangaListFragment
+import com.mlord.app.R
+import com.mlord.app.core.ui.list.ListSelectionController
+import com.mlord.app.list.ui.MangaListFragment
 
 @AndroidEntryPoint
 class RelatedListFragment : MangaListFragment() {

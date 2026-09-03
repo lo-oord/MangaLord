@@ -3,12 +3,12 @@ package com.mlord.app.reader.ui
 import android.content.res.Resources
 import android.view.KeyEvent
 import android.view.View
-import com.mlord.app.app.R
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.ReaderMode
-import com.mlord.app.app.reader.data.TapGridSettings
-import com.mlord.app.app.reader.domain.TapGridArea
-import com.mlord.app.app.reader.ui.tapgrid.TapAction
+import com.mlord.app.R
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.ReaderMode
+import com.mlord.app.reader.data.TapGridSettings
+import com.mlord.app.reader.domain.TapGridArea
+import com.mlord.app.reader.ui.tapgrid.TapAction
 import kotlin.math.sign
 
 class ReaderControlDelegate(

@@ -12,17 +12,17 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.withCreationCallback
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.core.ui.sheet.AdaptiveSheetBehavior
-import com.mlord.app.app.core.ui.sheet.AdaptiveSheetCallback
-import com.mlord.app.app.core.ui.sheet.BaseAdaptiveSheet
-import com.mlord.app.app.core.ui.util.DefaultTextWatcher
-import com.mlord.app.app.core.util.ext.consumeAll
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.databinding.SheetTagsBinding
-import com.mlord.app.app.filter.ui.FilterCoordinator
-import com.mlord.app.app.filter.ui.model.TagCatalogItem
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.core.ui.sheet.AdaptiveSheetBehavior
+import com.mlord.app.core.ui.sheet.AdaptiveSheetCallback
+import com.mlord.app.core.ui.sheet.BaseAdaptiveSheet
+import com.mlord.app.core.ui.util.DefaultTextWatcher
+import com.mlord.app.core.util.ext.consumeAll
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.databinding.SheetTagsBinding
+import com.mlord.app.filter.ui.FilterCoordinator
+import com.mlord.app.filter.ui.model.TagCatalogItem
 
 @AndroidEntryPoint
 class TagsCatalogSheet : BaseAdaptiveSheet<SheetTagsBinding>(),

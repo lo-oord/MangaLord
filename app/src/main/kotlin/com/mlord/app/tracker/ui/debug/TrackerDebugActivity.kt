@@ -6,16 +6,16 @@ import androidx.activity.viewModels
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.ui.BaseActivity
-import com.mlord.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.databinding.ActivityTrackerDebugBinding
-import com.mlord.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.list.ui.adapter.TypedListSpacingDecoration
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.ui.BaseActivity
+import com.mlord.app.core.ui.BaseListAdapter
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.systemBarsInsets
+import com.mlord.app.databinding.ActivityTrackerDebugBinding
+import com.mlord.app.list.ui.adapter.ListItemType
+import com.mlord.app.list.ui.adapter.TypedListSpacingDecoration
 
 @AndroidEntryPoint
 class TrackerDebugActivity : BaseActivity<ActivityTrackerDebugBinding>(), OnListItemClickListener<TrackDebugItem> {

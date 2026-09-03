@@ -2,7 +2,7 @@ package com.mlord.app.backups.data.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import com.mlord.app.app.stats.data.StatsEntity
+import com.mlord.app.stats.data.StatsEntity
 
 @Serializable
 class StatisticBackup(

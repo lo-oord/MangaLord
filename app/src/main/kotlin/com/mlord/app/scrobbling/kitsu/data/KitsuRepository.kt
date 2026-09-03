@@ -9,9 +9,9 @@ import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import okio.IOException
 import org.json.JSONObject
-import com.mlord.app.app.R
-import com.mlord.app.app.core.db.MangaDatabase
-import com.mlord.app.app.core.util.ext.parseJsonOrNull
+import com.mlord.app.R
+import com.mlord.app.core.db.MangaDatabase
+import com.mlord.app.core.util.ext.parseJsonOrNull
 import org.koitharu.kotatsu.parsers.util.await
 import org.koitharu.kotatsu.parsers.util.json.getFloatOrDefault
 import org.koitharu.kotatsu.parsers.util.json.getIntOrDefault
@@ -19,14 +19,14 @@ import org.koitharu.kotatsu.parsers.util.json.getStringOrNull
 import org.koitharu.kotatsu.parsers.util.json.mapJSON
 import org.koitharu.kotatsu.parsers.util.parseJson
 import org.koitharu.kotatsu.parsers.util.urlEncoded
-import com.mlord.app.app.scrobbling.common.data.ScrobblerRepository
-import com.mlord.app.app.scrobbling.common.data.ScrobblerStorage
-import com.mlord.app.app.scrobbling.common.data.ScrobblingEntity
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerManga
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerMangaInfo
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerService
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblerUser
-import com.mlord.app.app.scrobbling.kitsu.data.KitsuInterceptor.Companion.VND_JSON
+import com.mlord.app.scrobbling.common.data.ScrobblerRepository
+import com.mlord.app.scrobbling.common.data.ScrobblerStorage
+import com.mlord.app.scrobbling.common.data.ScrobblingEntity
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerManga
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerMangaInfo
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerService
+import com.mlord.app.scrobbling.common.domain.model.ScrobblerUser
+import com.mlord.app.scrobbling.kitsu.data.KitsuInterceptor.Companion.VND_JSON
 
 private const val BASE_WEB_URL = "https://kitsu.app"
 

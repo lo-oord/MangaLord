@@ -1,7 +1,7 @@
 package com.mlord.app.details.ui.model
 
-import com.mlord.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.list.ui.ListModelDiffCallback
+import com.mlord.app.list.ui.model.ListModel
 
 data class MangaBranch(
 	val name: String?,

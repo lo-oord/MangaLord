@@ -10,22 +10,22 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.R
-import com.mlord.app.app.core.parser.MangaDataRepository
-import com.mlord.app.app.core.prefs.AppSettings
-import com.mlord.app.app.core.prefs.observeAsFlow
-import com.mlord.app.app.core.util.ext.onFirst
-import com.mlord.app.app.list.domain.MangaListMapper
-import com.mlord.app.app.list.domain.QuickFilterListener
-import com.mlord.app.app.list.ui.MangaListViewModel
-import com.mlord.app.app.list.ui.model.EmptyState
-import com.mlord.app.app.list.ui.model.LoadingState
-import com.mlord.app.app.list.ui.model.toErrorState
-import com.mlord.app.app.suggestions.domain.SuggestionRepository
-import com.mlord.app.app.suggestions.domain.SuggestionsListQuickFilter
+import com.mlord.app.R
+import com.mlord.app.core.parser.MangaDataRepository
+import com.mlord.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.observeAsFlow
+import com.mlord.app.core.util.ext.onFirst
+import com.mlord.app.list.domain.MangaListMapper
+import com.mlord.app.list.domain.QuickFilterListener
+import com.mlord.app.list.ui.MangaListViewModel
+import com.mlord.app.list.ui.model.EmptyState
+import com.mlord.app.list.ui.model.LoadingState
+import com.mlord.app.list.ui.model.toErrorState
+import com.mlord.app.suggestions.domain.SuggestionRepository
+import com.mlord.app.suggestions.domain.SuggestionsListQuickFilter
 import javax.inject.Inject
-import com.mlord.app.app.local.data.LocalStorageChanges
-import com.mlord.app.app.local.domain.model.LocalManga
+import com.mlord.app.local.data.LocalStorageChanges
+import com.mlord.app.local.domain.model.LocalManga
 import kotlinx.coroutines.flow.SharedFlow
 
 @HiltViewModel

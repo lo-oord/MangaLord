@@ -5,7 +5,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parceler
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.TypeParceler
-import com.mlord.app.app.core.model.MangaSource
+import com.mlord.app.core.model.MangaSource
 import org.koitharu.kotatsu.parsers.model.MangaPage
 
 object MangaPageParceler : Parceler<MangaPage> {

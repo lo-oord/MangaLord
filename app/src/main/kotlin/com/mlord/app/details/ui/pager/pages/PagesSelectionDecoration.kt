@@ -3,8 +3,8 @@ package com.mlord.app.details.ui.pager.pages
 import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.mlord.app.app.core.util.ext.getItem
-import com.mlord.app.app.list.ui.MangaSelectionDecoration
+import com.mlord.app.core.util.ext.getItem
+import com.mlord.app.list.ui.MangaSelectionDecoration
 
 class PagesSelectionDecoration(context: Context) : MangaSelectionDecoration(context) {
 

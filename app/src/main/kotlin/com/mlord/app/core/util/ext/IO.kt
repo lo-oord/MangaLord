@@ -16,8 +16,8 @@ import okio.IOException
 import okio.Path
 import okio.Source
 import okio.source
-import com.mlord.app.app.core.util.CancellableSource
-import com.mlord.app.app.core.util.progress.ProgressResponseBody
+import com.mlord.app.core.util.CancellableSource
+import com.mlord.app.core.util.progress.ProgressResponseBody
 import java.io.ByteArrayOutputStream
 import java.io.InputStream
 import java.nio.ByteBuffer

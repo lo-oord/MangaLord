@@ -4,11 +4,11 @@ import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.parcelize.Parceler
 import kotlinx.parcelize.Parcelize
-import com.mlord.app.app.core.model.MangaSource
-import com.mlord.app.app.core.util.ext.readParcelableCompat
-import com.mlord.app.app.core.util.ext.readSerializableCompat
-import com.mlord.app.app.core.util.ext.readStringSet
-import com.mlord.app.app.core.util.ext.writeStringSet
+import com.mlord.app.core.model.MangaSource
+import com.mlord.app.core.util.ext.readParcelableCompat
+import com.mlord.app.core.util.ext.readSerializableCompat
+import com.mlord.app.core.util.ext.readStringSet
+import com.mlord.app.core.util.ext.writeStringSet
 import org.koitharu.kotatsu.parsers.model.Manga
 
 @Parcelize

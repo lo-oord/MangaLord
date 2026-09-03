@@ -3,7 +3,7 @@ package com.mlord.app.core.util.ext
 import androidx.collection.ArrayMap
 import androidx.collection.ArraySet
 import androidx.collection.LongSet
-import com.mlord.app.app.BuildConfig
+import com.mlord.app.BuildConfig
 import java.util.EnumSet
 
 fun <T> Collection<T>.asArrayList(): ArrayList<T> = if (this is ArrayList<*>) {

@@ -10,26 +10,26 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.prefs.NavItem
-import com.mlord.app.app.core.ui.BaseFragment
-import com.mlord.app.app.core.ui.BaseListAdapter
-import com.mlord.app.app.core.ui.dialog.buildAlertDialog
-import com.mlord.app.app.core.ui.dialog.setRecyclerViewList
-import com.mlord.app.app.core.ui.list.OnListItemClickListener
-import com.mlord.app.app.core.ui.util.RecyclerViewOwner
-import com.mlord.app.app.core.util.ext.consumeAllSystemBarsInsets
-import com.mlord.app.app.core.util.ext.container
-import com.mlord.app.app.core.util.ext.end
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.start
-import com.mlord.app.app.core.util.ext.systemBarsInsets
-import com.mlord.app.app.databinding.FragmentSettingsSourcesBinding
-import com.mlord.app.app.list.ui.adapter.ListItemType
-import com.mlord.app.app.list.ui.model.ListModel
-import com.mlord.app.app.settings.nav.adapter.navAddAD
-import com.mlord.app.app.settings.nav.adapter.navAvailableAD
-import com.mlord.app.app.settings.nav.adapter.navConfigAD
+import com.mlord.app.R
+import com.mlord.app.core.prefs.NavItem
+import com.mlord.app.core.ui.BaseFragment
+import com.mlord.app.core.ui.BaseListAdapter
+import com.mlord.app.core.ui.dialog.buildAlertDialog
+import com.mlord.app.core.ui.dialog.setRecyclerViewList
+import com.mlord.app.core.ui.list.OnListItemClickListener
+import com.mlord.app.core.ui.util.RecyclerViewOwner
+import com.mlord.app.core.util.ext.consumeAllSystemBarsInsets
+import com.mlord.app.core.util.ext.container
+import com.mlord.app.core.util.ext.end
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.start
+import com.mlord.app.core.util.ext.systemBarsInsets
+import com.mlord.app.databinding.FragmentSettingsSourcesBinding
+import com.mlord.app.list.ui.adapter.ListItemType
+import com.mlord.app.list.ui.model.ListModel
+import com.mlord.app.settings.nav.adapter.navAddAD
+import com.mlord.app.settings.nav.adapter.navAvailableAD
+import com.mlord.app.settings.nav.adapter.navConfigAD
 
 @AndroidEntryPoint
 class NavConfigFragment : BaseFragment<FragmentSettingsSourcesBinding>(), RecyclerViewOwner,

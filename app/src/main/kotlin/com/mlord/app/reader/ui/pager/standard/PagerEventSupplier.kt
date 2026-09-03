@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.core.view.children
 import androidx.viewpager2.widget.ViewPager2
 import com.davemorrissey.labs.subscaleview.SubsamplingScaleImageView
-import com.mlord.app.app.core.util.ext.recyclerView
+import com.mlord.app.core.util.ext.recyclerView
 
 class PagerEventSupplier(private val pager: ViewPager2) : View.OnKeyListener {
 

@@ -1,10 +1,10 @@
 package com.mlord.app.backups.ui.restore
 
 import androidx.annotation.StringRes
-import com.mlord.app.app.R
-import com.mlord.app.app.backups.domain.BackupSection
-import com.mlord.app.app.list.ui.ListModelDiffCallback
-import com.mlord.app.app.list.ui.model.ListModel
+import com.mlord.app.R
+import com.mlord.app.backups.domain.BackupSection
+import com.mlord.app.list.ui.ListModelDiffCallback
+import com.mlord.app.list.ui.model.ListModel
 
 data class BackupSectionModel(
 	val section: BackupSection,

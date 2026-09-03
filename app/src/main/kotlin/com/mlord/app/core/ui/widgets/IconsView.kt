@@ -9,7 +9,7 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.withStyledAttributes
 import androidx.core.view.isNotEmpty
 import androidx.core.view.isVisible
-import com.mlord.app.app.R
+import com.mlord.app.R
 
 class IconsView @JvmOverloads constructor(
 	context: Context,

@@ -5,8 +5,8 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.router
+import com.mlord.app.R
+import com.mlord.app.core.nav.router
 
 class LocalListMenuProvider(
 	private val fragment: Fragment,

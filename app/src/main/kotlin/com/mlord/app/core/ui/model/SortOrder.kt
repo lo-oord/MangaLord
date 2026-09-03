@@ -1,8 +1,8 @@
 package com.mlord.app.core.ui.model
 
 import androidx.annotation.StringRes
-import com.mlord.app.app.R
-import com.mlord.app.app.core.model.SortDirection
+import com.mlord.app.R
+import com.mlord.app.core.model.SortDirection
 import org.koitharu.kotatsu.parsers.model.SortOrder
 import org.koitharu.kotatsu.parsers.model.SortOrder.ADDED
 import org.koitharu.kotatsu.parsers.model.SortOrder.ADDED_ASC

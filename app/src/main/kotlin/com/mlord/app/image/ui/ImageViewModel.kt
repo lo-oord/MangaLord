@@ -12,14 +12,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runInterruptible
-import com.mlord.app.app.core.model.MangaSource
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.core.util.ext.MutableEventFlow
-import com.mlord.app.app.core.util.ext.call
-import com.mlord.app.app.core.util.ext.getDrawableOrThrow
-import com.mlord.app.app.core.util.ext.mangaSourceExtra
-import com.mlord.app.app.core.util.ext.require
+import com.mlord.app.core.model.MangaSource
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.core.util.ext.MutableEventFlow
+import com.mlord.app.core.util.ext.call
+import com.mlord.app.core.util.ext.getDrawableOrThrow
+import com.mlord.app.core.util.ext.mangaSourceExtra
+import com.mlord.app.core.util.ext.require
 import javax.inject.Inject
 
 @HiltViewModel

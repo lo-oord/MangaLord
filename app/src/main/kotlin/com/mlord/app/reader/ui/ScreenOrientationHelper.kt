@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.onStart
-import com.mlord.app.app.core.prefs.AppSettings
+import com.mlord.app.core.prefs.AppSettings
 import javax.inject.Inject
 
 @ActivityScoped

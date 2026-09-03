@@ -1,7 +1,7 @@
 package com.mlord.app.details.ui.pager.pages
 
-import com.mlord.app.app.list.ui.model.ListModel
-import com.mlord.app.app.reader.ui.pager.ReaderPage
+import com.mlord.app.list.ui.model.ListModel
+import com.mlord.app.reader.ui.pager.ReaderPage
 
 data class PageThumbnail(
 	val isCurrent: Boolean,

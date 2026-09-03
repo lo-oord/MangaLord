@@ -1,7 +1,7 @@
 package com.mlord.app.list.ui.model
 
-import com.mlord.app.app.core.ui.widgets.ChipsView
-import com.mlord.app.app.list.ui.ListModelDiffCallback
+import com.mlord.app.core.ui.widgets.ChipsView
+import com.mlord.app.list.ui.ListModelDiffCallback
 
 data class QuickFilter(
 	val items: List<ChipsView.ChipModel>,

@@ -15,19 +15,19 @@ import androidx.core.view.updatePadding
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import com.mlord.app.app.R
-import com.mlord.app.app.core.nav.AppRouter
-import com.mlord.app.app.core.nav.router
-import com.mlord.app.app.core.ui.sheet.BaseAdaptiveSheet
-import com.mlord.app.app.core.util.ext.consume
-import com.mlord.app.app.core.util.ext.getDisplayMessage
-import com.mlord.app.app.core.util.ext.observe
-import com.mlord.app.app.core.util.ext.observeEvent
-import com.mlord.app.app.core.util.ext.sanitize
-import com.mlord.app.app.databinding.SheetScrobblingBinding
-import com.mlord.app.app.details.ui.DetailsViewModel
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingInfo
-import com.mlord.app.app.scrobbling.common.domain.model.ScrobblingStatus
+import com.mlord.app.R
+import com.mlord.app.core.nav.AppRouter
+import com.mlord.app.core.nav.router
+import com.mlord.app.core.ui.sheet.BaseAdaptiveSheet
+import com.mlord.app.core.util.ext.consume
+import com.mlord.app.core.util.ext.getDisplayMessage
+import com.mlord.app.core.util.ext.observe
+import com.mlord.app.core.util.ext.observeEvent
+import com.mlord.app.core.util.ext.sanitize
+import com.mlord.app.databinding.SheetScrobblingBinding
+import com.mlord.app.details.ui.DetailsViewModel
+import com.mlord.app.scrobbling.common.domain.model.ScrobblingInfo
+import com.mlord.app.scrobbling.common.domain.model.ScrobblingStatus
 
 @AndroidEntryPoint
 class ScrobblingInfoSheet :

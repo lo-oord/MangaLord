@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.plus
-import com.mlord.app.app.core.ui.BaseViewModel
-import com.mlord.app.app.reader.data.TapGridSettings
-import com.mlord.app.app.reader.domain.TapGridArea
-import com.mlord.app.app.reader.ui.tapgrid.TapAction
+import com.mlord.app.core.ui.BaseViewModel
+import com.mlord.app.reader.data.TapGridSettings
+import com.mlord.app.reader.domain.TapGridArea
+import com.mlord.app.reader.ui.tapgrid.TapAction
 import java.util.EnumMap
 import javax.inject.Inject
 

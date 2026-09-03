@@ -9,12 +9,12 @@ import coil3.Image
 import coil3.asImage
 import coil3.request.Disposable
 import coil3.request.ImageRequest
-import com.mlord.app.app.R
-import com.mlord.app.app.core.exceptions.resolve.CaptchaHandler.Companion.suppressCaptchaErrors
-import com.mlord.app.app.core.image.CoilImageView
-import com.mlord.app.app.core.parser.favicon.faviconUri
-import com.mlord.app.app.core.util.ext.isAnimationsEnabled
-import com.mlord.app.app.core.util.ext.mangaSourceExtra
+import com.mlord.app.R
+import com.mlord.app.core.exceptions.resolve.CaptchaHandler.Companion.suppressCaptchaErrors
+import com.mlord.app.core.image.CoilImageView
+import com.mlord.app.core.parser.favicon.faviconUri
+import com.mlord.app.core.util.ext.isAnimationsEnabled
+import com.mlord.app.core.util.ext.mangaSourceExtra
 import org.koitharu.kotatsu.parsers.model.MangaSource
 
 class FaviconView @JvmOverloads constructor(

@@ -9,11 +9,11 @@ import android.view.View
 import androidx.core.graphics.ColorUtils
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.NO_ID
-import com.mlord.app.app.R
-import com.mlord.app.app.core.ui.list.decor.AbstractSelectionItemDecoration
-import com.mlord.app.app.core.util.ext.getItem
-import com.mlord.app.app.core.util.ext.getThemeColor
-import com.mlord.app.app.explore.ui.model.MangaSourceItem
+import com.mlord.app.R
+import com.mlord.app.core.ui.list.decor.AbstractSelectionItemDecoration
+import com.mlord.app.core.util.ext.getItem
+import com.mlord.app.core.util.ext.getThemeColor
+import com.mlord.app.explore.ui.model.MangaSourceItem
 import androidx.appcompat.R as appcompatR
 import com.google.android.material.R as materialR
 
