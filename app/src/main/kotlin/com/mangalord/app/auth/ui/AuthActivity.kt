@@ -52,12 +52,14 @@ class AuthActivity : BaseActivity<ActivityAuthBinding>() {
         super.onCreate(savedInstanceState)
         setContentView(ActivityAuthBinding.inflate(layoutInflater))
         setDisplayHomeAsUp(true, true)
-        val signedInUser = authRepository.reloadUser()
-        if (signedInUser != null) {
-            showProfile(signedInUser)
-        } else {
-            viewBinding.authForm.isVisible = true
-            viewBinding.profilePanel.isVisible = false
+        lifecycleScope.launch {
+            val signedInUser = authRepository.reloadUser()
+            if (signedInUser != null) {
+                showProfile(signedInUser)
+            } else {
+                viewBinding.authForm.isVisible = true
+                viewBinding.profilePanel.isVisible = false
+            }
         }
         viewBinding.buttonEmailSignIn.setOnClickListener { runAuth { authRepository.signInWithEmail(email(), password()) } }
         viewBinding.buttonCreateAccount.setOnClickListener { runAuth { authRepository.createAccount(email(), password()) } }
