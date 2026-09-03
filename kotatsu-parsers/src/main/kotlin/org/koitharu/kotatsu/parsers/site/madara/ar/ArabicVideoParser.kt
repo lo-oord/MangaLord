@@ -7,6 +7,10 @@ import org.koitharu.kotatsu.parsers.model.RATING_UNKNOWN
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.jsoup.nodes.Document
 import org.koitharu.kotatsu.parsers.model.MangaChapter
+import org.koitharu.kotatsu.parsers.model.search.MangaSearchQuery
+import org.koitharu.kotatsu.parsers.model.search.QueryCriteria.Match
+import org.koitharu.kotatsu.parsers.model.search.SearchableField.TITLE_NAME
+import org.koitharu.kotatsu.parsers.util.urlEncoded
 import org.koitharu.kotatsu.parsers.site.madara.MadaraParser
 import org.koitharu.kotatsu.parsers.util.generateUid
 import org.koitharu.kotatsu.parsers.util.parseHtml
@@ -22,9 +26,23 @@ internal abstract class ArabicVideoParser(
 
     override val selectTestAsync: String = ":root"
 
+    override suspend fun getListPage(query: MangaSearchQuery, page: Int): List<Manga> {
+        val title = query.criteria.filterIsInstance<Match<*>>()
+            .firstOrNull { it.field == TITLE_NAME }?.value as? String
+        val url = if (!title.isNullOrBlank()) {
+            val encoded = title.urlEncoded()
+            if (page <= searchPaginator.firstPage) "https://$domain/?s=$encoded"
+            else "https://$domain/page/$page/?s=$encoded"
+        } else {
+            if (page <= paginator.firstPage) "https://$domain/$listUrl"
+            else "https://$domain/$listUrl/page/$page/"
+        }
+        return parseMangaList(webClient.httpGet(url).parseHtml())
+    }
+
     override fun parseMangaList(doc: Document): List<Manga> {
         val path = if (domain == "animedar.net") "/anime-p/" else "/animes/"
-        return doc.select("div.anime-card, article.anime-card, .anime-card").mapNotNull { card ->
+        return doc.select("div.anime-card, article.anime-card, article.bs, .anime-card").mapNotNull { card ->
             val link = card.selectFirst("a[href*='$path']") ?: return@mapNotNull null
             val href = link.attrAsRelativeUrlOrNull("href") ?: return@mapNotNull null
             val title = card.selectFirst("h2, h3, h4, .title, .anime-title")?.text()?.trim()
