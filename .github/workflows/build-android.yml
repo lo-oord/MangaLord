@@ -90,15 +90,30 @@ jobs:
           MANGALORD_SIGNING_KEY_PASSWORD: ${{ secrets.MANGALORD_KEY_PASSWORD }}
         run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
 
-      - name: Build unsigned release APK for CI validation
+      - name: Build signed debug APK for install validation
         if: ${{ env.HAS_RELEASE_KEYSTORE != 'true' || steps.signed_build.outcome == 'failure' }}
-        run: ./gradlew assembleRelease --no-daemon --stacktrace --console=plain
+        run: ./gradlew assembleDebug --no-daemon --stacktrace --console=plain
+
+      - name: Prepare installable APK
+        if: always() && (steps.signed_build.outcome == 'success' || env.HAS_RELEASE_KEYSTORE != 'true' || steps.signed_build.outcome == 'failure')
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$GITHUB_WORKSPACE/ci-artifacts"
+          if [ "${{ steps.signed_build.outcome }}" = "success" ]; then
+            apk=$(find app/build/outputs/apk/release -maxdepth 1 -type f -name '*.apk' | head -n 1)
+          else
+            apk=$(find app/build/outputs/apk/debug -maxdepth 1 -type f -name '*.apk' | head -n 1)
+          fi
+          test -n "$apk"
+          cp "$apk" "$GITHUB_WORKSPACE/ci-artifacts/MangaLord.apk"
+          test -s "$GITHUB_WORKSPACE/ci-artifacts/MangaLord.apk"
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: mangalord-release-apk
-          path: app/build/outputs/apk/release/*.apk
+          name: MangaLord
+          path: ci-artifacts/MangaLord.apk
           if-no-files-found: error
           retention-days: 14
 
@@ -113,5 +128,5 @@ jobs:
       - name: Explain Firebase SHA requirement
         if: ${{ env.HAS_RELEASE_KEYSTORE != 'true' || steps.signed_build.outcome == 'failure' }}
         run: |
-          echo "CI produced an unsigned validation APK because the configured release signing credentials were unavailable or invalid."
+          echo "CI produced a signed debug APK for installation because the configured release signing credentials were unavailable or invalid."
           echo "Register the SHA-1/SHA-256 of the real release keystore in Firebase before testing Google Sign-In with a release APK."
