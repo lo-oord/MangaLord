@@ -65,8 +65,9 @@
 		<item name="linearProgressIndicatorStyle">@style/Widget.MangaLord.LinearProgressIndicator</item>
 		<item name="bottomSheetDragHandleStyle">@style/Widget.MangaLord.BottomSheet.DragHandle</item>
 		<item name="preferenceTheme">@style/PreferenceThemeOverlay.MangaLord</item>
-		<!-- Fix crash in A15 -->
-		<item name="actionButtonStyle">@style/Widget.AppCompat.ActionButton</item>
+			<!-- Fix crash in A15 -->
+			<item name="actionButtonStyle">@style/Widget.AppCompat.ActionButton</item>
+			<item name="materialButtonStyle">@style/Widget.MangaLord.Button</item>
 
 		<!-- Custom views -->
 		<item name="fastScrollerStyle">@style/Widget.MangaLord.FastScroller</item>

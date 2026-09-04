@@ -2,9 +2,9 @@
 
 	<!--AlertDialog-->
 
-	<style name="ThemeOverlay.MangaLord.AlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
-		<item name="alertDialogStyle">@style/AlertDialog.MangaLord</item>
-		<item name="dialogCornerRadius">@dimen/m3_alert_dialog_corner_size</item>
+		<style name="ThemeOverlay.MangaLord.AlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+			<item name="alertDialogStyle">@style/AlertDialog.MangaLord</item>
+			<item name="dialogCornerRadius">24dp</item>
 	</style>
 
 	<style name="AlertDialog.MangaLord" parent="MaterialAlertDialog.Material3">
@@ -42,13 +42,24 @@
 
 	<!-- Widget styles -->
 
-	<style name="Widget.MangaLord.SearchView" parent="@style/Widget.AppCompat.SearchView">
-		<item name="iconifiedByDefault">false</item>
-		<item name="searchIcon">@null</item>
-		<item name="queryBackground">@null</item>
-		<item name="android:textAppearance">@style/TextAppearance.MangaLord.SearchView</item>
-		<item name="android:textSize">18sp</item>
-	</style>
+		<style name="Widget.MangaLord.SearchView" parent="@style/Widget.AppCompat.SearchView">
+			<item name="iconifiedByDefault">false</item>
+			<item name="searchIcon">@null</item>
+			<item name="queryBackground">@drawable/bg_search_field</item>
+			<item name="android:textAppearance">@style/TextAppearance.MangaLord.SearchView</item>
+			<item name="android:textSize">16sp</item>
+		</style>
+
+		<style name="Widget.MangaLord.Button" parent="Widget.Material3.Button">
+			<item name="android:minHeight">48dp</item>
+			<item name="android:paddingStart">20dp</item>
+			<item name="android:paddingEnd">20dp</item>
+			<item name="android:insetTop">2dp</item>
+			<item name="android:insetBottom">2dp</item>
+			<item name="shapeAppearance">?shapeAppearanceCornerLarge</item>
+			<item name="iconSize">20dp</item>
+			<item name="iconPadding">10dp</item>
+		</style>
 
 	<style name="Widget.MangaLord.CircularProgressIndicator" parent="Widget.Material3.CircularProgressIndicator">
 		<item name="trackCornerRadius">@dimen/mtrl_progress_indicator_full_rounded_corner_radius</item>
@@ -231,7 +242,13 @@
 
 	<style name="TextAppearance.MangaLord.Preference.Secondary" parent="TextAppearance.Material3.BodySmall" />
 
-	<style name="TextAppearance.MangaLord.GridTitle" parent="TextAppearance.Material3.TitleSmall" />
+		<style name="TextAppearance.MangaLord.GridTitle" parent="TextAppearance.Material3.TitleSmall">
+			<item name="android:textColor">?attr/colorOnSurface</item>
+			<item name="android:textSize">14sp</item>
+			<item name="android:fontFamily">sans-serif-medium</item>
+			<item name="android:ellipsize">end</item>
+			<item name="android:maxLines">2</item>
+		</style>
 
 	<style name="TextAppearance.MangaLord.GridTitle.Small" parent="TextAppearance.Material3.TitleSmall">
 		<item name="android:textSize">12sp</item>
