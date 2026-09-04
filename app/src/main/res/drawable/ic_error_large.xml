@@ -1,11 +1,7 @@
-<vector
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:width="48dp"
-	android:height="48dp"
-	android:tint="@color/error"
-	android:viewportWidth="24.0"
-	android:viewportHeight="24.0">
-	<path
-		android:fillColor="@android:color/white"
-		android:pathData="M11 15h2v2h-2zm0-8h2v6h-2zm0.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="48dp" android:height="48dp" android:viewportWidth="48" android:viewportHeight="48">
+	<path android:fillColor="?attr/colorPrimary" android:pathData="M5,10A5,5 0,0 1,10 5h28a5,5 0,0 1,5 5v23a5,5 0,0 1,-5 5H10a5,5 0,0 1,-5 -5z" />
+	<path android:fillColor="?attr/colorSurfaceContainerHigh" android:pathData="M9,13l13,4v18L9,31zM39,13L26,17v18l13,-4z" />
+	<path android:fillColor="?attr/colorPrimary" android:pathData="M22,17h4v18h-4z" />
+	<path android:fillColor="?attr/colorError" android:pathData="M36,27l7,12H29z" />
+	<path android:fillColor="?attr/colorOnError" android:pathData="M35,31h2v4h-2zM35,36h2v2h-2z" />
 </vector>
