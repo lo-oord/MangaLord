@@ -18,8 +18,19 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
 		app:resize_mode="fit"
-		app:show_buffering="always"
-		app:use_controller="true" />
+			app:show_buffering="always"
+			app:use_controller="true" />
+
+		<WebView
+			android:id="@+id/embed_player"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			android:background="@android:color/black"
+			android:visibility="gone"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
 
 	<com.google.android.material.appbar.AppBarLayout
 		android:id="@+id/appbar"

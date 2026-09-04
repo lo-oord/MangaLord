@@ -191,23 +191,32 @@ internal abstract class ArabicVideoParser(
         return group.select("li[data]").mapNotNull { server ->
             val id = server.attr("data").trim().takeIf(String::isNotEmpty) ?: return@mapNotNull null
             val type = server.attr("type").ifBlank { server.className() }.lowercase()
-            val url = when {
-                type.contains("videa") && id.startsWith("http") -> id
-                type.contains("videa") -> "https://videa.hu/player?v=$id"
-                type.contains("asnwish") -> "https://asnwish.com/e/$id"
-                type.contains("mp4upload") -> "https://www.mp4upload.com/embed-$id.html"
-                type.contains("4shared") -> when {
-                    id.startsWith("http") -> id
-                    id.startsWith("s:") -> "https${id.removePrefix("s")}"
-                    id.startsWith("//") -> "https:$id"
-                    else -> "https://$id"
-                }
-                type.contains("mega") && id.startsWith("http") -> id
-                else -> return@mapNotNull null
+			val url = when {
+				type.contains("videa") && id.startsWith("http") -> id
+				type.contains("videa") -> "https://videa.hu/player?v=$id"
+				type.contains("asnwish") -> "https://asnwish.com/e/$id"
+				type.contains("mp4upload") -> "https://www.mp4upload.com/embed-$id.html"
+				type.contains("4shared") -> when {
+					id.startsWith("http") -> id
+					id.startsWith("s:/") -> id.replaceFirst("s:/", "https://")
+					id.startsWith("//") -> "https:$id"
+					else -> "https://$id"
+				}
+				type.contains("mega") -> if (id.startsWith("http")) id else "https://mega.nz/embed/$id"
+				type.contains("vidshare") -> "https://vidshare.tv/embed-$id.html"
+				type.contains("vidbem") -> "https://vidbem.com/embed-$id.html"
+				type.contains("vidbam") -> "https://vidbam.org/embed-$id.html"
+				type.contains("samaup") -> "https://samaup.cc/embed-$id.html"
+				type.contains("segavid") -> "https://segavid.com/embed-$id.html"
+				type.contains("sendvid") -> "https://sendvid.com/embed/$id"
+				type.contains("vidfast") -> "https://vidfast.co/embed-$id.html"
+				type.contains("clipwatching") -> "https://clipwatching.com/embed-$id.html"
+				type.contains("dood") -> "https://dood.so/e/$id"
+				else -> return@mapNotNull null
             }
-            val quality = server.attr("quality-data").trim().takeIf(String::isNotEmpty)
-            AnimeStream(
-                name = "AnimeLek • ${server.text().trim().ifEmpty { type }}",
+			val quality = server.attr("quality-data").trim().takeIf(String::isNotEmpty)
+			AnimeStream(
+				name = "AnimeLek • ${server.text().trim().ifEmpty { type }}${quality?.let { " • $it" }.orEmpty()}",
                 url = url,
                 headers = mapOf("Referer" to chapter.url.toAbsoluteUrl(domain)),
                 quality = quality,

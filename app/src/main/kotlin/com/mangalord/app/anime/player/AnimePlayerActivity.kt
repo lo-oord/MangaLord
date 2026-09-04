@@ -18,6 +18,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.webkit.WebSettings
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
@@ -378,6 +379,20 @@ class AnimePlayerActivity : BaseActivity<ActivityAnimePlayerBinding>() {
 		updateQuickControls()
 		resumePositionMs = positionMs.coerceAtLeast(0L)
 		viewBinding.layoutError.isVisible = false
+		if (isEmbedStream(stream)) {
+			viewBinding.playerView.isVisible = false
+			viewBinding.embedPlayer.isVisible = true
+			viewBinding.embedPlayer.settings.apply {
+				javaScriptEnabled = true
+				domStorageEnabled = true
+				mediaPlaybackRequiresUserGesture = false
+				mixedContentMode = WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE
+			}
+			viewBinding.embedPlayer.loadUrl(stream.url, stream.headers)
+			supportActionBar?.subtitle = listOfNotNull(episode.title, stream.name).joinToString(" · ")
+			return
+		}
+		viewBinding.embedPlayer.isVisible = false
 		viewBinding.playerView.isVisible = true
 		viewBinding.playerView.resizeMode = resizeMode
 
@@ -508,6 +523,16 @@ class AnimePlayerActivity : BaseActivity<ActivityAnimePlayerBinding>() {
 				builder.setMimeType(MimeTypes.VIDEO_MATROSKA)
 		}
 		return builder.build()
+	}
+
+	private fun isEmbedStream(stream: AnimeStream): Boolean {
+		val host = stream.url.toUri().host.orEmpty().lowercase()
+		return host.endsWith("videa.hu") || host.endsWith("asnwish.com") ||
+			host.endsWith("mp4upload.com") || host.endsWith("4shared.com") ||
+			host.endsWith("mega.nz") || host.endsWith("dood.so") || host.endsWith("vidbam.org") ||
+			host.endsWith("vidshare.tv") || host.endsWith("vidbem.com") || host.endsWith("samaup.cc") ||
+			host.endsWith("segavid.com") || host.endsWith("sendvid.com") || host.endsWith("vidfast.co") ||
+			host.endsWith("clipwatching.com")
 	}
 
 	private fun showServers() {
@@ -687,7 +712,16 @@ class AnimePlayerActivity : BaseActivity<ActivityAnimePlayerBinding>() {
 		selector.setParameters(parameters)
 	}
 
-	private fun streamQualityHeight(stream: AnimeStream): Int? = AnimeStreamSelector.qualityHeight(stream)
+	private fun streamQualityHeight(stream: AnimeStream): Int? {
+		AnimeStreamSelector.qualityHeight(stream)?.let { return it }
+		return when (stream.quality?.trim()?.uppercase()) {
+			"FHD" -> 1080
+			"HD" -> 720
+			"SD" -> 480
+			"LD" -> 360
+			else -> null
+		}
+	}
 
 	private fun qualityTitle(): String {
 		val height = streams.getOrNull(selectedStreamIndex)?.let(::streamQualityHeight)
@@ -927,7 +961,12 @@ class AnimePlayerActivity : BaseActivity<ActivityAnimePlayerBinding>() {
 		}
 		player = null
 		trackSelector = null
-		if (hasViewBinding()) viewBinding.playerView.player = null
+		if (hasViewBinding()) {
+			viewBinding.playerView.player = null
+			viewBinding.embedPlayer.stopLoading()
+			viewBinding.embedPlayer.loadUrl("about:blank")
+			viewBinding.embedPlayer.isVisible = false
+		}
 	}
 
 	override fun onStart() {
