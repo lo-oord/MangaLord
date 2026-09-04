@@ -57,7 +57,7 @@ internal class EgyBest(context: MangaLoaderContext) : PagedMangaParser(
         val path = if (query.isEmpty()) {
             "/anime-movies-series?page=$page"
         } else {
-            "/search?q=${query.urlEncoded()}&page=$page"
+            "/search/${query.urlEncoded()}?page=$page"
         }
         val document = webClient.httpGet(path.toAbsoluteUrl(domain)).parseHtml()
         return parseCards(document).ifEmpty { parseEmbeddedTitles(document.html()) }.distinctBy(Manga::id)
@@ -221,15 +221,15 @@ internal class EgyBest(context: MangaLoaderContext) : PagedMangaParser(
 
     private companion object {
         const val DEFAULT_DOMAIN = "www.egybest.co.in"
-        const val PAGE_SIZE = 24
+        const val PAGE_SIZE = 50
         const val USER_AGENT = "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 Chrome/124 Mobile Safari/537.36"
         val EMBED_URL = Regex("""https?://egybestvid\.com/[^\"'\\\s]+""", RegexOption.IGNORE_CASE)
         val TITLE_OBJECT = Regex(
             "\"id\":(\\d+),\"name\":\"((?:\\\\.|[^\"])*)\".*?\"poster\":\"(https?://[^\"]+)\".*?\"is_series\":(true|false).*?\"description\":\"((?:\\\\.|[^\"])*)\"",
             setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL),
         )
-        val EPISODE = Regex("episode_number\\\"\\s*:\\s*(\\d+(?:\\.\\d+)?).*?primary_video\\\"\\s*:\\s*\\{\\\"id\\\":(\\d+)", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL))
-        val PRIMARY_VIDEO = Regex("primary_video\\\"\\s*:\\s*\\{\\\"id\\\":(\\d+)")
+        val EPISODE = Regex("episode_number\\\\?\"\\s*:\\s*(\\d+(?:\\.\\d+)?).*?primary_video\\\\?\"\\s*:\\s*\\{\\\\?\"id\\\\?\":(\\d+)", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL))
+        val PRIMARY_VIDEO = Regex("primary_video\\\\?\"\\s*:\\s*\\{\\\\?\"id\\\\?\":(\\d+)")
         val TITLE_ID = Regex("\\\"id\\\":(\\d+),\\\"name\\\":\\\".*?\\\",\\\"release_date", RegexOption.DOT_MATCHES_ALL)
     }
 }
