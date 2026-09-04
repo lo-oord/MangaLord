@@ -423,9 +423,10 @@ class MangaSourcesRepository @Inject constructor(
 			"KLZ9",            // Klz9
 				"ANIME3RB",       // Anime3rb
 				"ANIME_PHOENIX",  // Anime Phoenix
-				"ANIME_RISTO",    // RistoAnime
-				"ANIMELEK",       // AnimeLek
-				"MOVIE_BOX",      // Movie Box
+					"ANIME_RISTO",    // RistoAnime
+					"ANIMELEK",       // AnimeLek
+					"EGYBEST",        // EgyBest
+					"MOVIE_BOX",      // Movie Box
 		)
 	}
 }

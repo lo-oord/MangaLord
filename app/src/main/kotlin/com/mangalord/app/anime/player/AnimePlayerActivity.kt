@@ -536,6 +536,7 @@ class AnimePlayerActivity : BaseActivity<ActivityAnimePlayerBinding>() {
 		return host.endsWith("videa.hu") || host.endsWith("asnwish.com") ||
 			host.endsWith("mp4upload.com") || host.endsWith("4shared.com") ||
 			host.endsWith("mega.nz") || host.endsWith("dood.so") || host.endsWith("vidbam.org") ||
+			host.endsWith("egybestvid.com") ||
 			host.endsWith("vidshare.tv") || host.endsWith("vidbem.com") || host.endsWith("samaup.cc") ||
 			host.endsWith("segavid.com") || host.endsWith("sendvid.com") || host.endsWith("vidfast.co") ||
 			host.endsWith("clipwatching.com")
