@@ -13,6 +13,8 @@ import org.koitharu.kotatsu.parsers.model.ContentType
 import org.koitharu.kotatsu.parsers.model.Manga
 import org.koitharu.kotatsu.parsers.model.MangaChapter
 import org.koitharu.kotatsu.parsers.model.MangaListFilter
+import org.koitharu.kotatsu.parsers.model.MangaListFilterCapabilities
+import org.koitharu.kotatsu.parsers.model.MangaListFilterOptions
 import org.koitharu.kotatsu.parsers.model.MangaParserSource
 import org.koitharu.kotatsu.parsers.model.RATING_UNKNOWN
 import org.koitharu.kotatsu.parsers.model.SortOrder
@@ -40,6 +42,10 @@ internal class EgyBest(context: MangaLoaderContext) : PagedMangaParser(
         SortOrder.RATING,
         SortOrder.ALPHABETICAL,
     )
+
+    override val filterCapabilities = MangaListFilterCapabilities(isSearchSupported = true)
+
+    override suspend fun getFilterOptions() = MangaListFilterOptions()
 
     override suspend fun getListPage(
         page: Int,
@@ -152,7 +158,7 @@ internal class EgyBest(context: MangaLoaderContext) : PagedMangaParser(
                 scanlator = "EgyBest",
                 branch = null,
             )
-        }.distinctBy(MangaChapter::id).sortedBy(MangaChapter::number)
+        }.distinctBy(MangaChapter::id).sortedBy(MangaChapter::number).toList()
     }
 
     private fun parseMovieChapter(raw: String): List<MangaChapter> {
