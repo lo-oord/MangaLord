@@ -42,7 +42,14 @@ internal abstract class ArabicVideoParser(
             } else if (page <= paginator.firstPage) "https://$domain/$listUrl"
             else "https://$domain/$listUrl/page/$page/"
         }
-        return parseMangaList(webClient.httpGet(url).parseHtml())
+		val documents = buildList {
+			add(webClient.httpGet(url).parseHtml())
+			if (domain == "animedar.net" && query.isEmpty() && page <= paginator.firstPage) {
+				val extraUrl = "https://$domain/$listUrl?page=2"
+				if (extraUrl != url) add(webClient.httpGet(extraUrl).parseHtml())
+			}
+		}
+		return documents.flatMap(::parseMangaList).distinctBy(Manga::id)
     }
 
     override fun parseMangaList(doc: Document): List<Manga> {
