@@ -1,6 +1,7 @@
 package org.koitharu.kotatsu.parsers.site.anime.ar
 
 import okhttp3.Headers
+import org.json.JSONObject
 import org.jsoup.nodes.Document
 import org.jsoup.parser.Parser
 import org.koitharu.kotatsu.parsers.MangaLoaderContext
@@ -59,7 +60,7 @@ internal class EgyBest(context: MangaLoaderContext) : PagedMangaParser(
             "/search?q=${query.urlEncoded()}&page=$page"
         }
         val document = webClient.httpGet(path.toAbsoluteUrl(domain)).parseHtml()
-        return parseCards(document).distinctBy(Manga::id)
+        return parseCards(document).ifEmpty { parseEmbeddedTitles(document.html()) }.distinctBy(Manga::id)
     }
 
     override suspend fun getDetails(manga: Manga): Manga {
@@ -142,6 +143,37 @@ internal class EgyBest(context: MangaLoaderContext) : PagedMangaParser(
         }
     }
 
+    private fun parseEmbeddedTitles(raw: String): List<Manga> {
+        val decoded = Parser.unescapeEntities(raw, false).replace("\\/", "/")
+        return TITLE_OBJECT.findAll(decoded).mapNotNull { match ->
+            val id = match.groupValues[1].toLongOrNull() ?: return@mapNotNull null
+            val title = decodeJsonString(match.groupValues[2]).trim()
+            if (title.isEmpty()) return@mapNotNull null
+            val cover = match.groupValues[3].trim().takeIf(String::isNotEmpty)
+            val description = decodeJsonString(match.groupValues[5]).trim().takeIf(String::isNotEmpty)
+            Manga(
+                id = id,
+                title = title,
+                altTitles = emptySet(),
+                url = "/titles/$id",
+                publicUrl = "https://$domain/titles/$id",
+                rating = RATING_UNKNOWN,
+                coverUrl = cover,
+                largeCoverUrl = cover,
+                tags = emptySet(),
+                state = null,
+                authors = emptySet(),
+                description = description,
+                source = source,
+                contentRating = ContentRating.SAFE,
+            )
+        }.toList()
+    }
+
+    private fun decodeJsonString(value: String): String = runCatching {
+        JSONObject("{\"value\":\"$value\"}").getString("value")
+    }.getOrDefault(value)
+
     private fun parseEpisodes(raw: String): List<MangaChapter> {
         return EPISODE.findAll(raw).mapNotNull { match ->
             val number = match.groupValues[1].toFloatOrNull() ?: return@mapNotNull null
@@ -192,6 +224,10 @@ internal class EgyBest(context: MangaLoaderContext) : PagedMangaParser(
         const val PAGE_SIZE = 24
         const val USER_AGENT = "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 Chrome/124 Mobile Safari/537.36"
         val EMBED_URL = Regex("""https?://egybestvid\.com/[^\"'\\\s]+""", RegexOption.IGNORE_CASE)
+        val TITLE_OBJECT = Regex(
+            "\"id\":(\\d+),\"name\":\"((?:\\\\.|[^\"])*)\".*?\"poster\":\"(https?://[^\"]+)\".*?\"is_series\":(true|false).*?\"description\":\"((?:\\\\.|[^\"])*)\"",
+            setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL),
+        )
         val EPISODE = Regex("episode_number\\\"\\s*:\\s*(\\d+(?:\\.\\d+)?).*?primary_video\\\"\\s*:\\s*\\{\\\"id\\\":(\\d+)", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL))
         val PRIMARY_VIDEO = Regex("primary_video\\\"\\s*:\\s*\\{\\\"id\\\":(\\d+)")
         val TITLE_ID = Regex("\\\"id\\\":(\\d+),\\\"name\\\":\\\".*?\\\",\\\"release_date", RegexOption.DOT_MATCHES_ALL)
