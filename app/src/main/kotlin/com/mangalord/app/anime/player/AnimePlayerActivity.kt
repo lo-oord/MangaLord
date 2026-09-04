@@ -19,6 +19,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
@@ -152,6 +154,10 @@ class AnimePlayerActivity : BaseActivity<ActivityAnimePlayerBinding>() {
 		audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
 
 		setContentView(ActivityAnimePlayerBinding.inflate(layoutInflater))
+		viewBinding.embedPlayer.webViewClient = object : WebViewClient() {
+			override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean = true
+			override fun shouldOverrideUrlLoading(view: WebView, request: android.webkit.WebResourceRequest): Boolean = true
+		}
 		setDisplayHomeAsUp(isEnabled = true, showUpAsClose = false)
 		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 		WindowCompat.setDecorFitsSystemWindows(window, false)

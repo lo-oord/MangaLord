@@ -12,8 +12,10 @@ import org.koitharu.kotatsu.parsers.model.SortOrder
 import org.koitharu.kotatsu.parsers.site.madara.MadaraParser
 import org.koitharu.kotatsu.parsers.util.generateUid
 import org.koitharu.kotatsu.parsers.util.parseHtml
+import org.koitharu.kotatsu.parsers.util.parseRaw
 import org.koitharu.kotatsu.parsers.util.attrAsRelativeUrlOrNull
 import org.koitharu.kotatsu.parsers.util.toAbsoluteUrl
+import org.jsoup.parser.Parser
 
 internal abstract class ArabicVideoParser(
     context: MangaLoaderContext,
@@ -184,12 +186,13 @@ internal abstract class ArabicVideoParser(
             .distinctBy(AnimeStream::url)
     }
 
-    private fun extractAnimeDarStreams(page: Document, chapter: MangaChapter): List<AnimeStream> {
+    private suspend fun extractAnimeDarStreams(page: Document, chapter: MangaChapter): List<AnimeStream> {
         val episode = Regex("[?&]episode=(\\d+)").find(chapter.url)?.groupValues?.getOrNull(1)
             ?.toIntOrNull()?.coerceAtLeast(1) ?: 1
         val group = page.select("#ServerList1 .divv11").getOrNull(episode - 1) ?: return emptyList()
-        return group.select("li[data]").mapNotNull { server ->
-            val id = server.attr("data").trim().takeIf(String::isNotEmpty) ?: return@mapNotNull null
+		return buildList {
+			for (server in group.select("li[data]")) {
+			val id = server.attr("data").trim().takeIf(String::isNotEmpty) ?: continue
             val type = server.attr("type").ifBlank { server.className() }.lowercase()
 			val url = when {
 				type.contains("videa") && id.startsWith("http") -> id
@@ -212,16 +215,33 @@ internal abstract class ArabicVideoParser(
 				type.contains("vidfast") -> "https://vidfast.co/embed-$id.html"
 				type.contains("clipwatching") -> "https://clipwatching.com/embed-$id.html"
 				type.contains("dood") -> "https://dood.so/e/$id"
-				else -> return@mapNotNull null
+				else -> continue
             }
-			val quality = server.attr("quality-data").trim().takeIf(String::isNotEmpty)
-			AnimeStream(
+            val quality = server.attr("quality-data").trim().takeIf(String::isNotEmpty)
+            val directUrl = resolveEmbeddedMedia(url) ?: url
+            add(AnimeStream(
 				name = "AnimeLek • ${server.text().trim().ifEmpty { type }}${quality?.let { " • $it" }.orEmpty()}",
-                url = url,
-                headers = mapOf("Referer" to chapter.url.toAbsoluteUrl(domain)),
-                quality = quality,
-            )
+				url = directUrl,
+				headers = mapOf("Referer" to chapter.url.toAbsoluteUrl(domain)),
+				quality = quality,
+			))
+            }
         }.distinctBy(AnimeStream::url)
+    }
+
+    private suspend fun resolveEmbeddedMedia(embedUrl: String): String? {
+        if (embedUrl.substringBefore('?').endsWith(".m3u8", true) ||
+            embedUrl.substringBefore('?').endsWith(".mp4", true)) return embedUrl
+        val raw = runCatching { webClient.httpGet(embedUrl).parseRaw() }.getOrNull() ?: return null
+        val normalized = Parser.unescapeEntities(raw, false)
+            .replace("\\/", "/")
+            .replace("\\u0026", "&")
+            .replace("\\u003A", ":")
+            .replace("\\u002F", "/")
+        return Regex("https?://[^\\s\\\"'<>]+?\\.(?:m3u8|mp4)(?:\\?[^\\s\\\"'<>]*)?", RegexOption.IGNORE_CASE)
+            .findAll(normalized)
+            .map { it.value.trimEnd('\\', '\"', '\'', ')', ']') }
+            .firstOrNull()
     }
 
     private fun coverUrl(image: org.jsoup.nodes.Element): String? = sequenceOf(
