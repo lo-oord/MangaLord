@@ -50,13 +50,19 @@
 			<item name="android:textSize">16sp</item>
 		</style>
 
+		<!-- Unified Button shape for MangaLord UI Redesign -->
+		<style name="ShapeAppearance.MangaLord.Button" parent="ShapeAppearance.Material3.SmallComponent">
+			<item name="cornerFamily">rounded</item>
+			<item name="cornerSize">12dp</item>
+		</style>
+
 		<style name="Widget.MangaLord.Button" parent="Widget.Material3.Button">
 			<item name="android:minHeight">48dp</item>
 			<item name="android:paddingStart">20dp</item>
 			<item name="android:paddingEnd">20dp</item>
 			<item name="android:insetTop">2dp</item>
 			<item name="android:insetBottom">2dp</item>
-			<item name="shapeAppearance">?shapeAppearanceCornerLarge</item>
+			<item name="shapeAppearance">@style/ShapeAppearance.MangaLord.Button</item>
 			<item name="iconSize">20dp</item>
 			<item name="iconPadding">10dp</item>
 		</style>
@@ -178,7 +184,7 @@
 	<style name="Widget.MangaLord.ExploreButton" parent="Widget.Material3.Button.ElevatedButton.Icon">
 		<item name="android:minHeight">56dp</item>
 		<item name="android:singleLine">true</item>
-		<item name="shapeAppearance">?shapeAppearanceCornerExtraLarge</item>
+		<item name="shapeAppearance">@style/ShapeAppearance.MangaLord.Button</item>
 		<item name="android:ellipsize">marquee</item>
 		<item name="android:marqueeRepeatLimit">marquee_forever</item>
 		<item name="iconSize">22dp</item>
