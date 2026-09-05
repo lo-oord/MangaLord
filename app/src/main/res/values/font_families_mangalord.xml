@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Font family for MangaLord: Inter + Noto Sans Arabic placeholders -->
+    <font-family xmlns:app="http://schemas.android.com/apk/res-auto" app:fontProviderPackage="">
+        <!-- Placeholder entries: real font files will be added as res/font/*.ttf -->
+    </font-family>
+
+</resources>
