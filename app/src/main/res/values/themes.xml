@@ -69,7 +69,24 @@
 			<item name="actionButtonStyle">@style/Widget.AppCompat.ActionButton</item>
 			<item name="materialButtonStyle">@style/Widget.MangaLord.Button</item>
 
-		<!-- Custom views -->
+			<!-- Manga Lord typography: one bundled family with Android fallback for unsupported scripts. -->
+			<item name="textAppearanceDisplayLarge">@style/TextAppearance.MangaLord.DisplayLarge</item>
+			<item name="textAppearanceDisplayMedium">@style/TextAppearance.MangaLord.DisplayMedium</item>
+			<item name="textAppearanceDisplaySmall">@style/TextAppearance.MangaLord.DisplaySmall</item>
+			<item name="textAppearanceHeadlineLarge">@style/TextAppearance.MangaLord.HeadlineLarge</item>
+			<item name="textAppearanceHeadlineMedium">@style/TextAppearance.MangaLord.HeadlineMedium</item>
+			<item name="textAppearanceHeadlineSmall">@style/TextAppearance.MangaLord.HeadlineSmall</item>
+			<item name="textAppearanceTitleLarge">@style/TextAppearance.MangaLord.TitleLarge</item>
+			<item name="textAppearanceTitleMedium">@style/TextAppearance.MangaLord.TitleMedium</item>
+			<item name="textAppearanceTitleSmall">@style/TextAppearance.MangaLord.TitleSmall</item>
+			<item name="textAppearanceBodyLarge">@style/TextAppearance.MangaLord.BodyLarge</item>
+			<item name="textAppearanceBodyMedium">@style/TextAppearance.MangaLord.BodyMedium</item>
+			<item name="textAppearanceBodySmall">@style/TextAppearance.MangaLord.BodySmall</item>
+			<item name="textAppearanceLabelLarge">@style/TextAppearance.MangaLord.LabelLarge</item>
+			<item name="textAppearanceLabelMedium">@style/TextAppearance.MangaLord.LabelMedium</item>
+			<item name="textAppearanceLabelSmall">@style/TextAppearance.MangaLord.LabelSmall</item>
+
+			<!-- Custom views -->
 		<item name="fastScrollerStyle">@style/Widget.MangaLord.FastScroller</item>
 		<item name="listItemTextViewStyle">@style/Widget.MangaLord.ListItemTextView</item>
 		<item name="dotIndicatorStyle">@style/Widget.MangaLord.DotIndicator</item>

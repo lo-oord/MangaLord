@@ -6,7 +6,8 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:background="@drawable/list_selector"
-	android:clipChildren="false">
+	android:clipChildren="false"
+	android:minHeight="56dp">
 
 	<com.mangalord.app.image.ui.CoverImageView
 		android:id="@+id/imageView_cover"
