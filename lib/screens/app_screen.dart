@@ -129,7 +129,80 @@ class _MangaDetailsPageState extends State<MangaDetailsPage> {
   bool get ar => widget.language == 'ar'; String t(String a, String e) => ar ? a : e;
   @override void initState() { super.initState(); manga = widget.manga; favorite = widget.isFavorite; _fetch(); }
   Future<void> _fetch() async { try { final full = await widget.source.details(manga.url); if (mounted) setState(() { manga = full.copyWith(cover: full.cover.isEmpty ? manga.cover : full.cover); loading = false; }); } catch (e) { if (mounted) setState(() { loading = false; error = e.toString(); }); } }
-  @override Widget build(BuildContext context) => Scaffold(appBar: AppBar(title: Text(StarzSource.sourceName), actions: [IconButton(onPressed: () async { setState(() => favorite = !favorite); await widget.onToggleFavorite?.call(manga.id); }, icon: Icon(favorite ? Icons.favorite : Icons.favorite_border, color: favorite ? Colors.redAccent : null))]), body: RefreshIndicator(onRefresh: () async { setState(() => loading = true); await _fetch(); }, child: ListView(padding: const EdgeInsets.all(18), children: [Row(crossAxisAlignment: CrossAxisAlignment.start, children: [_Cover(manga: manga, size: const Size(132, 190)), const SizedBox(width: 16), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(manga.title, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900)), const SizedBox(height: 8), Text(StarzSource.sourceName, style: const TextStyle(color: accentGreen, fontWeight: FontWeight.w700)), if (manga.author.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(manga.author, style: const TextStyle(color: mutedText))), if (manga.status.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(manga.status, style: const TextStyle(color: mutedText))) ]))]), const SizedBox(height: 18), if (manga.genres.isNotEmpty) Text(manga.genres, style: const TextStyle(color: mutedText)), const SizedBox(height: 18), if (manga.description.isNotEmpty) Text(manga.description, style: const TextStyle(height: 1.55)), const SizedBox(height: 22), if (loading) const Center(child: CircularProgressIndicator(color: accentGreen)) else if (error != null) _StateCard(icon: Icons.error_outline, title: t('تعذر تحميل التفاصيل', 'Could not load details'), message: error!) else ...[Text('${t('الفصول', 'Chapters')} (${manga.chapters.length})', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)), const SizedBox(height: 10), ...manga.chapters.map((chapter) => ListTile(contentPadding: EdgeInsets.zero, leading: const Icon(Icons.menu_book_outlined, color: accentGreen), title: Text(chapter.title), trailing: const Icon(Icons.chevron_right), onTap: () async { final loaded = await widget.source.chapter(chapter.url, mangaTitle: manga.title); if (context.mounted) await Navigator.push(context, MaterialPageRoute(builder: (_) => StarzReaderPage(source: widget.source, manga: manga, chapter: loaded, mode: widget.readerMode, language: widget.language))); }))]]))); }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(StarzSource.sourceName),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              setState(() => favorite = !favorite);
+              await widget.onToggleFavorite?.call(manga.id);
+            },
+            icon: Icon(favorite ? Icons.favorite : Icons.favorite_border, color: favorite ? Colors.redAccent : null),
+          ),
+        ],
+      ),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          setState(() => loading = true);
+          await _fetch();
+        },
+        child: ListView(
+          padding: const EdgeInsets.all(18),
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _Cover(manga: manga, size: const Size(132, 190)),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(manga.title, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900)),
+                      const SizedBox(height: 8),
+                      Text(StarzSource.sourceName, style: const TextStyle(color: accentGreen, fontWeight: FontWeight.w700)),
+                      if (manga.author.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(manga.author, style: const TextStyle(color: mutedText))),
+                      if (manga.status.isNotEmpty) Padding(padding: const EdgeInsets.only(top: 8), child: Text(manga.status, style: const TextStyle(color: mutedText))),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 18),
+            if (manga.genres.isNotEmpty) Text(manga.genres, style: const TextStyle(color: mutedText)),
+            const SizedBox(height: 18),
+            if (manga.description.isNotEmpty) Text(manga.description, style: const TextStyle(height: 1.55)),
+            const SizedBox(height: 22),
+            if (loading)
+              const Center(child: CircularProgressIndicator(color: accentGreen))
+            else if (error != null)
+              _StateCard(icon: Icons.error_outline, title: t('تعذر تحميل التفاصيل', 'Could not load details'), message: error!)
+            else ...[
+              Text('${t('الفصول', 'Chapters')} (${manga.chapters.length})', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+              const SizedBox(height: 10),
+              ...manga.chapters.map(
+                (chapter) => ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const Icon(Icons.menu_book_outlined, color: accentGreen),
+                  title: Text(chapter.title),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () async {
+                    final loaded = await widget.source.chapter(chapter.url, mangaTitle: manga.title);
+                    if (context.mounted) {
+                      await Navigator.push(context, MaterialPageRoute(builder: (_) => StarzReaderPage(source: widget.source, manga: manga, chapter: loaded, mode: widget.readerMode, language: widget.language)));
+                    }
+                  },
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class StarzReaderPage extends StatefulWidget { const StarzReaderPage({required this.source, required this.manga, required this.chapter, required this.mode, required this.language, super.key}); final StarzSource source; final StarzManga manga; final StarzChapter chapter; final String mode, language; @override State<StarzReaderPage> createState() => _StarzReaderPageState(); }
