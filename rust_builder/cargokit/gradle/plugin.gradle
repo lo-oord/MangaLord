@@ -109,20 +109,21 @@ class CargoKitPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
-        def plugin = findFlutterPlugin(project.rootProject);
+        def flutterPlugin = findFlutterPlugin(project.rootProject);
 
         project.extensions.create("cargokit", CargoKitExtension)
 
-        if (plugin == null) {
-            print("Flutter plugin not found, CargoKit plugin will not be applied.")
+        // Recent Flutter Gradle plugin versions no longer expose the historical
+        // FlutterPlugin class. Fall back to the Android application project.
+        def flutterProject = flutterPlugin != null ? flutterPlugin.project : project.rootProject.findProject(":app")
+        if (flutterProject == null || !flutterProject.plugins.hasPlugin('com.android.application')) {
+            print("Flutter Android application project not found; CargoKit plugin will not be applied.")
             return;
         }
 
         def cargoBuildDir = "${project.buildDir}/build"
 
-        // Determine if the project is an application or library
-        def isApplication = plugin.project.plugins.hasPlugin('com.android.application')
-        def variants = isApplication ? plugin.project.android.applicationVariants : plugin.project.android.libraryVariants
+        def variants = flutterProject.android.applicationVariants
 
         variants.all { variant ->
 
@@ -132,7 +133,9 @@ class CargoKitPlugin implements Plugin<Project> {
             def jniLibs = project.android.sourceSets.maybeCreate(buildType).jniLibs;
             jniLibs.srcDir(new File(cargoOutputDir))
 
-            def platforms = plugin.getTargetPlatforms().collect()
+            def platforms = flutterPlugin != null
+                ? flutterPlugin.getTargetPlatforms().collect()
+                : ["android-arm", "android-arm64", "android-x64"]
 
             // Same thing addFlutterDependencies does in flutter.gradle
             if (buildType == "debug") {
