@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-const _green = Color(0xFF3DDC97);
-const _deepGreen = Color(0xFF113C32);
-const _ink = Color(0xFF0B1714);
-const _muted = Color(0xFF8FA39C);
+const accentGreen = Color(0xFF3DDC97);
+const deepGreen = Color(0xFF113C32);
+const mutedText = Color(0xFF8FA39C);
 
 class Manga {
   const Manga({required this.title, required this.author, required this.genre, required this.cover, required this.description, required this.chapters, this.status = 'Ongoing'});
@@ -16,7 +15,7 @@ class Manga {
   final String status;
 }
 
-const _manga = [
+const mockManga = <Manga>[
   Manga(title: 'The Beginning After the End', author: 'TurtleMe', genre: 'Fantasy', cover: 'https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=700&q=80', description: 'King Grey has unrivaled strength, wealth and prestige in a world governed by martial ability. Yet solitude lingers closely behind those with great power.', chapters: 188),
   Manga(title: 'Omniscient Reader', author: 'Sing Shong', genre: 'Action', cover: 'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&w=700&q=80', description: 'An ordinary reader discovers that the novel he has followed for years is suddenly becoming reality.', chapters: 214),
   Manga(title: 'Solo Leveling', author: 'Chugong', genre: 'Adventure', cover: 'https://images.unsplash.com/photo-1607604276583-eef5b076f64f?auto=format&fit=crop&w=700&q=80', description: 'In a world where hunters battle monsters, the weakest hunter finds a mysterious system that changes his fate.', chapters: 179, status: 'Completed'),
@@ -27,72 +26,210 @@ const _manga = [
 
 class AppScreen extends StatefulWidget {
   const AppScreen({super.key});
-  @override State<AppScreen> createState() => _AppScreenState();
+  @override
+  State<AppScreen> createState() => _AppScreenState();
 }
 
 class _AppScreenState extends State<AppScreen> {
-  int _index = 0;
-  String _query = '';
-  final Set<String> _favorites = {'Solo Leveling'};
-  final List<Manga> _history = [_manga[2], _manga[0]];
+  int selectedIndex = 0;
+  String searchQuery = '';
+  final favorites = <String>{'Solo Leveling'};
+  final history = <Manga>[mockManga[2], mockManga[0]];
 
   @override
   Widget build(BuildContext context) {
-    final pages = [
-      _HomePage(query: _query, onQuery: (v) => setState(() => _query = v), onOpen: _openManga, onRetry: () => setState(() {})),
-      _HistoryPage(items: _history, onOpen: _openManga),
-      _SettingsPage(favorites: _favorites, onOpen: _openManga, onToggleTheme: () => _showThemePicker(context)),
+    final pages = <Widget>[
+      HomePage(query: searchQuery, onQueryChanged: (value) => setState(() => searchQuery = value), onOpen: openManga),
+      HistoryPage(items: history, onOpen: openManga),
+      SettingsPage(favorites: favorites, onOpen: openManga, onThemeTap: () => showThemePicker(context)),
     ];
     return Scaffold(
-      body: IndexedStack(index: _index, children: pages),
-      bottomNavigationBar: SafeArea(child: Padding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 12), child: _FloatingNav(index: _index, onChanged: (v) => setState(() => _index = v)))),
+      body: IndexedStack(index: selectedIndex, children: pages),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+          child: FloatingNavigation(index: selectedIndex, onChanged: (value) => setState(() => selectedIndex = value)),
+        ),
+      ),
     );
   }
 
-  void _openManga(Manga manga) {
-    if (!_history.any((m) => m.title == manga.title)) setState(() => _history.insert(0, manga));
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) => _DetailsPage(manga: manga, isFavorite: _favorites.contains(manga.title), onFavorite: () => setState(() { if (_favorites.contains(manga.title)) { _favorites.remove(manga.title); } else { _favorites.add(manga.title); } }), onRead: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => _ReaderPage(manga: manga)))));
+  void openManga(Manga manga) {
+    if (!history.any((item) => item.title == manga.title)) {
+      setState(() => history.insert(0, manga));
+    }
+    Navigator.push(context, MaterialPageRoute(builder: (_) => DetailsPage(manga: manga, isFavorite: favorites.contains(manga.title), onFavorite: () => setState(() {
+        if (favorites.contains(manga.title)) {
+          favorites.remove(manga.title);
+        } else {
+          favorites.add(manga.title);
+        }
+      }), onRead: () => Navigator.push(context, MaterialPageRoute(builder: (_) => ReaderPage(manga: manga))))));
   }
 
-  Future<void> _showThemePicker(BuildContext context) async {
-    await showModalBottomSheet<void>(context: context, showDragHandle: true, builder: (context) => SafeArea(child: Column(mainAxisSize: MainAxisSize.min, children: [ListTile(leading: const Icon(Icons.brightness_auto_rounded), title: const Text('Follow system'), onTap: () => Navigator.pop(context)), ListTile(leading: const Icon(Icons.light_mode_rounded), title: const Text('Light mode'), onTap: () => Navigator.pop(context)), ListTile(leading: const Icon(Icons.dark_mode_rounded), title: const Text('Dark mode'), onTap: () => Navigator.pop(context)), const SizedBox(height: 12)])));
+  Future<void> showThemePicker(BuildContext context) async {
+    await showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      builder: (sheetContext) => SafeArea(
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          ListTile(leading: const Icon(Icons.brightness_auto_rounded), title: const Text('Follow system'), onTap: () => Navigator.pop(sheetContext)),
+          ListTile(leading: const Icon(Icons.light_mode_rounded), title: const Text('Light mode'), onTap: () => Navigator.pop(sheetContext)),
+          ListTile(leading: const Icon(Icons.dark_mode_rounded), title: const Text('Dark mode'), onTap: () => Navigator.pop(sheetContext)),
+          const SizedBox(height: 12),
+        ]),
+      ),
+    );
   }
 }
 
-class _FloatingNav extends StatelessWidget {
-  const _FloatingNav({required this.index, required this.onChanged});
-  final int index; final ValueChanged<int> onChanged;
-  @override Widget build(BuildContext context) => Container(decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(24), boxShadow: [BoxShadow(color: Colors.black.withOpacity(.18), blurRadius: 22, offset: const Offset(0, 8))]), padding: const EdgeInsets.all(6), child: Row(children: [_NavItem(icon: Icons.home_rounded, label: 'Home', active: index == 0, onTap: () => onChanged(0)), _NavItem(icon: Icons.history_rounded, label: 'History', active: index == 1, onTap: () => onChanged(1)), _NavItem(icon: Icons.settings_rounded, label: 'Settings', active: index == 2, onTap: () => onChanged(2))]));
-}
-class _NavItem extends StatelessWidget {
-  const _NavItem({required this.icon, required this.label, required this.active, required this.onTap}); final IconData icon; final String label; final bool active; final VoidCallback onTap;
-  @override Widget build(BuildContext context) => Expanded(child: InkWell(borderRadius: BorderRadius.circular(20), onTap: onTap, child: AnimatedContainer(duration: const Duration(milliseconds: 220), curve: Curves.easeOut, padding: const EdgeInsets.symmetric(vertical: 10), decoration: BoxDecoration(color: active ? _green.withOpacity(.16) : Colors.transparent, borderRadius: BorderRadius.circular(18)), child: Column(mainAxisSize: MainAxisSize.min, children: [Icon(icon, color: active ? _green : _muted, size: 21), const SizedBox(height: 3), Text(label, style: TextStyle(fontSize: 11, fontWeight: active ? FontWeight.w700 : FontWeight.w500, color: active ? _green : _muted))])));
-}
-
-class _HomePage extends StatelessWidget {
-  const _HomePage({required this.query, required this.onQuery, required this.onOpen, required this.onRetry}); final String query; final ValueChanged<String> onQuery; final ValueChanged<Manga> onOpen; final VoidCallback onRetry;
-  @override Widget build(BuildContext context) { final filtered = _manga.where((m) => m.title.toLowerCase().contains(query.toLowerCase())).toList(); return CustomScrollView(slivers: [SliverAppBar(pinned: true, expandedHeight: 112, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, flexibleSpace: FlexibleSpaceBar(titlePadding: const EdgeInsetsDirectional.only(start: 20, bottom: 16), title: const Text('Discover', style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800)), background: Align(alignment: Alignment.topRight, child: Padding(padding: const EdgeInsets.only(top: 52, right: 20), child: Container(width: 38, height: 38, decoration: BoxDecoration(color: _deepGreen, borderRadius: BorderRadius.circular(14)), child: const Icon(Icons.auto_awesome_rounded, color: _green, size: 20))))), SliverPadding(padding: const EdgeInsets.fromLTRB(20, 12, 20, 0), sliver: SliverToBoxAdapter(child: TextField(onChanged: onQuery, decoration: InputDecoration(hintText: 'Search manga...', prefixIcon: const Icon(Icons.search_rounded), suffixIcon: query.isEmpty ? null : IconButton(onPressed: () => onQuery(''), icon: const Icon(Icons.close_rounded)), filled: true, fillColor: Theme.of(context).colorScheme.surface, border: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none), focusedBorder: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(18)), borderSide: BorderSide(color: _green, width: 1.5))))), SliverPadding(padding: const EdgeInsets.fromLTRB(20, 28, 20, 14), sliver: SliverToBoxAdapter(child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [const Text('Latest manga', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)), Text('${filtered.length} titles', style: const TextStyle(color: _muted, fontSize: 12))]))), if (filtered.isEmpty) SliverFillRemaining(hasScrollBody: false, child: _StateCard(icon: Icons.search_off_rounded, title: 'No manga found', message: 'Try another title or search again.', action: 'Clear search', onPressed: () => onQuery(''))) else SliverPadding(padding: const EdgeInsets.fromLTRB(20, 0, 20, 28), sliver: SliverGrid(delegate: SliverChildBuilderDelegate((context, i) => _MangaCard(manga: filtered[i], onTap: () => onOpen(filtered[i])), childCount: filtered.length), gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 190, mainAxisSpacing: 22, crossAxisSpacing: 16, childAspectRatio: .57))) ]); }
+class FloatingNavigation extends StatelessWidget {
+  const FloatingNavigation({required this.index, required this.onChanged, super.key});
+  final int index;
+  final ValueChanged<int> onChanged;
+  @override
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.all(6),
+        decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(24), boxShadow: [BoxShadow(color: Colors.black.withOpacity(.18), blurRadius: 22, offset: const Offset(0, 8))]),
+        child: Row(children: [NavItem(icon: Icons.home_rounded, label: 'Home', active: index == 0, onTap: () => onChanged(0)), NavItem(icon: Icons.history_rounded, label: 'History', active: index == 1, onTap: () => onChanged(1)), NavItem(icon: Icons.settings_rounded, label: 'Settings', active: index == 2, onTap: () => onChanged(2))]),
+      );
 }
 
-class _MangaCard extends StatelessWidget { const _MangaCard({required this.manga, required this.onTap}); final Manga manga; final VoidCallback onTap; @override Widget build(BuildContext context) => InkWell(borderRadius: BorderRadius.circular(18), onTap: onTap, child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Expanded(child: Hero(tag: manga.title, child: ClipRRect(borderRadius: BorderRadius.circular(18), child: Image.network(manga.cover, fit: BoxFit.cover, width: double.infinity, errorBuilder: (_, __, ___) => Container(color: _deepGreen, child: const Icon(Icons.menu_book_rounded, color: _green, size: 42))))), const SizedBox(height: 9), Text(manga.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14)), const SizedBox(height: 3), Text(manga.genre, style: const TextStyle(color: _muted, fontSize: 12))])); }
-
-class _HistoryPage extends StatelessWidget { const _HistoryPage({required this.items, required this.onOpen}); final List<Manga> items; final ValueChanged<Manga> onOpen; @override Widget build(BuildContext context) => CustomScrollView(slivers: [SliverAppBar(pinned: true, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, title: const Text('Reading history', style: TextStyle(fontWeight: FontWeight.w800)), actions: [IconButton(onPressed: items.isEmpty ? null : () {}, icon: const Icon(Icons.more_horiz_rounded))]), if (items.isEmpty) const SliverFillRemaining(hasScrollBody: false, child: _StateCard(icon: Icons.history_rounded, title: 'Your history is empty', message: 'Open a manga and your reading journey will appear here.')) else SliverPadding(padding: const EdgeInsets.fromLTRB(20, 18, 20, 30), sliver: SliverList(delegate: SliverChildBuilderDelegate((context, i) => Padding(padding: const EdgeInsets.only(bottom: 14), child: _HistoryTile(manga: items[i], onTap: () => onOpen(items[i]))), childCount: items.length))) ]); }
-class _HistoryTile extends StatelessWidget { const _HistoryTile({required this.manga, required this.onTap}); final Manga manga; final VoidCallback onTap; @override Widget build(BuildContext context) => InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Container(padding: const EdgeInsets.all(10), decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(18)), child: Row(children: [ClipRRect(borderRadius: BorderRadius.circular(12), child: Image.network(manga.cover, width: 64, height: 82, fit: BoxFit.cover)), const SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(manga.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15)), const SizedBox(height: 7), Text('Chapter ${manga.chapters - 1}', style: const TextStyle(color: _green, fontWeight: FontWeight.w600)), const SizedBox(height: 4), const Text('Opened recently', style: TextStyle(color: _muted, fontSize: 12))])), const Icon(Icons.chevron_right_rounded, color: _muted)]))); }
-
-class _SettingsPage extends StatelessWidget { const _SettingsPage({required this.favorites, required this.onOpen, required this.onToggleTheme}); final Set<String> favorites; final ValueChanged<Manga> onOpen; final VoidCallback onToggleTheme; @override Widget build(BuildContext context) { final options = [('Account', 'Manage your profile', Icons.person_rounded, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const _SimplePage(title: 'Account', icon: Icons.person_rounded, message: 'Sign in to sync your library across devices.')))), ('Favorites', '${favorites.length} saved manga', Icons.favorite_rounded, () => Navigator.push(context, MaterialPageRoute(builder: (_) => _FavoritesPage(favorites: favorites, onOpen: onOpen)))), ('Downloads', 'Offline reading queue', Icons.download_rounded, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const _DownloadsPage()))), ('Manga sources', 'Manage future sources', Icons.language_rounded, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const _SourcesPage()))), ('More', 'Appearance and preferences', Icons.tune_rounded, onToggleTheme)]; return CustomScrollView(slivers: [SliverAppBar(pinned: true, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, title: const Text('Settings', style: TextStyle(fontWeight: FontWeight.w800))), SliverPadding(padding: const EdgeInsets.fromLTRB(20, 20, 20, 32), sliver: SliverList(delegate: SliverChildListDelegate([Container(padding: const EdgeInsets.all(18), decoration: BoxDecoration(gradient: const LinearGradient(colors: [_deepGreen, Color(0xFF1E5949)]), borderRadius: BorderRadius.circular(22)), child: const Row(children: [CircleAvatar(radius: 25, backgroundColor: Color(0x333DDC97), child: Icon(Icons.person_outline_rounded, color: _green, size: 28)), SizedBox(width: 14), Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Welcome to MangaLord', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w800)), SizedBox(height: 4), Text('Your personal reading space', style: TextStyle(color: Color(0xB3FFFFFF), fontSize: 12))])])), const SizedBox(height: 24), ...options.map((o) => Padding(padding: const EdgeInsets.only(bottom: 12), child: _SettingTile(title: o.$1, subtitle: o.$2, icon: o.$3, onTap: o.$4))), const SizedBox(height: 10), const Center(child: Text('MangaLord 0.0.22  •  Built for readers', style: TextStyle(color: _muted, fontSize: 11))) ]))) ]); } }
-class _SettingTile extends StatelessWidget { const _SettingTile({required this.title, required this.subtitle, required this.icon, required this.onTap}); final String title, subtitle; final IconData icon; final VoidCallback onTap; @override Widget build(BuildContext context) => Material(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(18), child: InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Padding(padding: const EdgeInsets.all(16), child: Row(children: [Container(padding: const EdgeInsets.all(10), decoration: BoxDecoration(color: _green.withOpacity(.12), borderRadius: BorderRadius.circular(12)), child: Icon(icon, color: _green, size: 21)), const SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(title, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)), const SizedBox(height: 3), Text(subtitle, style: const TextStyle(color: _muted, fontSize: 12))])), const Icon(Icons.chevron_right_rounded, color: _muted)])));
+class NavItem extends StatelessWidget {
+  const NavItem({required this.icon, required this.label, required this.active, required this.onTap, super.key});
+  final IconData icon;
+  final String label;
+  final bool active;
+  final VoidCallback onTap;
+  @override
+  Widget build(BuildContext context) => Expanded(child: InkWell(borderRadius: BorderRadius.circular(20), onTap: onTap, child: AnimatedContainer(duration: const Duration(milliseconds: 220), padding: const EdgeInsets.symmetric(vertical: 10), decoration: BoxDecoration(color: active ? accentGreen.withOpacity(.16) : Colors.transparent, borderRadius: BorderRadius.circular(18)), child: Column(mainAxisSize: MainAxisSize.min, children: [Icon(icon, color: active ? accentGreen : mutedText, size: 21), const SizedBox(height: 3), Text(label, style: TextStyle(fontSize: 11, fontWeight: active ? FontWeight.w700 : FontWeight.w500, color: active ? accentGreen : mutedText))]))));
 }
 
-class _DetailsPage extends StatelessWidget { const _DetailsPage({required this.manga, required this.isFavorite, required this.onFavorite, required this.onRead}); final Manga manga; final bool isFavorite; final VoidCallback onFavorite, onRead; @override Widget build(BuildContext context) => Scaffold(body: CustomScrollView(slivers: [SliverAppBar(expandedHeight: 340, pinned: true, backgroundColor: _deepGreen, leading: IconButton(onPressed: () => Navigator.pop(context), icon: const Icon(Icons.arrow_back_rounded, color: Colors.white)), actions: [IconButton(onPressed: onFavorite, icon: Icon(isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded, color: isFavorite ? _green : Colors.white))], flexibleSpace: FlexibleSpaceBar(background: Stack(fit: StackFit.expand, children: [Hero(tag: manga.title, child: Image.network(manga.cover, fit: BoxFit.cover)), DecoratedBox(decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Colors.black.withOpacity(.12), _ink.withOpacity(.95)]))), Positioned(left: 20, right: 20, bottom: 24, child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(manga.genre.toUpperCase(), style: const TextStyle(color: _green, fontSize: 11, letterSpacing: 1.5, fontWeight: FontWeight.w800)), const SizedBox(height: 6), Text(manga.title, style: const TextStyle(color: Colors.white, fontSize: 27, fontWeight: FontWeight.w900)), const SizedBox(height: 5), Text('by ${manga.author}', style: const TextStyle(color: Color(0xCCFFFFFF))) ]))])), SliverPadding(padding: const EdgeInsets.fromLTRB(20, 22, 20, 32), sliver: SliverList(delegate: SliverChildListDelegate([Row(children: [_InfoPill(label: 'Chapters', value: '${manga.chapters}'), _InfoPill(label: 'Status', value: manga.status), _InfoPill(label: 'Type', value: 'Manhwa')]), const SizedBox(height: 26), const Text('Synopsis', style: TextStyle(fontSize: 19, fontWeight: FontWeight.w800)), const SizedBox(height: 9), Text(manga.description, style: const TextStyle(color: _muted, height: 1.6)), const SizedBox(height: 26), SizedBox(height: 52, child: FilledButton.icon(onPressed: onRead, icon: const Icon(Icons.menu_book_rounded), label: const Text('Start reading', style: TextStyle(fontWeight: FontWeight.w800)))), const SizedBox(height: 30), Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [const Text('Chapters', style: TextStyle(fontSize: 19, fontWeight: FontWeight.w800)), Text('${manga.chapters} total', style: const TextStyle(color: _muted, fontSize: 12))]), const SizedBox(height: 12), ...List.generate(8, (i) => _ChapterTile(number: manga.chapters - i, onTap: onRead))]))) ])); }
+class HomePage extends StatelessWidget {
+  const HomePage({required this.query, required this.onQueryChanged, required this.onOpen, super.key});
+  final String query;
+  final ValueChanged<String> onQueryChanged;
+  final ValueChanged<Manga> onOpen;
+  @override
+  Widget build(BuildContext context) {
+    final items = mockManga.where((manga) => manga.title.toLowerCase().contains(query.toLowerCase())).toList();
+    return CustomScrollView(slivers: [
+      SliverAppBar(pinned: true, expandedHeight: 112, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, flexibleSpace: FlexibleSpaceBar(titlePadding: const EdgeInsetsDirectional.only(start: 20, bottom: 16), title: const Text('Discover', style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800)), background: const Align(alignment: Alignment.topRight, child: Padding(padding: EdgeInsets.only(top: 52, right: 20), child: CircleAvatar(backgroundColor: deepGreen, child: Icon(Icons.auto_awesome_rounded, color: accentGreen, size: 20))))),
+      SliverPadding(padding: const EdgeInsets.fromLTRB(20, 12, 20, 0), sliver: SliverToBoxAdapter(child: TextField(onChanged: onQueryChanged, decoration: InputDecoration(hintText: 'Search manga...', prefixIcon: const Icon(Icons.search_rounded), suffixIcon: query.isEmpty ? null : IconButton(onPressed: () => onQueryChanged(''), icon: const Icon(Icons.close_rounded)), filled: true, fillColor: Theme.of(context).colorScheme.surface, border: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none), focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: const BorderSide(color: accentGreen, width: 1.5))))),
+      SliverPadding(padding: const EdgeInsets.fromLTRB(20, 28, 20, 14), sliver: SliverToBoxAdapter(child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [const Text('Latest manga', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)), Text('${items.length} titles', style: const TextStyle(color: mutedText, fontSize: 12))]))),
+      if (items.isEmpty) const SliverFillRemaining(hasScrollBody: false, child: StateCard(icon: Icons.search_off_rounded, title: 'No manga found', message: 'Try another title or search again.')) else SliverPadding(padding: const EdgeInsets.fromLTRB(20, 0, 20, 28), sliver: SliverGrid(delegate: SliverChildBuilderDelegate((context, index) => MangaCard(manga: items[index], onTap: () => onOpen(items[index])), childCount: items.length), gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 190, mainAxisSpacing: 22, crossAxisSpacing: 16, childAspectRatio: .57))),
+    ]);
+  }
 }
-class _InfoPill extends StatelessWidget { const _InfoPill({required this.label, required this.value}); final String label, value; @override Widget build(BuildContext context) => Expanded(child: Container(margin: const EdgeInsets.only(right: 8), padding: const EdgeInsets.symmetric(vertical: 12), decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(14)), child: Column(children: [Text(label, style: const TextStyle(color: _muted, fontSize: 11)), const SizedBox(height: 5), Text(value, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 12))]))); }
-class _ChapterTile extends StatelessWidget { const _ChapterTile({required this.number, required this.onTap}); final int number; final VoidCallback onTap; @override Widget build(BuildContext context) => Padding(padding: const EdgeInsets.only(bottom: 8), child: Material(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(14), child: InkWell(onTap: onTap, borderRadius: BorderRadius.circular(14), child: Padding(padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15), child: Row(children: [Container(width: 34, height: 34, alignment: Alignment.center, decoration: BoxDecoration(color: _green.withOpacity(.12), borderRadius: BorderRadius.circular(10)), child: const Icon(Icons.menu_book_outlined, size: 17, color: _green)), const SizedBox(width: 12), Expanded(child: Text('Chapter $number', style: const TextStyle(fontWeight: FontWeight.w700))), const Text('›', style: TextStyle(color: _muted, fontSize: 24))])))); }
 
-class _ReaderPage extends StatelessWidget { const _ReaderPage({required this.manga}); final Manga manga; @override Widget build(BuildContext context) => Scaffold(backgroundColor: Colors.black, appBar: AppBar(backgroundColor: Colors.black, foregroundColor: Colors.white, title: Text('${manga.title}  •  Chapter ${manga.chapters}'), actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.settings_rounded))]), body: PageView.builder(scrollDirection: Axis.vertical, itemCount: 5, itemBuilder: (_, i) => Column(children: [Expanded(child: Image.network('https://images.unsplash.com/photo-${i.isEven ? '1543002588-bfa74002ed7e' : '1516979187457-637abb4f9353'}?auto=format&fit=crop&w=1200&q=85', fit: BoxFit.cover, width: double.infinity, errorBuilder: (_, __, ___) => const Center(child: Icon(Icons.image_not_supported_outlined, color: Colors.white, size: 48)))), Padding(padding: const EdgeInsets.all(12), child: Text('Page ${i + 1} of 5', style: const TextStyle(color: Colors.white54))) ]))); }
+class MangaCard extends StatelessWidget {
+  const MangaCard({required this.manga, required this.onTap, super.key});
+  final Manga manga;
+  final VoidCallback onTap;
+  @override
+  Widget build(BuildContext context) => InkWell(borderRadius: BorderRadius.circular(18), onTap: onTap, child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Expanded(child: Hero(tag: manga.title, child: ClipRRect(borderRadius: BorderRadius.circular(18), child: Image.network(manga.cover, fit: BoxFit.cover, width: double.infinity, errorBuilder: (_, __, ___) => Container(color: deepGreen, child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 42))))), const SizedBox(height: 9), Text(manga.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14)), const SizedBox(height: 3), Text(manga.genre, style: const TextStyle(color: mutedText, fontSize: 12))]));
+}
 
-class _FavoritesPage extends StatelessWidget { const _FavoritesPage({required this.favorites, required this.onOpen}); final Set<String> favorites; final ValueChanged<Manga> onOpen; @override Widget build(BuildContext context) { final list = _manga.where((m) => favorites.contains(m.title)).toList(); return Scaffold(appBar: AppBar(title: const Text('Favorites', style: TextStyle(fontWeight: FontWeight.w800))), body: list.isEmpty ? const _StateCard(icon: Icons.favorite_border_rounded, title: 'No favorites yet', message: 'Save a manga from its details page to see it here.') : GridView.builder(padding: const EdgeInsets.all(20), itemCount: list.length, gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 190, mainAxisSpacing: 22, crossAxisSpacing: 16, childAspectRatio: .57), itemBuilder: (_, i) => _MangaCard(manga: list[i], onTap: () => onOpen(list[i])))); } }
-class _DownloadsPage extends StatelessWidget { const _DownloadsPage(); @override Widget build(BuildContext context) => const _SimplePage(title: 'Downloads', icon: Icons.download_rounded, message: 'Your downloaded chapters will be available offline here.', action: 'No downloads yet'); }
-class _SourcesPage extends StatelessWidget { const _SourcesPage(); @override Widget build(BuildContext context) => const _SimplePage(title: 'Manga sources', icon: Icons.language_rounded, message: 'Source connections are prepared for a future release. No external source is connected yet.', action: 'Coming soon'); }
-class _SimplePage extends StatelessWidget { const _SimplePage({required this.title, required this.icon, required this.message, this.action}); final String title, message; final IconData icon; final String? action; @override Widget build(BuildContext context) => Scaffold(appBar: AppBar(title: Text(title, style: const TextStyle(fontWeight: FontWeight.w800))), body: _StateCard(icon: icon, title: action ?? title, message: message)); }
-class _StateCard extends StatelessWidget { const _StateCard({required this.icon, required this.title, required this.message, this.action, this.onPressed}); final IconData icon; final String title, message; final String? action; final VoidCallback? onPressed; @override Widget build(BuildContext context) => Center(child: Padding(padding: const EdgeInsets.all(28), child: Column(mainAxisSize: MainAxisSize.min, children: [Container(padding: const EdgeInsets.all(18), decoration: BoxDecoration(color: _green.withOpacity(.12), shape: BoxShape.circle), child: Icon(icon, color: _green, size: 38)), const SizedBox(height: 18), Text(title, textAlign: TextAlign.center, style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w800)), const SizedBox(height: 8), Text(message, textAlign: TextAlign.center, style: const TextStyle(color: _muted, height: 1.5)), if (action != null) ...[const SizedBox(height: 18), OutlinedButton(onPressed: onPressed, child: Text(action!))]])); }
+class HistoryPage extends StatelessWidget {
+  const HistoryPage({required this.items, required this.onOpen, super.key});
+  final List<Manga> items;
+  final ValueChanged<Manga> onOpen;
+  @override
+  Widget build(BuildContext context) => CustomScrollView(slivers: [SliverAppBar(pinned: true, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, title: const Text('Reading history', style: TextStyle(fontWeight: FontWeight.w800))), if (items.isEmpty) const SliverFillRemaining(hasScrollBody: false, child: StateCard(icon: Icons.history_rounded, title: 'Your history is empty', message: 'Open a manga and your reading journey will appear here.')) else SliverPadding(padding: const EdgeInsets.fromLTRB(20, 18, 20, 30), sliver: SliverList(delegate: SliverChildBuilderDelegate((context, index) => Padding(padding: const EdgeInsets.only(bottom: 14), child: HistoryTile(manga: items[index], onTap: () => onOpen(items[index]))), childCount: items.length))) ]);
+}
+
+class HistoryTile extends StatelessWidget {
+  const HistoryTile({required this.manga, required this.onTap, super.key});
+  final Manga manga;
+  final VoidCallback onTap;
+  @override
+  Widget build(BuildContext context) => InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Container(padding: const EdgeInsets.all(10), decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(18)), child: Row(children: [ClipRRect(borderRadius: BorderRadius.circular(12), child: Image.network(manga.cover, width: 64, height: 82, fit: BoxFit.cover)), const SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(manga.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15)), const SizedBox(height: 7), Text('Chapter ${manga.chapters - 1}', style: const TextStyle(color: accentGreen, fontWeight: FontWeight.w600)), const SizedBox(height: 4), const Text('Opened recently', style: TextStyle(color: mutedText, fontSize: 12))])), const Icon(Icons.chevron_right_rounded, color: mutedText)])));
+}
+
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({required this.favorites, required this.onOpen, required this.onThemeTap, super.key});
+  final Set<String> favorites;
+  final ValueChanged<Manga> onOpen;
+  final VoidCallback onThemeTap;
+  @override
+  Widget build(BuildContext context) {
+    final options = <({String title, String subtitle, IconData icon, VoidCallback action})>[
+      (title: 'Account', subtitle: 'Manage your profile', icon: Icons.person_rounded, action: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SimplePage(title: 'Account', icon: Icons.person_rounded, message: 'Sign in to sync your library across devices.')))),
+      (title: 'Favorites', subtitle: '${favorites.length} saved manga', icon: Icons.favorite_rounded, action: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FavoritesPage(favorites: favorites, onOpen: onOpen)))),
+      (title: 'Downloads', subtitle: 'Offline reading queue', icon: Icons.download_rounded, action: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SimplePage(title: 'Downloads', icon: Icons.download_rounded, message: 'Your downloaded chapters will be available offline here.', action: 'No downloads yet')))),
+      (title: 'Manga sources', subtitle: 'Manage future sources', icon: Icons.language_rounded, action: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SimplePage(title: 'Manga sources', icon: Icons.language_rounded, message: 'Source connections are prepared for a future release.', action: 'Coming soon')))),
+      (title: 'More', subtitle: 'Appearance and preferences', icon: Icons.tune_rounded, action: onThemeTap),
+    ];
+    return CustomScrollView(slivers: [SliverAppBar(pinned: true, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, title: const Text('Settings', style: TextStyle(fontWeight: FontWeight.w800))), SliverPadding(padding: const EdgeInsets.fromLTRB(20, 20, 20, 32), sliver: SliverList(delegate: SliverChildListDelegate([Container(padding: const EdgeInsets.all(18), decoration: BoxDecoration(gradient: const LinearGradient(colors: [deepGreen, Color(0xFF1E5949)]), borderRadius: BorderRadius.circular(22)), child: const Row(children: [CircleAvatar(radius: 25, backgroundColor: Color(0x333DDC97), child: Icon(Icons.person_outline_rounded, color: accentGreen, size: 28)), SizedBox(width: 14), Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Welcome to MangaLord', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w800)), SizedBox(height: 4), Text('Your personal reading space', style: TextStyle(color: Color(0xB3FFFFFF), fontSize: 12))])])), const SizedBox(height: 24), ...options.map((option) => Padding(padding: const EdgeInsets.only(bottom: 12), child: SettingTile(title: option.title, subtitle: option.subtitle, icon: option.icon, onTap: option.action))), const Center(child: Text('MangaLord 0.0.22  •  Built for readers', style: TextStyle(color: mutedText, fontSize: 11))) ]))) ]);
+  }
+}
+
+class SettingTile extends StatelessWidget {
+  const SettingTile({required this.title, required this.subtitle, required this.icon, required this.onTap, super.key});
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  final VoidCallback onTap;
+  @override
+  Widget build(BuildContext context) => Material(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(18), child: InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Padding(padding: const EdgeInsets.all(16), child: Row(children: [Container(padding: const EdgeInsets.all(10), decoration: BoxDecoration(color: accentGreen.withOpacity(.12), borderRadius: BorderRadius.circular(12)), child: Icon(icon, color: accentGreen, size: 21)), const SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(title, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)), const SizedBox(height: 3), Text(subtitle, style: const TextStyle(color: mutedText, fontSize: 12))])), const Icon(Icons.chevron_right_rounded, color: mutedText)])));
+}
+
+class DetailsPage extends StatelessWidget {
+  const DetailsPage({required this.manga, required this.isFavorite, required this.onFavorite, required this.onRead, super.key});
+  final Manga manga;
+  final bool isFavorite;
+  final VoidCallback onFavorite;
+  final VoidCallback onRead;
+  @override
+  Widget build(BuildContext context) => Scaffold(body: CustomScrollView(slivers: [SliverAppBar(expandedHeight: 340, pinned: true, backgroundColor: deepGreen, leading: IconButton(onPressed: () => Navigator.pop(context), icon: const Icon(Icons.arrow_back_rounded, color: Colors.white)), actions: [IconButton(onPressed: onFavorite, icon: Icon(isFavorite ? Icons.favorite_rounded : Icons.favorite_border_rounded, color: isFavorite ? accentGreen : Colors.white))], flexibleSpace: FlexibleSpaceBar(background: Stack(fit: StackFit.expand, children: [Hero(tag: manga.title, child: Image.network(manga.cover, fit: BoxFit.cover)), DecoratedBox(decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Colors.black.withOpacity(.1), Colors.black.withOpacity(.9)]))), Positioned(left: 20, right: 20, bottom: 24, child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(manga.genre.toUpperCase(), style: const TextStyle(color: accentGreen, fontSize: 11, letterSpacing: 1.5, fontWeight: FontWeight.w800)), const SizedBox(height: 6), Text(manga.title, style: const TextStyle(color: Colors.white, fontSize: 27, fontWeight: FontWeight.w900)), const SizedBox(height: 5), Text('by ${manga.author}', style: const TextStyle(color: Color(0xCCFFFFFF))) ]))]))), SliverPadding(padding: const EdgeInsets.fromLTRB(20, 22, 20, 32), sliver: SliverList(delegate: SliverChildListDelegate([Row(children: [InfoPill(label: 'Chapters', value: '${manga.chapters}'), InfoPill(label: 'Status', value: manga.status), InfoPill(label: 'Type', value: 'Manhwa')]), const SizedBox(height: 26), const Text('Synopsis', style: TextStyle(fontSize: 19, fontWeight: FontWeight.w800)), const SizedBox(height: 9), Text(manga.description, style: const TextStyle(color: mutedText, height: 1.6)), const SizedBox(height: 26), SizedBox(height: 52, child: FilledButton.icon(onPressed: onRead, icon: const Icon(Icons.menu_book_rounded), label: const Text('Start reading', style: TextStyle(fontWeight: FontWeight.w800)))), const SizedBox(height: 30), Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [const Text('Chapters', style: TextStyle(fontSize: 19, fontWeight: FontWeight.w800)), Text('${manga.chapters} total', style: const TextStyle(color: mutedText, fontSize: 12))]), const SizedBox(height: 12), ...List.generate(8, (index) => ChapterTile(number: manga.chapters - index, onTap: onRead))]))) ]));
+}
+
+class InfoPill extends StatelessWidget {
+  const InfoPill({required this.label, required this.value, super.key});
+  final String label;
+  final String value;
+  @override
+  Widget build(BuildContext context) => Expanded(child: Container(margin: const EdgeInsets.only(right: 8), padding: const EdgeInsets.symmetric(vertical: 12), decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(14)), child: Column(children: [Text(label, style: const TextStyle(color: mutedText, fontSize: 11)), const SizedBox(height: 5), Text(value, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 12))])));
+}
+
+class ChapterTile extends StatelessWidget {
+  const ChapterTile({required this.number, required this.onTap, super.key});
+  final int number;
+  final VoidCallback onTap;
+  @override
+  Widget build(BuildContext context) => Padding(padding: const EdgeInsets.only(bottom: 8), child: Material(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(14), child: InkWell(onTap: onTap, borderRadius: BorderRadius.circular(14), child: Padding(padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15), child: Row(children: [Container(width: 34, height: 34, alignment: Alignment.center, decoration: BoxDecoration(color: accentGreen.withOpacity(.12), borderRadius: BorderRadius.circular(10)), child: const Icon(Icons.menu_book_outlined, size: 17, color: accentGreen)), const SizedBox(width: 12), Expanded(child: Text('Chapter $number', style: const TextStyle(fontWeight: FontWeight.w700))), const Text('›', style: TextStyle(color: mutedText, fontSize: 24))]))));
+}
+
+class ReaderPage extends StatelessWidget {
+  const ReaderPage({required this.manga, super.key});
+  final Manga manga;
+  @override
+  Widget build(BuildContext context) => Scaffold(backgroundColor: Colors.black, appBar: AppBar(backgroundColor: Colors.black, foregroundColor: Colors.white, title: Text('${manga.title} • Chapter ${manga.chapters}')), body: PageView.builder(scrollDirection: Axis.vertical, itemCount: 5, itemBuilder: (_, index) => Column(children: [Expanded(child: Image.network('https://images.unsplash.com/photo-${index.isEven ? '1543002588-bfa74002ed7e' : '1516979187457-637abb4f9353'}?auto=format&fit=crop&w=1200&q=85', fit: BoxFit.cover, width: double.infinity, errorBuilder: (_, __, ___) => const Center(child: Icon(Icons.image_not_supported_outlined, color: Colors.white, size: 48)))), Padding(padding: const EdgeInsets.all(12), child: Text('Page ${index + 1} of 5', style: const TextStyle(color: Colors.white54))) ])));
+}
+
+class FavoritesPage extends StatelessWidget {
+  const FavoritesPage({required this.favorites, required this.onOpen, super.key});
+  final Set<String> favorites;
+  final ValueChanged<Manga> onOpen;
+  @override
+  Widget build(BuildContext context) { final items = mockManga.where((manga) => favorites.contains(manga.title)).toList(); return Scaffold(appBar: AppBar(title: const Text('Favorites', style: TextStyle(fontWeight: FontWeight.w800))), body: items.isEmpty ? const StateCard(icon: Icons.favorite_border_rounded, title: 'No favorites yet', message: 'Save a manga from its details page to see it here.') : GridView.builder(padding: const EdgeInsets.all(20), itemCount: items.length, gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 190, mainAxisSpacing: 22, crossAxisSpacing: 16, childAspectRatio: .57), itemBuilder: (_, index) => MangaCard(manga: items[index], onTap: () => onOpen(items[index])))); }
+}
+
+class SimplePage extends StatelessWidget {
+  const SimplePage({required this.title, required this.icon, required this.message, this.action, super.key});
+  final String title;
+  final IconData icon;
+  final String message;
+  final String? action;
+  @override
+  Widget build(BuildContext context) => Scaffold(appBar: AppBar(title: Text(title, style: const TextStyle(fontWeight: FontWeight.w800))), body: StateCard(icon: icon, title: action ?? title, message: message));
+}
+
+class StateCard extends StatelessWidget {
+  const StateCard({required this.icon, required this.title, required this.message, super.key});
+  final IconData icon;
+  final String title;
+  final String message;
+  @override
+  Widget build(BuildContext context) => Center(child: Padding(padding: const EdgeInsets.all(28), child: Column(mainAxisSize: MainAxisSize.min, children: [Container(padding: const EdgeInsets.all(18), decoration: BoxDecoration(color: accentGreen.withOpacity(.12), shape: BoxShape.circle), child: Icon(icon, color: accentGreen, size: 38)), const SizedBox(height: 18), Text(title, textAlign: TextAlign.center, style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w800)), const SizedBox(height: 8), Text(message, textAlign: TextAlign.center, style: const TextStyle(color: mutedText, height: 1.5))])));
 }
