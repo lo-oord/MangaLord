@@ -109,6 +109,7 @@ class StarzSource {
       final uri = _resolve(href);
       final segments = uri.pathSegments.where((e) => e.isNotEmpty).toList();
       if (segments.length < 3 || segments.first != 'manga') continue;
+      if (segments[1] != _slug(mangaUri)) continue;
       final chapterName = _text(anchor);
       if (chapterName.isEmpty) continue;
       output[uri.toString()] = StarzChapter(id: uri.toString(), title: chapterName, url: uri.toString(), images: const []);
@@ -133,12 +134,19 @@ class StarzSource {
     return double.tryParse(match?.group(1) ?? '') ?? 0;
   }
 
+  String _slug(Uri uri) => uri.pathSegments.where((e) => e.isNotEmpty).elementAt(1);
+
   Uri _resolve(String value) => Uri.parse(value).isAbsolute ? Uri.parse(value) : baseUri.resolve(value);
 
   String _text(dynamic node) => node?.text?.replaceAll(RegExp(r'\s+'), ' ').trim() ?? '';
 
   String _image(dynamic node) {
     if (node == null) return '';
+    final srcset = node.attributes['srcset'] as String?;
+    if (srcset != null && srcset.trim().isNotEmpty) {
+      final candidates = srcset.split(',').map((item) => item.trim().split(RegExp(r'\s+')).first).where((item) => item.isNotEmpty).toList();
+      if (candidates.isNotEmpty) return _resolve(candidates.last).toString();
+    }
     final value = node.attributes['data-src'] ?? node.attributes['data-lazy-src'] ?? node.attributes['data-original'] ?? node.attributes['src'] ?? '';
     return value.isEmpty ? '' : _resolve(value).toString();
   }
