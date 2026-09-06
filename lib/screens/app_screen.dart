@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -367,7 +368,18 @@ class _DetailsPageState extends State<DetailsPage> {
     }
   }
 
-  Future<void> _downloadChapter(TeamXChapter chapter) async { final loaded = await widget.source.chapter(chapter.url, mangaTitle: manga.title); await widget.downloads.enqueue(mangaTitle: manga.title, cover: manga.cover, chapter: loaded); if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Downloading chapter ${chapter.number}'))); }
+  Future<void> _downloadChapter(TeamXChapter chapter) async {
+    if (widget.downloads.isCompleted(chapter, manga.title)) return;
+    final loaded = await widget.source.chapter(chapter.url, mangaTitle: manga.title);
+    await widget.downloads.enqueue(mangaTitle: manga.title, cover: manga.cover, chapter: loaded);
+    if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Downloading chapter ${chapter.number}')));
+  }
+
+  Future<TeamXChapter> _chapterForReading(TeamXChapter chapter) async {
+    final local = await widget.downloads.localImagesFor(chapter, manga.title);
+    if (local.isNotEmpty) return TeamXChapter(id: chapter.id, number: chapter.number, title: chapter.title, publishedAt: chapter.publishedAt, url: chapter.url, images: local);
+    return widget.source.chapter(chapter.url, mangaTitle: manga.title);
+  }
   Future<void> _downloadAll() async { for (final chapter in manga.chapterItems) { await _downloadChapter(chapter); } }
 
   TeamXChapter? _nextChapter(TeamXChapter current) { for (final candidate in manga.chapterItems) { if (candidate.numberValue > current.numberValue) return candidate; } return null; }
@@ -399,16 +411,17 @@ class _DetailsPageState extends State<DetailsPage> {
         const SizedBox(height: 24),
         if (loading) const Center(child: CircularProgressIndicator(color: accentGreen))
         else if (error != null) StateCard(icon: Icons.error_outline, title: 'Could not load chapters', message: error!)
-        else ...[const Text('Chapters', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)), const SizedBox(height: 12), ...manga.chapterItems.map((chapter) => ChapterTile(chapter: chapter, isLastOpened: chapter.number == manga.lastChapterNumber, onDownload: () => _downloadChapter(chapter), onTap: () async { final loaded = await widget.source.chapter(chapter.url, mangaTitle: manga.title); final local = await widget.downloads.localImagesFor(chapter, manga.title); final chapterForReader = local.isEmpty ? loaded : TeamXChapter(id: loaded.id, number: loaded.number, title: loaded.title, publishedAt: loaded.publishedAt, url: loaded.url, images: local); if (context.mounted) { final reading = manga.copyWith(lastChapterNumber: chapter.number, lastChapterAt: chapter.publishedAt); widget.onChapterOpened(reading); await Navigator.push(context, MaterialPageRoute(builder: (_) => ReaderPage(source: widget.source, downloads: widget.downloads, manga: reading, chapter: chapterForReader, chapters: manga.chapterItems, nextChapter: _nextChapter(chapter), onChapterOpened: widget.onChapterOpened))); }; }))],
+        else ...[const Text('Chapters', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)), const SizedBox(height: 12), ...manga.chapterItems.map((chapter) => ChapterTile(chapter: chapter, isLastOpened: chapter.number == manga.lastChapterNumber, isDownloaded: widget.downloads.isCompleted(chapter, manga.title), onDownload: () => _downloadChapter(chapter), onTap: () async { final chapterForReader = await _chapterForReading(chapter); if (context.mounted) { final reading = manga.copyWith(lastChapterNumber: chapter.number, lastChapterAt: chapter.publishedAt); widget.onChapterOpened(reading); await Navigator.push(context, MaterialPageRoute(builder: (_) => ReaderPage(source: widget.source, downloads: widget.downloads, manga: reading, chapter: chapterForReader, chapters: manga.chapterItems, nextChapter: _nextChapter(chapter), onChapterOpened: widget.onChapterOpened))); }; }))],
       ]),
     ),
   );
 }
 
 class ChapterTile extends StatelessWidget {
-  const ChapterTile({required this.chapter, required this.isLastOpened, required this.onDownload, required this.onTap, super.key});
+  const ChapterTile({required this.chapter, required this.isLastOpened, required this.isDownloaded, required this.onDownload, required this.onTap, super.key});
   final TeamXChapter chapter;
   final bool isLastOpened;
+  final bool isDownloaded;
   final VoidCallback onDownload;
   final VoidCallback onTap;
   @override
@@ -423,7 +436,7 @@ class ChapterTile extends StatelessWidget {
           Text(chapter.number.isEmpty ? chapter.title : chapter.number, style: TextStyle(fontWeight: FontWeight.w800, color: isLastOpened ? Colors.redAccent : null)),
           if (chapter.publishedAt.isNotEmpty) ...[const SizedBox(height: 4), Text(chapter.publishedAt, style: const TextStyle(color: mutedText, fontSize: 12))],
         ])),
-        IconButton(onPressed: onDownload, icon: const Icon(Icons.download_rounded, color: accentGreen)),
+        AnimatedSwitcher(duration: const Duration(milliseconds: 220), child: isDownloaded ? const Icon(Icons.check_circle_rounded, key: ValueKey('downloaded'), color: accentGreen) : IconButton(key: const ValueKey('download'), onPressed: onDownload, icon: const Icon(Icons.download_rounded, color: accentGreen))),
         const Icon(Icons.chevron_right_rounded, color: mutedText),
       ]),
     ))),
@@ -473,9 +486,8 @@ class _ReaderPageState extends State<ReaderPage> {
   Future<void> _openNext() async {
     final next = widget.nextChapter;
     if (next == null) return;
-    final loaded = await widget.source.chapter(next.url, mangaTitle: widget.manga.title);
     final local = await widget.downloads.localImagesFor(next, widget.manga.title);
-    final chapterForReader = local.isEmpty ? loaded : TeamXChapter(id: loaded.id, number: loaded.number, title: loaded.title, publishedAt: loaded.publishedAt, url: loaded.url, images: local);
+    final chapterForReader = local.isNotEmpty ? TeamXChapter(id: next.id, number: next.number, title: next.title, publishedAt: next.publishedAt, url: next.url, images: local) : await widget.source.chapter(next.url, mangaTitle: widget.manga.title);
     final updated = widget.manga.copyWith(lastChapterNumber: next.number, lastChapterAt: next.publishedAt);
     widget.onChapterOpened(updated);
     if (!mounted) return;
@@ -486,9 +498,15 @@ class _ReaderPageState extends State<ReaderPage> {
   Widget build(BuildContext context) {
     final pages = widget.chapter.images;
     final body = mode == 'webtoon'
-      ? ListView.builder(itemCount: pages.length, itemBuilder: (_, i) => Image.network(pages[i], headers: const {'Referer': 'https://olympustaff.com/'}, fit: BoxFit.fitWidth, filterQuality: FilterQuality.high, gaplessPlayback: true, errorBuilder: (_, __, ___) => const SizedBox(height: 180, child: Center(child: Icon(Icons.broken_image_outlined, color: Colors.white54)))))
-      : PageView.builder(itemCount: pages.length, itemBuilder: (_, i) => InteractiveViewer(child: Image.network(pages[i], headers: const {'Referer': 'https://olympustaff.com/'}, fit: BoxFit.contain, filterQuality: FilterQuality.high, gaplessPlayback: true)));
+      ? ListView.builder(itemCount: pages.length, itemBuilder: (_, i) => _pageImage(pages[i], fit: BoxFit.fitWidth))
+      : PageView.builder(itemCount: pages.length, itemBuilder: (_, i) => InteractiveViewer(child: _pageImage(pages[i], fit: BoxFit.contain)));
     return Scaffold(backgroundColor: Colors.black, appBar: AppBar(backgroundColor: Colors.black, foregroundColor: Colors.white, title: Text('${widget.manga.title} • الفصل ${widget.chapter.number}'), actions: [if (widget.nextChapter != null) IconButton(tooltip: 'Next chapter', onPressed: _openNext, icon: const Icon(Icons.skip_next_rounded)), _readerActions()]), body: GestureDetector(onTap: () { setState(() => immersive = !immersive); _setImmersive(immersive); }, child: body));
+  }
+
+  Widget _pageImage(String path, {required BoxFit fit}) {
+    final local = path.startsWith('/') || path.startsWith('file:');
+    final image = local ? Image.file(File(path.replaceFirst('file://', '')), fit: fit, filterQuality: FilterQuality.high, gaplessPlayback: true) : Image.network(path, headers: const {'Referer': 'https://olympustaff.com/'}, fit: fit, filterQuality: FilterQuality.high, gaplessPlayback: true);
+    return image is Image ? image : image;
   }
 
   Widget _readerActions() => PopupMenuButton<String>(onSelected: (value) { if (value == 'fullscreen') { setState(() => immersive = !immersive); _setImmersive(immersive); } else { setState(() => mode = value); } }, itemBuilder: (_) => const [PopupMenuItem(value: 'webtoon', child: Text('Webtoon')), PopupMenuItem(value: 'paged', child: Text('Paged')), PopupMenuItem(value: 'fullscreen', child: Text('Fullscreen'))]);

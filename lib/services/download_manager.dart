@@ -34,15 +34,33 @@ class DownloadManager extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     final raw = prefs.getString('mangalord.downloads');
     if (raw == null) return;
-    final decoded = jsonDecode(raw) as List?;
-    if (decoded == null) return;
-    items
-      ..clear()
-      ..addAll(decoded.whereType<Map>().map((entry) {
-        final json = Map<String, dynamic>.from(entry);
-        return DownloadItem(id: json['id'] as String, mangaTitle: json['mangaTitle'] as String? ?? '', cover: json['cover'] as String? ?? '', chapter: TeamXChapter.fromJson(Map<String, dynamic>.from(json['chapter'] as Map)), images: (json['images'] as List? ?? const []).whereType<String>().toList(), completed: (json['completed'] as num?)?.toInt() ?? 0, status: DownloadStatus.values.firstWhere((value) => value.name == json['status'], orElse: () => DownloadStatus.paused));
-      }));
-    notifyListeners();
+    try {
+      final decoded = jsonDecode(raw) as List?;
+      if (decoded == null) return;
+      items
+        ..clear()
+        ..addAll(decoded.whereType<Map>().map((entry) {
+          final json = Map<String, dynamic>.from(entry);
+          return DownloadItem(
+            id: json['id'] as String? ?? '',
+            mangaTitle: json['mangaTitle'] as String? ?? '',
+            cover: json['cover'] as String? ?? '',
+            chapter: TeamXChapter.fromJson(Map<String, dynamic>.from(json['chapter'] as Map)),
+            images: (json['images'] as List? ?? const []).whereType<String>().toList(),
+            completed: (json['completed'] as num?)?.toInt() ?? 0,
+            status: DownloadStatus.values.firstWhere((value) => value.name == json['status'], orElse: () => DownloadStatus.paused),
+          );
+        }));
+      for (final item in items) {
+        final files = await localImagesFor(item.chapter, item.mangaTitle);
+        item.completed = files.length.clamp(0, item.images.length).toInt();
+        if (item.completed < item.images.length && item.status == DownloadStatus.completed) item.status = DownloadStatus.paused;
+      }
+      await _persist();
+      notifyListeners();
+    } catch (_) {
+      // Corrupt persisted state must not prevent the app from starting.
+    }
   }
 
   Future<void> _persist() async {
@@ -97,16 +115,32 @@ class DownloadManager extends ChangeNotifier {
   }
 
   Future<List<String>> localImagesFor(TeamXChapter chapter, String mangaTitle) async {
-    final root = await getApplicationDocumentsDirectory();
-    final directory = Directory('${root.path}/mangalord/${_safe(mangaTitle)}/chapter_${_safe(chapter.number)}');
+    final directory = await _directoryFor(chapter, mangaTitle);
     if (!await directory.exists()) return const [];
-    final files = (await directory.list().where((entry) => entry is File).cast<File>().toList())..sort((a, b) => a.path.compareTo(b.path));
+    final files = (await directory.list().where((entry) => entry is File).cast<File>().where((file) => _isImage(file.path)).toList())..sort((a, b) => a.path.compareTo(b.path));
     return files.map((file) => file.path).toList();
   }
 
+  Future<Directory> _directoryFor(TeamXChapter chapter, String mangaTitle) async {
+    final root = await getApplicationDocumentsDirectory();
+    return Directory('${root.path}/mangalord/${_safe(mangaTitle)}/chapter_${_safe(chapter.number)}');
+  }
+
+  bool _isImage(String path) => RegExp(r'\.(jpe?g|png|webp)$', caseSensitive: false).hasMatch(path);
+
   Future<void> pause(String id) async { final item = _find(id); if (item == null) return; item.status = DownloadStatus.paused; await _persist(); notifyListeners(); }
   Future<void> resume(String id) async { final item = _find(id); if (item == null || item.status == DownloadStatus.completed) return; item.status = DownloadStatus.queued; notifyListeners(); _running[id] = _download(item).whenComplete(() => _running.remove(id)); }
-  Future<void> remove(String id) async { final item = _find(id); if (item == null) return; item.status = DownloadStatus.cancelled; items.remove(item); await _persist(); notifyListeners(); }
+  Future<void> remove(String id) async {
+    final item = _find(id);
+    if (item == null) return;
+    item.status = DownloadStatus.cancelled;
+    items.remove(item);
+    final directory = await _directoryFor(item.chapter, item.mangaTitle);
+    if (await directory.exists()) await directory.delete(recursive: true);
+    await _persist();
+    notifyListeners();
+  }
+  bool isCompleted(TeamXChapter chapter, String mangaTitle) => items.any((item) => item.mangaTitle == mangaTitle && item.chapter.number == chapter.number && item.status == DownloadStatus.completed);
   DownloadItem? _find(String id) { for (final item in items) { if (item.id == id) return item; } return null; }
   String _safe(String value) => value.replaceAll(RegExp(r'[^a-zA-Z0-9._-]+'), '_');
 }
