@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../services/team_x_source.dart';
 
@@ -142,7 +143,7 @@ class HomePage extends StatelessWidget {
 class MangaCard extends StatelessWidget {
   const MangaCard({required this.manga, required this.onTap, super.key});
   final Manga manga; final VoidCallback onTap;
-  @override Widget build(BuildContext context) => InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Expanded(child: Hero(tag: manga.url, child: ClipRRect(borderRadius: BorderRadius.circular(18), child: Image.network(manga.cover, headers: const {'Referer': 'https://olympustaff.com/'}, fit: BoxFit.cover, width: double.infinity, errorBuilder: (_, __, ___) => Container(color: deepGreen, child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 42)))))), const SizedBox(height: 9), Text(manga.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14)), const SizedBox(height: 3), Text(manga.genre.isEmpty ? 'Manga' : manga.genre, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: mutedText, fontSize: 12))]));
+  @override Widget build(BuildContext context) => InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Expanded(child: Hero(tag: manga.url, child: ClipRRect(borderRadius: BorderRadius.circular(18), child: Image.network(manga.cover, headers: const {'Referer': 'https://olympustaff.com/'}, fit: BoxFit.cover, filterQuality: FilterQuality.high, cacheWidth: 720, width: double.infinity, errorBuilder: (_, __, ___) => Container(color: deepGreen, child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 42)))))), const SizedBox(height: 9), Text(manga.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14)), const SizedBox(height: 3), Text(manga.genre.isEmpty ? 'Manga' : manga.genre, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: mutedText, fontSize: 12))]));
 }
 
 class HistoryPage extends StatelessWidget {
@@ -151,7 +152,7 @@ class HistoryPage extends StatelessWidget {
 }
 class HistoryTile extends StatelessWidget {
   const HistoryTile({required this.manga, required this.onTap, super.key}); final Manga manga; final VoidCallback onTap;
-  @override Widget build(BuildContext context) => InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Container(padding: const EdgeInsets.all(10), decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(18)), child: Row(children: [ClipRRect(borderRadius: BorderRadius.circular(12), child: Image.network(manga.cover, headers: const {'Referer': 'https://olympustaff.com/'}, width: 64, height: 82, fit: BoxFit.cover, errorBuilder: (_, __, ___) => Container(width: 64, height: 82, color: deepGreen))), const SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(manga.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w800)), const SizedBox(height: 7), Text('${manga.chapters} chapters', style: const TextStyle(color: accentGreen, fontWeight: FontWeight.w600)), const SizedBox(height: 4), const Text('Opened recently', style: TextStyle(color: mutedText, fontSize: 12))])), const Icon(Icons.chevron_right_rounded, color: mutedText)])));
+  @override Widget build(BuildContext context) => InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Container(padding: const EdgeInsets.all(10), decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(18)), child: Row(children: [ClipRRect(borderRadius: BorderRadius.circular(12), child: Image.network(manga.cover, headers: const {'Referer': 'https://olympustaff.com/'}, width: 64, height: 82, fit: BoxFit.cover, filterQuality: FilterQuality.high, cacheWidth: 256, errorBuilder: (_, __, ___) => Container(width: 64, height: 82, color: deepGreen))), const SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(manga.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w800)), const SizedBox(height: 7), Text('${manga.chapters} chapters', style: const TextStyle(color: accentGreen, fontWeight: FontWeight.w600)), const SizedBox(height: 4), const Text('Opened recently', style: TextStyle(color: mutedText, fontSize: 12))])), const Icon(Icons.chevron_right_rounded, color: mutedText)])));
 }
 
 class SettingsPage extends StatelessWidget {
@@ -161,18 +162,129 @@ class SettingsPage extends StatelessWidget {
 class SettingTile extends StatelessWidget { const SettingTile({required this.title, required this.subtitle, required this.icon, required this.onTap, super.key}); final String title, subtitle; final IconData icon; final VoidCallback onTap; @override Widget build(BuildContext context) => Padding(padding: const EdgeInsets.only(bottom: 12), child: Material(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(18), child: InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Padding(padding: const EdgeInsets.all(16), child: Row(children: [Icon(icon, color: accentGreen), const SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(title, style: const TextStyle(fontWeight: FontWeight.w700)), const SizedBox(height: 3), Text(subtitle, style: const TextStyle(color: mutedText, fontSize: 12))])), const Icon(Icons.chevron_right_rounded, color: mutedText)]))))); }
 
 class DetailsPage extends StatefulWidget {
-  const DetailsPage({required this.source, required this.manga, required this.isFavorite, required this.onFavorite, super.key}); final TeamXSource source; final Manga manga; final bool isFavorite; final ValueChanged<bool> onFavorite;
+  const DetailsPage({required this.source, required this.manga, required this.isFavorite, required this.onFavorite, super.key});
+  final TeamXSource source;
+  final Manga manga;
+  final bool isFavorite;
+  final ValueChanged<bool> onFavorite;
   @override State<DetailsPage> createState() => _DetailsPageState();
 }
+
 class _DetailsPageState extends State<DetailsPage> {
-  late Manga manga; late bool favorite; bool loading = true; String? error;
-  @override void initState() { super.initState(); manga = widget.manga; favorite = widget.isFavorite; _fetch(); }
-  Future<void> _fetch() async { try { final data = await widget.source.details(manga.url); if (mounted) setState(() { manga = Manga.fromTeamX(data); loading = false; }); } catch (e) { if (mounted) setState(() { loading = false; error = e.toString(); }); } }
-  @override Widget build(BuildContext context) => Scaffold(appBar: AppBar(title: const Text('Manga details'), actions: [IconButton(onPressed: () { setState(() => favorite = !favorite); widget.onFavorite(favorite); }, icon: Icon(favorite ? Icons.favorite : Icons.favorite_border, color: favorite ? Colors.redAccent : null))]), body: RefreshIndicator(onRefresh: _fetch, child: ListView(padding: const EdgeInsets.all(20), children: [Row(crossAxisAlignment: CrossAxisAlignment.start, children: [Hero(tag: manga.url, child: ClipRRect(borderRadius: BorderRadius.circular(18), child: Image.network(manga.cover, headers: const {'Referer': 'https://olympustaff.com/'}, width: 130, height: 190, fit: BoxFit.cover, errorBuilder: (_, __, ___) => Container(width: 130, height: 190, color: deepGreen)))), const SizedBox(width: 16), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(manga.title, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900)), const SizedBox(height: 8), if (manga.author.isNotEmpty) Text('by ${manga.author}', style: const TextStyle(color: mutedText)), const SizedBox(height: 12), Text('${manga.chapters} chapters', style: const TextStyle(color: accentGreen, fontWeight: FontWeight.w700))]))]), const SizedBox(height: 28), const Text('Synopsis', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)), const SizedBox(height: 8), Text(manga.description.isEmpty ? 'No description available.' : manga.description, style: const TextStyle(color: mutedText, height: 1.6)), const SizedBox(height: 24), if (loading) const Center(child: CircularProgressIndicator(color: accentGreen)) else if (error != null) StateCard(icon: Icons.error_outline, title: 'Could not load chapters', message: error!) else ...[const Text('Chapters', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)), const SizedBox(height: 12), ...manga.chapterItems.map((chapter) => ChapterTile(chapter: chapter, onTap: () async { final loaded = await widget.source.chapter(chapter.url, mangaTitle: manga.title); if (context.mounted) await Navigator.push(context, MaterialPageRoute(builder: (_) => ReaderPage(manga: manga, chapter: loaded))); }))]])));
+  late Manga manga;
+  late bool favorite;
+  bool loading = true;
+  String? error;
+
+  @override
+  void initState() {
+    super.initState();
+    manga = widget.manga;
+    favorite = widget.isFavorite;
+    _fetch();
+  }
+
+  Future<void> _fetch() async {
+    try {
+      final data = await widget.source.details(manga.url);
+      if (mounted) setState(() { manga = Manga.fromTeamX(data); loading = false; });
+    } catch (e) {
+      if (mounted) setState(() { loading = false; error = e.toString(); });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    appBar: AppBar(
+      title: Text(manga.title, maxLines: 1, overflow: TextOverflow.ellipsis),
+      actions: [IconButton(onPressed: () { setState(() => favorite = !favorite); widget.onFavorite(favorite); }, icon: Icon(favorite ? Icons.favorite : Icons.favorite_border, color: favorite ? Colors.redAccent : null))],
+    ),
+    body: RefreshIndicator(
+      onRefresh: _fetch,
+      child: ListView(padding: const EdgeInsets.all(20), children: [
+        Center(child: Hero(tag: manga.url, child: ClipRRect(
+          borderRadius: BorderRadius.circular(18),
+          child: Image.network(manga.cover, headers: const {'Referer': 'https://olympustaff.com/'}, width: 220, height: 310, fit: BoxFit.contain, filterQuality: FilterQuality.high, cacheWidth: 880, errorBuilder: (_, __, ___) => Container(width: 220, height: 310, color: deepGreen, child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 48))),
+        ))),
+        const SizedBox(height: 18),
+        Text(manga.title, textAlign: TextAlign.center, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w900)),
+        if (manga.author.isNotEmpty) ...[const SizedBox(height: 7), Text('by ${manga.author}', textAlign: TextAlign.center, style: const TextStyle(color: mutedText))],
+        const SizedBox(height: 18),
+        const Text('Synopsis', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+        const SizedBox(height: 8),
+        Text(manga.description.isEmpty ? 'No description available.' : manga.description, style: const TextStyle(color: mutedText, height: 1.6)),
+        const SizedBox(height: 20),
+        Text('${manga.chapters} chapters', style: const TextStyle(color: accentGreen, fontWeight: FontWeight.w700)),
+        const SizedBox(height: 24),
+        if (loading) const Center(child: CircularProgressIndicator(color: accentGreen))
+        else if (error != null) StateCard(icon: Icons.error_outline, title: 'Could not load chapters', message: error!)
+        else ...[const Text('Chapters', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)), const SizedBox(height: 12), ...manga.chapterItems.map((chapter) => ChapterTile(chapter: chapter, onTap: () async { final loaded = await widget.source.chapter(chapter.url, mangaTitle: manga.title); if (context.mounted) await Navigator.push(context, MaterialPageRoute(builder: (_) => ReaderPage(manga: manga, chapter: loaded))); }))],
+      ]),
+    ),
+  );
 }
-class ChapterTile extends StatelessWidget { const ChapterTile({required this.chapter, required this.onTap, super.key}); final TeamXChapter chapter; final VoidCallback onTap; @override Widget build(BuildContext context) => Padding(padding: const EdgeInsets.only(bottom: 8), child: Material(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(14), child: InkWell(onTap: onTap, borderRadius: BorderRadius.circular(14), child: Padding(padding: const EdgeInsets.all(15), child: Row(children: [const Icon(Icons.menu_book_outlined, color: accentGreen), const SizedBox(width: 12), Expanded(child: Text(chapter.title, style: const TextStyle(fontWeight: FontWeight.w700))), const Icon(Icons.chevron_right_rounded, color: mutedText)]))))); }
-class ReaderPage extends StatefulWidget { const ReaderPage({required this.manga, required this.chapter, super.key}); final Manga manga; final TeamXChapter chapter; @override State<ReaderPage> createState() => _ReaderPageState(); }
-class _ReaderPageState extends State<ReaderPage> { String mode = 'webtoon'; @override Widget build(BuildContext context) { final pages = widget.chapter.images; final body = mode == 'webtoon' ? ListView.builder(itemCount: pages.length, itemBuilder: (_, i) => Image.network(pages[i], headers: const {'Referer': 'https://olympustaff.com/'}, fit: BoxFit.fitWidth)) : PageView.builder(itemCount: pages.length, itemBuilder: (_, i) => InteractiveViewer(child: Image.network(pages[i], headers: const {'Referer': 'https://olympustaff.com/'}, fit: BoxFit.contain))); return Scaffold(backgroundColor: Colors.black, appBar: AppBar(backgroundColor: Colors.black, foregroundColor: Colors.white, title: Text('${widget.manga.title} • Reader'), actions: [PopupMenuButton<String>(onSelected: (value) => setState(() => mode = value), itemBuilder: (_) => const [PopupMenuItem(value: 'webtoon', child: Text('Webtoon')), PopupMenuItem(value: 'paged', child: Text('Paged'))])]), body: body); } }
+
+class ChapterTile extends StatelessWidget {
+  const ChapterTile({required this.chapter, required this.onTap, super.key});
+  final TeamXChapter chapter;
+  final VoidCallback onTap;
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(bottom: 8),
+    child: Material(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(14), child: InkWell(onTap: onTap, borderRadius: BorderRadius.circular(14), child: Padding(
+      padding: const EdgeInsets.all(15),
+      child: Row(children: [
+        const Icon(Icons.menu_book_outlined, color: accentGreen),
+        const SizedBox(width: 12),
+        Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(chapter.number.isEmpty ? chapter.title : chapter.number, style: const TextStyle(fontWeight: FontWeight.w800)),
+          if (chapter.publishedAt.isNotEmpty) ...[const SizedBox(height: 4), Text(chapter.publishedAt, style: const TextStyle(color: mutedText, fontSize: 12))],
+        ])),
+        const Icon(Icons.chevron_right_rounded, color: mutedText),
+      ]),
+    ))),
+  );
+}
+
+class ReaderPage extends StatefulWidget {
+  const ReaderPage({required this.manga, required this.chapter, super.key});
+  final Manga manga;
+  final TeamXChapter chapter;
+  @override State<ReaderPage> createState() => _ReaderPageState();
+}
+
+class _ReaderPageState extends State<ReaderPage> {
+  String mode = 'webtoon';
+  bool immersive = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _setImmersive(true);
+  }
+
+  @override
+  void dispose() {
+    _setImmersive(false);
+    super.dispose();
+  }
+
+  void _setImmersive(bool value) {
+    immersive = value;
+    SystemChrome.setEnabledSystemUIMode(value ? SystemUiMode.immersiveSticky : SystemUiMode.edgeToEdge);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final pages = widget.chapter.images;
+    final body = mode == 'webtoon'
+      ? ListView.builder(itemCount: pages.length, itemBuilder: (_, i) => Image.network(pages[i], headers: const {'Referer': 'https://olympustaff.com/'}, fit: BoxFit.fitWidth, filterQuality: FilterQuality.high, gaplessPlayback: true, errorBuilder: (_, __, ___) => const SizedBox(height: 180, child: Center(child: Icon(Icons.broken_image_outlined, color: Colors.white54)))))
+      : PageView.builder(itemCount: pages.length, itemBuilder: (_, i) => InteractiveViewer(child: Image.network(pages[i], headers: const {'Referer': 'https://olympustaff.com/'}, fit: BoxFit.contain, filterQuality: FilterQuality.high, gaplessPlayback: true)));
+    return Scaffold(backgroundColor: Colors.black, appBar: AppBar(backgroundColor: Colors.black, foregroundColor: Colors.white, title: Text('${widget.manga.title} • ${widget.chapter.number}'), actions: [_readerActions()]), body: GestureDetector(onTap: () { setState(() => immersive = !immersive); _setImmersive(immersive); }, child: body));
+  }
+
+  Widget _readerActions() => PopupMenuButton<String>(onSelected: (value) { if (value == 'fullscreen') { setState(() => immersive = !immersive); _setImmersive(immersive); } else { setState(() => mode = value); } }, itemBuilder: (_) => const [PopupMenuItem(value: 'webtoon', child: Text('Webtoon')), PopupMenuItem(value: 'paged', child: Text('Paged')), PopupMenuItem(value: 'fullscreen', child: Text('Fullscreen'))]);
+}
 class FavoritesPage extends StatelessWidget { const FavoritesPage({required this.favorites, required this.items, required this.onOpen, super.key}); final Set<String> favorites; final List<Manga> items; final ValueChanged<Manga> onOpen; @override Widget build(BuildContext context) { final selected = items.where((manga) => favorites.contains(manga.url)).toList(); return Scaffold(appBar: AppBar(title: const Text('Favorites')), body: GridView.builder(padding: const EdgeInsets.all(20), itemCount: selected.length, gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 190, mainAxisSpacing: 22, crossAxisSpacing: 16, childAspectRatio: .57), itemBuilder: (_, i) => MangaCard(manga: selected[i], onTap: () => onOpen(selected[i])))); } }
 class SimplePage extends StatelessWidget { const SimplePage({required this.title, required this.icon, required this.message, this.action, super.key}); final String title, message; final IconData icon; final String? action; @override Widget build(BuildContext context) => Scaffold(appBar: AppBar(title: Text(title)), body: StateCard(icon: icon, title: action ?? title, message: message)); }
 class StateCard extends StatelessWidget { const StateCard({required this.icon, required this.title, required this.message, super.key}); final IconData icon; final String title, message; @override Widget build(BuildContext context) => Center(child: Padding(padding: const EdgeInsets.all(28), child: Column(mainAxisSize: MainAxisSize.min, children: [Icon(icon, color: accentGreen, size: 48), const SizedBox(height: 18), Text(title, textAlign: TextAlign.center, style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w800)), const SizedBox(height: 8), Text(message, textAlign: TextAlign.center, style: const TextStyle(color: mutedText, height: 1.5))]))); }
