@@ -11,9 +11,9 @@ void main() {
       ),
     );
 
-    expect(find.text('Discover'), findsOneWidget);
-    expect(find.text('Home'), findsOneWidget);
-    expect(find.text('History'), findsOneWidget);
-    expect(find.text('Settings'), findsOneWidget);
+    expect(find.text('Manga Starz'), findsOneWidget);
+    expect(find.text('اكتشاف'), findsOneWidget);
+    expect(find.text('مكتبتي'), findsOneWidget);
+    expect(find.text('المزيد'), findsOneWidget);
   });
 }
