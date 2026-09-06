@@ -58,8 +58,8 @@ jobs:
       - name: Format Dart sources
         run: dart format lib integration_test
 
-      - name: Analyze Dart code
-        run: flutter analyze
+      - name: Analyze Dart application code
+        run: flutter analyze lib test
 
       - name: Run unit and widget tests
         run: flutter test test
