@@ -172,8 +172,45 @@ class _HomePageState extends State<HomePage> {
 
 class MangaCard extends StatelessWidget {
   const MangaCard({required this.manga, required this.isFavorite, required this.onTap, super.key});
-  final Manga manga; final bool isFavorite; final VoidCallback onTap;
-  @override Widget build(BuildContext context) => InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Expanded(child: Hero(tag: manga.url, child: Stack(children: [ClipRRect(borderRadius: BorderRadius.circular(18), child: Image.network(manga.cover, headers: const {'Referer': 'https://olympustaff.com/'}, fit: BoxFit.cover, filterQuality: FilterQuality.high, cacheWidth: 720, width: double.infinity, height: double.infinity, errorBuilder: (_, __, ___) => Container(color: deepGreen, child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 42))), if (isFavorite) Positioned(top: 8, right: 8, child: Container(padding: const EdgeInsets.all(6), decoration: BoxDecoration(color: Colors.red.withOpacity(.72), shape: BoxShape.circle), child: const Icon(Icons.favorite, color: Colors.white, size: 17)))]))), const SizedBox(height: 9), Text(manga.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14)), const SizedBox(height: 3), Text(manga.genre.isEmpty ? 'Manga' : manga.genre, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: mutedText, fontSize: 12))]));
+  final Manga manga;
+  final bool isFavorite;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) => InkWell(
+    onTap: onTap,
+    borderRadius: BorderRadius.circular(18),
+    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Expanded(child: Hero(tag: manga.url, child: Stack(children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(18),
+          child: Image.network(
+            manga.cover,
+            headers: const {'Referer': 'https://olympustaff.com/'},
+            fit: BoxFit.cover,
+            filterQuality: FilterQuality.high,
+            cacheWidth: 720,
+            width: double.infinity,
+            height: double.infinity,
+            errorBuilder: (_, __, ___) => Container(color: deepGreen, child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 42)),
+          ),
+        ),
+        if (isFavorite) Positioned(
+          top: 8,
+          right: 8,
+          child: Container(
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(color: Colors.red.withOpacity(.72), shape: BoxShape.circle),
+            child: const Icon(Icons.favorite, color: Colors.white, size: 17),
+          ),
+        ),
+      ]))),
+      const SizedBox(height: 9),
+      Text(manga.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14)),
+      const SizedBox(height: 3),
+      Text(manga.genre.isEmpty ? 'Manga' : manga.genre, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: mutedText, fontSize: 12)),
+    ]),
+  );
 }
 
 class HistoryPage extends StatelessWidget {
