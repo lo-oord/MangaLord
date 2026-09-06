@@ -92,8 +92,7 @@ class StarzSource {
       final uri = _resolve(href);
       final segments = uri.pathSegments.where((e) => e.isNotEmpty).toList();
       if (segments.length != 2 || segments.first != 'manga') continue;
-      final container = anchor.closest('.c-tabs-item__content, .page-item-detail, .row.c-tabs-item__content, .item-summary') ?? anchor.parent;
-      final imageNode = container?.querySelector('img') ?? anchor.querySelector('img');
+      final imageNode = _nearbyImage(anchor);
       final image = _image(imageNode);
       final title = (anchor.attributes['title'] ?? _text(anchor)).replaceAll(RegExp(r'\s+'), ' ').trim();
       if (title.isEmpty) continue;
@@ -117,6 +116,16 @@ class StarzSource {
     final list = output.values.toList();
     list.sort((a, b) => _chapterNumber(b.title).compareTo(_chapterNumber(a.title)));
     return list;
+  }
+
+  dynamic _nearbyImage(dynamic anchor) {
+    dynamic current = anchor;
+    for (var depth = 0; depth < 5 && current != null; depth++) {
+      final image = current.querySelector('img');
+      if (image != null) return image;
+      current = current.parent;
+    }
+    return anchor.querySelector('img');
   }
 
   double _chapterNumber(String text) {
