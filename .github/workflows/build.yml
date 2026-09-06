@@ -12,6 +12,7 @@ jobs:
   android:
     name: Build Android APK
     runs-on: ubuntu-22.04
+    timeout-minutes: 30
     steps:
       - name: Check out source
         uses: actions/checkout@v4
@@ -32,7 +33,7 @@ jobs:
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
         with:
-          targets: aarch64-linux-android,armv7-linux-androideabi,x86_64-linux-android
+          targets: aarch64-linux-android
 
       - name: Install native build dependencies
         run: |
@@ -51,7 +52,8 @@ jobs:
       - name: Build release APK
         run: |
           export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/29.0.13113456"
-          flutter build apk --release
+          export CARGO_BUILD_JOBS=2
+          flutter build apk --release --target-platform android-arm64
 
       - name: Upload APK artifacts
         uses: actions/upload-artifact@v4
