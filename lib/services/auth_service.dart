@@ -7,11 +7,11 @@ import 'package:firebase_storage/firebase_storage.dart';
 class AuthService {
   AuthService._();
   static final instance = AuthService._();
-  final auth = FirebaseAuth.instance;
-  final firestore = FirebaseFirestore.instance;
-  final storage = FirebaseStorage.instance;
+  FirebaseAuth get auth => FirebaseAuth.instance;
+  FirebaseFirestore get firestore => FirebaseFirestore.instance;
+  FirebaseStorage get storage => FirebaseStorage.instance;
 
-  User? get currentUser => auth.currentUser;
+  User? get currentUser { try { return auth.currentUser; } catch (_) { return null; } }
   Stream<User?> get authStateChanges => auth.userChanges();
 
   Future<UserCredential> signUp({required String username, required String email, required String password}) async {
