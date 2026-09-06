@@ -1,4 +1,4 @@
-package opensource.mangalord
+package com.mangalord.app
 
 import android.content.ContentValues
 import android.content.Intent
