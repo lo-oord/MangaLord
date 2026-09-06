@@ -1,13 +1,13 @@
 import 'package:html/parser.dart' as html_parser;
 import 'package:http/http.dart' as http;
 
-class OlympusSource {
-  OlympusSource({http.Client? client}) : _client = client ?? http.Client();
+class TeamXSource {
+  TeamXSource({http.Client? client}) : _client = client ?? http.Client();
 
   static final Uri baseUri = Uri.parse('https://olympustaff.com/');
-  static const sourceName = 'Olympus Staff';
+  static const sourceName = 'Team X';
   static const sourceLogo = 'https://olympustaff.com/images/TeamX.png';
-  static const _userAgent = 'MangaLord/1.0 (Flutter; Olympus Staff source)';
+  static const _userAgent = 'MangaLord/1.0 (Flutter; Team X source)';
   final http.Client _client;
 
   Future<String> _get(Uri uri) async {
@@ -18,17 +18,17 @@ class OlympusSource {
       'Referer': 'https://olympustaff.com/',
     }).timeout(const Duration(seconds: 20));
     if (response.statusCode < 200 || response.statusCode >= 400) {
-      throw Exception('Olympus Staff returned HTTP ${response.statusCode}');
+      throw Exception('Team X returned HTTP ${response.statusCode}');
     }
     return response.body;
   }
 
-  Future<List<OlympusManga>> latest({int page = 1}) async {
+  Future<List<TeamXManga>> latest({int page = 1}) async {
     final uri = page <= 1 ? baseUri : baseUri.resolve('series?page=$page');
     return _parseMangaList(await _get(uri));
   }
 
-  Future<List<OlympusManga>> search(String query, {int page = 1}) async {
+  Future<List<TeamXManga>> search(String query, {int page = 1}) async {
     final uri = baseUri.resolve('search').replace(queryParameters: {
       'keyword': query,
       if (page > 1) 'page': '$page',
@@ -43,7 +43,7 @@ class OlympusSource {
     return _parseMangaList(await _get(fallback));
   }
 
-  Future<OlympusManga> details(String url) async {
+  Future<TeamXManga> details(String url) async {
     final uri = _resolve(url);
     final document = html_parser.parse(await _get(uri));
     final title = _text(document.querySelector('h1, .entry-title, .post-title'));
@@ -60,7 +60,7 @@ class OlympusSource {
     ).map(_text).where((value) => value.isNotEmpty).toSet().join(', ');
     final status = _metadata(document, ['status', 'الحالة']);
     final chapters = _parseChapters(document, uri);
-    return OlympusManga(
+    return TeamXManga(
       id: uri.toString(),
       title: title.isEmpty ? _fallbackName(uri) : title,
       url: uri.toString(),
@@ -73,7 +73,7 @@ class OlympusSource {
     );
   }
 
-  Future<OlympusChapter> chapter(String url, {String? mangaTitle}) async {
+  Future<TeamXChapter> chapter(String url, {String? mangaTitle}) async {
     final uri = _resolve(url);
     final document = html_parser.parse(await _get(uri));
     final title = _text(document.querySelector('h1, .chapter-title, .entry-title'));
@@ -89,8 +89,8 @@ class OlympusSource {
       if (resolved.isEmpty || _isDecoration(resolved) || images.contains(resolved)) continue;
       images.add(resolved);
     }
-    if (images.isEmpty) throw Exception('No chapter images found on Olympus Staff');
-    return OlympusChapter(
+    if (images.isEmpty) throw Exception('No chapter images found on Team X');
+    return TeamXChapter(
       id: uri.toString(),
       title: title.isEmpty ? (mangaTitle ?? _fallbackName(uri)) : title,
       url: uri.toString(),
@@ -98,9 +98,9 @@ class OlympusSource {
     );
   }
 
-  List<OlympusManga> _parseMangaList(String source) {
+  List<TeamXManga> _parseMangaList(String source) {
     final document = html_parser.parse(source);
-    final items = <String, OlympusManga>{};
+    final items = <String, TeamXManga>{};
     for (final anchor in document.querySelectorAll('a[href*="/series/"]')) {
       final href = anchor.attributes['href'];
       if (href == null) continue;
@@ -110,15 +110,15 @@ class OlympusSource {
       final title = (anchor.attributes['title'] ?? _text(anchor)).replaceAll(RegExp(r'\s+'), ' ').trim();
       if (title.isEmpty || title.length > 300) continue;
       final image = _image(_nearbyImage(anchor));
-      items[uri.toString()] = OlympusManga(
+      items[uri.toString()] = TeamXManga(
         id: uri.toString(), title: title, url: uri.toString(), cover: image,
       );
     }
     return items.values.toList();
   }
 
-  List<OlympusChapter> _parseChapters(dynamic document, Uri mangaUri) {
-    final output = <String, OlympusChapter>{};
+  List<TeamXChapter> _parseChapters(dynamic document, Uri mangaUri) {
+    final output = <String, TeamXChapter>{};
     for (final anchor in document.querySelectorAll('a[href*="/series/"]')) {
       final href = anchor.attributes['href'];
       if (href == null) continue;
@@ -128,7 +128,7 @@ class OlympusSource {
       if (segments[1] != _seriesSlug(mangaUri)) continue;
       final title = _text(anchor);
       if (title.isEmpty) continue;
-      output[uri.toString()] = OlympusChapter(
+      output[uri.toString()] = TeamXChapter(
         id: uri.toString(), title: title, url: uri.toString(), images: const [],
       );
     }
@@ -181,19 +181,19 @@ class OlympusSource {
   bool _isDecoration(String url) => RegExp(r'logo|avatar|icon|loading|blank|advert', caseSensitive: false).hasMatch(url);
 }
 
-class OlympusManga {
-  const OlympusManga({required this.id, required this.title, required this.url, this.cover = '', this.description = '', this.author = '', this.genres = '', this.status = '', this.chapters = const []});
+class TeamXManga {
+  const TeamXManga({required this.id, required this.title, required this.url, this.cover = '', this.description = '', this.author = '', this.genres = '', this.status = '', this.chapters = const []});
   final String id, title, url, cover, description, author, genres, status;
-  final List<OlympusChapter> chapters;
-  OlympusManga copyWith({String? description, String? author, String? genres, String? status, List<OlympusChapter>? chapters, String? cover}) => OlympusManga(id: id, title: title, url: url, cover: cover ?? this.cover, description: description ?? this.description, author: author ?? this.author, genres: genres ?? this.genres, status: status ?? this.status, chapters: chapters ?? this.chapters);
+  final List<TeamXChapter> chapters;
+  TeamXManga copyWith({String? description, String? author, String? genres, String? status, List<TeamXChapter>? chapters, String? cover}) => TeamXManga(id: id, title: title, url: url, cover: cover ?? this.cover, description: description ?? this.description, author: author ?? this.author, genres: genres ?? this.genres, status: status ?? this.status, chapters: chapters ?? this.chapters);
   Map<String, dynamic> toJson() => {'id': id, 'title': title, 'url': url, 'cover': cover, 'description': description, 'author': author, 'genres': genres, 'status': status, 'chapters': chapters.map((e) => e.toJson()).toList()};
-  factory OlympusManga.fromJson(Map<String, dynamic> json) => OlympusManga(id: json['id'] as String? ?? json['url'] as String, title: json['title'] as String? ?? '', url: json['url'] as String, cover: json['cover'] as String? ?? '', description: json['description'] as String? ?? '', author: json['author'] as String? ?? '', genres: json['genres'] as String? ?? '', status: json['status'] as String? ?? '', chapters: ((json['chapters'] as List?) ?? const []).whereType<Map>().map((e) => OlympusChapter.fromJson(Map<String, dynamic>.from(e))).toList());
+  factory TeamXManga.fromJson(Map<String, dynamic> json) => TeamXManga(id: json['id'] as String? ?? json['url'] as String, title: json['title'] as String? ?? '', url: json['url'] as String, cover: json['cover'] as String? ?? '', description: json['description'] as String? ?? '', author: json['author'] as String? ?? '', genres: json['genres'] as String? ?? '', status: json['status'] as String? ?? '', chapters: ((json['chapters'] as List?) ?? const []).whereType<Map>().map((e) => TeamXChapter.fromJson(Map<String, dynamic>.from(e))).toList());
 }
 
-class OlympusChapter {
-  const OlympusChapter({required this.id, required this.title, required this.url, required this.images});
+class TeamXChapter {
+  const TeamXChapter({required this.id, required this.title, required this.url, required this.images});
   final String id, title, url;
   final List<String> images;
   Map<String, dynamic> toJson() => {'id': id, 'title': title, 'url': url, 'images': images};
-  factory OlympusChapter.fromJson(Map<String, dynamic> json) => OlympusChapter(id: json['id'] as String? ?? json['url'] as String, title: json['title'] as String? ?? '', url: json['url'] as String, images: (json['images'] as List? ?? const []).whereType<String>().toList());
+  factory TeamXChapter.fromJson(Map<String, dynamic> json) => TeamXChapter(id: json['id'] as String? ?? json['url'] as String, title: json['title'] as String? ?? '', url: json['url'] as String, images: (json['images'] as List? ?? const []).whereType<String>().toList());
 }
