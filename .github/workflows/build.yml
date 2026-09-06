@@ -51,11 +51,11 @@ jobs:
       - name: Build release APK
         run: |
           export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/29.0.13113456"
-          flutter build apk --release --split-per-abi
+          flutter build apk --release
 
       - name: Upload APK artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: MangaLord-android-apks
+          name: MangaLord-android-apk
           path: build/app/outputs/flutter-apk/*.apk
           if-no-files-found: error
