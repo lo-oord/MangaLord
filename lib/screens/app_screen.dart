@@ -10,6 +10,7 @@ import '../services/team_x_source.dart';
 import '../services/notification_service.dart';
 import '../services/download_manager.dart';
 import '../configs/app_locale.dart';
+import '../services/auth_service.dart';
 
 const accentGreen = Color(0xFF3DDC97);
 const deepGreen = Color(0xFF113C32);
@@ -78,9 +79,34 @@ class _AppScreenState extends State<AppScreen> {
           ..clear()
           ..addAll(library.keys);
       });
+      await _restoreCloudData();
     } catch (_) {
       // Corrupt or unavailable storage must not prevent the app from starting.
     }
+  }
+
+  Future<void> _restoreCloudData() async {
+    if (AuthService.instance.currentUser == null) return;
+    try {
+      final cloudFavorites = await AuthService.instance.getCollection('favorites');
+      final cloudHistory = await AuthService.instance.getCollection('history');
+      if (!mounted) return;
+      setState(() {
+        for (final data in cloudFavorites) { final item = Manga.fromJson(data); if (item.url.isNotEmpty) { library[item.url] = item; favorites.add(item.url); } }
+        for (final data in cloudHistory) { final item = Manga.fromJson(data); if (item.url.isNotEmpty) { history.removeWhere((entry) => entry.url == item.url); history.add(item); } }
+      });
+      await _saveLibrary();
+    } catch (_) {}
+  }
+
+  Future<void> _syncFavoriteCloud(Manga item, bool value) async {
+    if (AuthService.instance.currentUser == null) return;
+    try { if (value) { await AuthService.instance.setFavorite(item.url, item.toJson()); } else { await AuthService.instance.removeFavorite(item.url); } } catch (_) {}
+  }
+
+  Future<void> _syncHistoryCloud(Manga item) async {
+    if (AuthService.instance.currentUser == null) return;
+    try { await AuthService.instance.setHistory(item.url, item.toJson()); } catch (_) {}
   }
 
   Future<void> _saveLibrary() async {
@@ -151,7 +177,8 @@ class _AppScreenState extends State<AppScreen> {
     history.removeWhere((entry) => entry.url == item.url);
     history.insert(0, item);
     unawaited(_saveLibrary());
-    Navigator.push(context, MaterialPageRoute(builder: (_) => DetailsPage(source: source, manga: item, isFavorite: favorites.contains(item.url), onFavorite: (value) { if (value) { favorites.add(item.url); library[item.url] = item.copyWith(lastNotifiedChapterNumber: 'pending'); _checkFavoriteBaseline(item); } else { favorites.remove(item.url); library.remove(item.url); } unawaited(_saveLibrary()); }, downloads: downloads, onChapterOpened: (updated) { setState(() { history.removeWhere((entry) => entry.url == updated.url); history.insert(0, updated); if (library.containsKey(updated.url)) library[updated.url] = updated; }); unawaited(_saveLibrary()); })));
+    unawaited(_syncHistoryCloud(item));
+    Navigator.push(context, MaterialPageRoute(builder: (_) => DetailsPage(source: source, manga: item, isFavorite: favorites.contains(item.url), onFavorite: (value) { if (value) { favorites.add(item.url); library[item.url] = item.copyWith(lastNotifiedChapterNumber: 'pending'); _checkFavoriteBaseline(item); unawaited(_syncFavoriteCloud(item, true)); } else { favorites.remove(item.url); library.remove(item.url); unawaited(_syncFavoriteCloud(item, false)); } unawaited(_saveLibrary()); }, downloads: downloads, onChapterOpened: (updated) { setState(() { history.removeWhere((entry) => entry.url == updated.url); history.insert(0, updated); if (library.containsKey(updated.url)) library[updated.url] = updated; }); unawaited(_saveLibrary()); unawaited(_syncHistoryCloud(updated)); })));
   }
 
   @override
@@ -254,7 +281,7 @@ class HistoryTile extends StatelessWidget {
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({required this.favorites, required this.allItems, required this.downloads, required this.onOpen, super.key}); final Set<String> favorites; final List<Manga> allItems; final DownloadManager downloads; final ValueChanged<Manga> onOpen;
-  @override Widget build(BuildContext context) => CustomScrollView(slivers: [SliverAppBar(pinned: true, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, title: const Text('Settings', style: TextStyle(fontWeight: FontWeight.w800))), SliverPadding(padding: const EdgeInsets.all(20), sliver: SliverList(delegate: SliverChildListDelegate([const Text('Your library', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)), const SizedBox(height: 12), SettingTile(title: 'Account', subtitle: 'Manage your profile', icon: Icons.person_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SimplePage(title: 'Account', icon: Icons.person_rounded, message: 'Sign in to sync your library across devices.')))), SettingTile(title: 'Favorites', subtitle: '${favorites.length} saved manga', icon: Icons.favorite_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FavoritesPage(favorites: favorites, items: allItems, onOpen: onOpen)))), SettingTile(title: 'Downloads', subtitle: 'Offline reading queue', icon: Icons.download_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DownloadsPage(manager: downloads)))), SettingTile(title: 'Manga sources', subtitle: 'Manage sources', icon: Icons.language_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SimplePage(title: 'Manga sources', icon: Icons.language_rounded, message: 'Team X', action: 'Team X')))), SettingTile(title: 'More', subtitle: 'Language, notifications and version', icon: Icons.tune_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MoreSettingsPage())))])))]);
+  @override Widget build(BuildContext context) => CustomScrollView(slivers: [SliverAppBar(pinned: true, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, title: const Text('Settings', style: TextStyle(fontWeight: FontWeight.w800))), SliverPadding(padding: const EdgeInsets.all(20), sliver: SliverList(delegate: SliverChildListDelegate([const Text('Your library', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)), const SizedBox(height: 12), SettingTile(title: 'Account', subtitle: AuthService.instance.currentUser == null ? 'Sign in to sync your library' : 'Profile and account', icon: Icons.person_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AuthService.instance.currentUser == null ? const LoginScreen() : const AccountScreen()))), SettingTile(title: 'Favorites', subtitle: '${favorites.length} saved manga', icon: Icons.favorite_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FavoritesPage(favorites: favorites, items: allItems, onOpen: onOpen)))), SettingTile(title: 'Downloads', subtitle: 'Offline reading queue', icon: Icons.download_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DownloadsPage(manager: downloads)))), SettingTile(title: 'Manga sources', subtitle: 'Manage sources', icon: Icons.language_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SimplePage(title: 'Manga sources', icon: Icons.language_rounded, message: 'Team X', action: 'Team X')))), SettingTile(title: 'More', subtitle: 'Language, notifications and version', icon: Icons.tune_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MoreSettingsPage())))])))]);
 }
 class MoreSettingsPage extends StatefulWidget {
   const MoreSettingsPage({super.key});
