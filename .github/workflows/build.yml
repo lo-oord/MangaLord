@@ -3,7 +3,13 @@ name: Build MangaLord
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
+
+concurrency:
+  group: mangalord-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -49,6 +55,15 @@ jobs:
       - name: Resolve Flutter dependencies
         run: flutter pub get
 
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed lib test integration_test
+
+      - name: Analyze Dart code
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
       - name: Build release APK
         run: |
           export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/29.0.13113456"
@@ -58,6 +73,6 @@ jobs:
       - name: Upload APK artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: MangaLord-android-apk
+          name: mangalord-arm64-release
           path: build/app/outputs/flutter-apk/*.apk
           if-no-files-found: error

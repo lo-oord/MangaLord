@@ -2,7 +2,7 @@ name: manga_lord
 description: A comic reader.
 publish_to: 'none'
 
-version: 0.0.21+1
+version: 0.0.22+1
 
 environment:
   sdk: ^3.3.4
