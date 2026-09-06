@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:event/event.dart';
 import 'package:manga_lord/configs/app_theme.dart';
+import 'configs/app_locale.dart';
 import 'package:manga_lord/src/rust/frb_generated.dart';
+import 'services/notification_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:manga_lord/screens/components/router.dart';
 import 'screens/init_screen.dart';
 
@@ -11,6 +14,9 @@ const _darkBackground = Color(0xFF0B1714);
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await MangaNotificationService.instance.initialize();
+  final prefs = await SharedPreferences.getInstance();
+  appLocale.value = (prefs.getString('mangalord.language') == 'العربية') ? const Locale('ar') : const Locale('en');
   runApp(const BootstrapApp());
 }
 
@@ -74,10 +80,11 @@ class StartupErrorScreen extends StatelessWidget {
 
 class MyApp extends StatefulWidget { const MyApp({super.key}); @override State<MyApp> createState() => _MyAppState(); }
 class _MyAppState extends State<MyApp> {
-  @override void initState() { super.initState(); appThemeEvent.subscribe(_onThemeChange); }
-  @override void dispose() { appThemeEvent.unsubscribe(_onThemeChange); super.dispose(); }
+  @override void initState() { super.initState(); appThemeEvent.subscribe(_onThemeChange); appLocale.addListener(_onLocaleChange); }
+  @override void dispose() { appThemeEvent.unsubscribe(_onThemeChange); appLocale.removeListener(_onLocaleChange); super.dispose(); }
   void _onThemeChange(AppThemeEventArgs? args) { if (args != null) setState(() {}); }
-  @override Widget build(BuildContext context) => MaterialApp(navigatorObservers: [routeObserver], debugShowCheckedModeBanner: false, theme: _lightTheme, darkTheme: _darkTheme, themeMode: _getThemeMode(), themeAnimationDuration: const Duration(milliseconds: 250), home: const InitScreen());
+  void _onLocaleChange() { setState(() {}); }
+  @override Widget build(BuildContext context) => MaterialApp(navigatorObservers: [routeObserver], debugShowCheckedModeBanner: false, theme: _lightTheme, darkTheme: _darkTheme, themeMode: _getThemeMode(), locale: appLocale.value, supportedLocales: const [Locale('en'), Locale('ar')], themeAnimationDuration: const Duration(milliseconds: 250), home: const InitScreen());
   ThemeMode _getThemeMode() { switch (currentAppTheme) { case AppTheme.system: return ThemeMode.system; case AppTheme.light: return ThemeMode.light; case AppTheme.dark: return ThemeMode.dark; } }
 }
 

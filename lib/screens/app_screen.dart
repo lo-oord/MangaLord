@@ -7,21 +7,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../services/team_x_source.dart';
+import '../services/notification_service.dart';
+import '../services/download_manager.dart';
+import '../configs/app_locale.dart';
 
 const accentGreen = Color(0xFF3DDC97);
 const deepGreen = Color(0xFF113C32);
 const mutedText = Color(0xFF8FA39C);
-const appVersion = '0.0.22+1';
+const appVersion = 'v0.0.22';
 
 class Manga {
-  const Manga({required this.title, required this.url, required this.author, required this.genre, required this.cover, required this.description, required this.chapters, this.chapterItems = const [], this.status = 'Ongoing', this.lastChapterNumber = '', this.lastChapterAt = ''});
-  final String title, url, author, genre, cover, description, status, lastChapterNumber, lastChapterAt;
+  const Manga({required this.title, required this.url, required this.author, required this.genre, required this.cover, required this.description, required this.chapters, this.chapterItems = const [], this.status = 'Ongoing', this.lastChapterNumber = '', this.lastChapterAt = '', this.lastNotifiedChapterNumber = ''});
+  final String title, url, author, genre, cover, description, status, lastChapterNumber, lastChapterAt, lastNotifiedChapterNumber;
   final int chapters;
   final List<TeamXChapter> chapterItems;
   factory Manga.fromTeamX(TeamXManga manga) => Manga(title: manga.title, url: manga.url, author: manga.author, genre: manga.genres, cover: manga.cover, description: manga.description, chapters: manga.chapters.length, chapterItems: manga.chapters, status: manga.status);
-  Manga copyWith({String? lastChapterNumber, String? lastChapterAt, List<TeamXChapter>? chapterItems, int? chapters}) => Manga(title: title, url: url, author: author, genre: genre, cover: cover, description: description, chapters: chapters ?? this.chapters, chapterItems: chapterItems ?? this.chapterItems, status: status, lastChapterNumber: lastChapterNumber ?? this.lastChapterNumber, lastChapterAt: lastChapterAt ?? this.lastChapterAt);
-  Map<String, dynamic> toJson() => {'title': title, 'url': url, 'author': author, 'genre': genre, 'cover': cover, 'description': description, 'chapters': chapters, 'status': status, 'lastChapterNumber': lastChapterNumber, 'lastChapterAt': lastChapterAt, 'chapterItems': chapterItems.map((chapter) => chapter.toJson()).toList()};
-  factory Manga.fromJson(Map<String, dynamic> json) => Manga(title: json['title'] as String? ?? '', url: json['url'] as String? ?? '', author: json['author'] as String? ?? '', genre: json['genre'] as String? ?? '', cover: json['cover'] as String? ?? '', description: json['description'] as String? ?? '', chapters: (json['chapters'] as num?)?.toInt() ?? 0, status: json['status'] as String? ?? 'Ongoing', lastChapterNumber: json['lastChapterNumber'] as String? ?? '', lastChapterAt: json['lastChapterAt'] as String? ?? '', chapterItems: ((json['chapterItems'] as List?) ?? const []).whereType<Map>().map((item) => TeamXChapter.fromJson(Map<String, dynamic>.from(item))).toList());
+  Manga copyWith({String? lastChapterNumber, String? lastChapterAt, String? lastNotifiedChapterNumber, List<TeamXChapter>? chapterItems, int? chapters}) => Manga(title: title, url: url, author: author, genre: genre, cover: cover, description: description, chapters: chapters ?? this.chapters, chapterItems: chapterItems ?? this.chapterItems, status: status, lastChapterNumber: lastChapterNumber ?? this.lastChapterNumber, lastChapterAt: lastChapterAt ?? this.lastChapterAt, lastNotifiedChapterNumber: lastNotifiedChapterNumber ?? this.lastNotifiedChapterNumber);
+  Map<String, dynamic> toJson() => {'title': title, 'url': url, 'author': author, 'genre': genre, 'cover': cover, 'description': description, 'chapters': chapters, 'status': status, 'lastChapterNumber': lastChapterNumber, 'lastChapterAt': lastChapterAt, 'lastNotifiedChapterNumber': lastNotifiedChapterNumber, 'chapterItems': chapterItems.map((chapter) => chapter.toJson()).toList()};
+  factory Manga.fromJson(Map<String, dynamic> json) => Manga(title: json['title'] as String? ?? '', url: json['url'] as String? ?? '', author: json['author'] as String? ?? '', genre: json['genre'] as String? ?? '', cover: json['cover'] as String? ?? '', description: json['description'] as String? ?? '', chapters: (json['chapters'] as num?)?.toInt() ?? 0, status: json['status'] as String? ?? 'Ongoing', lastChapterNumber: json['lastChapterNumber'] as String? ?? '', lastChapterAt: json['lastChapterAt'] as String? ?? '', lastNotifiedChapterNumber: json['lastNotifiedChapterNumber'] as String? ?? '', chapterItems: ((json['chapterItems'] as List?) ?? const []).whereType<Map>().map((item) => TeamXChapter.fromJson(Map<String, dynamic>.from(item))).toList());
 }
 
 class AppScreen extends StatefulWidget {
@@ -31,6 +34,7 @@ class AppScreen extends StatefulWidget {
 
 class _AppScreenState extends State<AppScreen> {
   final source = TeamXSource();
+  final downloads = DownloadManager();
   int index = 0;
   String query = '';
   List<Manga> manga = [];
@@ -49,8 +53,9 @@ class _AppScreenState extends State<AppScreen> {
   void initState() {
     super.initState();
     _restoreLibrary();
+    downloads.restore();
     _loadLatest();
-    refreshTimer = Timer.periodic(const Duration(minutes: 10), (_) { if (query.isEmpty) _loadLatest(silent: true); });
+    refreshTimer = Timer.periodic(const Duration(minutes: 10), (_) { if (query.isEmpty) { _loadLatest(silent: true); _checkFavoriteUpdates(); } });
   }
 
   @override
@@ -105,6 +110,31 @@ class _AppScreenState extends State<AppScreen> {
     }
   }
 
+  Future<void> _checkFavoriteBaseline(Manga item) async {
+    try {
+      final fresh = await source.details(item.url);
+      final newest = fresh.chapters.isEmpty ? '' : fresh.chapters.first.number;
+      library[item.url] = Manga.fromTeamX(fresh).copyWith(lastNotifiedChapterNumber: newest, lastChapterNumber: item.lastChapterNumber, lastChapterAt: item.lastChapterAt);
+      await _saveLibrary();
+    } catch (_) {}
+  }
+
+  Future<void> _checkFavoriteUpdates() async {
+    for (final entry in library.entries.toList()) {
+      final saved = entry.value;
+      try {
+        final fresh = await source.details(saved.url);
+        if (fresh.chapters.isEmpty) continue;
+        final newest = fresh.chapters.first;
+        if (saved.lastNotifiedChapterNumber.isNotEmpty && saved.lastNotifiedChapterNumber != newest.number) {
+          await MangaNotificationService.instance.newChapter(mangaTitle: fresh.title, chapterNumber: newest.number, coverUrl: fresh.cover);
+        }
+        library[entry.key] = Manga.fromTeamX(fresh).copyWith(lastNotifiedChapterNumber: newest.number, lastChapterNumber: saved.lastChapterNumber, lastChapterAt: saved.lastChapterAt);
+        await _saveLibrary();
+      } catch (_) {}
+    }
+  }
+
   Future<void> _search(String value) async {
     query = value.trim();
     if (query.isEmpty) return _loadLatest();
@@ -121,13 +151,13 @@ class _AppScreenState extends State<AppScreen> {
     history.removeWhere((entry) => entry.url == item.url);
     history.insert(0, item);
     unawaited(_saveLibrary());
-    Navigator.push(context, MaterialPageRoute(builder: (_) => DetailsPage(source: source, manga: item, isFavorite: favorites.contains(item.url), onFavorite: (value) => setState(() { if (value) { favorites.add(item.url); library[item.url] = item; } else { favorites.remove(item.url); library.remove(item.url); } unawaited(_saveLibrary()); }), onChapterOpened: (updated) { setState(() { history.removeWhere((entry) => entry.url == updated.url); history.insert(0, updated); if (library.containsKey(updated.url)) library[updated.url] = updated; }); unawaited(_saveLibrary()); })));
+    Navigator.push(context, MaterialPageRoute(builder: (_) => DetailsPage(source: source, manga: item, isFavorite: favorites.contains(item.url), onFavorite: (value) { if (value) { favorites.add(item.url); library[item.url] = item.copyWith(lastNotifiedChapterNumber: 'pending'); _checkFavoriteBaseline(item); } else { favorites.remove(item.url); library.remove(item.url); } unawaited(_saveLibrary()); }, downloads: downloads, onChapterOpened: (updated) { setState(() { history.removeWhere((entry) => entry.url == updated.url); history.insert(0, updated); if (library.containsKey(updated.url)) library[updated.url] = updated; }); unawaited(_saveLibrary()); })));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: index, children: [HomePage(items: manga, loading: loading, loadingMore: loadingMore, searching: searching, error: error, query: query, onQuery: _search, onRefresh: _loadLatest, onLoadMore: _loadMore, favorites: favorites, onOpen: openManga), HistoryPage(items: history, favorites: favorites, onOpen: openManga), SettingsPage(favorites: favorites, allItems: [...manga, ...history, ...library.values], onOpen: openManga)]),
+      body: IndexedStack(index: index, children: [HomePage(items: manga, loading: loading, loadingMore: loadingMore, searching: searching, error: error, query: query, onQuery: _search, onRefresh: _loadLatest, onLoadMore: _loadMore, favorites: favorites, onOpen: openManga), HistoryPage(items: history, favorites: favorites, onOpen: openManga), SettingsPage(favorites: favorites, allItems: [...manga, ...history, ...library.values], downloads: downloads, onOpen: openManga)]),
       bottomNavigationBar: SafeArea(child: Padding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 12), child: FloatingNavigation(index: index, onChanged: (value) => setState(() => index = value)))),
     );
   }
@@ -223,8 +253,8 @@ class HistoryTile extends StatelessWidget {
 }
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({required this.favorites, required this.allItems, required this.onOpen, super.key}); final Set<String> favorites; final List<Manga> allItems; final ValueChanged<Manga> onOpen;
-  @override Widget build(BuildContext context) => CustomScrollView(slivers: [SliverAppBar(pinned: true, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, title: const Text('Settings', style: TextStyle(fontWeight: FontWeight.w800))), SliverPadding(padding: const EdgeInsets.all(20), sliver: SliverList(delegate: SliverChildListDelegate([const Text('Your library', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)), const SizedBox(height: 12), SettingTile(title: 'Account', subtitle: 'Manage your profile', icon: Icons.person_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SimplePage(title: 'Account', icon: Icons.person_rounded, message: 'Sign in to sync your library across devices.')))), SettingTile(title: 'Favorites', subtitle: '${favorites.length} saved manga', icon: Icons.favorite_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FavoritesPage(favorites: favorites, items: allItems, onOpen: onOpen)))), SettingTile(title: 'Downloads', subtitle: 'Offline reading queue', icon: Icons.download_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SimplePage(title: 'Downloads', icon: Icons.download_rounded, message: 'Your downloaded chapters will be available offline here.', action: 'No downloads yet')))), SettingTile(title: 'Manga sources', subtitle: 'Manage sources', icon: Icons.language_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SimplePage(title: 'Manga sources', icon: Icons.language_rounded, message: 'Team X', action: 'Team X')))), SettingTile(title: 'More', subtitle: 'Language, notifications and version', icon: Icons.tune_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MoreSettingsPage())))])))]);
+  const SettingsPage({required this.favorites, required this.allItems, required this.downloads, required this.onOpen, super.key}); final Set<String> favorites; final List<Manga> allItems; final DownloadManager downloads; final ValueChanged<Manga> onOpen;
+  @override Widget build(BuildContext context) => CustomScrollView(slivers: [SliverAppBar(pinned: true, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, title: const Text('Settings', style: TextStyle(fontWeight: FontWeight.w800))), SliverPadding(padding: const EdgeInsets.all(20), sliver: SliverList(delegate: SliverChildListDelegate([const Text('Your library', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)), const SizedBox(height: 12), SettingTile(title: 'Account', subtitle: 'Manage your profile', icon: Icons.person_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SimplePage(title: 'Account', icon: Icons.person_rounded, message: 'Sign in to sync your library across devices.')))), SettingTile(title: 'Favorites', subtitle: '${favorites.length} saved manga', icon: Icons.favorite_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FavoritesPage(favorites: favorites, items: allItems, onOpen: onOpen)))), SettingTile(title: 'Downloads', subtitle: 'Offline reading queue', icon: Icons.download_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DownloadsPage(manager: downloads)))), SettingTile(title: 'Manga sources', subtitle: 'Manage sources', icon: Icons.language_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SimplePage(title: 'Manga sources', icon: Icons.language_rounded, message: 'Team X', action: 'Team X')))), SettingTile(title: 'More', subtitle: 'Language, notifications and version', icon: Icons.tune_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MoreSettingsPage())))])))]);
 }
 class MoreSettingsPage extends StatefulWidget {
   const MoreSettingsPage({super.key});
@@ -244,11 +274,11 @@ class _MoreSettingsPageState extends State<MoreSettingsPage> {
   Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
     if (!mounted) return;
-    setState(() { language = prefs.getString('mangalord.language') ?? 'English'; notifications = prefs.getBool('mangalord.notifications') ?? true; });
+    setState(() { language = prefs.getString('mangalord.language') ?? 'English'; notifications = prefs.getBool('mangalord.notifications') ?? true; appLocale.value = language == 'العربية' ? const Locale('ar') : const Locale('en'); });
   }
 
   Future<void> _setLanguage(String value) async {
-    setState(() => language = value);
+    setState(() { language = value; appLocale.value = value == 'العربية' ? const Locale('ar') : const Locale('en'); });
     await (await SharedPreferences.getInstance()).setString('mangalord.language', value);
   }
 
@@ -276,12 +306,13 @@ class _MoreSettingsPageState extends State<MoreSettingsPage> {
 class SettingTile extends StatelessWidget { const SettingTile({required this.title, required this.subtitle, required this.icon, required this.onTap, super.key}); final String title, subtitle; final IconData icon; final VoidCallback onTap; @override Widget build(BuildContext context) => Padding(padding: const EdgeInsets.only(bottom: 12), child: Material(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(18), child: InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Padding(padding: const EdgeInsets.all(16), child: Row(children: [Icon(icon, color: accentGreen), const SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(title, style: const TextStyle(fontWeight: FontWeight.w700)), const SizedBox(height: 3), Text(subtitle, style: const TextStyle(color: mutedText, fontSize: 12))])), const Icon(Icons.chevron_right_rounded, color: mutedText)]))))); }
 
 class DetailsPage extends StatefulWidget {
-  const DetailsPage({required this.source, required this.manga, required this.isFavorite, required this.onFavorite, required this.onChapterOpened, super.key});
+  const DetailsPage({required this.source, required this.manga, required this.isFavorite, required this.onFavorite, required this.onChapterOpened, required this.downloads, super.key});
   final TeamXSource source;
   final Manga manga;
   final bool isFavorite;
   final ValueChanged<bool> onFavorite;
   final ValueChanged<Manga> onChapterOpened;
+  final DownloadManager downloads;
   @override State<DetailsPage> createState() => _DetailsPageState();
 }
 
@@ -308,6 +339,9 @@ class _DetailsPageState extends State<DetailsPage> {
     }
   }
 
+  Future<void> _downloadChapter(TeamXChapter chapter) async { final loaded = await widget.source.chapter(chapter.url, mangaTitle: manga.title); await widget.downloads.enqueue(mangaTitle: manga.title, cover: manga.cover, chapter: loaded); if (mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Downloading chapter ${chapter.number}'))); }
+  Future<void> _downloadAll() async { for (final chapter in manga.chapterItems) { await _downloadChapter(chapter); } }
+
   TeamXChapter? _nextChapter(TeamXChapter current) { for (final candidate in manga.chapterItems) { if (candidate.numberValue > current.numberValue) return candidate; } return null; }
 
   @override
@@ -323,6 +357,8 @@ class _DetailsPageState extends State<DetailsPage> {
           borderRadius: BorderRadius.circular(18),
           child: Image.network(manga.cover, headers: const {'Referer': 'https://olympustaff.com/'}, width: 220, height: 310, fit: BoxFit.contain, filterQuality: FilterQuality.high, cacheWidth: 880, errorBuilder: (_, __, ___) => Container(width: 220, height: 310, color: deepGreen, child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 48))),
         ))),
+        const SizedBox(height: 12),
+        OutlinedButton.icon(onPressed: manga.chapterItems.isEmpty ? null : () => _downloadAll(), icon: const Icon(Icons.download_rounded), label: const Text('Download all')),
         const SizedBox(height: 18),
         Text(manga.title, textAlign: TextAlign.center, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w900)),
         if (manga.author.isNotEmpty) ...[const SizedBox(height: 7), Text('by ${manga.author}', textAlign: TextAlign.center, style: const TextStyle(color: mutedText))],
@@ -335,15 +371,17 @@ class _DetailsPageState extends State<DetailsPage> {
         const SizedBox(height: 24),
         if (loading) const Center(child: CircularProgressIndicator(color: accentGreen))
         else if (error != null) StateCard(icon: Icons.error_outline, title: 'Could not load chapters', message: error!)
-        else ...[const Text('Chapters', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)), const SizedBox(height: 12), ...manga.chapterItems.map((chapter) => ChapterTile(chapter: chapter, onTap: () async { final loaded = await widget.source.chapter(chapter.url, mangaTitle: manga.title); if (context.mounted) { final reading = manga.copyWith(lastChapterNumber: chapter.number, lastChapterAt: chapter.publishedAt); widget.onChapterOpened(reading); await Navigator.push(context, MaterialPageRoute(builder: (_) => ReaderPage(manga: reading, chapter: loaded, chapters: manga.chapterItems, nextChapter: _nextChapter(chapter), onChapterOpened: widget.onChapterOpened))); }; }))],
+        else ...[const Text('Chapters', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)), const SizedBox(height: 12), ...manga.chapterItems.map((chapter) => ChapterTile(chapter: chapter, isLastOpened: chapter.number == manga.lastChapterNumber, onDownload: () => _downloadChapter(chapter), onTap: () async { final loaded = await widget.source.chapter(chapter.url, mangaTitle: manga.title); final local = await widget.downloads.localImagesFor(chapter, manga.title); final chapterForReader = local.isEmpty ? loaded : TeamXChapter(id: loaded.id, number: loaded.number, title: loaded.title, publishedAt: loaded.publishedAt, url: loaded.url, images: local); if (context.mounted) { final reading = manga.copyWith(lastChapterNumber: chapter.number, lastChapterAt: chapter.publishedAt); widget.onChapterOpened(reading); await Navigator.push(context, MaterialPageRoute(builder: (_) => ReaderPage(source: widget.source, downloads: widget.downloads, manga: reading, chapter: chapterForReader, chapters: manga.chapterItems, nextChapter: _nextChapter(chapter), onChapterOpened: widget.onChapterOpened))); }; }))],
       ]),
     ),
   );
 }
 
 class ChapterTile extends StatelessWidget {
-  const ChapterTile({required this.chapter, required this.onTap, super.key});
+  const ChapterTile({required this.chapter, required this.isLastOpened, required this.onDownload, required this.onTap, super.key});
   final TeamXChapter chapter;
+  final bool isLastOpened;
+  final VoidCallback onDownload;
   final VoidCallback onTap;
   @override
   Widget build(BuildContext context) => Padding(
@@ -354,9 +392,10 @@ class ChapterTile extends StatelessWidget {
         const Icon(Icons.menu_book_outlined, color: accentGreen),
         const SizedBox(width: 12),
         Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(chapter.number.isEmpty ? chapter.title : chapter.number, style: const TextStyle(fontWeight: FontWeight.w800)),
+          Text(chapter.number.isEmpty ? chapter.title : chapter.number, style: TextStyle(fontWeight: FontWeight.w800, color: isLastOpened ? Colors.redAccent : null)),
           if (chapter.publishedAt.isNotEmpty) ...[const SizedBox(height: 4), Text(chapter.publishedAt, style: const TextStyle(color: mutedText, fontSize: 12))],
         ])),
+        IconButton(onPressed: onDownload, icon: const Icon(Icons.download_rounded, color: accentGreen)),
         const Icon(Icons.chevron_right_rounded, color: mutedText),
       ]),
     ))),
@@ -364,7 +403,9 @@ class ChapterTile extends StatelessWidget {
 }
 
 class ReaderPage extends StatefulWidget {
-  const ReaderPage({required this.manga, required this.chapter, required this.chapters, required this.nextChapter, required this.onChapterOpened, super.key});
+  final TeamXSource source;
+  final DownloadManager downloads;
+  const ReaderPage({required this.source, required this.downloads, required this.manga, required this.chapter, required this.chapters, required this.nextChapter, required this.onChapterOpened, super.key});
   final Manga manga;
   final TeamXChapter chapter;
   final List<TeamXChapter> chapters;
@@ -404,10 +445,13 @@ class _ReaderPageState extends State<ReaderPage> {
   Future<void> _openNext() async {
     final next = widget.nextChapter;
     if (next == null) return;
+    final loaded = await widget.source.chapter(next.url, mangaTitle: widget.manga.title);
+    final local = await widget.downloads.localImagesFor(next, widget.manga.title);
+    final chapterForReader = local.isEmpty ? loaded : TeamXChapter(id: loaded.id, number: loaded.number, title: loaded.title, publishedAt: loaded.publishedAt, url: loaded.url, images: local);
     final updated = widget.manga.copyWith(lastChapterNumber: next.number, lastChapterAt: next.publishedAt);
     widget.onChapterOpened(updated);
     if (!mounted) return;
-    await Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => ReaderPage(manga: updated, chapter: next, chapters: widget.chapters, nextChapter: _nextAfter(next), onChapterOpened: widget.onChapterOpened)));
+    await Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => ReaderPage(source: widget.source, downloads: widget.downloads, manga: updated, chapter: chapterForReader, chapters: widget.chapters, nextChapter: _nextAfter(next), onChapterOpened: widget.onChapterOpened)));
   }
 
   @override
@@ -422,5 +466,12 @@ class _ReaderPageState extends State<ReaderPage> {
   Widget _readerActions() => PopupMenuButton<String>(onSelected: (value) { if (value == 'fullscreen') { setState(() => immersive = !immersive); _setImmersive(immersive); } else { setState(() => mode = value); } }, itemBuilder: (_) => const [PopupMenuItem(value: 'webtoon', child: Text('Webtoon')), PopupMenuItem(value: 'paged', child: Text('Paged')), PopupMenuItem(value: 'fullscreen', child: Text('Fullscreen'))]);
 }
 class FavoritesPage extends StatelessWidget { const FavoritesPage({required this.favorites, required this.items, required this.onOpen, super.key}); final Set<String> favorites; final List<Manga> items; final ValueChanged<Manga> onOpen; @override Widget build(BuildContext context) { final selected = <String, Manga>{for (final manga in items) if (favorites.contains(manga.url)) manga.url: manga}.values.toList(); return Scaffold(appBar: AppBar(title: const Text('Favorites')), body: GridView.builder(padding: const EdgeInsets.all(20), itemCount: selected.length, gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(maxCrossAxisExtent: 190, mainAxisSpacing: 22, crossAxisSpacing: 16, childAspectRatio: .57), itemBuilder: (_, i) => MangaCard(manga: selected[i], isFavorite: true, onTap: () => onOpen(selected[i])))); } }
+class DownloadsPage extends StatelessWidget {
+  const DownloadsPage({required this.manager, super.key});
+  final DownloadManager manager;
+  @override
+  Widget build(BuildContext context) => Scaffold(appBar: AppBar(title: const Text('Downloads')), body: AnimatedBuilder(animation: manager, builder: (context, _) { if (manager.items.isEmpty) return const StateCard(icon: Icons.download_rounded, title: 'No downloads', message: 'Download chapters to read them offline.'); return ListView.builder(padding: const EdgeInsets.all(16), itemCount: manager.items.length, itemBuilder: (_, index) { final item = manager.items[index]; final percent = (item.progress * 100).round(); return Card(child: ListTile(leading: const Icon(Icons.menu_book_rounded, color: accentGreen), title: Text('${item.mangaTitle} • الفصل ${item.chapter.number}'), subtitle: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [const SizedBox(height: 8), LinearProgressIndicator(value: item.progress), const SizedBox(height: 5), Text('${item.status.name} • $percent%')]), trailing: PopupMenuButton<String>(onSelected: (value) { if (value == 'pause') manager.pause(item.id); if (value == 'resume') manager.resume(item.id); if (value == 'delete') manager.remove(item.id); }, itemBuilder: (_) => [if (item.status == DownloadStatus.downloading) const PopupMenuItem(value: 'pause', child: Text('Pause')) else const PopupMenuItem(value: 'resume', child: Text('Resume')), const PopupMenuItem(value: 'delete', child: Text('Delete'))]))); }); }));
+}
+
 class SimplePage extends StatelessWidget { const SimplePage({required this.title, required this.icon, required this.message, this.action, super.key}); final String title, message; final IconData icon; final String? action; @override Widget build(BuildContext context) => Scaffold(appBar: AppBar(title: Text(title)), body: StateCard(icon: icon, title: action ?? title, message: message)); }
 class StateCard extends StatelessWidget { const StateCard({required this.icon, required this.title, required this.message, super.key}); final IconData icon; final String title, message; @override Widget build(BuildContext context) => Center(child: Padding(padding: const EdgeInsets.all(28), child: Column(mainAxisSize: MainAxisSize.min, children: [Icon(icon, color: accentGreen, size: 48), const SizedBox(height: 18), Text(title, textAlign: TextAlign.center, style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w800)), const SizedBox(height: 8), Text(message, textAlign: TextAlign.center, style: const TextStyle(color: mutedText, height: 1.5))]))); }
