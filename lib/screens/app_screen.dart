@@ -11,6 +11,7 @@ import '../services/notification_service.dart';
 import '../services/download_manager.dart';
 import '../configs/app_locale.dart';
 import '../services/auth_service.dart';
+import 'auth_screen.dart';
 
 const accentGreen = Color(0xFF3DDC97);
 const deepGreen = Color(0xFF113C32);
