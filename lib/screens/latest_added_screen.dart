@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../src/rust/api/api.dart' as api;
 import '../src/rust/udto.dart';
+import 'components/comic_card.dart';
 import 'components/comic_pager.dart';
 
 /// Displays manga ordered by the source's creation timestamp.

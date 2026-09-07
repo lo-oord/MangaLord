@@ -236,7 +236,7 @@ class _PagerMessage extends StatelessWidget {
 class _PagerError extends StatelessWidget {
   const _PagerError({required this.onRetry});
 
-  final Future<void> Function() onRetry;
+  final Future<dynamic> Function() onRetry;
 
   @override
   Widget build(BuildContext context) {
