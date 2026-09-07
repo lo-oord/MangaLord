@@ -3,6 +3,7 @@ import '../src/rust/api/api.dart' as api;
 import '../src/rust/udto.dart';
 import 'package:manga_lord/screens/components/comic_pager.dart';
 import 'package:manga_lord/screens/recommends_screen.dart';
+import 'latest_added_screen.dart';
 import 'components/comic_card.dart';
 
 class RankScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _RankScreenState extends State<RankScreen> {
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return DefaultTabController(
-      length: 5,
+      length: 6,
       child: Column(
         children: [
           SafeArea(
@@ -29,6 +30,7 @@ class _RankScreenState extends State<RankScreen> {
             color: theme.colorScheme.secondary.withOpacity(.025),
             child: const TabBar(
               tabs: [
+                Tab(text: 'Latest Added'),
                 Tab(text: 'Recommended'),
                 Tab(text: 'Day'),
                 Tab(text: 'Week'),
@@ -40,6 +42,7 @@ class _RankScreenState extends State<RankScreen> {
           const Expanded(
             child: TabBarView(
               children: [
+                LatestAddedScreen(),
                 RecommendsScreen(),
                 RankTypeScreen(dateType: "day"),
                 RankTypeScreen(dateType: "week"),

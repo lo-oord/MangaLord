@@ -72,6 +72,7 @@ class _ComicInfoScreenState extends State<ComicInfoScreen> with RouteAware {
     for (var group in comic.groups) {
       BigInt offset = BigInt.parse("0");
       List<UIComicChapter> cList = [];
+      final seenChapterKeys = <String>{};
       while (true) {
         final response = await api.comicChapters(
           comicPathWord: widget.comicInfo.pathWord,
@@ -79,7 +80,14 @@ class _ComicInfoScreenState extends State<ComicInfoScreen> with RouteAware {
           offset: offset,
           limit: _chapterLimit,
         );
-        cList.addAll(response.list);
+        for (final chapter in response.list) {
+          // A stable source UUID scoped to its manga/group prevents duplicate
+          // buttons if the source repeats an item across paginated responses.
+          final key = '${group.pathWord}:${chapter.uuid}';
+          if (seenChapterKeys.add(key)) {
+            cList.add(chapter);
+          }
+        }
         offset += _chapterLimit;
         if (response.total <= offset.toInt()) {
           break;

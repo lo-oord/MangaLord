@@ -45,6 +45,7 @@ class _ComicPagerState extends State<ComicPager> {
   final List<CommonComicInfo> _records = [];
   bool finish = false;
   bool error = false;
+  bool loading = true;
   int _offset = 0;
   late final BigInt _limit = widget.pageSize != null ? BigInt.from(widget.pageSize!) : BigInt.parse("21");
 
@@ -104,6 +105,8 @@ class _ComicPagerState extends State<ComicPager> {
         _records.addAll(resp.list);
         _offset = startIndex + _limit.toInt();
         finish = resp.total <= _offset;
+        loading = false;
+        error = false;
       });
     } catch (e, s) {
       print("$e\n$s");
@@ -119,22 +122,30 @@ class _ComicPagerState extends State<ComicPager> {
     final lines = currentComicPagerType == ComicPagerType.grid
         ? comicGridLines(context, _records, widget.onLongPress)
         : comicListLines(context, _records, widget.onLongPress);
-    return SmartRefresher(
-      controller: _refreshController,
-      enablePullDown: true,
-      enablePullUp: !finish,
-      onRefresh: _onRefresh,
-      onLoading: _onLoading,
-      header: customerHeader(context),
-      footer: customerFooter(context, _records.isNotEmpty),
-      child: ListView.builder(
-        controller: _scrollController,
-        padding: const EdgeInsets.all(0),
-        itemCount: lines.length,
-        itemBuilder: (context, index) {
-          return lines[index];
-        },
-      ),
+    return Stack(
+      children: [
+        SmartRefresher(
+          controller: _refreshController,
+          enablePullDown: true,
+          enablePullUp: !finish,
+          onRefresh: _onRefresh,
+          onLoading: _onLoading,
+          header: customerHeader(context),
+          footer: customerFooter(context, _records.isNotEmpty),
+          child: ListView.builder(
+            controller: _scrollController,
+            padding: const EdgeInsets.all(0),
+            itemCount: lines.length,
+            itemBuilder: (context, index) => lines[index],
+          ),
+        ),
+        if (loading && _records.isEmpty)
+          const Center(child: CircularProgressIndicator()),
+        if (!loading && !error && _records.isEmpty)
+          const _PagerMessage(message: 'No manga found'),
+        if (!loading && error && _records.isEmpty)
+          _PagerError(onRetry: _onRefresh),
+      ],
     );
   }
 
@@ -142,6 +153,7 @@ class _ComicPagerState extends State<ComicPager> {
     try {
       setState(() {
         error = false;
+        loading = true;
       });
       final resp = await widget.fetcher(
         BigInt.from(0),
@@ -152,6 +164,7 @@ class _ComicPagerState extends State<ComicPager> {
         _records.addAll(resp.list);
         _offset = _limit.toInt();
         finish = resp.total <= _offset;
+        loading = false;
       });
       _refreshController.refreshCompleted();
       if (finish) {
@@ -169,6 +182,7 @@ class _ComicPagerState extends State<ComicPager> {
       }
       setState(() {
         error = true;
+        loading = false;
       });
       _refreshController.refreshFailed();
       defaultToast(context, "Loading failed");
@@ -200,6 +214,42 @@ class _ComicPagerState extends State<ComicPager> {
       _refreshController.loadFailed();
       defaultToast(context, "Loading failed");
     }
+  }
+}
+
+class _PagerMessage extends StatelessWidget {
+  const _PagerMessage({required this.message});
+
+  final String message;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        message,
+        style: TextStyle(color: Theme.of(context).textTheme.bodySmall?.color),
+      ),
+    );
+  }
+}
+
+class _PagerError extends StatelessWidget {
+  const _PagerError({required this.onRetry});
+
+  final Future<void> Function() onRetry;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Text('Could not load manga'),
+          const SizedBox(height: 8),
+          TextButton(onPressed: onRetry, child: const Text('Retry')),
+        ],
+      ),
+    );
   }
 }
 
