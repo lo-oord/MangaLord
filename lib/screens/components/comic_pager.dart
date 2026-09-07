@@ -149,7 +149,7 @@ class _ComicPagerState extends State<ComicPager> {
     );
   }
 
-  _onRefresh() async {
+  Future<void> _onRefresh() async {
     try {
       setState(() {
         error = false;
@@ -189,7 +189,7 @@ class _ComicPagerState extends State<ComicPager> {
     }
   }
 
-  _onLoading() async {
+  Future<void> _onLoading() async {
     try {
       final resp = await widget.fetcher(
         BigInt.from(_offset),
