@@ -57,8 +57,17 @@ String htmlAttribute(dynamic node, String name) => node == null ? '' : (node.att
 String htmlText(dynamic node) => node?.text is String ? cleanHtmlText(node.text as String) : '';
 String metaContent(dynamic document, String selector) => htmlAttribute(document.querySelector(selector), 'content');
 String extractMediaUrl(String value, Uri base) {
-  final match = RegExp(r'''(?:https?:)?//[^\s"'<>]+(?:\.m3u8|\.mp4)(?:\?[^\s"'<>]*)?''', caseSensitive: false).firstMatch(value);
-  return match == null ? '' : resolveSourceUrl(base, match.group(0)!);
+  final urls = extractMediaUrls(value, base);
+  return urls.isEmpty ? '' : urls.first;
+}
+List<String> extractMediaUrls(String value, Uri base) {
+  final decoded = value.replaceAll(r'\/', '/').replaceAll(r'\u0026', '&').replaceAll('&amp;', '&');
+  return RegExp(r'''(?:https?:)?//[^\s"'<>\\]+(?:\.m3u8|\.mp4)(?:\?[^\s"'<>\\]*)?''', caseSensitive: false)
+      .allMatches(decoded)
+      .map((match) => resolveSourceUrl(base, match.group(0)!))
+      .where((url) => url.isNotEmpty)
+      .toSet()
+      .toList();
 }
 String extractEpisodeNumber(String value) => RegExp(r'(?:episode|الحلقة|ep)[^\d]*(\d+(?:\.\d+)?)', caseSensitive: false).firstMatch(value)?.group(1) ?? RegExp(r'(\d+(?:\.\d+)?)').firstMatch(value)?.group(1) ?? '';
 List<String> uniqueStrings(Iterable<String> values) => values.map((value) => value.trim()).where((value) => value.isNotEmpty).toSet().toList();

@@ -15,6 +15,20 @@ class Anime3rbSource extends HtmlAnimeSource {
   @override String get searchPath => '/titles/list';
   @override String get resultSelector => '.search-results a.simple-title-card[href*="/titles/"], .title-card';
   @override String get detailEpisodeSelector => '.video-list a[href*="/episode/"]';
+  @override Future<List<AnimeTitle>> search(String query, {int page = 1}) async {
+    if (page > 1) return const [];
+    final uri = baseUri.resolve('/titles/list').replace(queryParameters: {'page': '1', 'sort_by': 'addition_date', 'sort_dir': 'desc', 'q': query.trim()});
+    final document = html_parser.parse(await get(uri.toString()));
+    final output = <AnimeTitle>[];
+    for (final node in document.querySelectorAll('.search-results a.simple-title-card[href*="/titles/"]')) {
+      final anchor = node;
+      final url = resolveSourceUrl(baseUri, htmlAttribute(anchor, 'href'));
+      final title = firstNonEmpty([htmlText(anchor.querySelector('h4')), htmlText(anchor.querySelector('.title-name')), htmlText(anchor)]);
+      if (url.isEmpty || title.isEmpty) continue;
+      output.add(AnimeTitle(id: stableSourceId(sourceKey, url), title: title, url: url, sourceKey: sourceKey, sourceName: sourceName, sourceLogo: sourceLogo, poster: firstImage(anchor, baseUri), cover: firstImage(anchor, baseUri), description: htmlText(anchor.querySelector('.synopsis')), genres: uniqueStrings(anchor.querySelectorAll('.genres a').map(htmlText))));
+    }
+    return output;
+  }
   @override Future<AnimeEpisode> episode(String url, {String? title}) async {
     final episodeBody = await get(url);
     final document = html_parser.parse(episodeBody);
@@ -54,9 +68,15 @@ class RistoAnimeSource extends HtmlAnimeSource {
   @override Map<String, String> get defaultHeaders => const {'User-Agent': 'MangaLord/1.0', 'Referer': 'https://ristoanime.me/'};
   @override Future<List<AnimeTitle>> search(String query, {int page = 1}) async {
     if (page > 1) return const [];
-    final body = await post('https://ristoanime.me/wp-content/themes/TopAnime/Ajaxt/Searching.php', {'search': Uri.encodeQueryComponent(query)}, headers: {'X-Requested-With': 'XMLHttpRequest', 'Referer': baseUri.toString()});
+    final body = await post('https://ristoanime.me/wp-content/themes/TopAnime/Ajaxt/Searching.php', {'search': query.trim()}, headers: {'X-Requested-With': 'XMLHttpRequest', 'Referer': baseUri.toString()});
     final document = html_parser.parse(body);
-    return document.querySelectorAll('.SearchResultInner').map((node) => parseTitle(node, baseUri)).where((item) => item.title.isNotEmpty && item.url.isNotEmpty).toList();
+    return document.querySelectorAll('.SearchResultInner').map((node) {
+      final anchor = node.querySelector('h1 a[href], a[href*="/series/"]');
+      final url = resolveSourceUrl(baseUri, htmlAttribute(anchor, 'href'));
+      final title = firstNonEmpty([htmlText(anchor), htmlAttribute(anchor, 'title')]);
+      final image = firstImage(node, baseUri);
+      return AnimeTitle(id: stableSourceId(sourceKey, url), title: title, url: url, sourceKey: sourceKey, sourceName: sourceName, sourceLogo: sourceLogo, poster: image, cover: image);
+    }).where((item) => item.title.isNotEmpty && item.url.contains('/series/')).toList();
   }
   @override Future<AnimeEpisode> episode(String url, {String? title}) async {
     final watchUrl = '${url.replaceFirst(RegExp(r'/$'), '')}/watch';
@@ -66,8 +86,10 @@ class RistoAnimeSource extends HtmlAnimeSource {
       final embed = resolveSourceUrl(baseUri, htmlAttribute(element, 'data-watch'));
       if (embed.isEmpty) continue;
       final raw = await get(embed, headers: {'Referer': watchUrl});
-      final stream = extractMediaUrl(raw, baseUri);
-      if (stream.isNotEmpty) servers.add(AnimeServer(name: htmlText(element).isEmpty ? 'RistoAnime' : htmlText(element), url: stream, sourceKey: sourceKey, headers: {'Referer': embed, ...defaultHeaders}));
+      final streams = embed.endsWith('.m3u8') || embed.split('?').first.endsWith('.mp4') ? [embed] : extractMediaUrls(raw, baseUri);
+      for (final stream in streams) {
+        servers.add(AnimeServer(name: htmlText(element).isEmpty ? 'RistoAnime' : htmlText(element), url: stream, sourceKey: sourceKey, headers: {'Referer': embed, ...defaultHeaders}));
+      }
     }
     return AnimeEpisode(id: stableSourceId(sourceKey, url), title: title ?? url, number: extractEpisodeNumber(title ?? url), url: url, sourceKey: sourceKey, servers: servers);
   }
@@ -104,7 +126,8 @@ const List<AnimeSource> enabledAnimeSources = <AnimeSource>[Anime3rbSource(), Ri
 
 Future<List<AnimeTitle>> searchAllAnimeSources(String query, {int page = 1}) async {
   final prefs = await SharedPreferences.getInstance();
-  final keys = prefs.getStringList('mangalord.enabled_anime_sources')?.toSet() ?? enabledAnimeSources.map((source) => source.sourceKey).toSet();
+  final saved = prefs.getStringList('mangalord.enabled_anime_sources');
+  final keys = saved == null || saved.isEmpty ? enabledAnimeSources.map((source) => source.sourceKey).toSet() : saved.toSet();
   return isolateSourceFailures(enabledAnimeSources.where((source) => keys.contains(source.sourceKey)).map((source) => () => source.search(query, page: page)));
 }
 

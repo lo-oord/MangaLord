@@ -76,9 +76,10 @@ class _AppScreenState extends State<AppScreen> {
 
   Future<void> _initialize() async {
     final prefs = await SharedPreferences.getInstance();
+    final savedKeys = prefs.getStringList('mangalord.enabled_manga_sources');
     enabledMangaKeys
       ..clear()
-      ..addAll(prefs.getStringList('mangalord.enabled_manga_sources') ?? allSources.map((source) => source.sourceKey));
+      ..addAll(savedKeys == null || savedKeys.isEmpty ? allSources.map((source) => source.sourceKey) : savedKeys);
     downloads.restore();
     await _restoreLibrary();
     if (mounted) _loadLatest();

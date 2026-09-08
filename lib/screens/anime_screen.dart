@@ -54,7 +54,7 @@ class _AnimeScreenState extends State<AnimeScreen> {
         setState(() {
           results = value;
           loading = false;
-          error = value.isEmpty ? 'No results returned by the enabled Anime sources.' : null;
+          error = value.isEmpty ? 'No results returned. Check Anime source switches and network access.' : null;
         });
       }
     } catch (e) {
@@ -225,6 +225,9 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
+          if (snapshot.hasError) {
+            return Center(child: Padding(padding: const EdgeInsets.all(24), child: Text('Unable to load anime details.\n${snapshot.error}', textAlign: TextAlign.center)));
+          }
           return ListView(
             padding: const EdgeInsets.all(16),
             children: [
@@ -298,6 +301,7 @@ class _AnimeEpisodeScreenState extends State<AnimeEpisodeScreen> {
         future: loaded,
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
+            if (snapshot.hasError) return Center(child: Padding(padding: const EdgeInsets.all(24), child: Text('Unable to load episode servers.\n${snapshot.error}', textAlign: TextAlign.center)));
             return const Center(child: CircularProgressIndicator());
           }
           final episode = snapshot.data!;
@@ -341,6 +345,7 @@ class AnimePlayerScreen extends StatefulWidget {
 
 class _AnimePlayerScreenState extends State<AnimePlayerScreen> {
   VideoPlayerController? controller;
+  Object? playerError;
 
   @override
   void initState() {
@@ -354,9 +359,14 @@ class _AnimePlayerScreenState extends State<AnimePlayerScreen> {
       httpHeaders: widget.server.headers,
     );
     controller = value;
-    await value.initialize();
-    await value.play();
-    if (mounted) setState(() {});
+    try {
+      await value.initialize();
+      await value.play();
+      if (mounted) setState(() {});
+    } catch (error) {
+      await value.dispose();
+      if (mounted) setState(() => playerError = error);
+    }
   }
 
   @override
@@ -371,7 +381,9 @@ class _AnimePlayerScreenState extends State<AnimePlayerScreen> {
     return Scaffold(
       appBar: AppBar(title: Text(widget.server.name)),
       body: Center(
-        child: value == null || !value.value.isInitialized
+        child: playerError != null
+            ? Padding(padding: const EdgeInsets.all(24), child: Text('Unable to play this server. Try another server.\n$playerError', textAlign: TextAlign.center))
+            : value == null || !value.value.isInitialized
             ? const CircularProgressIndicator()
             : AspectRatio(
                 aspectRatio: value.value.aspectRatio,
