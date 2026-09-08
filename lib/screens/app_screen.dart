@@ -14,6 +14,8 @@ import '../services/manga_source.dart';
 import '../services/notification_service.dart';
 import '../services/download_manager.dart';
 import 'anime_screen.dart';
+import '../services/anime_source.dart';
+import '../services/anime_sources.dart';
 import '../configs/app_locale.dart';
 import '../services/auth_service.dart';
 import 'auth_screen.dart';
@@ -44,7 +46,9 @@ class AppScreen extends StatefulWidget {
 }
 
 class _AppScreenState extends State<AppScreen> {
-  final sources = <MangaSource>[TeamXSource(), AzoraSource(), ...additionalMangaSources];
+  final allSources = <MangaSource>[TeamXSource(), AzoraSource(), ...additionalMangaSources];
+  final enabledMangaKeys = <String>{};
+  List<MangaSource> get sources => allSources.where((source) => enabledMangaKeys.contains(source.sourceKey)).toList();
   final downloads = DownloadManager();
   int index = 0;
   String query = '';
@@ -66,10 +70,25 @@ class _AppScreenState extends State<AppScreen> {
   @override
   void initState() {
     super.initState();
-    _restoreLibrary();
-    downloads.restore();
-    _loadLatest();
+    _initialize();
     refreshTimer = Timer.periodic(const Duration(hours: 1), (_) { if (query.isEmpty) { _loadLatest(silent: true); _checkFavoriteUpdates(); } });
+  }
+
+  Future<void> _initialize() async {
+    final prefs = await SharedPreferences.getInstance();
+    enabledMangaKeys
+      ..clear()
+      ..addAll(prefs.getStringList('mangalord.enabled_manga_sources') ?? allSources.map((source) => source.sourceKey));
+    downloads.restore();
+    await _restoreLibrary();
+    if (mounted) _loadLatest();
+  }
+
+  Future<void> _setMangaSource(String key, bool enabled) async {
+    setState(() { if (enabled) { enabledMangaKeys.add(key); } else if (enabledMangaKeys.length > 1) { enabledMangaKeys.remove(key); } });
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList('mangalord.enabled_manga_sources', enabledMangaKeys.toList());
+    if (query.isEmpty) _loadLatest(); else _search(query);
   }
 
   @override
@@ -240,7 +259,7 @@ class _AppScreenState extends State<AppScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: index, children: [HomePage(items: manga, loading: loading, loadingMore: loadingMore, searching: searching, error: error, query: query, onQuery: _search, onRefresh: _loadLatest, onLoadMore: _loadMore, favorites: favorites, onOpen: openManga), const AnimeScreen(), HistoryPage(items: history, favorites: favorites, onOpen: openManga), SettingsPage(favorites: favorites, allItems: [...manga, ...history, ...library.values], downloads: downloads, onOpen: openManga, sourceForKey: (key) => sources.firstWhere((source) => source.sourceKey == key, orElse: () => _primarySource))]),
+      body: IndexedStack(index: index, children: [HomePage(items: manga, loading: loading, loadingMore: loadingMore, searching: searching, error: error, query: query, onQuery: _search, onRefresh: _loadLatest, onLoadMore: _loadMore, favorites: favorites, onOpen: openManga), const AnimeScreen(), HistoryPage(items: history, favorites: favorites, onOpen: openManga), SettingsPage(favorites: favorites, allItems: [...manga, ...history, ...library.values], downloads: downloads, onOpen: openManga, sourceForKey: (key) => sources.firstWhere((source) => source.sourceKey == key, orElse: () => _primarySource), mangaSources: allSources, animeSources: enabledAnimeSources, onMangaSourceChanged: _setMangaSource)]),
       bottomNavigationBar: SafeArea(child: Padding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 12), child: FloatingNavigation(index: index, onChanged: (value) => setState(() => index = value)))),
     );
   }
@@ -250,7 +269,7 @@ class FloatingNavigation extends StatelessWidget {
   const FloatingNavigation({required this.index, required this.onChanged, super.key});
   final int index;
   final ValueChanged<int> onChanged;
-  @override Widget build(BuildContext context) => Container(padding: const EdgeInsets.all(6), decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(24), boxShadow: [BoxShadow(color: Colors.black.withOpacity(.18), blurRadius: 22, offset: const Offset(0, 8))]), child: Row(children: [NavItem(icon: Icons.home_rounded, label: 'Home', active: index == 0, onTap: () => onChanged(0)), NavItem(icon: Icons.movie_rounded, label: 'Anime', active: index == 1, onTap: () => onChanged(1)), NavItem(icon: Icons.history_rounded, label: 'History', active: index == 2, onTap: () => onChanged(2)), NavItem(icon: Icons.settings_rounded, label: 'Settings', active: index == 3, onTap: () => onChanged(3))]));
+  @override Widget build(BuildContext context) => Container(padding: const EdgeInsets.all(6), decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(24), boxShadow: [BoxShadow(color: Colors.black.withOpacity(.18), blurRadius: 22, offset: const Offset(0, 8))]), child: Row(children: [NavItem(icon: Icons.menu_book_rounded, label: 'Manga', active: index == 0, onTap: () => onChanged(0)), NavItem(icon: Icons.movie_rounded, label: 'Anime', active: index == 1, onTap: () => onChanged(1)), NavItem(icon: Icons.history_rounded, label: 'History', active: index == 2, onTap: () => onChanged(2)), NavItem(icon: Icons.settings_rounded, label: 'Settings', active: index == 3, onTap: () => onChanged(3))]));
 }
 class NavItem extends StatelessWidget {
   const NavItem({required this.icon, required this.label, required this.active, required this.onTap, super.key});
@@ -275,7 +294,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool requestedMore = false;
   @override Widget build(BuildContext context) {
-    final slivers = <Widget>[SliverAppBar(pinned: true, expandedHeight: 112, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, flexibleSpace: const FlexibleSpaceBar(titlePadding: EdgeInsetsDirectional.only(start: 20, bottom: 16), title: Text('Discover', style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800))), actions: [IconButton(onPressed: () => widget.onRefresh(), icon: const Icon(Icons.refresh))]), SliverPadding(padding: const EdgeInsets.fromLTRB(20, 12, 20, 0), sliver: SliverToBoxAdapter(child: TextField(onSubmitted: widget.onQuery, textInputAction: TextInputAction.search, decoration: InputDecoration(hintText: 'Search manga...', prefixIcon: const Icon(Icons.search_rounded), suffixIcon: widget.searching ? const Padding(padding: EdgeInsets.all(12), child: CircularProgressIndicator(strokeWidth: 2)) : null, filled: true, fillColor: Theme.of(context).colorScheme.surface, border: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none))))), SliverPadding(padding: const EdgeInsets.fromLTRB(20, 28, 20, 14), sliver: SliverToBoxAdapter(child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text(widget.query.isEmpty ? 'Latest' : 'Search results', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)), Text('${widget.items.length} titles', style: const TextStyle(color: mutedText, fontSize: 12))])))];
+    final slivers = <Widget>[SliverAppBar(pinned: true, expandedHeight: 112, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, flexibleSpace: const FlexibleSpaceBar(titlePadding: EdgeInsetsDirectional.only(start: 20, bottom: 16), title: Text('Manga', style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800))), actions: [IconButton(onPressed: () => widget.onRefresh(), icon: const Icon(Icons.refresh))]), SliverPadding(padding: const EdgeInsets.fromLTRB(20, 12, 20, 0), sliver: SliverToBoxAdapter(child: TextField(onSubmitted: widget.onQuery, textInputAction: TextInputAction.search, decoration: InputDecoration(hintText: 'Search manga...', prefixIcon: const Icon(Icons.search_rounded), suffixIcon: widget.searching ? const Padding(padding: EdgeInsets.all(12), child: CircularProgressIndicator(strokeWidth: 2)) : null, filled: true, fillColor: Theme.of(context).colorScheme.surface, border: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none))))), SliverPadding(padding: const EdgeInsets.fromLTRB(20, 28, 20, 14), sliver: SliverToBoxAdapter(child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text(widget.query.isEmpty ? 'Latest' : 'Search results', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)), Text('${widget.items.length} titles', style: const TextStyle(color: mutedText, fontSize: 12))])))];
     if (widget.loading) { slivers.add(const SliverFillRemaining(hasScrollBody: false, child: Center(child: CircularProgressIndicator(color: accentGreen)))); }
     else if (widget.items.isEmpty) { slivers.add(SliverFillRemaining(hasScrollBody: false, child: StateCard(icon: widget.error == null ? Icons.search_off_rounded : Icons.cloud_off_rounded, title: widget.error == null ? 'No manga found' : 'Could not load manga', message: widget.error ?? 'Try another title or search again.'))); }
     else { slivers.add(SliverPadding(padding: const EdgeInsets.fromLTRB(14, 0, 14, 28), sliver: SliverGrid(delegate: SliverChildBuilderDelegate((context, i) => MangaCard(manga: widget.items[i], isFavorite: widget.favorites.contains(widget.items[i].url), onTap: () => widget.onOpen(widget.items[i])), childCount: widget.items.length), gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, mainAxisSpacing: 18, crossAxisSpacing: 10, childAspectRatio: .48)))); if (widget.loadingMore) slivers.add(const SliverToBoxAdapter(child: Padding(padding: EdgeInsets.all(20), child: Center(child: CircularProgressIndicator(color: accentGreen))))); }
@@ -347,9 +366,82 @@ class HistoryTile extends StatelessWidget {
 }
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({required this.favorites, required this.allItems, required this.downloads, required this.onOpen, required this.sourceForKey, super.key}); final Set<String> favorites; final List<Manga> allItems; final DownloadManager downloads; final ValueChanged<Manga> onOpen; final MangaSource Function(String) sourceForKey;
-  @override Widget build(BuildContext context) => CustomScrollView(slivers: [SliverAppBar(pinned: true, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, title: const Text('Settings', style: TextStyle(fontWeight: FontWeight.w800))), SliverPadding(padding: const EdgeInsets.all(20), sliver: SliverList(delegate: SliverChildListDelegate([const Text('Your library', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)), const SizedBox(height: 12), SettingTile(title: 'Account', subtitle: AuthService.instance.currentUser == null ? 'Sign in to sync your library' : 'Profile and account', icon: Icons.person_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AuthService.instance.currentUser == null ? const LoginScreen() : const AccountScreen()))), SettingTile(title: 'Favorites', subtitle: '${favorites.length} saved manga', icon: Icons.favorite_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FavoritesPage(favorites: favorites, items: allItems, onOpen: onOpen)))), SettingTile(title: 'Storage', subtitle: 'Downloaded manga and offline chapters', icon: Icons.storage_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => StoragePage(manager: downloads, sourceForKey: sourceForKey)))), SettingTile(title: 'Downloads', subtitle: 'Offline reading queue', icon: Icons.download_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DownloadsPage(manager: downloads)))), SettingTile(title: 'Manga sources', subtitle: 'Team X and AzoraFly', icon: Icons.language_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SimplePage(title: 'Manga sources', icon: Icons.language_rounded, message: 'Team X and AzoraFly are enabled.', action: 'Sources enabled')))), SettingTile(title: 'More', subtitle: 'Language, notifications and version', icon: Icons.tune_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MoreSettingsPage())))])))]);
+  const SettingsPage({required this.favorites, required this.allItems, required this.downloads, required this.onOpen, required this.sourceForKey, required this.mangaSources, required this.animeSources, required this.onMangaSourceChanged, super.key});
+  final Set<String> favorites;
+  final List<Manga> allItems;
+  final DownloadManager downloads;
+  final ValueChanged<Manga> onOpen;
+  final MangaSource Function(String) sourceForKey;
+  final List<MangaSource> mangaSources;
+  final List<AnimeSource> animeSources;
+  final Future<void> Function(String key, bool enabled) onMangaSourceChanged;
+
+  @override
+  Widget build(BuildContext context) => CustomScrollView(slivers: [
+    SliverAppBar(pinned: true, backgroundColor: Theme.of(context).scaffoldBackgroundColor, surfaceTintColor: Colors.transparent, title: const Text('Settings', style: TextStyle(fontWeight: FontWeight.w800))),
+    SliverPadding(padding: const EdgeInsets.all(20), sliver: SliverList(delegate: SliverChildListDelegate([
+      const Text('Your library', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)),
+      const SizedBox(height: 12),
+      SettingTile(title: 'Account', subtitle: AuthService.instance.currentUser == null ? 'Sign in to sync your library' : 'Profile and account', icon: Icons.person_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AuthService.instance.currentUser == null ? const LoginScreen() : const AccountScreen()))),
+      SettingTile(title: 'Favorites', subtitle: '${favorites.length} saved manga', icon: Icons.favorite_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => FavoritesPage(favorites: favorites, items: allItems, onOpen: onOpen)))),
+      SettingTile(title: 'Storage', subtitle: 'Downloaded manga and offline chapters', icon: Icons.storage_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => StoragePage(manager: downloads, sourceForKey: sourceForKey)))),
+      SettingTile(title: 'Downloads', subtitle: 'Offline reading queue', icon: Icons.download_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => DownloadsPage(manager: downloads)))),
+      const SizedBox(height: 18),
+      const Text('Sources', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)),
+      const SizedBox(height: 10),
+      SettingTile(title: 'Manga sources', subtitle: '${mangaSources.length} available sources', icon: Icons.menu_book_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SourceSettingsPage(mangaSources: mangaSources, animeSources: const [], onMangaSourceChanged: onMangaSourceChanged)))),
+      SettingTile(title: 'Anime sources', subtitle: '${animeSources.length} available sources', icon: Icons.movie_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => SourceSettingsPage(mangaSources: const [], animeSources: animeSources, onMangaSourceChanged: onMangaSourceChanged)))),
+      const SizedBox(height: 12),
+      SettingTile(title: 'More', subtitle: 'Language, notifications and version', icon: Icons.tune_rounded, onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MoreSettingsPage()))),
+    ]))),
+  ]);
 }
+
+class SourceSettingsPage extends StatefulWidget {
+  const SourceSettingsPage({required this.mangaSources, required this.animeSources, required this.onMangaSourceChanged, super.key});
+  final List<MangaSource> mangaSources;
+  final List<AnimeSource> animeSources;
+  final Future<void> Function(String key, bool enabled) onMangaSourceChanged;
+  @override State<SourceSettingsPage> createState() => _SourceSettingsPageState();
+}
+
+class _SourceSettingsPageState extends State<SourceSettingsPage> {
+  final enabled = <String>{};
+  bool get isManga => widget.mangaSources.isNotEmpty;
+  List<dynamic> get items => isManga ? widget.mangaSources : widget.animeSources;
+
+  @override
+  void initState() { super.initState(); _load(); }
+
+  Future<void> _load() async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = isManga ? 'mangalord.enabled_manga_sources' : 'mangalord.enabled_anime_sources';
+    final defaults = items.map((item) => item.sourceKey).toSet();
+    enabled..clear()..addAll(prefs.getStringList(key) ?? defaults);
+    if (mounted) setState(() {});
+  }
+
+  Future<void> _set(dynamic source, bool value) async {
+    if (!value && enabled.length <= 1) return;
+    setState(() { if (value) enabled.add(source.sourceKey); else enabled.remove(source.sourceKey); });
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList(isManga ? 'mangalord.enabled_manga_sources' : 'mangalord.enabled_anime_sources', enabled.toList());
+    if (isManga) await widget.onMangaSourceChanged(source.sourceKey, value);
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    appBar: AppBar(title: Text(isManga ? 'Manga sources' : 'Anime sources')),
+    body: ListView(padding: const EdgeInsets.all(16), children: [
+      Text(isManga ? 'Choose which manga sources appear in search and latest updates.' : 'Choose which anime sources appear in Anime search.', style: const TextStyle(color: mutedText)),
+      const SizedBox(height: 12),
+      ...items.map((source) => Card(child: SwitchListTile(secondary: _logo(source.sourceLogo), value: enabled.contains(source.sourceKey), onChanged: (value) => _set(source, value), title: Text(source.sourceName), subtitle: Text(source.sourceKey)))),
+    ]),
+  );
+
+  Widget _logo(String url) => SizedBox(width: 38, height: 38, child: Image.network(url, fit: BoxFit.contain, errorBuilder: (_, __, ___) => const Icon(Icons.language)));
+}
+
 class MoreSettingsPage extends StatefulWidget {
   const MoreSettingsPage({super.key});
   @override State<MoreSettingsPage> createState() => _MoreSettingsPageState();

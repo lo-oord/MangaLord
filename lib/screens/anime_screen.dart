@@ -1,9 +1,14 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 import '../services/anime_source.dart';
 import '../services/anime_sources.dart';
 import '../services/content_models.dart';
+
+const accentGreen = Color(0xFF3DDC97);
+const mutedText = Color(0xFF8FA39C);
 
 class AnimeScreen extends StatefulWidget {
   const AnimeScreen({super.key});
@@ -17,9 +22,20 @@ class _AnimeScreenState extends State<AnimeScreen> {
   List<AnimeTitle> results = const [];
   bool loading = false;
   String? error;
+  String lastQuery = '';
+  Timer? refreshTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    refreshTimer = Timer.periodic(const Duration(hours: 1), (_) {
+      if (lastQuery.isNotEmpty && !loading) search();
+    });
+  }
 
   @override
   void dispose() {
+    refreshTimer?.cancel();
     queryController.dispose();
     super.dispose();
   }
@@ -27,6 +43,7 @@ class _AnimeScreenState extends State<AnimeScreen> {
   Future<void> search() async {
     final query = queryController.text.trim();
     if (query.isEmpty) return;
+    lastQuery = query;
     setState(() {
       loading = true;
       error = null;
@@ -129,19 +146,25 @@ class AnimeCard extends StatelessWidget {
               flex: 7,
               child: SizedBox(
                 width: double.infinity,
-                child: item.poster.isEmpty
-                    ? const ColoredBox(
-                        color: Color(0xFF1E2A27),
-                        child: Icon(Icons.movie, size: 42),
-                      )
-                    : Image.network(
-                        item.poster,
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, __, ___) => const ColoredBox(
-                          color: Color(0xFF1E2A27),
-                          child: Icon(Icons.broken_image, size: 42),
-                        ),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    item.poster.isEmpty
+                        ? const ColoredBox(color: Color(0xFF1E2A27), child: Icon(Icons.movie, size: 42))
+                        : Image.network(item.poster, fit: BoxFit.cover, errorBuilder: (_, __, ___) => const ColoredBox(color: Color(0xFF1E2A27), child: Icon(Icons.broken_image, size: 42))),
+                    Positioned(
+                      top: 8,
+                      left: 8,
+                      child: Container(
+                        width: 28,
+                        height: 28,
+                        padding: const EdgeInsets.all(4),
+                        decoration: BoxDecoration(color: Colors.black.withOpacity(.72), borderRadius: BorderRadius.circular(8)),
+                        child: item.sourceLogo.isEmpty ? const Icon(Icons.movie, color: Colors.white, size: 16) : Image.network(item.sourceLogo, fit: BoxFit.contain, errorBuilder: (_, __, ___) => const Icon(Icons.language, color: Colors.white, size: 16)),
                       ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(

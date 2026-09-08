@@ -6,6 +6,7 @@ abstract class AnimeSource {
   const AnimeSource();
   String get sourceKey;
   String get sourceName;
+  String get sourceLogo;
   Uri get baseUri;
   Map<String, String> get defaultHeaders => const {'User-Agent': 'MangaLord/1.0'};
 
@@ -45,6 +46,7 @@ abstract class AnimeSource {
       url: url,
       sourceKey: sourceKey,
       sourceName: sourceName,
+      sourceLogo: sourceLogo,
       poster: image,
       cover: image,
       description: description,
@@ -158,6 +160,7 @@ abstract class HtmlAnimeSource extends AnimeSource {
       url: url,
       sourceKey: sourceKey,
       sourceName: sourceName,
+      sourceLogo: sourceLogo,
       poster: poster,
       cover: poster,
       description: description,

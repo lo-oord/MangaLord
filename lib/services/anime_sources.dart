@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:html/parser.dart' as html_parser;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'anime_source.dart';
 import 'content_models.dart';
@@ -9,6 +10,7 @@ class Anime3rbSource extends HtmlAnimeSource {
   const Anime3rbSource();
   @override String get sourceKey => 'anime3rb';
   @override String get sourceName => 'Anime3rb';
+  @override String get sourceLogo => 'https://anime3rb.com/favicon.ico';
   @override Uri get baseUri => Uri.parse('https://anime3rb.com');
   @override String get searchPath => '/titles/list';
   @override String get resultSelector => '.search-results a.simple-title-card[href*="/titles/"], .title-card';
@@ -44,6 +46,7 @@ class RistoAnimeSource extends HtmlAnimeSource {
   const RistoAnimeSource();
   @override String get sourceKey => 'risto_anime';
   @override String get sourceName => 'RistoAnime';
+  @override String get sourceLogo => 'https://ristoanime.me/favicon.ico';
   @override Uri get baseUri => Uri.parse('https://ristoanime.me');
   @override String get searchPath => '/';
   @override String get resultSelector => '.SearchResultInner, .BlocksHolder .MovieItem';
@@ -74,6 +77,7 @@ class AnimePhoenixSource extends HtmlAnimeSource {
   const AnimePhoenixSource();
   @override String get sourceKey => 'anime_phoenix';
   @override String get sourceName => 'Anime Phoenix';
+  @override String get sourceLogo => 'https://anime-phoenix.com/favicon.ico';
   @override Uri get baseUri => Uri.parse('https://anime-phoenix.com');
   @override String get searchPath => '/search/';
   @override String get resultSelector => 'a[href*="/animes/"], .anime-card, .post';
@@ -91,13 +95,17 @@ class AnimePhoenixSource extends HtmlAnimeSource {
       final fallback = '${item['slug'] ?? ''}'.trim();
       final publicUrl = url.isNotEmpty ? url : baseUri.resolve('/animes/$fallback').toString();
       final poster = '${item['thumbnail_url'] ?? ''}';
-      return AnimeTitle(id: stableSourceId(sourceKey, publicUrl), title: '${item['title_ar'] ?? item['title'] ?? ''}'.trim(), url: publicUrl, sourceKey: sourceKey, sourceName: sourceName, poster: poster, cover: poster);
+      return AnimeTitle(id: stableSourceId(sourceKey, publicUrl), title: '${item['title_ar'] ?? item['title'] ?? ''}'.trim(), url: publicUrl, sourceKey: sourceKey, sourceName: sourceName, sourceLogo: sourceLogo, poster: poster, cover: poster);
     }).where((item) => item.title.isNotEmpty && item.url.isNotEmpty).toList();
   }
 }
 
 const List<AnimeSource> enabledAnimeSources = <AnimeSource>[Anime3rbSource(), RistoAnimeSource(), AnimePhoenixSource()];
 
-Future<List<AnimeTitle>> searchAllAnimeSources(String query, {int page = 1}) => isolateSourceFailures(enabledAnimeSources.map((source) => () => source.search(query, page: page)));
+Future<List<AnimeTitle>> searchAllAnimeSources(String query, {int page = 1}) async {
+  final prefs = await SharedPreferences.getInstance();
+  final keys = prefs.getStringList('mangalord.enabled_anime_sources')?.toSet() ?? enabledAnimeSources.map((source) => source.sourceKey).toSet();
+  return isolateSourceFailures(enabledAnimeSources.where((source) => keys.contains(source.sourceKey)).map((source) => () => source.search(query, page: page)));
+}
 
 AnimeSource animeSourceByKey(String key) => enabledAnimeSources.firstWhere((source) => source.sourceKey == key, orElse: () => throw StateError('Unknown anime source: $key'));

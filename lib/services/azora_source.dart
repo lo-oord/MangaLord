@@ -126,13 +126,13 @@ class AzoraSource implements MangaSource {
       final uri = _resolve(href);
       final parts = uri.pathSegments.where((part) => part.isNotEmpty).toList();
       if (parts.length != 2 || parts.first != 'series') continue;
-      final imageNode = anchor.querySelector('img');
+      final imageNode = anchor.querySelector('img, picture source, [data-src], [data-lazy-src], [data-original]') ?? anchor.parent?.querySelector('img, picture source, [data-src], [data-lazy-src], [data-original]');
       final rawTitle = anchor.attributes['title'] ?? imageNode?.attributes['alt'] ?? _text(anchor);
       final title = (rawTitle is String ? rawTitle : '')
           .replaceAll(RegExp(r'\s+'), ' ')
           .trim();
       if (title.isEmpty || title.length > 300) continue;
-      final image = _image(imageNode);
+      final image = _image(imageNode ?? anchor);
       items[uri.toString()] = TeamXManga(
         id: uri.toString(),
         title: title,

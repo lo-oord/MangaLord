@@ -12,8 +12,8 @@ class SourceChapter {
   final List<String> pages;
 }
 class AnimeTitle {
-  const AnimeTitle({required this.id, required this.title, required this.url, required this.sourceKey, required this.sourceName, this.poster = '', this.cover = '', this.description = '', this.genres = const <String>[], this.status = '', this.year = '', this.episodes = const <AnimeEpisode>[]});
-  final String id, title, url, sourceKey, sourceName, poster, cover, description, status, year;
+  const AnimeTitle({required this.id, required this.title, required this.url, required this.sourceKey, required this.sourceName, this.sourceLogo = '', this.poster = '', this.cover = '', this.description = '', this.genres = const <String>[], this.status = '', this.year = '', this.episodes = const <AnimeEpisode>[]});
+  final String id, title, url, sourceKey, sourceName, sourceLogo, poster, cover, description, status, year;
   final List<String> genres;
   final List<AnimeEpisode> episodes;
 }
