@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:appwrite/appwrite.dart';
-import 'package:appwrite/enums.dart';
 import 'package:appwrite/models.dart';
 
 class AuthService {
@@ -36,7 +35,7 @@ class AuthService {
 
   Future<bool> ping() async {
     try {
-      await client.call(method: HttpMethod.get, path: '/health');
+      await client.ping();
       return true;
     } catch (_) {
       return false;
