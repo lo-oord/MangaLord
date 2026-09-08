@@ -61,7 +61,7 @@ class AzoraSource implements MangaSource {
     final description = _cleanHtml(document.querySelector('meta[name="description"]')?.attributes['content'] ?? document.querySelector('meta[property="og:description"]')?.attributes['content'] ?? '');
     // AzoraFly's og:image is a generated social preview, not the manga cover.
     final cover = _image(document.querySelector(
-      'img[alt^="Cover of"], img[alt*="Cover"], img[alt*="غلاف"], img[src*="/featured/"]',
+      'img[alt^="Cover of"], img[alt*="Cover"], img[alt*="غلاف"], img[src*="/featured/"], img[data-src*="/featured/"], img[data-lazy-src*="/featured/"]',
     ));
     final chapterMap = <String, TeamXChapter>{};
     for (final anchor in document.querySelectorAll('a[href*="/chapter-"]')) {
@@ -126,7 +126,7 @@ class AzoraSource implements MangaSource {
       final uri = _resolve(href);
       final parts = uri.pathSegments.where((part) => part.isNotEmpty).toList();
       if (parts.length != 2 || parts.first != 'series') continue;
-      final imageNode = anchor.querySelector('img, picture source, [data-src], [data-lazy-src], [data-original]') ?? anchor.parent?.querySelector('img, picture source, [data-src], [data-lazy-src], [data-original]');
+      final imageNode = anchor.querySelector('img[data-src], img[data-lazy-src], img[data-original], img[src], picture source') ?? anchor.parent?.querySelector('img[data-src], img[data-lazy-src], img[data-original], img[src], picture source');
       final rawTitle = anchor.attributes['title'] ?? imageNode?.attributes['alt'] ?? _text(anchor);
       final title = (rawTitle is String ? rawTitle : '')
           .replaceAll(RegExp(r'\s+'), ' ')

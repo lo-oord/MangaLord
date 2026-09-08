@@ -25,9 +25,16 @@ const deepGreen = Color(0xFF113C32);
 const mutedText = Color(0xFF8FA39C);
 const appVersion = 'v0.0.22';
 
-Map<String, String> _headersForManga(Manga manga) => {
-  'Referer': manga.sourceKey == 'azora_fly' ? 'https://azorafly.com/' : 'https://olympustaff.com/',
-};
+Map<String, String> _headersForManga(Manga manga) {
+  final referers = <String, String>{
+    'azora_fly': 'https://azorafly.com/',
+    'manga_swat': 'https://meshmanga.com/',
+    'hijala_com': 'https://hijala.com/',
+    'dilar_tube': 'https://dilar.tube/',
+    'team_x': 'https://olympustaff.com/',
+  };
+  return {'Referer': referers[manga.sourceKey] ?? 'https://olympustaff.com/'};
+}
 
 class Manga {
   const Manga({required this.title, required this.url, required this.author, required this.genre, required this.cover, required this.description, required this.chapters, this.chapterItems = const [], this.status = 'Ongoing', this.lastChapterNumber = '', this.lastChapterAt = '', this.lastNotifiedChapterNumber = '', this.sourceKey = 'team_x', this.sourceName = 'Team X', this.sourceLogo = TeamXSource.teamXSourceLogo});

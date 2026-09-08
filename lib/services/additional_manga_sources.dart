@@ -27,8 +27,7 @@ abstract class HtmlMangaSource implements MangaSource {
   }
   String image(dynamic node) {
     if (node == null) return '';
-    final imageNode = node.querySelector('img, picture source') ?? node;
-    final attrs = imageNode.attributes as Map<String, String>;
+    final attrs = node.attributes as Map<String, String>;
     final srcset = attrs['data-srcset'] ?? attrs['srcset'] ?? '';
     if (srcset.isNotEmpty) return resolve(srcset.split(',').last.trim().split(RegExp(r'\s+')).first).toString();
     for (final key in ['data-src', 'data-lazy-src', 'data-original', 'src']) {
@@ -97,60 +96,66 @@ abstract class HtmlMangaSource implements MangaSource {
 class MangaSwatSource extends HtmlMangaSource {
   @override String get sourceKey => 'manga_swat';
   @override String get sourceName => 'Manga Swat';
-  @override String get sourceLogo => 'https://appswat.com/favicon-32x32.png';
-  @override String get imageReferer => 'https://appswat.com/';
-  @override Uri get baseUri => Uri.parse('https://appswat.com/');
-  @override Uri searchUri(String query, int page) => Uri.parse('https://appswat.com/v2/api/v2/series/').replace(queryParameters: {'page_size': '20', 'offset': '${(page - 1) * 20}', 'search': query});
+  @override String get sourceLogo => 'https://meshmanga.com/favicon.ico';
+  @override String get imageReferer => 'https://meshmanga.com/';
+  @override Uri get baseUri => Uri.parse('https://meshmanga.com/');
+  Uri _catalogUri(String path, String query, int page) => baseUri.resolve(path).replace(queryParameters: {
+    if (query.isNotEmpty) 'search': query,
+    if (page > 1) 'page': '$page',
+  });
+  @override Future<List<TeamXManga>> latest({int page = 1}) async => parseCards(await _get(_catalogUri('type/manga', '', page)), const ['a[href*="/manga/"]', 'a[href*="/series/"]', '.page-item-detail', '.c-tabs-item__content']);
   @override Future<List<TeamXManga>> search(String query, {int page = 1}) async {
-    final body = await _getJson(searchUri(query, page));
-    final json = jsonDecode(body) as Map<String, dynamic>;
-    final results = (json['results'] as List? ?? const []).whereType<Map>().map((item) => TeamXManga(id: '${item['id']}', title: '${item['title'] ?? ''}', url: '${item['url'] ?? 'https://appswat.com/series/${item['id']}'}', cover: '${(item['poster'] as Map?)?['medium'] ?? ''}')).toList();
-    return results;
-  }
-  Future<String> _getJson(Uri uri) async {
-    final response = await http.get(uri, headers: headers).timeout(const Duration(seconds: 30));
-    if (response.statusCode < 200 || response.statusCode >= 400) throw Exception('$sourceName returned HTTP ${response.statusCode}');
-    return utf8.decode(response.bodyBytes, allowMalformed: true);
+    final pages = <String>{
+      await _get(_catalogUri('type/manga', query, page)),
+      await _get(baseUri.resolve('search').replace(queryParameters: {'q': query, if (page > 1) 'page': '$page'})),
+    };
+    final merged = <String, TeamXManga>{};
+    for (final body in pages) {
+      for (final item in parseCards(body, const ['a[href*="/manga/"]', 'a[href*="/series/"]', '.page-item-detail', '.c-tabs-item__content'])) merged[item.url] = item;
+    }
+    return merged.values.toList();
   }
 }
 
 class HijalaComSource extends HtmlMangaSource {
   @override String get sourceKey => 'hijala_com';
-  @override String get sourceName => 'HijalaCom';
-  @override String get sourceLogo => 'https://hijala.com/favicon.ico';
+  @override String get sourceName => 'Hijala';
+  @override String get sourceLogo => 'https://hijala.com/wp-content/uploads/2024/10/cropped-hijala-32x32.png';
   @override String get imageReferer => 'https://hijala.com/';
   @override Uri get baseUri => Uri.parse('https://hijala.com/');
-  @override Uri searchUri(String query, int page) => baseUri.resolve('search/').replace(queryParameters: {'keyword': query, 'page': '$page'});
-}
-
-class ProChanSource extends HtmlMangaSource {
-  @override String get sourceKey => 'pro_chan';
-  @override String get sourceName => 'Pro Chan';
-  @override String get sourceLogo => 'https://prochan.pro/favicon.ico';
-  @override String get imageReferer => 'https://prochan.pro/';
-  @override Uri get baseUri => Uri.parse('https://prochan.pro/');
-  @override Uri searchUri(String query, int page) => Uri.parse('https://prochan.pro/api/public/series/search/').replace(queryParameters: {'q': query, 'page': '$page'});
+  @override Uri searchUri(String query, int page) => baseUri.replace(queryParameters: {'s': query, if (page > 1) 'paged': '$page'});
+  @override Future<List<TeamXManga>> latest({int page = 1}) async => parseCards(await _get(baseUri.resolve(page == 1 ? '' : 'page/$page/')), const ['.page-item-detail', '.c-tabs-item__content', '.row.c-tabs-item__content', 'article']);
   @override Future<List<TeamXManga>> search(String query, {int page = 1}) async {
-    final root = jsonDecode(await _get(searchUri(query, page))) as Map<String, dynamic>;
-    final values = (root['data'] as List?) ?? (root['results'] as List?) ?? const [];
-    return values.whereType<Map>().map((item) {
-      final id = '${item['id'] ?? item['slug'] ?? ''}';
-      final slug = '${item['slug'] ?? ''}'.trim();
-      final url = '${item['url'] ?? item['public_url'] ?? (slug.isNotEmpty ? 'https://procomic.pro/ar/series/$slug' : 'https://procomic.pro/ar/series/$id')}';
-      final cover = '${item['thumbnail_url'] ?? item['thumbnail'] ?? item['coverImage'] ?? item['cover_url'] ?? item['poster'] ?? ''}';
-      return TeamXManga(id: url, title: '${item['title_ar'] ?? item['title'] ?? item['name'] ?? ''}'.trim(), url: url, cover: cover);
-    }).where((item) => item.title.isNotEmpty && item.url.isNotEmpty).toList();
+    try {
+      final response = await _client.get(baseUri.resolve('wp-json/wp/v2/search').replace(queryParameters: {'search': query, 'per_page': '20', 'page': '$page'}), headers: headers).timeout(const Duration(seconds: 30));
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        final values = (jsonDecode(utf8.decode(response.bodyBytes, allowMalformed: true)) as List).whereType<Map>();
+        return values.where((item) => '${item['subtype'] ?? ''}' == 'manga').map((item) => TeamXManga(id: '${item['id']}', title: '${item['title'] ?? ''}', url: '${item['url'] ?? ''}')).where((item) => item.url.isNotEmpty).toList();
+      }
+    } catch (_) {}
+    return super.search(query, page: page);
   }
 }
 
-/// The requested “Dailr Tube” source is represented by the current public Dilar Tube domain.
-class DailrTubeSource extends HtmlMangaSource {
-  @override String get sourceKey => 'dailr_tube';
-  @override String get sourceName => 'Dailr Tube';
-  @override String get sourceLogo => 'https://dilar.tube/favicon.ico';
+class DilarTubeSource extends HtmlMangaSource {
+  @override String get sourceKey => 'dilar_tube';
+  @override String get sourceName => 'Dilar Tube';
+  @override String get sourceLogo => 'https://dilar.tube/logo192.png';
   @override String get imageReferer => 'https://dilar.tube/';
   @override Uri get baseUri => Uri.parse('https://dilar.tube/');
-  @override Uri searchUri(String query, int page) => baseUri.resolve('mangas').replace(queryParameters: {'search': query, 'page': '$page'});
+  Uri get _api => baseUri.resolve('api/');
+  String _asset(String id, String value) => value.isEmpty ? '' : (value.startsWith('http') ? value : baseUri.resolve('uploads/manga/cover/$id/large_$value').toString());
+  TeamXManga _item(Map item) => TeamXManga(id: '${item['id']}', title: '${item['title'] ?? ''}', url: baseUri.resolve('series/${item['id']}').toString(), cover: _asset('${item['id'] ?? ''}', '${item['cover'] ?? ''}'), description: '${item['summary'] ?? ''}');
+  Future<Map<String, dynamic>> _json(Uri uri) async => jsonDecode(await _get(uri)) as Map<String, dynamic>;
+  @override Future<List<TeamXManga>> latest({int page = 1}) async => ((await _json(_api.resolve('series').replace(queryParameters: {'page': '$page'})))['series'] as List? ?? const []).whereType<Map>().map(_item).toList();
+  @override Future<List<TeamXManga>> search(String query, {int page = 1}) async => ((await _json(_api.resolve('series').replace(queryParameters: {'search': query, 'page': '$page'})))['series'] as List? ?? const []).whereType<Map>().map(_item).toList();
+  @override Future<TeamXManga> details(String url) async {
+    final id = resolve(url).pathSegments.last;
+    final item = await _json(_api.resolve('series/$id'));
+    final chaptersResponse = await _json(_api.resolve('series/$id/chapters'));
+    final chapters = ((chaptersResponse['chapters'] as List?) ?? const []).whereType<Map>().map((item) => TeamXChapter(id: '${item['id']}', number: '${item['chapter'] ?? ''}', title: '${item['title'] ?? ''}', publishedAt: '${item['created_at'] ?? ''}', url: baseUri.resolve('series/$id/chapters/${item['id']}').toString(), images: const [])).toList();
+    final manga = _item(item); return TeamXManga(id: manga.id, title: manga.title, url: manga.url, cover: manga.cover, description: manga.description, chapters: chapters);
+  }
 }
 
-final List<MangaSource> additionalMangaSources = <MangaSource>[MangaSwatSource(), HijalaComSource(), ProChanSource(), DailrTubeSource()];
+final List<MangaSource> additionalMangaSources = <MangaSource>[MangaSwatSource(), HijalaComSource(), DilarTubeSource()];
