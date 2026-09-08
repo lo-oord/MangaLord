@@ -63,8 +63,10 @@ class StartupErrorScreen extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(24),
 	          child: Column(
-	            mainAxisSize: MainAxisSize.min,
-	            children: [
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Flutter 3.47 reports a false const diagnostic for this widget in this build context.
+              // ignore: const_with_non_const
               SizedBox(width: 56, height: 56),
               SizedBox(height: 16),
               Text('MangaLord could not start', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
