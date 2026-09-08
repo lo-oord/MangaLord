@@ -1,4 +1,6 @@
 import 'package:html/parser.dart' as html_parser;
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 import 'manga_source.dart';
@@ -31,7 +33,7 @@ class AzoraSource implements MangaSource {
     if (response.statusCode < 200 || response.statusCode >= 400) {
       throw Exception('AzoraFly returned HTTP ${response.statusCode}');
     }
-    return response.body;
+    return utf8.decode(response.bodyBytes, allowMalformed: true);
   }
 
   @override
@@ -56,12 +58,9 @@ class AzoraSource implements MangaSource {
     final uri = _resolve(url);
     final document = html_parser.parse(await _get(uri));
     final title = _text(document.querySelector('h1'));
-    final description = document
-            .querySelector('meta[name="description"]')
-            ?.attributes['content'] ??
-        '';
-    final cover = document.querySelector('meta[property="og:image"]')?.attributes['content'] ??
-        _image(document.querySelector('img'));
+    final description = _cleanHtml(document.querySelector('meta[name="description"]')?.attributes['content'] ?? document.querySelector('meta[property="og:description"]')?.attributes['content'] ?? '');
+    final coverMeta = document.querySelector('meta[property="og:image"]')?.attributes['content'] ?? '';
+    final cover = coverMeta.isNotEmpty ? _resolve(coverMeta).toString() : _image(document.querySelector('img[alt*="Cover" i], img[alt*="غلاف" i], img[src*="/featured/"]'));
     final chapterMap = <String, TeamXChapter>{};
     for (final anchor in document.querySelectorAll('a[href*="/chapter-"]')) {
       final href = anchor.attributes['href'];
@@ -95,13 +94,13 @@ class AzoraSource implements MangaSource {
     final uri = _resolve(url);
     final document = html_parser.parse(await _get(uri));
     final images = <String>[];
-    for (final image in document.querySelectorAll('img[data-reader-page-image], img[data-reader-index]')) {
+    for (final image in document.querySelectorAll('img')) {
       final resolved = _image(image);
-      if (resolved.isEmpty ||
-          !resolved.contains('storage.azorafly.com') ||
-          (!resolved.contains('/WP-manga/data/') && !resolved.contains('/upload/series/'))) {
-        continue;
-      }
+      if (resolved.isEmpty || !resolved.contains('storage.azorafly.com')) continue;
+      final lower = resolved.toLowerCase();
+      final alt = (image.attributes['alt'] ?? '').toLowerCase();
+      final isReaderImage = image.attributes.containsKey('data-reader-page-image') || image.attributes.containsKey('data-reader-index') || alt.contains('page') || lower.contains('/page-') || lower.contains('/wp-manga/data/') || lower.contains('/upload/series/');
+      if (!isReaderImage || lower.contains('/featured/') || lower.contains('/banner/') || lower.contains('logo')) continue;
       if (!images.contains(resolved)) images.add(resolved);
     }
     if (images.isEmpty) throw Exception('No chapter images found on AzoraFly');
@@ -148,14 +147,22 @@ class AzoraSource implements MangaSource {
     return RegExp(r'(\d+(?:\.\d+)?)').firstMatch(segment)?.group(1) ?? '';
   }
 
+  String _cleanHtml(String value) => html_parser.parseFragment(value).text.replaceAll(RegExp(r'\s+'), ' ').trim();
   String _fallbackName(Uri uri) => uri.pathSegments.last.replaceAll('-', ' ');
   Uri _resolve(String value) => Uri.parse(value).isAbsolute ? Uri.parse(value) : baseUri.resolve(value);
   String _text(dynamic node) => node?.text?.replaceAll(RegExp(r'\s+'), ' ').trim() ?? '';
 
   String _image(dynamic node) {
     if (node == null) return '';
+    final srcset = node.attributes['srcset'] ?? node.attributes['data-srcset'];
+    if (srcset != null && srcset.trim().isNotEmpty) {
+      final values = srcset.split(',').map((item) => item.trim().split(RegExp(r'\s+')).first).where((item) => item.isNotEmpty).toList();
+      if (values.isNotEmpty) return _resolve(values.last).toString();
+    }
     final value = node.attributes['data-src'] ??
         node.attributes['data-lazy-src'] ??
+        node.attributes['data-original'] ??
+        node.attributes['data-url'] ??
         node.attributes['content'] ??
         node.attributes['src'] ??
         '';

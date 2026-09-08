@@ -129,7 +129,13 @@ class _AppScreenState extends State<AppScreen> {
   Future<void> _loadLatest({bool silent = false}) async {
     if (!silent && mounted) setState(() { loading = true; error = null; latestPage = 1; canLoadMore = true; });
     try {
-      final results = await Future.wait(sources.map((source) => source.latest(page: 1)));
+      final results = await Future.wait(sources.map((source) async {
+        try {
+          return await source.latest(page: 1);
+        } catch (_) {
+          return <TeamXManga>[];
+        }
+      }));
       final merged = <String, Manga>{};
       for (var i = 0; i < results.length; i++) {
         for (final item in results[i]) {
@@ -146,7 +152,13 @@ class _AppScreenState extends State<AppScreen> {
     if (loadingMore || !canLoadMore || query.isNotEmpty) return;
     setState(() => loadingMore = true);
     try {
-      final results = await Future.wait(sources.map((source) => source.latest(page: latestPage + 1)));
+      final results = await Future.wait(sources.map((source) async {
+        try {
+          return await source.latest(page: latestPage + 1);
+        } catch (_) {
+          return <TeamXManga>[];
+        }
+      }));
       if (mounted) setState(() {
         final existing = {for (final item in manga) item.url: item};
         for (var i = 0; i < results.length; i++) {
@@ -194,7 +206,13 @@ class _AppScreenState extends State<AppScreen> {
     if (query.isEmpty) return _loadLatest();
     setState(() { searching = true; error = null; });
     try {
-      final results = await Future.wait(sources.map((source) => source.search(query)));
+      final results = await Future.wait(sources.map((source) async {
+        try {
+          return await source.search(query);
+        } catch (_) {
+          return <TeamXManga>[];
+        }
+      }));
       final merged = <String, Manga>{};
       for (var i = 0; i < results.length; i++) {
         for (final item in results[i]) merged[item.url] = _map(item, sources[i]);
