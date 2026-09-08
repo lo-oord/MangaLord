@@ -131,10 +131,12 @@ class _AppScreenState extends State<AppScreen> {
   Future<void> _loadLatest({bool silent = false}) async {
     if (!silent && mounted) setState(() { loading = true; error = null; latestPage = 1; canLoadMore = true; });
     try {
+      var failures = 0;
       final results = await Future.wait(sources.map((source) async {
         try {
           return await source.latest(page: 1);
         } catch (_) {
+          failures++;
           return <TeamXManga>[];
         }
       }));
@@ -144,7 +146,7 @@ class _AppScreenState extends State<AppScreen> {
           merged[item.url] = _map(item, sources[i]);
         }
       }
-      if (mounted) setState(() { manga = merged.values.toList(); loading = false; latestPage = 1; canLoadMore = manga.isNotEmpty; });
+      if (mounted) setState(() { manga = merged.values.toList(); loading = false; latestPage = 1; canLoadMore = manga.isNotEmpty; error = manga.isEmpty && failures == sources.length ? 'All manga sources failed to respond.' : null; });
     } catch (e) {
       if (mounted) setState(() { loading = false; error = e.toString(); });
     }
@@ -208,10 +210,12 @@ class _AppScreenState extends State<AppScreen> {
     if (query.isEmpty) return _loadLatest();
     setState(() { searching = true; error = null; });
     try {
+      var failures = 0;
       final results = await Future.wait(sources.map((source) async {
         try {
           return await source.search(query);
         } catch (_) {
+          failures++;
           return <TeamXManga>[];
         }
       }));
@@ -219,7 +223,7 @@ class _AppScreenState extends State<AppScreen> {
       for (var i = 0; i < results.length; i++) {
         for (final item in results[i]) merged[item.url] = _map(item, sources[i]);
       }
-      if (mounted) setState(() { manga = merged.values.toList(); searching = false; });
+      if (mounted) setState(() { manga = merged.values.toList(); searching = false; error = manga.isEmpty && failures == sources.length ? 'All manga sources failed to respond.' : null; });
     } catch (e) {
       if (mounted) setState(() { searching = false; error = e.toString(); });
     }

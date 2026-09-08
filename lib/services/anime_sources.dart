@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'anime_source.dart';
 import 'content_models.dart';
 
@@ -30,6 +32,22 @@ class AnimePhoenixSource extends HtmlAnimeSource {
   @override String get searchPath => '/search/';
   @override String get resultSelector => 'a[href*="/animes/"], .anime-card, .post';
   @override String get detailEpisodeSelector => 'a[href*="episode"], a[href*="watch"], .episodes a';
+  @override Future<List<AnimeTitle>> search(String query, {int page = 1}) async {
+    final searchPage = await get(baseUri.resolve('/search/').toString());
+    final nonce = RegExp(r'''(?i)(?:nonce|security)["'\s:]+([a-zA-Z0-9_-]+)''').firstMatch(searchPage)?.group(1) ?? '';
+    final ajax = RegExp(r'''(?i)(https?[^"']*admin-ajax\.php)''').firstMatch(searchPage)?.group(1) ?? baseUri.resolve('/wp-admin/admin-ajax.php').toString();
+    if (nonce.isEmpty) return super.search(query, page: page);
+    final body = await post(ajax, {'action': 'phoenix_search', 'nonce': nonce, 'q': query, 'type': 'tvshow', 'page': '$page', 'per_page': '20', 'dropdown': '0'}, headers: {'Referer': baseUri.resolve('/search/').toString()});
+    final root = jsonDecode(body) as Map<String, dynamic>;
+    final results = ((root['data'] as Map?)?['results'] as List?) ?? const [];
+    return results.whereType<Map>().map((item) {
+      final url = '${item['url'] ?? ''}'.trim();
+      final fallback = '${item['slug'] ?? ''}'.trim();
+      final publicUrl = url.isNotEmpty ? url : baseUri.resolve('/animes/$fallback').toString();
+      final poster = '${item['thumbnail_url'] ?? ''}';
+      return AnimeTitle(id: stableSourceId(sourceKey, publicUrl), title: '${item['title_ar'] ?? item['title'] ?? ''}'.trim(), url: publicUrl, sourceKey: sourceKey, sourceName: sourceName, poster: poster, cover: poster);
+    }).where((item) => item.title.isNotEmpty && item.url.isNotEmpty).toList();
+  }
 }
 
 const List<AnimeSource> enabledAnimeSources = <AnimeSource>[Anime3rbSource(), RistoAnimeSource(), AnimePhoenixSource()];

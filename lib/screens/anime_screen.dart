@@ -31,6 +31,7 @@ class _AnimeScreenState extends State<AnimeScreen> {
         setState(() {
           results = value;
           loading = false;
+          error = value.isEmpty ? 'No results returned by the enabled Anime sources.' : null;
         });
       }
     } catch (e) {

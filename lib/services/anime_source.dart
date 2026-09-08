@@ -21,6 +21,12 @@ abstract class AnimeSource {
     return response.body;
   }
 
+  Future<String> post(String url, Map<String, String> body, {Map<String, String>? headers}) async {
+    final response = await http.post(Uri.parse(url), headers: {'Content-Type': 'application/x-www-form-urlencoded', ...defaultHeaders, ...?headers}, body: body);
+    if (response.statusCode < 200 || response.statusCode >= 400) throw SourceFailure(sourceKey, 'HTTP ${response.statusCode}');
+    return response.body;
+  }
+
   AnimeTitle parseTitle(dynamic node, Uri base, {String? forcedUrl}) {
     final anchor = node.matches('a') ? node : node.querySelector('a');
     final url = resolveSourceUrl(base, forcedUrl ?? htmlAttribute(anchor, 'href'));

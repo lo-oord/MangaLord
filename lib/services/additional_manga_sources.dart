@@ -129,6 +129,15 @@ class ProChanSource extends HtmlMangaSource {
   @override String get imageReferer => 'https://prochan.pro/';
   @override Uri get baseUri => Uri.parse('https://prochan.pro/');
   @override Uri searchUri(String query, int page) => Uri.parse('https://prochan.pro/api/public/series/search/').replace(queryParameters: {'q': query, 'page': '$page'});
+  @override Future<List<TeamXManga>> search(String query, {int page = 1}) async {
+    final root = jsonDecode(await _get(searchUri(query, page))) as Map<String, dynamic>;
+    final values = (root['data'] as List?) ?? (root['results'] as List?) ?? const [];
+    return values.whereType<Map>().map((item) {
+      final id = '${item['id'] ?? ''}';
+      final url = '${item['url'] ?? item['public_url'] ?? 'https://prochan.pro/series/$id'}';
+      return TeamXManga(id: url, title: '${item['title_ar'] ?? item['title'] ?? item['name'] ?? ''}'.trim(), url: url, cover: '${item['thumbnail_url'] ?? item['cover_url'] ?? item['poster'] ?? ''}');
+    }).where((item) => item.title.isNotEmpty && item.url.isNotEmpty).toList();
+  }
 }
 
 /// The requested “Dailr Tube” source is represented by the current public Dilar Tube domain.
