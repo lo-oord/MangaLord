@@ -160,7 +160,7 @@ class AzoraSource implements MangaSource {
   }
 
   String _cleanHtml(String value) {
-    final text = html_parser.parseFragment(value).text;
+    final text = html_parser.parseFragment(value).text ?? '';
     return text.replaceAll(RegExp(r'\s+'), ' ').trim();
   }
   String _fallbackName(Uri uri) => uri.pathSegments.last.replaceAll('-', ' ');
