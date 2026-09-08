@@ -125,9 +125,8 @@ class AzoraSource implements MangaSource {
       final parts = uri.pathSegments.where((part) => part.isNotEmpty).toList();
       if (parts.length != 2 || parts.first != 'series') continue;
       final imageNode = anchor.querySelector('img');
-      final title = (anchor.attributes['title'] ??
-              imageNode?.attributes['alt'] ??
-              _text(anchor))
+      final rawTitle = anchor.attributes['title'] ?? imageNode?.attributes['alt'] ?? _text(anchor);
+      final title = (rawTitle is String ? rawTitle : '')
           .replaceAll(RegExp(r'\s+'), ' ')
           .trim();
       if (title.isEmpty || title.length > 300) continue;
@@ -147,7 +146,10 @@ class AzoraSource implements MangaSource {
     return RegExp(r'(\d+(?:\.\d+)?)').firstMatch(segment)?.group(1) ?? '';
   }
 
-  String _cleanHtml(String value) => html_parser.parseFragment(value).text.replaceAll(RegExp(r'\s+'), ' ').trim();
+  String _cleanHtml(String value) {
+    final text = html_parser.parseFragment(value).text;
+    return (text ?? '').replaceAll(RegExp(r'\s+'), ' ').trim();
+  }
   String _fallbackName(Uri uri) => uri.pathSegments.last.replaceAll('-', ' ');
   Uri _resolve(String value) => Uri.parse(value).isAbsolute ? Uri.parse(value) : baseUri.resolve(value);
   String _text(dynamic node) {
