@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:appwrite/appwrite.dart';
+import 'package:appwrite/enums.dart' as enums;
 import 'package:appwrite/models.dart';
 
 class AuthService {
@@ -57,7 +58,7 @@ class AuthService {
 
   Future<void> signInWithGoogle() async {
     await account.createOAuth2Session(
-      provider: OAuthProvider.google,
+      provider: enums.OAuthProvider.google,
       success: '$callbackScheme://success',
       failure: '$callbackScheme://failure',
     );
