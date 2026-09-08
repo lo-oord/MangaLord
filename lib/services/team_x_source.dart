@@ -1,7 +1,8 @@
 import 'package:html/parser.dart' as html_parser;
 import 'package:http/http.dart' as http;
+import 'manga_source.dart';
 
-class TeamXSource {
+class TeamXSource implements MangaSource {
   TeamXSource({http.Client? client}) : _client = client ?? http.Client();
 
   static final Uri baseUri = Uri.parse('https://olympustaff.com/');
@@ -9,6 +10,15 @@ class TeamXSource {
   static const sourceLogo = 'https://olympustaff.com/images/TeamX.png';
   static const _userAgent = 'MangaLord/1.0 (Flutter; Team X source)';
   final http.Client _client;
+
+  @override
+  String get sourceKey => 'team_x';
+  @override
+  String get sourceName => TeamXSource.sourceName;
+  @override
+  String get sourceLogo => TeamXSource.sourceLogo;
+  @override
+  String get imageReferer => baseUri.toString();
 
   Future<String> _get(Uri uri) async {
     final response = await _client.get(uri, headers: const {
