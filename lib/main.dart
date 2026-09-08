@@ -39,7 +39,7 @@ class StartupStatusScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.auto_awesome_rounded, color: _accent, size: 46),
+              Image.asset('lib/assets/manga_lord_logo.png', width: 76, height: 52, fit: BoxFit.contain),
               SizedBox(height: 18),
               CircularProgressIndicator(color: _accent),
               SizedBox(height: 18),

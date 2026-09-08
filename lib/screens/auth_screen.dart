@@ -26,7 +26,7 @@ class AuthScaffold extends StatelessWidget {
 class AuthHeader extends StatelessWidget {
   const AuthHeader({required this.title, required this.subtitle, super.key});
   final String title, subtitle;
-  @override Widget build(BuildContext context) => Column(children: [const Icon(Icons.auto_awesome_rounded, color: authAccent, size: 58), const SizedBox(height: 18), const Text('Manga Lord', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w900)), const SizedBox(height: 28), Text(title, style: const TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w800)), const SizedBox(height: 8), Text(subtitle, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white70))]);
+  @override Widget build(BuildContext context) => Column(children: [Image.asset('lib/assets/manga_lord_logo.png', width: 86, height: 58, fit: BoxFit.contain), const SizedBox(height: 18), const Text('Manga Lord', style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.w900)), const SizedBox(height: 28), Text(title, style: const TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w800)), const SizedBox(height: 8), Text(subtitle, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white70))]);
 }
 
 class AuthInput extends StatelessWidget {
