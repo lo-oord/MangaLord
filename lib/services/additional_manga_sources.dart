@@ -100,6 +100,7 @@ class MangaSwatSource extends HtmlMangaSource {
   @override String get sourceLogo => 'https://meshmanga.com/favicon.ico';
   @override String get imageReferer => 'https://meshmanga.com/';
   @override Uri get baseUri => Uri.parse('https://meshmanga.com/');
+  @override Uri searchUri(String query, int page) => _catalogUri('type/manga', query, page);
   Uri _catalogUri(String path, String query, int page) => baseUri.resolve(path).replace(queryParameters: {
     if (query.isNotEmpty) 'search': query,
     if (page > 1) 'page': '$page',
@@ -144,6 +145,7 @@ class DilarTubeSource extends HtmlMangaSource {
   @override String get sourceLogo => 'https://dilar.tube/logo192.png';
   @override String get imageReferer => 'https://dilar.tube/';
   @override Uri get baseUri => Uri.parse('https://dilar.tube/');
+  @override Uri searchUri(String query, int page) => _api.resolve('series').replace(queryParameters: {'search': query, 'page': '$page'});
   Uri get _api => baseUri.resolve('api/');
   String _asset(String id, String value) => value.isEmpty ? '' : (value.startsWith('http') ? value : baseUri.resolve('uploads/manga/cover/$id/large_$value').toString());
   TeamXManga _item(Map item) => TeamXManga(id: '${item['id']}', title: '${item['title'] ?? ''}', url: baseUri.resolve('series/${item['id']}').toString(), cover: _asset('${item['id'] ?? ''}', '${item['cover'] ?? ''}'), description: '${item['summary'] ?? ''}');
