@@ -160,7 +160,7 @@ class AzoraSource implements MangaSource {
   }
 
   String _cleanHtml(String value) {
-    final text = html_parser.parseFragment(value).text;
+    final text = html_parser.parseFragment(value).text ?? '';
     return text.replaceAll(RegExp(r'\s+'), ' ').trim();
   }
   String _fallbackName(Uri uri) => uri.pathSegments.last.replaceAll('-', ' ');
@@ -177,17 +177,25 @@ class AzoraSource implements MangaSource {
 
   String _image(dynamic node) {
     if (node == null) return '';
-    final srcset = node.attributes['srcset'] ?? node.attributes['data-srcset'];
-    if (srcset != null && srcset.trim().isNotEmpty) {
-      final values = srcset.split(',').map((item) => item.trim().split(RegExp(r'\s+')).first).where((item) => item.isNotEmpty).toList();
-      if (values.isNotEmpty) return _resolve(values.last).toString();
+    final attrs = Map<String, String>.from(node.attributes as Map);
+    final srcset = attrs['srcset'] ?? attrs['data-srcset'] ?? '';
+    if (srcset.trim().isNotEmpty) {
+      final values = srcset
+          .split(',')
+          .map((item) => item.trim().split(RegExp(r'\s+')).first.toString())
+          .where((item) => item.isNotEmpty)
+          .toList();
+      if (values.isNotEmpty) {
+        final imageUrl = values[values.length - 1].toString();
+        return _resolve(imageUrl).toString();
+      }
     }
-    final value = node.attributes['data-src'] ??
-        node.attributes['data-lazy-src'] ??
-        node.attributes['data-original'] ??
-        node.attributes['data-url'] ??
-        node.attributes['content'] ??
-        node.attributes['src'] ??
+    final value = attrs['data-src'] ??
+        attrs['data-lazy-src'] ??
+        attrs['data-original'] ??
+        attrs['data-url'] ??
+        attrs['content'] ??
+        attrs['src'] ??
         '';
     if (value.isEmpty || value.startsWith('data:')) return '';
     return _resolve(value).toString();

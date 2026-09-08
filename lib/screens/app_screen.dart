@@ -9,9 +9,11 @@ import 'package:flutter/services.dart';
 
 import '../services/team_x_source.dart';
 import '../services/azora_source.dart';
+import '../services/additional_manga_sources.dart';
 import '../services/manga_source.dart';
 import '../services/notification_service.dart';
 import '../services/download_manager.dart';
+import 'anime_screen.dart';
 import '../configs/app_locale.dart';
 import '../services/auth_service.dart';
 import 'auth_screen.dart';
@@ -42,7 +44,7 @@ class AppScreen extends StatefulWidget {
 }
 
 class _AppScreenState extends State<AppScreen> {
-  final sources = <MangaSource>[TeamXSource(), AzoraSource()];
+  final sources = <MangaSource>[TeamXSource(), AzoraSource(), ...additionalMangaSources];
   final downloads = DownloadManager();
   int index = 0;
   String query = '';
@@ -129,10 +131,12 @@ class _AppScreenState extends State<AppScreen> {
   Future<void> _loadLatest({bool silent = false}) async {
     if (!silent && mounted) setState(() { loading = true; error = null; latestPage = 1; canLoadMore = true; });
     try {
+      var failures = 0;
       final results = await Future.wait(sources.map((source) async {
         try {
           return await source.latest(page: 1);
         } catch (_) {
+          failures++;
           return <TeamXManga>[];
         }
       }));
@@ -142,7 +146,7 @@ class _AppScreenState extends State<AppScreen> {
           merged[item.url] = _map(item, sources[i]);
         }
       }
-      if (mounted) setState(() { manga = merged.values.toList(); loading = false; latestPage = 1; canLoadMore = manga.isNotEmpty; });
+      if (mounted) setState(() { manga = merged.values.toList(); loading = false; latestPage = 1; canLoadMore = manga.isNotEmpty; error = manga.isEmpty && failures == sources.length ? 'All manga sources failed to respond.' : null; });
     } catch (e) {
       if (mounted) setState(() { loading = false; error = e.toString(); });
     }
@@ -206,10 +210,12 @@ class _AppScreenState extends State<AppScreen> {
     if (query.isEmpty) return _loadLatest();
     setState(() { searching = true; error = null; });
     try {
+      var failures = 0;
       final results = await Future.wait(sources.map((source) async {
         try {
           return await source.search(query);
         } catch (_) {
+          failures++;
           return <TeamXManga>[];
         }
       }));
@@ -217,7 +223,7 @@ class _AppScreenState extends State<AppScreen> {
       for (var i = 0; i < results.length; i++) {
         for (final item in results[i]) merged[item.url] = _map(item, sources[i]);
       }
-      if (mounted) setState(() { manga = merged.values.toList(); searching = false; });
+      if (mounted) setState(() { manga = merged.values.toList(); searching = false; error = manga.isEmpty && failures == sources.length ? 'All manga sources failed to respond.' : null; });
     } catch (e) {
       if (mounted) setState(() { searching = false; error = e.toString(); });
     }
@@ -234,7 +240,7 @@ class _AppScreenState extends State<AppScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: index, children: [HomePage(items: manga, loading: loading, loadingMore: loadingMore, searching: searching, error: error, query: query, onQuery: _search, onRefresh: _loadLatest, onLoadMore: _loadMore, favorites: favorites, onOpen: openManga), HistoryPage(items: history, favorites: favorites, onOpen: openManga), SettingsPage(favorites: favorites, allItems: [...manga, ...history, ...library.values], downloads: downloads, onOpen: openManga, sourceForKey: (key) => sources.firstWhere((source) => source.sourceKey == key, orElse: () => _primarySource))]),
+      body: IndexedStack(index: index, children: [HomePage(items: manga, loading: loading, loadingMore: loadingMore, searching: searching, error: error, query: query, onQuery: _search, onRefresh: _loadLatest, onLoadMore: _loadMore, favorites: favorites, onOpen: openManga), const AnimeScreen(), HistoryPage(items: history, favorites: favorites, onOpen: openManga), SettingsPage(favorites: favorites, allItems: [...manga, ...history, ...library.values], downloads: downloads, onOpen: openManga, sourceForKey: (key) => sources.firstWhere((source) => source.sourceKey == key, orElse: () => _primarySource))]),
       bottomNavigationBar: SafeArea(child: Padding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 12), child: FloatingNavigation(index: index, onChanged: (value) => setState(() => index = value)))),
     );
   }
@@ -244,7 +250,7 @@ class FloatingNavigation extends StatelessWidget {
   const FloatingNavigation({required this.index, required this.onChanged, super.key});
   final int index;
   final ValueChanged<int> onChanged;
-  @override Widget build(BuildContext context) => Container(padding: const EdgeInsets.all(6), decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(24), boxShadow: [BoxShadow(color: Colors.black.withOpacity(.18), blurRadius: 22, offset: const Offset(0, 8))]), child: Row(children: [NavItem(icon: Icons.home_rounded, label: 'Home', active: index == 0, onTap: () => onChanged(0)), NavItem(icon: Icons.history_rounded, label: 'History', active: index == 1, onTap: () => onChanged(1)), NavItem(icon: Icons.settings_rounded, label: 'Settings', active: index == 2, onTap: () => onChanged(2))]));
+  @override Widget build(BuildContext context) => Container(padding: const EdgeInsets.all(6), decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(24), boxShadow: [BoxShadow(color: Colors.black.withOpacity(.18), blurRadius: 22, offset: const Offset(0, 8))]), child: Row(children: [NavItem(icon: Icons.home_rounded, label: 'Home', active: index == 0, onTap: () => onChanged(0)), NavItem(icon: Icons.movie_rounded, label: 'Anime', active: index == 1, onTap: () => onChanged(1)), NavItem(icon: Icons.history_rounded, label: 'History', active: index == 2, onTap: () => onChanged(2)), NavItem(icon: Icons.settings_rounded, label: 'Settings', active: index == 3, onTap: () => onChanged(3))]));
 }
 class NavItem extends StatelessWidget {
   const NavItem({required this.icon, required this.label, required this.active, required this.onTap, super.key});
