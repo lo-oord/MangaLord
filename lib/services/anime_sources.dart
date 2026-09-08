@@ -15,6 +15,10 @@ class Anime3rbSource extends HtmlAnimeSource {
   @override String get searchPath => '/titles/list';
   @override String get resultSelector => '.search-results a.simple-title-card[href*="/titles/"], .title-card';
   @override String get detailEpisodeSelector => '.video-list a[href*="/episode/"]';
+  @override Future<List<AnimeTitle>> latest({int page = 1}) async {
+    final document = html_parser.parse(await get(baseUri.resolve('/titles/list').replace(queryParameters: {'page': '$page', 'sort_by': 'addition_date', 'sort_dir': 'desc'}).toString()));
+    return document.querySelectorAll('.search-results a.simple-title-card[href*="/titles/"]').map((node) => parseTitle(node, baseUri)).where((item) => item.title.isNotEmpty && item.url.isNotEmpty).toList();
+  }
   @override Future<List<AnimeTitle>> search(String query, {int page = 1}) async {
     if (page > 1) return const [];
     final uri = baseUri.resolve('/titles/list').replace(queryParameters: {'page': '1', 'sort_by': 'addition_date', 'sort_dir': 'desc', 'q': query.trim()});
@@ -65,6 +69,11 @@ class RistoAnimeSource extends HtmlAnimeSource {
   @override String get searchPath => '/';
   @override String get resultSelector => '.SearchResultInner, .BlocksHolder .MovieItem';
   @override String get detailEpisodeSelector => '.EpisodesList > a[href]';
+  @override Future<List<AnimeTitle>> latest({int page = 1}) async {
+    if (page > 1) return const [];
+    final document = html_parser.parse(await get(baseUri.toString()));
+    return document.querySelectorAll('.BlocksHolder .MovieItem, .MovieList .MovieItem').map((node) => parseTitle(node, baseUri)).where((item) => item.title.isNotEmpty && item.url.isNotEmpty).toList();
+  }
   @override Map<String, String> get defaultHeaders => const {'User-Agent': 'MangaLord/1.0', 'Referer': 'https://ristoanime.me/'};
   @override Future<List<AnimeTitle>> search(String query, {int page = 1}) async {
     if (page > 1) return const [];
@@ -104,6 +113,10 @@ class AnimePhoenixSource extends HtmlAnimeSource {
   @override String get searchPath => '/search/';
   @override String get resultSelector => 'a[href*="/animes/"], .anime-card, .post';
   @override String get detailEpisodeSelector => 'a[href*="episode"], a[href*="watch"], .episodes a';
+  @override Future<List<AnimeTitle>> latest({int page = 1}) async {
+    final document = html_parser.parse(await get(baseUri.resolve('/').toString()));
+    return document.querySelectorAll('a[href*="/animes/"], .anime-card, .post').map((node) => parseTitle(node, baseUri)).where((item) => item.title.isNotEmpty && item.url.isNotEmpty).toList();
+  }
   @override Future<List<AnimeTitle>> search(String query, {int page = 1}) async {
     final searchPage = await get(baseUri.resolve('/search/').toString());
     final nonce = RegExp(r'''(?i)(?:nonce|security)["'\s:]+([a-zA-Z0-9_-]+)''').firstMatch(searchPage)?.group(1) ?? '';
@@ -128,7 +141,20 @@ Future<List<AnimeTitle>> searchAllAnimeSources(String query, {int page = 1}) asy
   final prefs = await SharedPreferences.getInstance();
   final saved = prefs.getStringList('mangalord.enabled_anime_sources');
   final keys = saved == null || saved.isEmpty ? enabledAnimeSources.map((source) => source.sourceKey).toSet() : saved.toSet();
-  return isolateSourceFailures(enabledAnimeSources.where((source) => keys.contains(source.sourceKey)).map((source) => () => source.search(query, page: page)));
+  final results = await isolateSourceFailures(enabledAnimeSources.where((source) => keys.contains(source.sourceKey)).map((source) => () => source.search(query, page: page)));
+  final bySourceAndUrl = <String, AnimeTitle>{};
+  for (final item in results) bySourceAndUrl['${item.sourceKey}:${item.url}'] = item;
+  return bySourceAndUrl.values.toList();
+}
+
+Future<List<AnimeTitle>> latestAnimeFromAllSources({int page = 1}) async {
+  final prefs = await SharedPreferences.getInstance();
+  final saved = prefs.getStringList('mangalord.enabled_anime_sources');
+  final keys = saved == null || saved.isEmpty ? enabledAnimeSources.map((source) => source.sourceKey).toSet() : saved.toSet();
+  final results = await isolateSourceFailures(enabledAnimeSources.where((source) => keys.contains(source.sourceKey)).map((source) => () => source.latest(page: page)));
+  final bySourceAndUrl = <String, AnimeTitle>{};
+  for (final item in results) bySourceAndUrl['${item.sourceKey}:${item.url}'] = item;
+  return bySourceAndUrl.values.toList();
 }
 
 AnimeSource animeSourceByKey(String key) => enabledAnimeSources.firstWhere((source) => source.sourceKey == key, orElse: () => throw StateError('Unknown anime source: $key'));
