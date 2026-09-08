@@ -6,17 +6,17 @@ class TeamXSource implements MangaSource {
   TeamXSource({http.Client? client}) : _client = client ?? http.Client();
 
   static final Uri baseUri = Uri.parse('https://olympustaff.com/');
-  static const sourceName = 'Team X';
-  static const sourceLogo = 'https://olympustaff.com/images/TeamX.png';
+  static const teamXSourceName = 'Team X';
+  static const teamXSourceLogo = 'https://olympustaff.com/images/TeamX.png';
   static const _userAgent = 'MangaLord/1.0 (Flutter; Team X source)';
   final http.Client _client;
 
   @override
   String get sourceKey => 'team_x';
   @override
-  String get sourceName => TeamXSource.sourceName;
+  String get sourceName => TeamXSource.teamXSourceName;
   @override
-  String get sourceLogo => TeamXSource.sourceLogo;
+  String get sourceLogo => TeamXSource.teamXSourceLogo;
   @override
   String get imageReferer => baseUri.toString();
 
