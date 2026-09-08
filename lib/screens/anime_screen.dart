@@ -18,6 +18,12 @@ class _AnimeScreenState extends State<AnimeScreen> {
   bool loading = false;
   String? error;
 
+  @override
+  void dispose() {
+    queryController.dispose();
+    super.dispose();
+  }
+
   Future<void> search() async {
     final query = queryController.text.trim();
     if (query.isEmpty) return;
@@ -84,7 +90,14 @@ class _AnimeScreenState extends State<AnimeScreen> {
                       'Search Anime3rb, RistoAnime, or Anime Phoenix',
                     ),
                   )
-                : ListView.builder(
+                : GridView.builder(
+                    padding: const EdgeInsets.fromLTRB(14, 8, 14, 24),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 14,
+                      childAspectRatio: .58,
+                    ),
                     itemCount: results.length,
                     itemBuilder: (_, i) => AnimeCard(item: results[i]),
                   ),
@@ -103,21 +116,57 @@ class AnimeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-      child: ListTile(
-        leading: item.poster.isEmpty
-            ? const Icon(Icons.movie)
-            : Image.network(
-                item.poster,
-                width: 52,
-                fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => const Icon(Icons.broken_image),
-              ),
-        title: Text(item.title, maxLines: 2, overflow: TextOverflow.ellipsis),
-        subtitle: Text(item.sourceName),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
         onTap: () => Navigator.push(
           context,
           MaterialPageRoute(builder: (_) => AnimeDetailsScreen(item: item)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              flex: 7,
+              child: SizedBox(
+                width: double.infinity,
+                child: item.poster.isEmpty
+                    ? const ColoredBox(
+                        color: Color(0xFF1E2A27),
+                        child: Icon(Icons.movie, size: 42),
+                      )
+                    : Image.network(
+                        item.poster,
+                        fit: BoxFit.cover,
+                        errorBuilder: (_, __, ___) => const ColoredBox(
+                          color: Color(0xFF1E2A27),
+                          child: Icon(Icons.broken_image, size: 42),
+                        ),
+                      ),
+              ),
+            ),
+            Expanded(
+              flex: 5,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(item.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700)),
+                    const SizedBox(height: 3),
+                    Text(item.sourceName, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: mutedText, fontSize: 11)),
+                    if (item.genres.isNotEmpty) ...[
+                      const SizedBox(height: 4),
+                      Text(item.genres.take(2).join(' · '), maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: accentGreen, fontSize: 10)),
+                    ],
+                    if (item.description.isNotEmpty) ...[
+                      const SizedBox(height: 4),
+                      Text(item.description, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 10, color: mutedText)),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

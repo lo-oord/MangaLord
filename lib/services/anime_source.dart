@@ -37,6 +37,8 @@ abstract class AnimeSource {
       htmlText(anchor),
       htmlText(node),
     ]);
+    final description = htmlText(node.querySelector('.synopsis, .description, .summary, [class*="description"]'));
+    final genres = uniqueStrings(node.querySelectorAll('a[href*="/genre/"], .genre, .genres a').map(htmlText));
     return AnimeTitle(
       id: stableSourceId(sourceKey, url),
       title: title,
@@ -45,6 +47,8 @@ abstract class AnimeSource {
       sourceName: sourceName,
       poster: image,
       cover: image,
+      description: description,
+      genres: genres,
     );
   }
 
@@ -146,6 +150,7 @@ abstract class HtmlAnimeSource extends AnimeSource {
       metaContent(document, 'meta[name="description"]'),
       htmlText(document.querySelector('.description, .story-description, .summary, [class*="description"]')),
     ]);
+    final genres = uniqueStrings(document.querySelectorAll('a[href*="/genre/"], .genre, .genres a').map(htmlText));
     final episodes = document.querySelectorAll(detailEpisodeSelector).map((node) => parseEpisode(node, baseUri)).where((item) => item.url.isNotEmpty).toList();
     return AnimeTitle(
       id: stableSourceId(sourceKey, url),
@@ -156,6 +161,7 @@ abstract class HtmlAnimeSource extends AnimeSource {
       poster: poster,
       cover: poster,
       description: description,
+      genres: genres,
       episodes: episodes,
     );
   }
