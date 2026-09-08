@@ -61,17 +61,17 @@ class StartupErrorScreen extends StatelessWidget {
       backgroundColor: _darkBackground,
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: EdgeInsets.all(24),
 	          child: Column(
 	            mainAxisSize: MainAxisSize.min,
 	            children: [
               SizedBox(width: 56, height: 56),
-	              const SizedBox(height: 16),
-              const Text('MangaLord could not start', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 12),
-              Text('$error', textAlign: TextAlign.center, style: const TextStyle(color: Colors.white70)),
-              const SizedBox(height: 20),
-              FilledButton(onPressed: onRetry, child: const Text('Retry')),
+              SizedBox(height: 16),
+              Text('MangaLord could not start', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+              SizedBox(height: 12),
+              Text('$error', textAlign: TextAlign.center, style: TextStyle(color: Colors.white70)),
+              SizedBox(height: 20),
+              FilledButton(onPressed: onRetry, child: Text('Retry')),
             ],
           ),
         ),
