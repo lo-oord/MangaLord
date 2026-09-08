@@ -34,15 +34,6 @@ class AuthService {
     }
   }
 
-  Future<bool> ping() async {
-    try {
-      await client.ping();
-      return true;
-    } catch (_) {
-      return false;
-    }
-  }
-
   Future<User> signUp({required String username, required String email, required String password}) async {
     await account.create(userId: ID.unique(), email: email.trim(), password: password, name: username.trim());
     await account.createEmailPasswordSession(email: email.trim(), password: password);
