@@ -177,10 +177,10 @@ class AzoraSource implements MangaSource {
 
   String _image(dynamic node) {
     if (node == null) return '';
-    final srcset = node.attributes['srcset'] ?? node.attributes['data-srcset'];
+    final srcset = (node.attributes['srcset'] ?? node.attributes['data-srcset']) as String?;
     if (srcset != null && srcset.trim().isNotEmpty) {
       final values = srcset.split(',').map((item) => item.trim().split(RegExp(r'\s+')).first).where((item) => item.isNotEmpty).toList();
-      if (values.isNotEmpty) return _resolve(values.last!).toString();
+      if (values.isNotEmpty) return _resolve(values.last).toString();
     }
     final value = node.attributes['data-src'] ??
         node.attributes['data-lazy-src'] ??
