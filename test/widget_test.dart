@@ -11,8 +11,7 @@ void main() {
       ),
     );
 
-    expect(find.text('Discover'), findsOneWidget);
-    expect(find.text('Home'), findsOneWidget);
+    expect(find.text('Manga'), findsNWidgets(2));
     expect(find.text('History'), findsOneWidget);
     expect(find.text('Settings'), findsOneWidget);
   });
