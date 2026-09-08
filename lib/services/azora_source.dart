@@ -150,7 +150,10 @@ class AzoraSource implements MangaSource {
   String _cleanHtml(String value) => html_parser.parseFragment(value).text.replaceAll(RegExp(r'\s+'), ' ').trim();
   String _fallbackName(Uri uri) => uri.pathSegments.last.replaceAll('-', ' ');
   Uri _resolve(String value) => Uri.parse(value).isAbsolute ? Uri.parse(value) : baseUri.resolve(value);
-  String _text(dynamic node) => node?.text?.replaceAll(RegExp(r'\s+'), ' ').trim() ?? '';
+  String _text(dynamic node) {
+    final text = node?.text;
+    return text is String ? text.replaceAll(RegExp(r'\s+'), ' ').trim() : '';
+  }
 
   String _image(dynamic node) {
     if (node == null) return '';

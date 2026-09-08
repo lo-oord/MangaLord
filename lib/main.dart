@@ -65,7 +65,7 @@ class StartupErrorScreen extends StatelessWidget {
 	          child: Column(
 	            mainAxisSize: MainAxisSize.min,
 	            children: [
-              Icon(Icons.error_outline_rounded, size: 56, color: const Color(0xFF3DDC97)),
+              Text('!', style: TextStyle(fontSize: 56, color: _accent, fontWeight: FontWeight.bold)),
 	              const SizedBox(height: 16),
               const Text('MangaLord could not start', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 12),
