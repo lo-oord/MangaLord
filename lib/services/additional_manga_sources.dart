@@ -27,7 +27,8 @@ abstract class HtmlMangaSource implements MangaSource {
   }
   String image(dynamic node) {
     if (node == null) return '';
-    final attrs = node.attributes as Map<String, String>;
+    final imageNode = node.querySelector('img, picture source') ?? node;
+    final attrs = imageNode.attributes as Map<String, String>;
     final srcset = attrs['data-srcset'] ?? attrs['srcset'] ?? '';
     if (srcset.isNotEmpty) return resolve(srcset.split(',').last.trim().split(RegExp(r'\s+')).first).toString();
     for (final key in ['data-src', 'data-lazy-src', 'data-original', 'src']) {
