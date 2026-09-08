@@ -95,11 +95,11 @@ class AzoraSource implements MangaSource {
     final uri = _resolve(url);
     final document = html_parser.parse(await _get(uri));
     final images = <String>[];
-    for (final image in document.querySelectorAll('img')) {
+    for (final image in document.querySelectorAll('img[data-reader-page-image], img[data-reader-index]')) {
       final resolved = _image(image);
       if (resolved.isEmpty ||
           !resolved.contains('storage.azorafly.com') ||
-          !resolved.contains('/upload/series/')) {
+          (!resolved.contains('/WP-manga/data/') && !resolved.contains('/upload/series/'))) {
         continue;
       }
       if (!images.contains(resolved)) images.add(resolved);
@@ -125,9 +125,14 @@ class AzoraSource implements MangaSource {
       final uri = _resolve(href);
       final parts = uri.pathSegments.where((part) => part.isNotEmpty).toList();
       if (parts.length != 2 || parts.first != 'series') continue;
-      final title = _text(anchor).replaceAll(RegExp(r'\s+'), ' ').trim();
+      final imageNode = anchor.querySelector('img');
+      final title = (anchor.attributes['title'] ??
+              imageNode?.attributes['alt'] ??
+              _text(anchor))
+          .replaceAll(RegExp(r'\s+'), ' ')
+          .trim();
       if (title.isEmpty || title.length > 300) continue;
-      final image = _image(anchor.querySelector('img'));
+      final image = _image(imageNode);
       items[uri.toString()] = TeamXManga(
         id: uri.toString(),
         title: title,

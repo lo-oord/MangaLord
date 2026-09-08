@@ -21,6 +21,10 @@ const deepGreen = Color(0xFF113C32);
 const mutedText = Color(0xFF8FA39C);
 const appVersion = 'v0.0.22';
 
+Map<String, String> _headersForManga(Manga manga) => {
+  'Referer': manga.sourceKey == 'azora_fly' ? 'https://azorafly.com/' : 'https://olympustaff.com/',
+};
+
 class Manga {
   const Manga({required this.title, required this.url, required this.author, required this.genre, required this.cover, required this.description, required this.chapters, this.chapterItems = const [], this.status = 'Ongoing', this.lastChapterNumber = '', this.lastChapterAt = '', this.lastNotifiedChapterNumber = '', this.sourceKey = 'team_x', this.sourceName = 'Team X', this.sourceLogo = TeamXSource.teamXSourceLogo});
   final String title, url, author, genre, cover, description, status, lastChapterNumber, lastChapterAt, lastNotifiedChapterNumber, sourceKey, sourceName, sourceLogo;
@@ -271,7 +275,7 @@ class MangaCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(18),
           child: Image.network(
             manga.cover,
-            headers: const {'Referer': 'https://olympustaff.com/'},
+            headers: _headersForManga(manga),
             fit: BoxFit.cover,
             filterQuality: FilterQuality.high,
             cacheWidth: 720,
@@ -315,7 +319,7 @@ class HistoryPage extends StatelessWidget {
 }
 class HistoryTile extends StatelessWidget {
   const HistoryTile({required this.manga, required this.isFavorite, required this.onTap, super.key}); final Manga manga; final bool isFavorite; final VoidCallback onTap;
-  @override Widget build(BuildContext context) => InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Container(padding: const EdgeInsets.all(10), decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(18)), child: Row(children: [Stack(children: [ClipRRect(borderRadius: BorderRadius.circular(12), child: Image.network(manga.cover, headers: const {'Referer': 'https://olympustaff.com/'}, width: 64, height: 82, fit: BoxFit.cover, filterQuality: FilterQuality.high, cacheWidth: 256, errorBuilder: (_, __, ___) => Container(width: 64, height: 82, color: deepGreen))), if (isFavorite) Positioned(top: 5, right: 5, child: Container(padding: const EdgeInsets.all(4), decoration: BoxDecoration(color: Colors.red.withOpacity(.72), shape: BoxShape.circle), child: const Icon(Icons.favorite, color: Colors.white, size: 13))) ]), const SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(manga.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w800)), const SizedBox(height: 7), Text(manga.lastChapterNumber.isEmpty ? '${manga.chapters} chapters' : 'Last opened: ${manga.lastChapterNumber}', style: const TextStyle(color: accentGreen, fontWeight: FontWeight.w600)), const SizedBox(height: 4), Text(manga.lastChapterAt.isEmpty ? 'Opened recently' : manga.lastChapterAt, style: const TextStyle(color: mutedText, fontSize: 12))])), const Icon(Icons.chevron_right_rounded, color: mutedText)])));
+  @override Widget build(BuildContext context) => InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Container(padding: const EdgeInsets.all(10), decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(18)), child: Row(children: [Stack(children: [ClipRRect(borderRadius: BorderRadius.circular(12), child: Image.network(manga.cover, headers: _headersForManga(manga), width: 64, height: 82, fit: BoxFit.cover, filterQuality: FilterQuality.high, cacheWidth: 256, errorBuilder: (_, __, ___) => Container(width: 64, height: 82, color: deepGreen))), if (isFavorite) Positioned(top: 5, right: 5, child: Container(padding: const EdgeInsets.all(4), decoration: BoxDecoration(color: Colors.red.withOpacity(.72), shape: BoxShape.circle), child: const Icon(Icons.favorite, color: Colors.white, size: 13))) ]), const SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(manga.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w800)), const SizedBox(height: 7), Text(manga.lastChapterNumber.isEmpty ? '${manga.chapters} chapters' : 'Last opened: ${manga.lastChapterNumber}', style: const TextStyle(color: accentGreen, fontWeight: FontWeight.w600)), const SizedBox(height: 4), Text(manga.lastChapterAt.isEmpty ? 'Opened recently' : manga.lastChapterAt, style: const TextStyle(color: mutedText, fontSize: 12))])), const Icon(Icons.chevron_right_rounded, color: mutedText)])));
 }
 
 class SettingsPage extends StatelessWidget {
@@ -432,7 +436,7 @@ class _DetailsPageState extends State<DetailsPage> {
       child: ListView(padding: const EdgeInsets.all(20), children: [
         Center(child: Hero(tag: manga.url, child: ClipRRect(
           borderRadius: BorderRadius.circular(18),
-          child: Image.network(manga.cover, headers: const {'Referer': 'https://olympustaff.com/'}, width: 220, height: 310, fit: BoxFit.contain, filterQuality: FilterQuality.high, cacheWidth: 880, errorBuilder: (_, __, ___) => Container(width: 220, height: 310, color: deepGreen, child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 48))),
+          child: Image.network(manga.cover, headers: _headersForManga(manga), width: 220, height: 310, fit: BoxFit.contain, filterQuality: FilterQuality.high, cacheWidth: 880, errorBuilder: (_, __, ___) => Container(width: 220, height: 310, color: deepGreen, child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 48))),
         ))),
         const SizedBox(height: 12),
         OutlinedButton.icon(onPressed: manga.chapterItems.isEmpty ? null : () => _downloadAll(), icon: const Icon(Icons.download_rounded), label: const Text('Download all')),
@@ -542,7 +546,7 @@ class _ReaderPageState extends State<ReaderPage> {
 
   Widget _pageImage(String path, {required BoxFit fit}) {
     final local = path.startsWith('/') || path.startsWith('file:');
-    final image = local ? Image.file(File(path.replaceFirst('file://', '')), fit: fit, filterQuality: FilterQuality.high, gaplessPlayback: true) : Image.network(path, headers: const {'Referer': 'https://olympustaff.com/'}, fit: fit, filterQuality: FilterQuality.high, gaplessPlayback: true);
+    final image = local ? Image.file(File(path.replaceFirst('file://', '')), fit: fit, filterQuality: FilterQuality.high, gaplessPlayback: true) : Image.network(path, headers: _headersForManga(widget.manga), fit: fit, filterQuality: FilterQuality.high, gaplessPlayback: true);
     return image is Image ? image : image;
   }
 
