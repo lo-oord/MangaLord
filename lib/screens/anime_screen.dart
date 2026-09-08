@@ -118,7 +118,7 @@ class _AnimeScreenState extends State<AnimeScreen> {
             child: results.isEmpty && !loading
                 ? const Center(
                     child: Text(
-                      'Search Anime3rb, RistoAnime, or Anime Phoenix',
+                      'Search Anime3rb',
                     ),
                   )
                 : GridView.builder(

@@ -3,9 +3,10 @@ import 'package:manga_lord/services/anime_sources.dart';
 import 'package:manga_lord/services/content_models.dart';
 
 void main() {
-  test('registers one independent adapter per requested source', () {
-    expect(enabledAnimeSources.map((source) => source.sourceKey).toSet(), {'anime3rb', 'risto_anime', 'anime_phoenix'});
-    expect(enabledAnimeSources.map((source) => source.sourceKey).length, 3);
+  test('enables Anime3rb as the only anime source', () {
+    expect(enabledAnimeSources.map((source) => source.sourceKey).toList(), ['anime3rb']);
+    expect(enabledAnimeSources.single.sourceName, 'Anime3rb');
+    expect(enabledAnimeSources.single.baseUri.toString(), 'https://anime3rb.com');
   });
 
   test('keeps source identity in normalized ids and media metadata', () {
