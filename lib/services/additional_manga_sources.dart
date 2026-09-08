@@ -27,7 +27,8 @@ abstract class HtmlMangaSource implements MangaSource {
   }
   String image(dynamic node) {
     if (node == null) return '';
-    final attrs = node.attributes as Map<String, String>;
+    final imageNode = node.querySelector('img, picture source') ?? node;
+    final attrs = imageNode.attributes as Map<String, String>;
     final srcset = attrs['data-srcset'] ?? attrs['srcset'] ?? '';
     if (srcset.isNotEmpty) return resolve(srcset.split(',').last.trim().split(RegExp(r'\s+')).first).toString();
     for (final key in ['data-src', 'data-lazy-src', 'data-original', 'src']) {
@@ -133,9 +134,11 @@ class ProChanSource extends HtmlMangaSource {
     final root = jsonDecode(await _get(searchUri(query, page))) as Map<String, dynamic>;
     final values = (root['data'] as List?) ?? (root['results'] as List?) ?? const [];
     return values.whereType<Map>().map((item) {
-      final id = '${item['id'] ?? ''}';
-      final url = '${item['url'] ?? item['public_url'] ?? 'https://prochan.pro/series/$id'}';
-      return TeamXManga(id: url, title: '${item['title_ar'] ?? item['title'] ?? item['name'] ?? ''}'.trim(), url: url, cover: '${item['thumbnail_url'] ?? item['cover_url'] ?? item['poster'] ?? ''}');
+      final id = '${item['id'] ?? item['slug'] ?? ''}';
+      final slug = '${item['slug'] ?? ''}'.trim();
+      final url = '${item['url'] ?? item['public_url'] ?? (slug.isNotEmpty ? 'https://procomic.pro/ar/series/$slug' : 'https://procomic.pro/ar/series/$id')}';
+      final cover = '${item['thumbnail_url'] ?? item['thumbnail'] ?? item['coverImage'] ?? item['cover_url'] ?? item['poster'] ?? ''}';
+      return TeamXManga(id: url, title: '${item['title_ar'] ?? item['title'] ?? item['name'] ?? ''}'.trim(), url: url, cover: cover);
     }).where((item) => item.title.isNotEmpty && item.url.isNotEmpty).toList();
   }
 }

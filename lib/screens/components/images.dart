@@ -8,7 +8,7 @@ import 'file_photo_view_screen.dart';
 
 String imageUrlToCacheKey(String url){
   final uri = Uri.parse(url);
-  return uri.path;
+  return uri.replace(fragment: '').toString();
 }
 
 final errorColor = Color.alphaBlend(Colors.red.withOpacity(.2), Colors.black12);

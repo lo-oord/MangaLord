@@ -24,10 +24,12 @@ class _AnimeScreenState extends State<AnimeScreen> {
   String? error;
   String lastQuery = '';
   Timer? refreshTimer;
+  int _requestGeneration = 0;
 
   @override
   void initState() {
     super.initState();
+    _loadLatest();
     refreshTimer = Timer.periodic(const Duration(hours: 1), (_) {
       if (lastQuery.isNotEmpty && !loading) search();
     });
@@ -42,7 +44,8 @@ class _AnimeScreenState extends State<AnimeScreen> {
 
   Future<void> search() async {
     final query = queryController.text.trim();
-    if (query.isEmpty) return;
+    if (query.isEmpty) return _loadLatest();
+    final generation = ++_requestGeneration;
     lastQuery = query;
     setState(() {
       loading = true;
@@ -50,7 +53,7 @@ class _AnimeScreenState extends State<AnimeScreen> {
     });
     try {
       final value = await searchAllAnimeSources(query);
-      if (mounted) {
+      if (mounted && generation == _requestGeneration && query == queryController.text.trim()) {
         setState(() {
           results = value;
           loading = false;
@@ -58,12 +61,23 @@ class _AnimeScreenState extends State<AnimeScreen> {
         });
       }
     } catch (e) {
-      if (mounted) {
+      if (mounted && generation == _requestGeneration) {
         setState(() {
           loading = false;
           error = e.toString();
         });
       }
+    }
+  }
+
+  Future<void> _loadLatest() async {
+    final generation = ++_requestGeneration;
+    if (mounted) setState(() { loading = true; error = null; lastQuery = ''; });
+    try {
+      final value = await latestAnimeFromAllSources();
+      if (mounted && generation == _requestGeneration) setState(() { results = value; loading = false; error = value.isEmpty ? 'No latest anime is available.' : null; });
+    } catch (e) {
+      if (mounted && generation == _requestGeneration) setState(() { loading = false; error = e.toString(); });
     }
   }
 

@@ -47,6 +47,7 @@ class AppScreen extends StatefulWidget {
 
 class _AppScreenState extends State<AppScreen> {
   final allSources = <MangaSource>[TeamXSource(), AzoraSource(), ...additionalMangaSources];
+  final _defaultMangaSourceKeys = {'team_x', 'azora_fly', 'manga_swat'};
   final enabledMangaKeys = <String>{};
   List<MangaSource> get sources => allSources.where((source) => enabledMangaKeys.contains(source.sourceKey)).toList();
   final downloads = DownloadManager();
@@ -63,9 +64,10 @@ class _AppScreenState extends State<AppScreen> {
   int latestPage = 1;
   String? error;
   Timer? refreshTimer;
-  MangaSource get _primarySource => sources.first;
+  MangaSource get _primarySource => sources.isNotEmpty ? sources.first : allSources.first;
   Manga _map(TeamXManga item, MangaSource source) => Manga.fromTeamX(item, sourceKey: source.sourceKey, sourceName: source.sourceName, sourceLogo: source.sourceLogo);
-  MangaSource _sourceFor(Manga item) => sources.firstWhere((source) => source.sourceKey == item.sourceKey, orElse: () => _primarySource);
+  MangaSource _sourceFor(Manga item) => allSources.firstWhere((source) => source.sourceKey == item.sourceKey, orElse: () => _primarySource);
+  int _searchGeneration = 0;
 
   @override
   void initState() {
@@ -77,10 +79,11 @@ class _AppScreenState extends State<AppScreen> {
   Future<void> _initialize() async {
     final prefs = await SharedPreferences.getInstance();
     final savedKeys = prefs.getStringList('mangalord.enabled_manga_sources');
+    final validSavedKeys = savedKeys?.where((key) => allSources.any((source) => source.sourceKey == key)).toSet();
     enabledMangaKeys
       ..clear()
-      ..addAll(savedKeys == null || savedKeys.isEmpty ? allSources.map((source) => source.sourceKey) : savedKeys);
-    downloads.restore();
+      ..addAll(validSavedKeys == null || validSavedKeys.isEmpty ? _defaultMangaSourceKeys : validSavedKeys);
+    await downloads.restore();
     await _restoreLibrary();
     if (mounted) _loadLatest();
   }
@@ -209,6 +212,8 @@ class _AppScreenState extends State<AppScreen> {
   }
 
   Future<void> _checkFavoriteUpdates() async {
+    final prefs = await SharedPreferences.getInstance();
+    if (!(prefs.getBool('mangalord.notifications') ?? true)) return;
     for (final entry in library.entries.toList()) {
       final saved = entry.value;
       try {
@@ -227,6 +232,7 @@ class _AppScreenState extends State<AppScreen> {
 
   Future<void> _search(String value) async {
     query = value.trim();
+    final generation = ++_searchGeneration;
     if (query.isEmpty) return _loadLatest();
     setState(() { searching = true; error = null; });
     try {
@@ -243,9 +249,9 @@ class _AppScreenState extends State<AppScreen> {
       for (var i = 0; i < results.length; i++) {
         for (final item in results[i]) merged[item.url] = _map(item, sources[i]);
       }
-      if (mounted) setState(() { manga = merged.values.toList(); searching = false; error = manga.isEmpty && failures == sources.length ? 'All manga sources failed to respond.' : null; });
+      if (mounted && generation == _searchGeneration && query == value.trim()) setState(() { manga = merged.values.toList(); searching = false; error = manga.isEmpty && failures == sources.length ? 'All manga sources failed to respond.' : null; });
     } catch (e) {
-      if (mounted) setState(() { searching = false; error = e.toString(); });
+      if (mounted && generation == _searchGeneration) setState(() { searching = false; error = e.toString(); });
     }
   }
 
@@ -254,13 +260,13 @@ class _AppScreenState extends State<AppScreen> {
     history.insert(0, item);
     unawaited(_saveLibrary());
     unawaited(_syncHistoryCloud(item));
-    Navigator.push(context, MaterialPageRoute(builder: (_) => DetailsPage(source: _sourceFor(item), manga: item, isFavorite: favorites.contains(item.url), onFavorite: (value) { if (value) { favorites.add(item.url); library[item.url] = item.copyWith(lastNotifiedChapterNumber: 'pending'); _checkFavoriteBaseline(item); unawaited(_syncFavoriteCloud(item, true)); } else { favorites.remove(item.url); library.remove(item.url); unawaited(_syncFavoriteCloud(item, false)); } unawaited(_saveLibrary()); }, downloads: downloads, onChapterOpened: (updated) { setState(() { history.removeWhere((entry) => entry.url == updated.url); history.insert(0, updated); if (library.containsKey(updated.url)) library[updated.url] = updated; }); unawaited(_saveLibrary()); unawaited(_syncHistoryCloud(updated)); })));
+    Navigator.push(context, MaterialPageRoute(builder: (_) => DetailsPage(source: _sourceFor(item), manga: item, isFavorite: favorites.contains(item.url), onFavorite: (value) { setState(() { if (value) { favorites.add(item.url); library[item.url] = item.copyWith(lastNotifiedChapterNumber: 'pending'); } else { favorites.remove(item.url); library.remove(item.url); } }); if (value) _checkFavoriteBaseline(item); unawaited(_syncFavoriteCloud(item, value)); unawaited(_saveLibrary()); }, downloads: downloads, onChapterOpened: (updated) { setState(() { history.removeWhere((entry) => entry.url == updated.url); history.insert(0, updated); if (library.containsKey(updated.url)) library[updated.url] = updated; }); unawaited(_saveLibrary()); unawaited(_syncHistoryCloud(updated)); })));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: index, children: [HomePage(items: manga, loading: loading, loadingMore: loadingMore, searching: searching, error: error, query: query, onQuery: _search, onRefresh: _loadLatest, onLoadMore: _loadMore, favorites: favorites, onOpen: openManga), const AnimeScreen(), HistoryPage(items: history, favorites: favorites, onOpen: openManga), SettingsPage(favorites: favorites, allItems: [...manga, ...history, ...library.values], downloads: downloads, onOpen: openManga, sourceForKey: (key) => sources.firstWhere((source) => source.sourceKey == key, orElse: () => _primarySource), mangaSources: allSources, animeSources: enabledAnimeSources, onMangaSourceChanged: _setMangaSource)]),
+      body: IndexedStack(index: index, children: [HomePage(items: manga, loading: loading, loadingMore: loadingMore, searching: searching, error: error, query: query, onQuery: _search, onRefresh: _loadLatest, onLoadMore: _loadMore, favorites: favorites, onOpen: openManga), const AnimeScreen(), HistoryPage(items: history, favorites: favorites, onOpen: openManga), SettingsPage(favorites: favorites, allItems: [...manga, ...history, ...library.values], downloads: downloads, onOpen: openManga, sourceForKey: (key) => allSources.firstWhere((source) => source.sourceKey == key, orElse: () => _primarySource), mangaSources: allSources, animeSources: enabledAnimeSources, onMangaSourceChanged: _setMangaSource)]),
       bottomNavigationBar: SafeArea(child: Padding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 12), child: FloatingNavigation(index: index, onChanged: (value) => setState(() => index = value)))),
     );
   }
@@ -418,7 +424,8 @@ class _SourceSettingsPageState extends State<SourceSettingsPage> {
     final prefs = await SharedPreferences.getInstance();
     final key = isManga ? 'mangalord.enabled_manga_sources' : 'mangalord.enabled_anime_sources';
     final defaults = items.map<String>((item) => item.sourceKey as String).toSet().toList();
-    enabled..clear()..addAll(prefs.getStringList(key) ?? defaults);
+    final saved = prefs.getStringList(key)?.where((value) => defaults.contains(value)).toSet();
+    enabled..clear()..addAll(saved == null || saved.isEmpty ? defaults : saved);
     if (mounted) setState(() {});
   }
 
@@ -534,7 +541,7 @@ class _DetailsPageState extends State<DetailsPage> {
   }
 
   Future<TeamXChapter> _chapterForReading(TeamXChapter chapter) async {
-    final local = await widget.downloads.localImagesFor(chapter, manga.title);
+    final local = await widget.downloads.localImagesFor(chapter, manga.title, sourceKey: widget.source.sourceKey);
     if (local.isNotEmpty) return TeamXChapter(id: chapter.id, number: chapter.number, title: chapter.title, publishedAt: chapter.publishedAt, url: chapter.url, images: local);
     return widget.source.chapter(chapter.url, mangaTitle: manga.title);
   }
@@ -644,7 +651,7 @@ class _ReaderPageState extends State<ReaderPage> {
   Future<void> _openNext() async {
     final next = widget.nextChapter;
     if (next == null) return;
-    final local = await widget.downloads.localImagesFor(next, widget.manga.title);
+    final local = await widget.downloads.localImagesFor(next, widget.manga.title, sourceKey: widget.source.sourceKey);
     final chapterForReader = local.isNotEmpty ? TeamXChapter(id: next.id, number: next.number, title: next.title, publishedAt: next.publishedAt, url: next.url, images: local) : await widget.source.chapter(next.url, mangaTitle: widget.manga.title);
     final updated = widget.manga.copyWith(lastChapterNumber: next.number, lastChapterAt: next.publishedAt);
     widget.onChapterOpened(updated);
@@ -708,7 +715,7 @@ class StoragePage extends StatelessWidget {
                     title: Text('Chapter ${item.chapter.number}'),
                     trailing: const Icon(Icons.play_circle_outline_rounded),
                     onTap: () async {
-                      final images = await manager.localImagesFor(item.chapter, item.mangaTitle);
+                      final images = await manager.localImagesFor(item.chapter, item.mangaTitle, sourceKey: item.sourceKey);
                       if (!context.mounted || images.isEmpty) return;
                       final source = sourceForKey(item.sourceKey);
                       final manga = Manga(title: item.mangaTitle, url: item.chapter.url, author: '', genre: '', cover: item.cover, description: '', chapters: 1, chapterItems: [item.chapter], sourceKey: item.sourceKey, sourceName: item.sourceName, sourceLogo: item.sourceLogo);

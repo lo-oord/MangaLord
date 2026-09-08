@@ -57,7 +57,7 @@ class DownloadManager extends ChangeNotifier {
           );
         }));
       for (final item in items) {
-        final files = await localImagesFor(item.chapter, item.mangaTitle);
+        final files = await localImagesFor(item.chapter, item.mangaTitle, sourceKey: item.sourceKey);
         item.completed = files.length.clamp(0, item.images.length).toInt();
         if (item.completed < item.images.length && item.status == DownloadStatus.completed) item.status = DownloadStatus.paused;
       }
@@ -94,12 +94,11 @@ class DownloadManager extends ChangeNotifier {
     notifyListeners();
     await MangaNotificationService.instance.downloadProgress(title: '${item.mangaTitle} • الفصل ${item.chapter.number}', progress: (item.progress * 100).round(), failed: false);
     try {
-      final root = await getApplicationDocumentsDirectory();
-      final directory = Directory('${root.path}/mangalord/${_safe(item.mangaTitle)}/chapter_${_safe(item.chapter.number)}');
+      final directory = await _directoryFor(item.chapter, item.mangaTitle, sourceKey: item.sourceKey);
       await directory.create(recursive: true);
       for (var index = item.completed; index < item.images.length; index++) {
         if (item.status == DownloadStatus.paused || item.status == DownloadStatus.cancelled) break;
-        final response = await _client.get(Uri.parse(item.images[index]), headers: {'Referer': item.referer});
+        final response = await _client.get(Uri.parse(item.images[index]), headers: {'Referer': item.referer}).timeout(const Duration(seconds: 45));
         if (response.statusCode < 200 || response.statusCode >= 400) throw Exception('HTTP ${response.statusCode}');
         await File('${directory.path}/${(index + 1).toString().padLeft(4, '0')}.jpg').writeAsBytes(response.bodyBytes);
         item.completed = index + 1;
@@ -119,29 +118,28 @@ class DownloadManager extends ChangeNotifier {
     }
   }
 
-  Future<List<String>> localImagesFor(TeamXChapter chapter, String mangaTitle) async {
-    final directory = await _directoryFor(chapter, mangaTitle);
+  Future<List<String>> localImagesFor(TeamXChapter chapter, String mangaTitle, {String sourceKey = 'team_x'}) async {
+    final directory = await _directoryFor(chapter, mangaTitle, sourceKey: sourceKey);
     if (!await directory.exists()) return const [];
     final files = (await directory.list().where((entry) => entry is File).cast<File>().where((file) => _isImage(file.path)).toList())..sort((a, b) => a.path.compareTo(b.path));
     return files.map((file) => file.path).toList();
   }
 
-  Future<Directory> _directoryFor(TeamXChapter chapter, String mangaTitle) async {
+  Future<Directory> _directoryFor(TeamXChapter chapter, String mangaTitle, {String sourceKey = 'team_x'}) async {
     final root = await getApplicationDocumentsDirectory();
-    final prefix = chapter.url.contains('azorafly.com') ? 'azora_fly/' : '';
-    return Directory('${root.path}/mangalord/$prefix${_safe(mangaTitle)}/chapter_${_safe(chapter.number)}');
+    return Directory('${root.path}/mangalord/${_safe(sourceKey)}/${_safe(mangaTitle)}/chapter_${_safe(chapter.number)}');
   }
 
   bool _isImage(String path) => RegExp(r'\.(jpe?g|png|webp)$', caseSensitive: false).hasMatch(path);
 
   Future<void> pause(String id) async { final item = _find(id); if (item == null) return; item.status = DownloadStatus.paused; await _persist(); notifyListeners(); }
-  Future<void> resume(String id) async { final item = _find(id); if (item == null || item.status == DownloadStatus.completed) return; item.status = DownloadStatus.queued; notifyListeners(); _running[id] = _download(item).whenComplete(() => _running.remove(id)); }
+  Future<void> resume(String id) async { final item = _find(id); if (item == null || item.status == DownloadStatus.completed || _running.containsKey(id)) return; item.status = DownloadStatus.queued; notifyListeners(); _running[id] = _download(item).whenComplete(() => _running.remove(id)); }
   Future<void> remove(String id) async {
     final item = _find(id);
     if (item == null) return;
     item.status = DownloadStatus.cancelled;
     items.remove(item);
-    final directory = await _directoryFor(item.chapter, item.mangaTitle);
+    final directory = await _directoryFor(item.chapter, item.mangaTitle, sourceKey: item.sourceKey);
     if (await directory.exists()) await directory.delete(recursive: true);
     await _persist();
     notifyListeners();
