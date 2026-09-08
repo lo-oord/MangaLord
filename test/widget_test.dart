@@ -7,7 +7,7 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         theme: ThemeData.dark(useMaterial3: true),
-        home: const AppScreen(),
+        home: const AppScreen(loadAnimeLatest: false),
       ),
     );
 

@@ -11,8 +11,8 @@ const accentGreen = Color(0xFF3DDC97);
 const mutedText = Color(0xFF8FA39C);
 
 class AnimeScreen extends StatefulWidget {
-  const AnimeScreen({super.key});
-
+  const AnimeScreen({this.loadLatestOnStart = true, super.key});
+  final bool loadLatestOnStart;
   @override
   State<AnimeScreen> createState() => _AnimeScreenState();
 }
@@ -29,7 +29,7 @@ class _AnimeScreenState extends State<AnimeScreen> {
   @override
   void initState() {
     super.initState();
-    _loadLatest();
+    if (widget.loadLatestOnStart) _loadLatest();
     refreshTimer = Timer.periodic(const Duration(hours: 1), (_) {
       if (lastQuery.isNotEmpty && !loading) search();
     });

@@ -48,7 +48,8 @@ class Manga {
 }
 
 class AppScreen extends StatefulWidget {
-  const AppScreen({super.key});
+  const AppScreen({this.loadAnimeLatest = true, super.key});
+  final bool loadAnimeLatest;
   @override State<AppScreen> createState() => _AppScreenState();
 }
 
@@ -273,7 +274,7 @@ class _AppScreenState extends State<AppScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: index, children: [HomePage(items: manga, loading: loading, loadingMore: loadingMore, searching: searching, error: error, query: query, onQuery: _search, onRefresh: _loadLatest, onLoadMore: _loadMore, favorites: favorites, onOpen: openManga), const AnimeScreen(), HistoryPage(items: history, favorites: favorites, onOpen: openManga), SettingsPage(favorites: favorites, allItems: [...manga, ...history, ...library.values], downloads: downloads, onOpen: openManga, sourceForKey: (key) => allSources.firstWhere((source) => source.sourceKey == key, orElse: () => _primarySource), mangaSources: allSources, animeSources: enabledAnimeSources, onMangaSourceChanged: _setMangaSource)]),
+      body: IndexedStack(index: index, children: [HomePage(items: manga, loading: loading, loadingMore: loadingMore, searching: searching, error: error, query: query, onQuery: _search, onRefresh: _loadLatest, onLoadMore: _loadMore, favorites: favorites, onOpen: openManga), AnimeScreen(loadLatestOnStart: widget.loadAnimeLatest), HistoryPage(items: history, favorites: favorites, onOpen: openManga), SettingsPage(favorites: favorites, allItems: [...manga, ...history, ...library.values], downloads: downloads, onOpen: openManga, sourceForKey: (key) => allSources.firstWhere((source) => source.sourceKey == key, orElse: () => _primarySource), mangaSources: allSources, animeSources: enabledAnimeSources, onMangaSourceChanged: _setMangaSource)]),
       bottomNavigationBar: SafeArea(child: Padding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 12), child: FloatingNavigation(index: index, onChanged: (value) => setState(() => index = value)))),
     );
   }
