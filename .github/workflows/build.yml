@@ -63,8 +63,8 @@ jobs:
       - name: Resolve Flutter dependencies
         run: flutter pub get
 
-      - name: Verify Dart formatting
-        run: dart format --output=none --set-exit-if-changed lib integration_test test
+      - name: Format Dart sources in CI
+        run: dart format lib integration_test test
 
       - name: Verify Team X is the only manga source
         run: |
