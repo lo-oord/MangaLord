@@ -4,6 +4,7 @@ import 'package:html/parser.dart' as html_parser;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'anime_source.dart';
+import 'anime_video_resolver.dart';
 import 'content_models.dart';
 
 class Anime3rbSource extends HtmlAnimeSource {
@@ -94,6 +95,7 @@ class Anime3rbSource extends HtmlAnimeSource {
       final quality = RegExp(r'(\d{3,4}p)', caseSensitive: false).firstMatch('$label $stream')?.group(1) ?? '';
       servers.add(AnimeServer(name: quality.isEmpty ? sourceName : '$sourceName • $quality', url: stream, sourceKey: sourceKey, quality: quality, type: 'video', headers: {...defaultHeaders, 'Referer': url}));
     }
+    servers.addAll(resolveAnimeVideoServers(body: body, baseUri: baseUri, sourceKey: sourceKey, sourceName: sourceName, referer: url, headers: defaultHeaders).where((server) => !servers.any((item) => item.url == server.url)));
     final fallback = parseEpisodeDocument(body, baseUri, url, title: title);
     for (final server in fallback.servers) {
       if (!servers.any((item) => item.url == server.url)) servers.add(server);
@@ -156,7 +158,8 @@ class RistoAnimeSource extends HtmlAnimeSource {
 
   @override
   Future<AnimeEpisode> episode(String url, {String? title}) async {
-    final document = html_parser.parse(await get(url));
+    final body = await get(url);
+    final document = html_parser.parse(body);
     final servers = <AnimeServer>[];
     for (final node in document.querySelectorAll('[data-watch], iframe, video, source')) {
       final embed = resolveSourceUrl(baseUri, firstNonEmpty([htmlAttribute(node, 'data-watch'), htmlAttribute(node, 'data-url'), htmlAttribute(node, 'src')]));
@@ -172,7 +175,8 @@ class RistoAnimeSource extends HtmlAnimeSource {
         }
       } catch (_) {}
     }
-    final fallback = parseEpisodeDocument(await get(url), baseUri, url, title: title);
+    servers.addAll(resolveAnimeVideoServers(body: body, baseUri: baseUri, sourceKey: sourceKey, sourceName: sourceName, referer: url, headers: defaultHeaders).where((server) => !servers.any((item) => item.url == server.url)));
+    final fallback = parseEpisodeDocument(body, baseUri, url, title: title);
     for (final server in fallback.servers) {
       if (!servers.any((item) => item.url == server.url)) servers.add(server);
     }
@@ -231,6 +235,7 @@ class AnimePhoenixSource extends HtmlAnimeSource {
         } catch (_) {}
       }
     }
+    servers.addAll(resolveAnimeVideoServers(body: body, baseUri: baseUri, sourceKey: sourceKey, sourceName: sourceName, referer: url, headers: defaultHeaders).where((server) => !servers.any((item) => item.url == server.url)));
     final fallback = parseEpisodeDocument(body, baseUri, url, title: title);
     for (final server in fallback.servers) {
       if (!servers.any((item) => item.url == server.url)) servers.add(server);

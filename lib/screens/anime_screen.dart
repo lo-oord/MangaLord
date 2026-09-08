@@ -335,7 +335,7 @@ class _AnimeEpisodeScreenState extends State<AnimeEpisodeScreen> {
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => AnimePlayerScreen(server: server),
+                      builder: (_) => AnimePlayerScreen(server: server, servers: episode.servers),
                     ),
                   ),
                 ),
@@ -349,9 +349,10 @@ class _AnimeEpisodeScreenState extends State<AnimeEpisodeScreen> {
 }
 
 class AnimePlayerScreen extends StatefulWidget {
-  const AnimePlayerScreen({required this.server, super.key});
+  const AnimePlayerScreen({required this.server, this.servers = const [], super.key});
 
   final AnimeServer server;
+  final List<AnimeServer> servers;
 
   @override
   State<AnimePlayerScreen> createState() => _AnimePlayerScreenState();
@@ -360,17 +361,24 @@ class AnimePlayerScreen extends StatefulWidget {
 class _AnimePlayerScreenState extends State<AnimePlayerScreen> {
   VideoPlayerController? controller;
   Object? playerError;
+  late final List<AnimeServer> servers;
+  late int selectedServer;
 
   @override
   void initState() {
     super.initState();
+    servers = widget.servers.isEmpty ? [widget.server] : widget.servers;
+    selectedServer = servers.indexWhere((item) => item.url == widget.server.url);
+    if (selectedServer < 0) selectedServer = 0;
     _init();
   }
 
   Future<void> _init() async {
+    await controller?.dispose();
+    if (mounted) setState(() => playerError = null);
     final value = VideoPlayerController.networkUrl(
-      Uri.parse(widget.server.url),
-      httpHeaders: widget.server.headers,
+      Uri.parse(servers[selectedServer].url),
+      httpHeaders: servers[selectedServer].headers,
     );
     controller = value;
     try {
@@ -383,6 +391,13 @@ class _AnimePlayerScreenState extends State<AnimePlayerScreen> {
     }
   }
 
+  Future<void> _selectServer(int index) async {
+    if (index == selectedServer) return;
+    await controller?.pause();
+    if (mounted) setState(() => selectedServer = index);
+    await _init();
+  }
+
   @override
   void dispose() {
     controller?.dispose();
@@ -393,16 +408,33 @@ class _AnimePlayerScreenState extends State<AnimePlayerScreen> {
   Widget build(BuildContext context) {
     final value = controller;
     return Scaffold(
-      appBar: AppBar(title: Text(widget.server.name)),
-      body: Center(
-        child: playerError != null
-            ? Padding(padding: const EdgeInsets.all(24), child: Text('Unable to play this server. Try another server.\n$playerError', textAlign: TextAlign.center))
-            : value == null || !value.value.isInitialized
-            ? const CircularProgressIndicator()
-            : AspectRatio(
-                aspectRatio: value.value.aspectRatio,
-                child: VideoPlayer(value),
+      appBar: AppBar(title: Text(servers[selectedServer].name)),
+      body: ListView(
+        children: [
+          AspectRatio(
+            aspectRatio: value?.value.isInitialized == true ? value!.value.aspectRatio : 16 / 9,
+            child: playerError != null
+                ? Center(child: Padding(padding: const EdgeInsets.all(24), child: Text('Unable to play this server. Try another server.\n$playerError', textAlign: TextAlign.center)))
+                : value == null || !value.value.isInitialized
+                    ? const Center(child: CircularProgressIndicator())
+                    : Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [VideoPlayer(value), VideoProgressIndicator(value, allowScrubbing: true)],
+                      ),
+          ),
+          if (value?.value.isInitialized == true)
+            Center(
+              child: IconButton(
+                icon: Icon(value!.value.isPlaying ? Icons.pause_circle_filled : Icons.play_circle_fill),
+                iconSize: 48,
+                onPressed: () => setState(() => value.value.isPlaying ? value.pause() : value.play()),
               ),
+            ),
+          if (servers.length > 1) ...[
+            const Padding(padding: EdgeInsets.fromLTRB(16, 12, 16, 4), child: Text('Servers and quality', style: TextStyle(fontWeight: FontWeight.w700))),
+            ...servers.asMap().entries.map((entry) => RadioListTile<int>(value: entry.key, groupValue: selectedServer, onChanged: (index) { if (index != null) _selectServer(index); }, title: Text(entry.value.name), subtitle: Text(entry.value.quality.isEmpty ? entry.value.type : entry.value.quality))),
+          ],
+        ],
       ),
     );
   }
