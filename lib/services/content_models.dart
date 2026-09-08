@@ -66,6 +66,6 @@ String extractEpisodeNumber(String value) => RegExp(r'(?:episode|الحلقة|ep
 List<String> uniqueStrings(Iterable<String> values) => values.map((value) => value.trim()).where((value) => value.isNotEmpty).toSet().toList();
 class SourceFailure implements Exception { const SourceFailure(this.sourceKey, this.message); final String sourceKey, message; @override String toString() => '$sourceKey: $message'; }
 Future<List<T>> isolateSourceFailures<T>(Iterable<Future<List<T>> Function()> requests) async {
-  final results = await Future.wait(requests.map((request) async { try { return await request(); } catch (_) { return const <T>[]; } }));
+  final results = await Future.wait(requests.map((request) async { try { return await request(); } catch (_) { return <T>[]; } }));
   return results.expand((result) => result).toList();
 }
