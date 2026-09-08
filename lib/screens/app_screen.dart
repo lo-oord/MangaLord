@@ -416,7 +416,7 @@ class _SourceSettingsPageState extends State<SourceSettingsPage> {
   Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
     final key = isManga ? 'mangalord.enabled_manga_sources' : 'mangalord.enabled_anime_sources';
-    final defaults = items.map((item) => item.sourceKey).toSet();
+    final defaults = items.map<String>((item) => item.sourceKey as String).toSet().toList();
     enabled..clear()..addAll(prefs.getStringList(key) ?? defaults);
     if (mounted) setState(() {});
   }
