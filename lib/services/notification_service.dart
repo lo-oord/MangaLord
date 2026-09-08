@@ -15,8 +15,8 @@ class MangaNotificationService {
     await plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.requestNotificationsPermission();
   }
 
-  Future<void> newChapter({required String mangaTitle, required String chapterNumber, required String coverUrl}) async {
-    final image = await _cacheCover(mangaTitle, coverUrl);
+  Future<void> newChapter({required String mangaTitle, required String chapterNumber, required String coverUrl, String referer = 'https://olympustaff.com/'}) async {
+    final image = await _cacheCover(mangaTitle, coverUrl, referer: referer);
     final style = image == null ? null : BigPictureStyleInformation(FilePathAndroidBitmap(image), contentTitle: mangaTitle, summaryText: 'فصل جديد • $chapterNumber');
     final android = AndroidNotificationDetails('mangalord_updates', 'Manga updates', channelDescription: 'New chapters from favorite manga', importance: Importance.high, priority: Priority.high, styleInformation: style);
     await plugin.show(mangaTitle.hashCode ^ chapterNumber.hashCode, 'فصل جديد', '$mangaTitle • الفصل $chapterNumber', NotificationDetails(android: android));
@@ -27,10 +27,10 @@ class MangaNotificationService {
     await plugin.show(title.hashCode, failed ? 'فشل التنزيل' : progress >= 100 ? 'تم التنزيل' : 'جاري التنزيل', title, NotificationDetails(android: android));
   }
 
-  Future<String?> _cacheCover(String title, String url) async {
+  Future<String?> _cacheCover(String title, String url, {required String referer}) async {
     if (url.isEmpty) return null;
     try {
-      final response = await http.get(Uri.parse(url), headers: const {'Referer': 'https://olympustaff.com/'});
+      final response = await http.get(Uri.parse(url), headers: {'Referer': referer});
       if (response.statusCode < 400) {
         final dir = await getTemporaryDirectory();
         final safe = title.replaceAll(RegExp(r'[^a-zA-Z0-9_-]+'), '_');

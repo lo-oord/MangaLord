@@ -59,8 +59,10 @@ class AzoraSource implements MangaSource {
     final document = html_parser.parse(await _get(uri));
     final title = _text(document.querySelector('h1'));
     final description = _cleanHtml(document.querySelector('meta[name="description"]')?.attributes['content'] ?? document.querySelector('meta[property="og:description"]')?.attributes['content'] ?? '');
-    final coverMeta = document.querySelector('meta[property="og:image"]')?.attributes['content'] ?? '';
-    final cover = coverMeta.isNotEmpty ? _resolve(coverMeta).toString() : _image(document.querySelector('img[alt*="Cover" i], img[alt*="غلاف" i], img[src*="/featured/"]'));
+    // AzoraFly's og:image is a generated social preview, not the manga cover.
+    final cover = _image(document.querySelector(
+      'img[alt^="Cover of"], img[alt*="Cover"], img[alt*="غلاف"], img[src*="/featured/"]',
+    ));
     final chapterMap = <String, TeamXChapter>{};
     for (final anchor in document.querySelectorAll('a[href*="/chapter-"]')) {
       final href = anchor.attributes['href'];
@@ -72,7 +74,7 @@ class AzoraSource implements MangaSource {
         id: chapterUri.toString(),
         number: chapterNumber,
         title: chapterNumber,
-        publishedAt: '',
+        publishedAt: _chapterDate(anchor),
         url: chapterUri.toString(),
         images: const [],
       );
@@ -96,7 +98,7 @@ class AzoraSource implements MangaSource {
     final images = <String>[];
     for (final image in document.querySelectorAll('img')) {
       final resolved = _image(image);
-      if (resolved.isEmpty || !resolved.contains('storage.azorafly.com')) continue;
+      if (resolved.isEmpty || !resolved.contains('azorafly.com')) continue;
       final lower = resolved.toLowerCase();
       final alt = (image.attributes['alt'] ?? '').toLowerCase();
       final isReaderImage = image.attributes.containsKey('data-reader-page-image') || image.attributes.containsKey('data-reader-index') || alt.contains('page') || lower.contains('/page-') || lower.contains('/wp-manga/data/') || lower.contains('/upload/series/');
@@ -146,12 +148,28 @@ class AzoraSource implements MangaSource {
     return RegExp(r'(\d+(?:\.\d+)?)').firstMatch(segment)?.group(1) ?? '';
   }
 
+  String _chapterDate(dynamic anchor) {
+    dynamic node = anchor;
+    for (var depth = 0; depth < 4 && node != null; depth++) {
+      final text = _text(node);
+      final match = RegExp(r'(\d+\s*(?:يوم|أسبوع|شهر|سنة)|منذ\s+[^\n]+)', caseSensitive: false).firstMatch(text);
+      if (match != null) return match.group(0)!.trim();
+      node = node.parent;
+    }
+    return '';
+  }
+
   String _cleanHtml(String value) {
     final text = html_parser.parseFragment(value).text;
-    return (text ?? '').replaceAll(RegExp(r'\s+'), ' ').trim();
+    return text.replaceAll(RegExp(r'\s+'), ' ').trim();
   }
   String _fallbackName(Uri uri) => uri.pathSegments.last.replaceAll('-', ' ');
-  Uri _resolve(String value) => Uri.parse(value).isAbsolute ? Uri.parse(value) : baseUri.resolve(value);
+  Uri _resolve(String value) {
+    final normalized = value.trim();
+    if (normalized.startsWith('//')) return Uri.parse('https:$normalized');
+    final parsed = Uri.parse(normalized);
+    return parsed.isAbsolute ? parsed : baseUri.resolve(normalized);
+  }
   String _text(dynamic node) {
     final text = node?.text;
     return text is String ? text.replaceAll(RegExp(r'\s+'), ' ').trim() : '';

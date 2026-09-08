@@ -193,7 +193,7 @@ class _AppScreenState extends State<AppScreen> {
         if (fresh.chapters.isEmpty) continue;
         final newest = fresh.chapters.first;
         if (saved.lastNotifiedChapterNumber.isNotEmpty && saved.lastNotifiedChapterNumber != newest.number) {
-          await MangaNotificationService.instance.newChapter(mangaTitle: fresh.title, chapterNumber: newest.number, coverUrl: fresh.cover);
+          await MangaNotificationService.instance.newChapter(mangaTitle: fresh.title, chapterNumber: newest.number, coverUrl: fresh.cover, referer: source.imageReferer);
         }
         library[entry.key] = _map(fresh, source).copyWith(lastNotifiedChapterNumber: newest.number, lastChapterNumber: saved.lastChapterNumber, lastChapterAt: saved.lastChapterAt);
         await _saveLibrary();
