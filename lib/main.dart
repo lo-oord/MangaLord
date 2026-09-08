@@ -1,3 +1,5 @@
+// ignore_for_file: const_with_non_const
+
 import 'package:flutter/material.dart';
 import 'package:event/event.dart';
 import 'package:manga_lord/configs/app_theme.dart';
