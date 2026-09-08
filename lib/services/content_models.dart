@@ -32,7 +32,7 @@ class AnimeSubtitle {
   const AnimeSubtitle({required this.language, required this.url});
   final String language, url;
 }
-String cleanHtmlText(String value) => html_parser.parseFragment(value).text.replaceAll(RegExp(r'\s+'), ' ').trim();
+String cleanHtmlText(String value) => (html_parser.parseFragment(value).text ?? '').replaceAll(RegExp(r'\s+'), ' ').trim();
 String firstNonEmpty(Iterable<String> values) => values.map((value) => value.trim()).firstWhere((value) => value.isNotEmpty, orElse: () => '');
 String stableSourceId(String sourceKey, String url) => '$sourceKey:${Uri.tryParse(url)?.toString() ?? url}';
 String resolveSourceUrl(Uri base, String value) {

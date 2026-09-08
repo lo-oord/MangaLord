@@ -40,11 +40,11 @@ abstract class HtmlMangaSource implements MangaSource {
   String number(String value) => RegExp(r'(\d+(?:\.\d+)?)').firstMatch(value)?.group(1) ?? '';
   TeamXManga mangaFrom(dynamic node) {
     final anchor = node.matches('a') ? node : node.querySelector('a');
+    final url = resolve(anchor?.attributes['href'] ?? node.attributes['href'] ?? '').toString();
     final title = ((anchor?.attributes['title'] ?? '').trim().isNotEmpty
             ? anchor?.attributes['title']
             : (text(anchor).isNotEmpty ? text(anchor) : text(node)))
         ?.trim() ?? '';
-    final title = (anchor?.attributes['title'] ?? text(anchor).isNotEmpty ? text(anchor) : text(node)).trim();
     return TeamXManga(id: url, title: title, url: url, cover: image(node));
   }
   List<TeamXManga> parseCards(String body, List<String> selectors) {

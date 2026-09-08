@@ -93,7 +93,7 @@ abstract class AnimeSource {
     }
     return AnimeEpisode(
       id: stableSourceId(sourceKey, url),
-      title: title ?? document.title.trim(),
+      title: title ?? (document.querySelector('title')?.text.trim() ?? ''),
       number: extractEpisodeNumber(title ?? url),
       url: url,
       sourceKey: sourceKey,
@@ -130,7 +130,7 @@ abstract class HtmlAnimeSource extends AnimeSource {
     final document = html_parser.parse(body);
     final title = firstNonEmpty([
       metaContent(document, 'meta[property="og:title"]'),
-      document.title,
+      document.querySelector('title')?.text ?? '',
     ]);
     final poster = firstNonEmpty([
       metaContent(document, 'meta[property="og:image"]'),

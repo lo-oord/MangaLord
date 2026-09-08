@@ -1,4 +1,5 @@
 import 'anime_source.dart';
+import 'content_models.dart';
 
 class Anime3rbSource extends HtmlAnimeSource {
   const Anime3rbSource();
