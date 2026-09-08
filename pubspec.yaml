@@ -39,10 +39,7 @@ dependencies:
   shared_preferences: ^2.3.2
   path_provider: ^2.1.5
   flutter_local_notifications: ^19.4.0
-  firebase_core: ^3.15.2
-  firebase_auth: ^5.6.2
-  cloud_firestore: ^5.6.12
-  firebase_storage: ^12.4.10
+  appwrite: ^26.2.0
 
 dev_dependencies:
   flutter_test:
