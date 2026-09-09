@@ -27,11 +27,11 @@ abstract class HtmlMangaSource implements MangaSource {
   }
   String image(dynamic node) {
     if (node == null) return '';
-    final imageNode = node.querySelector('img, picture source') ?? node;
+    final imageNode = node.matches('img, source') ? node : (node.querySelector('img, picture source') ?? node.parent?.querySelector('img, picture source') ?? node);
     final attrs = imageNode.attributes as Map<String, String>;
     final srcset = attrs['data-srcset'] ?? attrs['srcset'] ?? '';
     if (srcset.isNotEmpty) return resolve(srcset.split(',').last.trim().split(RegExp(r'\s+')).first).toString();
-    for (final key in ['data-src', 'data-lazy-src', 'data-original', 'src']) {
+    for (final key in ['data-src', 'data-lazy-src', 'data-original', 'data-image', 'src']) {
       final value = attrs[key] ?? '';
       if (value.isNotEmpty && !value.startsWith('data:')) return resolve(value).toString();
     }
@@ -149,9 +149,29 @@ class DilarTubeSource extends HtmlMangaSource {
   Uri get _api => baseUri.resolve('api/');
   String _asset(String id, String value) => value.isEmpty ? '' : (value.startsWith('http') ? value : baseUri.resolve('uploads/manga/cover/$id/large_$value').toString());
   TeamXManga _item(Map item) => TeamXManga(id: '${item['id']}', title: '${item['title'] ?? ''}', url: baseUri.resolve('series/${item['id']}').toString(), cover: _asset('${item['id'] ?? ''}', '${item['cover'] ?? ''}'), description: '${item['summary'] ?? ''}');
-  Future<Map<String, dynamic>> _json(Uri uri) async => jsonDecode(await _get(uri)) as Map<String, dynamic>;
-  @override Future<List<TeamXManga>> latest({int page = 1}) async => ((await _json(_api.resolve('series').replace(queryParameters: {'page': '$page'})))['series'] as List? ?? const []).whereType<Map>().map(_item).toList();
-  @override Future<List<TeamXManga>> search(String query, {int page = 1}) async => ((await _json(_api.resolve('series').replace(queryParameters: {'search': query, 'page': '$page'})))['series'] as List? ?? const []).whereType<Map>().map(_item).toList();
+  Future<Map<String, dynamic>> _json(Uri uri) async {
+    final body = await _get(uri);
+    final decoded = jsonDecode(body);
+    if (decoded is! Map<String, dynamic>) throw Exception('$sourceName returned an invalid API response');
+    return decoded;
+  }
+  List<TeamXManga> _htmlSeries(String body) => parseCards(body, const ['a[href*="/mangas/"]', 'a[href*="/series/"]', '.manga-card', '.series-card']);
+  @override Future<List<TeamXManga>> latest({int page = 1}) async {
+    try {
+      final values = ((await _json(_api.resolve('series').replace(queryParameters: {'page': '$page'})))['series'] as List? ?? const []);
+      return values.whereType<Map>().map(_item).where((item) => item.title.trim().isNotEmpty).toList();
+    } catch (_) {
+      return _htmlSeries(await _get(baseUri.resolve(page == 1 ? 'mangas' : 'mangas?page=$page')));
+    }
+  }
+  @override Future<List<TeamXManga>> search(String query, {int page = 1}) async {
+    try {
+      final values = ((await _json(_api.resolve('series').replace(queryParameters: {'search': query, 'page': '$page'})))['series'] as List? ?? const []);
+      return values.whereType<Map>().map(_item).where((item) => item.title.trim().isNotEmpty).toList();
+    } catch (_) {
+      return _htmlSeries(await _get(baseUri.resolve('mangas').replace(queryParameters: {'search': query, if (page > 1) 'page': '$page'})));
+    }
+  }
   @override Future<TeamXManga> details(String url) async {
     final id = resolve(url).pathSegments.last;
     final item = await _json(_api.resolve('series/$id'));

@@ -4,6 +4,15 @@ import '../services/anime_models.dart';
 import '../services/anime_sources.dart';
 import 'anime_player_screen.dart';
 
+String _displayAnimeTitle(String value) {
+  var title = value.replaceAll(RegExp(r'\s+'), ' ').trim();
+  for (final separator in ['##', ' | ', ' - مشاهدة', ' مشاهدة وتحميل']) {
+    final index = title.indexOf(separator);
+    if (index > 0) title = title.substring(0, index).trim();
+  }
+  return title;
+}
+
 class AnimeScreen extends StatefulWidget {
   const AnimeScreen({this.loadLatestOnStart = true, super.key});
   final bool loadLatestOnStart;
@@ -166,8 +175,8 @@ class _AnimeCard extends StatelessWidget {
               ),
             ]),
           ),
-          Padding(padding: const EdgeInsets.fromLTRB(7, 7, 7, 2), child: Text(item.title, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12))),
-          Padding(padding: const EdgeInsets.fromLTRB(7, 0, 7, 7), child: Text(item.sourceName, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 10, color: Colors.grey))),
+          Padding(padding: const EdgeInsets.fromLTRB(7, 7, 7, 2), child: Text(_displayAnimeTitle(item.title), maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 12))),
+          const SizedBox(height: 7),
         ]),
       ),
     );
@@ -180,6 +189,41 @@ class _CoverFallback extends StatelessWidget {
   Widget build(BuildContext context) => const ColoredBox(color: Color(0xFF1E2A27), child: Center(child: Icon(Icons.movie, size: 42)));
 }
 
+class _RelatedAnime extends StatelessWidget {
+  const _RelatedAnime({required this.future});
+  final Future<List<AnimeModel>> future;
+
+  @override
+  Widget build(BuildContext context) => FutureBuilder<List<AnimeModel>>(
+        future: future,
+        builder: (_, snapshot) {
+          final items = snapshot.data ?? const <AnimeModel>[];
+          if (items.isEmpty) return const SizedBox.shrink();
+          return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            const SizedBox(height: 20),
+            const Text('Related', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
+            const SizedBox(height: 10),
+            SizedBox(
+              height: 190,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: items.length,
+                separatorBuilder: (_, __) => const SizedBox(width: 10),
+                itemBuilder: (_, index) {
+                  final item = items[index];
+                  return SizedBox(width: 108, child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Expanded(child: ClipRRect(borderRadius: BorderRadius.circular(10), child: item.cover.isEmpty ? const _CoverFallback() : Image.network(item.cover, width: 108, fit: BoxFit.cover, errorBuilder: (_, __, ___) => const _CoverFallback()))),
+                    const SizedBox(height: 6),
+                    Text(_displayAnimeTitle(item.title), maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700)),
+                  ]));
+                },
+              ),
+            ),
+          ]);
+        },
+      );
+}
+
 class AnimeDetailsScreen extends StatefulWidget {
   const AnimeDetailsScreen({required this.item, super.key});
   final AnimeModel item;
@@ -188,7 +232,18 @@ class AnimeDetailsScreen extends StatefulWidget {
 
 class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
   late Future<AnimeModel> future;
-  @override void initState() { super.initState(); future = animeSourceByKey(widget.item.sourceKey).getAnimeDetails(widget.item.url); }
+  late Future<List<AnimeModel>> relatedFuture;
+  @override void initState() { super.initState(); future = animeSourceByKey(widget.item.sourceKey).getAnimeDetails(widget.item.url); relatedFuture = _loadRelated(); }
+
+  Future<List<AnimeModel>> _loadRelated() async {
+    try {
+      final results = await searchAllAnimeSources(_displayAnimeTitle(widget.item.title));
+      final seen = <String>{};
+      return results.where((item) => item.url != widget.item.url && seen.add('${item.sourceKey}:${item.url}')).take(12).toList();
+    } catch (_) {
+      return const [];
+    }
+  }
 
   String _displayEpisode(EpisodeModel episode) {
     final number = episode.number.isNotEmpty ? episode.number : RegExp(r'\d+').firstMatch(episode.title)?.group(0);
@@ -198,7 +253,7 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.item.title)),
+      appBar: AppBar(title: Text(_displayAnimeTitle(widget.item.title))),
       body: FutureBuilder<AnimeModel>(
         future: future,
         builder: (_, snapshot) {
@@ -210,8 +265,9 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
             children: [
               if (item.cover.isNotEmpty) ClipRRect(borderRadius: BorderRadius.circular(16), child: Image.network(item.cover, height: 260, fit: BoxFit.cover, errorBuilder: (_, __, ___) => const SizedBox(height: 260, child: _CoverFallback()))),
               const SizedBox(height: 16),
-              Text(item.title, style: Theme.of(context).textTheme.headlineSmall),
+              Text(_displayAnimeTitle(item.title), style: Theme.of(context).textTheme.headlineSmall),
               if (item.description.isNotEmpty) Padding(padding: const EdgeInsets.symmetric(vertical: 12), child: Text(item.description)),
+              _RelatedAnime(future: relatedFuture),
               Text('${item.episodes.length} episodes', style: const TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
               ...item.episodes.map((episode) => ListTile(

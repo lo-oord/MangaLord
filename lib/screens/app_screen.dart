@@ -55,7 +55,7 @@ class AppScreen extends StatefulWidget {
 
 class _AppScreenState extends State<AppScreen> {
   final allSources = <MangaSource>[TeamXSource(), AzoraSource(), ...additionalMangaSources];
-  final _defaultMangaSourceKeys = {'team_x', 'azora_fly', 'manga_swat'};
+  final _defaultMangaSourceKeys = {'team_x', 'azora_fly', 'manga_swat', 'hijala_com', 'dilar_tube'};
   final enabledMangaKeys = <String>{};
   List<MangaSource> get sources => allSources.where((source) => enabledMangaKeys.contains(source.sourceKey)).toList();
   final downloads = DownloadManager();

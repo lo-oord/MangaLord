@@ -126,7 +126,7 @@ class AzoraSource implements MangaSource {
       final uri = _resolve(href);
       final parts = uri.pathSegments.where((part) => part.isNotEmpty).toList();
       if (parts.length != 2 || parts.first != 'series') continue;
-      final imageNode = anchor.querySelector('img[data-src], img[data-lazy-src], img[data-original], img[src], picture source') ?? anchor.parent?.querySelector('img[data-src], img[data-lazy-src], img[data-original], img[src], picture source');
+      final imageNode = anchor.querySelector('img[data-src], img[data-lazy-src], img[data-original], img[src], picture source') ?? anchor.parent?.querySelector('img[data-src], img[data-lazy-src], img[data-original], img[src], picture source') ?? anchor;
       final rawTitle = anchor.attributes['title'] ?? imageNode?.attributes['alt'] ?? _text(anchor);
       final title = (rawTitle is String ? rawTitle : '')
           .replaceAll(RegExp(r'\s+'), ' ')
