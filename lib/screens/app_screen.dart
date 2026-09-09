@@ -506,6 +506,10 @@ class _MoreSettingsPageState extends State<MoreSettingsPage> {
     const Text('Developer', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)),
     const SizedBox(height: 10),
     _developerSection(),
+    const SizedBox(height: 22),
+    const Text('Features', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)),
+    const SizedBox(height: 10),
+    _featuresSection(),
   ]));
 
   Widget _developerSection() => Card(
@@ -546,7 +550,7 @@ class _MoreSettingsPageState extends State<MoreSettingsPage> {
               const SizedBox(height: 10),
               const Text('Phone: +201128147487', style: TextStyle(color: mutedText, fontSize: 12)),
               const SizedBox(height: 4),
-              const Text('Email: lordshadooeminence@gmail.com', textAlign: TextAlign.center, style: TextStyle(color: mutedText, fontSize: 12)),
+    const Text('Email: lordshadooeminence@gmail.com', textAlign: TextAlign.center, style: TextStyle(color: mutedText, fontSize: 12)),
             ],
           ),
         ),
@@ -556,6 +560,27 @@ class _MoreSettingsPageState extends State<MoreSettingsPage> {
         tooltip: label,
         onPressed: () {},
         icon: Icon(icon, color: accentGreen),
+      );
+
+  Widget _featuresSection() => Card(
+        child: Column(
+          children: [
+            _featureTile(Icons.search_rounded, 'Search', 'Search manga and anime across enabled sources.'),
+            _featureTile(Icons.favorite_rounded, 'Favorites', 'Save manga to your personal library.'),
+            _featureTile(Icons.history_rounded, 'Reading history', 'Keep track of recently opened manga.'),
+            _featureTile(Icons.download_rounded, 'Offline reading', 'Download chapters and read them without a connection.'),
+            _featureTile(Icons.menu_book_rounded, 'Manga reader', 'Read chapters with the available reader controls.'),
+            _featureTile(Icons.movie_rounded, 'Anime player', 'Open available anime episodes in the built-in player.'),
+            _featureTile(Icons.cloud_sync_rounded, 'Account sync', 'Sync your library when signed in.'),
+            _featureTile(Icons.notifications_active_outlined, 'Chapter notifications', 'Get notified when a favorite receives a new chapter.'),
+          ],
+        ),
+      );
+
+  Widget _featureTile(IconData icon, String title, String description) => ListTile(
+        leading: Icon(icon, color: accentGreen),
+        title: Text(title),
+        subtitle: Text(description),
       );
 }
 
