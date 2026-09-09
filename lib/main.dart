@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:media_kit/media_kit.dart';
 import 'package:event/event.dart';
 import 'package:manga_lord/configs/app_theme.dart';
 import 'configs/app_locale.dart';
@@ -15,6 +16,7 @@ const _darkBackground = Color(0xFF0B1714);
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  MediaKit.ensureInitialized();
   await AuthService.instance.initialize();
   await MangaNotificationService.instance.initialize();
   final prefs = await SharedPreferences.getInstance();
