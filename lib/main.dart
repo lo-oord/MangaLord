@@ -9,7 +9,7 @@ import 'services/notification_service.dart';
 import 'package:manga_lord/screens/components/router.dart';
 import 'screens/init_screen.dart';
 import 'services/auth_service.dart';
-import '../firebase_options.dart';
+import 'firebase_options.dart';
 
 const _accent = Color(0xFF3DDC97);
 const _darkSurface = Color(0xFF14231F);
