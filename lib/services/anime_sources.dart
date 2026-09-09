@@ -24,13 +24,14 @@ String _image(Element node, Uri base) {
 extension on String { String ifEmpty(String fallback) => isEmpty ? fallback : this; }
 String _episodeNumber(String value) => RegExp(r'(?:episode|ep|الحلقة)[^\d]*(\d+(?:\.\d+)?)', caseSensitive: false).firstMatch(value)?.group(1) ?? RegExp(r'\d+(?:\.\d+)?').firstMatch(value)?.group(0) ?? '';
 String _id(String source, String url) => '$source:${Uri.tryParse(url)?.toString() ?? url}';
+String _cleanTitle(String value) => value.replaceAll(RegExp(r'^(مشاهدة|انمي|مسلسلات انمي)\s*', caseSensitive: false), '').replaceAll(RegExp(r'\s*(الحلقة|episode|ep)\s*\d+.*$', caseSensitive: false), '').replaceAll(RegExp(r'\s+'), ' ').trim();
 
 abstract class _HtmlSource extends AnimeSource {
   const _HtmlSource();
   AnimeModel item(Element node) {
     final anchor = node.localName == 'a' ? node : node.querySelector('a');
     final url = _absolute(baseUrl, _attr(anchor, 'href'));
-    final title = (_attr(anchor, 'title').ifEmpty(_text(anchor))).trim();
+    final title = _cleanTitle(_attr(anchor, 'title').ifEmpty(_text(node.querySelector('.title h4, .title, h2, h3, h4')).ifEmpty(_text(anchor))));
     return AnimeModel(id: _id(sourceKey, url), title: title, url: url, cover: _image(node, baseUrl), sourceKey: sourceKey, sourceName: sourceName);
   }
   List<AnimeModel> parseCards(String body, String selector) {
@@ -42,20 +43,38 @@ abstract class _HtmlSource extends AnimeSource {
   @override Future<AnimeModel> getAnimeDetails(String animeUrl) async {
     final doc = parser.parse(await getHtml(animeUrl));
     final episodes = <EpisodeModel>[];
-    for (final node in doc.querySelectorAll('a[href*="episode"], a[href*="الحلقة"], .episodes a, .Episode a')) {
+    for (final node in doc.querySelectorAll('a[href*="episode"], a[href*="الحلقة"], .episodes a, .Episode a, a[href*="/watch/"]')) {
       final anchor = node.localName == 'a' ? node : node.querySelector('a');
       final url = _absolute(baseUrl, _attr(anchor, 'href'));
-      final title = _text(anchor).ifEmpty(_attr(anchor, 'title'));
+      final title = _cleanTitle(_text(anchor).ifEmpty(_attr(anchor, 'title')));
       if (url.isNotEmpty) episodes.add(EpisodeModel(id: _id(sourceKey, url), title: title, url: url, number: _episodeNumber(title), sourceKey: sourceKey, thumbnail: _image(node, baseUrl)));
     }
     final title = _text(doc.querySelector('h1, .title, title')).ifEmpty(_attr(doc.querySelector('meta[property="og:title"]'), 'content'));
     final cover = _attr(doc.querySelector('meta[property="og:image"]'), 'content').ifEmpty(_image(doc.querySelector('main, body') ?? doc.documentElement!, baseUrl));
     final description = _attr(doc.querySelector('meta[name="description"]'), 'content').ifEmpty(_text(doc.querySelector('.description, .summary, .story-description')));
-    return AnimeModel(id: _id(sourceKey, animeUrl), title: title, url: animeUrl, cover: cover, description: description, sourceKey: sourceKey, sourceName: sourceName, episodes: episodes);
+    if (episodes.isEmpty && sourceKey == 'risto_anime') {
+      final episodeTitle = _cleanTitle(title);
+      episodes.add(EpisodeModel(id: _id(sourceKey, animeUrl), title: episodeTitle.isEmpty ? title : episodeTitle, url: animeUrl, number: _episodeNumber(title), sourceKey: sourceKey));
+    }
+    return AnimeModel(id: _id(sourceKey, animeUrl), title: _cleanTitle(title), url: animeUrl, cover: cover, description: description, sourceKey: sourceKey, sourceName: sourceName, episodes: episodes);
   }
   @override Future<List<VideoServerModel>> getVideoExtractors(String episodeUrl) async {
     final body = await getHtml(episodeUrl, headers: {'Referer': baseUrl.toString()});
-    return VideoExtractor.extract(body, baseUrl, sourceName, episodeUrl, defaultHeaders);
+    final pages = <String>{episodeUrl};
+    final document = parser.parse(body);
+    for (final node in document.querySelectorAll('iframe[src], [data-video], [data-url]')) {
+      final value = _attr(node, 'src').ifEmpty(_attr(node, 'data-video')).ifEmpty(_attr(node, 'data-url'));
+      final resolved = _absolute(baseUrl, value);
+      if (resolved.isNotEmpty && !resolved.contains('.mp4') && !resolved.contains('.m3u8')) pages.add(resolved);
+    }
+    final servers = <String, VideoServerModel>{};
+    for (final page in pages) {
+      try {
+        final pageBody = page == episodeUrl ? body : await getHtml(page, headers: {'Referer': episodeUrl});
+        for (final server in VideoExtractor.extract(pageBody, baseUrl, sourceName, page == episodeUrl ? episodeUrl : page, {...defaultHeaders, 'Referer': episodeUrl})) servers[server.url] = server;
+      } catch (_) {}
+    }
+    return servers.values.toList();
   }
 }
 
@@ -65,8 +84,9 @@ class Anime3rbSource extends _HtmlSource {
   @override String get sourceName => 'Anime3rb';
   @override String get sourceLogo => 'https://anime3rb.com/favicon.ico';
   @override Uri get baseUrl => Uri.parse('https://anime3rb.com');
-  @override Future<List<AnimeModel>> fetchLatestAnime(int page) async => parseCards(await getHtml(baseUrl.resolve('/titles/list?page=$page').toString()), 'a[href*="/titles/"]');
-  @override Future<List<AnimeModel>> searchAnime(String query, int page) async => parseCards(await getHtml(baseUrl.resolve('/titles/list').replace(queryParameters: {'q': query, 'page': '$page'}).toString()), 'a[href*="/titles/"]');
+  List<AnimeModel> _filtered(String body) => parseCards(body, 'a[href*="/titles/"]').where((item) { final path = Uri.tryParse(item.url)?.path ?? ''; return path.startsWith('/titles/') && path.split('/').where((part) => part.isNotEmpty).length == 2 && !path.contains('/list'); }).toList();
+  @override Future<List<AnimeModel>> fetchLatestAnime(int page) async => _filtered(await getHtml(baseUrl.resolve('/titles/list?page=$page').toString()));
+  @override Future<List<AnimeModel>> searchAnime(String query, int page) async => _filtered(await getHtml(baseUrl.resolve('/titles/list').replace(queryParameters: {'q': query, 'page': '$page'}).toString()));
 }
 
 class RestoAnimeSource extends _HtmlSource {
