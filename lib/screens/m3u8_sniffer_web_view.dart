@@ -37,7 +37,7 @@ class _M3u8SnifferWebViewState extends State<M3u8SnifferWebView> {
 (function() {
   if (window.__mangaLordSnifferInstalled) return;
   window.__mangaLordSnifferInstalled = true;
-  const looksPlayable = (url) => /\\.(m3u8|mp4)(?:[?#]|$)|master\\.m3u8/i.test(String(url || ''));
+  const looksPlayable = (url) => /\\.(m3u8|mp4)(?:[?#]|\$)|master\\.m3u8/i.test(String(url || ''));
   const report = (url, headers) => {
     if (!looksPlayable(url)) return;
     window.flutter_inappwebview.callHandler('mangaLordMediaCaptured', {
