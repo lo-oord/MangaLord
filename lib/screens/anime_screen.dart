@@ -114,7 +114,16 @@ class _AnimeCard extends StatelessWidget {
             Expanded(
               child: item.cover.isEmpty
                   ? const ColoredBox(color: Color(0xFF1E2A27), child: Center(child: Icon(Icons.movie, size: 42)))
-                  : Image.network(item.cover, width: double.infinity, fit: BoxFit.cover, errorBuilder: (_, __, ___) => const ColoredBox(color: Color(0xFF1E2A27), child: Center(child: Icon(Icons.broken_image))),),
+                  : Image.network(
+                      item.cover,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) => const ColoredBox(
+                        color: Color(0xFF1E2A27),
+                        child: Center(child: Icon(Icons.broken_image)),
+                      ),
+                    ),
+            ),
             Padding(padding: const EdgeInsets.all(10), child: Text(item.title, maxLines: 3, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700))),
             if (item.sourceName.isNotEmpty) Padding(padding: const EdgeInsets.fromLTRB(10, 0, 10, 10), child: Text(item.sourceName, style: const TextStyle(fontSize: 11, color: Colors.grey))),
           ],
