@@ -46,7 +46,7 @@ String resolveSourceUrl(Uri base, String value) {
 String imageFromElement(dynamic element, Uri base) {
   if (element == null) return '';
   final attrs = element.attributes as Map<String, String>;
-  final styleImage = RegExp(r'url\((?:["\']?)([^)"\']+)', caseSensitive: false).firstMatch(attrs['data-style'] ?? attrs['style'] ?? '')?.group(1) ?? '';
+  final styleImage = RegExp(r'''url\((?:["']?)([^)"']+)''', caseSensitive: false).firstMatch(attrs['data-style'] ?? attrs['style'] ?? '')?.group(1) ?? '';
   if (styleImage.isNotEmpty) return resolveSourceUrl(base, styleImage);
   final srcset = firstNonEmpty([attrs['data-srcset'] ?? '', attrs['srcset'] ?? '']);
   if (srcset.isNotEmpty) {
