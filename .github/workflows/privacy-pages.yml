@@ -1,0 +1,62 @@
+name: Privacy Policy Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/privacy/**'
+      - 'privacy/PRIVACY_POLICY.md'
+      - '.github/workflows/privacy-pages.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/privacy/**'
+      - 'privacy/PRIVACY_POLICY.md'
+      - '.github/workflows/privacy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Check privacy page
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Validate required page content
+        run: |
+          test -s docs/privacy/index.html
+          grep -q 'MangaLord' docs/privacy/index.html
+          grep -q 'Privacy Policy' docs/privacy/index.html
+          grep -q 'العربية' docs/privacy/index.html
+          grep -q 'localStorage' docs/privacy/index.html
+          test -s privacy/PRIVACY_POLICY.md
+
+  deploy:
+    name: Deploy privacy page
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    needs: check
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
