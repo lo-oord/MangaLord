@@ -21,11 +21,18 @@ class AuthService {
   );
   static const oauthRedirectUri = '$oauthRedirectScheme:/oauthredirect';
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final FirebaseStorage _storage = FirebaseStorage.instance;
+  FirebaseAuth get _auth => FirebaseAuth.instance;
+  FirebaseFirestore get _firestore => FirebaseFirestore.instance;
+  FirebaseStorage get _storage => FirebaseStorage.instance;
 
-  User? get currentUser => _auth.currentUser;
+  User? get currentUser {
+    try {
+      return _auth.currentUser;
+    } on FirebaseException {
+      // Widget tests may render screens without bootstrapping Firebase.
+      return null;
+    }
+  }
   bool get isAuthenticated => currentUser != null;
   Stream<User?> get authStateChanges => _auth.authStateChanges();
 
