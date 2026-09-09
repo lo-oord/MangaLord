@@ -159,7 +159,7 @@ class AzoraSource implements MangaSource {
       _text(document.querySelector('.entry-title, .series-title, .manga-title, .post-title')),
       document.querySelector('meta[property="og:title"]')?.attributes['content'] ?? '',
       document.querySelector('meta[name="twitter:title"]')?.attributes['content'] ?? '',
-    ].map(_cleanHtml).map((value) => value.replaceFirst(RegExp(r'\s*[|–-]\s*AzoraFly.*$', caseSensitive: false), '').trim()).where((value) => value.isNotEmpty && !_isStatusLabel(value));
+    ].map((value) => _cleanHtml(value as String)).map((value) => value.replaceFirst(RegExp(r'\s*[|–-]\s*AzoraFly.*$', caseSensitive: false), '').trim()).where((value) => value.isNotEmpty && !_isStatusLabel(value));
     return candidates.isNotEmpty ? candidates.first : _fallbackName(uri);
   }
 
@@ -192,7 +192,7 @@ class AzoraSource implements MangaSource {
   }
 
   String _cleanHtml(String value) {
-    final text = html_parser.parseFragment(value).text ?? '';
+    final text = html_parser.parseFragment(value).text;
     return text.replaceAll(RegExp(r'\s+'), ' ').trim();
   }
   String _fallbackName(Uri uri) => uri.pathSegments.last.replaceAll('-', ' ');
