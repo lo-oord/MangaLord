@@ -502,7 +502,78 @@ class _MoreSettingsPageState extends State<MoreSettingsPage> {
     const Text('Application', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)),
     const SizedBox(height: 10),
     Card(child: ListTile(leading: const Icon(Icons.info_outline, color: accentGreen), title: const Text('App version'), subtitle: Text(currentVersion()))),
+    const SizedBox(height: 22),
+    const Text('Developer', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)),
+    const SizedBox(height: 10),
+    _developerSection(),
   ]));
+
+  Widget _developerSection() => Card(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Container(
+                width: 112,
+                height: 112,
+                decoration: BoxDecoration(
+                  border: Border.all(color: accentGreen.withOpacity(.45)),
+                  borderRadius: BorderRadius.circular(56),
+                ),
+                // Deliberately empty until the developer supplies an image.
+              ),
+              const SizedBox(height: 18),
+              const Text('Lord', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
+              const SizedBox(height: 12),
+              const _DeveloperInfoRow(label: 'Age', value: '17'),
+              const _DeveloperInfoRow(label: 'Country', value: 'Egypt'),
+              const _DeveloperInfoRow(label: 'Experience', value: 'Beginner app developer'),
+              const SizedBox(height: 12),
+              const Text('أتمنى أن يعجبكم MangaLord', textAlign: TextAlign.center, style: TextStyle(color: mutedText)),
+              const SizedBox(height: 18),
+              Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 4,
+                children: [
+                  _developerAction(Icons.facebook, 'Facebook'),
+                  _developerAction(Icons.code, 'GitHub'),
+                  _developerAction(Icons.music_note, 'TikTok'),
+                  _developerAction(Icons.push_pin_outlined, 'Pinterest'),
+                  _developerAction(Icons.phone, 'Phone'),
+                  _developerAction(Icons.email_outlined, 'Email'),
+                ],
+              ),
+              const SizedBox(height: 10),
+              const Text('Phone: +201128147487', style: TextStyle(color: mutedText, fontSize: 12)),
+              const SizedBox(height: 4),
+              const Text('Email: lordshadooeminence@gmail.com', textAlign: TextAlign.center, style: TextStyle(color: mutedText, fontSize: 12)),
+            ],
+          ),
+        ),
+      );
+
+  Widget _developerAction(IconData icon, String label) => IconButton(
+        tooltip: label,
+        onPressed: () {},
+        icon: Icon(icon, color: accentGreen),
+      );
+}
+
+class _DeveloperInfoRow extends StatelessWidget {
+  const _DeveloperInfoRow({required this.label, required this.value});
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.symmetric(vertical: 3),
+        child: Row(
+          children: [
+            Text('$label: ', style: const TextStyle(color: mutedText)),
+            Expanded(child: Text(value, textAlign: TextAlign.end)),
+          ],
+        ),
+      );
 }
 
 class SettingTile extends StatelessWidget { const SettingTile({required this.title, required this.subtitle, required this.icon, required this.onTap, super.key}); final String title, subtitle; final IconData icon; final VoidCallback onTap; @override Widget build(BuildContext context) => Padding(padding: const EdgeInsets.only(bottom: 12), child: Material(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(18), child: InkWell(onTap: onTap, borderRadius: BorderRadius.circular(18), child: Padding(padding: const EdgeInsets.all(16), child: Row(children: [Icon(icon, color: accentGreen), const SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(title, style: const TextStyle(fontWeight: FontWeight.w700)), const SizedBox(height: 3), Text(subtitle, style: const TextStyle(color: mutedText, fontSize: 12))])), const Icon(Icons.chevron_right_rounded, color: mutedText)]))))); }
