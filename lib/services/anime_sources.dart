@@ -14,6 +14,11 @@ String _absolute(Uri base, String value) {
   final uri = Uri.tryParse(value);
   return uri?.isAbsolute == true ? value : base.resolve(value).toString();
 }
+
+bool _isDirectMedia(String value) {
+  final lower = value.toLowerCase();
+  return lower.contains('.m3u8') || lower.contains('.mp4');
+}
 String _image(Element node, Uri base) {
   final image = node.querySelector('img');
   final style = node.querySelector('.poster, [data-style]');
@@ -62,18 +67,49 @@ abstract class _HtmlSource extends AnimeSource {
   @override Future<List<VideoServerModel>> getVideoExtractors(String episodeUrl) async {
     final body = await getHtml(episodeUrl, headers: {'Referer': baseUrl.toString()});
     final pages = <String>{episodeUrl};
+    final servers = <String, VideoServerModel>{};
     final document = parser.parse(body);
     for (final node in document.querySelectorAll('iframe[src], [data-video], [data-url], [data-watch], a.FJ-DL-Server-Btn[href], a[data-server-hash][href]')) {
       final value = _attr(node, 'src').ifEmpty(_attr(node, 'data-video')).ifEmpty(_attr(node, 'data-url')).ifEmpty(_attr(node, 'data-watch')).ifEmpty(_attr(node, 'href'));
       final resolved = _absolute(baseUrl, value);
-      if (resolved.isNotEmpty && !resolved.contains('.mp4') && !resolved.contains('.m3u8')) pages.add(resolved);
+      if (resolved.isEmpty) continue;
+      if (_isDirectMedia(resolved)) {
+        servers[resolved] = VideoServerModel(
+          name: sourceName,
+          url: resolved,
+          type: resolved.toLowerCase().contains('.m3u8') ? 'hls' : 'mp4',
+          headers: {...defaultHeaders, 'Referer': episodeUrl},
+        );
+      } else {
+        pages.add(resolved);
+      }
     }
-    final servers = <String, VideoServerModel>{};
     for (final page in pages) {
+      if (page != episodeUrl) {
+        servers.putIfAbsent(
+          page,
+          () => VideoServerModel(
+            name: '$sourceName • WebView',
+            url: page,
+            type: 'iframe',
+            headers: {...defaultHeaders, 'Referer': episodeUrl},
+          ),
+        );
+      }
       try {
         final pageBody = page == episodeUrl ? body : await getHtml(page, headers: {'Referer': episodeUrl});
         for (final server in VideoExtractor.extract(pageBody, baseUrl, sourceName, page == episodeUrl ? episodeUrl : page, {...defaultHeaders, 'Referer': episodeUrl})) servers[server.url] = server;
       } catch (_) {}
+    }
+    // Some providers create the stream only after JavaScript runs. Keep the
+    // episode page as a final WebView candidate instead of showing an empty list.
+    if (servers.isEmpty) {
+      servers[episodeUrl] = VideoServerModel(
+        name: '$sourceName • WebView',
+        url: episodeUrl,
+        type: 'webview',
+        headers: {...defaultHeaders, 'Referer': baseUrl.toString()},
+      );
     }
     return servers.values.toList();
   }
