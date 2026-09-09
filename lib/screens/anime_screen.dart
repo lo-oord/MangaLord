@@ -235,6 +235,46 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
   late Future<List<AnimeModel>> relatedFuture;
   @override void initState() { super.initState(); future = animeSourceByKey(widget.item.sourceKey).getAnimeDetails(widget.item.url); relatedFuture = _loadRelated(); }
 
+  String _normalizeDigits(String value) {
+    const arabic = '٠١٢٣٤٥٦٧٨٩';
+    const persian = '۰۱۲۳۴۵۶۷۸۹';
+    final buffer = StringBuffer();
+    for (final char in value.split('')) {
+      final arabicIndex = arabic.indexOf(char);
+      final persianIndex = persian.indexOf(char);
+      if (arabicIndex >= 0) {
+        buffer.write(arabicIndex);
+      } else if (persianIndex >= 0) {
+        buffer.write(persianIndex);
+      } else {
+        buffer.write(char);
+      }
+    }
+    return buffer.toString();
+  }
+
+  String? _episodeNumber(EpisodeModel episode) {
+    final source = _normalizeDigits('${episode.number} ${episode.title}');
+    return RegExp(r'\d+(?:\.\d+)?').firstMatch(source)?.group(0);
+  }
+
+  List<EpisodeModel> _displayEpisodes(List<EpisodeModel> episodes) {
+    final numbered = <String, EpisodeModel>{};
+    final unnumbered = <String, EpisodeModel>{};
+    for (final episode in episodes) {
+      final number = _episodeNumber(episode);
+      if (number != null) {
+        numbered.putIfAbsent(number, () => episode);
+      } else {
+        unnumbered.putIfAbsent(episode.url, () => episode);
+      }
+    }
+    final result = numbered.values.toList()
+      ..sort((a, b) => (double.tryParse(_episodeNumber(a) ?? '') ?? 0).compareTo(double.tryParse(_episodeNumber(b) ?? '') ?? 0));
+    result.addAll(unnumbered.values);
+    return result;
+  }
+
   Future<List<AnimeModel>> _loadRelated() async {
     try {
       final results = await searchAllAnimeSources(_displayAnimeTitle(widget.item.title));
@@ -246,8 +286,8 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
   }
 
   String _displayEpisode(EpisodeModel episode) {
-    final number = episode.number.isNotEmpty ? episode.number : RegExp(r'\d+').firstMatch(episode.title)?.group(0);
-    return number == null ? episode.title : 'الحلقة $number';
+    final number = _episodeNumber(episode);
+    return number == null ? episode.title.trim() : 'الحلقة $number';
   }
 
   @override
@@ -270,7 +310,7 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
               _RelatedAnime(future: relatedFuture),
               Text('${item.episodes.length} episodes', style: const TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
-              ...item.episodes.map((episode) => ListTile(
+              ..._displayEpisodes(item.episodes).map((episode) => ListTile(
                     leading: const Icon(Icons.play_circle_outline),
                     title: Text(_displayEpisode(episode)),
                     onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AnimePlayerScreen(iframeUrl: episode.url, refererUrl: episode.url, episodeId: episode.id, episodeTitle: episode.title))),
