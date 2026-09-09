@@ -181,9 +181,16 @@ class RestoAnimeSource extends _HtmlSource {
   @override Uri get baseUrl => Uri.parse('https://ristoanime.me/');
   @override Future<List<AnimeModel>> fetchLatestAnime(int page) async => parseCards(await getHtml(page == 1 ? baseUrl.toString() : '${baseUrl}page/$page/'), '.BlocksHolder .MovieItem');
   @override Future<List<AnimeModel>> searchAnime(String query, int page) async => parseCards(await getHtml(baseUrl.replace(queryParameters: {'s': query, 'paged': '$page'}).toString()), '.SearchResultInner, .MovieItem');
+  String _watchUrl(String url) {
+    final normalized = url.replaceFirst(RegExp(r'/+$'), '');
+    return normalized.endsWith('/watch') ? normalized : '$normalized/watch';
+  }
   @override Future<AnimeModel> getAnimeDetails(String animeUrl) async {
     final current = await super.getAnimeDetails(animeUrl);
-    final collected = <String, EpisodeModel>{for (final e in current.episodes) e.url: e};
+    final collected = <String, EpisodeModel>{
+      for (final e in current.episodes)
+        _watchUrl(e.url): EpisodeModel(id: e.id, title: e.title, url: _watchUrl(e.url), number: e.number, sourceKey: e.sourceKey, thumbnail: e.thumbnail),
+    };
     final title = _cleanTitle(current.title);
     // Resto publishes episodes as separate MovieItem pages. Follow all search
     // pagination pages until a page contributes no new matching episode.
@@ -197,7 +204,8 @@ class RestoAnimeSource extends _HtmlSource {
           final raw = _text(node.querySelector('.title h4, .title')).ifEmpty(_text(anchor));
           final number = _episodeNumber(raw);
           if (url.isNotEmpty && number.isNotEmpty && !collected.containsKey(url)) {
-            collected[url] = EpisodeModel(id: _id(sourceKey, url), title: _episodeTitle(raw, number), url: url, number: number, sourceKey: sourceKey, thumbnail: _image(node, baseUrl));
+            final watchUrl = _watchUrl(url);
+            collected[watchUrl] = EpisodeModel(id: _id(sourceKey, watchUrl), title: _episodeTitle(raw, number), url: watchUrl, number: number, sourceKey: sourceKey, thumbnail: _image(node, baseUrl));
             added++;
           }
         }

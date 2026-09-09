@@ -86,6 +86,10 @@ class _M3u8SnifferWebViewState extends State<M3u8SnifferWebView> {
   };
   const activateProviderServer = () => {
     try {
+      // Phoenix keeps the real player behind a lazy placeholder.  Clicking
+      // it is required before its iframe/media requests exist.
+      const overlay = document.querySelector('#player-placeholder-overlay, .player-placeholder-overlay, .fake-play-button');
+      if (overlay) overlay.click();
       if (window.__mangaLordServerActivated) return;
       const server = Array.from(document.querySelectorAll('[data-server], .server-link, .FJ-DL-Server-Btn'))
         .find((node) => !node.classList.contains('premium-locked') && !node.disabled);
