@@ -47,7 +47,7 @@ abstract class AnimeSource {
   AnimeTitle parseTitle(dynamic node, Uri base, {String? forcedUrl}) {
     final anchor = node.matches('a') ? node : node.querySelector('a');
     final url = resolveSourceUrl(base, forcedUrl ?? htmlAttribute(anchor, 'href'));
-    final image = firstImage(node, base);
+    final image = firstNonEmpty([firstImage(node, base), imageFromElement(node.querySelector('.poster, [data-style]'), base)]);
     final title = firstNonEmpty([htmlAttribute(anchor, 'title'), htmlAttribute(anchor, 'data-title'), htmlText(anchor), htmlText(node)]);
     final description = htmlText(node.querySelector('.synopsis, .description, .summary, [class*="description"]'));
     final genres = uniqueStrings(node.querySelectorAll('a[href*="/genre/"], .genre, .genres a').map(htmlText));

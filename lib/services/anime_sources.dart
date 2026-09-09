@@ -248,6 +248,13 @@ const List<AnimeSource> enabledAnimeSources = <AnimeSource>[Anime3rbSource(), Ri
 
 Future<List<AnimeSource>> _activeAnimeSources() async {
   final prefs = await SharedPreferences.getInstance();
+  const sourceConfigVersion = 2;
+  final previousVersion = prefs.getInt('mangalord.anime_sources_config_version') ?? 0;
+  if (previousVersion < sourceConfigVersion) {
+    await prefs.setInt('mangalord.anime_sources_config_version', sourceConfigVersion);
+    await prefs.setStringList('mangalord.enabled_anime_sources', enabledAnimeSources.map((source) => source.sourceKey).toList());
+    return enabledAnimeSources;
+  }
   final saved = prefs.getStringList('mangalord.enabled_anime_sources');
   if (saved == null || saved.isEmpty) return enabledAnimeSources;
   final keys = saved.toSet();
