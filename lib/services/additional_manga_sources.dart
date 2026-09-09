@@ -144,14 +144,22 @@ class MangaSwatSource extends HtmlMangaSource {
     if (id.isEmpty) return super.details(url);
     final value = await _apiGet(_api.resolve('series/$id/')) as Map;
     final manga = _apiManga(value);
-    final chapterValue = await _apiGet(_api.resolve('series/$id/chapters/')) as Map;
-    final rows = chapterValue['results'];
-    final chapters = rows is List ? rows.whereType<Map>().map((item) {
+    final chapters = <TeamXChapter>[];
+    for (var page = 1; page <= 100; page++) {
+      final chapterValue = await _apiGet(_api.resolve('series/$id/chapters/').replace(queryParameters: {'page': '$page', 'page_size': '100'})) as Map;
+      final rows = chapterValue['results'];
+      if (rows is! List || rows.isEmpty) break;
+      chapters.addAll(rows.whereType<Map>().map((item) {
       final chapterId = '${item['id'] ?? ''}';
       final chapter = '${item['chapter'] ?? item['title'] ?? ''}';
       return TeamXChapter(id: chapterId, number: number(chapter), title: chapter, publishedAt: '${item['created_at_humanized'] ?? ''}', url: baseUri.resolve('chapter/$chapterId').toString(), images: const []);
-    }).toList() : <TeamXChapter>[];
-    return TeamXManga(id: manga.id, title: manga.title, url: manga.url, cover: manga.cover, description: manga.description, chapters: chapters);
+      }));
+      final next = chapterValue['next'];
+      if (next == null || (next is String && next.isEmpty) || rows.length < 100) break;
+    }
+    final unique = <String, TeamXChapter>{for (final chapter in chapters) chapter.url: chapter};
+    final ordered = unique.values.toList()..sort((a, b) => a.numberValue.compareTo(b.numberValue));
+    return TeamXManga(id: manga.id, title: manga.title, url: manga.url, cover: manga.cover, description: manga.description, chapters: ordered);
   }
 }
 
@@ -169,46 +177,4 @@ class HijalaComSource extends HtmlMangaSource {
   }
 }
 
-class DilarTubeSource extends HtmlMangaSource {
-  @override String get sourceKey => 'dilar_tube';
-  @override String get sourceName => 'Dilar Tube';
-  @override String get sourceLogo => 'https://dilar.tube/logo192.png';
-  @override String get imageReferer => 'https://dilar.tube/';
-  @override Uri get baseUri => Uri.parse('https://dilar.tube/');
-  @override Uri searchUri(String query, int page) => _api.resolve('series').replace(queryParameters: {'search': query, 'page': '$page'});
-  Uri get _api => baseUri.resolve('api/');
-  String _asset(String id, String value) => value.isEmpty ? '' : (value.startsWith('http') ? value : baseUri.resolve('uploads/manga/cover/$id/large_$value').toString());
-  TeamXManga _item(Map item) => TeamXManga(id: '${item['id']}', title: '${item['title'] ?? ''}', url: baseUri.resolve('series/${item['id']}').toString(), cover: _asset('${item['id'] ?? ''}', '${item['cover'] ?? ''}'), description: '${item['summary'] ?? ''}');
-  Future<Map<String, dynamic>> _json(Uri uri) async {
-    final body = await _get(uri);
-    final decoded = jsonDecode(body);
-    if (decoded is! Map<String, dynamic>) throw Exception('$sourceName returned an invalid API response');
-    return decoded;
-  }
-  List<TeamXManga> _htmlSeries(String body) => parseCards(body, const ['a[href*="/mangas/"]', 'a[href*="/series/"]', '.manga-card', '.series-card']);
-  @override Future<List<TeamXManga>> latest({int page = 1}) async {
-    try {
-      final values = ((await _json(_api.resolve('series').replace(queryParameters: {'page': '$page'})))['series'] as List? ?? const []);
-      return values.whereType<Map>().map(_item).where((item) => item.title.trim().isNotEmpty).toList();
-    } catch (_) {
-      return _htmlSeries(await _get(baseUri.resolve(page == 1 ? 'mangas' : 'mangas?page=$page')));
-    }
-  }
-  @override Future<List<TeamXManga>> search(String query, {int page = 1}) async {
-    try {
-      final values = ((await _json(_api.resolve('series').replace(queryParameters: {'title': query, 'page': '$page'})))['series'] as List? ?? const []);
-      return values.whereType<Map>().map(_item).where((item) => item.title.trim().isNotEmpty).toList();
-    } catch (_) {
-      return _htmlSeries(await _get(baseUri.resolve('mangas').replace(queryParameters: {'search': query, if (page > 1) 'page': '$page'})));
-    }
-  }
-  @override Future<TeamXManga> details(String url) async {
-    final id = resolve(url).pathSegments.last;
-    final item = await _json(_api.resolve('series/$id'));
-    final chaptersResponse = await _json(_api.resolve('series/$id/chapters'));
-    final chapters = ((chaptersResponse['chapters'] as List?) ?? const []).whereType<Map>().map((item) => TeamXChapter(id: '${item['id']}', number: '${item['chapter'] ?? ''}', title: '${item['title'] ?? ''}', publishedAt: '${item['created_at'] ?? ''}', url: baseUri.resolve('series/$id/chapters/${item['id']}').toString(), images: const [])).toList();
-    final manga = _item(item); return TeamXManga(id: manga.id, title: manga.title, url: manga.url, cover: manga.cover, description: manga.description, chapters: chapters);
-  }
-}
-
-final List<MangaSource> additionalMangaSources = <MangaSource>[MangaSwatSource(), HijalaComSource(), DilarTubeSource()];
+final List<MangaSource> additionalMangaSources = <MangaSource>[MangaSwatSource(), HijalaComSource()];

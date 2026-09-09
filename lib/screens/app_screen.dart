@@ -29,7 +29,6 @@ Map<String, String> _headersForManga(Manga manga) {
     'azora_fly': 'https://azorafly.com/',
     'manga_swat': 'https://meshmanga.com/',
     'hijala_com': 'https://hijala.com/',
-    'dilar_tube': 'https://dilar.tube/',
     'team_x': 'https://olympustaff.com/',
   };
   return {'Referer': referers[manga.sourceKey] ?? 'https://olympustaff.com/'};
@@ -54,7 +53,7 @@ class AppScreen extends StatefulWidget {
 
 class _AppScreenState extends State<AppScreen> {
   final allSources = <MangaSource>[TeamXSource(), AzoraSource(), ...additionalMangaSources];
-  final _defaultMangaSourceKeys = {'team_x', 'azora_fly', 'manga_swat', 'hijala_com', 'dilar_tube'};
+  final _defaultMangaSourceKeys = {'team_x', 'azora_fly', 'manga_swat', 'hijala_com'};
   final enabledMangaKeys = <String>{};
   List<MangaSource> get sources => allSources.where((source) => enabledMangaKeys.contains(source.sourceKey)).toList();
   final downloads = DownloadManager();
@@ -80,7 +79,7 @@ class _AppScreenState extends State<AppScreen> {
   void initState() {
     super.initState();
     _initialize();
-    refreshTimer = Timer.periodic(const Duration(hours: 1), (_) { if (query.isEmpty) { _loadLatest(silent: true); _checkFavoriteUpdates(); } });
+    refreshTimer = Timer.periodic(const Duration(hours: 1), (_) { if (query.isEmpty) { _loadLatest(silent: true); _refreshSavedManga(); } });
   }
 
   Future<void> _initialize() async {
@@ -212,29 +211,37 @@ class _AppScreenState extends State<AppScreen> {
     try {
       final source = _sourceFor(item);
       final fresh = await source.details(item.url);
-      final newest = fresh.chapters.isEmpty ? '' : fresh.chapters.first.number;
+      final newest = fresh.chapters.isEmpty ? '' : fresh.chapters.last.number;
       library[item.url] = _map(fresh, source).copyWith(lastNotifiedChapterNumber: newest, lastChapterNumber: item.lastChapterNumber, lastChapterAt: item.lastChapterAt);
       await _saveLibrary();
     } catch (_) {}
   }
 
-  Future<void> _checkFavoriteUpdates() async {
+  Future<void> _refreshSavedManga() async {
     final prefs = await SharedPreferences.getInstance();
-    if (!(prefs.getBool('mangalord.notifications') ?? true)) return;
-    for (final entry in library.entries.toList()) {
+    final notificationsEnabled = prefs.getBool('mangalord.notifications') ?? true;
+    final savedItems = <String, Manga>{
+      ...{for (final item in history) item.url: item},
+      ...library,
+    };
+    for (final entry in savedItems.entries) {
       final saved = entry.value;
       try {
         final source = _sourceFor(saved);
         final fresh = await source.details(saved.url);
         if (fresh.chapters.isEmpty) continue;
-        final newest = fresh.chapters.first;
-        if (saved.lastNotifiedChapterNumber.isNotEmpty && saved.lastNotifiedChapterNumber != newest.number) {
+        final newest = fresh.chapters.last;
+        if (notificationsEnabled && library.containsKey(entry.key) && saved.lastNotifiedChapterNumber.isNotEmpty && saved.lastNotifiedChapterNumber != newest.number) {
           await MangaNotificationService.instance.newChapter(mangaTitle: fresh.title, chapterNumber: newest.number, coverUrl: fresh.cover, referer: source.imageReferer);
         }
-        library[entry.key] = _map(fresh, source).copyWith(lastNotifiedChapterNumber: newest.number, lastChapterNumber: saved.lastChapterNumber, lastChapterAt: saved.lastChapterAt);
-        await _saveLibrary();
+        final updated = _map(fresh, source).copyWith(lastNotifiedChapterNumber: newest.number, lastChapterNumber: saved.lastChapterNumber, lastChapterAt: saved.lastChapterAt);
+        if (library.containsKey(entry.key)) library[entry.key] = updated;
+        final historyIndex = history.indexWhere((item) => item.url == entry.key);
+        if (historyIndex >= 0) history[historyIndex] = updated;
       } catch (_) {}
     }
+    await _saveLibrary();
+    if (mounted) setState(() {});
   }
 
   Future<void> _search(String value) async {

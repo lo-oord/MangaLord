@@ -57,25 +57,30 @@ class AzoraSource implements MangaSource {
   Future<TeamXManga> details(String url) async {
     final uri = _resolve(url);
     final document = html_parser.parse(await _get(uri));
-    final title = _text(document.querySelector('h1'));
+    final title = _mangaTitle(document, uri);
     final description = _cleanHtml(document.querySelector('meta[name="description"]')?.attributes['content'] ?? document.querySelector('meta[property="og:description"]')?.attributes['content'] ?? '');
     // AzoraFly's og:image is a generated social preview, not the manga cover.
     final cover = _coverImage(document);
     final chapterMap = <String, TeamXChapter>{};
-    for (final anchor in document.querySelectorAll('a[href*="/chapter-"]')) {
-      final href = anchor.attributes['href'];
-      if (href == null) continue;
-      final chapterUri = _resolve(href);
-      final chapterNumber = _chapterNumber(chapterUri);
-      if (chapterNumber.isEmpty) continue;
-      chapterMap[chapterUri.toString()] = TeamXChapter(
-        id: chapterUri.toString(),
-        number: chapterNumber,
-        title: chapterNumber,
-        publishedAt: _chapterDate(anchor),
-        url: chapterUri.toString(),
-        images: const [],
-      );
+    final pendingPages = <Uri>{uri, ..._chapterPageUrls(document, uri)};
+    final visitedPages = <Uri>{};
+    while (pendingPages.isNotEmpty) {
+      final pageUri = pendingPages.first;
+      pendingPages.remove(pageUri);
+      if (!visitedPages.add(pageUri)) continue;
+      final pageDocument = pageUri == uri ? document : html_parser.parse(await _get(pageUri));
+      for (final anchor in pageDocument.querySelectorAll('a[href*="/chapter-"]')) {
+        final href = anchor.attributes['href'];
+        if (href == null) continue;
+        final chapterUri = _resolve(href);
+        final chapterNumber = _chapterNumber(chapterUri);
+        if (chapterNumber.isEmpty) continue;
+        chapterMap[chapterUri.toString()] = TeamXChapter(
+          id: chapterUri.toString(), number: chapterNumber, title: chapterNumber,
+          publishedAt: _chapterDate(anchor), url: chapterUri.toString(), images: const [],
+        );
+      }
+      pendingPages.addAll(_chapterPageUrls(pageDocument, uri).where((next) => !visitedPages.contains(next)));
     }
     final chapters = chapterMap.values.toList()
       ..sort((a, b) => a.numberValue.compareTo(b.numberValue));
@@ -147,6 +152,32 @@ class AzoraSource implements MangaSource {
   String _chapterNumber(Uri uri) {
     final segment = uri.pathSegments.where((part) => part.isNotEmpty).last;
     return RegExp(r'(\d+(?:\.\d+)?)').firstMatch(segment)?.group(1) ?? '';
+  }
+
+  String _mangaTitle(dynamic document, Uri uri) {
+    final candidates = [
+      _text(document.querySelector('.entry-title, .series-title, .manga-title, .post-title')),
+      document.querySelector('meta[property="og:title"]')?.attributes['content'] ?? '',
+      document.querySelector('meta[name="twitter:title"]')?.attributes['content'] ?? '',
+    ].map(_cleanHtml).map((value) => value.replaceFirst(RegExp(r'\s*[|–-]\s*AzoraFly.*$', caseSensitive: false), '').trim()).where((value) => value.isNotEmpty && !_isStatusLabel(value));
+    return candidates.isNotEmpty ? candidates.first : _fallbackName(uri);
+  }
+
+  bool _isStatusLabel(String value) => RegExp(r'^(الحالة|status|ongoing|completed|مستمر|مكتمل)$', caseSensitive: false).hasMatch(value.trim());
+
+  Set<Uri> _chapterPageUrls(dynamic document, Uri mangaUri) {
+    final pages = <Uri>{};
+    for (final anchor in document.querySelectorAll('a[href]')) {
+      final href = anchor.attributes['href'];
+      if (href == null) continue;
+      final resolved = _resolve(href);
+      final text = _text(anchor).toLowerCase();
+      final isPage = resolved.queryParameters.containsKey('page') || resolved.pathSegments.contains('page') || text.contains('next') || text.contains('التالي');
+      final mangaPath = mangaUri.pathSegments.where((part) => part.isNotEmpty).join('/');
+      final resolvedPath = resolved.pathSegments.where((part) => part.isNotEmpty).join('/');
+      if (isPage && resolvedPath.startsWith(mangaPath)) pages.add(resolved);
+    }
+    return pages;
   }
 
   String _chapterDate(dynamic anchor) {
