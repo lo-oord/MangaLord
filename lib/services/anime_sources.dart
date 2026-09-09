@@ -63,8 +63,8 @@ abstract class _HtmlSource extends AnimeSource {
     final body = await getHtml(episodeUrl, headers: {'Referer': baseUrl.toString()});
     final pages = <String>{episodeUrl};
     final document = parser.parse(body);
-    for (final node in document.querySelectorAll('iframe[src], [data-video], [data-url], a.FJ-DL-Server-Btn[href], a[data-server-hash][href]')) {
-      final value = _attr(node, 'src').ifEmpty(_attr(node, 'data-video')).ifEmpty(_attr(node, 'data-url')).ifEmpty(_attr(node, 'href'));
+    for (final node in document.querySelectorAll('iframe[src], [data-video], [data-url], [data-watch], a.FJ-DL-Server-Btn[href], a[data-server-hash][href]')) {
+      final value = _attr(node, 'src').ifEmpty(_attr(node, 'data-video')).ifEmpty(_attr(node, 'data-url')).ifEmpty(_attr(node, 'data-watch')).ifEmpty(_attr(node, 'href'));
       final resolved = _absolute(baseUrl, value);
       if (resolved.isNotEmpty && !resolved.contains('.mp4') && !resolved.contains('.m3u8')) pages.add(resolved);
     }
@@ -128,6 +128,22 @@ class AnimePhoenixSource extends _HtmlSource {
   @override Uri get baseUrl => Uri.parse('https://anime-phoenix.com/');
   @override Future<List<AnimeModel>> fetchLatestAnime(int page) async => parseCards(await getHtml(baseUrl.toString()), 'a[href*="/animes/"], .anime-card');
   @override Future<List<AnimeModel>> searchAnime(String query, int page) async => parseCards(await getHtml(baseUrl.resolve('/search/').replace(queryParameters: {'q': query, 'page': '$page'}).toString()), 'a[href*="/animes/"], .anime-card');
+
+  @override
+  Future<AnimeModel> getAnimeDetails(String animeUrl) async {
+    final current = await super.getAnimeDetails(animeUrl);
+    final episodes = <String, EpisodeModel>{for (final episode in current.episodes) episode.url: episode};
+    try {
+      final body = await getHtml('${animeUrl.replaceFirst(RegExp(r'/$'), '')}/episodes');
+      for (final node in parser.parse(body).querySelectorAll('a.FJ-episode-wrap, a[href*="/episodes/"]')) {
+        final url = _absolute(baseUrl, _attr(node, 'href'));
+        final title = _cleanTitle(_text(node.querySelector('.FJ-Phoenix-Anastasia-EpCard-Tooltip, .FJ-episode-info')).ifEmpty(_text(node)));
+        if (url.isNotEmpty) episodes[url] = EpisodeModel(id: _id(sourceKey, url), title: title, url: url, number: _episodeNumber(title), sourceKey: sourceKey, thumbnail: _attr(node.querySelector('img'), 'src'));
+      }
+    } catch (_) {}
+    final fullEpisodes = episodes.values.toList()..sort((a, b) => (double.tryParse(a.number) ?? 0).compareTo(double.tryParse(b.number) ?? 0));
+    return current.copyWith(episodes: fullEpisodes);
+  }
 }
 
 const List<AnimeSource> enabledAnimeSources = [Anime3rbSource(), RestoAnimeSource(), AnimePhoenixSource()];
