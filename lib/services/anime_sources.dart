@@ -18,7 +18,7 @@ String _image(Element node, Uri base) {
   final image = node.querySelector('img');
   final style = node.querySelector('.poster, [data-style]');
   final rawStyle = _attr(style, 'data-style') + _attr(style, 'style');
-  final match = RegExp(r'url\((?:["\']?)([^)"\']+)').firstMatch(rawStyle);
+  final match = RegExp(r'''url\((?:["']?)([^)"']+)''').firstMatch(rawStyle);
   return _absolute(base, match?.group(1) ?? _attr(image, 'data-src').ifEmpty(_attr(image, 'src')));
 }
 extension on String { String ifEmpty(String fallback) => isEmpty ? fallback : this; }
