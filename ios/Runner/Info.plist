@@ -29,7 +29,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>appwrite-callback-6a9ff222002ab1073f0f</string>
+					<string>com.mangalord.app</string>
 			</array>
 		</dict>
 	</array>

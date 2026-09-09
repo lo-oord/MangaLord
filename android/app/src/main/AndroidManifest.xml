@@ -41,11 +41,12 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <!-- Return URI for the public Google OAuth client using PKCE. -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="appwrite-callback-6a9ff222002ab1073f0f" />
+                <data android:scheme="com.mangalord.app" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

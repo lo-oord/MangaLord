@@ -1,129 +1,186 @@
 import 'dart:convert';
+import 'dart:math';
+import 'dart:typed_data';
 
-import 'package:appwrite/appwrite.dart';
-import 'package:appwrite/enums.dart' as enums;
-import 'package:appwrite/models.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:crypto/crypto.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
+import 'package:http/http.dart' as http;
 
 class AuthService {
   AuthService._();
   static final instance = AuthService._();
 
-  static const endpoint = 'https://sgp.cloud.appwrite.io/v1';
-  static const projectId = '6a9ff222002ab1073f0f';
-  static const databaseId = 'MangaLordDB';
-  static const favoritesCollectionId = 'Favorites';
-  static const historyCollectionId = 'History';
-  static const callbackScheme = 'appwrite-callback-6a9ff222002ab1073f0f';
+  // Configure with --dart-define=GOOGLE_WEB_CLIENT_ID=...; never put a client secret here.
+  static const googleWebClientId = String.fromEnvironment('GOOGLE_WEB_CLIENT_ID');
+  static const oauthRedirectScheme = String.fromEnvironment(
+    'GOOGLE_OAUTH_REDIRECT_SCHEME',
+    defaultValue: 'com.mangalord.app',
+  );
+  static const oauthRedirectUri = '$oauthRedirectScheme:/oauthredirect';
 
-  final Client client = Client()
-    ..setEndpoint(endpoint)
-    ..setProject(projectId);
-  late final Account account = Account(client);
-  late final Databases databases = Databases(client);
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseStorage _storage = FirebaseStorage.instance;
 
-  User? _currentUser;
-  User? get currentUser => _currentUser;
-  bool get isAuthenticated => _currentUser != null;
+  User? get currentUser => _auth.currentUser;
+  bool get isAuthenticated => currentUser != null;
+  Stream<User?> get authStateChanges => _auth.authStateChanges();
 
   Future<void> initialize() async {
-    try {
-      _currentUser = await account.get();
-    } on AppwriteException catch (error) {
-      if (error.code != 401) rethrow;
-      _currentUser = null;
-    }
+    // Firebase is initialized by main.dart before this service is used. Reading currentUser
+    // restores the persisted native Firebase session without forcing another login.
+    await _auth.currentUser?.reload();
   }
 
   Future<User> signUp({required String username, required String email, required String password}) async {
-    await account.create(userId: ID.unique(), email: email.trim(), password: password, name: username.trim());
-    await account.createEmailPasswordSession(email: email.trim(), password: password);
-    _currentUser = await account.get();
-    return _currentUser!;
+    final credential = await _auth.createUserWithEmailAndPassword(email: email.trim(), password: password);
+    final user = credential.user!;
+    await user.updateDisplayName(username.trim());
+    await _writeProfile(user, username: username.trim());
+    return user;
   }
 
   Future<User> signIn({required String email, required String password}) async {
-    await account.createEmailPasswordSession(email: email.trim(), password: password);
-    _currentUser = await account.get();
-    return _currentUser!;
+    final credential = await _auth.signInWithEmailAndPassword(email: email.trim(), password: password);
+    await _writeProfile(credential.user!);
+    return credential.user!;
   }
 
-  Future<void> signInWithGoogle() async {
-    await account.createOAuth2Session(
-      provider: enums.OAuthProvider.google,
-      success: '$callbackScheme://success',
-      failure: '$callbackScheme://failure',
+  Future<User> signInWithGoogle() async {
+    if (googleWebClientId.isEmpty) {
+      throw const AuthConfigurationException('Google OAuth is not configured. Set GOOGLE_WEB_CLIENT_ID.');
+    }
+    final verifier = _randomUrlSafe(48);
+    final challenge = base64Url.encode(sha256.convert(utf8.encode(verifier)).bytes).replaceAll('=', '');
+    final state = _randomUrlSafe(24);
+    final authorizationUri = Uri.https('accounts.google.com', '/o/oauth2/v2/auth', {
+      'client_id': googleWebClientId,
+      'redirect_uri': oauthRedirectUri,
+      'response_type': 'code',
+      'scope': 'openid email profile',
+      'code_challenge': challenge,
+      'code_challenge_method': 'S256',
+      'state': state,
+      'access_type': 'offline',
+      'prompt': 'select_account',
+    });
+
+    final result = await FlutterWebAuth2.authenticate(
+      url: authorizationUri.toString(),
+      callbackUrlScheme: oauthRedirectScheme,
     );
-    _currentUser = await account.get();
+    final callback = Uri.parse(result);
+    if (callback.queryParameters['state'] != state) {
+      throw const AuthConfigurationException('Invalid OAuth state returned by Google.');
+    }
+    final error = callback.queryParameters['error'];
+    if (error != null) throw AuthCancelledException(error);
+    final code = callback.queryParameters['code'];
+    if (code == null) throw const AuthConfigurationException('Google did not return an authorization code.');
+
+    final tokenResponse = await http.post(Uri.https('oauth2.googleapis.com', '/token'), body: {
+      'client_id': googleWebClientId,
+      'code': code,
+      'code_verifier': verifier,
+      'grant_type': 'authorization_code',
+      'redirect_uri': oauthRedirectUri,
+    });
+    if (tokenResponse.statusCode != 200) {
+      throw AuthConfigurationException('Google token exchange failed (${tokenResponse.statusCode}).');
+    }
+    final token = jsonDecode(tokenResponse.body) as Map<String, dynamic>;
+    final idToken = token['id_token'] as String?;
+    if (idToken == null) throw const AuthConfigurationException('Google did not return an ID token.');
+    final credential = GoogleAuthProvider.credential(idToken: idToken, accessToken: token['access_token'] as String?);
+    final userCredential = await _auth.signInWithCredential(credential);
+    await _writeProfile(userCredential.user!);
+    return userCredential.user!;
   }
 
-  Future<void> sendReset(String email) => account.createRecovery(email: email.trim(), url: '$callbackScheme://recovery');
-  Future<void> resendVerification() => account.createVerification(url: '$callbackScheme://verify');
-  Future<void> reloadUser() async => _currentUser = await account.get();
-  Future<void> signOut() async { await account.deleteSession(sessionId: 'current'); _currentUser = null; }
+  Future<void> sendReset(String email) => _auth.sendPasswordResetEmail(email: email.trim());
+  Future<void> resendVerification() async => await _auth.currentUser?.sendEmailVerification();
+  Future<void> reloadUser() async => await _auth.currentUser?.reload();
+  Future<void> signOut() => _auth.signOut();
 
   Future<Map<String, dynamic>> profile() async {
-    final user = _currentUser ?? await account.get();
-    _currentUser = user;
-    return Map<String, dynamic>.from(user.prefs.data);
+    final user = currentUser;
+    if (user == null) return {};
+    final snapshot = await _firestore.collection('profiles').doc(user.uid).get();
+    return {'uid': user.uid, 'email': user.email, 'displayName': user.displayName, 'photoUrl': user.photoURL, ...?snapshot.data()};
   }
 
   Future<void> updateProfile({String? username, String? bio}) async {
-    final values = <String, dynamic>{...await profile()};
-    if (username != null) {
-      await account.updateName(name: username.trim());
-      values['username'] = username.trim();
-    }
-    if (bio != null) values['bio'] = bio.trim();
-    if (values.isNotEmpty) await account.updatePrefs(prefs: values);
-    _currentUser = await account.get();
+    final user = currentUser;
+    if (user == null) return;
+    if (username != null) await user.updateDisplayName(username.trim());
+    await _writeProfile(user, username: username, bio: bio);
   }
 
   Future<void> uploadProfileImage(List<int> bytes, String extension) async {
-    throw AppwriteException('Profile image storage is not configured for this project.');
+    final user = currentUser;
+    if (user == null) return;
+    final ref = _storage.ref('profile_images/${user.uid}.$extension');
+    await ref.putData(Uint8List.fromList(bytes), SettableMetadata(contentType: 'image/$extension'));
+    final url = await ref.getDownloadURL();
+    await user.updatePhotoURL(url);
+    await _writeProfile(user, photoUrl: url);
   }
-
-  String _collectionId(String name) => name == 'favorites' ? favoritesCollectionId : historyCollectionId;
-  String _documentId(String value) => value.replaceAll('/', '_').replaceAll(RegExp(r'[^A-Za-z0-9_.-]'), '_').substring(0, value.length > 36 ? 36 : value.length);
-  List<String> _permissions(String userId) => [Permission.read(Role.user(userId)), Permission.write(Role.user(userId))];
 
   Future<void> setFavorite(String mangaId, Map<String, dynamic> data) => _upsert('favorites', mangaId, data);
   Future<void> removeFavorite(String mangaId) async {
-    if (_currentUser == null) return;
-    try { await databases.deleteDocument(databaseId: databaseId, collectionId: favoritesCollectionId, documentId: _documentId(mangaId)); } on AppwriteException catch (error) { if (error.code != 404) rethrow; }
+    final user = currentUser;
+    if (user != null) await _firestore.collection('users').doc(user.uid).collection('favorites').doc(_documentId(mangaId)).delete();
   }
   Future<void> setHistory(String mangaId, Map<String, dynamic> data) => _upsert('history', mangaId, data);
 
   Future<void> _upsert(String collection, String mangaId, Map<String, dynamic> data) async {
-    final user = _currentUser;
+    final user = currentUser;
     if (user == null) return;
-    final payload = {...data, 'mangaId': mangaId, 'userId': user.$id, 'updatedAt': DateTime.now().toUtc().toIso8601String()};
-    if (payload['chapterItems'] is List) payload['chapterItems'] = jsonEncode(payload['chapterItems']);
-    final documentId = _documentId(mangaId);
-    try {
-      await databases.updateDocument(databaseId: databaseId, collectionId: _collectionId(collection), documentId: documentId, data: payload);
-    } on AppwriteException catch (error) {
-      if (error.code != 404) rethrow;
-      await databases.createDocument(databaseId: databaseId, collectionId: _collectionId(collection), documentId: documentId, data: payload, permissions: _permissions(user.$id));
-    }
+    await _firestore.collection('users').doc(user.uid).collection(collection).doc(_documentId(mangaId)).set({
+      ...data,
+      'mangaId': mangaId,
+      'uid': user.uid,
+      'updatedAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
   }
 
   Future<List<Map<String, dynamic>>> getCollection(String name) async {
-    final user = _currentUser;
+    final user = currentUser;
     if (user == null) return [];
-    final result = await databases.listDocuments(databaseId: databaseId, collectionId: _collectionId(name), queries: [Query.equal('userId', user.$id)]);
-    return result.documents.map((document) {
-      final data = Map<String, dynamic>.from(document.data);
-      final chapters = data['chapterItems'];
-      if (chapters is String) {
-        try { data['chapterItems'] = jsonDecode(chapters); } catch (_) {}
-      }
-      return data;
-    }).toList();
+    final snapshot = await _firestore.collection('users').doc(user.uid).collection(name).get();
+    return snapshot.docs.map((doc) => {'id': doc.id, ...doc.data()}).toList();
+  }
+
+  Future<void> _writeProfile(User user, {String? username, String? bio, String? photoUrl}) async {
+    final values = <String, dynamic>{
+      'uid': user.uid,
+      'email': user.email,
+      'displayName': username ?? user.displayName,
+      'photoUrl': photoUrl ?? user.photoURL,
+      'updatedAt': FieldValue.serverTimestamp(),
+    };
+    if (bio != null) values['bio'] = bio;
+    await _firestore.collection('profiles').doc(user.uid).set(values, SetOptions(merge: true));
+  }
+
+  String _documentId(String value) => base64Url.encode(utf8.encode(value)).replaceAll('=', '').substring(0, min(80, base64Url.encode(utf8.encode(value)).replaceAll('=', '').length));
+  String _randomUrlSafe(int length) {
+    final random = Random.secure();
+    return base64Url.encode(List<int>.generate(length, (_) => random.nextInt(256))).replaceAll('=', '');
   }
 }
 
-class AppwriteAuthException implements Exception {
-  const AppwriteAuthException(this.message);
+class AuthCancelledException implements Exception {
+  const AuthCancelledException(this.message);
+  final String message;
+  @override String toString() => message;
+}
+
+class AuthConfigurationException implements Exception {
+  const AuthConfigurationException(this.message);
   final String message;
   @override String toString() => message;
 }

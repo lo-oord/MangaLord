@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:event/event.dart';
 import 'package:manga_lord/configs/app_theme.dart';
@@ -8,6 +9,7 @@ import 'services/notification_service.dart';
 import 'package:manga_lord/screens/components/router.dart';
 import 'screens/init_screen.dart';
 import 'services/auth_service.dart';
+import '../firebase_options.dart';
 
 const _accent = Color(0xFF3DDC97);
 const _darkSurface = Color(0xFF14231F);
@@ -16,6 +18,7 @@ const _darkBackground = Color(0xFF0B1714);
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MediaKit.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await AuthService.instance.initialize();
   await MangaNotificationService.instance.initialize();
   await loadAppLocale();
