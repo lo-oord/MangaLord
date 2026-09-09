@@ -567,7 +567,27 @@ class _DetailsPageState extends State<DetailsPage> {
       onRefresh: _fetch,
       child: ListView(padding: const EdgeInsets.all(20), children: [
         Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Hero(tag: manga.url, child: ClipRRect(borderRadius: BorderRadius.circular(14), child: Image.network(manga.cover, headers: _headersForManga(manga), width: 132, height: 190, fit: BoxFit.cover, filterQuality: FilterQuality.high, cacheWidth: 528, errorBuilder: (_, __, ___) => Container(width: 132, height: 190, color: deepGreen, child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 42)))),
+          Hero(
+            tag: manga.url,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(14),
+              child: Image.network(
+                manga.cover,
+                headers: _headersForManga(manga),
+                width: 132,
+                height: 190,
+                fit: BoxFit.cover,
+                filterQuality: FilterQuality.high,
+                cacheWidth: 528,
+                errorBuilder: (_, __, ___) => Container(
+                  width: 132,
+                  height: 190,
+                  color: deepGreen,
+                  child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 42),
+                ),
+              ),
+            ),
+          ),
           const SizedBox(width: 16),
           Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(manga.title, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900)),
