@@ -60,9 +60,7 @@ class AzoraSource implements MangaSource {
     final title = _text(document.querySelector('h1'));
     final description = _cleanHtml(document.querySelector('meta[name="description"]')?.attributes['content'] ?? document.querySelector('meta[property="og:description"]')?.attributes['content'] ?? '');
     // AzoraFly's og:image is a generated social preview, not the manga cover.
-    final cover = _image(document.querySelector(
-      'img[alt^="Cover of"], img[alt*="Cover"], img[alt*="غلاف"], img[src*="/featured/"], img[data-src*="/featured/"], img[data-lazy-src*="/featured/"]',
-    ));
+    final cover = _coverImage(document);
     final chapterMap = <String, TeamXChapter>{};
     for (final anchor in document.querySelectorAll('a[href*="/chapter-"]')) {
       final href = anchor.attributes['href'];
@@ -133,11 +131,14 @@ class AzoraSource implements MangaSource {
           .trim();
       if (title.isEmpty || title.length > 300) continue;
       final image = _image(imageNode ?? anchor);
+      final existing = items[uri.toString()];
+      // The same series appears as both a poster card and a text link. Keep
+      // the poster URL instead of letting the later text link overwrite it.
       items[uri.toString()] = TeamXManga(
         id: uri.toString(),
         title: title,
         url: uri.toString(),
-        cover: image,
+        cover: image.isNotEmpty ? image : (existing?.cover ?? ''),
       );
     }
     return items.values.toList();
@@ -164,6 +165,17 @@ class AzoraSource implements MangaSource {
     return text.replaceAll(RegExp(r'\s+'), ' ').trim();
   }
   String _fallbackName(Uri uri) => uri.pathSegments.last.replaceAll('-', ' ');
+  String _coverImage(dynamic document) {
+    final candidates = document.querySelectorAll('img');
+    for (final image in candidates) {
+      final alt = (image.attributes['alt'] ?? '').toLowerCase();
+      final raw = _image(image);
+      if (raw.isEmpty) continue;
+      if (raw.contains('/featured/') || raw.contains('storage.azorafly.com/upload/series/')) return raw;
+      if (alt.isNotEmpty && !alt.contains('logo') && !alt.contains('avatar')) return raw;
+    }
+    return '';
+  }
   Uri _resolve(String value) {
     final normalized = value.trim();
     if (normalized.startsWith('//')) return Uri.parse('https:$normalized');
