@@ -26,16 +26,17 @@ class _ExpandableTextState extends State<ExpandableText> {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, size) {
       final span = TextSpan(text: widget.text, style: widget.style);
+      final textDirection = Directionality.of(context);
       final tp = TextPainter(
         text: span,
         maxLines: widget.maxLines,
-        textDirection: TextDirection.ltr,
+        textDirection: textDirection,
       );
       tp.layout(maxWidth: size.maxWidth);
 
       final max = TextPainter(
         text: span,
-        textDirection: TextDirection.ltr,
+        textDirection: textDirection,
       );
       max.layout(maxWidth: size.maxWidth);
 

@@ -19,12 +19,11 @@ import '../services/anime_sources.dart';
 import '../configs/app_locale.dart';
 import '../services/auth_service.dart';
 import 'auth_screen.dart';
+import '../configs/versions.dart';
 
 const accentGreen = Color(0xFF3DDC97);
 const deepGreen = Color(0xFF113C32);
 const mutedText = Color(0xFF8FA39C);
-const appVersion = 'v0.0.22';
-
 Map<String, String> _headersForManga(Manga manga) {
   final referers = <String, String>{
     'azora_fly': 'https://azorafly.com/',
@@ -464,7 +463,7 @@ class MoreSettingsPage extends StatefulWidget {
 }
 
 class _MoreSettingsPageState extends State<MoreSettingsPage> {
-  String language = 'English';
+  Locale language = englishLocale;
   bool notifications = true;
 
   @override
@@ -476,12 +475,13 @@ class _MoreSettingsPageState extends State<MoreSettingsPage> {
   Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
     if (!mounted) return;
-    setState(() { language = prefs.getString('mangalord.language') ?? 'English'; notifications = prefs.getBool('mangalord.notifications') ?? true; appLocale.value = language == 'العربية' ? const Locale('ar') : const Locale('en'); });
+    final locale = localeFromPreference(prefs.getString(languagePreferenceKey));
+    setState(() { language = locale; notifications = prefs.getBool('mangalord.notifications') ?? true; appLocale.value = locale; });
   }
 
-  Future<void> _setLanguage(String value) async {
-    setState(() { language = value; appLocale.value = value == 'العربية' ? const Locale('ar') : const Locale('en'); });
-    await (await SharedPreferences.getInstance()).setString('mangalord.language', value);
+  Future<void> _setLanguage(Locale value) async {
+    setState(() => language = value);
+    await setAppLocale(value);
   }
 
   Future<void> _setNotifications(bool value) async {
@@ -493,7 +493,7 @@ class _MoreSettingsPageState extends State<MoreSettingsPage> {
   Widget build(BuildContext context) => Scaffold(appBar: AppBar(title: const Text('More')), body: ListView(padding: const EdgeInsets.all(20), children: [
     const Text('Language', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)),
     const SizedBox(height: 10),
-    Card(child: Column(children: [RadioListTile<String>(value: 'English', groupValue: language, title: const Text('English'), onChanged: (value) { if (value != null) _setLanguage(value); }), RadioListTile<String>(value: 'العربية', groupValue: language, title: const Text('العربية'), onChanged: (value) { if (value != null) _setLanguage(value); })])),
+    Card(child: Column(children: [RadioListTile<Locale>(value: englishLocale, groupValue: language, title: const Text('English'), onChanged: (value) { if (value != null) _setLanguage(value); }), RadioListTile<Locale>(value: arabicLocale, groupValue: language, title: const Text('العربية'), onChanged: (value) { if (value != null) _setLanguage(value); })])),
     const SizedBox(height: 22),
     const Text('Notifications', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)),
     const SizedBox(height: 10),
@@ -501,7 +501,7 @@ class _MoreSettingsPageState extends State<MoreSettingsPage> {
     const SizedBox(height: 22),
     const Text('Application', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)),
     const SizedBox(height: 10),
-    Card(child: ListTile(leading: const Icon(Icons.info_outline, color: accentGreen), title: const Text('App version'), subtitle: Text(appVersion))),
+    Card(child: ListTile(leading: const Icon(Icons.info_outline, color: accentGreen), title: const Text('App version'), subtitle: Text(currentVersion()))),
   ]));
 }
 

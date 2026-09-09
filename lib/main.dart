@@ -5,7 +5,6 @@ import 'package:manga_lord/configs/app_theme.dart';
 import 'configs/app_locale.dart';
 import 'package:manga_lord/src/rust/frb_generated.dart';
 import 'services/notification_service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:manga_lord/screens/components/router.dart';
 import 'screens/init_screen.dart';
 import 'services/auth_service.dart';
@@ -19,8 +18,7 @@ Future<void> main() async {
   MediaKit.ensureInitialized();
   await AuthService.instance.initialize();
   await MangaNotificationService.instance.initialize();
-  final prefs = await SharedPreferences.getInstance();
-  appLocale.value = (prefs.getString('mangalord.language') == 'العربية') ? const Locale('ar') : const Locale('en');
+  await loadAppLocale();
   runApp(const BootstrapApp());
 }
 
