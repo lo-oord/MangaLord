@@ -84,10 +84,23 @@ class _M3u8SnifferWebViewState extends State<M3u8SnifferWebView> {
       performance.getEntriesByType('resource').forEach((entry) => report(entry.name, {}));
     } catch (_) {}
   };
+  const activateProviderServer = () => {
+    try {
+      if (window.__mangaLordServerActivated) return;
+      const server = Array.from(document.querySelectorAll('[data-server], .server-link, .FJ-DL-Server-Btn'))
+        .find((node) => !node.classList.contains('premium-locked') && !node.disabled);
+      if (server) {
+        window.__mangaLordServerActivated = true;
+        server.click();
+      }
+    } catch (_) {}
+  };
   try {
     new PerformanceObserver(inspect).observe({ type: 'resource', buffered: true });
   } catch (_) {}
   setInterval(inspect, 500);
+  setTimeout(activateProviderServer, 300);
+  setInterval(activateProviderServer, 1500);
 })();
 ''';
 

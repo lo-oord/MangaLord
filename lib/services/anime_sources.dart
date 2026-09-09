@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:html/parser.dart' as parser;
 import 'package:html/dom.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,6 +15,21 @@ String _absolute(Uri base, String value) {
   if (value.startsWith('//')) return 'https:$value';
   final uri = Uri.tryParse(value);
   return uri?.isAbsolute == true ? value : base.resolve(value).toString();
+}
+
+String _decodeServerLink(String raw) {
+  try {
+    final padded = raw.padRight(raw.length + ((4 - raw.length % 4) % 4), '=');
+    final decoded = utf8.decode(base64.decode(padded));
+    final value = jsonDecode(Uri.decodeComponent(decoded));
+    if (value is Map) {
+      for (final key in ['link', 'url', 'src', 'file']) {
+        final link = value[key]?.toString() ?? '';
+        if (link.isNotEmpty) return link.replaceAll(r'\/', '/');
+      }
+    }
+  } catch (_) {}
+  return '';
 }
 
 bool _isDirectMedia(String value) {
@@ -69,8 +86,8 @@ abstract class _HtmlSource extends AnimeSource {
     final pages = <String>{episodeUrl};
     final servers = <String, VideoServerModel>{};
     final document = parser.parse(body);
-    for (final node in document.querySelectorAll('iframe[src], [data-video], [data-url], [data-watch], a.FJ-DL-Server-Btn[href], a[data-server-hash][href]')) {
-      final value = _attr(node, 'src').ifEmpty(_attr(node, 'data-video')).ifEmpty(_attr(node, 'data-url')).ifEmpty(_attr(node, 'data-watch')).ifEmpty(_attr(node, 'href'));
+    for (final node in document.querySelectorAll('iframe[src], [data-server], [data-video], [data-url], [data-watch], a.FJ-DL-Server-Btn[href], a[data-server-hash][href]')) {
+      final value = _decodeServerLink(_attr(node, 'data-server')).ifEmpty(_attr(node, 'src')).ifEmpty(_attr(node, 'data-video')).ifEmpty(_attr(node, 'data-url')).ifEmpty(_attr(node, 'data-watch')).ifEmpty(_attr(node, 'href'));
       final resolved = _absolute(baseUrl, value);
       if (resolved.isEmpty) continue;
       if (_isDirectMedia(resolved)) {
