@@ -37,11 +37,14 @@ bool _isDirectMedia(String value) {
   return lower.contains('.m3u8') || lower.contains('.mp4');
 }
 String _image(Element node, Uri base) {
-  final image = node.querySelector('img');
+  final image = node.localName == 'img' ? node : node.querySelector('img') ?? node.parent?.querySelector('img');
   final style = node.querySelector('.poster, [data-style]');
   final rawStyle = _attr(style, 'data-style') + _attr(style, 'style');
   final match = RegExp(r'''url\((?:["']?)([^)"']+)''').firstMatch(rawStyle);
-  return _absolute(base, match?.group(1) ?? _attr(image, 'data-src').ifEmpty(_attr(image, 'src')));
+  final srcset = _attr(image, 'data-srcset').ifEmpty(_attr(image, 'srcset'));
+  final firstSrcset = srcset.split(',').first.trim().split(RegExp(r'\s+')).first;
+  final raw = match?.group(1) ?? _attr(image, 'data-src').ifEmpty(_attr(image, 'data-lazy-src')).ifEmpty(_attr(image, 'data-original')).ifEmpty(firstSrcset).ifEmpty(_attr(image, 'src'));
+  return _absolute(base, raw);
 }
 extension on String { String ifEmpty(String fallback) => isEmpty ? fallback : this; }
 String _episodeNumber(String value) => RegExp(r'(?:episode|ep|الحلقة)[^\d]*(\d+(?:\.\d+)?)', caseSensitive: false).firstMatch(value)?.group(1) ?? RegExp(r'\d+(?:\.\d+)?').firstMatch(value)?.group(0) ?? '';
@@ -64,13 +67,16 @@ abstract class _HtmlSource extends AnimeSource {
   }
   @override Future<AnimeModel> getAnimeDetails(String animeUrl) async {
     final doc = parser.parse(await getHtml(animeUrl));
-    final episodes = <EpisodeModel>[];
+    // Several selectors can match the same anchor. Keep the first complete
+    // episode per source URL without changing the URL or scraper behavior.
+    final episodesByUrl = <String, EpisodeModel>{};
     for (final node in doc.querySelectorAll('a[href*="episode"], a[href*="episodes/"], a[href*="الحلقة"], .episodes a, .EpisodesList a, .Episode a, a[href*="/watch/"]')) {
       final anchor = node.localName == 'a' ? node : node.querySelector('a');
       final url = _absolute(baseUrl, _attr(anchor, 'href'));
       final title = _cleanTitle(_text(anchor).ifEmpty(_attr(anchor, 'title')));
-      if (url.isNotEmpty) episodes.add(EpisodeModel(id: _id(sourceKey, url), title: title, url: url, number: _episodeNumber(title), sourceKey: sourceKey, thumbnail: _image(node, baseUrl)));
+      if (url.isNotEmpty) episodesByUrl.putIfAbsent(url, () => EpisodeModel(id: _id(sourceKey, url), title: title, url: url, number: _episodeNumber(title), sourceKey: sourceKey, thumbnail: _image(node, baseUrl)));
     }
+    final episodes = episodesByUrl.values.toList();
     final title = _text(doc.querySelector('h1, .anime-title, .FJ-Phoenix-Anastasia-Title, title')).ifEmpty(_attr(doc.querySelector('meta[property="og:title"]'), 'content'));
     final cover = _attr(doc.querySelector('meta[property="og:image"]'), 'content').ifEmpty(_attr(doc.querySelector('img[alt], .poster img, .FJ-Phoenix-Anastasia-Hero-Img'), 'src')).ifEmpty(_image(doc.querySelector('main, body') ?? doc.documentElement!, baseUrl));
     final description = _attr(doc.querySelector('meta[name="description"]'), 'content').ifEmpty(_text(doc.querySelector('.description, .summary, .story-description')));

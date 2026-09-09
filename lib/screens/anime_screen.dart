@@ -155,9 +155,13 @@ class _AnimeCard extends StatelessWidget {
                 top: 6,
                 right: 6,
                 child: Container(
-                  padding: const EdgeInsets.all(3),
+                  padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
                   decoration: BoxDecoration(color: Colors.black.withOpacity(.72), borderRadius: BorderRadius.circular(6)),
-                  child: Image.network(source.sourceLogo, width: 18, height: 18, errorBuilder: (_, __, ___) => const Icon(Icons.public, size: 18, color: Colors.white)),
+                  child: Row(mainAxisSize: MainAxisSize.min, children: [
+                    Image.network(source.sourceLogo, width: 18, height: 18, errorBuilder: (_, __, ___) => const Icon(Icons.public, size: 18, color: Colors.white)),
+                    const SizedBox(width: 4),
+                    Text(source.sourceName == 'Anime Phoenix' ? 'Phoenix' : source.sourceName, style: const TextStyle(color: Colors.white, fontSize: 9, fontWeight: FontWeight.w700)),
+                  ]),
                 ),
               ),
             ]),
