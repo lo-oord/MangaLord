@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../services/team_x_source.dart';
 import '../services/azora_source.dart';
@@ -17,6 +18,7 @@ import 'anime_screen.dart';
 import '../services/anime_source.dart';
 import '../services/anime_sources.dart';
 import '../configs/app_locale.dart';
+import '../configs/privacy_policy.dart';
 import '../services/auth_service.dart';
 import 'auth_screen.dart';
 import '../configs/versions.dart';
@@ -509,6 +511,7 @@ class _MoreSettingsPageState extends State<MoreSettingsPage> {
     const Text('Application', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)),
     const SizedBox(height: 10),
     Card(child: ListTile(leading: const Icon(Icons.info_outline, color: accentGreen), title: const Text('App version'), subtitle: Text(currentVersion()))),
+    Card(child: ListTile(leading: const Icon(Icons.privacy_tip_outlined, color: accentGreen), title: const Text('Privacy Policy'), subtitle: const Text('How MangaLord handles your information'), onTap: () => launchUrl(Uri.parse(privacyPolicyUrl), mode: LaunchMode.externalApplication))),
     const SizedBox(height: 22),
     const Text('Developer', style: TextStyle(color: mutedText, fontSize: 12, fontWeight: FontWeight.w700)),
     const SizedBox(height: 10),
