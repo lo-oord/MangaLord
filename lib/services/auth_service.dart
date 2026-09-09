@@ -37,7 +37,11 @@ class AuthService {
     );
     final user = response.user;
     if (user == null) throw const AuthConfigurationException('Supabase did not return a user.');
-    await _writeProfile(user, displayName: username.trim());
+    // With email confirmation enabled Supabase returns a user without a session.
+    // RLS correctly prevents writing profiles until the user signs in.
+    if (response.session != null) {
+      await _writeProfile(user, displayName: username.trim());
+    }
     return user;
   }
 

@@ -31,6 +31,8 @@ create policy "users manage own profile" on public.profiles for all using (auth.
 create policy "users manage own favorites" on public.favorites for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 create policy "users manage own history" on public.history for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
 
+insert into storage.buckets (id, name, public) values ('profile-images', 'profile-images', true) on conflict (id) do update set public = excluded.public;
+
 -- The app uploads to profile-images/{auth.uid()}/..., and must never access another user's objects.
 create policy "users read own profile images" on storage.objects for select to authenticated
   using (bucket_id = 'profile-images' and (storage.foldername(name))[1] = (select auth.uid()::text));
