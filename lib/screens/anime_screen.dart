@@ -211,11 +211,15 @@ class _RelatedAnime extends StatelessWidget {
                 separatorBuilder: (_, __) => const SizedBox(width: 10),
                 itemBuilder: (_, index) {
                   final item = items[index];
-                  return SizedBox(width: 108, child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Expanded(child: ClipRRect(borderRadius: BorderRadius.circular(10), child: item.cover.isEmpty ? const _CoverFallback() : Image.network(item.cover, width: 108, fit: BoxFit.cover, errorBuilder: (_, __, ___) => const _CoverFallback()))),
-                    const SizedBox(height: 6),
-                    Text(_displayAnimeTitle(item.title), maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700)),
-                  ]));
+                  return SizedBox(width: 108, child: InkWell(
+                    borderRadius: BorderRadius.circular(10),
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AnimeDetailsScreen(item: item))),
+                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                      Expanded(child: ClipRRect(borderRadius: BorderRadius.circular(10), child: item.cover.isEmpty ? const _CoverFallback() : Image.network(item.cover, width: 108, fit: BoxFit.cover, errorBuilder: (_, __, ___) => const _CoverFallback()))),
+                      const SizedBox(height: 6),
+                      Text(_displayAnimeTitle(item.title), maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w700)),
+                    ]),
+                  ));
                 },
               ),
             ),
@@ -306,13 +310,21 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
           return ListView(
             padding: const EdgeInsets.all(16),
             children: [
-              if (item.cover.isNotEmpty) ClipRRect(borderRadius: BorderRadius.circular(16), child: Image.network(item.cover, height: 260, fit: BoxFit.cover, errorBuilder: (_, __, ___) => const SizedBox(height: 260, child: _CoverFallback()))),
-              const SizedBox(height: 16),
-              Text(_displayAnimeTitle(item.title), style: Theme.of(context).textTheme.headlineSmall),
-              if (item.description.isNotEmpty) Padding(padding: const EdgeInsets.symmetric(vertical: 12), child: Text(item.description)),
+              Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                ClipRRect(borderRadius: BorderRadius.circular(14), child: item.cover.isEmpty ? const SizedBox(width: 122, height: 176, child: _CoverFallback()) : Image.network(item.cover, width: 122, height: 176, fit: BoxFit.cover, errorBuilder: (_, __, ___) => const SizedBox(width: 122, height: 176, child: _CoverFallback()))),
+                const SizedBox(width: 16),
+                Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text(_displayAnimeTitle(item.title), style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900)),
+                  const SizedBox(height: 10),
+                  Row(children: [Image.network(animeSourceByKey(item.sourceKey).sourceLogo, width: 22, height: 22, errorBuilder: (_, __, ___) => const Icon(Icons.public, size: 22, color: Colors.white54)), const SizedBox(width: 8), Flexible(child: Text(item.sourceName, style: TextStyle(color: Theme.of(context).colorScheme.secondary, fontWeight: FontWeight.w700)))]),
+                  if (item.description.isNotEmpty) ...[const SizedBox(height: 12), Text(item.description, maxLines: 6, overflow: TextOverflow.ellipsis, style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant, height: 1.4))],
+                ])),
+              ]),
+              if (item.description.isEmpty) const SizedBox.shrink(),
               _RelatedAnime(future: relatedFuture),
-              Text('${item.episodes.length} episodes', style: const TextStyle(fontWeight: FontWeight.bold)),
-              const SizedBox(height: 8),
+              const SizedBox(height: 22),
+              Row(children: [Icon(Icons.play_circle_outline, color: Theme.of(context).colorScheme.secondary), const SizedBox(width: 8), Text('${item.episodes.length} episodes', style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.secondary))]),
+              const SizedBox(height: 10),
               ..._displayEpisodes(item.episodes).map((episode) => ListTile(
                     leading: const Icon(Icons.play_circle_outline),
                     title: Text(_displayEpisode(episode)),

@@ -566,21 +566,24 @@ class _DetailsPageState extends State<DetailsPage> {
     body: RefreshIndicator(
       onRefresh: _fetch,
       child: ListView(padding: const EdgeInsets.all(20), children: [
-        Center(child: Hero(tag: manga.url, child: ClipRRect(
-          borderRadius: BorderRadius.circular(18),
-          child: Image.network(manga.cover, headers: _headersForManga(manga), width: 220, height: 310, fit: BoxFit.contain, filterQuality: FilterQuality.high, cacheWidth: 880, errorBuilder: (_, __, ___) => Container(width: 220, height: 310, color: deepGreen, child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 48))),
-        ))),
-        const SizedBox(height: 12),
-        OutlinedButton.icon(onPressed: manga.chapterItems.isEmpty ? null : () => _downloadAll(), icon: const Icon(Icons.download_rounded), label: const Text('Download all')),
-        const SizedBox(height: 18),
-        Text(manga.title, textAlign: TextAlign.center, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w900)),
-        if (manga.author.isNotEmpty) ...[const SizedBox(height: 7), Text('by ${manga.author}', textAlign: TextAlign.center, style: const TextStyle(color: mutedText))],
+        Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Hero(tag: manga.url, child: ClipRRect(borderRadius: BorderRadius.circular(14), child: Image.network(manga.cover, headers: _headersForManga(manga), width: 132, height: 190, fit: BoxFit.cover, filterQuality: FilterQuality.high, cacheWidth: 528, errorBuilder: (_, __, ___) => Container(width: 132, height: 190, color: deepGreen, child: const Icon(Icons.menu_book_rounded, color: accentGreen, size: 42)))),
+          const SizedBox(width: 16),
+          Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(manga.title, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900)),
+            const SizedBox(height: 10),
+            Row(children: [Image.network(manga.sourceLogo, width: 22, height: 22, errorBuilder: (_, __, ___) => const Icon(Icons.public, color: mutedText, size: 22)), const SizedBox(width: 8), Flexible(child: Text(manga.sourceName, style: const TextStyle(color: accentGreen, fontWeight: FontWeight.w700)))]),
+            if (manga.author.isNotEmpty) ...[const SizedBox(height: 10), Text('by ${manga.author}', style: const TextStyle(color: mutedText))],
+            const SizedBox(height: 16),
+            OutlinedButton.icon(onPressed: manga.chapterItems.isEmpty ? null : () => _downloadAll(), icon: const Icon(Icons.download_rounded), label: const Text('Download all')),
+          ])),
+        ]),
         const SizedBox(height: 18),
         const Text('Synopsis', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
         const SizedBox(height: 8),
         Text(manga.description.isEmpty ? 'No description available.' : manga.description, style: const TextStyle(color: mutedText, height: 1.6)),
         const SizedBox(height: 20),
-        Text('${manga.chapters} chapters', style: const TextStyle(color: accentGreen, fontWeight: FontWeight.w700)),
+        Row(children: [const Icon(Icons.menu_book_outlined, color: accentGreen), const SizedBox(width: 8), Text('${manga.chapters} chapters', style: const TextStyle(color: accentGreen, fontWeight: FontWeight.w700))]),
         const SizedBox(height: 24),
         if (loading) const Center(child: CircularProgressIndicator(color: accentGreen))
         else if (error != null) StateCard(icon: Icons.error_outline, title: 'Could not load chapters', message: error!)
