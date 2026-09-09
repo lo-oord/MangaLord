@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -106,9 +107,9 @@ class _M3u8SnifferWebViewState extends State<M3u8SnifferWebView> {
           url: WebUri(widget.iframeUrl),
           headers: {'Referer': widget.refererUrl, 'User-Agent': _desktopUserAgent},
         ),
-        initialUserScripts: [
+        initialUserScripts: UnmodifiableListView<UserScript>([
           UserScript(source: _snifferScript, injectionTime: UserScriptInjectionTime.AT_DOCUMENT_START),
-        ],
+        ]),
         onWebViewCreated: (controller) {
           widget.onWebViewCreated?.call(controller);
           controller.addJavaScriptHandler(
