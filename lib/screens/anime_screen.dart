@@ -277,7 +277,7 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
       ..sort((a, b) => (double.tryParse(_episodeNumber(a) ?? '') ?? 0).compareTo(double.tryParse(_episodeNumber(b) ?? '') ?? 0));
     for (final episode in unnumbered.values) {
       final number = '${result.length + 1}';
-      result.add(EpisodeModel(id: episode.id, title: 'الحلقة $number', url: episode.url, number: number, thumbnail: episode.thumbnail, sourceKey: episode.sourceKey));
+      result.add(EpisodeModel(id: episode.id, title: episode.title, url: episode.url, number: number, thumbnail: episode.thumbnail, sourceKey: episode.sourceKey));
     }
     return result;
   }
@@ -294,7 +294,7 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
 
   String _displayEpisode(EpisodeModel episode) {
     final number = _episodeNumber(episode);
-    return number == null ? episode.title.trim() : 'الحلقة $number';
+    return number == null ? episode.title.trim() : 'Episode $number';
   }
 
   @override
@@ -323,7 +323,7 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
               if (item.description.isEmpty) const SizedBox.shrink(),
               _RelatedAnime(future: relatedFuture),
               const SizedBox(height: 22),
-              Row(children: [Icon(Icons.play_circle_outline, color: Theme.of(context).colorScheme.secondary), const SizedBox(width: 8), Text('${item.episodes.length} episodes', style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.secondary))]),
+              Row(children: [Icon(Icons.play_circle_outline, color: Theme.of(context).colorScheme.secondary), const SizedBox(width: 8), Text('${_displayEpisodes(item.episodes).length} episodes', style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.secondary))]),
               const SizedBox(height: 10),
               ..._displayEpisodes(item.episodes).map((episode) => ListTile(
                     leading: const Icon(Icons.play_circle_outline),

@@ -90,7 +90,7 @@ class TeamXSource implements MangaSource {
       pendingPages.addAll(_chapterPageUrls(pageDocument, uri).where((next) => !visitedPages.contains(next)));
     }
     final chapters = allChapters.values.toList()
-      ..sort((a, b) => b.numberValue.compareTo(a.numberValue));
+      ..sort((a, b) => a.numberValue.compareTo(b.numberValue));
 
     return TeamXManga(
       id: uri.toString(),

@@ -78,7 +78,7 @@ class AzoraSource implements MangaSource {
       );
     }
     final chapters = chapterMap.values.toList()
-      ..sort((a, b) => b.numberValue.compareTo(a.numberValue));
+      ..sort((a, b) => a.numberValue.compareTo(b.numberValue));
     return TeamXManga(
       id: uri.toString(),
       title: title.isEmpty ? _fallbackName(uri) : title,
