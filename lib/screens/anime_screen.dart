@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../services/anime_models.dart';
-import '../services/anime_source.dart';
 import '../services/anime_sources.dart';
 import 'anime_player_screen.dart';
 
@@ -166,55 +165,14 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
                     leading: const Icon(Icons.play_circle_outline),
                     title: Text(episode.title),
                     subtitle: Text(episode.number.isEmpty ? '' : 'Episode ${episode.number}'),
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => EpisodeServersScreen(source: animeSourceByKey(item.sourceKey), episode: episode))),
-                  )),
-            ],
-          );
-        },
-      ),
-    );
-  }
-}
-
-class EpisodeServersScreen extends StatefulWidget {
-  const EpisodeServersScreen({required this.source, required this.episode, super.key});
-  final AnimeSource source;
-  final EpisodeModel episode;
-  @override State<EpisodeServersScreen> createState() => _EpisodeServersScreenState();
-}
-
-class _EpisodeServersScreenState extends State<EpisodeServersScreen> {
-  late Future<List<VideoServerModel>> future;
-  @override void initState() { super.initState(); future = widget.source.getVideoExtractors(widget.episode.url); }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(widget.episode.title)),
-      body: FutureBuilder<List<VideoServerModel>>(
-        future: future,
-        builder: (_, snapshot) {
-          if (snapshot.connectionState != ConnectionState.done) return const Center(child: CircularProgressIndicator());
-          if (snapshot.hasError) return Center(child: Text('Unable to extract video: ${snapshot.error}'));
-          final servers = snapshot.data ?? [];
-          if (servers.isEmpty) return const Center(child: Text('No playable video server found'));
-          return ListView(
-            padding: const EdgeInsets.all(16),
-            children: [
-              const Text('Choose a server', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              ...servers.map((server) => ListTile(
-                    title: Text(server.name),
-                    subtitle: Text(server.quality.isEmpty ? server.type : server.quality),
-                    trailing: const Icon(Icons.play_arrow),
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (_) => AnimePlayerScreen(
-                          iframeUrl: server.url,
-                          refererUrl: widget.episode.url,
-                          episodeId: widget.episode.id,
-                          episodeTitle: widget.episode.title,
-                          headers: server.headers,
+                          iframeUrl: episode.url,
+                          refererUrl: item.url,
+                          episodeId: episode.id,
+                          episodeTitle: episode.title,
                         ),
                       ),
                     ),

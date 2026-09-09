@@ -68,6 +68,16 @@ class _M3u8SnifferWebViewState extends State<M3u8SnifferWebView> {
     try { report(this.__mangaLordUrl, {}); } catch (_) {}
     return originalSend.apply(this, arguments);
   };
+  const inspect = () => {
+    try {
+      document.querySelectorAll('video, source').forEach((node) => report(node.src || node.currentSrc || node.getAttribute('src'), {}));
+      performance.getEntriesByType('resource').forEach((entry) => report(entry.name, {}));
+    } catch (_) {}
+  };
+  try {
+    new PerformanceObserver(inspect).observe({ type: 'resource', buffered: true });
+  } catch (_) {}
+  setInterval(inspect, 500);
 })();
 ''';
 
@@ -119,9 +129,9 @@ class _M3u8SnifferWebViewState extends State<M3u8SnifferWebView> {
         },
         onCreateWindow: (controller, createWindowAction) async => false,
         shouldOverrideUrlLoading: (controller, navigationAction) async {
-          final target = navigationAction.request.url?.toString() ?? '';
-          final current = widget.iframeUrl;
-          if (target.isNotEmpty && !target.startsWith(current)) return NavigationActionPolicy.CANCEL;
+          // Provider players commonly redirect through several hosts before
+          // creating the media element. Allow those redirects in the hidden
+          // resolver while pop-up windows remain blocked above.
           return NavigationActionPolicy.ALLOW;
         },
         onLoadStop: (controller, url) async {

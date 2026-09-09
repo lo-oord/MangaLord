@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import 'm3u8_sniffer_web_view.dart';
 import 'native_media_kit_player.dart';
 
-/// Coordinates provider sniffing, native playback, and the WebView fallback.
+/// Resolves the episode in a hidden WebView and plays the captured stream
+/// exclusively with the native media_kit player.
 class AnimePlayerScreen extends StatefulWidget {
   const AnimePlayerScreen({
     this.iframeUrl,
@@ -22,7 +22,7 @@ class AnimePlayerScreen extends StatefulWidget {
   final String? episodeId;
   final String episodeTitle;
 
-  /// Backwards-compatible direct stream API used by older callers.
+  /// Backwards-compatible direct stream API.
   final String? url;
   final Map<String, String> headers;
   final String? title;
@@ -33,9 +33,8 @@ class AnimePlayerScreen extends StatefulWidget {
 
 class _AnimePlayerScreenState extends State<AnimePlayerScreen> {
   String? _videoUrl;
-  Map<String, String> _headers = const {};
-  bool _failed = false;
-  bool _openWebView = false;
+  Map<String, String> _capturedHeaders = const {};
+  String? _error;
   int _attempt = 0;
 
   String get _sourceUrl => widget.iframeUrl ?? widget.url!;
@@ -52,106 +51,93 @@ class _AnimePlayerScreenState extends State<AnimePlayerScreen> {
     super.initState();
     if (_isDirectStream) {
       _videoUrl = _sourceUrl;
-      _headers = widget.headers;
+      _capturedHeaders = widget.headers;
     }
   }
 
-  void _captured(String url, Map<String, String> headers) {
+  void _onCaptured(String url, Map<String, String> headers) {
     if (!mounted) return;
     setState(() {
       _videoUrl = url;
-      _headers = headers;
-      _failed = false;
+      _capturedHeaders = headers;
+      _error = null;
     });
   }
 
   void _retry() => setState(() {
         _attempt++;
-        _failed = false;
-        _openWebView = false;
         _videoUrl = null;
+        _error = null;
       });
 
   @override
   Widget build(BuildContext context) {
-    if (_videoUrl != null) {
+    final videoUrl = _videoUrl;
+    if (videoUrl != null) {
       return NativeMediaKitPlayer(
-        key: ValueKey(_videoUrl),
-        url: _videoUrl!,
-        headers: {...widget.headers, ..._headers},
+        key: ValueKey(videoUrl),
+        url: videoUrl,
+        headers: {...widget.headers, ..._capturedHeaders},
         episodeId: _episodeId,
         episodeTitle: _title,
       );
     }
-    if (_openWebView) return _directWebView();
+
     return Scaffold(
-      backgroundColor: const Color(0xff101014),
-      appBar: AppBar(title: Text(_title), backgroundColor: Colors.transparent),
+      backgroundColor: Colors.black,
+      appBar: AppBar(title: Text(_title), backgroundColor: Colors.black),
       body: Stack(
         children: [
-          M3u8SnifferWebView(
-            key: ValueKey(_attempt),
-            iframeUrl: _sourceUrl,
-            refererUrl: widget.refererUrl,
-            onUrlCaptured: _captured,
-            onSniffingFailed: () => mounted ? setState(() => _failed = true) : null,
+          // This WebView is deliberately hidden behind the native loading UI.
+          // It is only a resolver, never a surface for watching the website.
+          SizedBox(
+            width: 1,
+            height: 1,
+            child: Opacity(
+              opacity: 0,
+              child: M3u8SnifferWebView(
+              key: ValueKey(_attempt),
+              iframeUrl: _sourceUrl,
+              refererUrl: widget.refererUrl,
+              onUrlCaptured: _onCaptured,
+              onSniffingFailed: () {
+                if (mounted) setState(() => _error = 'تعذر استخراج رابط الفيديو');
+              },
+            ),
+            ),
           ),
-          if (!_failed) const _LoadingOverlay(),
-          if (_failed) _ErrorOverlay(onRetry: _retry, onWebView: () => setState(() => _openWebView = true)),
+          Center(
+            child: _error == null
+                ? const Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CircularProgressIndicator(color: Colors.white),
+                      SizedBox(height: 18),
+                      Text('جاري تجهيز الحلقة...', style: TextStyle(color: Colors.white70)),
+                    ],
+                  )
+                : _ErrorView(onRetry: _retry),
+          ),
         ],
       ),
     );
   }
-
-  Widget _directWebView() => Scaffold(
-        appBar: AppBar(
-          title: Text(_title),
-          actions: [IconButton(onPressed: _retry, icon: const Icon(Icons.refresh))],
-        ),
-        body: InAppWebView(
-          initialUrlRequest: URLRequest(url: WebUri(_sourceUrl), headers: {'Referer': widget.refererUrl}),
-          onCreateWindow: (controller, action) async => false,
-          shouldOverrideUrlLoading: (controller, action) async => NavigationActionPolicy.ALLOW,
-        ),
-      );
 }
 
-class _LoadingOverlay extends StatelessWidget {
-  const _LoadingOverlay();
-
-  @override
-  Widget build(BuildContext context) => IgnorePointer(
-        child: Container(
-          color: const Color(0xff101014).withOpacity(.92),
-          child: const Center(
-            child: Column(mainAxisSize: MainAxisSize.min, children: [CircularProgressIndicator(), SizedBox(height: 18), Text('جاري تجهيز الفيديو...', style: TextStyle(color: Colors.white70))]),
-          ),
-        ),
-      );
-}
-
-class _ErrorOverlay extends StatelessWidget {
-  const _ErrorOverlay({required this.onRetry, required this.onWebView});
+class _ErrorView extends StatelessWidget {
+  const _ErrorView({required this.onRetry});
 
   final VoidCallback onRetry;
-  final VoidCallback onWebView;
 
   @override
-  Widget build(BuildContext context) => Container(
-        color: const Color(0xff101014),
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.cloud_off, color: Colors.white54, size: 52),
-            const SizedBox(height: 16),
-            const Text('تعذر التقاط رابط الفيديو', style: TextStyle(color: Colors.white, fontSize: 18)),
-            const SizedBox(height: 24),
-            FilledButton.icon(onPressed: onRetry, icon: const Icon(Icons.refresh), label: const Text('Retry Sniffing')),
-            const SizedBox(height: 10),
-            OutlinedButton.icon(onPressed: onWebView, icon: const Icon(Icons.open_in_browser), label: const Text('Open in Web View Mode')),
-          ],
-        ),
+  Widget build(BuildContext context) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.error_outline, color: Colors.white54, size: 52),
+          const SizedBox(height: 14),
+          const Text('تعذر تجهيز الفيديو', style: TextStyle(color: Colors.white, fontSize: 18)),
+          const SizedBox(height: 20),
+          FilledButton.icon(onPressed: onRetry, icon: const Icon(Icons.refresh), label: const Text('إعادة المحاولة')),
+        ],
       );
 }
