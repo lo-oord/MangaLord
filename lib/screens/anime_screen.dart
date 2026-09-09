@@ -206,7 +206,18 @@ class _EpisodeServersScreenState extends State<EpisodeServersScreen> {
                     title: Text(server.name),
                     subtitle: Text(server.quality.isEmpty ? server.type : server.quality),
                     trailing: const Icon(Icons.play_arrow),
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => AnimePlayerScreen(url: server.url, headers: server.headers, title: widget.episode.title))),
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => AnimePlayerScreen(
+                          iframeUrl: server.url,
+                          refererUrl: widget.episode.url,
+                          episodeId: widget.episode.id,
+                          episodeTitle: widget.episode.title,
+                          headers: server.headers,
+                        ),
+                      ),
+                    ),
                   )),
             ],
           );
