@@ -39,8 +39,8 @@ class _M3u8SnifferWebViewState extends State<M3u8SnifferWebView> {
   if (window.__mangaLordSnifferInstalled) return;
   window.__mangaLordSnifferInstalled = true;
   const looksPlayable = (url) => /\\.(m3u8|mp4)(?:[?#]|\$)|master\\.m3u8/i.test(String(url || ''));
-  const report = (url, headers) => {
-    if (!looksPlayable(url)) return;
+  const report = (url, headers, force) => {
+    if (!url || (!force && !looksPlayable(url))) return;
     window.flutter_inappwebview.callHandler('mangaLordMediaCaptured', {
       url: String(url),
       headers: headers || {}
@@ -54,7 +54,12 @@ class _M3u8SnifferWebViewState extends State<M3u8SnifferWebView> {
       report(url, headers);
     } catch (_) {}
     return originalFetch.apply(this, arguments).then(function(response) {
-      try { report(response.url, {}); } catch (_) {}
+      try {
+        report(response.url, {});
+        response.clone().text().then(function(text) {
+          if (text.trim().indexOf('#EXTM3U') === 0) report(response.url, {}, true);
+        }).catch(function() {});
+      } catch (_) {}
       return response;
     });
   };
@@ -62,6 +67,11 @@ class _M3u8SnifferWebViewState extends State<M3u8SnifferWebView> {
   const originalSend = XMLHttpRequest.prototype.send;
   XMLHttpRequest.prototype.open = function(method, url) {
     this.__mangaLordUrl = url;
+    this.addEventListener('load', function() {
+      try {
+        if (String(this.responseText || '').trim().indexOf('#EXTM3U') === 0) report(this.__mangaLordUrl, {}, true);
+      } catch (_) {}
+    });
     return originalOpen.apply(this, arguments);
   };
   XMLHttpRequest.prototype.send = function() {
@@ -70,7 +80,7 @@ class _M3u8SnifferWebViewState extends State<M3u8SnifferWebView> {
   };
   const inspect = () => {
     try {
-      document.querySelectorAll('video, source').forEach((node) => report(node.src || node.currentSrc || node.getAttribute('src'), {}));
+      document.querySelectorAll('video, source').forEach((node) => report(node.src || node.currentSrc || node.getAttribute('src'), {}, true));
       performance.getEntriesByType('resource').forEach((entry) => report(entry.name, {}));
     } catch (_) {}
   };
@@ -118,7 +128,7 @@ class _M3u8SnifferWebViewState extends State<M3u8SnifferWebView> {
           headers: {'Referer': widget.refererUrl, 'User-Agent': _desktopUserAgent},
         ),
         initialUserScripts: UnmodifiableListView<UserScript>([
-          UserScript(source: _snifferScript, injectionTime: UserScriptInjectionTime.AT_DOCUMENT_START),
+          UserScript(source: _snifferScript, injectionTime: UserScriptInjectionTime.AT_DOCUMENT_START, forMainFrameOnly: false),
         ]),
         onWebViewCreated: (controller) {
           widget.onWebViewCreated?.call(controller);

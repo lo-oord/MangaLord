@@ -170,7 +170,7 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
                       MaterialPageRoute(
                         builder: (_) => AnimePlayerScreen(
                           iframeUrl: episode.url,
-                          refererUrl: item.url,
+                          refererUrl: episode.url,
                           episodeId: episode.id,
                           episodeTitle: episode.title,
                         ),
