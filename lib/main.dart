@@ -18,8 +18,15 @@ const _darkBackground = Color(0xFF0B1714);
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MediaKit.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await AuthService.instance.initialize();
+  try {
+    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+    await AuthService.instance.initialize();
+  } catch (error, stackTrace) {
+    // The content browser remains usable in guest mode when a release build was
+    // produced without Firebase dart-defines. Auth screens will show a clear
+    // configuration error instead of leaving the app on a blank screen.
+    debugPrint('Firebase initialization skipped: $error\n$stackTrace');
+  }
   await MangaNotificationService.instance.initialize();
   await loadAppLocale();
   runApp(const BootstrapApp());
