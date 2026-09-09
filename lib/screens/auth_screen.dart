@@ -66,23 +66,33 @@ class _AccountScreenState extends State<AccountScreen> {
   @override Widget build(BuildContext context) { final user = AuthService.instance.currentUser; if (busy) return const Scaffold(body: Center(child: CircularProgressIndicator())); return Scaffold(appBar: AppBar(title: const Text('Profile')), body: ListView(padding: const EdgeInsets.all(20), children: [Center(child: InkWell(onTap: _changePhoto, borderRadius: BorderRadius.circular(60), child: CircleAvatar(radius: 48, backgroundColor: authSurface, backgroundImage: (_profileImageUrl(user) == null ? const AssetImage('lib/assets/default_user_avatar.jpg') : NetworkImage(_profileImageUrl(user)!)) as ImageProvider<Object>, child: null))), const SizedBox(height: 7), const Center(child: Text('Change Profile Picture', style: TextStyle(color: authAccent))), const SizedBox(height: 12), Center(child: Text(data['displayName'] as String? ?? _displayName(user), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w800))), const SizedBox(height: 24), ListTile(title: const Text('Email'), subtitle: Text(user?.email ?? '')), ListTile(title: const Text('User ID'), subtitle: Text(user?.id ?? ''), trailing: IconButton(icon: const Icon(Icons.copy), onPressed: () => Clipboard.setData(ClipboardData(text: user?.id ?? '')))), ListTile(title: const Text('About Me'), subtitle: Text(data['bio'] as String? ?? 'No bio yet'), trailing: IconButton(icon: const Icon(Icons.edit), onPressed: () => _edit('bio', 'Edit Bio', data['bio'] as String? ?? ''))), ListTile(title: const Text('Username'), subtitle: Text(data['displayName'] as String? ?? ''), trailing: IconButton(icon: const Icon(Icons.edit), onPressed: () => _edit('username', 'Edit Username', data['displayName'] as String? ?? ''))), const SizedBox(height: 18), OutlinedButton.icon(onPressed: () async { await AuthService.instance.signOut(); if (mounted) Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_) => const LoginScreen()), (_) => false); }, icon: const Icon(Icons.logout), label: const Text('Sign Out'))])); } }
 
  class ErrorText extends StatelessWidget { const ErrorText(this.text, {super.key}); final String text; @override Widget build(BuildContext context) => Padding(padding: const EdgeInsets.only(bottom: 10), child: Text(text, textAlign: TextAlign.center, style: const TextStyle(color: Colors.redAccent))); }
-String _authError(Object error) {
-  if (error is AuthConfigurationException) return error.message;
-  if (error is PostgrestException) return error.message;
+String _authError(Object error) => authErrorMessage(error);
+
+String authErrorMessage(Object error) {
+  if (error is AuthConfigurationException) {
+    return error.message.contains('Google')
+        ? error.message
+        : 'Sign-in is currently unavailable. Please try again later.';
+  }
+  if (error is PostgrestException) return 'Could not save your account information. Please try again.';
   if (error is AuthException) {
     switch (error.code) {
       case 'user_already_exists':
       case 'email_exists':
-        return 'This email is already registered.';
+        return 'This email is already registered. Try signing in instead.';
       case 'invalid_credentials':
+      case 'invalid_login_credentials':
         return 'Invalid email or password.';
       case 'network_error':
-        return 'Network error. Please try again.';
+      case 'unexpected_failure':
+        return 'Unable to connect. Please check your internet connection and try again.';
       case 'email_not_confirmed':
         return 'Please verify your email before signing in.';
+      case 'session_not_found':
+        return 'Your session has expired. Please sign in again.';
       default:
-        return error.message;
+        return 'Something went wrong. Please try again later.';
     }
   }
-  return 'Could not complete the request. Please check your connection and try again.';
+  return 'Something went wrong. Please try again later.';
 }

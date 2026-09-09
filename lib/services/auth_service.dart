@@ -54,11 +54,21 @@ class AuthService {
   }
 
   Future<void> signInWithGoogle() async {
-    await _supabase.auth.signInWithOAuth(
+    final sessionReady = _supabase.auth.onAuthStateChange
+        .firstWhere((state) => state.session != null)
+        .timeout(const Duration(minutes: 2));
+    final launched = await _supabase.auth.signInWithOAuth(
       OAuthProvider.google,
       redirectTo: oauthRedirectUri,
       authScreenLaunchMode: LaunchMode.externalApplication,
     );
+    if (!launched) {
+      throw const AuthConfigurationException('Google sign-in could not be started.');
+    }
+    if (currentUser == null) await sessionReady;
+    final user = currentUser;
+    if (user == null) throw const AuthConfigurationException('Google sign-in did not create a session.');
+    await _writeProfile(user);
   }
 
   Future<void> sendReset(String email) async {
