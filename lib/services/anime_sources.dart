@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:html/parser.dart' as parser;
 import 'package:html/dom.dart';
+import 'package:html/parser.dart' as parser;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'anime_models.dart';
@@ -16,7 +16,6 @@ String _absolute(Uri base, String value) {
   final uri = Uri.tryParse(value);
   return uri?.isAbsolute == true ? value : base.resolve(value).toString();
 }
-
 String _decodeServerLink(String raw) {
   try {
     final padded = raw.padRight(raw.length + ((4 - raw.length % 4) % 4), '=');
@@ -31,63 +30,112 @@ String _decodeServerLink(String raw) {
   } catch (_) {}
   return '';
 }
-
 bool _isDirectMedia(String value) {
   final lower = value.toLowerCase();
   return lower.contains('.m3u8') || lower.contains('.mp4');
 }
 String _image(Element node, Uri base) {
-  final image = node.localName == 'img' ? node : node.querySelector('img') ?? node.parent?.querySelector('img');
+  final image = node.localName == 'img'
+      ? node
+      : node.querySelector('img') ?? node.parent?.querySelector('img');
   final style = node.querySelector('.poster, [data-style]');
   final rawStyle = _attr(style, 'data-style') + _attr(style, 'style');
   final match = RegExp(r'''url\((?:["']?)([^)"']+)''').firstMatch(rawStyle);
   final srcset = _attr(image, 'data-srcset').ifEmpty(_attr(image, 'srcset'));
   final firstSrcset = srcset.split(',').first.trim().split(RegExp(r'\s+')).first;
-  final raw = match?.group(1) ?? _attr(image, 'data-src').ifEmpty(_attr(image, 'data-lazy-src')).ifEmpty(_attr(image, 'data-original')).ifEmpty(firstSrcset).ifEmpty(_attr(image, 'src'));
+  final raw = match?.group(1) ??
+      _attr(image, 'data-src')
+          .ifEmpty(_attr(image, 'data-lazy-src'))
+          .ifEmpty(_attr(image, 'data-original'))
+          .ifEmpty(firstSrcset)
+          .ifEmpty(_attr(image, 'src'));
   return _absolute(base, raw);
 }
-extension on String { String ifEmpty(String fallback) => isEmpty ? fallback : this; }
-String _episodeNumber(String value) => RegExp(r'(?:episode|ep|الحلقة)[^\d]*(\d+(?:\.\d+)?)', caseSensitive: false).firstMatch(value)?.group(1) ?? RegExp(r'\d+(?:\.\d+)?').firstMatch(value)?.group(0) ?? '';
+extension on String {
+  String ifEmpty(String fallback) => isEmpty ? fallback : this;
+}
+String _normalizeDigits(String value) {
+  const arabic = '٠١٢٣٤٥٦٧٨٩';
+  const persian = '۰۱۲۳۴۵۶۷۸۹';
+  return value.split('').map((char) {
+    final a = arabic.indexOf(char);
+    if (a >= 0) return '$a';
+    final p = persian.indexOf(char);
+    return p >= 0 ? '$p' : char;
+  }).join();
+}
+String _episodeNumber(String value) {
+  final normalized = _normalizeDigits(value);
+  return RegExp(r'(?:episode|ep|الحلقة|حلقة)[^\d]*(\d+(?:\.\d+)?)', caseSensitive: false)
+          .firstMatch(normalized)
+          ?.group(1) ??
+      RegExp(r'\d+(?:\.\d+)?').firstMatch(normalized)?.group(0) ??
+      '';
+}
 String _id(String source, String url) => '$source:${Uri.tryParse(url)?.toString() ?? url}';
-String _cleanTitle(String value) => value.replaceAll(RegExp(r'^(مشاهدة|انمي|مسلسلات انمي)\s*', caseSensitive: false), '').replaceAll(RegExp(r'\s*(الحلقة|episode|ep)\s*\d+.*$', caseSensitive: false), '').replaceAll(RegExp(r'\s+'), ' ').trim();
+String _cleanTitle(String value) => value
+    .replaceAll(RegExp(r'^(مشاهدة|انمي|مسلسلات انمي)\s*', caseSensitive: false), '')
+    .replaceAll(RegExp(r'\s*(الحلقة|episode|ep)\s*\d+.*$', caseSensitive: false), '')
+    .replaceAll(RegExp(r'\s+'), ' ')
+    .trim();
+String _episodeTitle(String rawTitle, String number) =>
+    number.isEmpty ? _cleanTitle(rawTitle) : 'الحلقة $number';
 
 abstract class _HtmlSource extends AnimeSource {
   const _HtmlSource();
   AnimeModel item(Element node) {
     final anchor = node.localName == 'a' ? node : node.querySelector('a');
     final url = _absolute(baseUrl, _attr(anchor, 'href'));
-    final title = _cleanTitle(_attr(anchor, 'title').ifEmpty(_text(node.querySelector('.title h4, .title, h2, h3, h4')).ifEmpty(_text(anchor))));
-    return AnimeModel(id: _id(sourceKey, url), title: title, url: url, cover: _image(node, baseUrl), sourceKey: sourceKey, sourceName: sourceName);
+    final title = _cleanTitle(_attr(anchor, 'title').ifEmpty(
+        _text(node.querySelector('.title h4, .title, h2, h3, h4')).ifEmpty(_text(anchor))));
+    return AnimeModel(id: _id(sourceKey, url), title: title, url: url,
+        cover: _image(node, baseUrl), sourceKey: sourceKey, sourceName: sourceName);
   }
   List<AnimeModel> parseCards(String body, String selector) {
-    final doc = parser.parse(body);
     final result = <String, AnimeModel>{};
-    for (final node in doc.querySelectorAll(selector)) { final value = item(node); if (value.url.isNotEmpty && value.title.isNotEmpty) result[value.url] = value; }
+    for (final node in parser.parse(body).querySelectorAll(selector)) {
+      final value = item(node);
+      if (value.url.isNotEmpty && value.title.isNotEmpty) result[value.url] = value;
+    }
     return result.values.toList();
   }
-  @override Future<AnimeModel> getAnimeDetails(String animeUrl) async {
-    final doc = parser.parse(await getHtml(animeUrl));
-    // Several selectors can match the same anchor. Keep the first complete
-    // episode per source URL without changing the URL or scraper behavior.
-    final episodesByUrl = <String, EpisodeModel>{};
-    for (final node in doc.querySelectorAll('a[href*="episode"], a[href*="episodes/"], a[href*="الحلقة"], .episodes a, .EpisodesList a, .Episode a, a[href*="/watch/"]')) {
-      final anchor = node.localName == 'a' ? node : node.querySelector('a');
-      final url = _absolute(baseUrl, _attr(anchor, 'href'));
-      final title = _cleanTitle(_text(anchor).ifEmpty(_attr(anchor, 'title')));
-      if (url.isNotEmpty) episodesByUrl.putIfAbsent(url, () => EpisodeModel(id: _id(sourceKey, url), title: title, url: url, number: _episodeNumber(title), sourceKey: sourceKey, thumbnail: _image(node, baseUrl)));
+  EpisodeModel? episodeFrom(Element node) {
+    final anchor = node.localName == 'a' ? node : node.querySelector('a');
+    final url = _absolute(baseUrl, _attr(anchor, 'href'));
+    final rawTitle = _text(anchor).ifEmpty(_attr(anchor, 'title'));
+    final number = _episodeNumber(rawTitle);
+    if (url.isEmpty || number.isEmpty) return null;
+    return EpisodeModel(id: _id(sourceKey, url), title: _episodeTitle(rawTitle, number),
+        url: url, number: number, sourceKey: sourceKey, thumbnail: _image(node, baseUrl));
+  }
+  void addEpisodes(Document doc, Map<String, EpisodeModel> output, String selector) {
+    for (final node in doc.querySelectorAll(selector)) {
+      final episode = episodeFrom(node);
+      if (episode != null) output[episode.url] = episode;
     }
-    final episodes = episodesByUrl.values.toList();
+  }
+  List<EpisodeModel> sortedEpisodes(Iterable<EpisodeModel> values) {
+    final result = values.toList();
+    result.sort((a, b) {
+      final byNumber = (double.tryParse(a.number) ?? 0).compareTo(double.tryParse(b.number) ?? 0);
+      return byNumber != 0 ? byNumber : a.url.compareTo(b.url);
+    });
+    return result;
+  }
+  @override
+  Future<AnimeModel> getAnimeDetails(String animeUrl) async {
+    final doc = parser.parse(await getHtml(animeUrl));
+    final episodesByUrl = <String, EpisodeModel>{};
+    addEpisodes(doc, episodesByUrl, 'a[href*="episode"], a[href*="episodes/"], a[href*="الحلقة"], .episodes a, .EpisodesList a, .Episode a, a[href*="/watch/"]');
     final title = _text(doc.querySelector('h1, .anime-title, .FJ-Phoenix-Anastasia-Title, title')).ifEmpty(_attr(doc.querySelector('meta[property="og:title"]'), 'content'));
     final cover = _attr(doc.querySelector('meta[property="og:image"]'), 'content').ifEmpty(_attr(doc.querySelector('img[alt], .poster img, .FJ-Phoenix-Anastasia-Hero-Img'), 'src')).ifEmpty(_image(doc.querySelector('main, body') ?? doc.documentElement!, baseUrl));
     final description = _attr(doc.querySelector('meta[name="description"]'), 'content').ifEmpty(_text(doc.querySelector('.description, .summary, .story-description')));
-    if (episodes.isEmpty && sourceKey == 'risto_anime') {
-      final episodeTitle = _cleanTitle(title);
-      episodes.add(EpisodeModel(id: _id(sourceKey, animeUrl), title: episodeTitle.isEmpty ? title : episodeTitle, url: animeUrl, number: _episodeNumber(title), sourceKey: sourceKey));
-    }
-    episodes.sort((a, b) => (double.tryParse(a.number) ?? 0).compareTo(double.tryParse(b.number) ?? 0));
-    return AnimeModel(id: _id(sourceKey, animeUrl), title: _cleanTitle(title), url: animeUrl, cover: _absolute(baseUrl, cover), description: description, sourceKey: sourceKey, sourceName: sourceName, episodes: episodes);
+    return AnimeModel(id: _id(sourceKey, animeUrl), title: _cleanTitle(title), url: animeUrl,
+        cover: _absolute(baseUrl, cover), description: description, sourceKey: sourceKey,
+        sourceName: sourceName, episodes: sortedEpisodes(episodesByUrl.values));
   }
-  @override Future<List<VideoServerModel>> getVideoExtractors(String episodeUrl) async {
+  @override
+  Future<List<VideoServerModel>> getVideoExtractors(String episodeUrl) async {
     final body = await getHtml(episodeUrl, headers: {'Referer': baseUrl.toString()});
     final pages = <String>{episodeUrl};
     final servers = <String, VideoServerModel>{};
@@ -97,43 +145,19 @@ abstract class _HtmlSource extends AnimeSource {
       final resolved = _absolute(baseUrl, value);
       if (resolved.isEmpty) continue;
       if (_isDirectMedia(resolved)) {
-        servers[resolved] = VideoServerModel(
-          name: sourceName,
-          url: resolved,
-          type: resolved.toLowerCase().contains('.m3u8') ? 'hls' : 'mp4',
-          headers: {...defaultHeaders, 'Referer': episodeUrl},
-        );
+        servers[resolved] = VideoServerModel(name: sourceName, url: resolved, type: resolved.toLowerCase().contains('.m3u8') ? 'hls' : 'mp4', headers: {...defaultHeaders, 'Referer': episodeUrl});
       } else {
         pages.add(resolved);
       }
     }
     for (final page in pages) {
-      if (page != episodeUrl) {
-        servers.putIfAbsent(
-          page,
-          () => VideoServerModel(
-            name: '$sourceName • WebView',
-            url: page,
-            type: 'iframe',
-            headers: {...defaultHeaders, 'Referer': episodeUrl},
-          ),
-        );
-      }
+      if (page != episodeUrl) servers.putIfAbsent(page, () => VideoServerModel(name: '$sourceName • WebView', url: page, type: 'iframe', headers: {...defaultHeaders, 'Referer': episodeUrl}));
       try {
         final pageBody = page == episodeUrl ? body : await getHtml(page, headers: {'Referer': episodeUrl});
         for (final server in VideoExtractor.extract(pageBody, baseUrl, sourceName, page == episodeUrl ? episodeUrl : page, {...defaultHeaders, 'Referer': episodeUrl})) servers[server.url] = server;
       } catch (_) {}
     }
-    // Some providers create the stream only after JavaScript runs. Keep the
-    // episode page as a final WebView candidate instead of showing an empty list.
-    if (servers.isEmpty) {
-      servers[episodeUrl] = VideoServerModel(
-        name: '$sourceName • WebView',
-        url: episodeUrl,
-        type: 'webview',
-        headers: {...defaultHeaders, 'Referer': baseUrl.toString()},
-      );
-    }
+    if (servers.isEmpty) servers[episodeUrl] = VideoServerModel(name: '$sourceName • WebView', url: episodeUrl, type: 'webview', headers: {...defaultHeaders, 'Referer': baseUrl.toString()});
     return servers.values.toList();
   }
 }
@@ -157,25 +181,30 @@ class RestoAnimeSource extends _HtmlSource {
   @override Uri get baseUrl => Uri.parse('https://ristoanime.me/');
   @override Future<List<AnimeModel>> fetchLatestAnime(int page) async => parseCards(await getHtml(page == 1 ? baseUrl.toString() : '${baseUrl}page/$page/'), '.BlocksHolder .MovieItem');
   @override Future<List<AnimeModel>> searchAnime(String query, int page) async => parseCards(await getHtml(baseUrl.replace(queryParameters: {'s': query, 'paged': '$page'}).toString()), '.SearchResultInner, .MovieItem');
-
-  @override
-  Future<AnimeModel> getAnimeDetails(String animeUrl) async {
+  @override Future<AnimeModel> getAnimeDetails(String animeUrl) async {
     final current = await super.getAnimeDetails(animeUrl);
-    final seriesTitle = _cleanTitle(current.title);
-    final collected = <String, EpisodeModel>{for (final episode in current.episodes) episode.url: episode};
-    try {
-      final searchBody = await getHtml(baseUrl.replace(queryParameters: {'s': seriesTitle}).toString());
-      for (final node in parser.parse(searchBody).querySelectorAll('.MovieItem')) {
-        final anchor = node.querySelector('a');
-        final url = _absolute(baseUrl, _attr(anchor, 'href'));
-        final title = _cleanTitle(_text(node.querySelector('.title h4, .title')).ifEmpty(_text(anchor)));
-        if (url.isNotEmpty && title.isNotEmpty && (title.toLowerCase().contains(seriesTitle.toLowerCase()) || seriesTitle.toLowerCase().contains(_cleanTitle(title).toLowerCase()))) {
-          collected[url] = EpisodeModel(id: _id(sourceKey, url), title: title, url: url, number: _episodeNumber(title), sourceKey: sourceKey, thumbnail: _image(node, baseUrl));
+    final collected = <String, EpisodeModel>{for (final e in current.episodes) e.url: e};
+    final title = _cleanTitle(current.title);
+    // Resto publishes episodes as separate MovieItem pages. Follow all search
+    // pagination pages until a page contributes no new matching episode.
+    for (var page = 1; page <= 50; page++) {
+      try {
+        final body = await getHtml(baseUrl.replace(queryParameters: {'s': title, 'paged': '$page'}).toString());
+        var added = 0;
+        for (final node in parser.parse(body).querySelectorAll('.SearchResultInner .MovieItem, .MovieItem')) {
+          final anchor = node.querySelector('a');
+          final url = _absolute(baseUrl, _attr(anchor, 'href'));
+          final raw = _text(node.querySelector('.title h4, .title')).ifEmpty(_text(anchor));
+          final number = _episodeNumber(raw);
+          if (url.isNotEmpty && number.isNotEmpty && !collected.containsKey(url)) {
+            collected[url] = EpisodeModel(id: _id(sourceKey, url), title: _episodeTitle(raw, number), url: url, number: number, sourceKey: sourceKey, thumbnail: _image(node, baseUrl));
+            added++;
+          }
         }
-      }
-    } catch (_) {}
-    final episodes = collected.values.toList()..sort((a, b) => (double.tryParse(a.number) ?? 0).compareTo(double.tryParse(b.number) ?? 0));
-    return current.copyWith(episodes: episodes);
+        if (added == 0 && page > 1) break;
+      } catch (_) { break; }
+    }
+    return current.copyWith(episodes: sortedEpisodes(collected.values));
   }
 }
 
@@ -185,28 +214,25 @@ class AnimePhoenixSource extends _HtmlSource {
   @override String get sourceName => 'Anime Phoenix';
   @override String get sourceLogo => 'https://anime-phoenix.com/favicon.ico';
   @override Uri get baseUrl => Uri.parse('https://anime-phoenix.com/');
-  @override Future<List<AnimeModel>> fetchLatestAnime(int page) async => parseCards(await getHtml(baseUrl.toString()), 'a[href*="/animes/"], .anime-card');
+  @override Future<List<AnimeModel>> fetchLatestAnime(int page) async => parseCards(await getHtml(page == 1 ? baseUrl.toString() : '${baseUrl}page/$page'), 'a[href*="/animes/"], .anime-card');
   @override Future<List<AnimeModel>> searchAnime(String query, int page) async => parseCards(await getHtml(baseUrl.resolve('/search/').replace(queryParameters: {'q': query, 'page': '$page'}).toString()), 'a[href*="/animes/"], .anime-card');
-
-  @override
-  Future<AnimeModel> getAnimeDetails(String animeUrl) async {
+  @override Future<AnimeModel> getAnimeDetails(String animeUrl) async {
     final current = await super.getAnimeDetails(animeUrl);
-    final episodes = <String, EpisodeModel>{for (final episode in current.episodes) episode.url: episode};
-    try {
-      final body = await getHtml('${animeUrl.replaceFirst(RegExp(r'/$'), '')}/episodes');
-      for (final node in parser.parse(body).querySelectorAll('a.FJ-episode-wrap, a[href*="/episodes/"]')) {
-        final url = _absolute(baseUrl, _attr(node, 'href'));
-        final title = _cleanTitle(_text(node.querySelector('.FJ-Phoenix-Anastasia-EpCard-Tooltip, .FJ-episode-info')).ifEmpty(_text(node)));
-        if (url.isNotEmpty) episodes[url] = EpisodeModel(id: _id(sourceKey, url), title: title, url: url, number: _episodeNumber(title), sourceKey: sourceKey, thumbnail: _attr(node.querySelector('img'), 'src'));
-      }
-    } catch (_) {}
-    final fullEpisodes = episodes.values.toList()..sort((a, b) => (double.tryParse(a.number) ?? 0).compareTo(double.tryParse(b.number) ?? 0));
-    return current.copyWith(episodes: fullEpisodes);
+    final collected = <String, EpisodeModel>{for (final e in current.episodes) e.url: e};
+    // The source exposes the complete episode grid on the anime page. The
+    // optional /episodes endpoint is retained only for installations that use it.
+    final urls = <String>{animeUrl, '${animeUrl.replaceFirst(RegExp(r'/$'), '')}/episodes'};
+    for (final pageUrl in urls) {
+      try {
+        final doc = parser.parse(await getHtml(pageUrl));
+        addEpisodes(doc, collected, 'a.FJ-EpPill, a.FJ-episode-wrap, a[href*="/episodes/"]');
+      } catch (_) {}
+    }
+    return current.copyWith(episodes: sortedEpisodes(collected.values));
   }
 }
 
 const List<AnimeSource> enabledAnimeSources = [Anime3rbSource(), RestoAnimeSource(), AnimePhoenixSource()];
-
 Future<List<AnimeSource>> activeAnimeSources() async {
   final prefs = await SharedPreferences.getInstance();
   final selected = prefs.getStringList('mangalord.enabled_anime_sources');

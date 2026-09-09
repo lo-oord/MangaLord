@@ -271,7 +271,10 @@ class _AnimeDetailsScreenState extends State<AnimeDetailsScreen> {
     }
     final result = numbered.values.toList()
       ..sort((a, b) => (double.tryParse(_episodeNumber(a) ?? '') ?? 0).compareTo(double.tryParse(_episodeNumber(b) ?? '') ?? 0));
-    result.addAll(unnumbered.values);
+    for (final episode in unnumbered.values) {
+      final number = '${result.length + 1}';
+      result.add(EpisodeModel(id: episode.id, title: 'الحلقة $number', url: episode.url, number: number, thumbnail: episode.thumbnail, sourceKey: episode.sourceKey));
+    }
     return result;
   }
 
