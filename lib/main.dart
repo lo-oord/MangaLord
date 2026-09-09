@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:media_kit/media_kit.dart';
 import 'package:event/event.dart';
 import 'package:manga_lord/configs/app_theme.dart';
@@ -9,7 +9,6 @@ import 'services/notification_service.dart';
 import 'package:manga_lord/screens/components/router.dart';
 import 'screens/init_screen.dart';
 import 'services/auth_service.dart';
-import 'firebase_options.dart';
 
 const _accent = Color(0xFF3DDC97);
 const _darkSurface = Color(0xFF14231F);
@@ -19,13 +18,16 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MediaKit.ensureInitialized();
   try {
-    await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+    const supabaseUrl = String.fromEnvironment('SUPABASE_URL');
+    const supabaseAnonKey = String.fromEnvironment('SUPABASE_ANON_KEY');
+    if (supabaseUrl.isEmpty || supabaseAnonKey.isEmpty) {
+      throw const AuthConfigurationException('Supabase configuration is missing.');
+    }
+    await Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
     await AuthService.instance.initialize();
   } catch (error, stackTrace) {
-    // The content browser remains usable in guest mode when a release build was
-    // produced without Firebase dart-defines. Auth screens will show a clear
-    // configuration error instead of leaving the app on a blank screen.
-    debugPrint('Firebase initialization skipped: $error\n$stackTrace');
+    // The content browser remains usable in guest mode when Supabase is not configured.
+    debugPrint('Supabase initialization skipped: $error\n$stackTrace');
   }
   await MangaNotificationService.instance.initialize();
   await loadAppLocale();
